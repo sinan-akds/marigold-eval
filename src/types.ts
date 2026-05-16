@@ -22,6 +22,7 @@ export type EvalsConfig = {
     themePath?: string;
     claudeTimeoutMs?: number;
     scoreTimeoutMs?: number;
+    modelConcurrency?: Record<string, number>;
   };
   evals: EvalDefinition[];
 };

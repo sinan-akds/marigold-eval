@@ -32,10 +32,7 @@ export const buildClaudeArgs = (
   const targetAbsolute = path.join(wtPath, d.targetFile);
   systemPrompt += `\n\nIMPORTANT: Your working directory is ${wtPath}. Write all files there. The target file is ${targetAbsolute}. Do not write to any other directory.\n`;
 
-  if (combo.config === 'bare') {
-    systemPrompt += `Do NOT start a dev server — you have no browser tools. Write the component file and respond.\n`;
-    systemPrompt += `Do NOT explore node_modules or run type-checking commands. Write the file directly based on your knowledge of the Marigold API.\n`;
-  } else {
+  if (combo.config !== 'bare') {
     systemPrompt += `Start the dev server in the background: pnpm dev --port ${port} &\n`;
     systemPrompt += `Wait a moment for it to start, then navigate to http://localhost:${port} with Playwright to verify your work.\n`;
   }

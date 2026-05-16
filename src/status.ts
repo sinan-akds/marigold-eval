@@ -89,7 +89,7 @@ export const showStatus = (config: EvalsConfig, bm: BenchmarkFile) => {
 
   // Score matrix
   const evalIds = config.evals.map(e => e.id);
-  const shortEval = (id: string) => id.replace(/^P-0?/, 'P').replace(/^P-/, 'P');
+  const shortEval = (id: string) => id.replace(/^P-0?/, 'P');
   const col = 14;
   const label = 25;
   const divider = label + evalIds.length * col + col;

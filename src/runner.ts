@@ -187,6 +187,34 @@ const runSingle = async (
   }
 };
 
+const createModelSemaphore = (limits: Record<string, number>) => {
+  const active = new Map<string, number>();
+  const waiters = new Map<string, (() => void)[]>();
+
+  const acquire = async (model: string) => {
+    const limit = limits[model];
+    if (limit === undefined) return;
+    while ((active.get(model) ?? 0) >= limit) {
+      await new Promise<void>(resolve => {
+        const queue = waiters.get(model) ?? [];
+        queue.push(resolve);
+        waiters.set(model, queue);
+      });
+    }
+    active.set(model, (active.get(model) ?? 0) + 1);
+  };
+
+  const release = (model: string) => {
+    const limit = limits[model];
+    if (limit === undefined) return;
+    active.set(model, (active.get(model) ?? 0) - 1);
+    const queue = waiters.get(model);
+    if (queue?.length) queue.shift()!();
+  };
+
+  return { acquire, release };
+};
+
 export const runBatch = async (
   combinations: Combination[],
   config: EvalsConfig,
@@ -198,18 +226,24 @@ export const runBatch = async (
   const results: RunResult[] = [];
   let idx = 0;
 
+  const modelSem = createModelSemaphore(config.defaults.modelConcurrency ?? {});
+
   const effectiveWorkers = Math.min(concurrency, total);
   const workers = Array.from({ length: effectiveWorkers }, async (_, workerIndex) => {
     while (true) {
       const i = idx++;
       if (i >= total) break;
+      const combo = combinations[i];
+      await modelSem.acquire(combo.model);
       try {
-        const result = await runSingle(combinations[i], config, bm, workerIndex);
+        const result = await runSingle(combo, config, bm, workerIndex);
         results.push(result);
       } catch (err: unknown) {
         const msg = err instanceof Error ? err.message : String(err);
-        log(`  Worker ${workerIndex} crashed on ${combinations[i].id}: ${msg}\n`);
-        results.push({ id: combinations[i].id, score: null, assertionPassRate: null, error: msg });
+        log(`  Worker ${workerIndex} crashed on ${combo.id}: ${msg}\n`);
+        results.push({ id: combo.id, score: null, assertionPassRate: null, error: msg });
+      } finally {
+        modelSem.release(combo.model);
       }
       completed++;
       log(`  Progress: ${completed}/${total}\n`);

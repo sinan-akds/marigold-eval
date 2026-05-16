@@ -93,7 +93,7 @@ const main = async () => {
     ? parseInt(flags.concurrency, 10)
     : config.defaults.concurrency ?? 3;
 
-  const combos = generateCombinations(config, bm, flags.filter ?? '');
+  const combos = generateCombinations(config, bm, flags.filter || '');
 
   if (combos.length === 0) {
     out('All combinations completed (or filtered out). Nothing to do.\n');

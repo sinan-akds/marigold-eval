@@ -63,7 +63,7 @@ for (const run of bm.runs) {
     run.assertionPassRate = newAssertions;
 
     if (run.efficiency) {
-      (run.efficiency as any).totalTokens = ((run.efficiency as any).inputTokens ?? 0) + ((run.efficiency as any).outputTokens ?? 0);
+      run.efficiency.totalTokens = run.efficiency.inputTokens + run.efficiency.outputTokens;
     }
 
     if (run.efficiency) {
