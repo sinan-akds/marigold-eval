@@ -52,6 +52,8 @@ export const recomputeSummaries = (bm: BenchmarkFile) => {
 };
 
 export const addRun = (bm: BenchmarkFile, run: BenchmarkRun) => {
+  const id = comboId(run.model, run.config, run.evalId, run.runNumber);
+  bm.runs = bm.runs.filter(r => comboId(r.model, r.config, r.evalId, r.runNumber) !== id);
   bm.runs.push(run);
   recomputeSummaries(bm);
   saveBenchmark(bm);
