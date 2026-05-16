@@ -107,11 +107,12 @@
         },
         {
           "id": "a-submit-button",
-          "description": "Submit button present",
+          "description": "Submit button with type=submit",
           "severity": "required",
           "check": {
             "type": "component",
-            "component": "Button"
+            "component": "Button",
+            "props": { "type": "submit" }
           }
         },
         {
@@ -125,7 +126,7 @@
         },
         {
           "id": "a-no-raw-html",
-          "description": "No raw HTML form elements (input, select, textarea)",
+          "description": "No raw HTML form elements (input, select, textarea, button, form)",
           "severity": "required",
           "check": {
             "type": "composite",
@@ -133,8 +134,29 @@
             "checks": [
               { "type": "absence", "pattern": "input", "scope": "jsx" },
               { "type": "absence", "pattern": "select", "scope": "jsx" },
-              { "type": "absence", "pattern": "textarea", "scope": "jsx" }
+              { "type": "absence", "pattern": "textarea", "scope": "jsx" },
+              { "type": "absence", "pattern": "button", "scope": "jsx" },
+              { "type": "absence", "pattern": "form", "scope": "jsx" }
             ]
+          }
+        },
+        {
+          "id": "a-uses-onpress",
+          "description": "Buttons use onPress (not onClick)",
+          "severity": "required",
+          "check": {
+            "type": "text-content",
+            "pattern": "/onPress/"
+          }
+        },
+        {
+          "id": "a-no-onclick-on-marigold",
+          "description": "No onClick on Marigold Button components",
+          "severity": "recommended",
+          "check": {
+            "type": "absence",
+            "pattern": "/<Button[^>]*onClick/",
+            "scope": "any"
           }
         }
       ]
@@ -239,7 +261,7 @@
         {
           "id": "a-table-header",
           "description": "Table.Header sub-component used",
-          "severity": "recommended",
+          "severity": "required",
           "check": {
             "type": "component",
             "component": "Table.Header"
@@ -248,7 +270,7 @@
         {
           "id": "a-table-body",
           "description": "Table.Body sub-component used",
-          "severity": "recommended",
+          "severity": "required",
           "check": {
             "type": "component",
             "component": "Table.Body"
@@ -417,6 +439,50 @@
             "pattern": "/<Button[^>]*onClick/",
             "scope": "any"
           }
+        },
+        {
+          "id": "a-no-raw-html",
+          "description": "No raw HTML elements (input, select, textarea, button, form, table)",
+          "severity": "required",
+          "check": {
+            "type": "composite",
+            "operator": "and",
+            "checks": [
+              { "type": "absence", "pattern": "button", "scope": "jsx" },
+              { "type": "absence", "pattern": "input", "scope": "jsx" },
+              { "type": "absence", "pattern": "select", "scope": "jsx" },
+              { "type": "absence", "pattern": "table", "scope": "jsx" },
+              { "type": "absence", "pattern": "form", "scope": "jsx" },
+              { "type": "absence", "pattern": "textarea", "scope": "jsx" }
+            ]
+          }
+        },
+        {
+          "id": "a-headline",
+          "description": "Headline component for page titles",
+          "severity": "recommended",
+          "check": {
+            "type": "component",
+            "component": "Headline"
+          }
+        },
+        {
+          "id": "a-dialog-trigger",
+          "description": "Dialog.Trigger for overlay pattern",
+          "severity": "recommended",
+          "check": {
+            "type": "component",
+            "component": "Dialog.Trigger"
+          }
+        },
+        {
+          "id": "a-menu-trigger",
+          "description": "Menu.Trigger for user dropdown",
+          "severity": "recommended",
+          "check": {
+            "type": "component",
+            "component": "Menu.Trigger"
+          }
         }
       ]
     },
@@ -563,7 +629,7 @@
         {
           "id": "a-has-quantity-mechanism",
           "description": "Has a mechanism for selecting ticket quantity",
-          "severity": "recommended",
+          "severity": "required",
           "check": {
             "type": "composite",
             "operator": "or",
@@ -577,7 +643,7 @@
         {
           "id": "a-has-feedback-mechanism",
           "description": "Has user feedback (SectionMessage, Dialog, or error/success pattern)",
-          "severity": "recommended",
+          "severity": "required",
           "check": {
             "type": "composite",
             "operator": "or",
@@ -596,6 +662,37 @@
             "type": "absence",
             "pattern": "/<Button[^>]*onClick/",
             "scope": "any"
+          }
+        },
+        {
+          "id": "a-has-headline",
+          "description": "Headline for event name",
+          "severity": "recommended",
+          "check": {
+            "type": "component",
+            "component": "Headline"
+          }
+        },
+        {
+          "id": "a-has-form",
+          "description": "Form component wrapping buyer info",
+          "severity": "required",
+          "check": {
+            "type": "component",
+            "component": "Form"
+          }
+        },
+        {
+          "id": "a-sold-out-state",
+          "description": "Sold-out state indicated (disabled, badge, or text)",
+          "severity": "recommended",
+          "check": {
+            "type": "composite",
+            "operator": "or",
+            "checks": [
+              { "type": "text-content", "pattern": "/sold.?out|unavailable|disabled/i" },
+              { "type": "component", "component": "Badge" }
+            ]
           }
         }
       ]

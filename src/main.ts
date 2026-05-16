@@ -2,7 +2,7 @@ import fs from 'node:fs';
 import path from 'node:path';
 import { execFileSync } from 'node:child_process';
 import { parseArgs } from 'node:util';
-import { EVALS_PATH } from './paths';
+import { EVALS_PATH, DEV_SERVER_PORT_BASE } from './paths';
 import { log, out } from './log';
 import { loadBenchmark, comboId, runComboId, recomputeSummaries, saveBenchmark } from './benchmark';
 import { generateCombinations } from './combinations';
@@ -12,8 +12,6 @@ import { showStatus } from './status';
 import { cleanAll } from './cleanup';
 import { validateEvalsConfig, validateFilesExist } from './validate-config';
 import type { EvalsConfig } from './types';
-
-const DEV_SERVER_PORT_BASE = 5173;
 
 const USAGE = `Usage: tsx run-eval.ts [options]
 

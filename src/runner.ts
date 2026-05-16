@@ -7,9 +7,8 @@ import { createWorktree, removeWorktree, killDevServerOnPort, resetMainTestApp, 
 import { createRunMcpConfig, cleanupRunMcpConfig } from './mcp';
 import { buildClaudeArgs, ClaudeTimeoutError, runClaude } from './claude';
 import { runScore, locateTargetFile, extractEfficiency } from './scoring';
+import { DEV_SERVER_PORT_BASE } from './paths';
 import type { BenchmarkFile, BenchmarkRun, Combination, EvalsConfig, RunResult } from './types';
-
-const DEV_SERVER_PORT_BASE = 5173;
 
 const runSingle = async (
   combo: Combination,

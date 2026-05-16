@@ -1,10 +1,8 @@
 import fs from 'node:fs';
 import path from 'node:path';
 import { spawn } from 'node:child_process';
-import { ROOT } from './paths';
+import { ROOT, DEV_SERVER_PORT_BASE } from './paths';
 import type { ClaudeOutput, Combination, EvalsConfig } from './types';
-
-const DEV_SERVER_PORT_BASE = 5173;
 
 export class ClaudeTimeoutError extends Error {
   stderr: string;
