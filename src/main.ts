@@ -9,6 +9,7 @@ import { killDevServerOnPort } from './worktree';
 import { runBatch } from './runner';
 import { showStatus } from './status';
 import { cleanAll } from './cleanup';
+import { validateEvalsConfig } from './validate-config';
 import type { EvalsConfig } from './types';
 
 const USAGE = `Usage: tsx run-eval.ts [options]
@@ -49,6 +50,7 @@ const main = async () => {
   }
 
   const config = JSON.parse(fs.readFileSync(EVALS_PATH, 'utf-8')) as EvalsConfig;
+  validateEvalsConfig(config);
   const appDir = config.defaults.projectDir;
 
   try {
