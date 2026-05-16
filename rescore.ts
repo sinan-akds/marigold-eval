@@ -2,7 +2,7 @@
 
 import fs from 'node:fs';
 import path from 'node:path';
-import { execSync } from 'node:child_process';
+import { execFileSync } from 'node:child_process';
 import { ROOT, BENCHMARK_PATH, EVALS_PATH, RESULTS_DIR } from './src/paths';
 import { recomputeSummaries, saveBenchmark } from './src/benchmark';
 import type { BenchmarkFile } from './src/types';
@@ -27,20 +27,25 @@ for (const run of bm.runs) {
   const runId = `${run.model}-${run.config}-${run.evalId}-r${run.runNumber}`;
   const outputDir = path.join(RESULTS_DIR, `${run.model}-${run.config}`, run.evalId, `run-${run.runNumber}`);
 
-  const themeFlag = themePath ? ` --theme "${themePath}"` : '';
+  const scoreArgs = [
+    scoreBin, sourceFile,
+    '--prompt-id', run.evalId,
+    '--model', run.model,
+    '--config', run.config,
+    '--run-id', runId,
+    '--output-dir', RESULTS_DIR,
+    '--evals', EVALS_PATH,
+    '--eval-id', run.evalId,
+    ...(themePath ? ['--theme', themePath] : []),
+  ];
 
   try {
-    execSync(
-      `node "${scoreBin}" "${sourceFile}" ` +
-      `--prompt-id "${run.evalId}" ` +
-      `--model "${run.model}" ` +
-      `--config "${run.config}" ` +
-      `--run-id "${runId}" ` +
-      `--output-dir "${RESULTS_DIR}"` +
-      ` --evals "${EVALS_PATH}" --eval-id "${run.evalId}"` +
-      themeFlag,
-      { cwd: path.dirname(sourceFile), stdio: ['pipe', 'pipe', 'pipe'], timeout: 120_000, maxBuffer: 50 * 1024 * 1024 }
-    );
+    execFileSync('node', scoreArgs, {
+      cwd: path.dirname(sourceFile),
+      stdio: ['pipe', 'pipe', 'pipe'],
+      timeout: 300_000,
+      maxBuffer: 50 * 1024 * 1024,
+    });
   } catch {
     // may still write result
   }

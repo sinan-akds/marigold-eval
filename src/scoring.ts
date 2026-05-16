@@ -1,6 +1,6 @@
 import fs from 'node:fs';
 import path from 'node:path';
-import { execSync } from 'node:child_process';
+import { execFileSync } from 'node:child_process';
 import { EVALS_PATH } from './paths';
 import { log } from './log';
 import { EMPTY_TEST_APP, STUB_CONTENT } from './worktree';
@@ -26,23 +26,28 @@ export const runScore = (targetFile: string, opts: ScoreOpts): ScoreResult => {
     return { score: null, assertionPassRate: null, error: 'Target file not found after claude run' };
   }
 
-  const themeFlag = opts.themePath ? ` --theme "${opts.themePath}"` : '';
-  const evalsFlag = ` --evals "${EVALS_PATH}" --eval-id "${opts.evalId}"`;
-
   const resultFilePath = path.join(opts.outputDir, 'runs', opts.runId, opts.evalId, 'result.json');
+
+  const scoreArgs = [
+    scoreBin, targetFile,
+    '--prompt-id', opts.evalId,
+    '--model', opts.model,
+    '--config', opts.config,
+    '--run-id', opts.runId,
+    '--output-dir', opts.outputDir,
+    '--evals', EVALS_PATH,
+    '--eval-id', opts.evalId,
+    ...(opts.themePath ? ['--theme', opts.themePath] : []),
+  ];
 
   let scoreStderr = '';
   try {
-    execSync(
-      `node "${scoreBin}" "${targetFile}" ` +
-      `--prompt-id "${opts.evalId}" ` +
-      `--model "${opts.model}" ` +
-      `--config "${opts.config}" ` +
-      `--run-id "${opts.runId}" ` +
-      `--output-dir "${opts.outputDir}"` +
-      evalsFlag + themeFlag,
-      { cwd: path.dirname(targetFile), stdio: ['pipe', 'pipe', 'pipe'], timeout: opts.scoreTimeoutMs ?? 300_000, maxBuffer: 50 * 1024 * 1024 }
-    );
+    execFileSync('node', scoreArgs, {
+      cwd: path.dirname(targetFile),
+      stdio: ['pipe', 'pipe', 'pipe'],
+      timeout: opts.scoreTimeoutMs ?? 300_000,
+      maxBuffer: 50 * 1024 * 1024,
+    });
   } catch (err: unknown) {
     if (err && typeof err === 'object' && 'stderr' in err) {
       scoreStderr = String((err as { stderr: unknown }).stderr).slice(0, 2000);
@@ -89,10 +94,15 @@ export const locateTargetFile = (
   }
 
   try {
-    const found = execSync(
-      `find "${wtPath}/src" -name "*.tsx" -not -name "App.tsx" -not -name "main.tsx" -not -name "vite-env.d.ts" -not -path "*/node_modules/*" -type f`,
-      { stdio: ['pipe', 'pipe', 'pipe'] }
-    ).toString().trim().split('\n').filter(Boolean);
+    const found = execFileSync('find', [
+      path.join(wtPath, 'src'),
+      '-name', '*.tsx',
+      '-not', '-name', 'App.tsx',
+      '-not', '-name', 'main.tsx',
+      '-not', '-name', 'vite-env.d.ts',
+      '-not', '-path', '*/node_modules/*',
+      '-type', 'f',
+    ], { stdio: ['pipe', 'pipe', 'pipe'] }).toString().trim().split('\n').filter(Boolean);
 
     if (found.length > 0) {
       log(`${tag} Target not at expected path, found at: ${path.relative(wtPath, found[0])}\n`);

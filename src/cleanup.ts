@@ -1,6 +1,6 @@
 import fs from 'node:fs';
 import path from 'node:path';
-import { execSync } from 'node:child_process';
+import { execFileSync } from 'node:child_process';
 import { ROOT, RESULTS_DIR } from './paths';
 import { log } from './log';
 import { saveBenchmark } from './benchmark';
@@ -22,14 +22,14 @@ export const cleanAll = (config: EvalsConfig) => {
     }
   }
 
-  silentExec('git worktree prune', appDir);
+  silentExec('git', ['worktree', 'prune'], appDir);
   const evalBranchPattern = /^eval\/(haiku|sonnet|opus)-(bare|mcp-stack|full-stack)-P-\d+-r\d+$/;
   try {
-    const branches = execSync('git branch --list "eval/*"', { cwd: appDir, stdio: 'pipe' })
+    const branches = execFileSync('git', ['branch', '--list', 'eval/*'], { cwd: appDir, stdio: 'pipe' })
       .toString().trim().split('\n').map(b => b.trim()).filter(Boolean);
     for (const branch of branches) {
       if (evalBranchPattern.test(branch)) {
-        silentExec(`git branch -D "${branch}"`, appDir);
+        silentExec('git', ['branch', '-D', branch], appDir);
       }
     }
   } catch { /* ok */ }

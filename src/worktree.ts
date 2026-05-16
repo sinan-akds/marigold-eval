@@ -1,6 +1,6 @@
 import fs from 'node:fs';
 import path from 'node:path';
-import { execSync } from 'node:child_process';
+import { execFileSync } from 'node:child_process';
 import { ROOT } from './paths';
 import { log } from './log';
 import { silentExec, silentRm } from './utils';
@@ -24,12 +24,12 @@ export const createWorktree = (id: string, appDir: string): string => {
   const wtPath = path.join(ROOT, `worktree-${id}`);
   const branch = `eval/${id}`;
 
-  silentExec(`git worktree remove "${wtPath}" --force`, appDir);
+  silentExec('git', ['worktree', 'remove', wtPath, '--force'], appDir);
   silentRm(wtPath);
-  silentExec('git worktree prune', appDir);
-  silentExec(`git branch -D "${branch}"`, appDir);
+  silentExec('git', ['worktree', 'prune'], appDir);
+  silentExec('git', ['branch', '-D', branch], appDir);
 
-  execSync(`git worktree add "${wtPath}" -b "${branch}"`, { cwd: appDir, stdio: 'pipe', timeout: 60_000 });
+  execFileSync('git', ['worktree', 'add', wtPath, '-b', branch], { cwd: appDir, stdio: 'pipe', timeout: 60_000 });
 
   const mainNm = path.join(appDir, 'node_modules');
   const wtNm = path.join(wtPath, 'node_modules');
@@ -42,16 +42,15 @@ export const createWorktree = (id: string, appDir: string): string => {
 
 export const killDevServerOnPort = (port: number) => {
   try {
-    const pids = execSync(
-      `lsof -ti :${port} 2>/dev/null || true`,
-      { stdio: 'pipe' }
-    ).toString().trim();
+    const pids = execFileSync('lsof', ['-ti', `:${port}`], {
+      stdio: 'pipe',
+    }).toString().trim();
     if (pids) {
       for (const pid of pids.split('\n').filter(Boolean)) {
         try { process.kill(Number(pid), 'SIGKILL'); } catch { /* already dead */ }
       }
     }
-  } catch { /* ok */ }
+  } catch { /* ok — lsof exits non-zero when no matches */ }
 };
 
 export const removeWorktree = (id: string, appDir: string) => {
@@ -75,8 +74,8 @@ export const removeWorktree = (id: string, appDir: string) => {
     return;
   }
 
-  silentExec(`git worktree remove "${wtPath}" --force`, appDir);
+  silentExec('git', ['worktree', 'remove', wtPath, '--force'], appDir);
   silentRm(wtPath);
-  silentExec('git worktree prune', appDir);
-  silentExec(`git branch -D "${branch}"`, appDir);
+  silentExec('git', ['worktree', 'prune'], appDir);
+  silentExec('git', ['branch', '-D', branch], appDir);
 };

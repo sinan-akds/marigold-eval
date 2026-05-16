@@ -1,5 +1,5 @@
 import fs from 'node:fs';
-import { execSync } from 'node:child_process';
+import { execFileSync } from 'node:child_process';
 import { parseArgs } from 'node:util';
 import { EVALS_PATH } from './paths';
 import { log, out } from './log';
@@ -54,7 +54,7 @@ const main = async () => {
   const appDir = config.defaults.projectDir;
 
   try {
-    execSync('git rev-parse --is-inside-work-tree', { cwd: appDir, stdio: 'pipe' });
+    execFileSync('git', ['rev-parse', '--is-inside-work-tree'], { cwd: appDir, stdio: 'pipe' });
   } catch {
     log(`Error: ${appDir} is not a git repository. Run \`git init && git add . && git commit -m "initial"\` inside it first.\n`);
     process.exit(2);
