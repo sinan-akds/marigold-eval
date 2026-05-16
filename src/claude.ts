@@ -81,8 +81,9 @@ export const runClaude = (args: string[], cwd: string, timeoutMs = 300_000): Pro
       setTimeout(() => killGroup('SIGKILL'), 5000);
     }, timeoutMs);
 
-    child.stdout.on('data', (chunk: Buffer) => { stdout += chunk; });
-    child.stderr.on('data', (chunk: Buffer) => { stderr += chunk; });
+    const MAX_BUFFER = 10 * 1024 * 1024;
+    child.stdout.on('data', (chunk: Buffer) => { if (stdout.length < MAX_BUFFER) stdout += chunk; });
+    child.stderr.on('data', (chunk: Buffer) => { if (stderr.length < MAX_BUFFER) stderr += chunk; });
 
     child.on('close', (code) => {
       clearTimeout(timer);
@@ -103,9 +104,12 @@ export const runClaude = (args: string[], cwd: string, timeoutMs = 300_000): Pro
         reject(new Error(`claude exited with code ${code}: ${(stderr || stdout).slice(0, 2000)}`));
         return;
       }
-      const output = parsed ?? { result: stdout, session_id: null };
-      output._stderr = stderr;
-      resolve(output);
+      if (!parsed) {
+        reject(new Error(`claude produced non-JSON stdout (${stdout.length} bytes): ${stdout.slice(0, 500)}`));
+        return;
+      }
+      parsed._stderr = stderr;
+      resolve(parsed);
     });
 
     child.on('error', (err) => {
