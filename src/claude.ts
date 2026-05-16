@@ -61,16 +61,25 @@ export const runClaude = (args: string[], cwd: string, timeoutMs = 300_000): Pro
       cwd,
       stdio: ['ignore', 'pipe', 'pipe'],
       env: { ...process.env },
+      detached: true,
     });
 
     let stdout = '';
     let stderr = '';
     let killed = false;
 
+    const killGroup = (signal: NodeJS.Signals) => {
+      try {
+        if (child.pid) process.kill(-child.pid, signal);
+      } catch {
+        try { child.kill(signal); } catch { /* already dead */ }
+      }
+    };
+
     const timer = setTimeout(() => {
       killed = true;
-      child.kill('SIGTERM');
-      setTimeout(() => child.kill('SIGKILL'), 5000);
+      killGroup('SIGTERM');
+      setTimeout(() => killGroup('SIGKILL'), 5000);
     }, timeoutMs);
 
     child.stdout.on('data', (chunk: Buffer) => { stdout += chunk; });

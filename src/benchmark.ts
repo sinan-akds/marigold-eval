@@ -1,17 +1,41 @@
 import fs from 'node:fs';
+import path from 'node:path';
 import { BENCHMARK_PATH } from './paths';
+import { log } from './log';
 import type { BenchmarkFile, BenchmarkRun } from './types';
 
+const BACKUP_PATH = BENCHMARK_PATH + '.bak';
+
+const emptyBenchmark = (): BenchmarkFile => ({
+  version: 1, runs: [], summaries: [], lastUpdated: '',
+});
+
 export const loadBenchmark = (): BenchmarkFile => {
-  if (!fs.existsSync(BENCHMARK_PATH)) {
-    return { version: 1, runs: [], summaries: [], lastUpdated: '' };
+  if (!fs.existsSync(BENCHMARK_PATH)) return emptyBenchmark();
+
+  try {
+    return JSON.parse(fs.readFileSync(BENCHMARK_PATH, 'utf-8')) as BenchmarkFile;
+  } catch {
+    log('Warning: benchmark.json is corrupt, trying backup...\n');
+    try {
+      if (fs.existsSync(BACKUP_PATH)) {
+        return JSON.parse(fs.readFileSync(BACKUP_PATH, 'utf-8')) as BenchmarkFile;
+      }
+    } catch { /* backup also corrupt */ }
+    log('Warning: no usable benchmark found, starting fresh.\n');
+    return emptyBenchmark();
   }
-  return JSON.parse(fs.readFileSync(BENCHMARK_PATH, 'utf-8')) as BenchmarkFile;
 };
 
 export const saveBenchmark = (bm: BenchmarkFile) => {
   bm.lastUpdated = new Date().toISOString();
-  fs.writeFileSync(BENCHMARK_PATH, JSON.stringify(bm, null, 2) + '\n');
+  const data = JSON.stringify(bm, null, 2) + '\n';
+  const tmpPath = BENCHMARK_PATH + '.tmp';
+  fs.writeFileSync(tmpPath, data);
+  if (fs.existsSync(BENCHMARK_PATH)) {
+    fs.copyFileSync(BENCHMARK_PATH, BACKUP_PATH);
+  }
+  fs.renameSync(tmpPath, BENCHMARK_PATH);
 };
 
 export const comboId = (model: string, config: string, evalId: string, run: number) =>

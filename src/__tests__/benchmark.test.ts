@@ -6,6 +6,8 @@ vi.mock('node:fs', () => ({
     existsSync: () => false,
     writeFileSync: () => {},
     readFileSync: () => '{}',
+    renameSync: () => {},
+    copyFileSync: () => {},
   },
 }));
 
