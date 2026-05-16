@@ -71,11 +71,17 @@ const runSingle = async (
     } catch { /* ok */ }
 
     const scoringResultPath = path.join(RESULTS_DIR, 'runs', combo.id, combo.evalId, 'result.json');
-    try {
-      const saved = JSON.parse(fs.readFileSync(scoringResultPath, 'utf-8'));
-      saved.efficiency = efficiency;
-      fs.writeFileSync(path.join(runDir, 'result.json'), JSON.stringify(saved, null, 2) + '\n');
-    } catch { /* scoring may have failed */ }
+    const resultData = (() => {
+      try {
+        return JSON.parse(fs.readFileSync(scoringResultPath, 'utf-8'));
+      } catch {
+        return {};
+      }
+    })();
+    resultData.efficiency = efficiency;
+    resultData.sessionId = sessionId;
+    resultData.timestamp = new Date().toISOString();
+    fs.writeFileSync(path.join(runDir, 'result.json'), JSON.stringify(resultData, null, 2) + '\n');
 
     const bmRun: BenchmarkRun = {
       evalId: combo.evalId,
@@ -134,10 +140,20 @@ const runSingle = async (
         score = scoreResult.score;
         assertionPassRate = scoreResult.assertionPassRate;
 
+        const timeoutEfficiency = { durationMs: d.claudeTimeoutMs ?? 1_800_000, costUsd: 0, inputTokens: 0, outputTokens: 0, cacheReadTokens: 0, cacheCreationTokens: 0, totalTokens: 0, numTurns: 0 };
+        const scoringResultPath = path.join(RESULTS_DIR, 'runs', combo.id, combo.evalId, 'result.json');
+        const resultData = (() => {
+          try { return JSON.parse(fs.readFileSync(scoringResultPath, 'utf-8')); }
+          catch { return {}; }
+        })();
+        resultData.efficiency = timeoutEfficiency;
+        resultData.timestamp = new Date().toISOString();
+        fs.writeFileSync(path.join(runDir, 'result.json'), JSON.stringify(resultData, null, 2) + '\n');
+
         const assertLabel = assertionPassRate !== null
           ? ` | Assertions: ${Math.round(assertionPassRate * 100)}%`
           : '';
-        log(`${tag} Timeout score: ${score}/100${assertLabel}\n`);
+        log(`${tag} Timeout score: ${score !== null ? `${score}/100` : 'null'}${assertLabel}\n`);
       }
     }
 
