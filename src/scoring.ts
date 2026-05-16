@@ -19,6 +19,17 @@ type ScoreOpts = {
 
 export type { ScoreOpts };
 
+const readPackageVersion = (pkgDir: string): string | null => {
+  try {
+    const pkg = JSON.parse(fs.readFileSync(path.join(pkgDir, 'package.json'), 'utf-8'));
+    return pkg.version ?? null;
+  } catch { return null; }
+};
+
+const readPlaywrightVersion = (validatePkg: string): string | null => {
+  return readPackageVersion(path.join(validatePkg, 'node_modules', '@playwright', 'test'));
+};
+
 export const runScore = (targetFile: string, opts: ScoreOpts): ScoreResult => {
   const scoreBin = path.join(opts.validatePackage, 'dist', 'bin', 'marigold-score.mjs');
 
@@ -58,6 +69,11 @@ export const runScore = (targetFile: string, opts: ScoreOpts): ScoreResult => {
     const saved = JSON.parse(fs.readFileSync(resultFilePath, 'utf-8'));
     const quality = saved.quality ?? {};
     const assertions = saved.assertions ?? null;
+
+    saved.validatePackageVersion = readPackageVersion(opts.validatePackage);
+    saved.playwrightVersion = readPlaywrightVersion(opts.validatePackage);
+    fs.writeFileSync(resultFilePath, JSON.stringify(saved, null, 2) + '\n');
+
     return {
       score: quality.overall ?? null,
       assertionPassRate: assertions?.passRate ?? null,
