@@ -115,7 +115,8 @@ const runSingle = async (
       resetMainTestApp(appDir, d.targetFile);
 
       const content = fs.existsSync(actualTarget) ? fs.readFileSync(actualTarget, 'utf-8').trim() : '';
-      if (content.length > 0 && !content.includes('TODO')) {
+      const isStub = content === STUB_CONTENT.trim() || content.length === 0;
+      if (!isStub) {
         log(`${tag} Scoring timed-out run (file exists)...\n`);
         const runDir = path.join(RESULTS_DIR, `${combo.model}-${combo.config}`, combo.evalId, `run-${combo.run}`);
         fs.mkdirSync(runDir, { recursive: true });

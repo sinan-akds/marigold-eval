@@ -3,7 +3,7 @@ import path from 'node:path';
 import { execSync } from 'node:child_process';
 import { EVALS_PATH } from './paths';
 import { log } from './log';
-import { EMPTY_TEST_APP } from './worktree';
+import { EMPTY_TEST_APP, STUB_CONTENT } from './worktree';
 import type { ClaudeOutput, Efficiency, ScoreResult } from './types';
 
 type ScoreOpts = {
@@ -71,14 +71,15 @@ export const locateTargetFile = (
   tag: string
 ): string => {
   const worktreeContent = fs.existsSync(expectedPath) ? fs.readFileSync(expectedPath, 'utf-8').trim() : '';
-  const hasRealContent = worktreeContent.length > 0 && !worktreeContent.includes('TODO');
+  const isStub = worktreeContent === STUB_CONTENT.trim() || worktreeContent.length === 0;
+  const hasRealContent = !isStub;
 
   if (hasRealContent) return expectedPath;
 
   const mainContent = fs.existsSync(mainAppPath) ? fs.readFileSync(mainAppPath, 'utf-8').trim() : '';
   const mainPopulated = mainContent.length > 0
     && mainContent !== EMPTY_TEST_APP.trim()
-    && !mainContent.includes('TODO');
+    && mainContent !== STUB_CONTENT.trim();
 
   if (mainPopulated) {
     log(`${tag} Claude wrote to main app instead of worktree — copying file back.\n`);
