@@ -66,6 +66,9 @@ const runSingle = async (
 
     const runDir = path.join(RESULTS_DIR, `${combo.model}-${combo.config}`, combo.evalId, `run-${combo.run}`);
     fs.mkdirSync(runDir, { recursive: true });
+    if (claudeResult._stderr) {
+      fs.writeFileSync(path.join(runDir, 'claude-stderr.log'), claudeResult._stderr);
+    }
     try {
       const src = fs.readFileSync(actualTarget, 'utf-8');
       fs.writeFileSync(path.join(runDir, 'source.tsx'), src);
@@ -200,8 +203,14 @@ export const runBatch = async (
     while (true) {
       const i = idx++;
       if (i >= total) break;
-      const result = await runSingle(combinations[i], config, bm, workerIndex);
-      results.push(result);
+      try {
+        const result = await runSingle(combinations[i], config, bm, workerIndex);
+        results.push(result);
+      } catch (err: unknown) {
+        const msg = err instanceof Error ? err.message : String(err);
+        log(`  Worker ${workerIndex} crashed on ${combinations[i].id}: ${msg}\n`);
+        results.push({ id: combinations[i].id, score: null, assertionPassRate: null, error: msg });
+      }
       completed++;
       log(`  Progress: ${completed}/${total}\n`);
     }

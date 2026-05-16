@@ -101,10 +101,12 @@ export const runClaude = (args: string[], cwd: string, timeoutMs = 300_000): Pro
         return;
       }
       if (code !== 0) {
-        reject(new Error(`claude exited with code ${code}: ${(stderr || stdout).slice(0, 500)}`));
+        reject(new Error(`claude exited with code ${code}: ${(stderr || stdout).slice(0, 2000)}`));
         return;
       }
-      resolve(parsed ?? { result: stdout, session_id: null });
+      const output = parsed ?? { result: stdout, session_id: null };
+      output._stderr = stderr;
+      resolve(output);
     });
 
     child.on('error', (err) => {

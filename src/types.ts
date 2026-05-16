@@ -110,4 +110,5 @@ export type ClaudeOutput = {
   duration_ms?: number;
   total_cost_usd?: number;
   num_turns?: number;
+  _stderr?: string;
 };
