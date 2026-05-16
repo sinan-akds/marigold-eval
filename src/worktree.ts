@@ -2,6 +2,7 @@ import fs from 'node:fs';
 import path from 'node:path';
 import { execSync } from 'node:child_process';
 import { ROOT } from './paths';
+import { log } from './log';
 import { silentExec, silentRm } from './utils';
 
 export const EMPTY_TEST_APP = 'export default () => null;\n';
@@ -56,12 +57,23 @@ export const killDevServerOnPort = (port: number) => {
 export const removeWorktree = (id: string, appDir: string) => {
   const wtPath = path.join(ROOT, `worktree-${id}`);
   const branch = `eval/${id}`;
+  const nmLink = path.join(wtPath, 'node_modules');
 
   try {
-    if (fs.lstatSync(path.join(wtPath, 'node_modules')).isSymbolicLink()) {
-      fs.unlinkSync(path.join(wtPath, 'node_modules'));
+    if (fs.lstatSync(nmLink).isSymbolicLink()) {
+      fs.unlinkSync(nmLink);
     }
-  } catch { /* ok */ }
+  } catch { /* symlink already gone or never created */ }
+
+  const nmStillExists = (() => {
+    try { return fs.lstatSync(nmLink).isSymbolicLink(); }
+    catch { return false; }
+  })();
+
+  if (nmStillExists) {
+    log(`WARNING: could not unlink node_modules symlink at ${nmLink}; skipping worktree removal to prevent data loss.\n`);
+    return;
+  }
 
   silentExec(`git worktree remove "${wtPath}" --force`, appDir);
   silentRm(wtPath);

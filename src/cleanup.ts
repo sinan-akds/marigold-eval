@@ -23,11 +23,14 @@ export const cleanAll = (config: EvalsConfig) => {
   }
 
   silentExec('git worktree prune', appDir);
+  const evalBranchPattern = /^eval\/(haiku|sonnet|opus)-(bare|mcp-stack|full-stack)-P-\d+-r\d+$/;
   try {
     const branches = execSync('git branch --list "eval/*"', { cwd: appDir, stdio: 'pipe' })
       .toString().trim().split('\n').map(b => b.trim()).filter(Boolean);
     for (const branch of branches) {
-      silentExec(`git branch -D "${branch}"`, appDir);
+      if (evalBranchPattern.test(branch)) {
+        silentExec(`git branch -D "${branch}"`, appDir);
+      }
     }
   } catch { /* ok */ }
 
