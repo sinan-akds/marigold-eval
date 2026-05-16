@@ -1,4 +1,4 @@
-import { comboId } from './benchmark';
+import { comboId, runComboId } from './benchmark';
 import { out } from './log';
 import type { BenchmarkFile, BenchmarkSummary, EvalsConfig } from './types';
 
@@ -63,13 +63,13 @@ export const showStatus = (config: EvalsConfig, bm: BenchmarkFile) => {
       out(`  ${'─'.repeat(85)}\n`);
       out(`  ${'Run'.padEnd(35)} ${'Score'.padEnd(8)} ${'Assert'.padEnd(8)} ${'Time'.padEnd(9)} ${'Cost'.padEnd(10)} Status\n`);
 
-      for (const r of completed.sort((a, b) => comboId(a.model, a.config, a.evalId, a.runNumber).localeCompare(comboId(b.model, b.config, b.evalId, b.runNumber)))) {
-        const id = comboId(r.model, r.config, r.evalId, r.runNumber);
+      for (const r of completed.sort((a, b) => runComboId(a).localeCompare(runComboId(b)))) {
+        const id = runComboId(r);
         out(`  ${id.padEnd(35)} ${fmtScore(r.score).padEnd(8)} ${fmtPassRate(r.assertionPassRate).padEnd(8)} ${fmtDuration(r.efficiency?.durationMs).padEnd(9)} ${fmtCost(r.efficiency?.costUsd).padEnd(10)} done\n`);
       }
 
       for (const r of failed) {
-        const id = comboId(r.model, r.config, r.evalId, r.runNumber);
+        const id = runComboId(r);
         const reason = (r.error ?? 'unknown').slice(0, 50);
         out(`  ${id.padEnd(35)} ${'-'.padEnd(8)} ${'-'.padEnd(8)} ${'-'.padEnd(9)} ${'-'.padEnd(10)} FAILED: ${reason}\n`);
       }
@@ -78,7 +78,7 @@ export const showStatus = (config: EvalsConfig, bm: BenchmarkFile) => {
         const runs = evalDef.runsPerCombination ?? d.runsPerCombination;
         for (let run = 1; run <= runs; run++) {
           const id = comboId(model, cfg, evalDef.id, run);
-          if (matching.some(r => comboId(r.model, r.config, r.evalId, r.runNumber) === id)) continue;
+          if (matching.some(r => runComboId(r) === id)) continue;
           out(`  ${id.padEnd(35)} ${'-'.padEnd(8)} ${'-'.padEnd(8)} ${'-'.padEnd(9)} ${'-'.padEnd(10)} pending\n`);
         }
       }

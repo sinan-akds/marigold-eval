@@ -9,6 +9,8 @@ import { buildClaudeArgs, ClaudeTimeoutError, runClaude } from './claude';
 import { runScore, locateTargetFile, extractEfficiency } from './scoring';
 import type { BenchmarkFile, BenchmarkRun, Combination, EvalsConfig, RunResult } from './types';
 
+const DEV_SERVER_PORT_BASE = 5173;
+
 const runSingle = async (
   combo: Combination,
   config: EvalsConfig,
@@ -22,7 +24,7 @@ const runSingle = async (
 
   let wtPath: string | undefined;
   try {
-    const port = 5173 + workerIndex;
+    const port = DEV_SERVER_PORT_BASE + workerIndex;
     killDevServerOnPort(port);
 
     log(`${tag} Creating worktree...\n`);
@@ -177,7 +179,7 @@ const runSingle = async (
 
     return { id: combo.id, score, assertionPassRate, error: msg };
   } finally {
-    const port = 5173 + workerIndex;
+    const port = DEV_SERVER_PORT_BASE + workerIndex;
     killDevServerOnPort(port);
     cleanupRunMcpConfig(combo);
     if (wtPath) {

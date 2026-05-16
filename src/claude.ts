@@ -4,6 +4,8 @@ import { spawn } from 'node:child_process';
 import { ROOT } from './paths';
 import type { ClaudeOutput, Combination, EvalsConfig } from './types';
 
+const DEV_SERVER_PORT_BASE = 5173;
+
 export class ClaudeTimeoutError extends Error {
   stderr: string;
   constructor(timeoutMs: number, stderr: string) {
@@ -24,7 +26,7 @@ export const buildClaudeArgs = (
   const configPromptFile = path.join(ROOT, 'configs', `${combo.config}.md`);
   const mcpConfigPath = mcpOverride ?? path.join(ROOT, 'configs', `${combo.config}-mcp.json`);
 
-  const port = 5173 + workerIndex;
+  const port = DEV_SERVER_PORT_BASE + workerIndex;
   let systemPrompt = fs.readFileSync(configPromptFile, 'utf-8');
   systemPrompt = systemPrompt.replace(/localhost:5173/g, `localhost:${port}`);
   systemPrompt = systemPrompt.replace(/pnpm dev\b/g, `pnpm dev --port ${port}`);

@@ -1,3 +1,6 @@
+import fs from 'node:fs';
+import path from 'node:path';
+import { ROOT } from './paths';
 import type { EvalsConfig } from './types';
 
 const SAFE_ID = /^[A-Za-z0-9_-]+$/;
@@ -59,6 +62,22 @@ export const validateEvalsConfig = (config: EvalsConfig): void => {
 
     for (const assertion of evalDef.assertions as Record<string, unknown>[]) {
       validateAssertion(assertion, evalDef.id);
+    }
+  }
+};
+
+export const validateFilesExist = (config: EvalsConfig): void => {
+  const d = config.defaults;
+
+  const scoreBin = path.join(d.validatePackage, 'dist', 'bin', 'marigold-score.mjs');
+  if (!fs.existsSync(scoreBin)) {
+    throw new Error(`Scoring binary not found at ${scoreBin}. Run: pnpm -F @marigold-ui/validate build`);
+  }
+
+  for (const evalDef of config.evals) {
+    const promptPath = path.join(ROOT, evalDef.promptFile);
+    if (!fs.existsSync(promptPath)) {
+      throw new Error(`Prompt file "${evalDef.promptFile}" not found at ${promptPath}`);
     }
   }
 };

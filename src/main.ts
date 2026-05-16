@@ -1,16 +1,19 @@
 import fs from 'node:fs';
+import path from 'node:path';
 import { execFileSync } from 'node:child_process';
 import { parseArgs } from 'node:util';
 import { EVALS_PATH } from './paths';
 import { log, out } from './log';
-import { loadBenchmark, comboId, recomputeSummaries, saveBenchmark } from './benchmark';
+import { loadBenchmark, comboId, runComboId, recomputeSummaries, saveBenchmark } from './benchmark';
 import { generateCombinations } from './combinations';
 import { killDevServerOnPort } from './worktree';
 import { runBatch } from './runner';
 import { showStatus } from './status';
 import { cleanAll } from './cleanup';
-import { validateEvalsConfig } from './validate-config';
+import { validateEvalsConfig, validateFilesExist } from './validate-config';
 import type { EvalsConfig } from './types';
+
+const DEV_SERVER_PORT_BASE = 5173;
 
 const USAGE = `Usage: tsx run-eval.ts [options]
 
@@ -51,6 +54,7 @@ const main = async () => {
 
   const config = JSON.parse(fs.readFileSync(EVALS_PATH, 'utf-8')) as EvalsConfig;
   validateEvalsConfig(config);
+  validateFilesExist(config);
   const appDir = config.defaults.projectDir;
 
   try {
@@ -58,6 +62,15 @@ const main = async () => {
   } catch {
     log(`Error: ${appDir} is not a git repository. Run \`git init && git add . && git commit -m "initial"\` inside it first.\n`);
     process.exit(2);
+  }
+
+  const appPkgPath = path.join(appDir, 'package.json');
+  if (fs.existsSync(appPkgPath)) {
+    const appPkg = JSON.parse(fs.readFileSync(appPkgPath, 'utf-8'));
+    const deps = { ...appPkg.dependencies, ...appPkg.devDependencies };
+    if (!deps['@marigold/components']) {
+      log(`Warning: ${appDir}/package.json missing @marigold/components dependency.\n`);
+    }
   }
 
   if (flags.status) {
@@ -70,10 +83,7 @@ const main = async () => {
     const filter = flags.reset || '';
     const before = bm.runs.length;
     if (filter) {
-      bm.runs = bm.runs.filter(r => {
-        const id = comboId(r.model, r.config, r.evalId, r.runNumber);
-        return !id.includes(filter);
-      });
+      bm.runs = bm.runs.filter(r => !runComboId(r).includes(filter));
     } else {
       bm.runs = [];
     }
@@ -118,7 +128,7 @@ const main = async () => {
   }
 
   for (let i = 0; i < concurrency; i++) {
-    killDevServerOnPort(5173 + i);
+    killDevServerOnPort(DEV_SERVER_PORT_BASE + i);
   }
 
   const results = await runBatch(combos, config, bm, concurrency);

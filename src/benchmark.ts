@@ -41,8 +41,11 @@ export const saveBenchmark = (bm: BenchmarkFile) => {
 export const comboId = (model: string, config: string, evalId: string, run: number) =>
   `${model}-${config}-${evalId}-r${run}`;
 
+export const runComboId = (r: BenchmarkRun): string =>
+  comboId(r.model, r.config, r.evalId, r.runNumber);
+
 export const isCompleted = (bm: BenchmarkFile, id: string): boolean =>
-  bm.runs.some(r => comboId(r.model, r.config, r.evalId, r.runNumber) === id && !r.error);
+  bm.runs.some(r => runComboId(r) === id && !r.error);
 
 export const avgOf = (nums: number[]): number =>
   nums.length > 0 ? nums.reduce((a, b) => a + b, 0) / nums.length : 0;
