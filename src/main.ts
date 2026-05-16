@@ -14,19 +14,20 @@ import type { EvalsConfig } from './types';
 const USAGE = `Usage: tsx run-eval.ts [options]
 
 Options:
-  --dry-run          Show what would run without executing
-  --resume           Continue from where a previous run left off
-  --concurrency <n>  Override concurrency from evals.json
-  --filter <str>     Only run combinations whose ID contains <str>
-  --reset [filter]   Remove completed runs from benchmark.json (all, or matching filter)
-  --status           Show progress summary and exit
-  --help             Show this message
+  --dry-run           Show what would run without executing
+  --clean             Wipe benchmark.json and results/ before starting
+  --concurrency <n>   Override concurrency from evals.json
+  --filter <str>      Only run combinations whose ID contains <str>
+  --reset=<filter>    Remove runs matching filter from benchmark.json
+  --reset             Remove ALL runs from benchmark.json
+  --status            Show progress summary and exit
+  --help              Show this message
 `;
 
 const { values: flags } = parseArgs({
   options: {
     'dry-run': { type: 'boolean', default: false },
-    resume: { type: 'boolean', default: false },
+    clean: { type: 'boolean', default: false },
     concurrency: { type: 'string', default: '' },
     filter: { type: 'string', default: '' },
     reset: { type: 'string', default: undefined },
@@ -81,8 +82,7 @@ const main = async () => {
     process.exit(0);
   }
 
-  const isBareInvocation = !flags.resume && !flags.filter && !flags['dry-run'];
-  if (isBareInvocation) {
+  if (flags.clean) {
     cleanAll(config);
   }
 
