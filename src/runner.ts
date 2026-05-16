@@ -55,6 +55,7 @@ const runSingle = async (
       outputDir: RESULTS_DIR,
       validatePackage: d.validatePackage,
       themePath: d.themePath,
+      scoreTimeoutMs: d.scoreTimeoutMs,
     });
 
     const scoreLabel = scoreResult.score !== null ? `${scoreResult.score}/100` : 'null (scoring failed)';
@@ -136,6 +137,7 @@ const runSingle = async (
           outputDir: RESULTS_DIR,
           validatePackage: d.validatePackage,
           themePath: d.themePath,
+          scoreTimeoutMs: d.scoreTimeoutMs,
         });
         score = scoreResult.score;
         assertionPassRate = scoreResult.assertionPassRate;

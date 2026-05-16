@@ -14,6 +14,7 @@ type ScoreOpts = {
   outputDir: string;
   validatePackage: string;
   themePath?: string;
+  scoreTimeoutMs?: number;
 };
 
 export type { ScoreOpts };
@@ -40,7 +41,7 @@ export const runScore = (targetFile: string, opts: ScoreOpts): ScoreResult => {
       `--run-id "${opts.runId}" ` +
       `--output-dir "${opts.outputDir}"` +
       evalsFlag + themeFlag,
-      { cwd: path.dirname(targetFile), stdio: ['pipe', 'pipe', 'pipe'], timeout: 120_000, maxBuffer: 50 * 1024 * 1024 }
+      { cwd: path.dirname(targetFile), stdio: ['pipe', 'pipe', 'pipe'], timeout: opts.scoreTimeoutMs ?? 300_000, maxBuffer: 50 * 1024 * 1024 }
     );
   } catch (err: unknown) {
     if (err && typeof err === 'object' && 'stderr' in err) {

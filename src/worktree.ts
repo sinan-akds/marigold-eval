@@ -29,7 +29,7 @@ export const createWorktree = (id: string, appDir: string): string => {
   silentExec('git worktree prune', appDir);
   silentExec(`git branch -D "${branch}"`, appDir);
 
-  execSync(`git worktree add "${wtPath}" -b "${branch}"`, { cwd: appDir, stdio: 'pipe' });
+  execSync(`git worktree add "${wtPath}" -b "${branch}"`, { cwd: appDir, stdio: 'pipe', timeout: 60_000 });
 
   const mainNm = path.join(appDir, 'node_modules');
   const wtNm = path.join(wtPath, 'node_modules');

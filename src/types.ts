@@ -21,6 +21,7 @@ export type EvalsConfig = {
     validatePackage: string;
     themePath?: string;
     claudeTimeoutMs?: number;
+    scoreTimeoutMs?: number;
   };
   evals: EvalDefinition[];
 };
