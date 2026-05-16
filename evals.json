@@ -1,0 +1,604 @@
+{
+  "version": 1,
+  "defaults": {
+    "models": ["haiku", "sonnet", "opus"],
+    "configs": ["bare", "mcp-stack", "full-stack"],
+    "runsPerCombination": 3,
+    "concurrency": 3,
+    "projectDir": "/home/sinan/GitHub/test/marigold-test-project/marigold-test-app",
+    "targetFile": "src/TestApp.tsx",
+    "validatePackage": "/home/sinan/GitHub/reservix/marigold/packages/validate",
+    "themePath": "/home/sinan/GitHub/reservix/marigold/themes/theme-rui",
+    "claudeTimeoutMs": 2400000,
+    "modelConcurrency": { "opus": 1 }
+  },
+  "evals": [
+    {
+      "id": "P-01",
+      "name": "Contact Form",
+      "promptFile": "prompts/P-01.md",
+      "complexity": "low",
+      "tags": ["form", "layout", "input"],
+      "checklist": [
+        {
+          "id": "name-field",
+          "description": "Name text field (required)",
+          "component": "TextField",
+          "props": { "label": "/name/i" }
+        },
+        {
+          "id": "email-field",
+          "description": "Email text field",
+          "component": "TextField",
+          "props": { "type": "email" }
+        },
+        {
+          "id": "subject-select",
+          "description": "Subject dropdown",
+          "component": "Select"
+        },
+        {
+          "id": "message-textarea",
+          "description": "Message text area",
+          "component": "TextArea"
+        },
+        {
+          "id": "submit-button",
+          "description": "Submit button",
+          "component": "Button",
+          "props": { "type": "submit" }
+        },
+        {
+          "id": "form-wrapper",
+          "description": "Form component",
+          "component": "Form"
+        }
+      ],
+      "assertions": [
+        {
+          "id": "a-import-marigold",
+          "description": "Imports from @marigold/components",
+          "severity": "required",
+          "check": {
+            "type": "import",
+            "module": "@marigold/components"
+          }
+        },
+        {
+          "id": "a-name-field",
+          "description": "TextField with name label",
+          "severity": "required",
+          "check": {
+            "type": "component",
+            "component": "TextField",
+            "props": { "label": "/name/i" }
+          }
+        },
+        {
+          "id": "a-email-field",
+          "description": "TextField for email input",
+          "severity": "required",
+          "check": {
+            "type": "composite",
+            "operator": "or",
+            "checks": [
+              { "type": "component", "component": "TextField", "props": { "type": "email" } },
+              { "type": "component", "component": "TextField", "props": { "label": "/email/i" } }
+            ]
+          }
+        },
+        {
+          "id": "a-select",
+          "description": "Select component for subject",
+          "severity": "required",
+          "check": {
+            "type": "component",
+            "component": "Select"
+          }
+        },
+        {
+          "id": "a-textarea",
+          "description": "TextArea component for message",
+          "severity": "required",
+          "check": {
+            "type": "component",
+            "component": "TextArea"
+          }
+        },
+        {
+          "id": "a-submit-button",
+          "description": "Submit button present",
+          "severity": "required",
+          "check": {
+            "type": "component",
+            "component": "Button"
+          }
+        },
+        {
+          "id": "a-form-wrapper",
+          "description": "Form component wrapping fields",
+          "severity": "required",
+          "check": {
+            "type": "component",
+            "component": "Form"
+          }
+        },
+        {
+          "id": "a-no-raw-html",
+          "description": "No raw HTML form elements (input, select, textarea)",
+          "severity": "required",
+          "check": {
+            "type": "composite",
+            "operator": "and",
+            "checks": [
+              { "type": "absence", "pattern": "input", "scope": "jsx" },
+              { "type": "absence", "pattern": "select", "scope": "jsx" },
+              { "type": "absence", "pattern": "textarea", "scope": "jsx" }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "id": "P-02",
+      "name": "EventHub Dashboard",
+      "promptFile": "prompts/P-02.md",
+      "complexity": "high",
+      "tags": ["dashboard", "layout", "table", "form", "dialog", "navigation", "tabs"],
+      "checklist": [
+        {
+          "id": "events-table",
+          "description": "Table for event data",
+          "component": "Table"
+        },
+        {
+          "id": "badge",
+          "description": "Status badge for table rows",
+          "component": "Badge"
+        },
+        {
+          "id": "search-field",
+          "description": "Search field on events page",
+          "component": "SearchField"
+        },
+        {
+          "id": "stat-cards",
+          "description": "Dashboard stat cards",
+          "component": "Card"
+        },
+        {
+          "id": "user-menu",
+          "description": "User menu in top nav",
+          "component": "Menu"
+        },
+        {
+          "id": "settings-form",
+          "description": "Settings form",
+          "component": "Form"
+        },
+        {
+          "id": "text-field",
+          "description": "Text field in settings",
+          "component": "TextField"
+        },
+        {
+          "id": "currency-select",
+          "description": "Currency select dropdown",
+          "component": "Select"
+        },
+        {
+          "id": "notifications-switch",
+          "description": "Email notifications switch",
+          "component": "Switch"
+        },
+        {
+          "id": "save-button",
+          "description": "Save settings button",
+          "component": "Button"
+        },
+        {
+          "id": "dialog",
+          "description": "Create event dialog",
+          "component": "Dialog"
+        },
+        {
+          "id": "date-picker",
+          "description": "Date picker in create event form",
+          "component": "DatePicker"
+        },
+        {
+          "id": "tabs",
+          "description": "Tabs for reports/settings",
+          "component": "Tabs"
+        },
+        {
+          "id": "accordion",
+          "description": "Accordion for Q summaries",
+          "component": "Accordion"
+        }
+      ],
+      "assertions": [
+        {
+          "id": "a-import-marigold",
+          "description": "Imports from @marigold/components",
+          "severity": "required",
+          "check": {
+            "type": "import",
+            "module": "@marigold/components"
+          }
+        },
+        {
+          "id": "a-table",
+          "description": "Table component present",
+          "severity": "required",
+          "check": {
+            "type": "component",
+            "component": "Table"
+          }
+        },
+        {
+          "id": "a-table-header",
+          "description": "Table.Header sub-component used",
+          "severity": "recommended",
+          "check": {
+            "type": "component",
+            "component": "Table.Header"
+          }
+        },
+        {
+          "id": "a-table-body",
+          "description": "Table.Body sub-component used",
+          "severity": "recommended",
+          "check": {
+            "type": "component",
+            "component": "Table.Body"
+          }
+        },
+        {
+          "id": "a-badge",
+          "description": "Badge component for status indicators",
+          "severity": "required",
+          "check": {
+            "type": "component",
+            "component": "Badge"
+          }
+        },
+        {
+          "id": "a-search-field",
+          "description": "SearchField for filtering",
+          "severity": "required",
+          "check": {
+            "type": "component",
+            "component": "SearchField"
+          }
+        },
+        {
+          "id": "a-menu",
+          "description": "Menu for user account dropdown",
+          "severity": "required",
+          "check": {
+            "type": "component",
+            "component": "Menu"
+          }
+        },
+        {
+          "id": "a-dialog",
+          "description": "Dialog for create event / sign out",
+          "severity": "required",
+          "check": {
+            "type": "component",
+            "component": "Dialog"
+          }
+        },
+        {
+          "id": "a-date-picker",
+          "description": "DatePicker in create event form",
+          "severity": "required",
+          "check": {
+            "type": "component",
+            "component": "DatePicker"
+          }
+        },
+        {
+          "id": "a-tabs",
+          "description": "Tabs for reports/settings sections",
+          "severity": "required",
+          "check": {
+            "type": "component",
+            "component": "Tabs"
+          }
+        },
+        {
+          "id": "a-accordion",
+          "description": "Accordion for Q summaries",
+          "severity": "required",
+          "check": {
+            "type": "component",
+            "component": "Accordion"
+          }
+        },
+        {
+          "id": "a-card",
+          "description": "Card component for stat cards",
+          "severity": "required",
+          "check": {
+            "type": "component",
+            "component": "Card"
+          }
+        },
+        {
+          "id": "a-text-field",
+          "description": "TextField in forms",
+          "severity": "required",
+          "check": {
+            "type": "component",
+            "component": "TextField"
+          }
+        },
+        {
+          "id": "a-select",
+          "description": "Select dropdown",
+          "severity": "required",
+          "check": {
+            "type": "component",
+            "component": "Select"
+          }
+        },
+        {
+          "id": "a-switch",
+          "description": "Switch for notification toggles",
+          "severity": "required",
+          "check": {
+            "type": "component",
+            "component": "Switch"
+          }
+        },
+        {
+          "id": "a-button",
+          "description": "Button component",
+          "severity": "required",
+          "check": {
+            "type": "component",
+            "component": "Button"
+          }
+        },
+        {
+          "id": "a-form",
+          "description": "Form component",
+          "severity": "required",
+          "check": {
+            "type": "component",
+            "component": "Form"
+          }
+        },
+        {
+          "id": "a-breadcrumbs",
+          "description": "Breadcrumbs for page context",
+          "severity": "recommended",
+          "check": {
+            "type": "component",
+            "component": "Breadcrumbs"
+          }
+        },
+        {
+          "id": "a-section-message",
+          "description": "SectionMessage for info/success alerts",
+          "severity": "recommended",
+          "check": {
+            "type": "component",
+            "component": "SectionMessage"
+          }
+        },
+        {
+          "id": "a-tooltip",
+          "description": "Tooltip on revenue card",
+          "severity": "recommended",
+          "check": {
+            "type": "component",
+            "component": "Tooltip"
+          }
+        },
+        {
+          "id": "a-uses-onpress",
+          "description": "Buttons use onPress (not onClick)",
+          "severity": "required",
+          "check": {
+            "type": "text-content",
+            "pattern": "/onPress/",
+            "description": "At least one onPress handler exists"
+          }
+        },
+        {
+          "id": "a-no-onclick-on-marigold",
+          "description": "No onClick on Marigold Button components",
+          "severity": "recommended",
+          "check": {
+            "type": "absence",
+            "pattern": "/<Button[^>]*onClick/",
+            "scope": "any"
+          }
+        }
+      ]
+    },
+    {
+      "id": "P-03",
+      "name": "Ticket Shop (Intent-driven)",
+      "promptFile": "prompts/P-03.md",
+      "complexity": "medium",
+      "runsPerCombination": 2,
+      "tags": ["form", "layout", "commerce", "state-management", "intent-driven"],
+      "checklist": [
+        {
+          "id": "event-info",
+          "description": "Event information displayed",
+          "component": "Headline"
+        },
+        {
+          "id": "ticket-listing",
+          "description": "Ticket categories shown in structured layout",
+          "component": "Card"
+        },
+        {
+          "id": "buyer-form",
+          "description": "Buyer information form",
+          "component": "Form"
+        },
+        {
+          "id": "buyer-name",
+          "description": "Name input for buyer",
+          "component": "TextField"
+        },
+        {
+          "id": "submit-action",
+          "description": "Purchase/submit button",
+          "component": "Button"
+        }
+      ],
+      "assertions": [
+        {
+          "id": "a-import-marigold",
+          "description": "Imports from @marigold/components",
+          "severity": "required",
+          "check": {
+            "type": "import",
+            "module": "@marigold/components"
+          }
+        },
+        {
+          "id": "a-has-button",
+          "description": "Button component present",
+          "severity": "required",
+          "check": {
+            "type": "component",
+            "component": "Button"
+          }
+        },
+        {
+          "id": "a-has-form-input",
+          "description": "Uses at least one form input component",
+          "severity": "required",
+          "check": {
+            "type": "composite",
+            "operator": "or",
+            "checks": [
+              { "type": "component", "component": "TextField" },
+              { "type": "component", "component": "NumberField" },
+              { "type": "component", "component": "Select" }
+            ]
+          }
+        },
+        {
+          "id": "a-has-layout-primitive",
+          "description": "Uses at least one layout component (Stack, Card, Columns, Inline)",
+          "severity": "required",
+          "check": {
+            "type": "composite",
+            "operator": "or",
+            "checks": [
+              { "type": "component", "component": "Stack" },
+              { "type": "component", "component": "Card" },
+              { "type": "component", "component": "Columns" },
+              { "type": "component", "component": "Inline" }
+            ]
+          }
+        },
+        {
+          "id": "a-uses-onpress",
+          "description": "Buttons use onPress (not onClick)",
+          "severity": "required",
+          "check": {
+            "type": "text-content",
+            "pattern": "/onPress/"
+          }
+        },
+        {
+          "id": "a-no-raw-input",
+          "description": "No raw HTML <input> elements",
+          "severity": "required",
+          "check": {
+            "type": "absence",
+            "pattern": "input",
+            "scope": "jsx"
+          }
+        },
+        {
+          "id": "a-no-raw-button",
+          "description": "No raw HTML <button> elements",
+          "severity": "required",
+          "check": {
+            "type": "absence",
+            "pattern": "button",
+            "scope": "jsx"
+          }
+        },
+        {
+          "id": "a-no-raw-select",
+          "description": "No raw HTML <select> elements",
+          "severity": "required",
+          "check": {
+            "type": "absence",
+            "pattern": "select",
+            "scope": "jsx"
+          }
+        },
+        {
+          "id": "a-no-raw-form",
+          "description": "No raw HTML <form> elements",
+          "severity": "required",
+          "check": {
+            "type": "absence",
+            "pattern": "form",
+            "scope": "jsx"
+          }
+        },
+        {
+          "id": "a-price-indicator",
+          "description": "Shows pricing information",
+          "severity": "required",
+          "check": {
+            "type": "text-content",
+            "pattern": "/\\$|€|price|cost|total|amount/i"
+          }
+        },
+        {
+          "id": "a-has-quantity-mechanism",
+          "description": "Has a mechanism for selecting ticket quantity",
+          "severity": "recommended",
+          "check": {
+            "type": "composite",
+            "operator": "or",
+            "checks": [
+              { "type": "component", "component": "NumberField" },
+              { "type": "component", "component": "Select" },
+              { "type": "text-content", "pattern": "/quantity|qty|amount|count|tickets?\\s*:/i" }
+            ]
+          }
+        },
+        {
+          "id": "a-has-feedback-mechanism",
+          "description": "Has user feedback (SectionMessage, Dialog, or error/success pattern)",
+          "severity": "recommended",
+          "check": {
+            "type": "composite",
+            "operator": "or",
+            "checks": [
+              { "type": "component", "component": "SectionMessage" },
+              { "type": "component", "component": "Dialog" },
+              { "type": "text-content", "pattern": "/error|success|confirm/i" }
+            ]
+          }
+        },
+        {
+          "id": "a-no-onclick-on-marigold",
+          "description": "No onClick on Marigold Button components",
+          "severity": "recommended",
+          "check": {
+            "type": "absence",
+            "pattern": "/<Button[^>]*onClick/",
+            "scope": "any"
+          }
+        }
+      ]
+    }
+  ]
+}
