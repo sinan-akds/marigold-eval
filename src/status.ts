@@ -1,6 +1,12 @@
-import { avgOf, comboId } from './benchmark';
+import { comboId } from './benchmark';
 import { out } from './log';
-import type { BenchmarkFile, EvalsConfig } from './types';
+import type { BenchmarkFile, BenchmarkSummary, EvalsConfig } from './types';
+
+const findSummary = (bm: BenchmarkFile, model: string, config: string, evalId?: string): BenchmarkSummary | undefined =>
+  bm.summaries.find(s => s.model === model && s.config === config && (!evalId || s.evalId === evalId));
+
+const avgOf = (nums: number[]): number =>
+  nums.length > 0 ? nums.reduce((a, b) => a + b, 0) / nums.length : 0;
 
 const fmtScore = (n: number | null): string =>
   n !== null ? n.toFixed(1) : '-';
@@ -42,15 +48,18 @@ export const showStatus = (config: EvalsConfig, bm: BenchmarkFile) => {
       const matching = bm.runs.filter(r => r.model === model && r.config === cfg);
       if (matching.length === 0) continue;
 
+      const groupSummaries = bm.summaries.filter(s => s.model === model && s.config === cfg);
+      const totalCompleted = groupSummaries.reduce((s, g) => s + g.completed, 0);
+      const totalFailed = groupSummaries.reduce((s, g) => s + g.failed, 0);
+      const groupScores = groupSummaries.map(s => s.avgScore).filter((s): s is number => s !== null);
+      const avg = groupScores.length > 0 ? avgOf(groupScores).toFixed(1) : '-';
+      const groupPassRates = groupSummaries.map(s => s.avgAssertionPassRate).filter((p): p is number => p !== null);
+      const avgPR = groupPassRates.length > 0 ? `${Math.round(avgOf(groupPassRates) * 100)}%` : '-';
       const completed = matching.filter(r => !r.error);
       const failed = matching.filter(r => !!r.error);
-      const scores = completed.map(r => r.score).filter((s): s is number => s !== null);
-      const avg = scores.length > 0 ? avgOf(scores).toFixed(1) : '-';
-      const passRates = completed.map(r => r.assertionPassRate).filter((p): p is number => p !== null);
-      const avgPR = passRates.length > 0 ? `${Math.round(avgOf(passRates) * 100)}%` : '-';
       const totalCost = completed.reduce((s, r) => s + (r.efficiency?.costUsd ?? 0), 0);
 
-      out(`  ${model}/${cfg} (avg: ${avg}, assertions: ${avgPR}, runs: ${completed.length}/${matching.length}, cost: $${totalCost.toFixed(4)})\n`);
+      out(`  ${model}/${cfg} (avg: ${avg}, assertions: ${avgPR}, runs: ${totalCompleted}/${matching.length}, cost: $${totalCost.toFixed(4)})\n`);
       out(`  ${'─'.repeat(85)}\n`);
       out(`  ${'Run'.padEnd(35)} ${'Score'.padEnd(8)} ${'Assert'.padEnd(8)} ${'Time'.padEnd(9)} ${'Cost'.padEnd(10)} Status\n`);
 
@@ -99,18 +108,11 @@ export const showStatus = (config: EvalsConfig, bm: BenchmarkFile) => {
       const rowPassRates: number[] = [];
 
       for (const eid of evalIds) {
-        const runs = bm.runs.filter(
-          r => r.model === model && r.config === cfg && r.evalId === eid && !r.error
-        );
-        const scores = runs.map(r => r.score).filter((s): s is number => s !== null);
-        const passRates = runs.map(r => r.assertionPassRate).filter((p): p is number => p !== null);
-
-        if (scores.length > 0) {
-          const avgScore = avgOf(scores);
-          const avgPR = passRates.length > 0 ? avgOf(passRates) : null;
-          rowScores.push(avgScore);
-          if (avgPR !== null) rowPassRates.push(avgPR);
-          out(fmtScoreWithAssertions(avgScore, avgPR).padStart(col));
+        const summary = findSummary(bm, model, cfg, eid);
+        if (summary && summary.avgScore !== null) {
+          rowScores.push(summary.avgScore);
+          if (summary.avgAssertionPassRate !== null) rowPassRates.push(summary.avgAssertionPassRate);
+          out(fmtScoreWithAssertions(summary.avgScore, summary.avgAssertionPassRate).padStart(col));
         } else {
           out('-'.padStart(col));
         }
@@ -132,19 +134,21 @@ export const showStatus = (config: EvalsConfig, bm: BenchmarkFile) => {
   out(`  ${'─'.repeat(75)}\n`);
   for (const model of d.models) {
     for (const cfg of d.configs) {
-      const matching = bm.runs.filter(r => r.model === model && r.config === cfg && !r.error);
-      if (matching.length === 0) continue;
+      const groupSummaries = bm.summaries.filter(s => s.model === model && s.config === cfg);
+      const totalCompleted = groupSummaries.reduce((s, g) => s + g.completed, 0);
+      if (totalCompleted === 0) continue;
 
-      const scores = matching.map(r => r.score).filter((s): s is number => s !== null);
-      const avg = scores.length > 0 ? avgOf(scores).toFixed(1) : '-';
-      const passRates = matching.map(r => r.assertionPassRate).filter((p): p is number => p !== null);
-      const avgPR = passRates.length > 0 ? fmtPassRate(avgOf(passRates)) : '-';
-      const durations = matching.map(r => r.efficiency?.durationMs).filter((d): d is number => !!d);
+      const groupScores = groupSummaries.map(s => s.avgScore).filter((s): s is number => s !== null);
+      const avg = groupScores.length > 0 ? avgOf(groupScores).toFixed(1) : '-';
+      const groupPassRates = groupSummaries.map(s => s.avgAssertionPassRate).filter((p): p is number => p !== null);
+      const avgPR = groupPassRates.length > 0 ? fmtPassRate(avgOf(groupPassRates)) : '-';
+      const completedRuns = bm.runs.filter(r => r.model === model && r.config === cfg && !r.error);
+      const durations = completedRuns.map(r => r.efficiency?.durationMs).filter((d): d is number => !!d);
       const avgDur = durations.length > 0 ? `${avgOf(durations) / 1000 | 0}s` : '-';
-      const costs = matching.map(r => r.efficiency?.costUsd).filter((c): c is number => !!c);
+      const costs = completedRuns.map(r => r.efficiency?.costUsd).filter((c): c is number => !!c);
       const avgCost = costs.length > 0 ? `$${avgOf(costs).toFixed(4)}` : '-';
 
-      out(`  ${`${model}/${cfg}`.padEnd(25)} ${String(matching.length).padEnd(5)} ${String(avg).padEnd(7)} ${avgPR.padEnd(7)} ${String(avgDur).padEnd(9)} ${avgCost}\n`);
+      out(`  ${`${model}/${cfg}`.padEnd(25)} ${String(totalCompleted).padEnd(5)} ${String(avg).padEnd(7)} ${avgPR.padEnd(7)} ${String(avgDur).padEnd(9)} ${avgCost}\n`);
     }
   }
   out('\n');
