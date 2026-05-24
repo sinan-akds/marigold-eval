@@ -69,9 +69,9 @@ export const validateEvalsConfig = (config: EvalsConfig): void => {
 export const validateFilesExist = (config: EvalsConfig): void => {
   const d = config.defaults;
 
-  const scoreBin = path.join(d.validatePackage, 'dist', 'bin', 'marigold-score.mjs');
-  if (!fs.existsSync(scoreBin)) {
-    throw new Error(`Scoring binary not found at ${scoreBin}. Run: pnpm -F @marigold-ui/validate build`);
+  const validateBin = path.join(d.validatePackage, 'dist', 'bin', 'marigold-validate.mjs');
+  if (!fs.existsSync(validateBin)) {
+    throw new Error(`Validate binary not found at ${validateBin}. Run: pnpm -F @marigold-ui/validate build`);
   }
 
   for (const evalDef of config.evals) {

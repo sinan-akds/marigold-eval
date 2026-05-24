@@ -36,7 +36,8 @@ const runSingle = async (
     log(`${tag} Running claude -p (model: ${combo.model}, config: ${combo.config})...\n`);
 
     const claudeArgs = buildClaudeArgs(combo, config, wtPath, runMcpConfig, workerIndex);
-    const claudeResult = await runClaude(claudeArgs, wtPath, d.claudeTimeoutMs ?? 1_800_000);
+    const extraEnv = combo.config !== 'full-stack' ? { MARIGOLD_VALIDATE_DISABLED: '1' } : {};
+    const claudeResult = await runClaude(claudeArgs, wtPath, d.claudeTimeoutMs ?? 1_800_000, extraEnv);
 
     const sessionId = claudeResult.session_id ?? null;
     const efficiency = extractEfficiency(claudeResult);

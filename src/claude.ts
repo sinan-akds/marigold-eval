@@ -40,24 +40,33 @@ export const buildClaudeArgs = (
   const tmpPromptFile = path.join(ROOT, `.system-prompt-${combo.id}.md`);
   fs.writeFileSync(tmpPromptFile, systemPrompt);
 
-  return [
+  const args = [
     '-p', promptText,
     '--model', combo.model,
     '--output-format', 'json',
     '--dangerously-skip-permissions',
-    '--disable-slash-commands',
-    '--strict-mcp-config', '--mcp-config', mcpConfigPath,
     '--append-system-prompt-file', tmpPromptFile,
     '--no-session-persistence',
   ];
+
+  if (combo.config === 'bare') {
+    args.push(
+      '--disable-slash-commands',
+      '--strict-mcp-config', '--mcp-config', mcpConfigPath,
+    );
+  } else {
+    args.push('--mcp-config', mcpConfigPath);
+  }
+
+  return args;
 };
 
-export const runClaude = (args: string[], cwd: string, timeoutMs = 300_000): Promise<ClaudeOutput> => {
+export const runClaude = (args: string[], cwd: string, timeoutMs = 300_000, extraEnv: Record<string, string> = {}): Promise<ClaudeOutput> => {
   return new Promise((resolve, reject) => {
     const child = spawn('claude', args, {
       cwd,
       stdio: ['ignore', 'pipe', 'pipe'],
-      env: { ...process.env },
+      env: { ...process.env, ...extraEnv },
       detached: true,
     });
 

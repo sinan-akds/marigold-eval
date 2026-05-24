@@ -6,84 +6,90 @@ The app is already wrapped in `<MarigoldProvider theme={theme}>` in `src/App.tsx
 Your task: implement the component described in the prompt in `src/TestApp.tsx`.
 Export it as the default export. The file must compile and render without errors.
 
-## Rules
+## What you have
 
-- Do NOT use raw HTML elements (`<div>`, `<form>`, `<h1>`, `<p>`, `<select>`, `<option>`, etc.). Marigold provides dedicated components for layout, typography, forms, and navigation. Use those instead.
-- Never put Tailwind `className` utilities on Marigold components — use their built-in props (`variant`, `size`, `space`, etc.). Tailwind is only for custom containers or non-Marigold elements.
-- Don't guess or invent component props. If unsure whether a prop exists or what values it accepts, look it up in the docs before writing the code.
-- Always prefer the most specific Marigold component for your use case. For example, use `AppLayout` + `Sidebar` for an app shell — not `Card` + `Stack` as page-level containers.
-- Use `Stack` for vertical layouts, `Inline` for horizontal layouts.
-- Wrap form fields in `<Form>` with a vertical `<Stack>`. Place the submit `<Button>` at the bottom.
-- For data-bound lists, use `<Table>`, `<SelectList>`, `<ComboBox>`, or `<List>` — not `items.map()` inside a `<Stack>`.
+You are running with the **full Claude Code workflow plus `marigold-validate`** — all installed MCP servers, skills, plugins, and the deterministic validation CLI are available. Use everything at your disposal to produce the best possible code.
 
-## React Aria conventions
+### MCP tools
 
-Marigold is built on React Aria. These conventions differ from plain React and are the most common source of errors:
+1. **Marigold Docs MCP** — search the official Marigold documentation for component APIs, props, usage examples, and guidelines. Use it to look up every component before writing code. Never guess at props or component names when you can look them up.
 
-- **`onPress`, not `onClick`** — buttons and pressable elements (`Button`, `LinkButton`, `Menu.Item`) use `onPress`. `onClick` is silently ignored.
-- **`onChange` receives the value directly** — form fields (`TextField`, `NumberField`, `Checkbox`, `Switch`) call `onChange(value)`, not `onChange(event)`. Use `onChange={setValue}`, not `onChange={(e) => setValue(e.target.value)}`.
-- **Selection components use `onSelectionChange(key)`** — `Select`, `Tabs`, `ComboBox`, `SelectList` receive a `Key` (string | number). Use `onSelectionChange={(key) => setVal(String(key))}`.
-- **`Menu` uses `onAction(key)`** for action-style menus. Do not use `onChange` or `onClick` on Menu.
-- **Overlay Trigger pattern** — `Dialog.Trigger`, `Menu.Trigger`, `Popover.Trigger` wrap the trigger element and the overlay as children. Do not manually manage `open` state.
-- **Collection items need `id`** — `Menu.Item`, `Select.Option`, `Tabs.Tab`, `Breadcrumbs.Item` all require an `id` prop. Without `id`, selection/action handlers can't identify the item.
-- **Compound sub-components use dot notation** — `Select.Option`, `Table.Header`, `Table.Column`, `Table.Body`, `Table.Row`, `Table.Cell`, `Menu.Item`, `Accordion.Item`, etc.
+2. **Playwright MCP** — start the dev server, then navigate to your component in a real headless browser. Use it to verify that the component renders correctly, interactive elements work, and the layout looks right.
 
-## Tools available
+### Skills
 
-You have access to three tools. Use all of them — they are essential to producing correct code:
+You have access to all installed skills. Use them actively — they exist to help you write better code:
 
-1. **Marigold Docs MCP** (`mcp__marigold-docs__search_docs`)
-   Search the official Marigold documentation for component APIs, props, usage examples, and guidelines. Use natural language queries like "TextField props", "how to use Select", or "Form validation".
+- **Marigold design system skill** — use it for component guidance, React Aria conventions, form patterns, table patterns, and authoritative documentation lookups. This is your primary reference for how Marigold components work.
+- **Design critique skill** — use it to review your UI for visual polish, information hierarchy, spacing, and layout quality. Run a critique before finalizing your component.
+- **Any other available skills** (clean code, TypeScript best practices, etc.) — use them where appropriate to improve code quality and structure.
 
-2. **Playwright MCP** (`mcp__playwright__*`)
-   Start the dev server with `pnpm dev`, then navigate to `http://localhost:5173` to visually inspect and interact with your component in a real browser.
+### Validation CLI
 
-3. **`marigold-validate`** — a deterministic validation CLI that checks your code for:
-   - Invalid or non-existent props on Marigold components
-   - Usage of raw HTML elements that should be Marigold components
-   - Component composition errors
-   - Design token and theme variant compliance
-   - TypeScript compilation errors
+**`marigold-validate`** is a deterministic validation tool that checks your code for:
+- Invalid or non-existent props on design system components
+- Components that don't exist in the design system (hallucinated component names)
+- Usage of raw HTML elements that should be design system components
+- React Aria handler convention violations (wrong event handler names, wrong handler signatures)
+- Boolean prop convention violations (`disabled` vs `isDisabled`)
+- Component composition errors (missing required sub-components)
+- Design token and theme variant compliance
+- TypeScript compilation errors
 
-   Run it with:
-   ```bash
-   node /home/sinan/GitHub/reservix/marigold/packages/validate/dist/bin/marigold-validate.mjs src/TestApp.tsx
-   ```
+Run it with:
+```bash
+node /home/sinan/GitHub/reservix/marigold/packages/validate/dist/bin/marigold-validate.mjs check src/TestApp.tsx
+```
 
-## Component manifest
+This is your most important feedback tool. Read every error and warning it produces. Fix them. Run it again. Repeat until the output is clean.
 
-The authoritative index of every Marigold component, pattern, and foundation page is available at:
+### Component manifest
 
+The authoritative index of every Marigold component is available at:
 ```
 https://www.marigold-ui.io/api/manifest.json
 ```
+Each entry has a `name`, `category`, `description`, and a `url` field pointing to the component's full documentation. You can fetch any doc page directly via `curl -s <url>`.
 
-Each entry has a `name`, `category`, `description`, and a `url` field pointing to the component's full documentation in markdown. You can fetch any doc page directly, e.g.:
+## What you must NOT do
 
-```bash
-curl -s https://www.marigold-ui.io/api/md/components/layout/app-layout.md
-```
+- Do NOT invent components that don't exist. Look them up first. The validator will catch hallucinated components, but avoiding them in the first place saves time.
+
+## General principles
+
+**No raw HTML.** Never use native HTML elements for things the design system covers. The design system provides dedicated components for layout, typography, forms, navigation, overlays, and data display. Always prefer the design system component over its HTML equivalent. If you find yourself reaching for a `<div>` or a `<span>`, check the manifest — there is almost certainly a design system component for that purpose.
+
+**No invented components.** Only use components that are actually exported by `@marigold/components`. Before writing any JSX, verify the component exists by checking the docs or the manifest. Common mistakes include using component names from other libraries (like Material UI or Chakra) that don't exist in Marigold.
+
+**No inline styles on design system components.** Never put `style={{...}}` or Tailwind `className` utilities on design system components. Use their built-in props for variant, size, spacing, and layout. Inline styles are only acceptable on custom wrapper elements that are not design system components.
+
+**React Aria conventions.** Marigold is built on React Aria (Adobe). The API conventions differ from plain React in important ways:
+- Pressable elements use `onPress`, not `onClick`. Using `onClick` on a design system button is silently ignored.
+- Form field change handlers receive the **value directly** (string, number, or boolean), not a DOM event. Never destructure `e.target.value` from a change handler on a design system component — it will crash.
+- Selection-based components (dropdowns, tabs, combo boxes) use `onSelectionChange(key)`, not `onChange`.
+- Menu components use `onAction(key)` for dispatching actions by item key.
+- Boolean state props use the `is`-prefix convention: `isDisabled` not `disabled`, `isRequired` not `required`, `isSelected` not `selected`.
+- Overlay components (dialogs, menus, popovers) use a trigger-wrapper pattern. The trigger and the overlay are children of a trigger wrapper component. Do not manually manage open/close state.
+- Collection items (menu items, select options, tab items, breadcrumb items) require an `id` prop for selection and action handlers to identify them.
+- Compound components use dot notation for sub-components.
+
+**Clean code.** Write well-structured TypeScript. Use `type` for type definitions. Keep components reasonably sized — decompose large UIs into page-level sub-components. Extract repeated logic into helper functions. Use meaningful variable names.
+
+**Layout.** Use the design system's layout primitives for vertical stacking, horizontal alignment, column grids, and responsive tiling. Do not use CSS flexbox via inline styles when the design system has a component for that layout pattern.
+
+**Forms.** Wrap form fields in the design system's form component with a vertical stack. Place the submit button at the bottom. Use the component's built-in error message and validation props — do not build custom error rendering with separate text elements.
+
+**App shells.** For multi-page or dashboard-style UIs, use the design system's app layout, sidebar, and navigation components with the router provider pattern. Do not build custom sidebars or navbars from raw containers.
 
 ## Workflow
 
-Follow this process:
-
-1. **Discover available components.** Fetch the component manifest:
-   ```bash
-   curl -s https://www.marigold-ui.io/api/manifest.json
-   ```
-   Review the full list. Pay special attention to `components/layout`, `components/navigation`, and `patterns` — they contain dedicated components for app shells, sidebars, page layouts, and common UI patterns. Choose the most specific component for each part of the UI.
-
-2. **Research each component.** For every component you plan to use, look up its exact props, children patterns, and accepted variants. Use either:
-   - The Marigold Docs MCP
-   - Direct doc fetch via the URL from the manifest: `curl -s <url>`
-
-3. **Write the component** in `src/TestApp.tsx` using the APIs you found.
-
+1. **Discover.** Fetch the component manifest. Review what's available. Plan which components you need.
+2. **Research.** For every component you plan to use, look up its exact props, children patterns, and accepted variants via the docs MCP or the manifest URLs. Do not skip this step.
+3. **Write.** Implement the component using the APIs you verified.
 4. **Validate.** Run `marigold-validate` on your file. Read every error and warning carefully.
-
 5. **Fix and re-validate.** Address each issue, then run the validator again. Repeat until the output is clean or you are confident the remaining warnings are acceptable.
+6. **Critique.** Use the design critique skill to review your UI for quality, hierarchy, and polish.
+7. **Verify.** Start the dev server and use Playwright to check that the component renders and interactive elements work.
+8. **Final pass.** If the visual check or critique revealed issues, fix them, re-validate, and verify again.
 
-6. **Verify visually.** Start the dev server and use Playwright to check that the component renders correctly and interactive elements work as expected.
-
-The validate → fix → validate loop is your most important feedback mechanism. Use it iteratively.
+The validate-fix-validate loop is your most important feedback mechanism. Use it iteratively. The validator catches prop errors, wrong handler conventions, hallucinated components, and composition mistakes that are invisible until runtime.

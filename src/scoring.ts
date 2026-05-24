@@ -31,7 +31,7 @@ const readPlaywrightVersion = (validatePkg: string): string | null => {
 };
 
 export const runScore = (targetFile: string, opts: ScoreOpts): ScoreResult => {
-  const scoreBin = path.join(opts.validatePackage, 'dist', 'bin', 'marigold-score.mjs');
+  const scoreBin = path.join(opts.validatePackage, 'dist', 'bin', 'marigold-validate.mjs');
 
   if (!fs.existsSync(targetFile)) {
     return { score: null, assertionPassRate: null, error: 'Target file not found after claude run' };
@@ -40,7 +40,7 @@ export const runScore = (targetFile: string, opts: ScoreOpts): ScoreResult => {
   const resultFilePath = path.join(opts.outputDir, 'runs', opts.runId, opts.evalId, 'result.json');
 
   const scoreArgs = [
-    scoreBin, targetFile,
+    scoreBin, 'score', targetFile,
     '--prompt-id', opts.evalId,
     '--model', opts.model,
     '--config', opts.config,
