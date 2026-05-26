@@ -18,19 +18,15 @@ You are running with the **full Claude Code workflow** — all installed MCP ser
 
 ### Skills
 
-You have access to all installed skills. Use them actively — they exist to help you write better code:
-
 - **Marigold design system skill** — use it for component guidance, React Aria conventions, form patterns, table patterns, and authoritative documentation lookups. This is your primary reference for how Marigold components work.
-- **Design critique skill** — use it to review your UI for visual polish, information hierarchy, spacing, and layout quality. Run a critique before finalizing your component.
-- **Any other available skills** (clean code, TypeScript best practices, etc.) — use them where appropriate to improve code quality and structure.
 
 ### Component manifest
 
 The authoritative index of every Marigold component is available at:
 ```
-https://www.marigold-ui.io/api/manifest.json
+https://www.marigold-ui.io/manifest.json
 ```
-Each entry has a `name`, `category`, `description`, and a `url` field pointing to the component's full documentation. You can fetch any doc page directly via `curl -s <url>`.
+Each entry has a `name`, `category`, `description`, and a `slug` pointing to the component's documentation page. You can view any doc page at `https://www.marigold-ui.io/{slug}`.
 
 ## What you must NOT do
 
@@ -39,9 +35,9 @@ Each entry has a `name`, `category`, `description`, and a `url` field pointing t
 
 ## General principles
 
-**No raw HTML.** Never use native HTML elements for things the design system covers. The design system provides dedicated components for layout, typography, forms, navigation, overlays, and data display. Always prefer the design system component over its HTML equivalent. If you find yourself reaching for a `<div>` or a `<span>`, check the manifest — there is almost certainly a design system component for that purpose.
+**No raw HTML.** Never use native HTML elements. The design system provides dedicated components for layout, typography, forms, navigation, overlays, and data display. Always use the design system component instead of its HTML equivalent.
 
-**No invented components.** Only use components that are actually exported by `@marigold/components`. Before writing any JSX, verify the component exists by checking the docs or the manifest. Common mistakes include using component names from other libraries (like Material UI or Chakra) that don't exist in Marigold.
+**No invented components.** Only use components that are actually exported by `@marigold/components`. Before writing any JSX, verify the component exists by checking the docs.
 
 **No inline styles on design system components.** Never put `style={{...}}` or Tailwind `className` utilities on design system components. Use their built-in props for variant, size, spacing, and layout. Inline styles are only acceptable on custom wrapper elements that are not design system components.
 
@@ -55,19 +51,17 @@ Each entry has a `name`, `category`, `description`, and a `url` field pointing t
 - Collection items (menu items, select options, tab items, breadcrumb items) require an `id` prop for selection and action handlers to identify them.
 - Compound components use dot notation for sub-components.
 
-**Clean code.** Write well-structured TypeScript. Use `type` for type definitions. Keep components reasonably sized — decompose large UIs into page-level sub-components. Extract repeated logic into helper functions. Use meaningful variable names.
-
 **Layout.** Use the design system's layout primitives for vertical stacking, horizontal alignment, column grids, and responsive tiling. Do not use CSS flexbox via inline styles when the design system has a component for that layout pattern.
 
 **Forms.** Wrap form fields in the design system's form component with a vertical stack. Place the submit button at the bottom. Use the component's built-in error message and validation props — do not build custom error rendering with separate text elements.
 
-**App shells.** For multi-page or dashboard-style UIs, use the design system's app layout, sidebar, and navigation components with the router provider pattern. Do not build custom sidebars or navbars from raw containers.
+**App shells.** For multi-page or dashboard-style UIs, use the design system's app layout, sidebar, and navigation components. Do not build custom sidebars or navbars from raw containers.
 
 ## Workflow
 
-1. **Discover.** Fetch the component manifest. Review what's available. Plan which components you need.
-2. **Research.** For every component you plan to use, look up its exact props, children patterns, and accepted variants via the docs MCP or the manifest URLs. Do not skip this step.
+1. **Discover.** Use the Marigold docs MCP or the design system skill to find which components are available. Plan which components you need.
+2. **Research.** For every component you plan to use, look up its exact props, children patterns, and accepted variants. Do not skip this step.
 3. **Write.** Implement the component using the APIs you verified.
-4. **Critique.** Use the design critique skill to review your UI for quality, hierarchy, and polish.
-5. **Verify.** Start the dev server and use Playwright to check that the component renders and interactive elements work.
-6. **Fix.** Address any rendering issues or design critique feedback. Verify again.
+4. **Verify.** Start the dev server and use Playwright to check that the component renders and interactive elements work.
+5. **Mobile check.** Use Playwright to resize the viewport to 375px width and verify the layout works on mobile. Fix any layout issues that appear at small viewports.
+6. **Fix and iterate.** Address any rendering issues or broken interactions. Verify again after fixes.
