@@ -38,7 +38,10 @@ export const buildClaudeArgs = (
   }
 
   const tmpPromptFile = path.join(ROOT, `.system-prompt-${combo.id}.md`);
-  fs.writeFileSync(tmpPromptFile, systemPrompt);
+  fs.writeFileSync(tmpPromptFile, systemPrompt, { flush: true });
+  if (!fs.existsSync(tmpPromptFile)) {
+    throw new Error(`Failed to write system prompt file: ${tmpPromptFile}`);
+  }
 
   const args = [
     '-p', promptText,
@@ -46,7 +49,6 @@ export const buildClaudeArgs = (
     '--output-format', 'json',
     '--dangerously-skip-permissions',
     '--append-system-prompt-file', tmpPromptFile,
-    '--no-session-persistence',
   ];
 
   if (combo.config === 'bare') {

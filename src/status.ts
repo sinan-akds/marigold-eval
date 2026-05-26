@@ -60,26 +60,27 @@ export const showStatus = (config: EvalsConfig, bm: BenchmarkFile) => {
       const totalCost = completed.reduce((s, r) => s + (r.efficiency?.costUsd ?? 0), 0);
 
       out(`  ${model}/${cfg} (avg: ${avg}, assertions: ${avgPR}, runs: ${totalCompleted}/${matching.length}, cost: $${totalCost.toFixed(4)})\n`);
-      out(`  ${'─'.repeat(85)}\n`);
-      out(`  ${'Run'.padEnd(35)} ${'Score'.padEnd(8)} ${'Assert'.padEnd(8)} ${'Time'.padEnd(9)} ${'Cost'.padEnd(10)} Status\n`);
+      const shortRunId = (id: string) => id.replace(`${model}-${cfg}-`, '');
+      out(`  ${'─'.repeat(60)}\n`);
+      out(`  ${'Run'.padEnd(12)} ${'Score'.padEnd(7)} ${'Assert'.padEnd(8)} ${'Time'.padEnd(7)} ${'Cost'.padEnd(9)} Status\n`);
 
       for (const r of completed.sort((a, b) => runComboId(a).localeCompare(runComboId(b)))) {
-        const id = runComboId(r);
-        out(`  ${id.padEnd(35)} ${fmtScore(r.score).padEnd(8)} ${fmtPassRate(r.assertionPassRate).padEnd(8)} ${fmtDuration(r.efficiency?.durationMs).padEnd(9)} ${fmtCost(r.efficiency?.costUsd).padEnd(10)} done\n`);
+        const id = shortRunId(runComboId(r));
+        out(`  ${id.padEnd(12)} ${fmtScore(r.score).padEnd(7)} ${fmtPassRate(r.assertionPassRate).padEnd(8)} ${fmtDuration(r.efficiency?.durationMs).padEnd(7)} ${fmtCost(r.efficiency?.costUsd).padEnd(9)} done\n`);
       }
 
       for (const r of failed) {
-        const id = runComboId(r);
-        const reason = (r.error ?? 'unknown').slice(0, 50);
-        out(`  ${id.padEnd(35)} ${'-'.padEnd(8)} ${'-'.padEnd(8)} ${'-'.padEnd(9)} ${'-'.padEnd(10)} FAILED: ${reason}\n`);
+        const id = shortRunId(runComboId(r));
+        const reason = (r.error ?? 'unknown').slice(0, 40);
+        out(`  ${id.padEnd(12)} ${'-'.padEnd(7)} ${'-'.padEnd(8)} ${'-'.padEnd(7)} ${'-'.padEnd(9)} FAIL: ${reason}\n`);
       }
 
       for (const evalDef of config.evals) {
         const runs = evalDef.runsPerCombination ?? d.runsPerCombination;
         for (let run = 1; run <= runs; run++) {
-          const id = comboId(model, cfg, evalDef.id, run);
-          if (matching.some(r => runComboId(r) === id)) continue;
-          out(`  ${id.padEnd(35)} ${'-'.padEnd(8)} ${'-'.padEnd(8)} ${'-'.padEnd(9)} ${'-'.padEnd(10)} pending\n`);
+          const id = shortRunId(comboId(model, cfg, evalDef.id, run));
+          if (matching.some(r => shortRunId(runComboId(r)) === id)) continue;
+          out(`  ${id.padEnd(12)} ${'-'.padEnd(7)} ${'-'.padEnd(8)} ${'-'.padEnd(7)} ${'-'.padEnd(9)} pending\n`);
         }
       }
 
@@ -89,17 +90,24 @@ export const showStatus = (config: EvalsConfig, bm: BenchmarkFile) => {
 
   // Score matrix
   const evalIds = config.evals.map(e => e.id);
-  const shortEval = (id: string) => id.replace(/^P-0?/, 'P');
-  const col = 14;
-  const label = 25;
+  const shortEval = (id: string) => id.replace(/^P-0?/, '');
+  const col = 12;
+  const label = 20;
   const divider = label + evalIds.length * col + col;
 
-  out(`  Score Matrix — score (assertion%) per eval\n`);
+  out(`  Score Matrix — score (assert%) per eval\n`);
   out(`  ${'─'.repeat(divider)}\n`);
-  out(`  ${'Model / Config'.padEnd(label)}`);
+  out(`  ${''.padEnd(label)}`);
   for (const eid of evalIds) out(shortEval(eid).padStart(col));
-  out('           Avg\n');
+  out('       Avg\n');
   out(`  ${'─'.repeat(divider)}\n`);
+
+  const fmtCell = (score: number | null, passRate: number | null): string => {
+    if (score === null) return '-';
+    const s = score.toFixed(1);
+    if (passRate !== null) return `${s} (${Math.round(passRate * 100)}%)`;
+    return s;
+  };
 
   for (const model of d.models) {
     for (const cfg of d.configs) {
@@ -112,7 +120,7 @@ export const showStatus = (config: EvalsConfig, bm: BenchmarkFile) => {
         if (summary && summary.avgScore !== null) {
           rowScores.push(summary.avgScore);
           if (summary.avgAssertionPassRate !== null) rowPassRates.push(summary.avgAssertionPassRate);
-          out(fmtScoreWithAssertions(summary.avgScore, summary.avgAssertionPassRate).padStart(col));
+          out(fmtCell(summary.avgScore, summary.avgAssertionPassRate).padStart(col));
         } else {
           out('-'.padStart(col));
         }
@@ -121,7 +129,7 @@ export const showStatus = (config: EvalsConfig, bm: BenchmarkFile) => {
       if (rowScores.length > 0) {
         const avgS = avgOf(rowScores);
         const avgP = rowPassRates.length > 0 ? avgOf(rowPassRates) : null;
-        out(fmtScoreWithAssertions(avgS, avgP).padStart(col) + '\n');
+        out(fmtCell(avgS, avgP).padStart(col) + '\n');
       } else {
         out('-'.padStart(col) + '\n');
       }

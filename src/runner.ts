@@ -8,7 +8,42 @@ import { createRunMcpConfig, cleanupRunMcpConfig } from './mcp';
 import { buildClaudeArgs, ClaudeTimeoutError, runClaude } from './claude';
 import { runScore, locateTargetFile, extractEfficiency } from './scoring';
 import { DEV_SERVER_PORT_BASE } from './paths';
-import type { BenchmarkFile, BenchmarkRun, Combination, EvalsConfig, RunResult } from './types';
+import type { BenchmarkFile, BenchmarkRun, Combination, EvalsConfig, RunDetail, RunResult } from './types';
+
+const extractRunDetail = (resultData: Record<string, unknown>): RunDetail => {
+  const quality = (resultData.quality ?? {}) as Record<string, unknown>;
+  const categories = (quality.categories ?? {}) as Record<string, Record<string, unknown>>;
+  const report = (resultData.report ?? {}) as Record<string, unknown>;
+  const metadata = (report.metadata ?? {}) as Record<string, unknown>;
+  const assertions = (resultData.assertions ?? {}) as Record<string, unknown>;
+  const sourceCode = (resultData.sourceCode ?? '') as string;
+
+  const catScores: Record<string, { score: number; errorCount: number; warningCount: number }> = {};
+  for (const [key, cat] of Object.entries(categories)) {
+    catScores[key] = {
+      score: (cat.score as number) ?? 0,
+      errorCount: (cat.errorCount as number) ?? 0,
+      warningCount: (cat.warningCount as number) ?? 0,
+    };
+  }
+
+  const issueSources: Record<string, number> = {};
+  for (const issue of [...(report.errors as unknown[] ?? []), ...(report.warnings as unknown[] ?? [])]) {
+    const src = (issue as Record<string, unknown>).source as string ?? 'unknown';
+    issueSources[src] = (issueSources[src] ?? 0) + 1;
+  }
+
+  return {
+    categories: Object.keys(catScores).length > 0 ? catScores : undefined,
+    renderSuccess: quality.renderSuccess as boolean | undefined,
+    renderTimeMs: (resultData.renderTimeMs ?? metadata.renderTimeMs ?? undefined) as number | undefined,
+    componentsFound: (resultData.componentsFound ?? metadata.componentsFound ?? undefined) as string[] | undefined,
+    issueSources: Object.keys(issueSources).length > 0 ? issueSources : undefined,
+    linesOfCode: sourceCode ? sourceCode.split('\n').length : undefined,
+    assertionsPassed: ((assertions.passed as unknown[]) ?? []).length || undefined,
+    assertionsFailed: ((assertions.failed as unknown[]) ?? []).length || undefined,
+  };
+};
 
 const runSingle = async (
   combo: Combination,
@@ -36,7 +71,7 @@ const runSingle = async (
     log(`${tag} Running claude -p (model: ${combo.model}, config: ${combo.config})...\n`);
 
     const claudeArgs = buildClaudeArgs(combo, config, wtPath, runMcpConfig, workerIndex);
-    const extraEnv = combo.config !== 'full-stack' ? { MARIGOLD_VALIDATE_DISABLED: '1' } : {};
+    const extraEnv: Record<string, string> = combo.config !== 'full-stack' ? { MARIGOLD_VALIDATE_DISABLED: '1' } : {};
     const claudeResult = await runClaude(claudeArgs, wtPath, d.claudeTimeoutMs ?? 1_800_000, extraEnv);
 
     const sessionId = claudeResult.session_id ?? null;
@@ -89,6 +124,8 @@ const runSingle = async (
     resultData.timestamp = new Date().toISOString();
     fs.writeFileSync(path.join(runDir, 'result.json'), JSON.stringify(resultData, null, 2) + '\n');
 
+    const detail = extractRunDetail(resultData);
+
     const bmRun: BenchmarkRun = {
       evalId: combo.evalId,
       model: combo.model,
@@ -99,6 +136,7 @@ const runSingle = async (
       assertionPassRate: scoreResult.assertionPassRate,
       sessionId,
       efficiency,
+      detail,
       resultFile: path.relative(ROOT, path.join(runDir, 'result.json')),
       sourceFile: path.relative(ROOT, path.join(runDir, 'source.tsx')),
       ...(scoreResult.error ? { error: scoreResult.error } : {}),

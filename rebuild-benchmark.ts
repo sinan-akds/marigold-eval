@@ -4,7 +4,7 @@ import fs from 'node:fs';
 import path from 'node:path';
 import { ROOT, RESULTS_DIR, BENCHMARK_PATH } from './src/paths';
 import { avgOf, saveBenchmark } from './src/benchmark';
-import type { BenchmarkFile, BenchmarkRun, BenchmarkSummary } from './src/types';
+import type { BenchmarkFile, BenchmarkRun, BenchmarkSummary, RunDetail } from './src/types';
 
 const runs: BenchmarkRun[] = [];
 
@@ -39,6 +39,37 @@ for (const configDir of configDirs) {
         const quality = result.quality ?? {};
         const assertions = result.assertions ?? null;
 
+        const report = result.report ?? {};
+        const metadata = report.metadata ?? {};
+        const categories = quality.categories ?? {};
+        const sourceCode = result.sourceCode ?? '';
+
+        const catScores: Record<string, { score: number; errorCount: number; warningCount: number }> = {};
+        for (const [key, cat] of Object.entries(categories) as [string, Record<string, unknown>][]) {
+          catScores[key] = {
+            score: (cat.score as number) ?? 0,
+            errorCount: (cat.errorCount as number) ?? 0,
+            warningCount: (cat.warningCount as number) ?? 0,
+          };
+        }
+
+        const issueSources: Record<string, number> = {};
+        for (const issue of [...(report.errors ?? []), ...(report.warnings ?? [])]) {
+          const src = issue.source ?? 'unknown';
+          issueSources[src] = (issueSources[src] ?? 0) + 1;
+        }
+
+        const detail: RunDetail = {
+          categories: Object.keys(catScores).length > 0 ? catScores : undefined,
+          renderSuccess: quality.renderSuccess ?? undefined,
+          renderTimeMs: result.renderTimeMs ?? metadata.renderTimeMs ?? undefined,
+          componentsFound: result.componentsFound ?? metadata.componentsFound ?? undefined,
+          issueSources: Object.keys(issueSources).length > 0 ? issueSources : undefined,
+          linesOfCode: sourceCode ? sourceCode.split('\n').length : undefined,
+          assertionsPassed: (assertions?.passed ?? []).length || undefined,
+          assertionsFailed: (assertions?.failed ?? []).length || undefined,
+        };
+
         const bmRun: BenchmarkRun = {
           evalId,
           model,
@@ -48,6 +79,7 @@ for (const configDir of configDirs) {
           score: quality.overall ?? null,
           assertionPassRate: assertions?.passRate ?? null,
           sessionId: result.sessionId ?? null,
+          detail,
           resultFile: path.relative(ROOT, resultPath),
           sourceFile: fs.existsSync(sourcePath) ? path.relative(ROOT, sourcePath) : undefined,
         };

@@ -38,6 +38,23 @@ export type Efficiency = {
   numTurns: number;
 };
 
+export type CategoryScore = {
+  score: number;
+  errorCount: number;
+  warningCount: number;
+};
+
+export type RunDetail = {
+  categories?: Record<string, CategoryScore>;
+  renderSuccess?: boolean;
+  renderTimeMs?: number;
+  componentsFound?: string[];
+  issueSources?: Record<string, number>;
+  linesOfCode?: number;
+  assertionsPassed?: number;
+  assertionsFailed?: number;
+};
+
 export type BenchmarkRun = {
   evalId: string;
   model: string;
@@ -48,6 +65,7 @@ export type BenchmarkRun = {
   assertionPassRate: number | null;
   sessionId: string | null;
   efficiency?: Efficiency;
+  detail?: RunDetail;
   resultFile?: string;
   sourceFile?: string;
   error?: string;
