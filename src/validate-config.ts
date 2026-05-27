@@ -1,7 +1,7 @@
 import fs from 'node:fs';
 import path from 'node:path';
 import { ROOT } from './paths';
-import type { EvalsConfig } from './types';
+import type { AssertionDef, EvalsConfig } from './types';
 
 const SAFE_ID = /^[A-Za-z0-9_-]+$/;
 
@@ -19,17 +19,29 @@ const validateRegexPattern = (pattern: string, location: string): void => {
   }
 };
 
-const validateAssertion = (a: Record<string, unknown>, evalId: string): void => {
-  const id = String(a.id ?? '(no id)');
-  const check = a.check as Record<string, unknown> | undefined;
+const VALID_SEVERITIES = new Set(['required', 'recommended', 'important', 'nice-to-have']);
+const VALID_CHECK_TYPES = new Set(['import', 'component', 'text-content', 'absence', 'composite']);
+
+const validateAssertion = (a: AssertionDef, evalId: string): void => {
+  const id = a.id ?? '(no id)';
+
+  if (a.severity && !VALID_SEVERITIES.has(a.severity)) {
+    throw new Error(`evals.json: assertion "${evalId}.${id}" has invalid severity "${a.severity}" (expected: ${[...VALID_SEVERITIES].join(', ')})`);
+  }
+
+  const check = a.check;
   if (!check) return;
+
+  if (check.type && !VALID_CHECK_TYPES.has(check.type)) {
+    throw new Error(`evals.json: assertion "${evalId}.${id}" has invalid check type "${check.type}" (expected: ${[...VALID_CHECK_TYPES].join(', ')})`);
+  }
 
   if (typeof check.pattern === 'string') {
     validateRegexPattern(check.pattern, `${evalId}.${id}`);
   }
 
   if (check.type === 'composite' && Array.isArray(check.checks)) {
-    for (const sub of check.checks as Record<string, unknown>[]) {
+    for (const sub of check.checks) {
       if (typeof sub.pattern === 'string') {
         validateRegexPattern(sub.pattern, `${evalId}.${id} (composite)`);
       }
@@ -52,6 +64,19 @@ export const validateEvalsConfig = (config: EvalsConfig): void => {
     if (!SAFE_ID.test(cfg)) throw new Error(`evals.json: config "${cfg}" contains unsafe characters`);
   }
 
+  for (const cfg of d.configs) {
+    if (cfg !== 'bare') {
+      const mcpPath = path.join(ROOT, 'configs', `${cfg}-mcp.json`);
+      if (!fs.existsSync(mcpPath)) {
+        throw new Error(`evals.json: MCP config not found for config "${cfg}" at ${mcpPath}`);
+      }
+    }
+    const promptPath = path.join(ROOT, 'configs', `${cfg}.md`);
+    if (!fs.existsSync(promptPath)) {
+      throw new Error(`evals.json: config prompt not found for config "${cfg}" at ${promptPath}`);
+    }
+  }
+
   for (const evalDef of config.evals) {
     if (!SAFE_ID.test(evalDef.id)) {
       throw new Error(`evals.json: eval id "${evalDef.id}" contains unsafe characters`);
@@ -60,7 +85,7 @@ export const validateEvalsConfig = (config: EvalsConfig): void => {
       throw new Error(`evals.json: eval "${evalDef.id}" missing promptFile`);
     }
 
-    for (const assertion of evalDef.assertions as Record<string, unknown>[]) {
+    for (const assertion of evalDef.assertions) {
       validateAssertion(assertion, evalDef.id);
     }
   }

@@ -51,26 +51,25 @@ describe('validateEvalsConfig', () => {
 
   it('rejects malformed regex in assertion pattern', () => {
     const cfg = validConfig();
-    (cfg.evals[0].assertions as Record<string, unknown>[])[0] = {
+    cfg.evals[0].assertions = [{
       id: 'a-bad-regex',
       check: { type: 'text-content', pattern: '/[invalid/' },
-    };
+    }];
     expect(() => validateEvalsConfig(cfg)).toThrow('Invalid regex');
   });
 
   it('validates composite assertion sub-patterns', () => {
     const cfg = validConfig();
-    (cfg.evals[0].assertions as Record<string, unknown>[])[0] = {
+    cfg.evals[0].assertions = [{
       id: 'a-composite',
       check: {
         type: 'composite',
-        operator: 'or',
         checks: [
           { type: 'text-content', pattern: '/valid/' },
           { type: 'text-content', pattern: '/[broken/' },
         ],
       },
-    };
+    }];
     expect(() => validateEvalsConfig(cfg)).toThrow('Invalid regex');
   });
 });

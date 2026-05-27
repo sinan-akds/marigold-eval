@@ -1,12 +1,9 @@
-import { comboId, runComboId } from './benchmark';
+import { avgOf, comboId, runComboId } from './benchmark';
 import { out } from './log';
 import type { BenchmarkFile, BenchmarkSummary, EvalsConfig } from './types';
 
 const findSummary = (bm: BenchmarkFile, model: string, config: string, evalId?: string): BenchmarkSummary | undefined =>
   bm.summaries.find(s => s.model === model && s.config === config && (!evalId || s.evalId === evalId));
-
-const avgOf = (nums: number[]): number =>
-  nums.length > 0 ? nums.reduce((a, b) => a + b, 0) / nums.length : 0;
 
 const fmtScore = (n: number | null): string =>
   n !== null ? n.toFixed(1) : '-';
@@ -14,18 +11,11 @@ const fmtScore = (n: number | null): string =>
 const fmtPassRate = (r: number | null): string =>
   r !== null ? `${Math.round(r * 100)}%` : '-';
 
-const fmtScoreWithAssertions = (score: number | null, passRate: number | null): string => {
-  if (score === null) return '-';
-  const s = score.toFixed(1);
-  if (passRate !== null) return `${s} (${Math.round(passRate * 100)}%)`;
-  return s;
-};
-
 const fmtDuration = (ms: number | undefined): string =>
-  ms ? `${(ms / 1000).toFixed(0)}s` : '-';
+  ms != null ? `${(ms / 1000).toFixed(0)}s` : '-';
 
 const fmtCost = (usd: number | undefined): string =>
-  usd ? `$${usd.toFixed(4)}` : '-';
+  usd != null ? `$${usd.toFixed(4)}` : '-';
 
 export const showStatus = (config: EvalsConfig, bm: BenchmarkFile) => {
   const d = config.defaults;
@@ -34,14 +24,14 @@ export const showStatus = (config: EvalsConfig, bm: BenchmarkFile) => {
 
   const completedRuns = bm.runs.filter(r => !r.error);
   const failedRuns = bm.runs.filter(r => !!r.error);
-  const pending = total - completedRuns.length - failedRuns.length;
+  const pending = Math.max(0, total - completedRuns.length - failedRuns.length);
 
   out(`\nEval Progress\n`);
   out(`─────────────────────────────\n`);
   out(`Total combinations: ${total}\n`);
   out(`Completed:          ${completedRuns.length}\n`);
-  out(`Failed:             ${failedRuns.length}\n`);
-  out(`Pending:            ${pending}\n\n`);
+  out(`Failed:             ${failedRuns.length}${failedRuns.length > 0 ? ' (will retry)' : ''}\n`);
+  out(`Pending:            ${pending + failedRuns.length}\n\n`);
 
   for (const model of d.models) {
     for (const cfg of d.configs) {
@@ -151,9 +141,9 @@ export const showStatus = (config: EvalsConfig, bm: BenchmarkFile) => {
       const groupPassRates = groupSummaries.map(s => s.avgAssertionPassRate).filter((p): p is number => p !== null);
       const avgPR = groupPassRates.length > 0 ? fmtPassRate(avgOf(groupPassRates)) : '-';
       const completedRuns = bm.runs.filter(r => r.model === model && r.config === cfg && !r.error);
-      const durations = completedRuns.map(r => r.efficiency?.durationMs).filter((d): d is number => !!d);
+      const durations = completedRuns.map(r => r.efficiency?.durationMs).filter((d): d is number => d != null);
       const avgDur = durations.length > 0 ? `${avgOf(durations) / 1000 | 0}s` : '-';
-      const costs = completedRuns.map(r => r.efficiency?.costUsd).filter((c): c is number => !!c);
+      const costs = completedRuns.map(r => r.efficiency?.costUsd).filter((c): c is number => c != null);
       const avgCost = costs.length > 0 ? `$${avgOf(costs).toFixed(4)}` : '-';
 
       out(`  ${`${model}/${cfg}`.padEnd(25)} ${String(totalCompleted).padEnd(5)} ${String(avg).padEnd(7)} ${avgPR.padEnd(7)} ${String(avgDur).padEnd(9)} ${avgCost}\n`);

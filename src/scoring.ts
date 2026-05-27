@@ -1,7 +1,7 @@
 import fs from 'node:fs';
 import path from 'node:path';
 import { execFileSync } from 'node:child_process';
-import { EVALS_PATH } from './paths';
+import { EVALS_PATH, DEFAULT_SCORE_TIMEOUT_MS, SCORE_MAX_BUFFER, MAX_STDERR_SLICE } from './paths';
 import { log } from './log';
 import { EMPTY_TEST_APP, STUB_CONTENT } from './worktree';
 import type { ClaudeOutput, Efficiency, ScoreResult } from './types';
@@ -52,16 +52,19 @@ export const runScore = (targetFile: string, opts: ScoreOpts): ScoreResult => {
   ];
 
   let scoreStderr = '';
+  let scoreExitInfo = '';
   try {
     execFileSync('node', scoreArgs, {
       cwd: path.dirname(targetFile),
       stdio: ['pipe', 'pipe', 'pipe'],
-      timeout: opts.scoreTimeoutMs ?? 300_000,
-      maxBuffer: 50 * 1024 * 1024,
+      timeout: opts.scoreTimeoutMs ?? DEFAULT_SCORE_TIMEOUT_MS,
+      maxBuffer: SCORE_MAX_BUFFER,
     });
   } catch (err: unknown) {
-    if (err && typeof err === 'object' && 'stderr' in err) {
-      scoreStderr = String((err as { stderr: unknown }).stderr).slice(0, 2000);
+    if (err && typeof err === 'object') {
+      if ('stderr' in err) scoreStderr = String((err as { stderr: unknown }).stderr).slice(0, MAX_STDERR_SLICE);
+      if ('status' in err) scoreExitInfo = `exit=${(err as { status: unknown }).status}`;
+      if ('signal' in err && (err as { signal: unknown }).signal) scoreExitInfo = `signal=${(err as { signal: unknown }).signal}`;
     }
   }
 
@@ -81,7 +84,8 @@ export const runScore = (targetFile: string, opts: ScoreOpts): ScoreResult => {
       assertions,
     };
   } catch {
-    const detail = scoreStderr ? `: ${scoreStderr}` : '';
+    const parts = [scoreExitInfo, scoreStderr].filter(Boolean).join(' ');
+    const detail = parts ? `: ${parts}` : '';
     return { score: null, assertionPassRate: null, error: `Result file not found at ${resultFilePath}${detail}` };
   }
 };
@@ -121,8 +125,9 @@ export const locateTargetFile = (
     ], { stdio: ['pipe', 'pipe', 'pipe'] }).toString().trim().split('\n').filter(Boolean);
 
     if (found.length > 0) {
-      log(`${tag} Target not at expected path, found at: ${path.relative(wtPath, found[0])}\n`);
-      return found[0];
+      const sorted = found.sort((a, b) => fs.statSync(b).mtimeMs - fs.statSync(a).mtimeMs);
+      log(`${tag} Target not at expected path, found at: ${path.relative(wtPath, sorted[0])}\n`);
+      return sorted[0];
     }
   } catch { /* ok */ }
 
