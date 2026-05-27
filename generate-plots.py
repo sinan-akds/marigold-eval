@@ -7,10 +7,9 @@ import matplotlib
 matplotlib.use("Agg")
 import matplotlib.pyplot as plt
 
+script_dir = os.path.dirname(os.path.abspath(__file__))
 OUT = os.path.join(script_dir, "plots")
 os.makedirs(OUT, exist_ok=True)
-
-script_dir = os.path.dirname(os.path.abspath(__file__))
 bm = json.load(open(os.path.join(script_dir, "benchmark.json")))
 ev = json.load(open(os.path.join(script_dir, "evals.json")))
 

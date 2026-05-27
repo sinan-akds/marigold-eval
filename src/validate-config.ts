@@ -55,7 +55,14 @@ export const validateEvalsConfig = (config: EvalsConfig): void => {
   if (!d.models?.length) throw new Error('evals.json: defaults.models must be non-empty');
   if (!d.configs?.length) throw new Error('evals.json: defaults.configs must be non-empty');
   if (!d.projectDir) throw new Error('evals.json: defaults.projectDir is required');
+  if (!d.targetFile) throw new Error('evals.json: defaults.targetFile is required');
   if (!d.validatePackage) throw new Error('evals.json: defaults.validatePackage is required');
+  if (!Number.isInteger(d.runsPerCombination) || d.runsPerCombination < 1) {
+    throw new Error('evals.json: defaults.runsPerCombination must be a positive integer');
+  }
+  if (!Number.isInteger(d.concurrency) || d.concurrency < 1) {
+    throw new Error('evals.json: defaults.concurrency must be a positive integer');
+  }
 
   for (const model of d.models) {
     if (!SAFE_ID.test(model)) throw new Error(`evals.json: model "${model}" contains unsafe characters`);

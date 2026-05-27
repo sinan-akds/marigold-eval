@@ -69,20 +69,25 @@ export const runScore = (targetFile: string, opts: ScoreOpts): ScoreResult => {
   }
 
   try {
-    const saved = JSON.parse(fs.readFileSync(resultFilePath, 'utf-8'));
-    const quality = saved.quality ?? {};
-    const assertions = saved.assertions ?? null;
+    const saved: Record<string, unknown> = JSON.parse(fs.readFileSync(resultFilePath, 'utf-8'));
+    const quality = (saved.quality ?? {}) as Record<string, unknown>;
+    const assertions = (saved.assertions ?? undefined) as Record<string, unknown> | undefined;
 
     saved.validatePackageVersion = readPackageVersion(opts.validatePackage);
     saved.playwrightVersion = readPlaywrightVersion(opts.validatePackage);
     fs.writeFileSync(resultFilePath, JSON.stringify(saved, null, 2) + '\n');
 
-    return {
-      score: quality.overall ?? null,
-      assertionPassRate: assertions?.passRate ?? null,
+    const result = {
+      score: (quality.overall as number) ?? null,
+      assertionPassRate: (assertions?.passRate as number) ?? null,
       quality,
       assertions,
     };
+
+    if (scoreExitInfo) {
+      return { ...result, error: `Scoring process ${scoreExitInfo}${scoreStderr ? `: ${scoreStderr}` : ''}` };
+    }
+    return result;
   } catch {
     const parts = [scoreExitInfo, scoreStderr].filter(Boolean).join(' ');
     const detail = parts ? `: ${parts}` : '';

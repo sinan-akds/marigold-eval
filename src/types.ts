@@ -14,7 +14,9 @@ export type AssertionDef = {
 
 export type ChecklistItem = {
   id: string;
-  text: string;
+  description: string;
+  component?: string;
+  props?: string[];
 };
 
 export type EvalDefinition = {

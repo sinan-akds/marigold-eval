@@ -39,7 +39,7 @@ export const extractRunDetail = (resultData: ResultData): RunDetail => {
     })(),
     componentsFound: (() => {
       const v = resultData.componentsFound ?? metadata.componentsFound;
-      return Array.isArray(v) ? v as string[] : undefined;
+      return Array.isArray(v) ? v.filter((x): x is string => typeof x === 'string') : undefined;
     })(),
     issueSources: Object.keys(issueSources).length > 0 ? issueSources : undefined,
     linesOfCode: sourceCode ? sourceCode.split('\n').length : undefined,

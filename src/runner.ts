@@ -204,8 +204,10 @@ const runSingle = async (
       error: msg,
       ...(timeoutEfficiency ? { efficiency: timeoutEfficiency } : {}),
       ...(detail ? { detail } : {}),
-      resultFile: path.relative(ROOT, path.join(runDir, 'result.json')),
-      sourceFile: path.relative(ROOT, path.join(runDir, 'source.tsx')),
+      ...(fs.existsSync(runDir) ? {
+        resultFile: path.relative(ROOT, path.join(runDir, 'result.json')),
+        sourceFile: path.relative(ROOT, path.join(runDir, 'source.tsx')),
+      } : {}),
     };
     addRun(bm, bmRun);
 

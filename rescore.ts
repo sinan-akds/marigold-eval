@@ -39,17 +39,15 @@ for (const run of bm.runs) {
     scoreTimeoutMs,
   });
 
-  if (scoreResult.error) {
-    console.log(`SCORE_FAIL ${runId.padEnd(30)} ${scoreResult.error} — keeping old score ${run.score}`);
+  if (scoreResult.error || scoreResult.score === null) {
+    const reason = scoreResult.error ?? 'score returned null';
+    console.log(`SCORE_FAIL ${runId.padEnd(30)} ${reason} — keeping old score ${run.score}`);
     failed++;
     continue;
   }
 
   const oldScore = run.score;
   const oldAssertions = run.assertionPassRate;
-  run.score = scoreResult.score;
-  run.assertionPassRate = scoreResult.assertionPassRate;
-  delete run.error;
 
   if (run.efficiency) {
     run.efficiency.totalTokens = run.efficiency.inputTokens + run.efficiency.outputTokens;
@@ -57,20 +55,24 @@ for (const run of bm.runs) {
 
   const scoredResultPath = path.join(RESULTS_DIR, 'runs', runId, run.evalId, 'result.json');
   try {
-    const scored = JSON.parse(fs.readFileSync(scoredResultPath, 'utf-8'));
+    const scored: Record<string, unknown> = JSON.parse(fs.readFileSync(scoredResultPath, 'utf-8'));
     if (run.efficiency) scored.efficiency = run.efficiency;
 
     const existingResultPath = path.join(outputDir, 'result.json');
     if (fs.existsSync(existingResultPath)) {
       try {
-        const existing = JSON.parse(fs.readFileSync(existingResultPath, 'utf-8'));
+        const existing: Record<string, unknown> = JSON.parse(fs.readFileSync(existingResultPath, 'utf-8'));
         if (existing.sessionId) scored.sessionId = existing.sessionId;
+        if (existing.timestamp) scored.timestamp = existing.timestamp;
       } catch { /* ok */ }
     }
 
     fs.mkdirSync(outputDir, { recursive: true });
     fs.writeFileSync(existingResultPath, JSON.stringify(scored, null, 2) + '\n');
 
+    run.score = scoreResult.score;
+    run.assertionPassRate = scoreResult.assertionPassRate;
+    delete run.error;
     run.detail = extractRunDetail(scored);
 
     const scoreChange = oldScore !== run.score ? ` (was ${oldScore})` : '';
