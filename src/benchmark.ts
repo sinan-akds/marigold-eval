@@ -6,7 +6,7 @@ import type { BenchmarkFile, BenchmarkRun } from './types';
 
 const BACKUP_PATH = BENCHMARK_PATH + '.bak';
 
-const emptyBenchmark = (): BenchmarkFile => ({
+export const emptyBenchmark = (): BenchmarkFile => ({
   version: 1, runs: [], summaries: [], lastUpdated: '',
 });
 

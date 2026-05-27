@@ -1,3 +1,22 @@
+export type AssertionCheck = {
+  type: 'import' | 'component' | 'text-content' | 'absence' | 'composite';
+  pattern?: string;
+  checks?: AssertionCheck[];
+  [key: string]: unknown;
+};
+
+export type AssertionDef = {
+  id: string;
+  description?: string;
+  severity?: 'required' | 'recommended' | 'important' | 'nice-to-have';
+  check?: AssertionCheck;
+};
+
+export type ChecklistItem = {
+  id: string;
+  text: string;
+};
+
 export type EvalDefinition = {
   id: string;
   name: string;
@@ -5,8 +24,8 @@ export type EvalDefinition = {
   complexity: 'low' | 'medium' | 'high';
   runsPerCombination?: number;
   tags: string[];
-  checklist: unknown[];
-  assertions: unknown[];
+  checklist: ChecklistItem[];
+  assertions: AssertionDef[];
 };
 
 export type EvalsConfig = {

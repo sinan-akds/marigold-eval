@@ -2,13 +2,14 @@
 
 import fs from 'node:fs';
 import path from 'node:path';
-import { ROOT, BENCHMARK_PATH, EVALS_PATH, RESULTS_DIR } from './src/paths';
-import { recomputeSummaries, saveBenchmark } from './src/benchmark';
+import { ROOT, EVALS_PATH, RESULTS_DIR } from './src/paths';
+import { loadBenchmark, recomputeSummaries, saveBenchmark, runComboId } from './src/benchmark';
 import { runScore } from './src/scoring';
-import type { BenchmarkFile } from './src/types';
+import { extractRunDetail } from './src/result-parsing';
+import type { EvalsConfig } from './src/types';
 
-const bm = JSON.parse(fs.readFileSync(BENCHMARK_PATH, 'utf-8')) as BenchmarkFile;
-const evals = JSON.parse(fs.readFileSync(EVALS_PATH, 'utf-8'));
+const bm = loadBenchmark();
+const evals = JSON.parse(fs.readFileSync(EVALS_PATH, 'utf-8')) as EvalsConfig;
 const validatePkg = evals.defaults.validatePackage;
 const themePath = evals.defaults.themePath;
 const scoreTimeoutMs = evals.defaults.scoreTimeoutMs;
@@ -24,7 +25,7 @@ for (const run of bm.runs) {
     continue;
   }
 
-  const runId = `${run.model}-${run.config}-${run.evalId}-r${run.runNumber}`;
+  const runId = runComboId(run);
   const outputDir = path.join(RESULTS_DIR, `${run.model}-${run.config}`, run.evalId, `run-${run.runNumber}`);
 
   const scoreResult = runScore(sourceFile, {
@@ -38,10 +39,17 @@ for (const run of bm.runs) {
     scoreTimeoutMs,
   });
 
+  if (scoreResult.error) {
+    console.log(`SCORE_FAIL ${runId.padEnd(30)} ${scoreResult.error} — keeping old score ${run.score}`);
+    failed++;
+    continue;
+  }
+
   const oldScore = run.score;
   const oldAssertions = run.assertionPassRate;
   run.score = scoreResult.score;
   run.assertionPassRate = scoreResult.assertionPassRate;
+  delete run.error;
 
   if (run.efficiency) {
     run.efficiency.totalTokens = run.efficiency.inputTokens + run.efficiency.outputTokens;
@@ -51,8 +59,19 @@ for (const run of bm.runs) {
   try {
     const scored = JSON.parse(fs.readFileSync(scoredResultPath, 'utf-8'));
     if (run.efficiency) scored.efficiency = run.efficiency;
+
+    const existingResultPath = path.join(outputDir, 'result.json');
+    if (fs.existsSync(existingResultPath)) {
+      try {
+        const existing = JSON.parse(fs.readFileSync(existingResultPath, 'utf-8'));
+        if (existing.sessionId) scored.sessionId = existing.sessionId;
+      } catch { /* ok */ }
+    }
+
     fs.mkdirSync(outputDir, { recursive: true });
-    fs.writeFileSync(path.join(outputDir, 'result.json'), JSON.stringify(scored, null, 2) + '\n');
+    fs.writeFileSync(existingResultPath, JSON.stringify(scored, null, 2) + '\n');
+
+    run.detail = extractRunDetail(scored);
 
     const scoreChange = oldScore !== run.score ? ` (was ${oldScore})` : '';
     const assertChange = oldAssertions !== run.assertionPassRate ? ` (was ${oldAssertions})` : '';
