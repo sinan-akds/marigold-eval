@@ -3,7 +3,7 @@ import path from 'node:path';
 import { execFileSync } from 'node:child_process';
 import { ROOT, RESULTS_DIR } from './paths';
 import { log } from './log';
-import { saveBenchmark } from './benchmark';
+import { emptyBenchmark, saveBenchmark } from './benchmark';
 import { silentExec, silentRm } from './utils';
 import { resetMainTestApp } from './worktree';
 import type { EvalsConfig } from './types';
@@ -12,13 +12,15 @@ export const cleanAll = (config: EvalsConfig) => {
   const appDir = config.defaults.projectDir;
   log('Cleaning up ALL previous run data...\n');
 
-  saveBenchmark({ version: 1, runs: [], summaries: [], lastUpdated: '' });
+  saveBenchmark(emptyBenchmark());
   log('  benchmark.json reset\n');
 
-  for (const entry of fs.readdirSync(RESULTS_DIR)) {
-    const full = path.join(RESULTS_DIR, entry);
-    if (entry === 'node_modules') continue;
-    silentRm(full);
+  if (fs.existsSync(RESULTS_DIR)) {
+    for (const entry of fs.readdirSync(RESULTS_DIR)) {
+      const full = path.join(RESULTS_DIR, entry);
+      if (entry === 'node_modules') continue;
+      silentRm(full);
+    }
   }
   log('  results/ cleaned\n');
 
@@ -30,7 +32,9 @@ export const cleanAll = (config: EvalsConfig) => {
   log('  temp files cleaned\n');
 
   silentExec('git', ['worktree', 'prune'], appDir);
-  const evalBranchPattern = /^eval\/(haiku|sonnet|opus)-(bare|mcp-stack|full-stack)-P-\d+-r\d+$/;
+  const models = config.defaults.models.join('|');
+  const configs = config.defaults.configs.join('|');
+  const evalBranchPattern = new RegExp(`^eval/(${models})-(${configs})-\\S+-r\\d+$`);
   try {
     const branches = execFileSync('git', ['branch', '--list', 'eval/*'], { cwd: appDir, stdio: 'pipe' })
       .toString().trim().split('\n').map(b => b.trim()).filter(Boolean);

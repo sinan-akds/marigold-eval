@@ -1,48 +1,50 @@
 import fs from 'node:fs';
 import path from 'node:path';
-import { ROOT, RESULTS_DIR } from './paths';
+import { ROOT, RESULTS_DIR, DEV_SERVER_PORT_BASE, DEFAULT_CLAUDE_TIMEOUT_MS } from './paths';
 import { log } from './log';
 import { addRun } from './benchmark';
 import { createWorktree, removeWorktree, killDevServerOnPort, resetMainTestApp, STUB_CONTENT } from './worktree';
 import { createRunMcpConfig, cleanupRunMcpConfig } from './mcp';
 import { buildClaudeArgs, ClaudeTimeoutError, runClaude } from './claude';
 import { runScore, locateTargetFile, extractEfficiency } from './scoring';
-import { DEV_SERVER_PORT_BASE } from './paths';
-import type { BenchmarkFile, BenchmarkRun, Combination, EvalsConfig, RunDetail, RunResult } from './types';
+import { extractRunDetail } from './result-parsing';
+import type { BenchmarkFile, BenchmarkRun, ClaudeOutput, Combination, Efficiency, EvalsConfig, RunResult } from './types';
 
-const extractRunDetail = (resultData: Record<string, unknown>): RunDetail => {
-  const quality = (resultData.quality ?? {}) as Record<string, unknown>;
-  const categories = (quality.categories ?? {}) as Record<string, Record<string, unknown>>;
-  const report = (resultData.report ?? {}) as Record<string, unknown>;
-  const metadata = (report.metadata ?? {}) as Record<string, unknown>;
-  const assertions = (resultData.assertions ?? {}) as Record<string, unknown>;
-  const sourceCode = (resultData.sourceCode ?? '') as string;
+let shuttingDown = false;
 
-  const catScores: Record<string, { score: number; errorCount: number; warningCount: number }> = {};
-  for (const [key, cat] of Object.entries(categories)) {
-    catScores[key] = {
-      score: (cat.score as number) ?? 0,
-      errorCount: (cat.errorCount as number) ?? 0,
-      warningCount: (cat.warningCount as number) ?? 0,
-    };
-  }
-
-  const issueSources: Record<string, number> = {};
-  for (const issue of [...(report.errors as unknown[] ?? []), ...(report.warnings as unknown[] ?? [])]) {
-    const src = (issue as Record<string, unknown>).source as string ?? 'unknown';
-    issueSources[src] = (issueSources[src] ?? 0) + 1;
-  }
-
-  return {
-    categories: Object.keys(catScores).length > 0 ? catScores : undefined,
-    renderSuccess: quality.renderSuccess as boolean | undefined,
-    renderTimeMs: (resultData.renderTimeMs ?? metadata.renderTimeMs ?? undefined) as number | undefined,
-    componentsFound: (resultData.componentsFound ?? metadata.componentsFound ?? undefined) as string[] | undefined,
-    issueSources: Object.keys(issueSources).length > 0 ? issueSources : undefined,
-    linesOfCode: sourceCode ? sourceCode.split('\n').length : undefined,
-    assertionsPassed: ((assertions.passed as unknown[]) ?? []).length || undefined,
-    assertionsFailed: ((assertions.failed as unknown[]) ?? []).length || undefined,
+export const installShutdownHandler = () => {
+  const handler = () => {
+    if (shuttingDown) {
+      log('\nForce exit.\n');
+      process.exit(1);
+    }
+    shuttingDown = true;
+    log('\nShutting down gracefully — waiting for in-flight runs to finish...\n');
   };
+  process.on('SIGINT', handler);
+  process.on('SIGTERM', handler);
+};
+
+const buildRunDir = (combo: Combination): string =>
+  path.join(RESULTS_DIR, `${combo.model}-${combo.config}`, combo.evalId, `run-${combo.run}`);
+
+const mergeAndSaveResult = (
+  combo: Combination,
+  runDir: string,
+  efficiency: Efficiency,
+  sessionId: string | null,
+  ts: string
+): Record<string, unknown> => {
+  const scoringResultPath = path.join(RESULTS_DIR, 'runs', combo.id, combo.evalId, 'result.json');
+  const resultData: Record<string, unknown> = (() => {
+    try { return JSON.parse(fs.readFileSync(scoringResultPath, 'utf-8')); }
+    catch { return {}; }
+  })();
+  resultData.efficiency = efficiency;
+  if (sessionId) resultData.sessionId = sessionId;
+  resultData.timestamp = ts;
+  fs.writeFileSync(path.join(runDir, 'result.json'), JSON.stringify(resultData, null, 2) + '\n');
+  return resultData;
 };
 
 const runSingle = async (
@@ -54,6 +56,8 @@ const runSingle = async (
   const tag = `[${combo.id}]`;
   const d = config.defaults;
   const appDir = d.projectDir;
+  const runDir = buildRunDir(combo);
+  const ts = new Date().toISOString();
   log(`${tag} Starting...\n`);
 
   let wtPath: string | undefined;
@@ -72,7 +76,7 @@ const runSingle = async (
 
     const claudeArgs = buildClaudeArgs(combo, config, wtPath, runMcpConfig, workerIndex);
     const extraEnv: Record<string, string> = combo.config !== 'full-stack' ? { MARIGOLD_VALIDATE_DISABLED: '1' } : {};
-    const claudeResult = await runClaude(claudeArgs, wtPath, d.claudeTimeoutMs ?? 1_800_000, extraEnv);
+    const claudeResult = await runClaude(claudeArgs, wtPath, d.claudeTimeoutMs ?? DEFAULT_CLAUDE_TIMEOUT_MS, extraEnv);
 
     const sessionId = claudeResult.session_id ?? null;
     const efficiency = extractEfficiency(claudeResult);
@@ -101,7 +105,6 @@ const runSingle = async (
       : '';
     log(`${tag} Score: ${scoreLabel}${assertLabel}${scoreResult.error ? ` (error: ${scoreResult.error})` : ''}\n`);
 
-    const runDir = path.join(RESULTS_DIR, `${combo.model}-${combo.config}`, combo.evalId, `run-${combo.run}`);
     fs.mkdirSync(runDir, { recursive: true });
     if (claudeResult._stderr) {
       fs.writeFileSync(path.join(runDir, 'claude-stderr.log'), claudeResult._stderr);
@@ -111,19 +114,7 @@ const runSingle = async (
       fs.writeFileSync(path.join(runDir, 'source.tsx'), src);
     } catch { /* ok */ }
 
-    const scoringResultPath = path.join(RESULTS_DIR, 'runs', combo.id, combo.evalId, 'result.json');
-    const resultData = (() => {
-      try {
-        return JSON.parse(fs.readFileSync(scoringResultPath, 'utf-8'));
-      } catch {
-        return {};
-      }
-    })();
-    resultData.efficiency = efficiency;
-    resultData.sessionId = sessionId;
-    resultData.timestamp = new Date().toISOString();
-    fs.writeFileSync(path.join(runDir, 'result.json'), JSON.stringify(resultData, null, 2) + '\n');
-
+    const resultData = mergeAndSaveResult(combo, runDir, efficiency, sessionId, ts);
     const detail = extractRunDetail(resultData);
 
     const bmRun: BenchmarkRun = {
@@ -131,7 +122,7 @@ const runSingle = async (
       model: combo.model,
       config: combo.config,
       runNumber: combo.run,
-      timestamp: new Date().toISOString(),
+      timestamp: ts,
       score: scoreResult.score,
       assertionPassRate: scoreResult.assertionPassRate,
       sessionId,
@@ -149,7 +140,6 @@ const runSingle = async (
     log(`${tag} FAILED: ${msg}\n`);
 
     if (err instanceof ClaudeTimeoutError && err.stderr) {
-      const runDir = path.join(RESULTS_DIR, `${combo.model}-${combo.config}`, combo.evalId, `run-${combo.run}`);
       fs.mkdirSync(runDir, { recursive: true });
       fs.writeFileSync(path.join(runDir, 'timeout-stderr.log'), err.stderr);
       log(`${tag} Stderr saved to ${path.relative(ROOT, path.join(runDir, 'timeout-stderr.log'))}\n`);
@@ -157,6 +147,8 @@ const runSingle = async (
 
     let score: number | null = null;
     let assertionPassRate: number | null = null;
+    let timeoutEfficiency: Efficiency | undefined;
+    let detail: BenchmarkRun['detail'];
 
     if (err instanceof ClaudeTimeoutError && wtPath) {
       const targetFile = path.join(wtPath, d.targetFile);
@@ -168,7 +160,6 @@ const runSingle = async (
       const isStub = content === STUB_CONTENT.trim() || content.length === 0;
       if (!isStub) {
         log(`${tag} Scoring timed-out run (file exists)...\n`);
-        const runDir = path.join(RESULTS_DIR, `${combo.model}-${combo.config}`, combo.evalId, `run-${combo.run}`);
         fs.mkdirSync(runDir, { recursive: true });
         fs.writeFileSync(path.join(runDir, 'source.tsx'), content);
 
@@ -185,15 +176,14 @@ const runSingle = async (
         score = scoreResult.score;
         assertionPassRate = scoreResult.assertionPassRate;
 
-        const timeoutEfficiency = { durationMs: d.claudeTimeoutMs ?? 1_800_000, costUsd: 0, inputTokens: 0, outputTokens: 0, cacheReadTokens: 0, cacheCreationTokens: 0, totalTokens: 0, numTurns: 0 };
-        const scoringResultPath = path.join(RESULTS_DIR, 'runs', combo.id, combo.evalId, 'result.json');
-        const resultData = (() => {
-          try { return JSON.parse(fs.readFileSync(scoringResultPath, 'utf-8')); }
-          catch { return {}; }
-        })();
-        resultData.efficiency = timeoutEfficiency;
-        resultData.timestamp = new Date().toISOString();
-        fs.writeFileSync(path.join(runDir, 'result.json'), JSON.stringify(resultData, null, 2) + '\n');
+        let parsedOutput: ClaudeOutput | undefined;
+        try { parsedOutput = JSON.parse(err.stdout); } catch { /* truncated JSON */ }
+        timeoutEfficiency = parsedOutput
+          ? extractEfficiency(parsedOutput)
+          : { durationMs: d.claudeTimeoutMs ?? DEFAULT_CLAUDE_TIMEOUT_MS, costUsd: 0, inputTokens: 0, outputTokens: 0, cacheReadTokens: 0, cacheCreationTokens: 0, totalTokens: 0, numTurns: 0 };
+
+        const resultData = mergeAndSaveResult(combo, runDir, timeoutEfficiency, null, ts);
+        detail = extractRunDetail(resultData);
 
         const assertLabel = assertionPassRate !== null
           ? ` | Assertions: ${Math.round(assertionPassRate * 100)}%`
@@ -207,11 +197,15 @@ const runSingle = async (
       model: combo.model,
       config: combo.config,
       runNumber: combo.run,
-      timestamp: new Date().toISOString(),
+      timestamp: ts,
       score,
       assertionPassRate,
       sessionId: null,
       error: msg,
+      ...(timeoutEfficiency ? { efficiency: timeoutEfficiency } : {}),
+      ...(detail ? { detail } : {}),
+      resultFile: path.relative(ROOT, path.join(runDir, 'result.json')),
+      sourceFile: path.relative(ROOT, path.join(runDir, 'source.tsx')),
     };
     addRun(bm, bmRun);
 
@@ -265,12 +259,14 @@ export const runBatch = async (
   let completed = 0;
   const results: RunResult[] = [];
   let idx = 0;
+  const batchStart = Date.now();
 
   const modelSem = createModelSemaphore(config.defaults.modelConcurrency ?? {});
 
   const effectiveWorkers = Math.min(concurrency, total);
   const workers = Array.from({ length: effectiveWorkers }, async (_, workerIndex) => {
     while (true) {
+      if (shuttingDown) break;
       const i = idx++;
       if (i >= total) break;
       const combo = combinations[i];
@@ -286,7 +282,12 @@ export const runBatch = async (
         modelSem.release(combo.model);
       }
       completed++;
-      log(`  Progress: ${completed}/${total}\n`);
+      const elapsedMs = Date.now() - batchStart;
+      const elapsed = (elapsedMs / 1000) | 0;
+      const eta = elapsedMs > 1000
+        ? (((total - completed) * (elapsedMs / completed)) / 1000) | 0
+        : '?';
+      log(`  Progress: ${completed}/${total} (${elapsed}s elapsed, ~${eta}s remaining)\n`);
     }
   });
 

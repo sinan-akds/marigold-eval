@@ -1,14 +1,16 @@
 import fs from 'node:fs';
 import path from 'node:path';
 import { spawn } from 'node:child_process';
-import { ROOT, DEV_SERVER_PORT_BASE } from './paths';
+import { ROOT, DEV_SERVER_PORT_BASE, KILL_GRACE_MS } from './paths';
 import type { ClaudeOutput, Combination, EvalsConfig } from './types';
 
 export class ClaudeTimeoutError extends Error {
   stderr: string;
-  constructor(timeoutMs: number, stderr: string) {
+  stdout: string;
+  constructor(timeoutMs: number, stderr: string, stdout: string) {
     super(`claude timed out after ${Math.round(timeoutMs / 1000)}s`);
     this.stderr = stderr;
+    this.stdout = stdout;
   }
 }
 
@@ -84,10 +86,11 @@ export const runClaude = (args: string[], cwd: string, timeoutMs = 300_000, extr
       }
     };
 
+    let killTimer: NodeJS.Timeout | undefined;
     const timer = setTimeout(() => {
       killed = true;
       killGroup('SIGTERM');
-      setTimeout(() => killGroup('SIGKILL'), 5000);
+      killTimer = setTimeout(() => killGroup('SIGKILL'), KILL_GRACE_MS);
     }, timeoutMs);
 
     const MAX_BUFFER = 10 * 1024 * 1024;
@@ -96,9 +99,10 @@ export const runClaude = (args: string[], cwd: string, timeoutMs = 300_000, extr
 
     child.on('close', (code) => {
       clearTimeout(timer);
+      if (killTimer) clearTimeout(killTimer);
 
       if (killed) {
-        reject(new ClaudeTimeoutError(timeoutMs, stderr));
+        reject(new ClaudeTimeoutError(timeoutMs, stderr, stdout));
         return;
       }
 

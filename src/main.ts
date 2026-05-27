@@ -4,16 +4,16 @@ import { execFileSync } from 'node:child_process';
 import { parseArgs } from 'node:util';
 import { EVALS_PATH, DEV_SERVER_PORT_BASE } from './paths';
 import { log, out } from './log';
-import { loadBenchmark, comboId, runComboId, recomputeSummaries, saveBenchmark } from './benchmark';
+import { loadBenchmark, runComboId, recomputeSummaries, saveBenchmark } from './benchmark';
 import { generateCombinations } from './combinations';
 import { killDevServerOnPort } from './worktree';
-import { runBatch } from './runner';
+import { runBatch, installShutdownHandler } from './runner';
 import { showStatus } from './status';
 import { cleanAll } from './cleanup';
 import { validateEvalsConfig, validateFilesExist } from './validate-config';
 import type { EvalsConfig } from './types';
 
-const USAGE = `Usage: tsx run-eval.ts [options]
+const USAGE = `Usage: pnpm eval [options]
 
 Options:
   --dry-run           Show what would run without executing
@@ -26,13 +26,17 @@ Options:
   --help              Show this message
 `;
 
+const resetArg = process.argv.find(a => a === '--reset' || a.startsWith('--reset='));
+const resetFilter = resetArg?.startsWith('--reset=') ? resetArg.slice('--reset='.length) : undefined;
+const argsWithoutReset = process.argv.filter(a => a !== '--reset' && !a.startsWith('--reset='));
+
 const { values: flags } = parseArgs({
+  args: argsWithoutReset.slice(2),
   options: {
     'dry-run': { type: 'boolean', default: false },
     clean: { type: 'boolean', default: false },
     concurrency: { type: 'string', default: '' },
     filter: { type: 'string', default: '' },
-    reset: { type: 'string', default: undefined },
     status: { type: 'boolean', default: false },
     help: { type: 'boolean', default: false },
   },
@@ -50,8 +54,37 @@ const main = async () => {
     process.exit(2);
   }
 
-  const config = JSON.parse(fs.readFileSync(EVALS_PATH, 'utf-8')) as EvalsConfig;
+  let config: EvalsConfig;
+  try {
+    config = JSON.parse(fs.readFileSync(EVALS_PATH, 'utf-8')) as EvalsConfig;
+  } catch (err) {
+    throw new Error(`Failed to parse evals.json: ${err instanceof Error ? err.message : err}`);
+  }
   validateEvalsConfig(config);
+
+  if (flags.status) {
+    showStatus(config, loadBenchmark());
+    process.exit(0);
+  }
+
+  if (resetArg) {
+    if (flags.filter) {
+      log(`Note: --filter is ignored when using --reset. Reset applies to benchmark.json, not to running evals.\n`);
+    }
+    const bm = loadBenchmark();
+    const before = bm.runs.length;
+    if (resetFilter) {
+      bm.runs = bm.runs.filter(r => !runComboId(r).includes(resetFilter));
+    } else {
+      bm.runs = [];
+    }
+    const removed = before - bm.runs.length;
+    recomputeSummaries(bm);
+    saveBenchmark(bm);
+    log(`Reset: removed ${removed} runs${resetFilter ? ` matching "${resetFilter}"` : ''} (${bm.runs.length} remaining)\n`);
+    process.exit(0);
+  }
+
   validateFilesExist(config);
   const appDir = config.defaults.projectDir;
 
@@ -71,35 +104,22 @@ const main = async () => {
     }
   }
 
-  if (flags.status) {
-    showStatus(config, loadBenchmark());
-    process.exit(0);
-  }
-
-  if (flags.reset !== undefined) {
-    const bm = loadBenchmark();
-    const filter = flags.reset || '';
-    const before = bm.runs.length;
-    if (filter) {
-      bm.runs = bm.runs.filter(r => !runComboId(r).includes(filter));
-    } else {
-      bm.runs = [];
-    }
-    const removed = before - bm.runs.length;
-    recomputeSummaries(bm);
-    saveBenchmark(bm);
-    log(`Reset: removed ${removed} runs${filter ? ` matching "${filter}"` : ''} (${bm.runs.length} remaining)\n`);
-    process.exit(0);
-  }
-
   if (flags.clean) {
+    if (flags.filter) {
+      log(`Warning: --clean wipes ALL data, not just runs matching --filter="${flags.filter}". Use --reset=${flags.filter} to selectively remove runs.\n`);
+    }
     cleanAll(config);
   }
 
   const bm = loadBenchmark();
-  const concurrency = flags.concurrency
-    ? parseInt(flags.concurrency, 10)
-    : config.defaults.concurrency ?? 3;
+  const concurrency = (() => {
+    if (!flags.concurrency) return config.defaults.concurrency ?? 3;
+    const n = parseInt(flags.concurrency, 10);
+    if (Number.isNaN(n) || n < 1) {
+      throw new Error(`Invalid --concurrency value: "${flags.concurrency}" (must be a positive integer)`);
+    }
+    return n;
+  })();
 
   const combos = generateCombinations(config, bm, flags.filter || '');
 
@@ -124,6 +144,8 @@ const main = async () => {
     out(`\nTotal: ${combos.length} runs\n`);
     process.exit(0);
   }
+
+  installShutdownHandler();
 
   for (let i = 0; i < concurrency; i++) {
     killDevServerOnPort(DEV_SERVER_PORT_BASE + i);
