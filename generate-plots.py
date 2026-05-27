@@ -7,11 +7,17 @@ import matplotlib
 matplotlib.use("Agg")
 import matplotlib.pyplot as plt
 
-OUT = "plots"
+OUT = os.path.join(script_dir, "plots")
 os.makedirs(OUT, exist_ok=True)
 
-bm = json.load(open("benchmark.json"))
-ev = json.load(open("evals.json"))
+script_dir = os.path.dirname(os.path.abspath(__file__))
+bm = json.load(open(os.path.join(script_dir, "benchmark.json")))
+ev = json.load(open(os.path.join(script_dir, "evals.json")))
+
+runs_all = bm.get("runs", [])
+if not runs_all:
+    print("No runs in benchmark.json — nothing to plot.")
+    exit(0)
 
 complexity = {e["id"]: e["complexity"] for e in ev["evals"]}
 pairs = [("P-01","P-02"), ("P-03","P-04"), ("P-05","P-06"), ("P-07","P-08"), ("P-09","P-10"), ("P-11","P-12")]
@@ -101,7 +107,7 @@ save(fig, "02_incremental_lift.png")
 cat_labels = {"A": "API\nUsage", "B": "Token\nCompl.", "C": "DOM\nStruct.", "D": "Spatial\nA11y", "E": "Func.\nCompl."}
 cat_ids = ["A", "B", "C", "D", "E"]
 cat_data = {}
-for rfile in glob.glob("results/*/P-*/run-*/result.json"):
+for rfile in glob.glob(os.path.join(script_dir, "results/*/P-*/run-*/result.json")):
     parts = os.path.basename(os.path.dirname(os.path.dirname(os.path.dirname(rfile)))).split("-", 1)
     if len(parts) < 2: continue
     model, config = parts
@@ -146,7 +152,7 @@ src_issues = {}   # (model, config) -> source -> [errors, warnings]
 n_total = {}      # (model, config) -> total runs
 n_rendered = {}   # (model, config) -> runs that rendered (renderTimeMs > 0)
 
-for rfile in glob.glob("results/*/P-*/run-*/result.json"):
+for rfile in glob.glob(os.path.join(script_dir, "results/*/P-*/run-*/result.json")):
     parts = os.path.basename(os.path.dirname(os.path.dirname(os.path.dirname(rfile)))).split("-", 1)
     if len(parts) < 2: continue
     model, config = parts
@@ -253,7 +259,7 @@ save(fig, "06_specificity_gap.png")
 # 7. RENDER SUCCESS — by model × config
 # ──────────────────────────────────────────────────────────────
 render = {}
-for rfile in glob.glob("results/*/P-*/run-*/result.json"):
+for rfile in glob.glob(os.path.join(script_dir, "results/*/P-*/run-*/result.json")):
     parts = os.path.basename(os.path.dirname(os.path.dirname(os.path.dirname(rfile)))).split("-", 1)
     if len(parts) < 2: continue
     model, config = parts

@@ -1,10 +1,12 @@
 import fs from 'node:fs';
 import path from 'node:path';
+import { ROOT, RESULTS_DIR } from './src/paths';
 
-const CLAUDE_PROJECTS_DIR = path.join(process.env.HOME!, '.claude', 'projects');
-const RESULTS_DIR = path.join(import.meta.dirname, 'results');
+const HOME = process.env.HOME ?? '/tmp';
+const CLAUDE_PROJECTS_DIR = path.join(HOME, '.claude', 'projects');
 
 const SESSION_DIR_PREFIXES = [
+  '-home-sinan-GitHub-private-uni-marigold-eval-worktree-',
   '-home-sinan-GitHub-public-marigold-eval-worktree-',
   '-home-sinan-GitHub-test-marigold-test-project-worktree-',
   '-home-sinan-GitHub-private-uni-marigold-test-app-worktree-',
@@ -213,7 +215,7 @@ const extractFromSession = (sessionFile: string): {
 };
 
 const getEvalPromptStart = (promptId: string): string => {
-  const promptFile = path.join(import.meta.dirname, 'prompts', `${promptId}.md`);
+  const promptFile = path.join(ROOT, 'prompts', `${promptId}.md`);
   if (!fs.existsSync(promptFile)) return '';
   const text = fs.readFileSync(promptFile, 'utf-8');
   return text.slice(0, 80);
@@ -222,7 +224,7 @@ const getEvalPromptStart = (promptId: string): string => {
 const main = () => {
   const resultDirs = fs.readdirSync(RESULTS_DIR).filter(d => {
     const full = path.join(RESULTS_DIR, d);
-    return fs.statSync(full).isDirectory() && d !== 'node_modules';
+    return fs.statSync(full).isDirectory() && d !== 'node_modules' && d !== 'runs';
   });
 
   const allIterations: IterationData[] = [];
@@ -326,7 +328,7 @@ const main = () => {
     runs: allIterations.map(({ toolCalls, ...rest }) => rest),
   };
 
-  const outPath = path.join(import.meta.dirname, 'iteration-data.json');
+  const outPath = path.join(ROOT, 'iteration-data.json');
   fs.writeFileSync(outPath, JSON.stringify(output, null, 2));
   console.error(`Written to ${outPath}`);
 
