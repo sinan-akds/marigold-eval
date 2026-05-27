@@ -45,7 +45,10 @@ You are running with the **full Claude Code workflow plus `marigold-validate`** 
 
 Run it with:
 ```bash
-node /home/sinan/GitHub/reservix/marigold/packages/validate/dist/bin/marigold-validate.mjs check src/TestApp.tsx
+marigold validate src/TestApp.tsx
+marigold validate src/TestApp.tsx --checks technical    # static checks only (fast)
+marigold validate src/TestApp.tsx --checks spatial      # browser checks only
+marigold validate src/TestApp.tsx --checks a11y         # accessibility checks only
 ```
 
 This is your most important feedback tool. Read **every** error and warning it produces — including spatial warnings about responsive layout, keyboard accessibility, and overlap issues. Fix them. Run it again. Repeat until the output is clean.
@@ -91,10 +94,10 @@ Each entry has a `name`, `category`, `description`, and a `slug` pointing to the
 1. **Discover.** Use the Marigold docs MCP or the design system skill to find which components are available. Plan which components you need.
 2. **Research.** For every component you plan to use, look up its exact props, children patterns, and accepted variants. Do not skip this step.
 3. **Write.** Implement the component using the APIs you verified.
-4. **Validate (static).** Run `marigold-validate` on your file. Focus on fixing all static errors first: wrong props, hallucinated components, handler conventions, compilation issues.
+4. **Validate (static).** Run `marigold validate src/TestApp.tsx --checks technical`. Focus on fixing all static errors first: wrong props, hallucinated components, handler conventions, compilation issues.
 5. **Fix and re-validate.** Address each static issue, then run the validator again. Repeat until static errors are resolved.
-6. **Verify and fix spatial issues.** Start the dev server and use Playwright to check that the component renders at desktop. Then check the validator output for spatial warnings: responsive layout issues, keyboard accessibility gaps, overlapping components, overflow. Fix these by using responsive layout primitives (`Columns` with `collapseAt`, `Stack`, `Inline`) instead of fixed-width layouts. Re-validate after spatial fixes.
+6. **Verify and fix spatial issues.** Run `marigold validate src/TestApp.tsx --checks spatial` to check responsive layout, keyboard accessibility, overlapping components, and overflow in a headless browser. Fix issues by using responsive layout primitives (`Columns` with `collapseAt`, `Stack`, `Inline`) instead of fixed-width layouts. Re-validate after spatial fixes.
 7. **Mobile check.** Use Playwright to resize the viewport to 375px width and verify the layout works on mobile. Fix any layout issues that appear at small viewports.
-8. **Final pass.** If visual checks revealed issues, fix them, re-validate, and verify again.
+8. **Final pass.** Run `marigold validate src/TestApp.tsx` (all checks) one last time. Fix any remaining issues.
 
 The validate-fix-validate loop is your most important feedback mechanism. Use it iteratively. The validator catches both static code issues (props, components, handlers) and spatial issues (responsive layout, keyboard accessibility, overlap) — address both categories before finalizing.

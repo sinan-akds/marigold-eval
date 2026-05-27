@@ -5,6 +5,7 @@ const CLAUDE_PROJECTS_DIR = path.join(process.env.HOME!, '.claude', 'projects');
 const RESULTS_DIR = path.join(import.meta.dirname, 'results');
 
 const SESSION_DIR_PREFIXES = [
+  '-home-sinan-GitHub-public-marigold-eval-worktree-',
   '-home-sinan-GitHub-test-marigold-test-project-worktree-',
   '-home-sinan-GitHub-private-uni-marigold-test-app-worktree-',
   '-home-sinan-GitHub-private-uni-Bachelorarbeit-worktree-',
