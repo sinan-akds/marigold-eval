@@ -5,9 +5,10 @@ import { log } from './log';
 import { addRun } from './benchmark';
 import { createWorktree, removeWorktree, killDevServerOnPort, resetMainTestApp, STUB_CONTENT } from './worktree';
 import { createRunMcpConfig, cleanupRunMcpConfig } from './mcp';
-import { buildClaudeArgs, ClaudeTimeoutError, runClaude } from './claude';
+import { buildClaudeArgs, ClaudeTimeoutError, runClaude, resolveModelId, getClaudeCliVersion } from './claude';
 import { runScore, locateTargetFile, extractEfficiency } from './scoring';
 import { extractRunDetail } from './result-parsing';
+import { extractToolUsage } from './tool-usage';
 import type { BenchmarkFile, BenchmarkRun, ClaudeOutput, Combination, Efficiency, EvalsConfig, RunResult } from './types';
 
 let shuttingDown = false;
@@ -28,12 +29,19 @@ export const installShutdownHandler = () => {
 const buildRunDir = (combo: Combination): string =>
   path.join(RESULTS_DIR, `${combo.model}-${combo.config}`, combo.evalId, `run-${combo.run}`);
 
+type ReproMeta = {
+  resolvedModelId?: string;
+  claudeCliVersion?: string | null;
+  docsMcpUsed?: boolean;
+};
+
 const mergeAndSaveResult = (
   combo: Combination,
   runDir: string,
   efficiency: Efficiency,
   sessionId: string | null,
-  ts: string
+  ts: string,
+  repro: ReproMeta = {}
 ): Record<string, unknown> => {
   const scoringResultPath = path.join(RESULTS_DIR, 'runs', combo.id, combo.evalId, 'result.json');
   const resultData: Record<string, unknown> = (() => {
@@ -43,6 +51,10 @@ const mergeAndSaveResult = (
   resultData.efficiency = efficiency;
   if (sessionId) resultData.sessionId = sessionId;
   resultData.timestamp = ts;
+  // Reproducibility metadata (additive — never feeds back into the score).
+  if (repro.resolvedModelId) resultData.resolvedModelId = repro.resolvedModelId;
+  if (repro.claudeCliVersion != null) resultData.claudeCliVersion = repro.claudeCliVersion;
+  if (repro.docsMcpUsed !== undefined) resultData.docsMcpUsed = repro.docsMcpUsed;
   fs.writeFileSync(path.join(runDir, 'result.json'), JSON.stringify(resultData, null, 2) + '\n');
   return resultData;
 };
@@ -58,6 +70,8 @@ const runSingle = async (
   const appDir = d.projectDir;
   const runDir = buildRunDir(combo);
   const ts = new Date().toISOString();
+  const resolvedModelId = resolveModelId(combo, config);
+  const claudeCliVersion = getClaudeCliVersion();
   log(`${tag} Starting...\n`);
 
   let wtPath: string | undefined;
@@ -67,6 +81,13 @@ const runSingle = async (
 
     log(`${tag} Creating worktree...\n`);
     wtPath = createWorktree(combo.id, appDir);
+
+    const settingsFile = path.join(ROOT, 'configs', `${combo.config}-settings.json`);
+    if (fs.existsSync(settingsFile)) {
+      const claudeDir = path.join(wtPath, '.claude');
+      fs.mkdirSync(claudeDir, { recursive: true });
+      fs.copyFileSync(settingsFile, path.join(claudeDir, 'settings.json'));
+    }
 
     const targetFile = path.join(wtPath, d.targetFile);
     fs.writeFileSync(targetFile, STUB_CONTENT);
@@ -97,6 +118,8 @@ const runSingle = async (
       validatePackage: d.validatePackage,
       themePath: d.themePath,
       scoreTimeoutMs: d.scoreTimeoutMs,
+      resolvedModelId,
+      claudeCliVersion,
     });
 
     const scoreLabel = scoreResult.score !== null ? `${scoreResult.score}/100` : 'null (scoring failed)';
@@ -114,7 +137,25 @@ const runSingle = async (
       fs.writeFileSync(path.join(runDir, 'source.tsx'), src);
     } catch { /* ok */ }
 
-    const resultData = mergeAndSaveResult(combo, runDir, efficiency, sessionId, ts);
+    const toolUsage = extractToolUsage(sessionId, wtPath);
+    if (toolUsage) {
+      fs.writeFileSync(path.join(runDir, 'tool-usage.json'), JSON.stringify(toolUsage, null, 2) + '\n');
+      const toolSummary = Object.entries(toolUsage.tools)
+        .sort(([, a], [, b]) => (b as number) - (a as number))
+        .map(([name, count]) => `${name}:${count}`)
+        .join(', ');
+      log(`${tag} Tools: ${toolSummary || 'none'}\n`);
+      if (toolUsage.flags.length > 0) {
+        log(`${tag} ⚠ FLAGS: ${toolUsage.flags.join(', ')}\n`);
+      }
+    }
+
+    const docsMcpUsed = toolUsage ? toolUsage.flags.includes('docs-mcp-used') : undefined;
+    const resultData = mergeAndSaveResult(combo, runDir, efficiency, sessionId, ts, {
+      resolvedModelId,
+      claudeCliVersion,
+      docsMcpUsed,
+    });
     const detail = extractRunDetail(resultData);
 
     const bmRun: BenchmarkRun = {
@@ -130,6 +171,9 @@ const runSingle = async (
       detail,
       resultFile: path.relative(ROOT, path.join(runDir, 'result.json')),
       sourceFile: path.relative(ROOT, path.join(runDir, 'source.tsx')),
+      resolvedModelId,
+      ...(claudeCliVersion != null ? { claudeCliVersion } : {}),
+      ...(docsMcpUsed !== undefined ? { docsMcpUsed } : {}),
       ...(scoreResult.error ? { error: scoreResult.error } : {}),
     };
     addRun(bm, bmRun);
@@ -172,6 +216,8 @@ const runSingle = async (
           validatePackage: d.validatePackage,
           themePath: d.themePath,
           scoreTimeoutMs: d.scoreTimeoutMs,
+          resolvedModelId,
+          claudeCliVersion,
         });
         score = scoreResult.score;
         assertionPassRate = scoreResult.assertionPassRate;
@@ -182,7 +228,10 @@ const runSingle = async (
           ? extractEfficiency(parsedOutput)
           : { durationMs: d.claudeTimeoutMs ?? DEFAULT_CLAUDE_TIMEOUT_MS, costUsd: 0, inputTokens: 0, outputTokens: 0, cacheReadTokens: 0, cacheCreationTokens: 0, totalTokens: 0, numTurns: 0 };
 
-        const resultData = mergeAndSaveResult(combo, runDir, timeoutEfficiency, null, ts);
+        const resultData = mergeAndSaveResult(combo, runDir, timeoutEfficiency, null, ts, {
+          resolvedModelId,
+          claudeCliVersion,
+        });
         detail = extractRunDetail(resultData);
 
         const assertLabel = assertionPassRate !== null
@@ -202,6 +251,8 @@ const runSingle = async (
       assertionPassRate,
       sessionId: null,
       error: msg,
+      resolvedModelId,
+      ...(claudeCliVersion != null ? { claudeCliVersion } : {}),
       ...(timeoutEfficiency ? { efficiency: timeoutEfficiency } : {}),
       ...(detail ? { detail } : {}),
       ...(fs.existsSync(runDir) ? {

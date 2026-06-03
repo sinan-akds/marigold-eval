@@ -5,12 +5,8 @@
       "args": ["-y", "@playwright/mcp@0.0.75", "--headless"]
     },
     "marigold-docs": {
-      "type": "http",
-      "url": "https://marigold-docs.vercel.app/mcp",
-      "oauth": {
-        "clientId": "dst-marigold-docs-mcp",
-        "callbackPort": 6749
-      }
+      "command": "node",
+      "args": ["/home/sinan/GitHub/private/uni/marigold-eval/scripts/marigold-docs-mcp.mjs"]
     }
   }
 }

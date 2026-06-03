@@ -20,15 +20,37 @@ Options:
   --clean             Wipe benchmark.json and results/ before starting
   --concurrency <n>   Override concurrency from evals.json
   --filter <str>      Only run combinations whose ID contains <str>
-  --reset=<filter>    Remove runs matching filter from benchmark.json
+  --reset <filter>    Remove runs matching filter from benchmark.json
   --reset             Remove ALL runs from benchmark.json
   --status            Show progress summary and exit
   --help              Show this message
 `;
 
-const resetArg = process.argv.find(a => a === '--reset' || a.startsWith('--reset='));
-const resetFilter = resetArg?.startsWith('--reset=') ? resetArg.slice('--reset='.length) : undefined;
-const argsWithoutReset = process.argv.filter(a => a !== '--reset' && !a.startsWith('--reset='));
+const findResetArg = (): { hasReset: boolean; filter?: string; consumedIndices: Set<number> } => {
+  const consumed = new Set<number>();
+  for (let i = 2; i < process.argv.length; i++) {
+    const a = process.argv[i];
+    if (a.startsWith('--reset=')) {
+      consumed.add(i);
+      return { hasReset: true, filter: a.slice('--reset='.length), consumedIndices: consumed };
+    }
+    if (a === '--reset') {
+      consumed.add(i);
+      const next = process.argv[i + 1];
+      if (next && !next.startsWith('--')) {
+        consumed.add(i + 1);
+        return { hasReset: true, filter: next, consumedIndices: consumed };
+      }
+      return { hasReset: true, filter: undefined, consumedIndices: consumed };
+    }
+  }
+  return { hasReset: false, consumedIndices: consumed };
+};
+
+const resetInfo = findResetArg();
+const resetArg = resetInfo.hasReset ? '--reset' : undefined;
+const resetFilter = resetInfo.filter;
+const argsWithoutReset = process.argv.filter((_, i) => !resetInfo.consumedIndices.has(i));
 
 const { values: flags } = parseArgs({
   args: argsWithoutReset.slice(2),

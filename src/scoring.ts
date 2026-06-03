@@ -15,6 +15,8 @@ type ScoreOpts = {
   validatePackage: string;
   themePath?: string;
   scoreTimeoutMs?: number;
+  resolvedModelId?: string;
+  claudeCliVersion?: string | null;
 };
 
 export type { ScoreOpts };
@@ -75,6 +77,8 @@ export const runScore = (targetFile: string, opts: ScoreOpts): ScoreResult => {
 
     saved.validatePackageVersion = readPackageVersion(opts.validatePackage);
     saved.playwrightVersion = readPlaywrightVersion(opts.validatePackage);
+    if (opts.resolvedModelId) saved.resolvedModelId = opts.resolvedModelId;
+    if (opts.claudeCliVersion != null) saved.claudeCliVersion = opts.claudeCliVersion;
     fs.writeFileSync(resultFilePath, JSON.stringify(saved, null, 2) + '\n');
 
     const result = {
@@ -118,13 +122,14 @@ export const locateTargetFile = (
     return expectedPath;
   }
 
+  // Constrain the fallback search to the EXACT target filename (e.g. TestApp.tsx).
+  // A broad *.tsx glob could otherwise return a newer helper component (e.g.
+  // components/Foo.tsx) and score the wrong file, penalizing the model.
+  const targetName = path.basename(expectedPath);
   try {
     const found = execFileSync('find', [
       path.join(wtPath, 'src'),
-      '-name', '*.tsx',
-      '-not', '-name', 'App.tsx',
-      '-not', '-name', 'main.tsx',
-      '-not', '-name', 'vite-env.d.ts',
+      '-name', targetName,
       '-not', '-path', '*/node_modules/*',
       '-type', 'f',
     ], { stdio: ['pipe', 'pipe', 'pipe'] }).toString().trim().split('\n').filter(Boolean);
@@ -145,6 +150,9 @@ export const extractEfficiency = (result: ClaudeOutput): Efficiency => {
   const input = usage.input_tokens ?? 0;
   const output = usage.output_tokens ?? 0;
   return {
+    // NOTE: durationMs is wall-clock and is CONTAMINATED under concurrent runs
+    // (workers compete for CPU/IO/dev-server ports), so it must NOT be used for
+    // efficiency analysis. Use totalTokens / numTurns for any efficiency claim.
     durationMs: result.duration_ms ?? 0,
     costUsd: result.total_cost_usd ?? 0,
     inputTokens: input,

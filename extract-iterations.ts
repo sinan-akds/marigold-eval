@@ -46,8 +46,10 @@ type ValidateDetail = {
   turn: number;
   command: string;
   checks: string;
-  errorCount: number | null;
-  warningCount: number | null;
+  errorCount: number;
+  warningCount: number;
+  bySource: Record<string, { errors: number; warnings: number }>;
+  issueMessages: string[];
 };
 
 type SessionMessage = {
@@ -113,23 +115,57 @@ const findBestSessionFile = (sessionDir: string, evalPromptStart: string): strin
   return files[0]?.path ?? null;
 };
 
-const parseValidateResult = (resultText: string): { errors: number; warnings: number } => {
-  const jsonMatch = resultText.match(/\{[\s\S]*"file"[\s\S]*\}/);
-  if (jsonMatch) {
-    try {
-      const json = JSON.parse(jsonMatch[0]);
-      return {
-        errors: (json.errors ?? []).length,
-        warnings: (json.warnings ?? []).length,
-      };
-    } catch { /* fall through */ }
+type ParsedValidateResult = {
+  errors: number;
+  warnings: number;
+  bySource: Record<string, { errors: number; warnings: number }>;
+  issueMessages: string[];
+};
+
+const ISSUE_LINE_RE = /^\[(error|warning)\/([\w-]+)\]\s*<([^>]+)>:\s*(.+)/;
+
+const parseSummaryLine = (text: string): { errors: number; warnings: number } | null => {
+  const m = text.match(/(\d+)\s+error\(s\),\s*(\d+)\s+warning\(s\)/);
+  if (m) return { errors: parseInt(m[1], 10), warnings: parseInt(m[2], 10) };
+  if (text.includes('— ok')) return { errors: 0, warnings: 0 };
+  return null;
+};
+
+const parseValidateResult = (resultText: string): ParsedValidateResult => {
+  const bySource: Record<string, { errors: number; warnings: number }> = {};
+  const issueMessages: string[] = [];
+  let errors = 0;
+  let warnings = 0;
+
+  const lines = resultText.split('\n');
+  for (const line of lines) {
+    const summary = parseSummaryLine(line);
+    if (summary) {
+      errors = summary.errors;
+      warnings = summary.warnings;
+      continue;
+    }
+
+    const m = line.match(ISSUE_LINE_RE);
+    if (m) {
+      const severity = m[1] as 'error' | 'warning';
+      const type = m[2];
+      const message = m[4].trim();
+
+      if (!bySource[type]) bySource[type] = { errors: 0, warnings: 0 };
+      if (severity === 'error') bySource[type].errors++;
+      else bySource[type].warnings++;
+
+      issueMessages.push(`[${severity}/${type}] ${message.slice(0, 120)}`);
+    }
   }
-  const errorMatches = resultText.match(/"severity"\s*:\s*"error"/g);
-  const warningMatches = resultText.match(/"severity"\s*:\s*"warning"/g);
-  if (errorMatches || warningMatches) {
-    return { errors: errorMatches?.length ?? 0, warnings: warningMatches?.length ?? 0 };
+
+  if (errors === 0 && warnings === 0 && issueMessages.length > 0) {
+    errors = issueMessages.filter(m => m.startsWith('[error/')).length;
+    warnings = issueMessages.filter(m => m.startsWith('[warning/')).length;
   }
-  return { errors: -1, warnings: -1 };
+
+  return { errors, warnings, bySource, issueMessages };
 };
 
 const extractFromSession = (sessionFile: string): {
@@ -159,7 +195,7 @@ const extractFromSession = (sessionFile: string): {
         const name = block.name ?? 'unknown';
         const command = name === 'Bash' ? String(block.input?.command ?? '') : undefined;
         const isValidateCall = command
-          ? /marigold-validate|marigold_validate/.test(command)
+          ? /marigold.validate|marigold-validate|marigold_validate/.test(command)
           : false;
 
         let validateChecks: string | undefined;
@@ -199,19 +235,21 @@ const extractFromSession = (sessionFile: string): {
             ? block.content.map(b => b.text ?? '').join('')
             : '';
 
-        const { errors, warnings } = parseValidateResult(resultText);
+        const parsed = parseValidateResult(resultText);
         validateDetails.push({
           turn: pending.turn,
           command: pending.command,
           checks: pending.checks,
-          errorCount: errors,
-          warningCount: warnings,
+          errorCount: parsed.errors,
+          warningCount: parsed.warnings,
+          bySource: parsed.bySource,
+          issueMessages: parsed.issueMessages,
         });
       }
     }
   }
 
-  return { toolCalls, validateDetails: validateDetails, totalTurns: turn };
+  return { toolCalls, validateDetails, totalTurns: turn };
 };
 
 const getEvalPromptStart = (promptId: string): string => {
@@ -230,9 +268,17 @@ const main = () => {
   const allIterations: IterationData[] = [];
   let found = 0;
   let missing = 0;
+  // FINDING 7: track which runs are dropped because their machine-local
+  // ~/.claude session log could not be resolved, so coverage is auditable.
+  const droppedRunIds: string[] = [];
 
   for (const comboDir of resultDirs) {
-    const [model, config] = comboDir.split('-', 2) as [string, string];
+    // NB: comboDir.split('-', 2) used to also destructure `config`, which was
+    // both unused and WRONG ('full' for 'full-stack'). We derive only `model`
+    // here and rely on the correct `configPart` (everything after the first
+    // dash) for the emitted config field.
+    const dashIdx = comboDir.indexOf('-');
+    const model = dashIdx === -1 ? comboDir : comboDir.slice(0, dashIdx);
     const configPart = comboDir.slice(model.length + 1);
     const comboPath = path.join(RESULTS_DIR, comboDir);
 
@@ -264,6 +310,7 @@ const main = () => {
             hasSessionData: false,
           });
           missing++;
+          droppedRunIds.push(runId);
           continue;
         }
 
@@ -277,6 +324,7 @@ const main = () => {
             hasSessionData: false,
           });
           missing++;
+          droppedRunIds.push(runId);
           continue;
         }
 
@@ -319,13 +367,59 @@ const main = () => {
   }
 
   console.error(`Extracted: ${found} runs with session data, ${missing} without`);
+  // FINDING 7: session transcripts live ONLY under machine-local ~/.claude
+  // (results/runs/<id> and results/all-runs.jsonl carry no toolCalls), so the
+  // ~19% drop is a data-availability limit we cannot eliminate — we make it
+  // transparent by logging every dropped run id and reporting coverage below.
+  if (droppedRunIds.length > 0) {
+    console.error(`Dropped ${droppedRunIds.length} run(s) with no resolvable session log:`);
+    for (const id of [...droppedRunIds].sort()) console.error(`  - ${id}`);
+  }
+
+  const enrichedRuns = allIterations.map(({ toolCalls, ...rest }) => {
+    const calls = rest.validateCallDetails;
+    if (calls.length < 2) return { ...rest, convergence: null };
+    const first = calls[0];
+    const last = calls[calls.length - 1];
+    return {
+      ...rest,
+      convergence: {
+        // SCOPE WARNING (finding 6): first/last here span ALL validate calls
+        // regardless of --checks scope, so firstErrors/lastErrors mix
+        // technical/spatial/a11y runs. This is the CONTAMINATED number the
+        // honest convergence plots deliberately avoid — generate-convergence-
+        // plots.py recomputes first/last from SAME-scope calls and does NOT
+        // read this field. Kept only for backward compatibility; do not use it
+        // for any reported figure. The explicit marker stops a future reader
+        // from mistaking it for a clean same-scope convergence value.
+        scope: 'all-calls-mixed',
+        validateCalls: calls.length,
+        firstErrors: first.errorCount,
+        lastErrors: last.errorCount,
+        firstWarnings: first.warningCount,
+        lastWarnings: last.warningCount,
+        converged: last.errorCount === 0,
+        errorReduction: first.errorCount > 0
+          ? Math.round((first.errorCount - last.errorCount) / first.errorCount * 100)
+          : 0,
+      },
+    };
+  });
 
   const output = {
     extractedAt: new Date().toISOString(),
     totalRuns: allIterations.length,
     withSessionData: found,
     withoutSessionData: missing,
-    runs: allIterations.map(({ toolCalls, ...rest }) => rest),
+    // Convergence figures read these to report honest coverage (finding 7).
+    analyzedRuns: found,
+    droppedRunIds: [...droppedRunIds].sort(),
+    coverage: {
+      found,
+      total: allIterations.length,
+      rate: allIterations.length ? found / allIterations.length : 0,
+    },
+    runs: enrichedRuns,
   };
 
   const outPath = path.join(ROOT, 'iteration-data.json');
@@ -374,12 +468,63 @@ const main = () => {
   console.log('\n=== Validate Call Progression (full-stack) ===\n');
   for (const run of sorted.filter(r => r.config === 'full-stack' && r.validateCallDetails.length > 0)) {
     console.log(`${run.runId}:`);
-    for (const v of run.validateCallDetails) {
-      const errs = v.errorCount !== null ? `${v.errorCount}E` : '?E';
-      const warns = v.warningCount !== null ? `${v.warningCount}W` : '?W';
-      console.log(`  turn ${String(v.turn).padStart(3)}: [${v.checks}] ${errs} ${warns}`);
+    for (let i = 0; i < run.validateCallDetails.length; i++) {
+      const v = run.validateCallDetails[i];
+      const sources = Object.entries(v.bySource)
+        .map(([src, counts]) => `${src}:${counts.errors}E${counts.warnings}W`)
+        .join(' ');
+      console.log(`  #${i + 1} turn ${String(v.turn).padStart(3)}: [${v.checks}] ${v.errorCount}E ${v.warningCount}W  ${sources}`);
+    }
+    // Convergence summary
+    const calls = run.validateCallDetails;
+    if (calls.length >= 2) {
+      const first = calls[0];
+      const last = calls[calls.length - 1];
+      const errDelta = last.errorCount - first.errorCount;
+      const warnDelta = last.warningCount - first.warningCount;
+      const converged = last.errorCount === 0;
+      console.log(`  → ${calls.length} validate calls, errors: ${first.errorCount}→${last.errorCount} (${errDelta >= 0 ? '+' : ''}${errDelta}), warnings: ${first.warningCount}→${last.warningCount} (${warnDelta >= 0 ? '+' : ''}${warnDelta}), converged: ${converged ? 'yes' : 'no'}`);
     }
     console.log();
+  }
+
+  // Convergence statistics.
+  // SCOPE WARNING (finding 6): these first/last deltas span ALL validate calls
+  // (mixed --checks scope) and are therefore the contaminated, scope-mixed view.
+  // The reported thesis figures come from generate-convergence-plots.py, which
+  // recomputes first/last from SAME-scope calls. This stdout block is a quick
+  // sanity dump only — do not cite these numbers.
+  console.log('=== Convergence Statistics (full-stack, SCOPE-MIXED — not for citation) ===\n');
+  const fsRuns = sorted.filter(r => r.config === 'full-stack' && r.validateCallDetails.length >= 2);
+  if (fsRuns.length > 0) {
+    const convergenceData = fsRuns.map(r => {
+      const calls = r.validateCallDetails;
+      const first = calls[0];
+      const last = calls[calls.length - 1];
+      return {
+        runId: r.runId,
+        validateCalls: calls.length,
+        firstErrors: first.errorCount,
+        lastErrors: last.errorCount,
+        firstWarnings: first.warningCount,
+        lastWarnings: last.warningCount,
+        converged: last.errorCount === 0,
+        errorReduction: first.errorCount > 0 ? ((first.errorCount - last.errorCount) / first.errorCount * 100) : 0,
+      };
+    });
+
+    const avgCalls = convergenceData.reduce((s, d) => s + d.validateCalls, 0) / convergenceData.length;
+    const avgFirstErr = convergenceData.reduce((s, d) => s + d.firstErrors, 0) / convergenceData.length;
+    const avgLastErr = convergenceData.reduce((s, d) => s + d.lastErrors, 0) / convergenceData.length;
+    const convergedCount = convergenceData.filter(d => d.converged).length;
+    const avgReduction = convergenceData.reduce((s, d) => s + d.errorReduction, 0) / convergenceData.length;
+
+    console.log(`  Runs with ≥2 validate calls: ${fsRuns.length}`);
+    console.log(`  Avg validate calls per run: ${avgCalls.toFixed(1)}`);
+    console.log(`  Avg errors (first call): ${avgFirstErr.toFixed(1)}`);
+    console.log(`  Avg errors (last call): ${avgLastErr.toFixed(1)}`);
+    console.log(`  Avg error reduction: ${avgReduction.toFixed(0)}%`);
+    console.log(`  Fully converged (0 errors): ${convergedCount}/${fsRuns.length} (${(convergedCount/fsRuns.length*100).toFixed(0)}%)`);
   }
 };
 

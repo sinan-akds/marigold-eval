@@ -30,19 +30,39 @@ COMPLEXITY = {
     "P-05": "medium", "P-06": "medium",
     "P-07": "medium", "P-08": "medium",
     "P-09": "high", "P-10": "high",
-    "P-11": "high", "P-12": "high",
 }
 
-PRESCRIPTIVE_IDS = {"P-01", "P-03", "P-05", "P-07", "P-09", "P-11"}
-INTENT_IDS = {"P-02", "P-04", "P-06", "P-08", "P-10", "P-12"}
-
-TASK_PAIRS = [
-    ("P-01", "P-02", "Contact Form"),
-    ("P-03", "P-04", "Profile Card"),
-    ("P-05", "P-06", "Ticket Shop"),
-    ("P-07", "P-08", "Settings Page"),
-    ("P-09", "P-10", "EventHub Dashboard"),
-    ("P-11", "P-12", "Booking Mgmt"),
-]
-
 COMPLEXITY_ORDER = ["low", "medium", "high"]
+
+# Short display labels for the issue-source ids actually emitted by the
+# validator (verified against benchmark.json). The dynamic source plot (06)
+# ranks sources by observed frequency and labels them here; any id not listed
+# falls back to a humanized form and unranked sources are bucketed into "other".
+# No phantom ids (required-ancestor/section-header) are hardcoded any more.
+ISSUE_SOURCE_LABELS = {
+    "compiler": "Compiler",
+    "prop-validator": "Props",
+    "composition-validator": "Composition",
+    "design-system-usage": "DS Usage",
+    "theme-variant-validator": "Theme/Variant",
+    "accessible-name": "Acc. Name",
+    "token-compliance": "Tokens",
+    "responsive-checker": "Responsive",
+    "runtime": "Runtime",
+    "aom-extractor": "A11y (AOM)",
+    "overlap-detector": "Overlap",
+    "keyboard-a11y": "Keyboard",
+    "overflow-detector": "Overflow",
+    "other": "Other",
+}
+
+# Fixed RNG seed so stripplot jitter (and any other jittered scatter) is
+# reproducible across regenerations — figures should be byte-stable.
+JITTER_SEED = 42
+
+# Note appended to the Wilcoxon figure/CSV when scipy is unavailable or a cell
+# is under-powered (n < 6 pairs), so the reader is not misled by a missing test.
+WILCOXON_FALLBACK_NOTE = (
+    "Descriptive median delta only — Wilcoxon signed-rank test not reported "
+    "(scipy unavailable or n < 6 paired runs)."
+)

@@ -60,6 +60,10 @@ export const validateEvalsConfig = (config: EvalsConfig): void => {
   if (!Number.isInteger(d.runsPerCombination) || d.runsPerCombination < 1) {
     throw new Error('evals.json: defaults.runsPerCombination must be a positive integer');
   }
+  if (d.maxAttemptsPerCombination !== undefined
+    && (!Number.isInteger(d.maxAttemptsPerCombination) || d.maxAttemptsPerCombination < 1)) {
+    throw new Error('evals.json: defaults.maxAttemptsPerCombination must be a positive integer');
+  }
   if (!Number.isInteger(d.concurrency) || d.concurrency < 1) {
     throw new Error('evals.json: defaults.concurrency must be a positive integer');
   }
@@ -104,6 +108,19 @@ export const validateFilesExist = (config: EvalsConfig): void => {
   const validateBin = path.join(d.validatePackage, 'dist', 'bin', 'marigold-validate.mjs');
   if (!fs.existsSync(validateBin)) {
     throw new Error(`Validate binary not found at ${validateBin}. Run: pnpm -F @marigold-ui/validate build`);
+  }
+
+  // Scoring shells out to the @marigold/cli validator (single source of truth
+  // for both agent feedback and measurement). It must be built with its
+  // harness, otherwise every scored run fails to render.
+  const cliPkg = path.join(d.validatePackage, '..', 'cli');
+  const cliBin = path.join(cliPkg, 'dist', 'bin', 'marigold.mjs');
+  if (!fs.existsSync(cliBin)) {
+    throw new Error(`CLI validator binary not found at ${cliBin}. Run: pnpm -F @marigold/cli build`);
+  }
+  const cliHarness = path.join(cliPkg, 'dist', 'harness');
+  if (!fs.existsSync(cliHarness)) {
+    throw new Error(`CLI validator harness not found at ${cliHarness}. Run: pnpm -F @marigold/cli build (runs copy-harness).`);
   }
 
   for (const evalDef of config.evals) {

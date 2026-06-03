@@ -5,7 +5,14 @@ import path from 'node:path';
 import { ROOT, RESULTS_DIR } from './src/paths';
 import { recomputeSummaries, saveBenchmark } from './src/benchmark';
 import { extractRunDetail } from './src/result-parsing';
-import type { BenchmarkFile, BenchmarkRun } from './src/types';
+import type { BenchmarkFile, BenchmarkRun, RunDetail } from './src/types';
+
+// requiredPassRate is part of the data contract (emitted in result.json) but is
+// not yet a field on RunDetail in src/types.ts (owned by another area). We
+// attach it via a local intersection type so data.py can read it from
+// benchmark.json without editing the out-of-area type definition. Older data
+// simply lacks the field (undefined).
+type RunDetailWithRequired = RunDetail & { requiredPassRate?: number };
 
 const runs: BenchmarkRun[] = [];
 
@@ -47,7 +54,15 @@ for (const configDir of configDirs) {
         const result = JSON.parse(fs.readFileSync(resultPath, 'utf-8'));
         const quality = result.quality ?? {};
         const assertions = result.assertions ?? null;
-        const detail = extractRunDetail(result);
+        // Per-category raw counts + linesOfCode are already carried by
+        // extractRunDetail and survive unchanged; we only ADD requiredPassRate.
+        // (renderClean and a top-level errorCount are NOT in result.json yet —
+        // they are another area's planned additions — so we do not invent them;
+        // data.py derives errorCount from category sums and gates on renderSuccess.)
+        const detail: RunDetailWithRequired = {
+          ...extractRunDetail(result),
+          requiredPassRate: assertions?.requiredPassRate ?? undefined,
+        };
 
         const bmRun: BenchmarkRun = {
           evalId,

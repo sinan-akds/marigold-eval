@@ -6,12 +6,18 @@
       "sonnet",
       "opus"
     ],
+    "modelIds": {
+      "haiku": "claude-haiku-4-5",
+      "sonnet": "claude-sonnet-4-6",
+      "opus": "claude-opus-4-8"
+    },
     "configs": [
       "bare",
       "mcp-stack",
       "full-stack"
     ],
-    "runsPerCombination": 2,
+    "runsPerCombination": 3,
+    "maxAttemptsPerCombination": 2,
     "concurrency": 3,
     "projectDir": "/home/sinan/GitHub/private/uni/marigold-test-app",
     "targetFile": "src/TestApp.tsx",
@@ -183,130 +189,9 @@
     },
     {
       "id": "P-02",
-      "name": "Contact Form (Intent-driven)",
+      "name": "Profile Card",
       "promptFile": "prompts/P-02.md",
       "complexity": "low",
-      "runsPerCombination": 2,
-      "tags": [
-        "form",
-        "layout",
-        "input",
-        "intent-driven"
-      ],
-      "checklist": [],
-      "assertions": [
-        {
-          "id": "a-import-marigold",
-          "description": "Imports from @marigold/components",
-          "severity": "required",
-          "check": {
-            "type": "import",
-            "module": "@marigold/components"
-          }
-        },
-        {
-          "id": "a-name-field",
-          "description": "TextField with name label",
-          "severity": "required",
-          "check": {
-            "type": "component",
-            "component": "TextField",
-            "props": {
-              "label": "/name/i"
-            }
-          }
-        },
-        {
-          "id": "a-email-field",
-          "description": "TextField for email input",
-          "severity": "required",
-          "check": {
-            "type": "composite",
-            "operator": "or",
-            "checks": [
-              {
-                "type": "component",
-                "component": "TextField",
-                "props": {
-                  "type": "email"
-                }
-              },
-              {
-                "type": "component",
-                "component": "TextField",
-                "props": {
-                  "label": "/email/i"
-                }
-              }
-            ]
-          }
-        },
-        {
-          "id": "a-select",
-          "description": "Select component for subject/topic",
-          "severity": "required",
-          "check": {
-            "type": "component",
-            "component": "Select"
-          }
-        },
-        {
-          "id": "a-textarea",
-          "description": "TextArea component for message",
-          "severity": "required",
-          "check": {
-            "type": "component",
-            "component": "TextArea"
-          }
-        },
-        {
-          "id": "a-submit-button",
-          "description": "Submit button with type=submit",
-          "severity": "required",
-          "check": {
-            "type": "component",
-            "component": "Button",
-            "props": {
-              "type": "submit"
-            }
-          }
-        },
-        {
-          "id": "a-form-wrapper",
-          "description": "Form component wrapping fields",
-          "severity": "required",
-          "check": {
-            "type": "component",
-            "component": "Form"
-          }
-        },
-        {
-          "id": "a-uses-onpress",
-          "description": "Buttons use onPress (not onClick)",
-          "severity": "required",
-          "check": {
-            "type": "text-content",
-            "pattern": "/onPress/"
-          }
-        },
-        {
-          "id": "a-no-onclick-on-marigold",
-          "description": "No onClick on Marigold Button components",
-          "severity": "recommended",
-          "check": {
-            "type": "absence",
-            "pattern": "/<Button[^>]*onClick/",
-            "scope": "any"
-          }
-        }
-      ]
-    },
-    {
-      "id": "P-03",
-      "name": "Profile Card",
-      "promptFile": "prompts/P-03.md",
-      "complexity": "low",
-      "runsPerCombination": 2,
       "tags": [
         "card",
         "layout",
@@ -446,16 +331,14 @@
       ]
     },
     {
-      "id": "P-04",
-      "name": "Profile Card (Intent-driven)",
-      "promptFile": "prompts/P-04.md",
-      "complexity": "low",
-      "runsPerCombination": 2,
+      "id": "P-03",
+      "name": "Content Article Page",
+      "promptFile": "prompts/P-03.md",
+      "complexity": "low-medium",
       "tags": [
-        "card",
+        "content",
         "layout",
-        "display",
-        "intent-driven"
+        "navigation"
       ],
       "checklist": [],
       "assertions": [
@@ -469,40 +352,17 @@
           }
         },
         {
-          "id": "a-card",
-          "description": "Card component as container",
+          "id": "a-container",
+          "description": "Container for reading width",
           "severity": "required",
           "check": {
             "type": "component",
-            "component": "Card"
-          }
-        },
-        {
-          "id": "a-image",
-          "description": "Includes a profile image (img tag or image URL)",
-          "severity": "required",
-          "check": {
-            "type": "composite",
-            "operator": "or",
-            "checks": [
-              {
-                "type": "text-content",
-                "pattern": "/<img/"
-              },
-              {
-                "type": "text-content",
-                "pattern": "/\\.(jpg|jpeg|png|svg|webp|gif)/i"
-              },
-              {
-                "type": "text-content",
-                "pattern": "/placeholder.*image|avatar|profile.*photo/i"
-              }
-            ]
+            "component": "Container"
           }
         },
         {
           "id": "a-headline",
-          "description": "Headline for user name",
+          "description": "Headline for article title",
           "severity": "required",
           "check": {
             "type": "component",
@@ -510,17 +370,8 @@
           }
         },
         {
-          "id": "a-badge",
-          "description": "Badge for status indicator",
-          "severity": "required",
-          "check": {
-            "type": "component",
-            "component": "Badge"
-          }
-        },
-        {
           "id": "a-text",
-          "description": "Text component for details",
+          "description": "Text component for paragraphs",
           "severity": "required",
           "check": {
             "type": "component",
@@ -528,17 +379,80 @@
           }
         },
         {
-          "id": "a-button",
-          "description": "Button component for actions",
+          "id": "a-breadcrumbs",
+          "description": "Breadcrumbs navigation",
           "severity": "required",
           "check": {
             "type": "component",
-            "component": "Button"
+            "component": "Breadcrumbs"
+          }
+        },
+        {
+          "id": "a-divider",
+          "description": "Divider between sections",
+          "severity": "required",
+          "check": {
+            "type": "component",
+            "component": "Divider"
+          }
+        },
+        {
+          "id": "a-list",
+          "description": "List component for article items",
+          "severity": "required",
+          "check": {
+            "type": "component",
+            "component": "List"
+          }
+        },
+        {
+          "id": "a-badge",
+          "description": "Badge for author role",
+          "severity": "required",
+          "check": {
+            "type": "component",
+            "component": "Badge"
+          }
+        },
+        {
+          "id": "a-link",
+          "description": "Link component (not anchor tag)",
+          "severity": "required",
+          "check": {
+            "type": "component",
+            "component": "Link"
+          }
+        },
+        {
+          "id": "a-card",
+          "description": "Card for related articles",
+          "severity": "required",
+          "check": {
+            "type": "component",
+            "component": "Card"
+          }
+        },
+        {
+          "id": "a-tag",
+          "description": "Tag component for article tags",
+          "severity": "required",
+          "check": {
+            "type": "component",
+            "component": "Tag"
+          }
+        },
+        {
+          "id": "a-section-message",
+          "description": "SectionMessage for callout",
+          "severity": "required",
+          "check": {
+            "type": "component",
+            "component": "SectionMessage"
           }
         },
         {
           "id": "a-layout",
-          "description": "Uses layout primitives (Stack, Columns, or Inline)",
+          "description": "Uses layout primitives",
           "severity": "required",
           "check": {
             "type": "composite",
@@ -560,41 +474,31 @@
           }
         },
         {
-          "id": "a-uses-onpress",
-          "description": "Buttons use onPress (not onClick)",
-          "severity": "required",
+          "id": "a-columns-responsive",
+          "description": "Columns for related articles (responsive)",
+          "severity": "recommended",
           "check": {
-            "type": "text-content",
-            "pattern": "/onPress/"
+            "type": "component",
+            "component": "Columns"
           }
         },
         {
-          "id": "a-no-onclick-on-marigold",
-          "description": "No onClick on Marigold Button components",
+          "id": "a-no-raw-html",
+          "description": "No raw anchor/div/span elements",
           "severity": "recommended",
           "check": {
             "type": "absence",
-            "pattern": "/<Button[^>]*onClick/",
+            "pattern": "/<a\\s|<div\\s|<span\\s|<h[1-6]\\s/",
             "scope": "any"
-          }
-        },
-        {
-          "id": "a-user-details",
-          "description": "Shows user details (role, department, email)",
-          "severity": "required",
-          "check": {
-            "type": "text-content",
-            "pattern": "/role|department|email|location/i"
           }
         }
       ]
     },
     {
-      "id": "P-05",
+      "id": "P-04",
       "name": "Ticket Shop",
-      "promptFile": "prompts/P-05.md",
+      "promptFile": "prompts/P-04.md",
       "complexity": "medium",
-      "runsPerCombination": 2,
       "tags": [
         "form",
         "layout",
@@ -786,233 +690,10 @@
       ]
     },
     {
-      "id": "P-06",
-      "name": "Ticket Shop (Intent-driven)",
-      "promptFile": "prompts/P-06.md",
-      "complexity": "medium",
-      "runsPerCombination": 2,
-      "tags": [
-        "form",
-        "layout",
-        "commerce",
-        "state-management",
-        "intent-driven"
-      ],
-      "checklist": [
-        {
-          "id": "event-info",
-          "description": "Event information displayed",
-          "component": "Headline"
-        },
-        {
-          "id": "ticket-listing",
-          "description": "Ticket categories shown in structured layout",
-          "component": "Card"
-        },
-        {
-          "id": "buyer-form",
-          "description": "Buyer information form",
-          "component": "Form"
-        },
-        {
-          "id": "buyer-name",
-          "description": "Name input for buyer",
-          "component": "TextField"
-        },
-        {
-          "id": "submit-action",
-          "description": "Purchase/submit button",
-          "component": "Button"
-        }
-      ],
-      "assertions": [
-        {
-          "id": "a-import-marigold",
-          "description": "Imports from @marigold/components",
-          "severity": "required",
-          "check": {
-            "type": "import",
-            "module": "@marigold/components"
-          }
-        },
-        {
-          "id": "a-has-button",
-          "description": "Button component present",
-          "severity": "required",
-          "check": {
-            "type": "component",
-            "component": "Button"
-          }
-        },
-        {
-          "id": "a-has-form-input",
-          "description": "Uses at least one form input component",
-          "severity": "required",
-          "check": {
-            "type": "composite",
-            "operator": "or",
-            "checks": [
-              {
-                "type": "component",
-                "component": "TextField"
-              },
-              {
-                "type": "component",
-                "component": "NumberField"
-              },
-              {
-                "type": "component",
-                "component": "Select"
-              }
-            ]
-          }
-        },
-        {
-          "id": "a-has-layout-primitive",
-          "description": "Uses at least one layout component (Stack, Card, Columns, Inline)",
-          "severity": "required",
-          "check": {
-            "type": "composite",
-            "operator": "or",
-            "checks": [
-              {
-                "type": "component",
-                "component": "Stack"
-              },
-              {
-                "type": "component",
-                "component": "Card"
-              },
-              {
-                "type": "component",
-                "component": "Columns"
-              },
-              {
-                "type": "component",
-                "component": "Inline"
-              }
-            ]
-          }
-        },
-        {
-          "id": "a-uses-onpress",
-          "description": "Buttons use onPress (not onClick)",
-          "severity": "required",
-          "check": {
-            "type": "text-content",
-            "pattern": "/onPress/"
-          }
-        },
-        {
-          "id": "a-price-indicator",
-          "description": "Shows pricing information",
-          "severity": "required",
-          "check": {
-            "type": "text-content",
-            "pattern": "/\\$|\u20ac|price|cost|total|amount/i"
-          }
-        },
-        {
-          "id": "a-has-quantity-mechanism",
-          "description": "Has a mechanism for selecting ticket quantity",
-          "severity": "required",
-          "check": {
-            "type": "composite",
-            "operator": "or",
-            "checks": [
-              {
-                "type": "component",
-                "component": "NumberField"
-              },
-              {
-                "type": "component",
-                "component": "Select"
-              },
-              {
-                "type": "text-content",
-                "pattern": "/quantity|qty|amount|count|tickets?\\s*:/i"
-              }
-            ]
-          }
-        },
-        {
-          "id": "a-has-feedback-mechanism",
-          "description": "Has user feedback (SectionMessage, Dialog, or error/success pattern)",
-          "severity": "required",
-          "check": {
-            "type": "composite",
-            "operator": "or",
-            "checks": [
-              {
-                "type": "component",
-                "component": "SectionMessage"
-              },
-              {
-                "type": "component",
-                "component": "Dialog"
-              },
-              {
-                "type": "text-content",
-                "pattern": "/error|success|confirm/i"
-              }
-            ]
-          }
-        },
-        {
-          "id": "a-no-onclick-on-marigold",
-          "description": "No onClick on Marigold Button components",
-          "severity": "recommended",
-          "check": {
-            "type": "absence",
-            "pattern": "/<Button[^>]*onClick/",
-            "scope": "any"
-          }
-        },
-        {
-          "id": "a-has-headline",
-          "description": "Headline for event name",
-          "severity": "required",
-          "check": {
-            "type": "component",
-            "component": "Headline"
-          }
-        },
-        {
-          "id": "a-has-form",
-          "description": "Form component wrapping buyer info",
-          "severity": "required",
-          "check": {
-            "type": "component",
-            "component": "Form"
-          }
-        },
-        {
-          "id": "a-sold-out-state",
-          "description": "Sold-out state indicated (disabled, badge, or text)",
-          "severity": "required",
-          "check": {
-            "type": "composite",
-            "operator": "or",
-            "checks": [
-              {
-                "type": "text-content",
-                "pattern": "/sold.?out|unavailable|disabled/i"
-              },
-              {
-                "type": "component",
-                "component": "Badge"
-              }
-            ]
-          }
-        }
-      ]
-    },
-    {
-      "id": "P-07",
+      "id": "P-05",
       "name": "Settings Page",
-      "promptFile": "prompts/P-07.md",
+      "promptFile": "prompts/P-05.md",
       "complexity": "medium",
-      "runsPerCombination": 2,
       "tags": [
         "form",
         "layout",
@@ -1153,17 +834,15 @@
       ]
     },
     {
-      "id": "P-08",
-      "name": "Settings Page (Intent-driven)",
-      "promptFile": "prompts/P-08.md",
-      "complexity": "medium",
-      "runsPerCombination": 2,
+      "id": "P-06",
+      "name": "Product Catalog",
+      "promptFile": "prompts/P-06.md",
+      "complexity": "medium-high",
       "tags": [
-        "form",
-        "layout",
-        "accordion",
-        "settings",
-        "intent-driven"
+        "collection",
+        "filter",
+        "overlay",
+        "layout"
       ],
       "checklist": [],
       "assertions": [
@@ -1177,26 +856,26 @@
           }
         },
         {
-          "id": "a-accordion",
-          "description": "Accordion for settings sections",
+          "id": "a-search",
+          "description": "SearchField for product search",
           "severity": "required",
           "check": {
             "type": "component",
-            "component": "Accordion"
+            "component": "SearchField"
           }
         },
         {
-          "id": "a-switch",
-          "description": "Switch for toggle settings",
+          "id": "a-drawer",
+          "description": "Drawer for filter panel",
           "severity": "required",
           "check": {
             "type": "component",
-            "component": "Switch"
+            "component": "Drawer"
           }
         },
         {
           "id": "a-checkbox",
-          "description": "Checkbox or CheckboxGroup for multi-select",
+          "description": "Checkbox for filter options",
           "severity": "required",
           "check": {
             "type": "composite",
@@ -1208,23 +887,250 @@
               },
               {
                 "type": "component",
-                "component": "CheckboxGroup"
+                "component": "Checkbox.Group"
               }
             ]
           }
         },
         {
-          "id": "a-radio-group",
-          "description": "RadioGroup for exclusive choices",
+          "id": "a-slider",
+          "description": "Slider for price range",
           "severity": "required",
           "check": {
             "type": "component",
-            "component": "RadioGroup"
+            "component": "Slider"
+          }
+        },
+        {
+          "id": "a-switch",
+          "description": "Switch for availability filter",
+          "severity": "required",
+          "check": {
+            "type": "component",
+            "component": "Switch"
+          }
+        },
+        {
+          "id": "a-tag-group",
+          "description": "Tag.Group for applied filters",
+          "severity": "required",
+          "check": {
+            "type": "component",
+            "component": "Tag"
+          }
+        },
+        {
+          "id": "a-card",
+          "description": "Card for product display",
+          "severity": "required",
+          "check": {
+            "type": "component",
+            "component": "Card"
+          }
+        },
+        {
+          "id": "a-badge",
+          "description": "Badge for product status",
+          "severity": "required",
+          "check": {
+            "type": "component",
+            "component": "Badge"
+          }
+        },
+        {
+          "id": "a-button",
+          "description": "Button for add to cart",
+          "severity": "required",
+          "check": {
+            "type": "component",
+            "component": "Button"
+          }
+        },
+        {
+          "id": "a-pagination",
+          "description": "Pagination component",
+          "severity": "required",
+          "check": {
+            "type": "component",
+            "component": "Pagination"
+          }
+        },
+        {
+          "id": "a-tiles",
+          "description": "Tiles layout for product grid",
+          "severity": "required",
+          "check": {
+            "type": "component",
+            "component": "Tiles"
+          }
+        },
+        {
+          "id": "a-empty-state",
+          "description": "EmptyState when no products match",
+          "severity": "required",
+          "check": {
+            "type": "component",
+            "component": "EmptyState"
+          }
+        },
+        {
+          "id": "a-headline",
+          "description": "Headline for page title",
+          "severity": "required",
+          "check": {
+            "type": "component",
+            "component": "Headline"
           }
         },
         {
           "id": "a-select",
-          "description": "Select dropdown",
+          "description": "Select for sort dropdown",
+          "severity": "required",
+          "check": {
+            "type": "component",
+            "component": "Select"
+          }
+        },
+        {
+          "id": "a-uses-onpress",
+          "description": "Buttons use onPress",
+          "severity": "required",
+          "check": {
+            "type": "text-content",
+            "pattern": "/onPress/"
+          }
+        }
+      ]
+    },
+    {
+      "id": "P-07",
+      "name": "Booking Management",
+      "promptFile": "prompts/P-07.md",
+      "complexity": "high",
+      "tags": [
+        "table",
+        "dialog",
+        "drawer",
+        "tabs",
+        "menu",
+        "datepicker",
+        "combobox",
+        "prescriptive"
+      ],
+      "checklist": [],
+      "assertions": [
+        {
+          "id": "a-import-marigold",
+          "description": "Imports from @marigold/components",
+          "severity": "required",
+          "check": {
+            "type": "import",
+            "module": "@marigold/components"
+          }
+        },
+        {
+          "id": "a-table",
+          "description": "Table component for bookings",
+          "severity": "required",
+          "check": {
+            "type": "component",
+            "component": "Table"
+          }
+        },
+        {
+          "id": "a-table-header",
+          "description": "Table.Header sub-component",
+          "severity": "required",
+          "check": {
+            "type": "component",
+            "component": "Table.Header"
+          }
+        },
+        {
+          "id": "a-table-body",
+          "description": "Table.Body sub-component",
+          "severity": "required",
+          "check": {
+            "type": "component",
+            "component": "Table.Body"
+          }
+        },
+        {
+          "id": "a-date-picker",
+          "description": "DatePicker for date filtering",
+          "severity": "required",
+          "check": {
+            "type": "component",
+            "component": "DatePicker"
+          }
+        },
+        {
+          "id": "a-combobox",
+          "description": "ComboBox or SearchField for venue search",
+          "severity": "required",
+          "check": {
+            "type": "composite",
+            "operator": "or",
+            "checks": [
+              {
+                "type": "component",
+                "component": "ComboBox"
+              },
+              {
+                "type": "component",
+                "component": "SearchField"
+              }
+            ]
+          }
+        },
+        {
+          "id": "a-dialog",
+          "description": "Dialog for create booking form",
+          "severity": "required",
+          "check": {
+            "type": "component",
+            "component": "Dialog"
+          }
+        },
+        {
+          "id": "a-tabs",
+          "description": "Tabs for booking views",
+          "severity": "required",
+          "check": {
+            "type": "component",
+            "component": "Tabs"
+          }
+        },
+        {
+          "id": "a-menu",
+          "description": "Menu for row actions",
+          "severity": "required",
+          "check": {
+            "type": "component",
+            "component": "Menu"
+          }
+        },
+        {
+          "id": "a-badge",
+          "description": "Badge for booking status",
+          "severity": "required",
+          "check": {
+            "type": "component",
+            "component": "Badge"
+          }
+        },
+        {
+          "id": "a-button",
+          "description": "Button component",
+          "severity": "required",
+          "check": {
+            "type": "component",
+            "component": "Button"
+          }
+        },
+        {
+          "id": "a-select",
+          "description": "Select for status filter / form dropdowns",
           "severity": "required",
           "check": {
             "type": "component",
@@ -1233,38 +1139,11 @@
         },
         {
           "id": "a-text-field",
-          "description": "TextField for text inputs",
+          "description": "TextField in booking form",
           "severity": "required",
           "check": {
             "type": "component",
             "component": "TextField"
-          }
-        },
-        {
-          "id": "a-textarea",
-          "description": "TextArea for bio/multi-line input",
-          "severity": "recommended",
-          "check": {
-            "type": "component",
-            "component": "TextArea"
-          }
-        },
-        {
-          "id": "a-button",
-          "description": "Button for save actions",
-          "severity": "required",
-          "check": {
-            "type": "component",
-            "component": "Button"
-          }
-        },
-        {
-          "id": "a-form",
-          "description": "Form component wrapping inputs",
-          "severity": "required",
-          "check": {
-            "type": "component",
-            "component": "Form"
           }
         },
         {
@@ -1274,6 +1153,42 @@
           "check": {
             "type": "text-content",
             "pattern": "/onPress/"
+          }
+        },
+        {
+          "id": "a-drawer",
+          "description": "Drawer for booking detail view",
+          "severity": "recommended",
+          "check": {
+            "type": "component",
+            "component": "Drawer"
+          }
+        },
+        {
+          "id": "a-accordion",
+          "description": "Accordion for detail sections",
+          "severity": "recommended",
+          "check": {
+            "type": "component",
+            "component": "Accordion"
+          }
+        },
+        {
+          "id": "a-section-message",
+          "description": "SectionMessage for capacity alerts",
+          "severity": "required",
+          "check": {
+            "type": "component",
+            "component": "SectionMessage"
+          }
+        },
+        {
+          "id": "a-headline",
+          "description": "Headline for page title",
+          "severity": "recommended",
+          "check": {
+            "type": "component",
+            "component": "Headline"
           }
         },
         {
@@ -1287,20 +1202,29 @@
           }
         },
         {
-          "id": "a-headline",
-          "description": "Headline for page title",
+          "id": "a-form",
+          "description": "Form component in create dialog",
+          "severity": "required",
+          "check": {
+            "type": "component",
+            "component": "Form"
+          }
+        },
+        {
+          "id": "a-textarea",
+          "description": "TextArea for booking notes",
           "severity": "recommended",
           "check": {
             "type": "component",
-            "component": "Headline"
+            "component": "TextArea"
           }
         }
       ]
     },
     {
-      "id": "P-09",
+      "id": "P-08",
       "name": "EventHub Dashboard",
-      "promptFile": "prompts/P-09.md",
+      "promptFile": "prompts/P-08.md",
       "complexity": "high",
       "tags": [
         "dashboard",
@@ -1660,20 +1584,15 @@
       ]
     },
     {
-      "id": "P-10",
-      "name": "EventHub Dashboard (Intent-driven)",
-      "promptFile": "prompts/P-10.md",
-      "complexity": "high",
-      "runsPerCombination": 2,
+      "id": "P-09",
+      "name": "Event Registration Wizard",
+      "promptFile": "prompts/P-09.md",
+      "complexity": "very-high",
       "tags": [
-        "dashboard",
-        "layout",
-        "table",
         "form",
-        "dialog",
-        "navigation",
-        "tabs",
-        "intent-driven"
+        "multi-step",
+        "overlay",
+        "collection"
       ],
       "checklist": [],
       "assertions": [
@@ -1684,141 +1603,6 @@
           "check": {
             "type": "import",
             "module": "@marigold/components"
-          }
-        },
-        {
-          "id": "a-table",
-          "description": "Table component present",
-          "severity": "required",
-          "check": {
-            "type": "component",
-            "component": "Table"
-          }
-        },
-        {
-          "id": "a-table-header",
-          "description": "Table.Header sub-component used",
-          "severity": "required",
-          "check": {
-            "type": "component",
-            "component": "Table.Header"
-          }
-        },
-        {
-          "id": "a-table-body",
-          "description": "Table.Body sub-component used",
-          "severity": "required",
-          "check": {
-            "type": "component",
-            "component": "Table.Body"
-          }
-        },
-        {
-          "id": "a-badge",
-          "description": "Badge component for status indicators",
-          "severity": "required",
-          "check": {
-            "type": "component",
-            "component": "Badge"
-          }
-        },
-        {
-          "id": "a-search-field",
-          "description": "SearchField for filtering",
-          "severity": "required",
-          "check": {
-            "type": "component",
-            "component": "SearchField"
-          }
-        },
-        {
-          "id": "a-menu",
-          "description": "Menu for user account dropdown",
-          "severity": "required",
-          "check": {
-            "type": "component",
-            "component": "Menu"
-          }
-        },
-        {
-          "id": "a-dialog",
-          "description": "Dialog for create event / sign out",
-          "severity": "required",
-          "check": {
-            "type": "component",
-            "component": "Dialog"
-          }
-        },
-        {
-          "id": "a-date-picker",
-          "description": "DatePicker in create event form",
-          "severity": "required",
-          "check": {
-            "type": "component",
-            "component": "DatePicker"
-          }
-        },
-        {
-          "id": "a-tabs",
-          "description": "Tabs for reports/settings sections",
-          "severity": "required",
-          "check": {
-            "type": "component",
-            "component": "Tabs"
-          }
-        },
-        {
-          "id": "a-accordion",
-          "description": "Accordion for Q summaries",
-          "severity": "required",
-          "check": {
-            "type": "component",
-            "component": "Accordion"
-          }
-        },
-        {
-          "id": "a-card",
-          "description": "Card component for stat cards",
-          "severity": "required",
-          "check": {
-            "type": "component",
-            "component": "Card"
-          }
-        },
-        {
-          "id": "a-text-field",
-          "description": "TextField in forms",
-          "severity": "required",
-          "check": {
-            "type": "component",
-            "component": "TextField"
-          }
-        },
-        {
-          "id": "a-select",
-          "description": "Select dropdown",
-          "severity": "required",
-          "check": {
-            "type": "component",
-            "component": "Select"
-          }
-        },
-        {
-          "id": "a-switch",
-          "description": "Switch for notification toggles",
-          "severity": "required",
-          "check": {
-            "type": "component",
-            "component": "Switch"
-          }
-        },
-        {
-          "id": "a-button",
-          "description": "Button component",
-          "severity": "required",
-          "check": {
-            "type": "component",
-            "component": "Button"
           }
         },
         {
@@ -1831,17 +1615,176 @@
           }
         },
         {
-          "id": "a-breadcrumbs",
-          "description": "Breadcrumbs for page context",
+          "id": "a-textfield",
+          "description": "TextField for text inputs",
           "severity": "required",
           "check": {
             "type": "component",
-            "component": "Breadcrumbs"
+            "component": "TextField"
+          }
+        },
+        {
+          "id": "a-datepicker",
+          "description": "DatePicker for event date",
+          "severity": "required",
+          "check": {
+            "type": "component",
+            "component": "DatePicker"
+          }
+        },
+        {
+          "id": "a-timefield",
+          "description": "TimeField for time slot",
+          "severity": "required",
+          "check": {
+            "type": "component",
+            "component": "TimeField"
+          }
+        },
+        {
+          "id": "a-radio",
+          "description": "Radio/RadioGroup for session track",
+          "severity": "required",
+          "check": {
+            "type": "composite",
+            "operator": "or",
+            "checks": [
+              {
+                "type": "component",
+                "component": "Radio"
+              },
+              {
+                "type": "component",
+                "component": "RadioGroup"
+              },
+              {
+                "type": "component",
+                "component": "Radio.Group"
+              }
+            ]
+          }
+        },
+        {
+          "id": "a-combobox",
+          "description": "ComboBox for dietary requirements",
+          "severity": "required",
+          "check": {
+            "type": "component",
+            "component": "ComboBox"
+          }
+        },
+        {
+          "id": "a-numberfield",
+          "description": "NumberField for guests",
+          "severity": "required",
+          "check": {
+            "type": "component",
+            "component": "NumberField"
+          }
+        },
+        {
+          "id": "a-select",
+          "description": "Select for t-shirt size",
+          "severity": "required",
+          "check": {
+            "type": "component",
+            "component": "Select"
+          }
+        },
+        {
+          "id": "a-tagfield",
+          "description": "TagField for topics of interest",
+          "severity": "required",
+          "check": {
+            "type": "component",
+            "component": "TagField"
+          }
+        },
+        {
+          "id": "a-checkbox",
+          "description": "Checkbox for communication preferences",
+          "severity": "required",
+          "check": {
+            "type": "composite",
+            "operator": "or",
+            "checks": [
+              {
+                "type": "component",
+                "component": "Checkbox"
+              },
+              {
+                "type": "component",
+                "component": "Checkbox.Group"
+              }
+            ]
+          }
+        },
+        {
+          "id": "a-switch",
+          "description": "Switch for accessibility needs",
+          "severity": "required",
+          "check": {
+            "type": "component",
+            "component": "Switch"
+          }
+        },
+        {
+          "id": "a-textarea",
+          "description": "TextArea for special requests",
+          "severity": "required",
+          "check": {
+            "type": "component",
+            "component": "TextArea"
+          }
+        },
+        {
+          "id": "a-autocomplete",
+          "description": "Autocomplete for job title",
+          "severity": "required",
+          "check": {
+            "type": "component",
+            "component": "Autocomplete"
+          }
+        },
+        {
+          "id": "a-filefield",
+          "description": "FileField for profile photo",
+          "severity": "required",
+          "check": {
+            "type": "component",
+            "component": "FileField"
+          }
+        },
+        {
+          "id": "a-accordion",
+          "description": "Accordion for review sections",
+          "severity": "required",
+          "check": {
+            "type": "component",
+            "component": "Accordion"
+          }
+        },
+        {
+          "id": "a-button",
+          "description": "Button for navigation/submit",
+          "severity": "required",
+          "check": {
+            "type": "component",
+            "component": "Button"
+          }
+        },
+        {
+          "id": "a-card",
+          "description": "Card as form container",
+          "severity": "required",
+          "check": {
+            "type": "component",
+            "component": "Card"
           }
         },
         {
           "id": "a-section-message",
-          "description": "SectionMessage for info/success alerts",
+          "description": "SectionMessage for info/success",
           "severity": "required",
           "check": {
             "type": "component",
@@ -1849,17 +1792,17 @@
           }
         },
         {
-          "id": "a-tooltip",
-          "description": "Tooltip on revenue card",
-          "severity": "required",
+          "id": "a-loader",
+          "description": "Loader for submission",
+          "severity": "recommended",
           "check": {
             "type": "component",
-            "component": "Tooltip"
+            "component": "Loader"
           }
         },
         {
           "id": "a-uses-onpress",
-          "description": "Buttons use onPress (not onClick)",
+          "description": "Buttons use onPress",
           "severity": "required",
           "check": {
             "type": "text-content",
@@ -1867,63 +1810,43 @@
           }
         },
         {
-          "id": "a-no-onclick-on-marigold",
-          "description": "No onClick on Marigold Button components",
-          "severity": "recommended",
-          "check": {
-            "type": "absence",
-            "pattern": "/<Button[^>]*onClick/",
-            "scope": "any"
-          }
-        },
-        {
-          "id": "a-headline",
-          "description": "Headline component for page titles",
+          "id": "a-step-state",
+          "description": "Multi-step state management (useState)",
           "severity": "required",
           "check": {
-            "type": "component",
-            "component": "Headline"
+            "type": "text-content",
+            "pattern": "/useState/"
           }
-        },
+        }
+      ]
+    },
+    {
+      "id": "P-10",
+      "name": "HR Team Portal",
+      "promptFile": "prompts/P-10.md",
+      "complexity": "extreme",
+      "tags": [
+        "app-shell",
+        "multi-page",
+        "table",
+        "form",
+        "overlay",
+        "collection"
+      ],
+      "checklist": [],
+      "assertions": [
         {
-          "id": "a-dialog-trigger",
-          "description": "Dialog.Trigger for overlay pattern",
-          "severity": "recommended",
+          "id": "a-import-marigold",
+          "description": "Imports from @marigold/components",
+          "severity": "required",
           "check": {
-            "type": "component",
-            "component": "Dialog.Trigger"
-          }
-        },
-        {
-          "id": "a-menu-trigger",
-          "description": "Menu.Trigger for user dropdown",
-          "severity": "recommended",
-          "check": {
-            "type": "component",
-            "component": "Menu.Trigger"
-          }
-        },
-        {
-          "id": "a-number-field",
-          "description": "NumberField for capacity input",
-          "severity": "recommended",
-          "check": {
-            "type": "component",
-            "component": "NumberField"
-          }
-        },
-        {
-          "id": "a-textarea",
-          "description": "TextArea for event description",
-          "severity": "recommended",
-          "check": {
-            "type": "component",
-            "component": "TextArea"
+            "type": "import",
+            "module": "@marigold/components"
           }
         },
         {
           "id": "a-app-layout",
-          "description": "AppLayout component for app shell structure",
+          "description": "AppLayout for app shell",
           "severity": "required",
           "check": {
             "type": "component",
@@ -1932,55 +1855,34 @@
         },
         {
           "id": "a-sidebar",
-          "description": "Sidebar component for navigation",
+          "description": "Sidebar navigation",
           "severity": "required",
           "check": {
-            "type": "composite",
-            "operator": "or",
-            "checks": [
-              {
-                "type": "component",
-                "component": "Sidebar"
-              },
-              {
-                "type": "component",
-                "component": "AppLayout.Sidebar"
-              }
-            ]
+            "type": "component",
+            "component": "Sidebar"
           }
-        }
-      ]
-    },
-    {
-      "id": "P-11",
-      "name": "Booking Management",
-      "promptFile": "prompts/P-11.md",
-      "complexity": "high",
-      "runsPerCombination": 2,
-      "tags": [
-        "table",
-        "dialog",
-        "drawer",
-        "tabs",
-        "menu",
-        "datepicker",
-        "combobox",
-        "prescriptive"
-      ],
-      "checklist": [],
-      "assertions": [
+        },
         {
-          "id": "a-import-marigold",
-          "description": "Imports from @marigold/components",
+          "id": "a-top-nav",
+          "description": "TopNavigation bar",
           "severity": "required",
           "check": {
-            "type": "import",
-            "module": "@marigold/components"
+            "type": "component",
+            "component": "TopNavigation"
+          }
+        },
+        {
+          "id": "a-breadcrumbs",
+          "description": "Breadcrumbs for navigation context",
+          "severity": "required",
+          "check": {
+            "type": "component",
+            "component": "Breadcrumbs"
           }
         },
         {
           "id": "a-table",
-          "description": "Table component for bookings",
+          "description": "Table component",
           "severity": "required",
           "check": {
             "type": "component",
@@ -1989,7 +1891,7 @@
         },
         {
           "id": "a-table-header",
-          "description": "Table.Header sub-component",
+          "description": "Table.Header compound component",
           "severity": "required",
           "check": {
             "type": "component",
@@ -1998,7 +1900,7 @@
         },
         {
           "id": "a-table-body",
-          "description": "Table.Body sub-component",
+          "description": "Table.Body compound component",
           "severity": "required",
           "check": {
             "type": "component",
@@ -2006,63 +1908,8 @@
           }
         },
         {
-          "id": "a-date-picker",
-          "description": "DatePicker for date filtering",
-          "severity": "required",
-          "check": {
-            "type": "component",
-            "component": "DatePicker"
-          }
-        },
-        {
-          "id": "a-combobox",
-          "description": "ComboBox or SearchField for venue search",
-          "severity": "required",
-          "check": {
-            "type": "composite",
-            "operator": "or",
-            "checks": [
-              {
-                "type": "component",
-                "component": "ComboBox"
-              },
-              {
-                "type": "component",
-                "component": "SearchField"
-              }
-            ]
-          }
-        },
-        {
-          "id": "a-dialog",
-          "description": "Dialog for create booking form",
-          "severity": "required",
-          "check": {
-            "type": "component",
-            "component": "Dialog"
-          }
-        },
-        {
-          "id": "a-tabs",
-          "description": "Tabs for booking views",
-          "severity": "required",
-          "check": {
-            "type": "component",
-            "component": "Tabs"
-          }
-        },
-        {
-          "id": "a-menu",
-          "description": "Menu for row actions",
-          "severity": "required",
-          "check": {
-            "type": "component",
-            "component": "Menu"
-          }
-        },
-        {
           "id": "a-badge",
-          "description": "Badge for booking status",
+          "description": "Badge for status indicators",
           "severity": "required",
           "check": {
             "type": "component",
@@ -2070,17 +1917,63 @@
           }
         },
         {
-          "id": "a-button",
-          "description": "Button component",
+          "id": "a-dialog",
+          "description": "Dialog for create/confirm actions",
           "severity": "required",
           "check": {
             "type": "component",
-            "component": "Button"
+            "component": "Dialog"
+          }
+        },
+        {
+          "id": "a-menu",
+          "description": "Menu for user/context actions",
+          "severity": "required",
+          "check": {
+            "type": "component",
+            "component": "Menu"
+          }
+        },
+        {
+          "id": "a-tabs",
+          "description": "Tabs for settings/views",
+          "severity": "required",
+          "check": {
+            "type": "component",
+            "component": "Tabs"
+          }
+        },
+        {
+          "id": "a-search",
+          "description": "SearchField or Autocomplete for search",
+          "severity": "required",
+          "check": {
+            "type": "composite",
+            "operator": "or",
+            "checks": [
+              {
+                "type": "component",
+                "component": "SearchField"
+              },
+              {
+                "type": "component",
+                "component": "Autocomplete"
+              }
+            ]
+          }
+        },
+        {
+          "id": "a-switch",
+          "description": "Switch for notification toggles",
+          "severity": "required",
+          "check": {
+            "type": "component",
+            "component": "Switch"
           }
         },
         {
           "id": "a-select",
-          "description": "Select for status filter / form dropdowns",
+          "description": "Select for dropdowns",
           "severity": "required",
           "check": {
             "type": "component",
@@ -2088,44 +1981,80 @@
           }
         },
         {
-          "id": "a-text-field",
-          "description": "TextField in booking form",
+          "id": "a-datepicker",
+          "description": "DatePicker for date selection",
           "severity": "required",
           "check": {
             "type": "component",
-            "component": "TextField"
+            "component": "DatePicker"
           }
         },
         {
-          "id": "a-uses-onpress",
-          "description": "Buttons use onPress (not onClick)",
+          "id": "a-card",
+          "description": "Card for summary/info display",
           "severity": "required",
           "check": {
-            "type": "text-content",
-            "pattern": "/onPress/"
+            "type": "component",
+            "component": "Card"
           }
         },
         {
-          "id": "a-drawer",
-          "description": "Drawer for booking detail view",
-          "severity": "recommended",
+          "id": "a-tooltip",
+          "description": "Tooltip for additional info",
+          "severity": "required",
           "check": {
             "type": "component",
-            "component": "Drawer"
+            "component": "Tooltip"
           }
         },
         {
-          "id": "a-accordion",
-          "description": "Accordion for detail sections",
+          "id": "a-contextual-help",
+          "description": "ContextualHelp component",
+          "severity": "required",
+          "check": {
+            "type": "component",
+            "component": "ContextualHelp"
+          }
+        },
+        {
+          "id": "a-calendar",
+          "description": "Calendar for team calendar page",
+          "severity": "required",
+          "check": {
+            "type": "component",
+            "component": "Calendar"
+          }
+        },
+        {
+          "id": "a-filefield",
+          "description": "FileField for file upload",
+          "severity": "required",
+          "check": {
+            "type": "component",
+            "component": "FileField"
+          }
+        },
+        {
+          "id": "a-date-format",
+          "description": "DateFormat for date display",
           "severity": "recommended",
           "check": {
             "type": "component",
-            "component": "Accordion"
+            "component": "DateFormat"
+          }
+        },
+        {
+          "id": "a-numeric-format",
+          "description": "NumericFormat for number display",
+          "severity": "recommended",
+          "check": {
+            "type": "component",
+            "component": "NumericFormat"
           }
         },
         {
           "id": "a-section-message",
-          "description": "SectionMessage for capacity alerts",
+          "description": "SectionMessage for feedback",
           "severity": "required",
           "check": {
             "type": "component",
@@ -2133,17 +2062,44 @@
           }
         },
         {
-          "id": "a-headline",
-          "description": "Headline for page title",
+          "id": "a-tiles",
+          "description": "Tiles for card grid layout",
           "severity": "recommended",
           "check": {
             "type": "component",
-            "component": "Headline"
+            "component": "Tiles"
           }
         },
         {
-          "id": "a-no-onclick-on-marigold",
-          "description": "No onClick on Marigold Button components",
+          "id": "a-action-bar",
+          "description": "ActionBar for bulk actions",
+          "severity": "recommended",
+          "check": {
+            "type": "component",
+            "component": "ActionBar"
+          }
+        },
+        {
+          "id": "a-toggle-button",
+          "description": "ToggleButton for view mode",
+          "severity": "recommended",
+          "check": {
+            "type": "component",
+            "component": "ToggleButton"
+          }
+        },
+        {
+          "id": "a-uses-onpress",
+          "description": "Buttons use onPress",
+          "severity": "required",
+          "check": {
+            "type": "text-content",
+            "pattern": "/onPress/"
+          }
+        },
+        {
+          "id": "a-no-onclick",
+          "description": "No onClick on Marigold buttons",
           "severity": "recommended",
           "check": {
             "type": "absence",
@@ -2152,241 +2108,12 @@
           }
         },
         {
-          "id": "a-form",
-          "description": "Form component in create dialog",
-          "severity": "required",
-          "check": {
-            "type": "component",
-            "component": "Form"
-          }
-        },
-        {
-          "id": "a-textarea",
-          "description": "TextArea for booking notes",
-          "severity": "recommended",
-          "check": {
-            "type": "component",
-            "component": "TextArea"
-          }
-        }
-      ]
-    },
-    {
-      "id": "P-12",
-      "name": "Booking Management (Intent-driven)",
-      "promptFile": "prompts/P-12.md",
-      "complexity": "high",
-      "runsPerCombination": 2,
-      "tags": [
-        "table",
-        "dialog",
-        "drawer",
-        "tabs",
-        "menu",
-        "datepicker",
-        "combobox",
-        "intent-driven"
-      ],
-      "checklist": [],
-      "assertions": [
-        {
-          "id": "a-import-marigold",
-          "description": "Imports from @marigold/components",
-          "severity": "required",
-          "check": {
-            "type": "import",
-            "module": "@marigold/components"
-          }
-        },
-        {
-          "id": "a-table",
-          "description": "Table component for bookings",
-          "severity": "required",
-          "check": {
-            "type": "component",
-            "component": "Table"
-          }
-        },
-        {
-          "id": "a-table-header",
-          "description": "Table.Header sub-component",
-          "severity": "required",
-          "check": {
-            "type": "component",
-            "component": "Table.Header"
-          }
-        },
-        {
-          "id": "a-table-body",
-          "description": "Table.Body sub-component",
-          "severity": "required",
-          "check": {
-            "type": "component",
-            "component": "Table.Body"
-          }
-        },
-        {
-          "id": "a-date-picker",
-          "description": "DatePicker for date filtering",
-          "severity": "required",
-          "check": {
-            "type": "component",
-            "component": "DatePicker"
-          }
-        },
-        {
-          "id": "a-combobox",
-          "description": "ComboBox or SearchField for venue search",
-          "severity": "required",
-          "check": {
-            "type": "composite",
-            "operator": "or",
-            "checks": [
-              {
-                "type": "component",
-                "component": "ComboBox"
-              },
-              {
-                "type": "component",
-                "component": "SearchField"
-              }
-            ]
-          }
-        },
-        {
-          "id": "a-dialog",
-          "description": "Dialog for create booking form",
-          "severity": "required",
-          "check": {
-            "type": "component",
-            "component": "Dialog"
-          }
-        },
-        {
-          "id": "a-tabs",
-          "description": "Tabs for booking views",
-          "severity": "required",
-          "check": {
-            "type": "component",
-            "component": "Tabs"
-          }
-        },
-        {
-          "id": "a-menu",
-          "description": "Menu for row actions",
-          "severity": "required",
-          "check": {
-            "type": "component",
-            "component": "Menu"
-          }
-        },
-        {
-          "id": "a-badge",
-          "description": "Badge for booking status",
-          "severity": "required",
-          "check": {
-            "type": "component",
-            "component": "Badge"
-          }
-        },
-        {
-          "id": "a-button",
-          "description": "Button component",
-          "severity": "required",
-          "check": {
-            "type": "component",
-            "component": "Button"
-          }
-        },
-        {
-          "id": "a-select",
-          "description": "Select for status filter / form dropdowns",
-          "severity": "required",
-          "check": {
-            "type": "component",
-            "component": "Select"
-          }
-        },
-        {
-          "id": "a-text-field",
-          "description": "TextField in booking form",
-          "severity": "required",
-          "check": {
-            "type": "component",
-            "component": "TextField"
-          }
-        },
-        {
-          "id": "a-uses-onpress",
-          "description": "Buttons use onPress (not onClick)",
+          "id": "a-multi-page",
+          "description": "State-based page switching",
           "severity": "required",
           "check": {
             "type": "text-content",
-            "pattern": "/onPress/"
-          }
-        },
-        {
-          "id": "a-drawer",
-          "description": "Drawer for booking detail view",
-          "severity": "recommended",
-          "check": {
-            "type": "component",
-            "component": "Drawer"
-          }
-        },
-        {
-          "id": "a-accordion",
-          "description": "Accordion for detail sections",
-          "severity": "recommended",
-          "check": {
-            "type": "component",
-            "component": "Accordion"
-          }
-        },
-        {
-          "id": "a-section-message",
-          "description": "SectionMessage for capacity alerts",
-          "severity": "required",
-          "check": {
-            "type": "component",
-            "component": "SectionMessage"
-          }
-        },
-        {
-          "id": "a-headline",
-          "description": "Headline for page title",
-          "severity": "recommended",
-          "check": {
-            "type": "component",
-            "component": "Headline"
-          }
-        },
-        {
-          "id": "a-no-onclick-on-marigold",
-          "description": "No onClick on Marigold Button components",
-          "severity": "recommended",
-          "check": {
-            "type": "absence",
-            "pattern": "/<Button[^>]*onClick/",
-            "scope": "any"
-          }
-        },
-        {
-          "id": "a-form",
-          "description": "Form component in create dialog",
-          "severity": "required",
-          "check": {
-            "type": "component",
-            "component": "Form"
-          }
-        },
-        {
-          "id": "a-textarea",
-          "description": "TextArea for booking notes",
-          "severity": "recommended",
-          "check": {
-            "type": "component",
-            "component": "TextArea"
+            "pattern": "/useState/"
           }
         }
       ]

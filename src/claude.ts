@@ -1,8 +1,35 @@
 import fs from 'node:fs';
 import path from 'node:path';
-import { spawn } from 'node:child_process';
+import { spawn, execFileSync } from 'node:child_process';
 import { ROOT, DEV_SERVER_PORT_BASE, KILL_GRACE_MS } from './paths';
 import type { ClaudeOutput, Combination, EvalsConfig } from './types';
+
+/**
+ * Resolve a run's model alias (haiku/sonnet/opus) to a pinned dated/full model
+ * ID for reproducibility. Falls back to the alias itself when no mapping exists
+ * (back-compat with configs that lack a `modelIds` map).
+ */
+export const resolveModelId = (combo: Combination, config: EvalsConfig): string =>
+  config.defaults.modelIds?.[combo.model] ?? combo.model;
+
+let cachedCliVersion: string | null | undefined;
+
+/**
+ * Capture `claude --version` once per process for reproducibility records.
+ * Read-only and null-safe: returns null if the CLI is missing or errors.
+ */
+export const getClaudeCliVersion = (): string | null => {
+  if (cachedCliVersion !== undefined) return cachedCliVersion;
+  try {
+    cachedCliVersion = execFileSync('claude', ['--version'], {
+      stdio: ['ignore', 'pipe', 'pipe'],
+      timeout: 30_000,
+    }).toString().trim();
+  } catch {
+    cachedCliVersion = null;
+  }
+  return cachedCliVersion;
+};
 
 export class ClaudeTimeoutError extends Error {
   stderr: string;
@@ -47,20 +74,19 @@ export const buildClaudeArgs = (
 
   const args = [
     '-p', promptText,
-    '--model', combo.model,
+    '--model', resolveModelId(combo, config),
     '--output-format', 'json',
     '--dangerously-skip-permissions',
     '--append-system-prompt-file', tmpPromptFile,
   ];
 
-  if (combo.config === 'bare') {
-    args.push(
-      '--disable-slash-commands',
-      '--strict-mcp-config', '--mcp-config', mcpConfigPath,
-    );
-  } else {
-    args.push('--mcp-config', mcpConfigPath);
-  }
+  // All tiers are isolated from ambient MCP servers (--strict-mcp-config) and
+  // run with the tier's own --mcp-config; the previous per-tier branch pushed
+  // byte-identical args after MCP isolation was unified.
+  args.push(
+    '--disable-slash-commands',
+    '--strict-mcp-config', '--mcp-config', mcpConfigPath,
+  );
 
   return args;
 };

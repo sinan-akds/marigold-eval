@@ -34,8 +34,10 @@ export type EvalsConfig = {
   version: number;
   defaults: {
     models: string[];
+    modelIds?: Record<string, string>;
     configs: string[];
     runsPerCombination: number;
+    maxAttemptsPerCombination?: number;
     concurrency: number;
     projectDir: string;
     targetFile: string;
@@ -81,6 +83,7 @@ export type BenchmarkRun = {
   model: string;
   config: string;
   runNumber: number;
+  attempt?: number;
   timestamp: string;
   score: number | null;
   assertionPassRate: number | null;
@@ -90,6 +93,9 @@ export type BenchmarkRun = {
   resultFile?: string;
   sourceFile?: string;
   error?: string;
+  resolvedModelId?: string;
+  claudeCliVersion?: string | null;
+  docsMcpUsed?: boolean;
 };
 
 export type BenchmarkSummary = {
@@ -99,6 +105,7 @@ export type BenchmarkSummary = {
   avgScore: number | null;
   avgAssertionPassRate: number | null;
   runs: number;
+  attempts: number;
   completed: number;
   failed: number;
 };
