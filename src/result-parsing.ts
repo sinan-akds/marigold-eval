@@ -45,5 +45,9 @@ export const extractRunDetail = (resultData: ResultData): RunDetail => {
     linesOfCode: sourceCode ? sourceCode.split('\n').length : undefined,
     assertionsPassed: passed,
     assertionsFailed: failed,
+    widthUtilization: (() => {
+      const v = metadata.widthUtilization;
+      return typeof v === 'number' ? v : undefined;
+    })(),
   };
 };

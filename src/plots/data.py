@@ -39,6 +39,9 @@ def load(root_dir: str) -> pd.DataFrame:
             "requiredPassRate": required_pass_rate,
             "renderSuccess": bool(detail.get("renderSuccess", False)),
             "linesOfCode": loc,
+            # Desktop width utilisation (0..1); None for runs scored before the
+            # metric existed or that did not render.
+            "widthUtilization": detail.get("widthUtilization"),
             "costUsd": eff.get("costUsd"),
             "durationMs": eff.get("durationMs"),
             "totalTokens": eff.get("totalTokens"),

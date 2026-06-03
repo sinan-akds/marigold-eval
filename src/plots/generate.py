@@ -658,6 +658,66 @@ def plot_wilcoxon_bare_vs_full(df: pd.DataFrame, out_dir: str):
 
 
 # ──────────────────────────────────────────────────────────────
+# 17: Desktop width utilisation — "does the app use the desktop width"
+# ──────────────────────────────────────────────────────────────
+
+def plot_width_utilization(df: pd.DataFrame, out_dir: str):
+    """Desktop width utilisation (0..1) per model × config, over rendered runs
+    (the metric only exists when the page rendered). Low = content stuck in a
+    narrow, mobile-shaped band on desktop. The 0.6 line is the warning
+    threshold. RELATIVE signal across configs (a centred max-width column also
+    scores low), not an absolute quality measure."""
+    d = _rendered(df).copy()
+    d = d[d["widthUtilization"].notna()]
+    if d.empty:
+        print(
+            "  SKIP 17 Width Utilization: no widthUtilization data yet — "
+            "needs an eval/rescore with the current validator."
+        )
+        return
+
+    pm = _present_models(d)
+    rng = np.random.default_rng(0)  # seeded jitter for reproducible figures
+    fig, axes = plt.subplots(
+        1, len(pm), figsize=(5 * len(pm), 4.7), sharey=True, squeeze=False
+    )
+    for ai, m in enumerate(pm):
+        ax = axes[0][ai]
+        for ci, cfg in enumerate(CONFIGS):
+            vals = d[(d["model"] == m) & (d["config"] == cfg)][
+                "widthUtilization"
+            ].tolist()
+            if not vals:
+                continue
+            jitter = rng.normal(ci, 0.06, len(vals))
+            ax.scatter(
+                jitter, vals, s=28, color=COLORS[cfg], alpha=0.6,
+                edgecolor="white", lw=0.5,
+                label=LABELS[cfg] if ai == 0 else None,
+            )
+            ax.scatter(
+                ci, float(np.median(vals)), marker="_", s=900,
+                color=COLORS[cfg], lw=2.5,
+            )
+        ax.axhline(0.6, color="#b00", ls="--", lw=1, alpha=0.6)
+        ax.set_xticks(range(len(CONFIGS)))
+        ax.set_xticklabels([LABELS[c] for c in CONFIGS], fontsize=9)
+        ax.set_title(m.capitalize())
+        ax.set_ylim(0, 1.05)
+        ax.grid(axis="y", alpha=0.15, lw=0.8)
+        ax.set_axisbelow(True)
+
+    axes[0][0].set_ylabel("Desktop width utilisation (0–1)")
+    axes[0][0].legend(frameon=False, fontsize=9)
+    fig.suptitle(
+        "Desktop Width Utilisation  (rendered runs; — = median, dashed = warning ≤0.6)",
+        y=1.03, fontsize=14, fontweight="bold",
+    )
+    fig.tight_layout()
+    _save(fig, "17_width_utilization.png", out_dir)
+
+
+# ──────────────────────────────────────────────────────────────
 # Runner
 # ──────────────────────────────────────────────────────────────
 
@@ -673,6 +733,7 @@ ALL_PLOTS = [
     ("14 Completeness vs Cleanliness", plot_completeness_vs_cleanliness, False),
     ("15 Category Error-Free Rate", plot_category_errorfree_rate, False),
     ("16 Wilcoxon Bare vs Full", plot_wilcoxon_bare_vs_full, False),
+    ("17 Width Utilization", plot_width_utilization, False),
 ]
 
 
