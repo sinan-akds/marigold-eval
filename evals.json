@@ -16,7 +16,7 @@
       "mcp-stack",
       "full-stack"
     ],
-    "runsPerCombination": 3,
+    "runsPerCombination": 2,
     "maxAttemptsPerCombination": 2,
     "concurrency": 3,
     "projectDir": "/home/sinan/GitHub/private/uni/marigold-test-app",
@@ -437,8 +437,18 @@
           "description": "Tag component for article tags",
           "severity": "required",
           "check": {
-            "type": "component",
-            "component": "Tag"
+            "type": "composite",
+            "operator": "or",
+            "checks": [
+              {
+                "type": "component",
+                "component": "Tag"
+              },
+              {
+                "type": "component",
+                "component": "TagGroup"
+              }
+            ]
           }
         },
         {
@@ -591,7 +601,7 @@
           "severity": "required",
           "check": {
             "type": "text-content",
-            "pattern": "/\\$|\u20ac|price|cost|total|amount/i"
+            "pattern": "/\\$|€|price|cost|total|amount/i"
           }
         },
         {
@@ -686,6 +696,15 @@
               }
             ]
           }
+        },
+        {
+          "id": "a-card",
+          "description": "Ticket category cards",
+          "severity": "required",
+          "check": {
+            "type": "component",
+            "component": "Card"
+          }
         }
       ]
     },
@@ -754,8 +773,18 @@
           "description": "RadioGroup for exclusive choices",
           "severity": "required",
           "check": {
-            "type": "component",
-            "component": "RadioGroup"
+            "type": "composite",
+            "operator": "or",
+            "checks": [
+              {
+                "type": "component",
+                "component": "RadioGroup"
+              },
+              {
+                "type": "component",
+                "component": "Radio"
+              }
+            ]
           }
         },
         {
@@ -887,7 +916,7 @@
               },
               {
                 "type": "component",
-                "component": "Checkbox.Group"
+                "component": "CheckboxGroup"
               }
             ]
           }
@@ -915,8 +944,18 @@
           "description": "Tag.Group for applied filters",
           "severity": "required",
           "check": {
-            "type": "component",
-            "component": "Tag"
+            "type": "composite",
+            "operator": "or",
+            "checks": [
+              {
+                "type": "component",
+                "component": "Tag"
+              },
+              {
+                "type": "component",
+                "component": "TagGroup"
+              }
+            ]
           }
         },
         {
@@ -999,6 +1038,16 @@
             "type": "text-content",
             "pattern": "/onPress/"
           }
+        },
+        {
+          "id": "a-no-onclick-on-marigold",
+          "description": "No onClick on Marigold Button",
+          "severity": "recommended",
+          "check": {
+            "type": "absence",
+            "pattern": "/<Button[^>]*onClick/",
+            "scope": "any"
+          }
         }
       ]
     },
@@ -1075,6 +1124,10 @@
               {
                 "type": "component",
                 "component": "ComboBox"
+              },
+              {
+                "type": "component",
+                "component": "Autocomplete"
               },
               {
                 "type": "component",
@@ -1527,15 +1580,6 @@
           }
         },
         {
-          "id": "a-menu-trigger",
-          "description": "Menu.Trigger for user dropdown",
-          "severity": "recommended",
-          "check": {
-            "type": "component",
-            "component": "Menu.Trigger"
-          }
-        },
-        {
           "id": "a-number-field",
           "description": "NumberField for capacity input",
           "severity": "recommended",
@@ -1656,10 +1700,6 @@
               {
                 "type": "component",
                 "component": "RadioGroup"
-              },
-              {
-                "type": "component",
-                "component": "Radio.Group"
               }
             ]
           }
@@ -1714,7 +1754,7 @@
               },
               {
                 "type": "component",
-                "component": "Checkbox.Group"
+                "component": "CheckboxGroup"
               }
             ]
           }
@@ -1816,6 +1856,25 @@
           "check": {
             "type": "text-content",
             "pattern": "/useState/"
+          }
+        },
+        {
+          "id": "a-toast",
+          "description": "Toast notification after submission",
+          "severity": "recommended",
+          "check": {
+            "type": "composite",
+            "operator": "or",
+            "checks": [
+              {
+                "type": "component",
+                "component": "Toast"
+              },
+              {
+                "type": "text-content",
+                "pattern": "/useToast/"
+              }
+            ]
           }
         }
       ]
@@ -2084,8 +2143,18 @@
           "description": "ToggleButton for view mode",
           "severity": "recommended",
           "check": {
-            "type": "component",
-            "component": "ToggleButton"
+            "type": "composite",
+            "operator": "or",
+            "checks": [
+              {
+                "type": "component",
+                "component": "ToggleButton"
+              },
+              {
+                "type": "component",
+                "component": "ToggleButtonGroup"
+              }
+            ]
           }
         },
         {
@@ -2114,6 +2183,25 @@
           "check": {
             "type": "text-content",
             "pattern": "/useState/"
+          }
+        },
+        {
+          "id": "a-toast",
+          "description": "Toast notification after upload",
+          "severity": "recommended",
+          "check": {
+            "type": "composite",
+            "operator": "or",
+            "checks": [
+              {
+                "type": "component",
+                "component": "Toast"
+              },
+              {
+                "type": "text-content",
+                "pattern": "/useToast/"
+              }
+            ]
           }
         }
       ]

@@ -37,7 +37,7 @@ You are running with the **full Claude Code workflow plus `marigold validate`** 
 - Components that don't exist in the design system (hallucinated component names)
 - Usage of raw HTML elements that should be design system components
 - React Aria handler convention violations (wrong event handler names, wrong handler signatures)
-- Boolean prop convention violations (`disabled` vs `isDisabled`)
+- Boolean prop convention violations (e.g. `isDisabled` where Marigold expects `disabled`)
 - Component composition errors (missing required sub-components)
 - Design token and theme variant compliance
 - TypeScript compilation errors
@@ -88,7 +88,7 @@ Fetch this manifest at the start to discover available components. Do not guess 
 - Form field change handlers receive the **value directly** (string, number, or boolean), not a DOM event. Never destructure `e.target.value` from a change handler on a design system component — it will crash.
 - Selection-based components (dropdowns, tabs, combo boxes) use `onSelectionChange(key)`, not `onChange`.
 - Menu components use `onAction(key)` for dispatching actions by item key.
-- Boolean state props use the `is`-prefix convention: `isDisabled` not `disabled`, `isRequired` not `required`, `isSelected` not `selected`.
+- Boolean state props use HTML-style names, not the React Aria `is`-prefix: `disabled` not `isDisabled`, `required` not `isRequired`, `readOnly` not `isReadOnly`, `selected` not `isSelected`, and `loading` not `isPending`. Marigold removes the `is`-prefixed React Aria names from its component types, so they will not type-check.
 - Overlay components (dialogs, menus, popovers) use a trigger-wrapper pattern. The trigger and the overlay are children of a trigger wrapper component. Do not manually manage open/close state.
 - Collection items (menu items, select options, tab items, breadcrumb items) require an `id` prop for selection and action handlers to identify them.
 - Compound components use dot notation for sub-components (e.g., `<Table.Header>`, `<Tabs.TabPanel>`).
@@ -104,7 +104,7 @@ Fetch this manifest at the start to discover available components. Do not guess 
 1. **Discover.** Fetch the component manifest from `https://www.marigold-ui.io/manifest.json`. Identify which components you need for the task. Use `search_docs` to understand the available component categories.
 
 2. **Research every component.** For each component you plan to use, call `search_docs` to read its props, usage examples, and accepted variants. Pay special attention to:
-   - The exact prop names (not `onChange` but `onSelectionChange`, not `disabled` but `isDisabled`)
+   - The exact prop names (not `onChange` but `onSelectionChange`, not `isDisabled` but `disabled`)
    - Required vs optional props
    - Children patterns (compound components with dot notation? collection items with `id`?)
    - Available variants and sizes
