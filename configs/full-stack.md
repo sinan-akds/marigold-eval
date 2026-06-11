@@ -42,9 +42,9 @@ You are running with the **full Claude Code workflow plus `marigold validate`** 
 - Design token and theme variant compliance
 - TypeScript compilation errors
 
-**Spatial checks** (run in a headless browser at 375px, 768px, and 1280px viewports):
+**Spatial checks** (run in a headless browser at 320px, 375px, 768px, and 1280px viewports):
 - Horizontal overflow / scroll at mobile and tablet viewports
-- Touch targets smaller than 44×44px on mobile
+- Touch targets smaller than 24×24px on mobile
 - Components that disappear (zero dimensions) at smaller viewports
 - Interactive elements not reachable via keyboard Tab navigation
 - Missing visible focus indicators on focused elements
@@ -56,7 +56,7 @@ Run it with the SINGLE command below — do not pass `--checks`; always run the 
 marigold validate src/TestApp.tsx
 ```
 
-This is your most important feedback tool. Read **every** error and warning it produces — including spatial warnings about responsive layout, keyboard accessibility, and overlap issues. Fix them. Run `marigold validate src/TestApp.tsx` again. Repeat until the output is clean.
+This is your most important feedback tool. Read **every** error and warning it produces — including spatial warnings about responsive layout, keyboard accessibility, and overlap issues. Fix all **errors**: run `marigold validate src/TestApp.tsx` again and repeat until it reports zero errors. Address warnings where they point to a real improvement; they do not block completion.
 
 ### Component manifest
 
@@ -113,6 +113,6 @@ Fetch this manifest at the start to discover available components. Do not guess 
 
 4. **Validate.** Run `marigold validate src/TestApp.tsx` (ALL checks — never pass `--checks`). This single command runs the static, spatial, keyboard-accessibility, and overlap checks together. Read every error and warning.
 
-5. **Fix and re-validate.** Address each issue it reports — wrong props, hallucinated components, handler conventions, compilation errors, responsive overflow, touch targets, keyboard reachability, overlap. Fix layout issues by using responsive layout primitives (`Columns` with `collapseAt`, `Stack`, `Inline`) instead of fixed-width layouts. Then run `marigold validate src/TestApp.tsx` again. Repeat this validate-fix-validate loop until the output is completely clean.
+5. **Fix and re-validate.** Address each issue it reports — wrong props, hallucinated components, handler conventions, compilation errors, responsive overflow, touch targets, keyboard reachability, overlap. Fix layout issues by using responsive layout primitives (`Columns` with `collapseAt`, `Stack`, `Inline`) instead of fixed-width layouts. Then run `marigold validate src/TestApp.tsx` again. Repeat this validate-fix-validate loop until it reports zero errors. Address warnings where they point to a real improvement; they do not block completion.
 
-6. **Final validation.** Run `marigold validate src/TestApp.tsx` (all checks) as your **very last action**. Do not make any code changes after the final clean validation pass — any edit after validation risks introducing new issues that go undetected. Your final action must always be a clean validate run.
+6. **Final validation.** Run `marigold validate src/TestApp.tsx` (all checks) as your **very last action**. Do not make any code changes after the final validation pass — any edit after validation risks introducing new issues that go undetected. Your final action must always be a validate run that reports zero errors.
