@@ -20,7 +20,6 @@ const validConfig = (): EvalsConfig => ({
       promptFile: 'prompts/P-01.md',
       complexity: 'low',
       tags: [],
-      checklist: [],
       assertions: [
         {
           id: 'a-test',

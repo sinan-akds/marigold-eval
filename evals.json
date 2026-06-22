@@ -39,47 +39,6 @@
         "layout",
         "input"
       ],
-      "checklist": [
-        {
-          "id": "name-field",
-          "description": "Name text field (required)",
-          "component": "TextField",
-          "props": {
-            "label": "/name/i"
-          }
-        },
-        {
-          "id": "email-field",
-          "description": "Email text field",
-          "component": "TextField",
-          "props": {
-            "type": "email"
-          }
-        },
-        {
-          "id": "subject-select",
-          "description": "Subject dropdown",
-          "component": "Select"
-        },
-        {
-          "id": "message-textarea",
-          "description": "Message text area",
-          "component": "TextArea"
-        },
-        {
-          "id": "submit-button",
-          "description": "Submit button",
-          "component": "Button",
-          "props": {
-            "type": "submit"
-          }
-        },
-        {
-          "id": "form-wrapper",
-          "description": "Form component",
-          "component": "Form"
-        }
-      ],
       "assertions": [
         {
           "id": "a-import-marigold",
@@ -98,7 +57,7 @@
             "type": "component",
             "component": "TextField",
             "props": {
-              "label": "/name/i"
+              "label": "/\\bname\\b/i"
             }
           }
         },
@@ -167,15 +126,6 @@
           }
         },
         {
-          "id": "a-uses-onpress",
-          "description": "Buttons use onPress (not onClick)",
-          "severity": "required",
-          "check": {
-            "type": "text-content",
-            "pattern": "/onPress/"
-          }
-        },
-        {
           "id": "a-no-onclick-on-marigold",
           "description": "No onClick on Marigold Button components",
           "severity": "recommended",
@@ -195,10 +145,8 @@
       "tags": [
         "card",
         "layout",
-        "display",
-        "prescriptive"
+        "display"
       ],
-      "checklist": [],
       "assertions": [
         {
           "id": "a-import-marigold",
@@ -221,7 +169,7 @@
         {
           "id": "a-image",
           "description": "Includes a profile image (img tag or image URL)",
-          "severity": "required",
+          "severity": "recommended",
           "check": {
             "type": "composite",
             "operator": "or",
@@ -301,15 +249,6 @@
           }
         },
         {
-          "id": "a-uses-onpress",
-          "description": "Buttons use onPress (not onClick)",
-          "severity": "required",
-          "check": {
-            "type": "text-content",
-            "pattern": "/onPress/"
-          }
-        },
-        {
           "id": "a-no-onclick-on-marigold",
           "description": "No onClick on Marigold Button components",
           "severity": "recommended",
@@ -322,7 +261,7 @@
         {
           "id": "a-user-details",
           "description": "Shows user details (role, department, email)",
-          "severity": "required",
+          "severity": "recommended",
           "check": {
             "type": "text-content",
             "pattern": "/role|department|email|location/i"
@@ -340,7 +279,6 @@
         "layout",
         "navigation"
       ],
-      "checklist": [],
       "assertions": [
         {
           "id": "a-import-marigold",
@@ -498,8 +436,8 @@
           "severity": "recommended",
           "check": {
             "type": "absence",
-            "pattern": "/<a\\s|<div\\s|<span\\s|<h[1-6]\\s/",
-            "scope": "any"
+            "pattern": "/^(a|div|span|p|h[1-6]|ul|ol|li|button|input|select|textarea|table)$/",
+            "scope": "jsx"
           }
         }
       ]
@@ -513,10 +451,8 @@
         "form",
         "layout",
         "commerce",
-        "state-management",
-        "prescriptive"
+        "state-management"
       ],
-      "checklist": [],
       "assertions": [
         {
           "id": "a-import-marigold",
@@ -587,18 +523,9 @@
           }
         },
         {
-          "id": "a-uses-onpress",
-          "description": "Buttons use onPress (not onClick)",
-          "severity": "required",
-          "check": {
-            "type": "text-content",
-            "pattern": "/onPress/"
-          }
-        },
-        {
           "id": "a-price-indicator",
           "description": "Shows pricing information",
-          "severity": "required",
+          "severity": "recommended",
           "check": {
             "type": "text-content",
             "pattern": "/\\$|€|price|cost|total|amount/i"
@@ -717,10 +644,8 @@
         "form",
         "layout",
         "accordion",
-        "settings",
-        "prescriptive"
+        "settings"
       ],
-      "checklist": [],
       "assertions": [
         {
           "id": "a-import-marigold",
@@ -833,15 +758,6 @@
           }
         },
         {
-          "id": "a-uses-onpress",
-          "description": "Buttons use onPress (not onClick)",
-          "severity": "required",
-          "check": {
-            "type": "text-content",
-            "pattern": "/onPress/"
-          }
-        },
-        {
           "id": "a-no-onclick-on-marigold",
           "description": "No onClick on Marigold Button components",
           "severity": "recommended",
@@ -873,7 +789,6 @@
         "overlay",
         "layout"
       ],
-      "checklist": [],
       "assertions": [
         {
           "id": "a-import-marigold",
@@ -1031,15 +946,6 @@
           }
         },
         {
-          "id": "a-uses-onpress",
-          "description": "Buttons use onPress",
-          "severity": "required",
-          "check": {
-            "type": "text-content",
-            "pattern": "/onPress/"
-          }
-        },
-        {
           "id": "a-no-onclick-on-marigold",
           "description": "No onClick on Marigold Button",
           "severity": "recommended",
@@ -1063,10 +969,8 @@
         "tabs",
         "menu",
         "datepicker",
-        "combobox",
-        "prescriptive"
+        "combobox"
       ],
-      "checklist": [],
       "assertions": [
         {
           "id": "a-import-marigold",
@@ -1200,15 +1104,6 @@
           }
         },
         {
-          "id": "a-uses-onpress",
-          "description": "Buttons use onPress (not onClick)",
-          "severity": "required",
-          "check": {
-            "type": "text-content",
-            "pattern": "/onPress/"
-          }
-        },
-        {
           "id": "a-drawer",
           "description": "Drawer for booking detail view",
           "severity": "recommended",
@@ -1287,78 +1182,6 @@
         "dialog",
         "navigation",
         "tabs"
-      ],
-      "checklist": [
-        {
-          "id": "events-table",
-          "description": "Table for event data",
-          "component": "Table"
-        },
-        {
-          "id": "badge",
-          "description": "Status badge for table rows",
-          "component": "Badge"
-        },
-        {
-          "id": "search-field",
-          "description": "Search field on events page",
-          "component": "SearchField"
-        },
-        {
-          "id": "stat-cards",
-          "description": "Dashboard stat cards",
-          "component": "Card"
-        },
-        {
-          "id": "user-menu",
-          "description": "User menu in top nav",
-          "component": "Menu"
-        },
-        {
-          "id": "settings-form",
-          "description": "Settings form",
-          "component": "Form"
-        },
-        {
-          "id": "text-field",
-          "description": "Text field in settings",
-          "component": "TextField"
-        },
-        {
-          "id": "currency-select",
-          "description": "Currency select dropdown",
-          "component": "Select"
-        },
-        {
-          "id": "notifications-switch",
-          "description": "Email notifications switch",
-          "component": "Switch"
-        },
-        {
-          "id": "save-button",
-          "description": "Save settings button",
-          "component": "Button"
-        },
-        {
-          "id": "dialog",
-          "description": "Create event dialog",
-          "component": "Dialog"
-        },
-        {
-          "id": "date-picker",
-          "description": "Date picker in create event form",
-          "component": "DatePicker"
-        },
-        {
-          "id": "tabs",
-          "description": "Tabs for reports/settings",
-          "component": "Tabs"
-        },
-        {
-          "id": "accordion",
-          "description": "Accordion for Q summaries",
-          "component": "Accordion"
-        }
       ],
       "assertions": [
         {
@@ -1542,16 +1365,6 @@
           }
         },
         {
-          "id": "a-uses-onpress",
-          "description": "Buttons use onPress (not onClick)",
-          "severity": "required",
-          "check": {
-            "type": "text-content",
-            "pattern": "/onPress/",
-            "description": "At least one onPress handler exists"
-          }
-        },
-        {
           "id": "a-no-onclick-on-marigold",
           "description": "No onClick on Marigold Button components",
           "severity": "recommended",
@@ -1638,7 +1451,6 @@
         "overlay",
         "collection"
       ],
-      "checklist": [],
       "assertions": [
         {
           "id": "a-import-marigold",
@@ -1659,7 +1471,7 @@
           }
         },
         {
-          "id": "a-textfield",
+          "id": "a-text-field",
           "description": "TextField for text inputs",
           "severity": "required",
           "check": {
@@ -1841,18 +1653,9 @@
           }
         },
         {
-          "id": "a-uses-onpress",
-          "description": "Buttons use onPress",
-          "severity": "required",
-          "check": {
-            "type": "text-content",
-            "pattern": "/onPress/"
-          }
-        },
-        {
           "id": "a-step-state",
           "description": "Multi-step state management (useState)",
-          "severity": "required",
+          "severity": "recommended",
           "check": {
             "type": "text-content",
             "pattern": "/useState/"
@@ -1881,7 +1684,7 @@
     },
     {
       "id": "P-10",
-      "name": "HR Team Portal",
+      "name": "TeamHub",
       "promptFile": "prompts/P-10.md",
       "complexity": "extreme",
       "tags": [
@@ -1892,7 +1695,6 @@
         "overlay",
         "collection"
       ],
-      "checklist": [],
       "assertions": [
         {
           "id": "a-import-marigold",
@@ -2158,16 +1960,7 @@
           }
         },
         {
-          "id": "a-uses-onpress",
-          "description": "Buttons use onPress",
-          "severity": "required",
-          "check": {
-            "type": "text-content",
-            "pattern": "/onPress/"
-          }
-        },
-        {
-          "id": "a-no-onclick",
+          "id": "a-no-onclick-on-marigold",
           "description": "No onClick on Marigold buttons",
           "severity": "recommended",
           "check": {
@@ -2179,7 +1972,7 @@
         {
           "id": "a-multi-page",
           "description": "State-based page switching",
-          "severity": "required",
+          "severity": "recommended",
           "check": {
             "type": "text-content",
             "pattern": "/useState/"

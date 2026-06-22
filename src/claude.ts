@@ -1,8 +1,43 @@
 import fs from 'node:fs';
+import os from 'node:os';
 import path from 'node:path';
 import { spawn, execFileSync } from 'node:child_process';
 import { ROOT, DEV_SERVER_PORT_BASE, KILL_GRACE_MS } from './paths';
 import type { ClaudeOutput, Combination, EvalsConfig } from './types';
+
+/**
+ * Per-run isolation: each run gets a FRESH, empty CLAUDE_CONFIG_DIR so no
+ * ambient state leaks in — no shared/auto-loaded project memory, no installed
+ * plugins/skills, no user-level CLAUDE.md or settings. Only the two auth tokens
+ * (Claude + cached MCP OAuth, both in .credentials.json) are copied in, so the
+ * run authenticates without re-login. The docs-MCP OAuth token is keyed by
+ * server config, not by config dir, so it ports cleanly (verified).
+ */
+export const prepareConfigDir = (comboId: string): string => {
+  // CLAUDE_CONFIG_BASE lets verification runs place the (normally throwaway)
+  // config dir on a persistent/bind-mounted path so the session transcript can
+  // be inspected afterwards. Defaults to the OS temp dir.
+  const base = process.env.CLAUDE_CONFIG_BASE || os.tmpdir();
+  const dir = path.join(base, `cc-eval-cfg-${comboId}-${process.pid}`);
+  fs.rmSync(dir, { recursive: true, force: true });
+  fs.mkdirSync(dir, { recursive: true });
+  const credSrc =
+    process.env.CLAUDE_CREDENTIALS_SRC ??
+    path.join(os.homedir(), '.claude', '.credentials.json');
+  if (fs.existsSync(credSrc)) {
+    fs.copyFileSync(credSrc, path.join(dir, '.credentials.json'));
+  }
+  return dir;
+};
+
+export const cleanupConfigDir = (dir: string | undefined): void => {
+  if (!dir || process.env.KEEP_CONFIG_DIR) return;
+  try {
+    fs.rmSync(dir, { recursive: true, force: true });
+  } catch {
+    /* best effort */
+  }
+};
 
 /**
  * Resolve a run's model alias (haiku/sonnet/opus) to a pinned dated/full model
@@ -85,6 +120,10 @@ export const buildClaudeArgs = (
   // byte-identical args after MCP isolation was unified.
   args.push(
     '--disable-slash-commands',
+    // Load only project settings (the per-run .claude/settings.json with the
+    // tier hooks); never user/policy/local settings. Combined with a fresh
+    // CLAUDE_CONFIG_DIR this keeps the run free of ambient configuration.
+    '--setting-sources', 'project',
     '--strict-mcp-config', '--mcp-config', mcpConfigPath,
   );
 

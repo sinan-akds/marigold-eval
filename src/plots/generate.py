@@ -16,12 +16,11 @@ import os
 import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
-import matplotlib.patches as mpatches
 import seaborn as sns
 
 from .config import (
-    COLORS, LABELS, MODELS, CONFIGS, CAT_NAMES,
-    COMPLEXITY_ORDER, ISSUE_SOURCE_LABELS, JITTER_SEED,
+    COLORS, LABELS, MODELS, CONFIGS,
+    COMPLEXITY_ORDER, ISSUE_SOURCE_LABELS,
     WILCOXON_FALLBACK_NOTE,
 )
 
@@ -34,11 +33,6 @@ try:
 except Exception:  # pragma: no cover - environment guard
     _scipy_wilcoxon = None
     _HAS_SCIPY = False
-
-# Categories that actually carry errors/warnings. E (functional completeness)
-# is derived from assertion pass rate, not from findings, so it is excluded
-# from the error-by-category view (shown separately in the assertion heatmap).
-CAT_IDS_ERR = ["A", "B", "C", "D"]
 
 
 def _apply_style():
@@ -105,15 +99,6 @@ def _median_iqr(vals: list[float]) -> tuple[float, float, float]:
     return med, max(med - q25, 0.0), max(q75 - med, 0.0)
 
 
-def _annotate_n(ax, x_positions, counts, y=0.0, fontsize=7):
-    """Annotate per-cell sample size below each bar/marker so tiny n (≤4) is
-    never hidden behind an aggregate."""
-    for x, n in zip(x_positions, counts):
-        ax.annotate(f"n={n}", (x, y), xytext=(0, -12), textcoords="offset points",
-                    ha="center", va="top", fontsize=fontsize, color="#555",
-                    clip_on=False)
-
-
 def _source_label(src: str) -> str:
     """Display label for an issue-source id, with a humanized fallback for any
     id not explicitly mapped (e.g. a future validator) so nothing is dropped."""
@@ -164,80 +149,50 @@ def plot_score_overview(df: pd.DataFrame, out_dir: str):
 # ──────────────────────────────────────────────────────────────
 
 def plot_errors_by_category(df: pd.DataFrame, out_dir: str):
-    # Gate on render success: a non-rendering run never ran the dynamic checks,
-    # so its category-D zeros are "not checked", not "clean".
-    df_r = _rendered(df)
-    pm = _present_models(df_r) or _present_models(df)
-    fig, axes = plt.subplots(1, len(pm), figsize=(5 * len(pm), 4.7),
-                             sharey=True, squeeze=False)
-    x = np.arange(len(CAT_IDS_ERR))
-    w = 0.25
+    """Issues per run broken down BY SOURCE, one panel per model, grouped bars
+    per config. Over all runs. This replaces the old 2-category view (which was
+    unreadable): it shows which concrete validator fires (compiler, prop, DS
+    usage, …) and how bare → mcp → full reduces each source. Static error
+    sources dominate bare; the few residual full-stack bars are dynamic a11y/
+    layout warnings that only exist because the page actually rendered."""
+    pm = _present_models(df)
+    top = _rank_issue_sources(df, top_n=7)
+    sources = top + ["other"]
+    labels = [_source_label(s) for s in sources]
+    x = np.arange(len(sources))
+    w = 0.26
 
-    for ai, m in enumerate(pm):
-        ax = axes[0][ai]
-        n_rendered = int(((df_r["model"] == m)).sum())
-        n_total = int(((df["model"] == m)).sum())
+    # One figure per model with its OWN y-axis — a shared axis let haiku/bare
+    # (≈44 issues/run) squash sonnet and opus into invisibility.
+    for m in pm:
+        fig, ax = plt.subplots(figsize=(8, 5))
         for ci, cfg in enumerate(CONFIGS):
-            mask = (df_r["model"] == m) & (df_r["config"] == cfg)
-            meds, lo, hi = [], [], []
-            for cat in CAT_IDS_ERR:
-                vals = df_r.loc[mask, f"cat_{cat}_errors"].dropna().tolist()
-                med, l, h = _median_iqr(vals)
-                meds.append(med); lo.append(l); hi.append(h)
-            ax.bar(x + ci * w, meds, w, color=COLORS[cfg],
-                   yerr=[lo, hi], capsize=2, error_kw={"lw": 0.8},
-                   label=LABELS[cfg] if ai == 0 else None,
-                   edgecolor="white", lw=0.5)
+            sub = df[(df["model"] == m) & (df["config"] == cfg)]
+            n = len(sub)
+            counts = {}
+            for srcs in sub["issueSources"]:
+                if isinstance(srcs, dict):
+                    for s, c in srcs.items():
+                        counts[s] = counts.get(s, 0) + c
+            per_run = [counts.get(s, 0) / n if n else 0 for s in top]
+            per_run.append(sum(c for s, c in counts.items() if s not in top) / n if n else 0)
+            ax.bar(x + ci * w, per_run, w, color=COLORS[cfg],
+                   label=LABELS[cfg], edgecolor="white", lw=0.5)
+        n_total = int((df["model"] == m).sum())
         ax.set_xticks(x + w)
-        ax.set_xticklabels([CAT_NAMES[c] for c in CAT_IDS_ERR], fontsize=9)
-        rate = (n_rendered / n_total * 100) if n_total else 0
-        ax.set_title(f"{m.capitalize()}\nrendered {n_rendered}/{n_total} ({rate:.0f}%)",
-                     fontsize=11)
+        ax.set_xticklabels(labels, fontsize=9, rotation=45, ha="right")
+        ax.set_ylabel("Issues per run")
+        ax.set_title(f"Issue Sources per Run — {m.capitalize()} (n={n_total} runs, all configs)")
+        ax.legend(frameon=False, fontsize=10)
         ax.grid(axis="y", alpha=0.15, lw=0.8)
         ax.set_axisbelow(True)
-
-    axes[0][0].set_ylabel("Median errors per run (IQR bars)")
-    axes[0][0].legend(frameon=False, fontsize=9)
-    fig.suptitle("Errors per Run by Category (rendered runs only)",
-                 y=1.03, fontsize=14, fontweight="bold")
-    fig.tight_layout()
-    _save(fig, "01_errors_by_category.png", out_dir)
+        fig.tight_layout()
+        _save(fig, f"01_error_sources_{m}.png", out_dir)
 
 
 # ──────────────────────────────────────────────────────────────
 # 02: Error-count distribution by model x config
 # ──────────────────────────────────────────────────────────────
-
-def plot_error_distribution(df: pd.DataFrame, out_dir: str):
-    fig, ax = plt.subplots(figsize=(10, 5.3))
-
-    # Distribution of raw errors: gate on render success so non-rendering
-    # runs' unchecked zeros are not shown as a clean cluster.
-    plot_df = _rendered(df).copy()
-    plot_df["group"] = plot_df["model"].astype(str) + " / " + plot_df["config"].astype(str)
-    order = [f"{m} / {c}" for m in _present_models(df) for c in CONFIGS]
-    palette = {f"{m} / {c}": COLORS[c] for m in MODELS for c in CONFIGS}
-    present = [g for g in order if g in plot_df["group"].values]
-
-    sns.boxplot(data=plot_df, x="group", y="n_errors", hue="group", order=present,
-                palette=palette, ax=ax, linewidth=0.8, fliersize=2, legend=False)
-    np.random.seed(JITTER_SEED)  # reproducible jitter (finding 9)
-    sns.stripplot(data=plot_df, x="group", y="n_errors", order=present,
-                  ax=ax, color="#333", size=2.5, alpha=0.35, jitter=0.2)
-
-    counts = [int((plot_df["group"] == g).sum()) for g in present]
-    ax.set_xticks(range(len(present)))
-    ax.set_xticklabels([g.replace(" / ", "\n") for g in present], fontsize=8)
-    _annotate_n(ax, range(len(present)), counts, y=0.0)
-    ax.set_xlabel("")
-    ax.set_ylabel("Errors per run (symlog)")
-    _symlog_errors(ax)
-    ax.grid(axis="y", alpha=0.15, lw=0.8)
-    ax.set_axisbelow(True)
-    ax.set_title("Error-Count Distribution by Model and Configuration\n"
-                 "(rendered runs only; n per cell annotated)")
-    fig.tight_layout()
-    _save(fig, "02_error_distribution.png", out_dir)
 
 
 # ──────────────────────────────────────────────────────────────
@@ -245,14 +200,16 @@ def plot_error_distribution(df: pd.DataFrame, out_dir: str):
 # ──────────────────────────────────────────────────────────────
 
 def plot_complexity_scaling(df: pd.DataFrame, out_dir: str):
-    df_r = _rendered(df)
-    pm = _present_models(df_r) or _present_models(df)
+    # All runs: errors are static (A/C); see plot 01. NOTE the complexity axis is
+    # uneven with P-08/P-09 missing ("high" rests on a single prompt), so read
+    # the trend, not absolute high-complexity values.
+    pm = _present_models(df)
     fig, axes = plt.subplots(1, len(pm), figsize=(4.7 * len(pm), 4.7),
                              sharey=True, squeeze=False)
 
     for ai, m in enumerate(pm):
         ax = axes[0][ai]
-        mdf = df_r[df_r["model"] == m]
+        mdf = df[df["model"] == m]
         for cfg in CONFIGS:
             cdf = mdf[mdf["config"] == cfg]
             meds, lo, hi, x_vals = [], [], [], []
@@ -268,19 +225,18 @@ def plot_complexity_scaling(df: pd.DataFrame, out_dir: str):
             ax.errorbar(x_vals, meds, yerr=[lo, hi], marker="o",
                         color=COLORS[cfg], label=LABELS[cfg] if ai == 0 else None,
                         linewidth=2, capsize=4, markersize=6)
-        n_rendered = int((df_r["model"] == m).sum())
         n_total = int((df["model"] == m).sum())
         ax.set_xticks(range(len(COMPLEXITY_ORDER)))
         ax.set_xticklabels([c.capitalize() for c in COMPLEXITY_ORDER])
         ax.set_xlabel("Task Complexity")
         _symlog_errors(ax)
-        ax.set_title(f"{m.capitalize()}  (rendered {n_rendered}/{n_total})", fontsize=11)
+        ax.set_title(f"{m.capitalize()}  (n={n_total} runs)", fontsize=11)
         ax.grid(axis="y", alpha=0.15, lw=0.8)
         ax.set_axisbelow(True)
 
     axes[0][0].set_ylabel("Median errors per run (IQR, symlog)")
     axes[0][0].legend(frameon=False, fontsize=9)
-    fig.suptitle("Errors per Run by Task Complexity (rendered runs only)",
+    fig.suptitle("Errors per Run by Task Complexity (all runs; high = single prompt, P-08/09 missing)",
                  y=1.03, fontsize=14, fontweight="bold")
     fig.tight_layout()
     _save(fig, "03_complexity_scaling.png", out_dir)
@@ -370,370 +326,189 @@ def _rank_issue_sources(df: pd.DataFrame, top_n: int = 10) -> list[str]:
     return ranked[:top_n]
 
 
-def plot_error_sources(df: pd.DataFrame, out_dir: str):
-    # Dynamically derive the source list from the data (finding 8): rank by
-    # total count, keep top 10, bucket the remainder into "other". This drops
-    # the phantom required-ancestor/section-header rows and restores real
-    # sources (theme-variant-validator, runtime, overflow-detector, ...).
-    top_sources = _rank_issue_sources(df, top_n=10)
-    series = top_sources + ["other"]
-    short_names = [_source_label(s) for s in series]
-    source_colors = sns.color_palette("tab20", len(series))
-
-    fig, ax = plt.subplots(figsize=(11, 5))
-    groups, stacks = [], []
-
-    for m in MODELS:
-        for cfg in CONFIGS:
-            mask = (df["model"] == m) & (df["config"] == cfg)
-            subset = df[mask]
-            n_runs = len(subset)
-            if n_runs == 0:
-                continue
-            groups.append(f"{m[:3].capitalize()}/{LABELS[cfg]}")
-            counts = {}
-            for sources in subset["issueSources"]:
-                if not isinstance(sources, dict):
-                    continue
-                for src, count in sources.items():
-                    counts[src] = counts.get(src, 0) + count
-            row = [counts.get(s, 0) / n_runs for s in top_sources]
-            # everything not in the top list goes to the "other" bucket
-            other = sum(c for s, c in counts.items() if s not in top_sources) / n_runs
-            row.append(other)
-            stacks.append(row)
-
-    x = np.arange(len(groups))
-    bottom_acc = np.zeros(len(groups))
-    for si, short in enumerate(short_names):
-        vals = [s[si] for s in stacks]
-        ax.bar(x, vals, bottom=bottom_acc, color=source_colors[si],
-               label=short, edgecolor="white", lw=0.3)
-        bottom_acc += np.array(vals)
-
-    ax.set_xticks(x)
-    ax.set_xticklabels(groups, fontsize=8, rotation=45, ha="right")
-    ax.set_ylabel("Issues per run")
-    ax.legend(fontsize=8, frameon=True, loc="upper right",
-              bbox_to_anchor=(1.0, 1.0), ncol=2)
-    ax.grid(axis="y", alpha=0.15, lw=0.8)
-    ax.set_axisbelow(True)
-    ax.set_title("Issue Source Distribution (per Run)")
-    fig.tight_layout()
-    _save(fig, "06_error_sources.png", out_dir)
-
-
 # ──────────────────────────────────────────────────────────────
 # 07: Cost vs error count — scatter
 # ──────────────────────────────────────────────────────────────
-
-def plot_cost_vs_errors(df: pd.DataFrame, out_dir: str):
-    # Errors are only meaningful where the component rendered (dynamic checks
-    # ran), so gate on render success; cost is still per-run.
-    df_r = _rendered(df)
-    fig, ax = plt.subplots(figsize=(8, 5))
-    markers = {"haiku": "o", "sonnet": "s", "opus": "D"}
-
-    for cfg in CONFIGS:
-        for m in MODELS:
-            mask = (df_r["model"] == m) & (df_r["config"] == cfg)
-            subset = df_r[mask]
-            if subset.empty:
-                continue
-            ax.scatter(subset["costUsd"], subset["n_errors"],
-                       c=COLORS[cfg], marker=markers[m], s=40, alpha=0.7,
-                       edgecolors="white", linewidths=0.5)
-
-    cfg_handles = [mpatches.Patch(color=COLORS[c], label=LABELS[c]) for c in CONFIGS]
-    model_handles = [
-        plt.Line2D([0], [0], marker=markers[m], color="gray", linestyle="",
-                   markersize=7, label=m.capitalize())
-        for m in _present_models(df)
-    ]
-    ax.legend(handles=cfg_handles + model_handles, frameon=True,
-              fontsize=9, loc="upper right", ncol=2)
-
-    ax.set_xlabel("Cost per Run (USD)")
-    ax.set_ylabel("Errors per run (symlog)")
-    _symlog_errors(ax)
-    ax.grid(alpha=0.15, lw=0.8)
-    ax.set_axisbelow(True)
-    ax.set_title("Cost vs Error Count")
-    _save(fig, "07_cost_vs_errors.png", out_dir)
 
 
 # ──────────────────────────────────────────────────────────────
 # 14: Completeness × Cleanliness — the anti-"underbuild" centerpiece
 # ──────────────────────────────────────────────────────────────
 
-def plot_completeness_vs_cleanliness(df: pd.DataFrame, out_dir: str):
-    """x = completeness (assertion pass rate %), y = cleanliness (errors per
-    100 LOC). A model that "did less" lands at low x and can no longer hide a
-    clean-looking y. Gated on render success so y reflects real dynamic checks."""
-    df_r = _rendered(df).copy()
-    fig, ax = plt.subplots(figsize=(8.5, 6))
-    markers = {"haiku": "o", "sonnet": "s", "opus": "D"}
-
-    # y metric: errors per 100 LOC; fall back to raw n_errors only if LOC is
-    # missing for ALL rendered runs (noted in the axis label/title).
-    use_norm = df_r["errors_per_100loc"].notna().any()
-    ycol = "errors_per_100loc" if use_norm else "n_errors"
-    ylabel = ("Errors per 100 LOC (cleanliness →)" if use_norm
-              else "Errors per run (LOC missing) (cleanliness →)")
-
-    plot_df = df_r[df_r["assertionPassRate"].notna() & df_r[ycol].notna()]
-    for m in _present_models(plot_df):
-        for cfg in CONFIGS:
-            sub = plot_df[(plot_df["model"] == m) & (plot_df["config"] == cfg)]
-            if sub.empty:
-                continue
-            ax.scatter(sub["assertionPassRate"] * 100, sub[ycol],
-                       c=COLORS[cfg], marker=markers[m], s=55, alpha=0.75,
-                       edgecolors="white", linewidths=0.6)
-
-    # Quadrant guides: ideal corner = high completeness, low error (bottom-right).
-    x_mid, y_mid = 80, plot_df[ycol].median() if not plot_df.empty else 0
-    ax.axvline(x_mid, color="#bbb", lw=0.8, ls="--")
-    ax.axhline(y_mid, color="#bbb", lw=0.8, ls="--")
-    ax.annotate("ideal: complete & clean", (99, 0), xytext=(-4, 6),
-                textcoords="offset points", ha="right", va="bottom",
-                fontsize=8, color="#2a8")
-    ax.annotate("did-less region", (1, ax.get_ylim()[1]), xytext=(4, -6),
-                textcoords="offset points", ha="left", va="top",
-                fontsize=8, color="#a55")
-
-    cfg_handles = [mpatches.Patch(color=COLORS[c], label=LABELS[c]) for c in CONFIGS]
-    model_handles = [
-        plt.Line2D([0], [0], marker=markers[m], color="gray", linestyle="",
-                   markersize=7, label=m.capitalize())
-        for m in _present_models(plot_df)
-    ]
-    ax.legend(handles=cfg_handles + model_handles, frameon=True, fontsize=9,
-              loc="upper right", ncol=2)
-    ax.set_xlabel("Assertion pass rate % (completeness →)")
-    ax.set_ylabel(ylabel)
-    ax.set_xlim(0, 102)
-    ax.set_ylim(bottom=0)
-    ax.grid(alpha=0.15, lw=0.8)
-    ax.set_axisbelow(True)
-    n = len(plot_df)
-    ax.set_title("Completeness × Cleanliness "
-                 f"(rendered runs, n={n})")
-    _save(fig, "14_completeness_vs_cleanliness.png", out_dir)
-
 
 # ──────────────────────────────────────────────────────────────
 # 15: Per-category error-free rate (% of runs with 0 errors in a category)
 # ──────────────────────────────────────────────────────────────
 
-def plot_category_errorfree_rate(df: pd.DataFrame, out_dir: str):
-    """% of runs with zero errors in each category A–D, per model × config.
-    A–C are static (every scored run counts); D is dynamic-dependent so it is
-    computed over rendered runs only (else non-rendering runs inflate it)."""
-    pm = _present_models(df)
-    cats = ["A", "B", "C", "D"]
-    fig, axes = plt.subplots(1, len(pm), figsize=(5 * len(pm), 4.7),
-                             sharey=True, squeeze=False)
-    x = np.arange(len(cats))
-    w = 0.25
-    df_r = _rendered(df)
-
-    for ai, m in enumerate(pm):
-        ax = axes[0][ai]
-        for ci, cfg in enumerate(CONFIGS):
-            rates = []
-            for cat in cats:
-                src = df_r if cat == "D" else df
-                sub = src[(src["model"] == m) & (src["config"] == cfg)]
-                col = f"cat_{cat}_errorfree"
-                rates.append(sub[col].mean() * 100 if len(sub) else 0)
-            ax.bar(x + ci * w, rates, w, color=COLORS[cfg],
-                   label=LABELS[cfg] if ai == 0 else None,
-                   edgecolor="white", lw=0.5)
-        ax.set_xticks(x + w)
-        ax.set_xticklabels([CAT_NAMES[c] for c in cats], fontsize=9)
-        ax.set_title(m.capitalize())
-        ax.set_ylim(0, 105)
-        ax.grid(axis="y", alpha=0.15, lw=0.8)
-        ax.set_axisbelow(True)
-
-    axes[0][0].set_ylabel("Error-free runs (%)")
-    axes[0][0].legend(frameon=False, fontsize=9)
-    fig.suptitle("Per-Category Error-Free Rate  (D over rendered runs only)",
-                 y=1.03, fontsize=14, fontweight="bold")
-    fig.tight_layout()
-    _save(fig, "15_category_errorfree_rate.png", out_dir)
-
 
 # ──────────────────────────────────────────────────────────────
-# 16: Wilcoxon signed-rank — bare vs full-stack within each model
+# Pairwise significance — config tiers, per model, at the prompt level
 # ──────────────────────────────────────────────────────────────
 
-def _paired_bare_full(df: pd.DataFrame, model: str, metric: str):
-    """Pair bare vs full-stack runs of one model on (evalId, runNumber). Returns
-    (bare_vals, full_vals) aligned; only cells present in BOTH configs."""
+def _paired_by_prompt(df: pd.DataFrame, model: str, cfg_a: str, cfg_b: str, metric: str):
+    """Pair two configs of one model at the PROMPT level: the metric is first
+    summarised per prompt as the median over that prompt's runs, then prompts
+    present in both configs are paired. This avoids pseudoreplication — the two
+    runs of a prompt are nested, not independent, so they are collapsed before
+    the test. Returns (a_vals, b_vals) aligned on the shared prompts."""
     mdf = df[df["model"] == model]
-    bare = mdf[mdf["config"] == "bare"].set_index(["evalId", "runNumber"])[metric]
-    full = mdf[mdf["config"] == "full-stack"].set_index(["evalId", "runNumber"])[metric]
-    common = bare.index.intersection(full.index)
-    b = bare.loc[common].dropna()
-    f = full.loc[common].dropna()
-    common2 = b.index.intersection(f.index)
-    return b.loc[common2].tolist(), f.loc[common2].tolist()
+    a = mdf[mdf["config"] == cfg_a].groupby("evalId")[metric].median().dropna()
+    b = mdf[mdf["config"] == cfg_b].groupby("evalId")[metric].median().dropna()
+    common = a.index.intersection(b.index)
+    return a.loc[common].tolist(), b.loc[common].tolist()
 
 
-def plot_wilcoxon_bare_vs_full(df: pd.DataFrame, out_dir: str):
-    """Paired Wilcoxon signed-rank test (bare vs full-stack) per model on two
-    metrics: n_errors (rendered runs) and assertionPassRate (all runs). Writes a
-    CSV and a compact forest-style figure. Guards n<6 / missing scipy with a
-    labeled descriptive-only fallback so significance is never over-claimed."""
+def _rank_biserial(a_vals, b_vals):
+    """Matched-pairs rank-biserial effect size for the b-vs-a contrast:
+    r = (W+ - W-) / (W+ + W-) over ranks of the non-zero |differences|.
+    Positive r → b tends to exceed a. nan when all differences are 0."""
+    diffs = [b - a for a, b in zip(a_vals, b_vals)]
+    nz = [d for d in diffs if d != 0]
+    if not nz:
+        return float("nan")
+    order = np.argsort([abs(d) for d in nz])
+    ranks = np.empty(len(nz))
+    ranks[order] = np.arange(1, len(nz) + 1)
+    w_pos = float(sum(r for d, r in zip(nz, ranks) if d > 0))
+    w_neg = float(sum(r for d, r in zip(nz, ranks) if d < 0))
+    tot = w_pos + w_neg
+    return (w_pos - w_neg) / tot if tot else float("nan")
+
+
+def _holm(pvals):
+    """Holm-Bonferroni adjusted p-values for a family of tests (None passes
+    through). Controls the family-wise error rate; conservative at small n."""
+    idx = [i for i, p in enumerate(pvals) if p is not None]
+    m = len(idx)
+    adj = list(pvals)
+    running = 0.0
+    for rank, i in enumerate(sorted(idx, key=lambda i: pvals[i])):
+        running = max(running, min(1.0, (m - rank) * pvals[i]))
+        adj[i] = running
+    return adj
+
+
+def plot_pairwise_stats(df: pd.DataFrame, out_dir: str):
+    """Paired Wilcoxon signed-rank tests across config tiers, per model, at the
+    prompt level (up to 10 paired prompts). The PRIMARY contrast is MCP-Stack →
+    Full-Stack on the assertion pass rate — the only tool-independent quality
+    metric (the deterministic validator that the full-stack tier optimises
+    against does not feed it). Bare→MCP and Bare→Full are exploratory, and
+    n_errors is a process measure (full-stack drives it to ~0 by construction).
+    Render rate is intentionally NOT tested here — it is binary, so per-prompt
+    medians collapse to a 3-value scale with no power; it is reported
+    descriptively (plots 04/19). p-values are Holm-corrected over the family;
+    rank-biserial effect size + median difference carry the magnitude at this
+    small n. Writes wilcoxon_tests.csv."""
     import csv
 
     metrics = [
-        ("n_errors", _rendered(df), "Errors/run (rendered)"),
         ("assertionPassRate", df, "Assertion pass rate"),
+        ("requiredPassRate", df, "Assertion pass rate (required only)"),
+        ("n_errors", _rendered(df), "Errors/run (rendered, process)"),
     ]
-    rows = []  # for CSV + plot
+    contrasts = [
+        ("mcp-stack", "full-stack"),
+        ("bare", "mcp-stack"),
+        ("bare", "full-stack"),
+    ]
+    rows = []
     for metric, mdf, label in metrics:
-        for model in _present_models(df):
-            bare, full = _paired_bare_full(mdf, model, metric)
-            n = len(bare)
-            med_b = float(np.median(bare)) if bare else float("nan")
-            med_f = float(np.median(full)) if full else float("nan")
-            W, p, note = None, None, ""
-            diffs = [f - b for b, f in zip(bare, full)]
-            nonzero = [d for d in diffs if d != 0]
-            if _HAS_SCIPY and len(nonzero) >= 6:
-                try:
-                    res = _scipy_wilcoxon(bare, full, zero_method="wilcox")
-                    W, p = float(res.statistic), float(res.pvalue)
-                except Exception as e:  # pragma: no cover
-                    note = f"wilcoxon failed: {e}"
-            else:
-                note = WILCOXON_FALLBACK_NOTE
-            rows.append({
-                "model": model, "metric": metric, "label": label,
-                "n_pairs": n, "median_bare": med_b, "median_full": med_f,
-                "W": W, "p": p, "note": note,
-            })
+        if metric not in mdf.columns:
+            continue
+        for cfg_a, cfg_b in contrasts:
+            for model in _present_models(df):
+                a, b = _paired_by_prompt(mdf, model, cfg_a, cfg_b, metric)
+                n = len(a)
+                med_a = float(np.median(a)) if a else float("nan")
+                med_b = float(np.median(b)) if b else float("nan")
+                rbc = _rank_biserial(a, b)
+                W, p, note = None, None, ""
+                nonzero = [x for x in (bb - aa for aa, bb in zip(a, b)) if x != 0]
+                if _HAS_SCIPY and len(nonzero) >= 6:
+                    try:
+                        res = _scipy_wilcoxon(a, b, zero_method="wilcox")
+                        W, p = float(res.statistic), float(res.pvalue)
+                    except Exception as e:  # pragma: no cover
+                        note = f"wilcoxon failed: {e}"
+                else:
+                    note = WILCOXON_FALLBACK_NOTE
+                rows.append({
+                    "metric": metric, "label": label,
+                    "contrast": f"{cfg_a}->{cfg_b}",
+                    "primary": metric == "assertionPassRate" and cfg_a == "mcp-stack",
+                    "model": model, "n_prompts": n,
+                    "median_a": med_a, "median_b": med_b,
+                    "median_diff": med_b - med_a, "rank_biserial": rbc,
+                    "W": W, "p_raw": p, "note": note,
+                })
 
-    # CSV
+    for r, pa in zip(rows, _holm([r["p_raw"] for r in rows])):
+        r["p_holm"] = pa
+
     csv_path = os.path.join(out_dir, "wilcoxon_tests.csv")
     with open(csv_path, "w", newline="") as fh:
         writer = csv.DictWriter(fh, fieldnames=[
-            "model", "metric", "label", "n_pairs",
-            "median_bare", "median_full", "W", "p", "note"])
+            "metric", "label", "contrast", "primary", "model", "n_prompts",
+            "median_a", "median_b", "median_diff", "rank_biserial",
+            "W", "p_raw", "p_holm", "note"])
         writer.writeheader()
         for r in rows:
             writer.writerow(r)
     print(f"  wilcoxon_tests.csv ({len(rows)} rows)")
-
-    # Forest-style plot: median delta (full - bare) with significance stars.
-    fig, ax = plt.subplots(figsize=(8, 0.6 + 0.6 * len(rows)))
-    ylabels, deltas, colors = [], [], []
-    for r in rows:
-        delta = r["median_full"] - r["median_bare"]
-        deltas.append(delta)
-        star = ""
-        if r["p"] is not None:
-            star = "***" if r["p"] < 0.001 else "**" if r["p"] < 0.01 else "*" if r["p"] < 0.05 else "ns"
-        tag = f"{r['model']} · {r['label']} (n={r['n_pairs']})" + (f" {star}" if star else " [desc]")
-        ylabels.append(tag)
-        colors.append("#6ACC65" if delta <= 0 and r["metric"] == "n_errors" else
-                       "#4878CF" if delta >= 0 and r["metric"] == "assertionPassRate" else "#E8963E")
-
-    y = np.arange(len(rows))
-    ax.barh(y, deltas, color=colors, edgecolor="white", lw=0.5)
-    ax.axvline(0, color="#333", lw=0.8)
-    ax.set_yticks(y)
-    ax.set_yticklabels(ylabels, fontsize=8)
-    ax.invert_yaxis()
-    ax.set_xlabel("Median delta (full-stack − bare)")
-    ax.grid(axis="x", alpha=0.15, lw=0.8)
-    ax.set_axisbelow(True)
-    sub = "\n(*** p<.001, ** p<.01, * p<.05, ns; [desc] = descriptive only, see CSV)"
-    ax.set_title("Bare vs Full-Stack — Wilcoxon Signed-Rank" + sub)
-    fig.tight_layout()
-    _save(fig, "16_wilcoxon_bare_vs_full.png", out_dir)
+    # Reported as a table in the thesis text. Primary row: metric=
+    # assertionPassRate, contrast=mcp-stack->full-stack. Render rate is NOT
+    # here — descriptive only (no McNemar; binary per-prompt medians degenerate).
 
 
 # ──────────────────────────────────────────────────────────────
 # 17: Desktop width utilisation — "does the app use the desktop width"
 # ──────────────────────────────────────────────────────────────
 
-def plot_width_utilization(df: pd.DataFrame, out_dir: str):
-    """Desktop width utilisation (0..1) per model × config, over rendered runs
-    (the metric only exists when the page rendered). Low = content stuck in a
-    narrow, mobile-shaped band on desktop. The 0.6 line is the warning
-    threshold. RELATIVE signal across configs (a centred max-width column also
-    scores low), not an absolute quality measure."""
-    d = _rendered(df).copy()
-    d = d[d["widthUtilization"].notna()]
-    if d.empty:
-        print(
-            "  SKIP 17 Width Utilization: no widthUtilization data yet — "
-            "needs an eval/rescore with the current validator."
-        )
-        return
 
-    pm = _present_models(d)
-    rng = np.random.default_rng(0)  # seeded jitter for reproducible figures
-    fig, axes = plt.subplots(
-        1, len(pm), figsize=(5 * len(pm), 4.7), sharey=True, squeeze=False
-    )
-    for ai, m in enumerate(pm):
-        ax = axes[0][ai]
-        for ci, cfg in enumerate(CONFIGS):
-            vals = d[(d["model"] == m) & (d["config"] == cfg)][
-                "widthUtilization"
-            ].tolist()
-            if not vals:
-                continue
-            jitter = rng.normal(ci, 0.06, len(vals))
-            ax.scatter(
-                jitter, vals, s=28, color=COLORS[cfg], alpha=0.6,
-                edgecolor="white", lw=0.5,
-                label=LABELS[cfg] if ai == 0 else None,
-            )
-            ax.scatter(
-                ci, float(np.median(vals)), marker="_", s=900,
-                color=COLORS[cfg], lw=2.5,
-            )
-        ax.axhline(0.6, color="#b00", ls="--", lw=1, alpha=0.6)
-        ax.set_xticks(range(len(CONFIGS)))
-        ax.set_xticklabels([LABELS[c] for c in CONFIGS], fontsize=9)
-        ax.set_title(m.capitalize())
-        ax.set_ylim(0, 1.05)
-        ax.grid(axis="y", alpha=0.15, lw=0.8)
-        ax.set_axisbelow(True)
+# ──────────────────────────────────────────────────────────────
+# 19: Render success per prompt × config — where does the tool help most
+# ──────────────────────────────────────────────────────────────
 
-    axes[0][0].set_ylabel("Desktop width utilisation (0–1)")
-    axes[0][0].legend(frameon=False, fontsize=9)
-    fig.suptitle(
-        "Desktop Width Utilisation  (rendered runs; — = median, dashed = warning ≤0.6)",
-        y=1.03, fontsize=14, fontweight="bold",
-    )
+def plot_render_by_prompt(df: pd.DataFrame, out_dir: str):
+    """Render-success rate per prompt × configuration, averaged over all models
+    (6 runs/cell: 3 models × 2). Adds the PROMPT dimension that the bucketed
+    complexity plot hides: it shows WHICH tasks bare/mcp fail and that full-stack
+    lifts every prompt to (near) 100%, with the hardest prompts benefiting most."""
+    pivot = df.pivot_table(values="renderSuccess", index="evalId",
+                           columns="config", aggfunc="mean", observed=True)
+    pivot = pivot.reindex(columns=CONFIGS).sort_index() * 100
+
+    fig, ax = plt.subplots(figsize=(6, 0.5 + 0.45 * len(pivot)))
+    sns.heatmap(pivot, annot=True, fmt=".0f", cmap="RdYlGn", vmin=0, vmax=100,
+                linewidths=1, linecolor="white", cbar_kws={"label": "Render rate (%)"},
+                ax=ax)
+    ax.set_xticklabels([LABELS[c] for c in CONFIGS], rotation=0)
+    ax.set_xlabel("")
+    ax.set_ylabel("Prompt")
+    ax.set_title("Render Success per Prompt × Configuration\n(all models, 6 runs/cell)")
     fig.tight_layout()
-    _save(fig, "17_width_utilization.png", out_dir)
+    _save(fig, "19_render_by_prompt.png", out_dir)
 
 
 # ──────────────────────────────────────────────────────────────
 # Runner
 # ──────────────────────────────────────────────────────────────
 
+# Slimmed thesis set. Dropped as unclear/redundant: 02 (distribution), 07 (cost
+# scatter), 14 (completeness scatter), 15 (error-free rate), 17 (width).
+# Significance is one CSV table (pairwise Wilcoxon, prompt-level, MCP->Full
+# primary, Holm-corrected, rank-biserial); render rate is descriptive only.
+# Convergence (08/09/11/12) is one before/after bar in
+# generate-convergence-plots.py.
 ALL_PLOTS = [
     ("00 Score Overview (internal)", plot_score_overview, False),
-    ("01 Errors by Category", plot_errors_by_category, False),
-    ("02 Error Distribution", plot_error_distribution, False),
+    ("01 Issue Sources by Model", plot_errors_by_category, False),
     ("03 Complexity Scaling", plot_complexity_scaling, False),
     ("04 Render Success", plot_render_success, True),
     ("05 Assertion Heatmap", plot_assertion_heatmap, False),
-    ("06 Error Sources", plot_error_sources, False),
-    ("07 Cost vs Errors", plot_cost_vs_errors, False),
-    ("14 Completeness vs Cleanliness", plot_completeness_vs_cleanliness, False),
-    ("15 Category Error-Free Rate", plot_category_errorfree_rate, False),
-    ("16 Wilcoxon Bare vs Full", plot_wilcoxon_bare_vs_full, False),
-    ("17 Width Utilization", plot_width_utilization, False),
+    ("19 Render by Prompt", plot_render_by_prompt, False),
+    ("Pairwise stats (CSV only)", plot_pairwise_stats, False),
 ]
 
 

@@ -19,7 +19,7 @@ const validateRegexPattern = (pattern: string, location: string): void => {
   }
 };
 
-const VALID_SEVERITIES = new Set(['required', 'recommended', 'important', 'nice-to-have']);
+const VALID_SEVERITIES = new Set(['required', 'recommended']);
 const VALID_CHECK_TYPES = new Set(['import', 'component', 'text-content', 'absence', 'composite']);
 
 const validateAssertion = (a: AssertionDef, evalId: string): void => {

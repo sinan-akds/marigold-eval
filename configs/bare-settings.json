@@ -2,12 +2,21 @@
   "hooks": {
     "PreToolUse": [
       {
+        "matcher": "Bash|Read|Grep|Glob",
+        "hooks": [
+          { "type": "command", "command": "__SCRIPTS_DIR__/block-eval-internals.sh" }
+        ]
+      },
+      {
         "matcher": "Bash",
         "hooks": [
-          {
-            "type": "command",
-            "command": "/home/sinan/GitHub/private/uni/marigold-eval/scripts/block-validate.sh"
-          }
+          { "type": "command", "command": "__SCRIPTS_DIR__/block-bare-tools.sh" }
+        ]
+      },
+      {
+        "matcher": "Read|Grep|Glob",
+        "hooks": [
+          { "type": "command", "command": "__SCRIPTS_DIR__/block-bare-reads.sh" }
         ]
       }
     ]

@@ -3,9 +3,9 @@ import path from 'node:path';
 import { ROOT, RESULTS_DIR, DEV_SERVER_PORT_BASE, DEFAULT_CLAUDE_TIMEOUT_MS } from './paths';
 import { log } from './log';
 import { addRun } from './benchmark';
-import { createWorktree, removeWorktree, killDevServerOnPort, resetMainTestApp, STUB_CONTENT } from './worktree';
+import { createWorktree, removeWorktree, killDevServerOnPort, killStrayBrowsers, resetMainTestApp, STUB_CONTENT } from './worktree';
 import { createRunMcpConfig, cleanupRunMcpConfig } from './mcp';
-import { buildClaudeArgs, ClaudeTimeoutError, runClaude, resolveModelId, getClaudeCliVersion } from './claude';
+import { buildClaudeArgs, ClaudeTimeoutError, runClaude, resolveModelId, getClaudeCliVersion, prepareConfigDir, cleanupConfigDir } from './claude';
 import { runScore, locateTargetFile, extractEfficiency } from './scoring';
 import { extractRunDetail } from './result-parsing';
 import { extractToolUsage } from './tool-usage';
@@ -75,6 +75,7 @@ const runSingle = async (
   log(`${tag} Starting...\n`);
 
   let wtPath: string | undefined;
+  let configDir: string | undefined;
   try {
     const port = DEV_SERVER_PORT_BASE + workerIndex;
     killDevServerOnPort(port);
@@ -86,7 +87,12 @@ const runSingle = async (
     if (fs.existsSync(settingsFile)) {
       const claudeDir = path.join(wtPath, '.claude');
       fs.mkdirSync(claudeDir, { recursive: true });
-      fs.copyFileSync(settingsFile, path.join(claudeDir, 'settings.json'));
+      // Resolve the hook-script placeholder to this repo's actual scripts dir so
+      // the absolute paths are correct wherever the repo lives (host or container).
+      const settingsContent = fs
+        .readFileSync(settingsFile, 'utf-8')
+        .replace(/__SCRIPTS_DIR__/g, path.join(ROOT, 'scripts'));
+      fs.writeFileSync(path.join(claudeDir, 'settings.json'), settingsContent);
     }
 
     const targetFile = path.join(wtPath, d.targetFile);
@@ -96,7 +102,11 @@ const runSingle = async (
     log(`${tag} Running claude -p (model: ${combo.model}, config: ${combo.config})...\n`);
 
     const claudeArgs = buildClaudeArgs(combo, config, wtPath, runMcpConfig, workerIndex);
-    const extraEnv: Record<string, string> = combo.config !== 'full-stack' ? { MARIGOLD_VALIDATE_DISABLED: '1' } : {};
+    configDir = prepareConfigDir(combo.id);
+    const extraEnv: Record<string, string> = {
+      CLAUDE_CONFIG_DIR: configDir,
+      ...(combo.config !== 'full-stack' ? { MARIGOLD_VALIDATE_DISABLED: '1' } : {}),
+    };
     const claudeResult = await runClaude(claudeArgs, wtPath, d.claudeTimeoutMs ?? DEFAULT_CLAUDE_TIMEOUT_MS, extraEnv);
 
     const sessionId = claudeResult.session_id ?? null;
@@ -267,10 +277,15 @@ const runSingle = async (
     const port = DEV_SERVER_PORT_BASE + workerIndex;
     killDevServerOnPort(port);
     cleanupRunMcpConfig(combo);
+    cleanupConfigDir(configDir);
     if (wtPath) {
       log(`${tag} Cleaning up worktree...\n`);
       removeWorktree(combo.id, config.defaults.projectDir);
     }
+    // Reap stray browsers so they don't accumulate across the matrix and OOM
+    // the host. Only inside the container (EVAL_IN_CONTAINER=1) — on the host
+    // this would kill the developer's own browser sessions.
+    if (process.env.EVAL_IN_CONTAINER) killStrayBrowsers();
   }
 };
 

@@ -10,10 +10,12 @@ import type { EvalsConfig } from './src/types';
 
 const bm = loadBenchmark();
 const evals = JSON.parse(fs.readFileSync(EVALS_PATH, 'utf-8')) as EvalsConfig;
-const validatePkg = evals.defaults.validatePackage;
-const themePath = evals.defaults.themePath;
+// Honour the same env overrides as the runner (main.ts) so rescoring works
+// inside the container, where the toolchain lives at baked-in paths.
+const validatePkg = process.env.MARIGOLD_VALIDATE_PKG ?? evals.defaults.validatePackage;
+const themePath = process.env.MARIGOLD_THEME_PATH ?? evals.defaults.themePath;
 const scoreTimeoutMs = evals.defaults.scoreTimeoutMs;
-const projectDir = evals.defaults.projectDir;
+const projectDir = process.env.MARIGOLD_PROJECT_DIR ?? evals.defaults.projectDir;
 const targetFile = evals.defaults.targetFile;
 
 // F3: rescoring must render inside a node_modules-bearing project dir, exactly
@@ -59,8 +61,14 @@ process.on('SIGTERM', () => process.exit(143));
 let updated = 0;
 let failed = 0;
 
+// Optional: restrict rescoring to a single prompt (e.g. RESCORE_ONLY_PROMPT=P-05)
+// so a targeted tool fix only re-renders the affected runs and leaves every
+// other (clean) run byte-identical. No-op when the env var is unset.
+const onlyPrompt = process.env.RESCORE_ONLY_PROMPT;
+
 try {
   for (const run of bm.runs) {
+    if (onlyPrompt && run.evalId !== onlyPrompt) continue;
     const sourceFile = run.sourceFile ? path.join(ROOT, run.sourceFile) : null;
     if (!sourceFile || !fs.existsSync(sourceFile)) {
       console.log(`SKIP ${run.evalId}/${run.model}-${run.config}/run-${run.runNumber} — no source file`);

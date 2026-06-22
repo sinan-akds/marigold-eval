@@ -1,7 +1,7 @@
 import fs from 'node:fs';
 import path from 'node:path';
 import { execFileSync } from 'node:child_process';
-import { ROOT } from './paths';
+import { WORKTREE_BASE } from './paths';
 import { log } from './log';
 import { silentExec, silentRm } from './utils';
 
@@ -21,7 +21,7 @@ export const resetMainTestApp = (appDir: string, targetFile: string) => {
 };
 
 export const createWorktree = (id: string, appDir: string): string => {
-  const wtPath = path.join(ROOT, `worktree-${id}`);
+  const wtPath = path.join(WORKTREE_BASE, `worktree-${id}`);
   const branch = `eval/${id}`;
 
   silentExec('git', ['worktree', 'remove', wtPath, '--force'], appDir);
@@ -40,6 +40,21 @@ export const createWorktree = (id: string, appDir: string): string => {
   return wtPath;
 };
 
+/**
+ * Kill leftover Chromium/headless-shell processes after a run. Playwright (MCP
+ * for the agent, and the validate render harness for scoring) can leave browser
+ * processes alive if a run is killed mid-flight; over 180 runs these accumulate
+ * and exhaust RAM, leading to an OOM kill. Safe inside the container, where the
+ * only Chromium processes belong to the eval itself. Best-effort.
+ */
+export const killStrayBrowsers = () => {
+  for (const pat of ['headless_shell', 'chrome-headless', 'chromium', 'ms-playwright']) {
+    try {
+      execFileSync('pkill', ['-9', '-f', pat], { stdio: 'ignore', timeout: 10_000 });
+    } catch { /* no match → pkill exits non-zero; fine */ }
+  }
+};
+
 export const killDevServerOnPort = (port: number) => {
   try {
     const pids = execFileSync('lsof', ['-ti', `:${port}`], {
@@ -54,7 +69,7 @@ export const killDevServerOnPort = (port: number) => {
 };
 
 export const removeWorktree = (id: string, appDir: string) => {
-  const wtPath = path.join(ROOT, `worktree-${id}`);
+  const wtPath = path.join(WORKTREE_BASE, `worktree-${id}`);
   const branch = `eval/${id}`;
   const nmLink = path.join(wtPath, 'node_modules');
 

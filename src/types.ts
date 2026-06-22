@@ -8,25 +8,26 @@ export type AssertionCheck = {
 export type AssertionDef = {
   id: string;
   description?: string;
-  severity?: 'required' | 'recommended' | 'important' | 'nice-to-have';
+  severity?: 'required' | 'recommended';
   check?: AssertionCheck;
 };
 
-export type ChecklistItem = {
-  id: string;
-  description: string;
-  component?: string;
-  props?: string[];
-};
+export type Complexity =
+  | 'low'
+  | 'low-medium'
+  | 'medium'
+  | 'medium-high'
+  | 'high'
+  | 'very-high'
+  | 'extreme';
 
 export type EvalDefinition = {
   id: string;
   name: string;
   promptFile: string;
-  complexity: 'low' | 'medium' | 'high';
+  complexity: Complexity;
   runsPerCombination?: number;
   tags: string[];
-  checklist: ChecklistItem[];
   assertions: AssertionDef[];
 };
 
