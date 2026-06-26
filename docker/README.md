@@ -1,6 +1,6 @@
 # Hermetic eval environment
 
-Runs the 180-run benchmark in a reproducible, isolated container. This exists
+Runs the 270-run benchmark in a reproducible, isolated container. This exists
 because a host run inherits the ambient `~/.claude` state (shared project
 memory, installed plugins/skills, the user `CLAUDE.md`), which leaks Marigold
 knowledge into every tier and silently invalidates the experiment. The

@@ -14344,6 +14344,83 @@
         "totalTokens": 135485,
         "numTurns": 131
       }
+    },
+    {
+      "evalId": "P-10",
+      "model": "sonnet",
+      "config": "full-stack",
+      "runNumber": 1,
+      "timestamp": "2026-06-26T13:17:16.681Z",
+      "score": 90.23,
+      "assertionPassRate": 0.8667,
+      "sessionId": "71eb209c-b4ac-4fe8-8ccc-cf15d76d7073",
+      "efficiency": {
+        "durationMs": 1176444,
+        "costUsd": 3.5621308,
+        "inputTokens": 60,
+        "outputTokens": 61220,
+        "cacheReadTokens": 5858936,
+        "cacheCreationTokens": 144911,
+        "totalTokens": 61280,
+        "numTurns": 71
+      },
+      "detail": {
+        "categories": {
+          "A": {
+            "score": 100,
+            "errorCount": 0,
+            "warningCount": 0
+          },
+          "B": {
+            "score": 89.39,
+            "errorCount": 0,
+            "warningCount": 1
+          },
+          "C": {
+            "score": 100,
+            "errorCount": 0,
+            "warningCount": 0
+          },
+          "D": {
+            "score": 71.72,
+            "errorCount": 0,
+            "warningCount": 4
+          },
+          "E": {
+            "score": 89.58,
+            "errorCount": 0,
+            "warningCount": 0
+          }
+        },
+        "renderSuccess": true,
+        "renderTimeMs": 1558,
+        "componentsFound": [
+          "button",
+          "li",
+          "span",
+          "table",
+          "thead",
+          "th",
+          "div",
+          "tbody",
+          "tr",
+          "td"
+        ],
+        "issueSources": {
+          "token-compliance": 1,
+          "responsive-checker": 2,
+          "keyboard-a11y": 2
+        },
+        "linesOfCode": 1113,
+        "assertionsPassed": 26,
+        "assertionsFailed": 4,
+        "widthUtilization": 1
+      },
+      "resultFile": "results/sonnet-full-stack/P-10/run-1/result.json",
+      "sourceFile": "results/sonnet-full-stack/P-10/run-1/source.tsx",
+      "resolvedModelId": "claude-sonnet-4-6",
+      "claudeCliVersion": "2.1.193 (Claude Code)",
+      "attempt": 1
     }
   ],
   "summaries": [
@@ -15022,8 +15099,8 @@
       "evalId": "P-10",
       "model": "sonnet",
       "config": "full-stack",
-      "avgScore": 89.2,
-      "avgAssertionPassRate": 0.9,
+      "avgScore": 90.36,
+      "avgAssertionPassRate": 0.8889,
       "runs": 3,
       "attempts": 3,
       "completed": 3,
@@ -15140,5 +15217,5 @@
       "failed": 0
     }
   ],
-  "lastUpdated": "2026-06-26T07:01:31.990Z"
+  "lastUpdated": "2026-06-26T13:37:13.650Z"
 }

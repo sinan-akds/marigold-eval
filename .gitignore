@@ -1,15 +1,21 @@
 node_modules/
-results/
 *.tmp.json
 .mcp-run-*.json
 .system-prompt-*.md
 worktree-*/
 .pw-data-*/
-iteration-data.json
 knowledge-base/
 .claude/
+CLAUDE.md
 __pycache__/
 .pytest_cache/
+
+# Run results: keep the final component (source.tsx) and the scored outcome
+# (result.json) per run; drop raw transcripts and the scoring mirror.
+results/runs/
+results/node_modules
+results/all-runs.jsonl
+**/session.jsonl
 
 # benchmark backups (the live benchmark.json IS tracked)
 benchmark.json.tmp
