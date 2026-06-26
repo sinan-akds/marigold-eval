@@ -1,29 +1,10 @@
 #!/usr/bin/env python3
-"""Kuratiertes Thesis-Plot-Set. Score-frei.
+"""Kuratiertes, score-freies Plot-Set fuer die Arbeit.
 
-Liest die result.json direkt von Platte (autoritativ, deckt sich mit der
-benchmark.json nach rebuild) plus iteration-data.json fuer Konvergenz und
-Tool-Nutzung.
-
-Stil-Vorgaben (Nutzer):
-  - Legende IMMER unter der Abbildung
-  - Titel klar und knapp, KEINE Klammer-Zusatzinfos (n=, configs ...) im Titel
-  - KEINE Zahlen ueber den Balken
-  - durchgaengig „pro Lauf“ (nicht „pro Run“)
-
-Erzeugt (nur fuer Modelle mit Daten, n=3/Kombination -> 30 Laeufe je Config):
-  errors_<model>.png        Fehleranzahl je Kategorie (NUR Fehler)   [Haupttext]
-  warnings_<model>.png      Warnungen je Kategorie                   [Anhang]
-  consistency_<model>.png   Assertion Pass Rate je Prompt            [Konsistenz]
-  convergence.png           Fehler je validate-Aufruf, alle Punkte + Trend
-  complexity.png            Fehler nach Prompt-Komplexitaet
-  render.png                Render-Rate je Modell x Konfiguration
-  tool_usage.png            Ø Werkzeugaufrufe je Konfiguration
-  assertion_table.tex/.csv  Assertion Pass Rate als Tabelle (statt Heatmap)
-
-Konvergenz nutzt nur Laeufe mit verfuegbarem Session-Transkript (Container-Laeufe
-persistieren keins); das n im Label ist daher kleiner als 30 und ehrlich so
-ausgewiesen. Re-run, sobald sonnet/opus fertig sind.
+Liest result.json je Lauf direkt von Platte und iteration-data.json fuer
+Konvergenz und Werkzeugnutzung. Plots nur fuer Modelle mit Daten. Konvergenz
+nutzt nur Laeufe mit gesichertem Session-Transkript, das n im Label ist daher
+kleiner als die volle Laufzahl.
 """
 import json
 import os
@@ -122,7 +103,7 @@ def mean(xs):
     return float(np.mean(xs)) if len(xs) else 0.0
 
 
-# ── Fehler / Warnungen je Kategorie, je Modell ─────────────────────────
+# Fehler/Warnungen je Kategorie
 def _source_plot(model, key, fname, ylabel, title, top=None):
     if not any(DATA[model][t] for t in TIERS):
         return
@@ -162,7 +143,7 @@ def plot_warnings():
                      "Warnungen je Kategorie", top=10)
 
 
-# ── Per-Prompt-Konsistenz: Assertion Pass Rate je Prompt ───────────────
+# Assertion Pass Rate je Prompt
 def plot_consistency():
     for m in PRESENT:
         if not any(DATA[m][t] for t in TIERS):
@@ -191,7 +172,7 @@ def plot_consistency():
         save(fig, f"consistency_{m}.png")
 
 
-# ── Per-Prompt: Render-Rate je Prompt ──────────────────────────────────
+# Render-Rate je Prompt
 def plot_render_per_prompt():
     for m in PRESENT:
         if not any(DATA[m][t] for t in TIERS):
@@ -222,7 +203,7 @@ def plot_render_per_prompt():
         save(fig, f"render_perprompt_{m}.png")
 
 
-# ── Konvergenz: alle Punkte + Trendkurve, 3 Modelle ────────────────────
+# Konvergenz
 def plot_convergence():
     it = _safe_load(os.path.join(ROOT, "iteration-data.json"))
     if it is None:
@@ -256,10 +237,7 @@ def plot_convergence():
                 px.append(i + 1 + rng.uniform(-0.10, 0.10))
                 py.append(v)
         ax.scatter(px, py, s=16, color=MODEL_COLORS[m], alpha=0.30, edgecolors="none")
-        # Trend = Mittelwert je Aufruf ueber forward-gefuellte Serien
-        # (konvergierte Laeufe bleiben bei 0). Mittelwert statt Median, weil
-        # der Median bei den sauberen Modellen schon ab Aufruf 1 auf 0 liegt
-        # und die Konvergenz dann nicht sichtbar waere.
+        # Trend = Mittelwert je Aufruf, forward-gefuellt (Median liegt bei sauberen Modellen schon bei 0)
         mat = np.array([s + [s[-1]] * (maxlen - len(s)) for s in series], dtype=float)
         med = np.mean(mat, axis=0)[:cutoff]
         idx = np.arange(1, cutoff + 1)
@@ -285,7 +263,7 @@ def plot_convergence():
     save(fig, "convergence.png")
 
 
-# ── Komplexitaets-Skalierung ───────────────────────────────────────────
+# Komplexitaets-Skalierung
 def plot_complexity():
     fig, ax = plt.subplots(figsize=(7.4, 4.6))
     x = np.arange(len(COMPLEXITY_ORDER))
@@ -306,7 +284,7 @@ def plot_complexity():
     save(fig, "complexity.png")
 
 
-# ── Render-Rate je Modell x Tier ───────────────────────────────────────
+# Render-Rate je Modell und Konfiguration
 def plot_render():
     fig, ax = plt.subplots(figsize=(7.4, 4.6))
     x = np.arange(len(PRESENT))
@@ -324,7 +302,7 @@ def plot_render():
     save(fig, "render.png")
 
 
-# ── Assertion Pass Rate als TABELLE (statt Heatmap) ────────────────────
+# Assertion Pass Rate als Tabelle
 def make_assertion_table():
     rows = []
     for m in PRESENT:
@@ -354,7 +332,7 @@ def make_assertion_table():
               + "  ".join("  --  " if c is None else f"{c:5.1f}" for c in cells))
 
 
-# ── Tool-Nutzung je Konfiguration ──────────────────────────────────────
+# Werkzeugnutzung je Konfiguration
 def plot_tool_usage():
     it = _safe_load(os.path.join(ROOT, "iteration-data.json"))
     if it is None:

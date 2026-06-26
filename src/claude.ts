@@ -5,18 +5,9 @@ import { spawn, execFileSync } from 'node:child_process';
 import { ROOT, DEV_SERVER_PORT_BASE, KILL_GRACE_MS } from './paths';
 import type { ClaudeOutput, Combination, EvalsConfig } from './types';
 
-/**
- * Per-run isolation: each run gets a FRESH, empty CLAUDE_CONFIG_DIR so no
- * ambient state leaks in — no shared/auto-loaded project memory, no installed
- * plugins/skills, no user-level CLAUDE.md or settings. Only the two auth tokens
- * (Claude + cached MCP OAuth, both in .credentials.json) are copied in, so the
- * run authenticates without re-login. The docs-MCP OAuth token is keyed by
- * server config, not by config dir, so it ports cleanly (verified).
- */
+// each run gets a fresh, empty CLAUDE_CONFIG_DIR so no ambient state leaks in. only the auth token is copied
 export const prepareConfigDir = (comboId: string): string => {
-  // CLAUDE_CONFIG_BASE lets verification runs place the (normally throwaway)
-  // config dir on a persistent/bind-mounted path so the session transcript can
-  // be inspected afterwards. Defaults to the OS temp dir.
+  // CLAUDE_CONFIG_BASE puts the config dir on a persistent path for inspection, defaults to the temp dir
   const base = process.env.CLAUDE_CONFIG_BASE || os.tmpdir();
   const dir = path.join(base, `cc-eval-cfg-${comboId}-${process.pid}`);
   fs.rmSync(dir, { recursive: true, force: true });
@@ -39,20 +30,13 @@ export const cleanupConfigDir = (dir: string | undefined): void => {
   }
 };
 
-/**
- * Resolve a run's model alias (haiku/sonnet/opus) to a pinned dated/full model
- * ID for reproducibility. Falls back to the alias itself when no mapping exists
- * (back-compat with configs that lack a `modelIds` map).
- */
+// resolve the model alias to the pinned model id, fall back to the alias
 export const resolveModelId = (combo: Combination, config: EvalsConfig): string =>
   config.defaults.modelIds?.[combo.model] ?? combo.model;
 
 let cachedCliVersion: string | null | undefined;
 
-/**
- * Capture `claude --version` once per process for reproducibility records.
- * Read-only and null-safe: returns null if the CLI is missing or errors.
- */
+// capture `claude --version` once for the run record, null if the CLI is missing
 export const getClaudeCliVersion = (): string | null => {
   if (cachedCliVersion !== undefined) return cachedCliVersion;
   try {
@@ -115,14 +99,10 @@ export const buildClaudeArgs = (
     '--append-system-prompt-file', tmpPromptFile,
   ];
 
-  // All tiers are isolated from ambient MCP servers (--strict-mcp-config) and
-  // run with the tier's own --mcp-config; the previous per-tier branch pushed
-  // byte-identical args after MCP isolation was unified.
+  // all tiers run isolated from ambient MCP servers with the tier's own --mcp-config
   args.push(
     '--disable-slash-commands',
-    // Load only project settings (the per-run .claude/settings.json with the
-    // tier hooks); never user/policy/local settings. Combined with a fresh
-    // CLAUDE_CONFIG_DIR this keeps the run free of ambient configuration.
+    // load only the per-run project settings (tier hooks), never user or local settings
     '--setting-sources', 'project',
     '--strict-mcp-config', '--mcp-config', mcpConfigPath,
   );

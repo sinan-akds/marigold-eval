@@ -150,9 +150,7 @@ export const extractEfficiency = (result: ClaudeOutput): Efficiency => {
   const input = usage.input_tokens ?? 0;
   const output = usage.output_tokens ?? 0;
   return {
-    // NOTE: durationMs is wall-clock and is CONTAMINATED under concurrent runs
-    // (workers compete for CPU/IO/dev-server ports), so it must NOT be used for
-    // efficiency analysis. Use totalTokens / numTurns for any efficiency claim.
+    // durationMs is wall-clock and unreliable under concurrent runs, use totalTokens or numTurns for efficiency
     durationMs: result.duration_ms ?? 0,
     costUsd: result.total_cost_usd ?? 0,
     inputTokens: input,

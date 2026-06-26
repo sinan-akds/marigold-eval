@@ -167,9 +167,7 @@ const parseValidateResult = (resultText: string): ParsedValidateResult => {
     warnings = issueMessages.filter(m => m.startsWith('[warning/')).length;
   }
 
-  // Echter validate-Lauf nur, wenn die Ausgabe die Werkzeug-Signatur traegt.
-  // Fehlinvokationen (command not found, npm error, Exit 127, leer) erkennt
-  // man am Fehlen dieser Signatur und werden ausgeschlossen.
+  // count as a real validate run only if the output carries the tool signature
   const ok = /marigold-validate:/.test(resultText)
     || /\d+\s+error\(s\),\s*\d+\s+warning\(s\)/.test(resultText)
     || resultText.includes('— ok')
@@ -279,15 +277,11 @@ const main = () => {
   const allIterations: IterationData[] = [];
   let found = 0;
   let missing = 0;
-  // FINDING 7: track which runs are dropped because their machine-local
-  // ~/.claude session log could not be resolved, so coverage is auditable.
+  // runs dropped because their session log could not be found
   const droppedRunIds: string[] = [];
 
   for (const comboDir of resultDirs) {
-    // NB: comboDir.split('-', 2) used to also destructure `config`, which was
-    // both unused and WRONG ('full' for 'full-stack'). We derive only `model`
-    // here and rely on the correct `configPart` (everything after the first
-    // dash) for the emitted config field.
+    // combo dir is "<model>-<config>", split on the first dash
     const dashIdx = comboDir.indexOf('-');
     const model = dashIdx === -1 ? comboDir : comboDir.slice(0, dashIdx);
     const configPart = comboDir.slice(model.length + 1);
@@ -311,10 +305,7 @@ const main = () => {
         const runId = `${model}-${configPart}-${promptDir}-r${runNumber}`;
         const promptStart = getEvalPromptStart(promptDir);
 
-        // Primaer das vom Runner in den run-Dir gesicherte Transkript nutzen
-        // (Container-Laeufe persistieren es dort, da ihr CLAUDE_CONFIG_DIR in
-        // /tmp liegt und nach dem Lauf geloescht wird). Fallback: die
-        // maschinenlokale ~/.claude-Session (Nicht-Container-Laeufe).
+        // prefer the transcript saved next to the run, fall back to the local ~/.claude session
         const localSession = path.join(promptPath, runDir, 'session.jsonl');
         let sessionFile: string | null = null;
         if (fs.existsSync(localSession) && fs.statSync(localSession).size > 1000) {
@@ -376,10 +367,7 @@ const main = () => {
   }
 
   console.error(`Extracted: ${found} runs with session data, ${missing} without`);
-  // FINDING 7: session transcripts live ONLY under machine-local ~/.claude
-  // (results/runs/<id> and results/all-runs.jsonl carry no toolCalls), so the
-  // ~19% drop is a data-availability limit we cannot eliminate — we make it
-  // transparent by logging every dropped run id and reporting coverage below.
+  // log dropped runs and report coverage below
   if (droppedRunIds.length > 0) {
     console.error(`Dropped ${droppedRunIds.length} run(s) with no resolvable session log:`);
     for (const id of [...droppedRunIds].sort()) console.error(`  - ${id}`);
@@ -393,14 +381,7 @@ const main = () => {
     return {
       ...rest,
       convergence: {
-        // SCOPE WARNING (finding 6): first/last here span ALL validate calls
-        // regardless of --checks scope, so firstErrors/lastErrors mix
-        // technical/spatial/a11y runs. This is the CONTAMINATED number the
-        // honest convergence plots deliberately avoid — generate-convergence-
-        // plots.py recomputes first/last from SAME-scope calls and does NOT
-        // read this field. Kept only for backward compatibility; do not use it
-        // for any reported figure. The explicit marker stops a future reader
-        // from mistaking it for a clean same-scope convergence value.
+        // spans all validate calls regardless of --checks scope, kept for compatibility only
         scope: 'all-calls-mixed',
         validateCalls: calls.length,
         firstErrors: first.errorCount,
@@ -420,7 +401,6 @@ const main = () => {
     totalRuns: allIterations.length,
     withSessionData: found,
     withoutSessionData: missing,
-    // Convergence figures read these to report honest coverage (finding 7).
     analyzedRuns: found,
     droppedRunIds: [...droppedRunIds].sort(),
     coverage: {
@@ -497,13 +477,8 @@ const main = () => {
     console.log();
   }
 
-  // Convergence statistics.
-  // SCOPE WARNING (finding 6): these first/last deltas span ALL validate calls
-  // (mixed --checks scope) and are therefore the contaminated, scope-mixed view.
-  // The reported thesis figures come from generate-convergence-plots.py, which
-  // recomputes first/last from SAME-scope calls. This stdout block is a quick
-  // sanity dump only — do not cite these numbers.
-  console.log('=== Convergence Statistics (full-stack, SCOPE-MIXED — not for citation) ===\n');
+  // quick sanity dump, spans all validate calls regardless of --checks scope
+  console.log('=== Convergence Statistics (full-stack, scope-mixed) ===\n');
   const fsRuns = sorted.filter(r => r.config === 'full-stack' && r.validateCallDetails.length >= 2);
   if (fsRuns.length > 0) {
     const convergenceData = fsRuns.map(r => {

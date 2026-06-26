@@ -10,19 +10,14 @@ import type { EvalsConfig } from './src/types';
 
 const bm = loadBenchmark();
 const evals = JSON.parse(fs.readFileSync(EVALS_PATH, 'utf-8')) as EvalsConfig;
-// Honour the same env overrides as the runner (main.ts) so rescoring works
-// inside the container, where the toolchain lives at baked-in paths.
+// honour the same env overrides as the runner so rescoring works in the container
 const validatePkg = process.env.MARIGOLD_VALIDATE_PKG ?? evals.defaults.validatePackage;
 const themePath = process.env.MARIGOLD_THEME_PATH ?? evals.defaults.themePath;
 const scoreTimeoutMs = evals.defaults.scoreTimeoutMs;
 const projectDir = process.env.MARIGOLD_PROJECT_DIR ?? evals.defaults.projectDir;
 const targetFile = evals.defaults.targetFile;
 
-// F3: rescoring must render inside a node_modules-bearing project dir, exactly
-// like the live runner, or the browser-driven B/D (spatial/a11y) categories
-// collapse to zero and the rescored numbers are not comparable to live numbers.
-// If the project dir is unavailable or not a git repo, we REFUSE to overwrite
-// scores rather than silently zeroing them.
+// must render inside a project dir with node_modules like the live runner, or spatial and a11y collapse to zero. refuse rather than overwrite with zeros
 const projectTarget = path.join(projectDir, targetFile);
 const isGitRepo = fs.existsSync(path.join(projectDir, '.git'));
 const canRender = fs.existsSync(projectDir)
@@ -37,7 +32,7 @@ if (!canRender) {
   process.exit(1);
 }
 
-// Snapshot the original target so we can restore it no matter what happens.
+// snapshot the target so we can always restore it
 const hadOriginalTarget = fs.existsSync(projectTarget);
 const originalTarget = hadOriginalTarget ? fs.readFileSync(projectTarget, 'utf-8') : null;
 
@@ -61,9 +56,7 @@ process.on('SIGTERM', () => process.exit(143));
 let updated = 0;
 let failed = 0;
 
-// Optional: restrict rescoring to a single prompt (e.g. RESCORE_ONLY_PROMPT=P-05)
-// so a targeted tool fix only re-renders the affected runs and leaves every
-// other (clean) run byte-identical. No-op when the env var is unset.
+// optional: restrict rescoring to one prompt (RESCORE_ONLY_PROMPT=P-05)
 const onlyPrompt = process.env.RESCORE_ONLY_PROMPT;
 
 try {
@@ -79,9 +72,7 @@ try {
     const runId = runComboId(run);
     const outputDir = path.join(RESULTS_DIR, `${run.model}-${run.config}`, run.evalId, `run-${run.runNumber}`);
 
-    // Render inside the project dir (which has node_modules), exactly like the
-    // live eval: copy the saved source into projectDir/src/TestApp.tsx and score
-    // there. The finally-block + process exit hook restore the original target.
+    // render inside the project dir like the live eval, the exit hook restores the target
     fs.copyFileSync(sourceFile, projectTarget);
 
     const scoreResult = runScore(projectTarget, {

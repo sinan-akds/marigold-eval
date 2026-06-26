@@ -1,13 +1,9 @@
 #!/bin/bash
-# PreToolUse hook (Bash matcher) for the STRICT bare config.
-# Bare = parametric model knowledge only: the model may use its environment to
-# build its OWN code, but must not extract Marigold API knowledge through any
-# tool. This blocks, via the shell:
-#   - marigold validate (the validation CLI)
-#   - type-checking / building (tsc, vite build, pnpm build) — these surface
-#     Marigold API correctness from the bundled @marigold type declarations
-#   - direct introspection of the installed package (node -e require('@marigold'),
-#     cat/grep/head/less/find over node_modules/@marigold or a marigold source repo)
+# PreToolUse hook (Bash) for the bare config.
+# Bare uses only the model's own knowledge, so this blocks shell access to Marigold API knowledge:
+#   - marigold validate
+#   - type-checking and building (tsc, vite build, pnpm build), which surface Marigold types
+#   - inspecting the installed @marigold package or a Marigold source checkout
 # A bare run still has Bash/Read/Write/Edit for its own files.
 INPUT=$(cat)
 CMD=$(echo "$INPUT" | jq -r '.tool_input.command // empty' 2>/dev/null)

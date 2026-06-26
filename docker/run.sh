@@ -9,8 +9,7 @@ CREDS="${CLAUDE_CREDENTIALS:-$HOME/.claude/.credentials.json}"
 
 [ -f "$CREDS" ] || { echo "No credentials at $CREDS"; exit 1; }
 
-# Use a TTY only when attached to one (so the resilient wrapper / background
-# runs work without "the input device is not a TTY").
+# use a TTY only when attached to one, so background runs don't fail with "not a TTY"
 TTY=""
 [ -t 0 ] && [ -t 1 ] && TTY="-it"
 

@@ -110,9 +110,7 @@ export const validateFilesExist = (config: EvalsConfig): void => {
     throw new Error(`Validate binary not found at ${validateBin}. Run: pnpm -F @marigold-ui/validate build`);
   }
 
-  // Scoring shells out to the @marigold/cli validator (single source of truth
-  // for both agent feedback and measurement). It must be built with its
-  // harness, otherwise every scored run fails to render.
+  // scoring shells out to the @marigold/cli validator, it must be built with its harness or every scored run fails to render
   const cliPkg = path.join(d.validatePackage, '..', 'cli');
   const cliBin = path.join(cliPkg, 'dist', 'bin', 'marigold.mjs');
   if (!fs.existsSync(cliBin)) {

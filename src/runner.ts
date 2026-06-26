@@ -29,10 +29,7 @@ export const installShutdownHandler = () => {
 const buildRunDir = (combo: Combination): string =>
   path.join(RESULTS_DIR, `${combo.model}-${combo.config}`, combo.evalId, `run-${combo.run}`);
 
-/**
- * Rekursiv die Session-Transkript-Datei `<sessionId>.jsonl` unter
- * `<configDir>/projects/**` finden.
- */
+// find the session transcript <sessionId>.jsonl under <configDir>/projects
 const findSessionJsonl = (root: string, sessionId: string): string | null => {
   if (!fs.existsSync(root)) return null;
   const stack = [root];
@@ -53,13 +50,7 @@ const findSessionJsonl = (root: string, sessionId: string): string | null => {
   return null;
 };
 
-/**
- * Das Session-Transkript aus dem (direkt danach geloeschten) CLAUDE_CONFIG_DIR
- * in den run-Dir kopieren. Bei Container-Laeufen liegt das Config-Dir in einem
- * ephemeren /tmp und wird nach jedem Lauf entfernt; ohne diese Kopie geht das
- * Transkript verloren und die Konvergenz-Auswertung (Fehler je validate-Aufruf)
- * hat keine Datengrundlage. Kopiert nach `<runDir>/session.jsonl`.
- */
+// copy the session transcript out of the throwaway config dir into the run dir, else convergence data is lost
 const persistSessionTranscript = (
   configDir: string | undefined,
   sessionId: string | null,
@@ -69,13 +60,13 @@ const persistSessionTranscript = (
   if (!configDir || !sessionId) return;
   const src = findSessionJsonl(path.join(configDir, 'projects'), sessionId);
   if (!src) {
-    log(`${tag} ⚠ kein Session-Transkript fuer ${sessionId} gefunden (Konvergenz fehlt fuer diesen Lauf)\n`);
+    log(`${tag} no session transcript found for ${sessionId} (convergence missing for this run)\n`);
     return;
   }
   try {
     fs.copyFileSync(src, path.join(runDir, 'session.jsonl'));
   } catch (e) {
-    log(`${tag} ⚠ Session-Transkript konnte nicht gesichert werden: ${e}\n`);
+    log(`${tag} failed to save session transcript: ${e}\n`);
   }
 };
 
@@ -101,7 +92,7 @@ const mergeAndSaveResult = (
   resultData.efficiency = efficiency;
   if (sessionId) resultData.sessionId = sessionId;
   resultData.timestamp = ts;
-  // Reproducibility metadata (additive — never feeds back into the score).
+  // reproducibility metadata, never feeds back into the score
   if (repro.resolvedModelId) resultData.resolvedModelId = repro.resolvedModelId;
   if (repro.claudeCliVersion != null) resultData.claudeCliVersion = repro.claudeCliVersion;
   if (repro.docsMcpUsed !== undefined) resultData.docsMcpUsed = repro.docsMcpUsed;
@@ -137,8 +128,7 @@ const runSingle = async (
     if (fs.existsSync(settingsFile)) {
       const claudeDir = path.join(wtPath, '.claude');
       fs.mkdirSync(claudeDir, { recursive: true });
-      // Resolve the hook-script placeholder to this repo's actual scripts dir so
-      // the absolute paths are correct wherever the repo lives (host or container).
+      // resolve the hook-script placeholder to this repo's scripts dir so paths work on host or container
       const settingsContent = fs
         .readFileSync(settingsFile, 'utf-8')
         .replace(/__SCRIPTS_DIR__/g, path.join(ROOT, 'scripts'));
@@ -303,8 +293,7 @@ const runSingle = async (
       }
     }
 
-    // A timed-out run that still produced a scorable file counts as completed
-    // (take the result as-is, no retry). Only genuine failures keep the error.
+    // a timed-out run with a scorable file counts as completed, only genuine failures keep the error
     const scoredTimeout = err instanceof ClaudeTimeoutError && score !== null;
     const bmRun: BenchmarkRun = {
       evalId: combo.evalId,
@@ -337,9 +326,7 @@ const runSingle = async (
       log(`${tag} Cleaning up worktree...\n`);
       removeWorktree(combo.id, config.defaults.projectDir);
     }
-    // Reap stray browsers so they don't accumulate across the matrix and OOM
-    // the host. Only inside the container (EVAL_IN_CONTAINER=1) — on the host
-    // this would kill the developer's own browser sessions.
+    // reap stray browsers so they don't accumulate and OOM the host, only inside the container
     if (process.env.EVAL_IN_CONTAINER) killStrayBrowsers();
   }
 };

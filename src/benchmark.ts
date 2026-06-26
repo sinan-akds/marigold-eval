@@ -46,15 +46,7 @@ export const runComboId = (r: BenchmarkRun): string =>
 
 export const DEFAULT_MAX_ATTEMPTS = 2;
 
-/**
- * A combo identity is "completed" (should NOT be re-run) once either:
- *   - it has at least one successful (non-error) record, OR
- *   - it has reached the configured attempt budget (maxAttempts) of failures.
- *
- * This makes the retry policy EXPLICIT and bounded — failures are retried up to
- * maxAttempts, never silently forever. Failed attempts are kept as distinct
- * records (see addRun), so `n` stays honest (no survivorship bias).
- */
+// a combo is done once it has a success or has used up its attempt budget
 export const isCompleted = (
   bm: BenchmarkFile,
   id: string,
@@ -83,11 +75,7 @@ export const recomputeSummaries = (bm: BenchmarkFile) => {
     const scores = completed.map(r => r.score).filter((s): s is number => s !== null);
     const passRates = completed.map(r => r.assertionPassRate).filter((p): p is number => p !== null);
 
-    // `attempts` = true number of attempts across every combo identity in this
-    // group, INCLUDING failures that a later success superseded (those rows were
-    // dropped from `runs`, but the surviving success carries the real `attempt`
-    // number). So a success-on-retry counts its retries; no survivorship bias.
-    // `runs` stays the physical record count for backwards compatibility.
+    // count true attempts per identity, including failures a later success replaced
     const byIdentity = new Map<string, BenchmarkRun[]>();
     for (const r of runs) {
       const idKey = runComboId(r);
@@ -116,26 +104,14 @@ export const recomputeSummaries = (bm: BenchmarkFile) => {
   }
 };
 
-/**
- * Record a run for a combo identity (model-config-evalId-rN).
- *
- * Explicit, honest retry semantics:
- *   - A SUCCESS (no error) supersedes any prior records for the identity — the
- *     run has converged, so earlier failed attempts are dropped in favour of the
- *     final answer (keeps avg metrics clean, one row per completed identity).
- *   - A FAILURE is APPENDED as a distinct attempt record (never overwrites a
- *     prior attempt) so the true number of attempts is preserved (no
- *     survivorship bias). The `attempt` field counts attempts for the identity.
- */
+// record a run: a success replaces prior records, a failure is appended as a new attempt
 export const addRun = (bm: BenchmarkFile, run: BenchmarkRun) => {
   const id = comboId(run.model, run.config, run.evalId, run.runNumber);
   const sameIdentity = (r: BenchmarkRun) =>
     comboId(r.model, r.config, r.evalId, r.runNumber) === id;
 
   if (!run.error) {
-    // Success: replace all prior records for this identity, but preserve the
-    // TRUE attempt number on the surviving row (prior failures + this success)
-    // so a success-after-retry is not misrecorded as a first-try pass.
+    // success: replace prior records but keep the true attempt number
     const priorAttempts = bm.runs.filter(sameIdentity).length;
     bm.runs = bm.runs.filter(r => !sameIdentity(r));
     bm.runs.push({ ...run, attempt: run.attempt ?? priorAttempts + 1 });

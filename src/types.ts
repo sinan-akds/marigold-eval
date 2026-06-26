@@ -77,9 +77,7 @@ export type RunDetail = {
   linesOfCode?: number;
   assertionsPassed?: number;
   assertionsFailed?: number;
-  // Desktop width-utilisation (0..1) from report.metadata; how much of the
-  // 1280px width the content covers. Low = "stuck in mobile shape on desktop".
-  // undefined for runs scored before the metric existed / that did not render.
+  // desktop width use (0..1), how much of the 1280px width the content covers. undefined for older runs
   widthUtilization?: number;
 };
 

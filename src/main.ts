@@ -82,9 +82,7 @@ const main = async () => {
   } catch (err) {
     throw new Error(`Failed to parse evals.json: ${err instanceof Error ? err.message : err}`);
   }
-  // Allow the validate-tool and theme locations to be overridden by env so the
-  // same evals.json works on the host and inside the container (where the tool
-  // lives at a baked-in path), without editing the committed config.
+  // allow the validate tool and theme paths to be overridden by env so one evals.json works on host and container
   if (process.env.MARIGOLD_VALIDATE_PKG) {
     config.defaults.validatePackage = process.env.MARIGOLD_VALIDATE_PKG;
   }
