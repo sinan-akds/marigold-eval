@@ -1,0 +1,615 @@
+{
+  "runId": "opus-bare-P-01-r2",
+  "promptId": "P-01",
+  "model": "opus",
+  "config": "bare",
+  "timestamp": "2026-06-25T20:09:30.189Z",
+  "quality": {
+    "overall": 72.86,
+    "categories": {
+      "A": {
+        "category": "A",
+        "label": "Design System API",
+        "score": 60,
+        "weight": 0.225,
+        "weightedScore": 13.5,
+        "errorCount": 4,
+        "warningCount": 0,
+        "issues": [
+          {
+            "type": "technical",
+            "severity": "error",
+            "source": "prop-validator",
+            "component": "Stack",
+            "message": "Prop \"width\" does not exist on <Stack>.",
+            "suggestion": "Remove the prop. Available props: space, children, stretch, alignX, alignY, asList, role, aria-live, id, aria-label, aria-labelledby, aria-describedby, aria-details.",
+            "location": {
+              "file": "TestApp.tsx",
+              "line": 62,
+              "column": 24
+            },
+            "details": {
+              "used": "width",
+              "available": [
+                "space",
+                "children",
+                "stretch",
+                "alignX",
+                "alignY",
+                "asList",
+                "role",
+                "aria-live",
+                "id",
+                "aria-label",
+                "aria-labelledby",
+                "aria-describedby",
+                "aria-details"
+              ]
+            }
+          },
+          {
+            "type": "technical",
+            "severity": "error",
+            "source": "prop-validator",
+            "component": "TextField",
+            "message": "Prop \"isRequired\" does not exist on <TextField>.",
+            "suggestion": "Replace \"isRequired\" with \"required\".",
+            "location": {
+              "file": "TestApp.tsx",
+              "line": 72,
+              "column": 15
+            },
+            "details": {
+              "used": "isRequired",
+              "available": [
+                "variant",
+                "size",
+                "width",
+                "disabled",
+                "required",
+                "error",
+                "readOnly",
+                "min",
+                "max",
+                "value",
+                "defaultValue",
+                "placeholder",
+                "render",
+                "id",
+                "dir"
+              ]
+            }
+          },
+          {
+            "type": "technical",
+            "severity": "error",
+            "source": "prop-validator",
+            "component": "TextField",
+            "message": "Prop \"isRequired\" does not exist on <TextField>.",
+            "suggestion": "Replace \"isRequired\" with \"required\".",
+            "location": {
+              "file": "TestApp.tsx",
+              "line": 82,
+              "column": 15
+            },
+            "details": {
+              "used": "isRequired",
+              "available": [
+                "variant",
+                "size",
+                "width",
+                "disabled",
+                "required",
+                "error",
+                "readOnly",
+                "min",
+                "max",
+                "value",
+                "defaultValue",
+                "placeholder",
+                "render",
+                "id",
+                "dir"
+              ]
+            }
+          },
+          {
+            "type": "technical",
+            "severity": "error",
+            "source": "prop-validator",
+            "component": "Select",
+            "message": "Prop \"isRequired\" does not exist on <Select>.",
+            "suggestion": "Replace \"isRequired\" with \"required\".",
+            "location": {
+              "file": "TestApp.tsx",
+              "line": 91,
+              "column": 15
+            },
+            "details": {
+              "used": "isRequired",
+              "available": [
+                "variant",
+                "size",
+                "width",
+                "children",
+                "label",
+                "description",
+                "errorMessage",
+                "items",
+                "required",
+                "disabled",
+                "open",
+                "error",
+                "render",
+                "id",
+                "dir"
+              ]
+            }
+          }
+        ]
+      },
+      "B": {
+        "category": "B",
+        "label": "Token Compliance",
+        "score": 100,
+        "weight": 0.1,
+        "weightedScore": 10,
+        "errorCount": 0,
+        "warningCount": 0,
+        "issues": []
+      },
+      "C": {
+        "category": "C",
+        "label": "DOM / Structure",
+        "score": 75.25,
+        "weight": 0.225,
+        "weightedScore": 16.93,
+        "errorCount": 0,
+        "warningCount": 1,
+        "issues": [
+          {
+            "type": "technical",
+            "severity": "warning",
+            "source": "layout-usage",
+            "component": "Stack",
+            "message": "<Stack> wraps a single child. A flow layout earns its place only with two or more children; with one child it adds a wrapper that does nothing.",
+            "suggestion": "Render the child directly instead of wrapping it in <Stack>. For single-child spacing use Inset, Center, Breakout or Aspect.",
+            "location": {
+              "file": "TestApp.tsx",
+              "line": 61,
+              "column": 5
+            },
+            "details": {
+              "layout": "Stack",
+              "childCount": 1
+            }
+          }
+        ]
+      },
+      "D": {
+        "category": "D",
+        "label": "Spatial & A11y",
+        "score": 71.72,
+        "weight": 0.225,
+        "weightedScore": 16.14,
+        "errorCount": 0,
+        "warningCount": 4,
+        "issues": [
+          {
+            "type": "a11y",
+            "severity": "warning",
+            "source": "aom-extractor",
+            "component": "html",
+            "message": "Document should have one main landmark (landmark-one-main)",
+            "suggestion": "Wrap your page content in `<AppLayout>` with `<AppLayout.Main>` to provide a `<main>` landmark. Import AppLayout from `@marigold/components`.",
+            "details": {
+              "ruleId": "landmark-one-main",
+              "impact": "moderate",
+              "target": [
+                "html"
+              ],
+              "html": "<html lang=\"en\" data-theme=\"rui\">",
+              "scope": "page"
+            }
+          },
+          {
+            "type": "a11y",
+            "severity": "warning",
+            "source": "aom-extractor",
+            "component": "html",
+            "message": "Page should contain a level-one heading (page-has-heading-one)",
+            "suggestion": "Add a `<Headline level={1}>` component for the page title — it renders an `<h1>`. Import Headline from `@marigold/components`.",
+            "details": {
+              "ruleId": "page-has-heading-one",
+              "impact": "moderate",
+              "target": [
+                "html"
+              ],
+              "html": "<html lang=\"en\" data-theme=\"rui\">",
+              "scope": "page"
+            }
+          },
+          {
+            "type": "a11y",
+            "severity": "warning",
+            "source": "aom-extractor",
+            "component": "page",
+            "message": "All page content should be contained by landmarks — 6 elements affected (region)",
+            "suggestion": "All page content must be inside a landmark region. Use `<AppLayout>` with `<AppLayout.Main>` for the main area, `<TopNavigation>` for the header (`<header>`), and `<Sidebar>` for side navigation (`<aside>`). Import from `@marigold/components`.",
+            "details": {
+              "ruleId": "region",
+              "impact": "moderate",
+              "affectedCount": 6,
+              "scope": "page"
+            }
+          },
+          {
+            "type": "a11y",
+            "severity": "warning",
+            "source": "keyboard-a11y",
+            "component": "input",
+            "message": "Interactive element <input> (input) is not reachable via Tab key.",
+            "suggestion": "Ensure the element is focusable. Marigold interactive components are focusable by default — check if a parent has tabindex=\"-1\" or focus is trapped.",
+            "details": {
+              "selector": "body:nth-child(2) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div:nth-child(3) > div:nth-child(1) > div:nth-child(2) > input:nth-child(1)",
+              "role": "input",
+              "scope": "page"
+            }
+          }
+        ]
+      },
+      "E": {
+        "category": "E",
+        "label": "Functional Completeness",
+        "score": 72.41,
+        "weight": 0.225,
+        "weightedScore": 16.29,
+        "errorCount": 0,
+        "warningCount": 0,
+        "issues": []
+      }
+    },
+    "renderSuccess": true
+  },
+  "efficiency": {
+    "durationMs": 61827,
+    "costUsd": 0.29046250000000007,
+    "inputTokens": 869,
+    "outputTokens": 4450,
+    "cacheReadTokens": 163985,
+    "cacheCreationTokens": 9214,
+    "totalTokens": 5319,
+    "numTurns": 9
+  },
+  "report": {
+    "file": "TestApp.tsx",
+    "errors": [
+      {
+        "type": "technical",
+        "severity": "error",
+        "source": "prop-validator",
+        "component": "Stack",
+        "message": "Prop \"width\" does not exist on <Stack>.",
+        "suggestion": "Remove the prop. Available props: space, children, stretch, alignX, alignY, asList, role, aria-live, id, aria-label, aria-labelledby, aria-describedby, aria-details.",
+        "location": {
+          "file": "TestApp.tsx",
+          "line": 62,
+          "column": 24
+        },
+        "details": {
+          "used": "width",
+          "available": [
+            "space",
+            "children",
+            "stretch",
+            "alignX",
+            "alignY",
+            "asList",
+            "role",
+            "aria-live",
+            "id",
+            "aria-label",
+            "aria-labelledby",
+            "aria-describedby",
+            "aria-details"
+          ]
+        }
+      },
+      {
+        "type": "technical",
+        "severity": "error",
+        "source": "prop-validator",
+        "component": "TextField",
+        "message": "Prop \"isRequired\" does not exist on <TextField>.",
+        "suggestion": "Replace \"isRequired\" with \"required\".",
+        "location": {
+          "file": "TestApp.tsx",
+          "line": 72,
+          "column": 15
+        },
+        "details": {
+          "used": "isRequired",
+          "available": [
+            "variant",
+            "size",
+            "width",
+            "disabled",
+            "required",
+            "error",
+            "readOnly",
+            "min",
+            "max",
+            "value",
+            "defaultValue",
+            "placeholder",
+            "render",
+            "id",
+            "dir"
+          ]
+        }
+      },
+      {
+        "type": "technical",
+        "severity": "error",
+        "source": "prop-validator",
+        "component": "TextField",
+        "message": "Prop \"isRequired\" does not exist on <TextField>.",
+        "suggestion": "Replace \"isRequired\" with \"required\".",
+        "location": {
+          "file": "TestApp.tsx",
+          "line": 82,
+          "column": 15
+        },
+        "details": {
+          "used": "isRequired",
+          "available": [
+            "variant",
+            "size",
+            "width",
+            "disabled",
+            "required",
+            "error",
+            "readOnly",
+            "min",
+            "max",
+            "value",
+            "defaultValue",
+            "placeholder",
+            "render",
+            "id",
+            "dir"
+          ]
+        }
+      },
+      {
+        "type": "technical",
+        "severity": "error",
+        "source": "prop-validator",
+        "component": "Select",
+        "message": "Prop \"isRequired\" does not exist on <Select>.",
+        "suggestion": "Replace \"isRequired\" with \"required\".",
+        "location": {
+          "file": "TestApp.tsx",
+          "line": 91,
+          "column": 15
+        },
+        "details": {
+          "used": "isRequired",
+          "available": [
+            "variant",
+            "size",
+            "width",
+            "children",
+            "label",
+            "description",
+            "errorMessage",
+            "items",
+            "required",
+            "disabled",
+            "open",
+            "error",
+            "render",
+            "id",
+            "dir"
+          ]
+        }
+      }
+    ],
+    "warnings": [
+      {
+        "type": "technical",
+        "severity": "warning",
+        "source": "layout-usage",
+        "component": "Stack",
+        "message": "<Stack> wraps a single child. A flow layout earns its place only with two or more children; with one child it adds a wrapper that does nothing.",
+        "suggestion": "Render the child directly instead of wrapping it in <Stack>. For single-child spacing use Inset, Center, Breakout or Aspect.",
+        "location": {
+          "file": "TestApp.tsx",
+          "line": 61,
+          "column": 5
+        },
+        "details": {
+          "layout": "Stack",
+          "childCount": 1
+        }
+      },
+      {
+        "type": "a11y",
+        "severity": "warning",
+        "source": "aom-extractor",
+        "component": "html",
+        "message": "Document should have one main landmark (landmark-one-main)",
+        "suggestion": "Wrap your page content in `<AppLayout>` with `<AppLayout.Main>` to provide a `<main>` landmark. Import AppLayout from `@marigold/components`.",
+        "details": {
+          "ruleId": "landmark-one-main",
+          "impact": "moderate",
+          "target": [
+            "html"
+          ],
+          "html": "<html lang=\"en\" data-theme=\"rui\">",
+          "scope": "page"
+        }
+      },
+      {
+        "type": "a11y",
+        "severity": "warning",
+        "source": "aom-extractor",
+        "component": "html",
+        "message": "Page should contain a level-one heading (page-has-heading-one)",
+        "suggestion": "Add a `<Headline level={1}>` component for the page title — it renders an `<h1>`. Import Headline from `@marigold/components`.",
+        "details": {
+          "ruleId": "page-has-heading-one",
+          "impact": "moderate",
+          "target": [
+            "html"
+          ],
+          "html": "<html lang=\"en\" data-theme=\"rui\">",
+          "scope": "page"
+        }
+      },
+      {
+        "type": "a11y",
+        "severity": "warning",
+        "source": "aom-extractor",
+        "component": "page",
+        "message": "All page content should be contained by landmarks — 6 elements affected (region)",
+        "suggestion": "All page content must be inside a landmark region. Use `<AppLayout>` with `<AppLayout.Main>` for the main area, `<TopNavigation>` for the header (`<header>`), and `<Sidebar>` for side navigation (`<aside>`). Import from `@marigold/components`.",
+        "details": {
+          "ruleId": "region",
+          "impact": "moderate",
+          "affectedCount": 6,
+          "scope": "page"
+        }
+      },
+      {
+        "type": "a11y",
+        "severity": "warning",
+        "source": "keyboard-a11y",
+        "component": "input",
+        "message": "Interactive element <input> (input) is not reachable via Tab key.",
+        "suggestion": "Ensure the element is focusable. Marigold interactive components are focusable by default — check if a parent has tabindex=\"-1\" or focus is trapped.",
+        "details": {
+          "selector": "body:nth-child(2) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div:nth-child(3) > div:nth-child(1) > div:nth-child(2) > input:nth-child(1)",
+          "role": "input",
+          "scope": "page"
+        }
+      }
+    ],
+    "passed": [
+      "TypeScript compilation",
+      "Component composition",
+      "Overlay accessible names",
+      "Compound component placement",
+      "Section headers",
+      "Collection item ids",
+      "Design system usage",
+      "Table usage",
+      "Component conventions",
+      "Theme variant compliance",
+      "No overlapping components detected",
+      "Responsive layout"
+    ],
+    "metadata": {
+      "renderTimeMs": 1534,
+      "componentsFound": [
+        "div",
+        "input",
+        "button",
+        "span",
+        "textarea"
+      ],
+      "checksRun": [
+        "technical",
+        "spatial",
+        "a11y"
+      ],
+      "coverage": {
+        "staticValuesChecked": 3,
+        "dynamicValuesSkipped": 4,
+        "spreadPropsBypassed": 0
+      },
+      "widthUtilization": 0.60859375
+    },
+    "markdown": "marigold-validate: TestApp.tsx — 4 error(s), 5 warning(s)\n\n[error/technical] <Select>: Prop \"isRequired\" does not exist on <Select>. (TestApp.tsx:91:15)\n  → Replace \"isRequired\" with \"required\".\n  data: {used=isRequired, available=[\"variant\",\"size\",\"width\",\"children\",\"label\",\"description\",\"errorMessage\",\"items\", …]}\n[error/technical] <Stack>: Prop \"width\" does not exist on <Stack>. (TestApp.tsx:62:24)\n  → Remove the prop. Available props: space, children, stretch, alignX, alignY, asList, role, aria-live, id, aria-label, aria-labelledby, aria-describedby, aria-details.\n  data: {used=width, available=[\"space\",\"children\",\"stretch\",\"alignX\",\"alignY\",\"asList\",\"role\",\"aria-live\", …]}\n[error/technical] <TextField>: Prop \"isRequired\" does not exist on <TextField>. (TestApp.tsx:72:15)\n  → Replace \"isRequired\" with \"required\".\n  data: {used=isRequired, available=[\"variant\",\"size\",\"width\",\"disabled\",\"required\",\"error\",\"readOnly\",\"min\", …]}\n[error/technical] <TextField>: Prop \"isRequired\" does not exist on <TextField>. (TestApp.tsx:82:15)\n  → Replace \"isRequired\" with \"required\".\n  data: {used=isRequired, available=[\"variant\",\"size\",\"width\",\"disabled\",\"required\",\"error\",\"readOnly\",\"min\", …]}\n[warning/technical] <Stack>: <Stack> wraps a single child. A flow layout earns its place only with two or more children; with one child it adds a wrapper that does nothing. (TestApp.tsx:61:5)\n  → Render the child directly instead of wrapping it in <Stack>. For single-child spacing use Inset, Center, Breakout or Aspect.\n  data: {layout=Stack, childCount=1}\n[warning/a11y] <html>: Document should have one main landmark (landmark-one-main)\n  → Wrap your page content in `<AppLayout>` with `<AppLayout.Main>` to provide a `<main>` landmark. Import AppLayout from `@marigold/components`.\n  data: {ruleId=landmark-one-main, impact=moderate, target=[\"html\"], html=<html lang=\"en\" data-theme=\"rui\">, scope=page}\n[warning/a11y] <html>: Page should contain a level-one heading (page-has-heading-one)\n  → Add a `<Headline level={1}>` component for the page title — it renders an `<h1>`. Import Headline from `@marigold/components`.\n  data: {ruleId=page-has-heading-one, impact=moderate, target=[\"html\"], html=<html lang=\"en\" data-theme=\"rui\">, scope=page}\n[warning/a11y] <input>: Interactive element <input> (input) is not reachable via Tab key.\n  → Ensure the element is focusable. Marigold interactive components are focusable by default — check if a parent has tabindex=\"-1\" or focus is trapped.\n  data: {selector=body:nth-child(2) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > ..., role=input, scope=page}\n[warning/a11y] <page>: All page content should be contained by landmarks — 6 elements affected (region)\n  → All page content must be inside a landmark region. Use `<AppLayout>` with `<AppLayout.Main>` for the main area, `<TopNavigation>` for the header (`<header>`), and `<Sidebar>` for side navigation (`<aside>`). Import from `@marigold/components`.\n  data: {ruleId=region, impact=moderate, affectedCount=6, scope=page}\n\npassed: TypeScript compilation, Component composition, Overlay accessible names, Compound component placement, Section headers, Collection item ids, Design system usage, Table usage, Component conventions, Theme variant compliance, No overlapping components detected, Responsive layout\n\nchecks run: technical, spatial, a11y"
+  },
+  "componentsFound": [
+    "div",
+    "input",
+    "button",
+    "span",
+    "textarea"
+  ],
+  "renderTimeMs": 1534,
+  "sourceCode": "import { useState } from 'react';\nimport {\n  Button,\n  Headline,\n  Select,\n  Stack,\n  Text,\n  TextArea,\n  TextField,\n} from '@marigold/components';\n\ntype Errors = {\n  name?: string;\n  email?: string;\n  subject?: string;\n};\n\nconst EMAIL_REGEX = /^[^\\s@]+@[^\\s@]+\\.[^\\s@]+$/;\n\nconst TestApp = () => {\n  const [name, setName] = useState('');\n  const [email, setEmail] = useState('');\n  const [subject, setSubject] = useState<string | null>(null);\n  const [message, setMessage] = useState('');\n\n  const [errors, setErrors] = useState<Errors>({});\n  const [submitted, setSubmitted] = useState(false);\n\n  const validate = (): Errors => {\n    const next: Errors = {};\n\n    if (!name.trim()) {\n      next.name = 'Please enter your name.';\n    }\n\n    if (!email.trim()) {\n      next.email = 'Please enter your email address.';\n    } else if (!EMAIL_REGEX.test(email.trim())) {\n      next.email = 'Please enter a valid email address.';\n    }\n\n    if (!subject) {\n      next.subject = 'Please choose a subject.';\n    }\n\n    return next;\n  };\n\n  const handleSubmit = () => {\n    const nextErrors = validate();\n    setErrors(nextErrors);\n\n    if (Object.keys(nextErrors).length === 0) {\n      setSubmitted(true);\n    } else {\n      setSubmitted(false);\n    }\n  };\n\n  return (\n    <Stack space={6} alignX=\"center\">\n      <Stack space={5} width=\"100%\">\n        <Headline level={2}>Contact us</Headline>\n        <Text>\n          Have a question or some feedback? Fill out the form below and we'll\n          get back to you.\n        </Text>\n\n        <Stack space={4}>\n            <TextField\n              label=\"Name\"\n              isRequired\n              value={name}\n              onChange={setName}\n              error={Boolean(errors.name)}\n              errorMessage={errors.name}\n            />\n\n            <TextField\n              label=\"Email\"\n              type=\"email\"\n              isRequired\n              value={email}\n              onChange={setEmail}\n              error={Boolean(errors.email)}\n              errorMessage={errors.email}\n            />\n\n            <Select\n              label=\"Subject\"\n              isRequired\n              placeholder=\"Select a subject\"\n              selectedKey={subject}\n              onSelectionChange={key =>\n                setSubject(key === null ? null : String(key))\n              }\n              error={Boolean(errors.subject)}\n              errorMessage={errors.subject}\n            >\n              <Select.Option id=\"general\">General</Select.Option>\n              <Select.Option id=\"support\">Support</Select.Option>\n              <Select.Option id=\"feedback\">Feedback</Select.Option>\n            </Select>\n\n            <TextArea\n              label=\"Message\"\n              value={message}\n              onChange={setMessage}\n              rows={5}\n            />\n\n            <Button variant=\"primary\" onPress={handleSubmit}>\n              Send message\n            </Button>\n\n            {submitted ? (\n              <Text color=\"green\">\n                Thank you! Your message has been sent successfully.\n              </Text>\n            ) : null}\n        </Stack>\n      </Stack>\n    </Stack>\n  );\n};\n\nexport default TestApp;\n",
+  "assertions": {
+    "passed": [
+      {
+        "id": "a-import-marigold",
+        "description": "Imports from @marigold/components",
+        "severity": "required",
+        "passed": true,
+        "evidence": "import from \"@marigold/components\" found"
+      },
+      {
+        "id": "a-name-field",
+        "description": "TextField with name label",
+        "severity": "required",
+        "passed": true,
+        "evidence": "<TextField> found"
+      },
+      {
+        "id": "a-email-field",
+        "description": "TextField for email input",
+        "severity": "required",
+        "passed": true,
+        "evidence": "matched: <TextField> found; <TextField> found"
+      },
+      {
+        "id": "a-select",
+        "description": "Select component for subject",
+        "severity": "required",
+        "passed": true,
+        "evidence": "<Select> found"
+      },
+      {
+        "id": "a-textarea",
+        "description": "TextArea component for message",
+        "severity": "required",
+        "passed": true,
+        "evidence": "<TextArea> found"
+      },
+      {
+        "id": "a-no-onclick-on-marigold",
+        "description": "No onClick on Marigold Button components",
+        "severity": "recommended",
+        "passed": true,
+        "evidence": "\"/<Button[^>]*onClick/\" correctly absent"
+      }
+    ],
+    "failed": [
+      {
+        "id": "a-submit-button",
+        "description": "Submit button with type=submit",
+        "severity": "required",
+        "passed": false,
+        "evidence": "<Button> not found"
+      },
+      {
+        "id": "a-form-wrapper",
+        "description": "Form component wrapping fields",
+        "severity": "required",
+        "passed": false,
+        "evidence": "<Form> not found"
+      }
+    ],
+    "passRate": 0.75,
+    "requiredPassRate": 0.7143,
+    "weightedPassRate": 0.7241,
+    "total": 8
+  },
+  "validatePackageVersion": "0.0.1",
+  "playwrightVersion": null,
+  "resolvedModelId": "claude-opus-4-8",
+  "claudeCliVersion": "2.1.185 (Claude Code)",
+  "sessionId": "fc11a32f-a4b5-4970-b87a-6ecfcaf59abf"
+}

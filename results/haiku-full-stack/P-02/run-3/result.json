@@ -1,0 +1,375 @@
+{
+  "runId": "haiku-full-stack-P-02-r3",
+  "promptId": "P-02",
+  "model": "haiku",
+  "config": "full-stack",
+  "timestamp": "2026-06-22T15:22:12.817Z",
+  "quality": {
+    "overall": 85.74,
+    "categories": {
+      "A": {
+        "category": "A",
+        "label": "Design System API",
+        "score": 85.86,
+        "weight": 0.225,
+        "weightedScore": 19.32,
+        "errorCount": 0,
+        "warningCount": 1,
+        "issues": [
+          {
+            "type": "technical",
+            "severity": "warning",
+            "source": "design-system-usage",
+            "component": "img",
+            "message": "Inline style on <img> bypasses the design system (width, height, borderRadius, objectFit).",
+            "suggestion": "Use Marigold layout components (Stack, Columns, Inset, Container) and theme tokens instead of inline styles.",
+            "location": {
+              "file": "TestApp.tsx",
+              "line": 34,
+              "column": 13
+            },
+            "details": {
+              "cssProperties": [
+                "width",
+                "height",
+                "borderRadius",
+                "objectFit"
+              ]
+            }
+          }
+        ]
+      },
+      "B": {
+        "category": "B",
+        "label": "Token Compliance",
+        "score": 100,
+        "weight": 0.1,
+        "weightedScore": 10,
+        "errorCount": 0,
+        "warningCount": 0,
+        "issues": []
+      },
+      "C": {
+        "category": "C",
+        "label": "DOM / Structure",
+        "score": 75.25,
+        "weight": 0.225,
+        "weightedScore": 16.93,
+        "errorCount": 0,
+        "warningCount": 1,
+        "issues": [
+          {
+            "type": "technical",
+            "severity": "warning",
+            "source": "layout-usage",
+            "component": "Inline",
+            "message": "<Inline> wraps a single child. A flow layout earns its place only with two or more children; with one child it adds a wrapper that does nothing.",
+            "suggestion": "Render the child directly instead of wrapping it in <Inline>. For single-child spacing use Inset, Center, Breakout or Aspect.",
+            "location": {
+              "file": "TestApp.tsx",
+              "line": 45,
+              "column": 9
+            },
+            "details": {
+              "layout": "Inline",
+              "childCount": 1
+            }
+          }
+        ]
+      },
+      "D": {
+        "category": "D",
+        "label": "Spatial & A11y",
+        "score": 75.51,
+        "weight": 0.225,
+        "weightedScore": 16.99,
+        "errorCount": 0,
+        "warningCount": 3,
+        "issues": [
+          {
+            "type": "a11y",
+            "severity": "warning",
+            "source": "aom-extractor",
+            "component": "html",
+            "message": "Document should have one main landmark (landmark-one-main)",
+            "suggestion": "Wrap your page content in `<AppLayout>` with `<AppLayout.Main>` to provide a `<main>` landmark. Import AppLayout from `@marigold/components`.",
+            "details": {
+              "ruleId": "landmark-one-main",
+              "impact": "moderate",
+              "target": [
+                "html"
+              ],
+              "html": "<html lang=\"en\" data-theme=\"rui\">",
+              "scope": "page"
+            }
+          },
+          {
+            "type": "a11y",
+            "severity": "warning",
+            "source": "aom-extractor",
+            "component": "html",
+            "message": "Page should contain a level-one heading (page-has-heading-one)",
+            "suggestion": "Add a `<Headline level={1}>` component for the page title — it renders an `<h1>`. Import Headline from `@marigold/components`.",
+            "details": {
+              "ruleId": "page-has-heading-one",
+              "impact": "moderate",
+              "target": [
+                "html"
+              ],
+              "html": "<html lang=\"en\" data-theme=\"rui\">",
+              "scope": "page"
+            }
+          },
+          {
+            "type": "a11y",
+            "severity": "warning",
+            "source": "aom-extractor",
+            "component": "page",
+            "message": "All page content should be contained by landmarks — 4 elements affected (region)",
+            "suggestion": "All page content must be inside a landmark region. Use `<AppLayout>` with `<AppLayout.Main>` for the main area, `<TopNavigation>` for the header (`<header>`), and `<Sidebar>` for side navigation (`<aside>`). Import from `@marigold/components`.",
+            "details": {
+              "ruleId": "region",
+              "impact": "moderate",
+              "affectedCount": 4,
+              "scope": "page"
+            }
+          }
+        ]
+      },
+      "E": {
+        "category": "E",
+        "label": "Functional Completeness",
+        "score": 100,
+        "weight": 0.225,
+        "weightedScore": 22.5,
+        "errorCount": 0,
+        "warningCount": 0,
+        "issues": []
+      }
+    },
+    "renderSuccess": true
+  },
+  "efficiency": {
+    "durationMs": 127667,
+    "costUsd": 0.4992096999999999,
+    "inputTokens": 114,
+    "outputTokens": 7455,
+    "cacheReadTokens": 1801037,
+    "cacheCreationTokens": 140458,
+    "totalTokens": 7569,
+    "numTurns": 44
+  },
+  "report": {
+    "file": "TestApp.tsx",
+    "errors": [],
+    "warnings": [
+      {
+        "type": "technical",
+        "severity": "warning",
+        "source": "design-system-usage",
+        "component": "img",
+        "message": "Inline style on <img> bypasses the design system (width, height, borderRadius, objectFit).",
+        "suggestion": "Use Marigold layout components (Stack, Columns, Inset, Container) and theme tokens instead of inline styles.",
+        "location": {
+          "file": "TestApp.tsx",
+          "line": 34,
+          "column": 13
+        },
+        "details": {
+          "cssProperties": [
+            "width",
+            "height",
+            "borderRadius",
+            "objectFit"
+          ]
+        }
+      },
+      {
+        "type": "technical",
+        "severity": "warning",
+        "source": "layout-usage",
+        "component": "Inline",
+        "message": "<Inline> wraps a single child. A flow layout earns its place only with two or more children; with one child it adds a wrapper that does nothing.",
+        "suggestion": "Render the child directly instead of wrapping it in <Inline>. For single-child spacing use Inset, Center, Breakout or Aspect.",
+        "location": {
+          "file": "TestApp.tsx",
+          "line": 45,
+          "column": 9
+        },
+        "details": {
+          "layout": "Inline",
+          "childCount": 1
+        }
+      },
+      {
+        "type": "a11y",
+        "severity": "warning",
+        "source": "aom-extractor",
+        "component": "html",
+        "message": "Document should have one main landmark (landmark-one-main)",
+        "suggestion": "Wrap your page content in `<AppLayout>` with `<AppLayout.Main>` to provide a `<main>` landmark. Import AppLayout from `@marigold/components`.",
+        "details": {
+          "ruleId": "landmark-one-main",
+          "impact": "moderate",
+          "target": [
+            "html"
+          ],
+          "html": "<html lang=\"en\" data-theme=\"rui\">",
+          "scope": "page"
+        }
+      },
+      {
+        "type": "a11y",
+        "severity": "warning",
+        "source": "aom-extractor",
+        "component": "html",
+        "message": "Page should contain a level-one heading (page-has-heading-one)",
+        "suggestion": "Add a `<Headline level={1}>` component for the page title — it renders an `<h1>`. Import Headline from `@marigold/components`.",
+        "details": {
+          "ruleId": "page-has-heading-one",
+          "impact": "moderate",
+          "target": [
+            "html"
+          ],
+          "html": "<html lang=\"en\" data-theme=\"rui\">",
+          "scope": "page"
+        }
+      },
+      {
+        "type": "a11y",
+        "severity": "warning",
+        "source": "aom-extractor",
+        "component": "page",
+        "message": "All page content should be contained by landmarks — 4 elements affected (region)",
+        "suggestion": "All page content must be inside a landmark region. Use `<AppLayout>` with `<AppLayout.Main>` for the main area, `<TopNavigation>` for the header (`<header>`), and `<Sidebar>` for side navigation (`<aside>`). Import from `@marigold/components`.",
+        "details": {
+          "ruleId": "region",
+          "impact": "moderate",
+          "affectedCount": 4,
+          "scope": "page"
+        }
+      }
+    ],
+    "passed": [
+      "TypeScript compilation",
+      "All Marigold props are valid",
+      "Component composition",
+      "Overlay accessible names",
+      "Compound component placement",
+      "Section headers",
+      "Collection item ids",
+      "Table usage",
+      "Component conventions",
+      "Theme variant compliance",
+      "No overlapping components detected",
+      "Responsive layout"
+    ],
+    "metadata": {
+      "renderTimeMs": 1559,
+      "componentsFound": [
+        "button"
+      ],
+      "checksRun": [
+        "technical",
+        "spatial",
+        "a11y"
+      ],
+      "coverage": {
+        "staticValuesChecked": 15,
+        "dynamicValuesSkipped": 9,
+        "spreadPropsBypassed": 0
+      },
+      "widthUtilization": 0.9359375
+    },
+    "markdown": "marigold-validate: TestApp.tsx — 0 error(s), 5 warning(s)\n\n[warning/technical] <img>: Inline style on <img> bypasses the design system (width, height, borderRadius, objectFit). (TestApp.tsx:34:13)\n  → Use Marigold layout components (Stack, Columns, Inset, Container) and theme tokens instead of inline styles.\n  data: {cssProperties=[\"width\",\"height\",\"borderRadius\",\"objectFit\"]}\n[warning/technical] <Inline>: <Inline> wraps a single child. A flow layout earns its place only with two or more children; with one child it adds a wrapper that does nothing. (TestApp.tsx:45:9)\n  → Render the child directly instead of wrapping it in <Inline>. For single-child spacing use Inset, Center, Breakout or Aspect.\n  data: {layout=Inline, childCount=1}\n[warning/a11y] <html>: Document should have one main landmark (landmark-one-main)\n  → Wrap your page content in `<AppLayout>` with `<AppLayout.Main>` to provide a `<main>` landmark. Import AppLayout from `@marigold/components`.\n  data: {ruleId=landmark-one-main, impact=moderate, target=[\"html\"], html=<html lang=\"en\" data-theme=\"rui\">, scope=page}\n[warning/a11y] <html>: Page should contain a level-one heading (page-has-heading-one)\n  → Add a `<Headline level={1}>` component for the page title — it renders an `<h1>`. Import Headline from `@marigold/components`.\n  data: {ruleId=page-has-heading-one, impact=moderate, target=[\"html\"], html=<html lang=\"en\" data-theme=\"rui\">, scope=page}\n[warning/a11y] <page>: All page content should be contained by landmarks — 4 elements affected (region)\n  → All page content must be inside a landmark region. Use `<AppLayout>` with `<AppLayout.Main>` for the main area, `<TopNavigation>` for the header (`<header>`), and `<Sidebar>` for side navigation (`<aside>`). Import from `@marigold/components`.\n  data: {ruleId=region, impact=moderate, affectedCount=4, scope=page}\n\npassed: TypeScript compilation, All Marigold props are valid, Component composition, Overlay accessible names, Compound component placement, Section headers, Collection item ids, Table usage, Component conventions, Theme variant compliance, No overlapping components detected, Responsive layout\n\nchecks run: technical, spatial, a11y"
+  },
+  "componentsFound": [
+    "button"
+  ],
+  "renderTimeMs": 1559,
+  "sourceCode": "import { useState } from 'react';\nimport {\n  Card,\n  Stack,\n  Inline,\n  Headline,\n  Text,\n  Button,\n  Badge,\n} from '@marigold/components';\n\nconst TestApp = () => {\n  const [sendMessageClicked, setSendMessageClicked] = useState(false);\n  const [editProfileClicked, setEditProfileClicked] = useState(false);\n\n  const handleSendMessage = () => {\n    setSendMessageClicked(true);\n    setTimeout(() => setSendMessageClicked(false), 2000);\n  };\n\n  const handleEditProfile = () => {\n    setEditProfileClicked(true);\n    setTimeout(() => setEditProfileClicked(false), 2000);\n  };\n\n  return (\n    <Card p=\"square-regular\">\n      <Stack space={6}>\n        {/* Avatar + Name */}\n        <Inline space={4} alignY=\"center\">\n          <img\n            src=\"https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=150&h=150&fit=crop\"\n            alt=\"Jane Doe\"\n            style={{\n              width: '80px',\n              height: '80px',\n              borderRadius: '50%',\n              objectFit: 'cover',\n            }}\n          />\n          <Headline level=\"3\">Jane Doe</Headline>\n        </Inline>\n\n        {/* Status */}\n        <Inline space={2}>\n          <Badge variant=\"success\">Active</Badge>\n        </Inline>\n\n        {/* Details */}\n        <Stack space={3}>\n          <Stack space={1}>\n            <Text weight=\"medium\" variant=\"muted\">\n              Role\n            </Text>\n            <Text>Senior Developer</Text>\n          </Stack>\n          <Stack space={1}>\n            <Text weight=\"medium\" variant=\"muted\">\n              Department\n            </Text>\n            <Text>Engineering</Text>\n          </Stack>\n          <Stack space={1}>\n            <Text weight=\"medium\" variant=\"muted\">\n              Email\n            </Text>\n            <Text>jane.doe@example.com</Text>\n          </Stack>\n          <Stack space={1}>\n            <Text weight=\"medium\" variant=\"muted\">\n              Location\n            </Text>\n            <Text>Freiburg, Germany</Text>\n          </Stack>\n        </Stack>\n\n        {/* Bio */}\n        <Text>\n          Jane is a passionate developer with a keen eye for detail. She leads our engineering team with innovative thinking and strong technical expertise.\n        </Text>\n\n        {/* Actions */}\n        <Inline space={3} alignX=\"left\">\n          <Button variant=\"primary\" onPress={handleSendMessage}>\n            {sendMessageClicked ? 'Message sent!' : 'Send Message'}\n          </Button>\n          <Button variant=\"secondary\" onPress={handleEditProfile}>\n            {editProfileClicked ? 'Saved!' : 'Edit Profile'}\n          </Button>\n        </Inline>\n      </Stack>\n    </Card>\n  );\n};\n\nexport default TestApp;\n",
+  "assertions": {
+    "passed": [
+      {
+        "id": "a-import-marigold",
+        "description": "Imports from @marigold/components",
+        "severity": "required",
+        "passed": true,
+        "evidence": "import from \"@marigold/components\" found"
+      },
+      {
+        "id": "a-card",
+        "description": "Card component as container",
+        "severity": "required",
+        "passed": true,
+        "evidence": "<Card> found"
+      },
+      {
+        "id": "a-image",
+        "description": "Includes a profile image (img tag or image URL)",
+        "severity": "recommended",
+        "passed": true,
+        "evidence": "matched: pattern \"/<img/\" found; pattern \"/placeholder.*image|avatar|profile.*photo/i\" found"
+      },
+      {
+        "id": "a-headline",
+        "description": "Headline for user name",
+        "severity": "required",
+        "passed": true,
+        "evidence": "<Headline> found"
+      },
+      {
+        "id": "a-badge",
+        "description": "Badge for status indicator",
+        "severity": "required",
+        "passed": true,
+        "evidence": "<Badge> found"
+      },
+      {
+        "id": "a-text",
+        "description": "Text component for details",
+        "severity": "required",
+        "passed": true,
+        "evidence": "<Text> found"
+      },
+      {
+        "id": "a-button",
+        "description": "Button component for actions",
+        "severity": "required",
+        "passed": true,
+        "evidence": "<Button> found"
+      },
+      {
+        "id": "a-layout",
+        "description": "Uses layout primitives (Stack, Columns, or Inline)",
+        "severity": "required",
+        "passed": true,
+        "evidence": "matched: <Stack> found; <Inline> found"
+      },
+      {
+        "id": "a-no-onclick-on-marigold",
+        "description": "No onClick on Marigold Button components",
+        "severity": "recommended",
+        "passed": true,
+        "evidence": "\"/<Button[^>]*onClick/\" correctly absent"
+      },
+      {
+        "id": "a-user-details",
+        "description": "Shows user details (role, department, email)",
+        "severity": "recommended",
+        "passed": true,
+        "evidence": "pattern \"/role|department|email|location/i\" found"
+      }
+    ],
+    "failed": [],
+    "passRate": 1,
+    "requiredPassRate": 1,
+    "weightedPassRate": 1,
+    "total": 10
+  },
+  "validatePackageVersion": "0.0.1",
+  "playwrightVersion": null,
+  "resolvedModelId": "claude-haiku-4-5",
+  "claudeCliVersion": "2.1.185 (Claude Code)",
+  "sessionId": "e506b05c-5757-46d1-8a60-262a4a73d85b"
+}

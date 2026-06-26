@@ -1,0 +1,318 @@
+{
+  "runId": "sonnet-full-stack-P-09-r2",
+  "promptId": "P-09",
+  "model": "sonnet",
+  "config": "full-stack",
+  "timestamp": "2026-06-25T18:18:21.896Z",
+  "quality": {
+    "overall": 94.54,
+    "categories": {
+      "A": {
+        "category": "A",
+        "label": "Design System API",
+        "score": 100,
+        "weight": 0.225,
+        "weightedScore": 22.5,
+        "errorCount": 0,
+        "warningCount": 0,
+        "issues": []
+      },
+      "B": {
+        "category": "B",
+        "label": "Token Compliance",
+        "score": 100,
+        "weight": 0.1,
+        "weightedScore": 10,
+        "errorCount": 0,
+        "warningCount": 0,
+        "issues": []
+      },
+      "C": {
+        "category": "C",
+        "label": "DOM / Structure",
+        "score": 100,
+        "weight": 0.225,
+        "weightedScore": 22.5,
+        "errorCount": 0,
+        "warningCount": 0,
+        "issues": []
+      },
+      "D": {
+        "category": "D",
+        "label": "Spatial & A11y",
+        "score": 85.86,
+        "weight": 0.225,
+        "weightedScore": 19.32,
+        "errorCount": 0,
+        "warningCount": 1,
+        "issues": [
+          {
+            "type": "spatial",
+            "severity": "warning",
+            "source": "responsive-checker",
+            "component": "page",
+            "message": "Content uses only 34% of the desktop width (1280px): it stays in a narrow, mobile-shaped band instead of adapting to the available space.",
+            "suggestion": "Let the layout grow with the viewport using Marigold responsive primitives — <Columns collapseAt=\"...\"> for multi-column areas, AppLayout for the shell, Stack/Inline for flow — instead of a fixed-width container. (Intentionally centred max-width reading columns are fine and may trip this; treat it as a relative signal.)",
+            "details": {
+              "widthUtilization": 0.34296875,
+              "contentElements": 47,
+              "scope": "page"
+            }
+          }
+        ]
+      },
+      "E": {
+        "category": "E",
+        "label": "Functional Completeness",
+        "score": 89.87,
+        "weight": 0.225,
+        "weightedScore": 20.22,
+        "errorCount": 0,
+        "warningCount": 0,
+        "issues": []
+      }
+    },
+    "renderSuccess": true
+  },
+  "efficiency": {
+    "durationMs": 1768118,
+    "costUsd": 5.279589900000002,
+    "inputTokens": 105,
+    "outputTokens": 72839,
+    "cacheReadTokens": 11165743,
+    "cacheCreationTokens": 139276,
+    "totalTokens": 72944,
+    "numTurns": 110
+  },
+  "report": {
+    "file": "TestApp.tsx",
+    "errors": [],
+    "warnings": [
+      {
+        "type": "spatial",
+        "severity": "warning",
+        "source": "responsive-checker",
+        "component": "page",
+        "message": "Content uses only 34% of the desktop width (1280px): it stays in a narrow, mobile-shaped band instead of adapting to the available space.",
+        "suggestion": "Let the layout grow with the viewport using Marigold responsive primitives — <Columns collapseAt=\"...\"> for multi-column areas, AppLayout for the shell, Stack/Inline for flow — instead of a fixed-width container. (Intentionally centred max-width reading columns are fine and may trip this; treat it as a relative signal.)",
+        "details": {
+          "widthUtilization": 0.34296875,
+          "contentElements": 47,
+          "scope": "page"
+        }
+      }
+    ],
+    "passed": [
+      "TypeScript compilation",
+      "All Marigold props are valid",
+      "Component composition",
+      "Overlay accessible names",
+      "Compound component placement",
+      "Section headers",
+      "Collection item ids",
+      "Design system usage",
+      "Layout usage",
+      "Table usage",
+      "Component conventions",
+      "Theme variant compliance",
+      "No overlapping components detected",
+      "Accessibility checks"
+    ],
+    "metadata": {
+      "renderTimeMs": 2424,
+      "componentsFound": [
+        "div",
+        "input",
+        "button"
+      ],
+      "checksRun": [
+        "technical",
+        "spatial",
+        "a11y"
+      ],
+      "coverage": {
+        "staticValuesChecked": 29,
+        "dynamicValuesSkipped": 34,
+        "spreadPropsBypassed": 0
+      },
+      "widthUtilization": 0.34296875
+    },
+    "markdown": "marigold-validate: TestApp.tsx — 0 error(s), 1 warning(s)\n\n[warning/spatial] <page>: Content uses only 34% of the desktop width (1280px): it stays in a narrow, mobile-shaped band instead of adapting to the available space.\n  → Let the layout grow with the viewport using Marigold responsive primitives — <Columns collapseAt=\"...\"> for multi-column areas, AppLayout for the shell, Stack/Inline for flow — instead of a fixed-width container. (Intentionally centred max-width reading columns are fine and may trip this; treat it as a relative signal.)\n  data: {widthUtilization=0.34296875, contentElements=47, scope=page}\n\npassed: TypeScript compilation, All Marigold props are valid, Component composition, Overlay accessible names, Compound component placement, Section headers, Collection item ids, Design system usage, Layout usage, Table usage, Component conventions, Theme variant compliance, No overlapping components detected, Accessibility checks\n\nchecks run: technical, spatial, a11y"
+  },
+  "componentsFound": [
+    "div",
+    "input",
+    "button"
+  ],
+  "renderTimeMs": 2424,
+  "sourceCode": "import { useState } from 'react';\nimport {\n  Accordion,\n  Button,\n  Card,\n  Checkbox,\n  ComboBox,\n  DatePicker,\n  Divider,\n  FileField,\n  Headline,\n  Inline,\n  Loader,\n  NumberField,\n  Radio,\n  SectionMessage,\n  Select,\n  Split,\n  Stack,\n  Switch,\n  TagField,\n  Text,\n  TextArea,\n  TextField,\n  TimeField,\n  ToastProvider,\n  useToast,\n} from '@marigold/components';\nimport type { DateValue } from '@internationalized/date';\n\ntype FormState = {\n  fullName: string;\n  email: string;\n  phoneNumber: string;\n  company: string;\n  jobTitle: string;\n  eventDate: DateValue | null;\n  preferredTimeSlot: any;\n  sessionTrack: string;\n  dietaryRequirements: string;\n  numberOfGuests: number;\n  specialRequests: string;\n  tshirtSize: string;\n  topicsOfInterest: string[];\n  communicationPreferences: string[];\n  hasAccessibilityNeeds: boolean;\n  accessibilityDetails: string;\n  termsAccepted: boolean;\n};\n\nconst INITIAL_STATE: FormState = {\n  fullName: '',\n  email: '',\n  phoneNumber: '',\n  company: '',\n  jobTitle: '',\n  eventDate: null,\n  preferredTimeSlot: null,\n  sessionTrack: '',\n  dietaryRequirements: '',\n  numberOfGuests: 0,\n  specialRequests: '',\n  tshirtSize: '',\n  topicsOfInterest: [],\n  communicationPreferences: [],\n  hasAccessibilityNeeds: false,\n  accessibilityDetails: '',\n  termsAccepted: false,\n};\n\nconst STEP_TITLES = [\n  'Personal Information',\n  'Event Details',\n  'Preferences',\n  'Review & Confirm',\n];\n\nconst JOB_TITLE_SUGGESTIONS = [\n  'Developer',\n  'Designer',\n  'Product Manager',\n  'Engineering Manager',\n  'CTO',\n  'Other',\n];\n\nconst DIETARY_OPTIONS = [\n  'None',\n  'Vegetarian',\n  'Vegan',\n  'Gluten-Free',\n  'Kosher',\n  'Halal',\n];\n\nconst SESSION_TRACKS = ['Technical', 'Design', 'Business', 'Workshop'];\nconst TSHIRT_SIZES = ['XS', 'S', 'M', 'L', 'XL', 'XXL'];\n\nconst TOPICS = [\n  { id: 'ai-ml', name: 'AI/ML' },\n  { id: 'web-dev', name: 'Web Development' },\n  { id: 'cloud', name: 'Cloud' },\n  { id: 'security', name: 'Security' },\n  { id: 'devops', name: 'DevOps' },\n  { id: 'mobile', name: 'Mobile' },\n  { id: 'data-science', name: 'Data Science' },\n];\n\nconst COMM_PREFS = [\n  { id: 'email-updates', label: 'Email updates about the event' },\n  { id: 'sms-reminders', label: 'SMS reminders' },\n  { id: 'post-event-survey', label: 'Post-event survey' },\n  { id: 'newsletter', label: 'Newsletter subscription' },\n];\n\nconst TestApp = () => {\n  const { addToast } = useToast();\n  const [step, setStep] = useState(1);\n  const [form, setForm] = useState<FormState>(INITIAL_STATE);\n  const [errors, setErrors] = useState<Partial<Record<keyof FormState, string>>>({});\n  const [submitting, setSubmitting] = useState(false);\n  const [loading, setLoading] = useState(false);\n  const [submitted, setSubmitted] = useState(false);\n  const [confirmationNumber, setConfirmationNumber] = useState('');\n  const [reviewExpanded, setReviewExpanded] = useState<Set<string | number>>(\n    new Set(['personal', 'event', 'prefs'])\n  );\n\n  const update = <K extends keyof FormState>(key: K, value: FormState[K]) => {\n    setForm(prev => ({ ...prev, [key]: value }));\n    setErrors(prev => {\n      const next = { ...prev };\n      delete next[key];\n      return next;\n    });\n  };\n\n  const validate = (s: number): Partial<Record<keyof FormState, string>> => {\n    const errs: Partial<Record<keyof FormState, string>> = {};\n    if (s === 1) {\n      if (!form.fullName.trim()) errs.fullName = 'Full name is required.';\n      if (!form.email.trim()) {\n        errs.email = 'Email is required.';\n      } else if (!/^[^\\s@]+@[^\\s@]+\\.[^\\s@]+$/.test(form.email)) {\n        errs.email = 'Please enter a valid email address.';\n      }\n    }\n    if (s === 2) {\n      if (!form.eventDate) errs.eventDate = 'Event date is required.';\n    }\n    return errs;\n  };\n\n  const handleNext = async () => {\n    const errs = validate(step);\n    if (Object.keys(errs).length > 0) {\n      setErrors(errs);\n      return;\n    }\n    if (step < 4) {\n      setStep(s => s + 1);\n      return;\n    }\n    setSubmitting(true);\n    setLoading(true);\n    await new Promise(resolve => setTimeout(resolve, 1000));\n    const confNum = 'REG-' + String(Math.floor(Math.random() * 900000 + 100000));\n    setConfirmationNumber(confNum);\n    setLoading(false);\n    setSubmitting(false);\n    setSubmitted(true);\n    addToast({ title: 'Registration submitted successfully', variant: 'success' });\n  };\n\n  const handleBack = () => {\n    if (step <= 1) return;\n    setErrors({});\n    setStep(s => s - 1);\n  };\n\n  const handleReset = () => {\n    setStep(1);\n    setForm(INITIAL_STATE);\n    setErrors({});\n    setSubmitted(false);\n    setConfirmationNumber('');\n  };\n\n  const dateStr = form.eventDate\n    ? `${form.eventDate.year}-${String(form.eventDate.month).padStart(2, '0')}-${String(form.eventDate.day).padStart(2, '0')}`\n    : 'Not selected';\n\n  const topicNames = form.topicsOfInterest\n    .map(id => TOPICS.find(t => t.id === id)?.name ?? id)\n    .join(', ');\n\n  const commPrefLabels = form.communicationPreferences\n    .map(id => COMM_PREFS.find(p => p.id === id)?.label ?? id)\n    .join(', ');\n\n  return (\n    <>\n      <ToastProvider position=\"bottom-right\" />\n      {loading && <Loader mode=\"fullscreen\" />}\n\n      <Stack role=\"main\" space={6} aria-label=\"Event Registration\">\n        <Headline level={1}>Event Registration</Headline>\n\n      {submitted ? (\n        <Stack space={6}>\n          <SectionMessage variant=\"success\">\n            <SectionMessage.Title>Registration confirmed!</SectionMessage.Title>\n            <SectionMessage.Content>\n              Your registration has been successfully submitted.\n            </SectionMessage.Content>\n          </SectionMessage>\n          <Card>\n            <Stack space={4}>\n              <Headline level={3}>Registration Summary</Headline>\n              <Stack space={3}>\n                <Stack space={1}>\n                  <Text weight=\"bold\">Name</Text>\n                  <Text>{form.fullName}</Text>\n                </Stack>\n                <Stack space={1}>\n                  <Text weight=\"bold\">Email</Text>\n                  <Text>{form.email}</Text>\n                </Stack>\n                <Stack space={1}>\n                  <Text weight=\"bold\">Event Date</Text>\n                  <Text>{dateStr}</Text>\n                </Stack>\n                <Stack space={1}>\n                  <Text weight=\"bold\">Confirmation Number</Text>\n                  <Text>{confirmationNumber}</Text>\n                </Stack>\n              </Stack>\n              <Divider />\n              <Button variant=\"primary\" onPress={handleReset}>\n                Register Another\n              </Button>\n            </Stack>\n          </Card>\n        </Stack>\n      ) : (\n        <Card>\n          <Stack space={6}>\n            <Stack space={2}>\n              <Text>\n                Step {step} of 4 — {STEP_TITLES[step - 1]}\n              </Text>\n              <Divider />\n            </Stack>\n\n            {step === 1 && (\n              <Stack space={4}>\n                <TextField\n                  label=\"Full Name\"\n                  required\n                  value={form.fullName}\n                  onChange={val => update('fullName', val)}\n                  error={!!errors.fullName}\n                  errorMessage={errors.fullName}\n                />\n                <TextField\n                  label=\"Email\"\n                  type=\"email\"\n                  required\n                  value={form.email}\n                  onChange={val => update('email', val)}\n                  error={!!errors.email}\n                  errorMessage={errors.email}\n                />\n                <TextField\n                  label=\"Phone Number\"\n                  type=\"tel\"\n                  value={form.phoneNumber}\n                  onChange={val => update('phoneNumber', val)}\n                />\n                <TextField\n                  label=\"Company / Organization\"\n                  value={form.company}\n                  onChange={val => update('company', val)}\n                />\n                <TextField\n                  label=\"Job Title\"\n                  value={form.jobTitle}\n                  onChange={val => update('jobTitle', val)}\n                />\n                <FileField label=\"Profile Photo\" accept={['image/*']} />\n                <SectionMessage variant=\"info\">\n                  <SectionMessage.Title>Privacy Notice</SectionMessage.Title>\n                  <SectionMessage.Content>\n                    Your information will only be used for this event.\n                  </SectionMessage.Content>\n                </SectionMessage>\n              </Stack>\n            )}\n\n            {step === 2 && (\n              <Stack space={4}>\n                <DatePicker\n                  label=\"Event Date\"\n                  required\n                  value={form.eventDate ?? undefined}\n                  onChange={val => update('eventDate', val ?? null)}\n                  error={!!errors.eventDate}\n                  errorMessage={errors.eventDate}\n                />\n                <TimeField\n                  label=\"Preferred Time Slot\"\n                  value={form.preferredTimeSlot}\n                  onChange={val => update('preferredTimeSlot', val)}\n                />\n                <Radio.Group\n                  label=\"Session Track\"\n                  value={form.sessionTrack}\n                  onChange={val => update('sessionTrack', val)}\n                >\n                  {SESSION_TRACKS.map(track => (\n                    <Radio key={track} value={track}>\n                      {track}\n                    </Radio>\n                  ))}\n                </Radio.Group>\n                <ComboBox\n                  label=\"Dietary Requirements\"\n                  allowsCustomValue\n                  value={form.dietaryRequirements}\n                  onChange={val => update('dietaryRequirements', val ?? '')}\n                  onSelectionChange={key => {\n                    if (key != null) update('dietaryRequirements', String(key));\n                  }}\n                >\n                  {DIETARY_OPTIONS.map(opt => (\n                    <ComboBox.Option key={opt} id={opt}>\n                      {opt}\n                    </ComboBox.Option>\n                  ))}\n                </ComboBox>\n                <NumberField\n                  label=\"Number of Guests\"\n                  minValue={0}\n                  maxValue={5}\n                  value={form.numberOfGuests}\n                  onChange={val => update('numberOfGuests', val)}\n                  width=\"1/4\"\n                />\n                <TextArea\n                  label=\"Special Requests\"\n                  value={form.specialRequests}\n                  onChange={val => update('specialRequests', val)}\n                  rows={4}\n                />\n              </Stack>\n            )}\n\n            {step === 3 && (\n              <Stack space={4}>\n                <Select\n                  label=\"T-Shirt Size\"\n                  selectedKey={form.tshirtSize || null}\n                  onSelectionChange={key => {\n                    if (key != null) update('tshirtSize', String(key));\n                  }}\n                >\n                  {TSHIRT_SIZES.map(size => (\n                    <Select.Option key={size} id={size}>\n                      {size}\n                    </Select.Option>\n                  ))}\n                </Select>\n                <TagField\n                  label=\"Topics of Interest\"\n                  value={form.topicsOfInterest as any}\n                  onSelectionChange={(keys: any) =>\n                    update('topicsOfInterest', Array.from(keys as Iterable<string>))\n                  }\n                >\n                  {TOPICS.map(topic => (\n                    <TagField.Option key={topic.id} id={topic.id}>\n                      {topic.name}\n                    </TagField.Option>\n                  ))}\n                </TagField>\n                <Checkbox.Group\n                  label=\"Communication Preferences\"\n                  value={form.communicationPreferences}\n                  onChange={(vals: string[]) =>\n                    update('communicationPreferences', vals)\n                  }\n                >\n                  {COMM_PREFS.map(pref => (\n                    <Checkbox key={pref.id} value={pref.id} label={pref.label} />\n                  ))}\n                </Checkbox.Group>\n                <Stack space={3}>\n                  <Switch\n                    label=\"I have accessibility requirements\"\n                    selected={form.hasAccessibilityNeeds}\n                    onChange={(val: boolean) =>\n                      update('hasAccessibilityNeeds', val)\n                    }\n                  />\n                  {form.hasAccessibilityNeeds && (\n                    <TextArea\n                      label=\"Accessibility Details\"\n                      value={form.accessibilityDetails}\n                      onChange={val => update('accessibilityDetails', val)}\n                      rows={3}\n                    />\n                  )}\n                </Stack>\n              </Stack>\n            )}\n\n            {step === 4 && (\n              <Stack space={4}>\n                <Accordion\n                  expandedKeys={reviewExpanded}\n                  onExpandedChange={keys =>\n                    setReviewExpanded(keys as Set<string | number>)\n                  }\n                >\n                  <Accordion.Item id=\"personal\">\n                    <Accordion.Header>Personal Information</Accordion.Header>\n                    <Accordion.Content>\n                      <Stack space={3}>\n                        <Stack space={1}>\n                          <Text weight=\"bold\">Name</Text>\n                          <Text>{form.fullName || '—'}</Text>\n                        </Stack>\n                        <Stack space={1}>\n                          <Text weight=\"bold\">Email</Text>\n                          <Text>{form.email || '—'}</Text>\n                        </Stack>\n                        <Stack space={1}>\n                          <Text weight=\"bold\">Phone</Text>\n                          <Text>{form.phoneNumber || '—'}</Text>\n                        </Stack>\n                        <Stack space={1}>\n                          <Text weight=\"bold\">Company</Text>\n                          <Text>{form.company || '—'}</Text>\n                        </Stack>\n                        <Stack space={1}>\n                          <Text weight=\"bold\">Job Title</Text>\n                          <Text>{form.jobTitle || '—'}</Text>\n                        </Stack>\n                      </Stack>\n                    </Accordion.Content>\n                  </Accordion.Item>\n                  <Accordion.Item id=\"event\">\n                    <Accordion.Header>Event Details</Accordion.Header>\n                    <Accordion.Content>\n                      <Stack space={3}>\n                        <Stack space={1}>\n                          <Text weight=\"bold\">Date</Text>\n                          <Text>{dateStr}</Text>\n                        </Stack>\n                        <Stack space={1}>\n                          <Text weight=\"bold\">Track</Text>\n                          <Text>{form.sessionTrack || '—'}</Text>\n                        </Stack>\n                        <Stack space={1}>\n                          <Text weight=\"bold\">Dietary Requirements</Text>\n                          <Text>{form.dietaryRequirements || '—'}</Text>\n                        </Stack>\n                        <Stack space={1}>\n                          <Text weight=\"bold\">Number of Guests</Text>\n                          <Text>{form.numberOfGuests}</Text>\n                        </Stack>\n                        {form.specialRequests && (\n                          <Stack space={1}>\n                            <Text weight=\"bold\">Special Requests</Text>\n                            <Text>{form.specialRequests}</Text>\n                          </Stack>\n                        )}\n                      </Stack>\n                    </Accordion.Content>\n                  </Accordion.Item>\n                  <Accordion.Item id=\"prefs\">\n                    <Accordion.Header>Preferences</Accordion.Header>\n                    <Accordion.Content>\n                      <Stack space={3}>\n                        <Stack space={1}>\n                          <Text weight=\"bold\">T-Shirt Size</Text>\n                          <Text>{form.tshirtSize || '—'}</Text>\n                        </Stack>\n                        <Stack space={1}>\n                          <Text weight=\"bold\">Topics of Interest</Text>\n                          <Text>{topicNames || '—'}</Text>\n                        </Stack>\n                        <Stack space={1}>\n                          <Text weight=\"bold\">Communication Preferences</Text>\n                          <Text>{commPrefLabels || '—'}</Text>\n                        </Stack>\n                        {form.hasAccessibilityNeeds && (\n                          <Stack space={1}>\n                            <Text weight=\"bold\">Accessibility Needs</Text>\n                            <Text>{form.accessibilityDetails || '—'}</Text>\n                          </Stack>\n                        )}\n                      </Stack>\n                    </Accordion.Content>\n                  </Accordion.Item>\n                </Accordion>\n                <Divider />\n                <Checkbox.Group\n                  value={form.termsAccepted ? ['agreed'] : []}\n                  onChange={(vals: string[]) =>\n                    update('termsAccepted', vals.includes('agreed'))\n                  }\n                >\n                  <Checkbox value=\"agreed\" label=\"I agree to the terms and conditions\" />\n                </Checkbox.Group>\n              </Stack>\n            )}\n\n            <Divider />\n            <Inline>\n              <Button\n                variant=\"secondary\"\n                onPress={handleBack}\n              >\n                Back\n              </Button>\n              <Split />\n              <Button\n                variant=\"primary\"\n                disabled={step === 4 && !form.termsAccepted}\n                onPress={handleNext}\n                loading={submitting}\n              >\n                {step === 4 ? 'Submit Registration' : 'Next'}\n              </Button>\n            </Inline>\n          </Stack>\n        </Card>\n      )}\n\n      </Stack>\n    </>\n  );\n};\n\nexport default TestApp;\n",
+  "assertions": {
+    "passed": [
+      {
+        "id": "a-import-marigold",
+        "description": "Imports from @marigold/components",
+        "severity": "required",
+        "passed": true,
+        "evidence": "import from \"@marigold/components\" found"
+      },
+      {
+        "id": "a-text-field",
+        "description": "TextField for text inputs",
+        "severity": "required",
+        "passed": true,
+        "evidence": "<TextField> found"
+      },
+      {
+        "id": "a-datepicker",
+        "description": "DatePicker for event date",
+        "severity": "required",
+        "passed": true,
+        "evidence": "<DatePicker> found"
+      },
+      {
+        "id": "a-timefield",
+        "description": "TimeField for time slot",
+        "severity": "required",
+        "passed": true,
+        "evidence": "<TimeField> found"
+      },
+      {
+        "id": "a-radio",
+        "description": "Radio/RadioGroup for session track",
+        "severity": "required",
+        "passed": true,
+        "evidence": "matched: <Radio> found"
+      },
+      {
+        "id": "a-combobox",
+        "description": "ComboBox for dietary requirements",
+        "severity": "required",
+        "passed": true,
+        "evidence": "<ComboBox> found"
+      },
+      {
+        "id": "a-numberfield",
+        "description": "NumberField for guests",
+        "severity": "required",
+        "passed": true,
+        "evidence": "<NumberField> found"
+      },
+      {
+        "id": "a-select",
+        "description": "Select for t-shirt size",
+        "severity": "required",
+        "passed": true,
+        "evidence": "<Select> found"
+      },
+      {
+        "id": "a-tagfield",
+        "description": "TagField for topics of interest",
+        "severity": "required",
+        "passed": true,
+        "evidence": "<TagField> found"
+      },
+      {
+        "id": "a-checkbox",
+        "description": "Checkbox for communication preferences",
+        "severity": "required",
+        "passed": true,
+        "evidence": "matched: <Checkbox> found"
+      },
+      {
+        "id": "a-switch",
+        "description": "Switch for accessibility needs",
+        "severity": "required",
+        "passed": true,
+        "evidence": "<Switch> found"
+      },
+      {
+        "id": "a-textarea",
+        "description": "TextArea for special requests",
+        "severity": "required",
+        "passed": true,
+        "evidence": "<TextArea> found"
+      },
+      {
+        "id": "a-filefield",
+        "description": "FileField for profile photo",
+        "severity": "required",
+        "passed": true,
+        "evidence": "<FileField> found"
+      },
+      {
+        "id": "a-accordion",
+        "description": "Accordion for review sections",
+        "severity": "required",
+        "passed": true,
+        "evidence": "<Accordion> found"
+      },
+      {
+        "id": "a-button",
+        "description": "Button for navigation/submit",
+        "severity": "required",
+        "passed": true,
+        "evidence": "<Button> found"
+      },
+      {
+        "id": "a-card",
+        "description": "Card as form container",
+        "severity": "required",
+        "passed": true,
+        "evidence": "<Card> found"
+      },
+      {
+        "id": "a-section-message",
+        "description": "SectionMessage for info/success",
+        "severity": "required",
+        "passed": true,
+        "evidence": "<SectionMessage> found"
+      },
+      {
+        "id": "a-loader",
+        "description": "Loader for submission",
+        "severity": "recommended",
+        "passed": true,
+        "evidence": "<Loader> found"
+      },
+      {
+        "id": "a-step-state",
+        "description": "Multi-step state management (useState)",
+        "severity": "recommended",
+        "passed": true,
+        "evidence": "pattern \"/useState/\" found"
+      },
+      {
+        "id": "a-toast",
+        "description": "Toast notification after submission",
+        "severity": "recommended",
+        "passed": true,
+        "evidence": "matched: pattern \"/useToast/\" found"
+      }
+    ],
+    "failed": [
+      {
+        "id": "a-form",
+        "description": "Form component",
+        "severity": "required",
+        "passed": false,
+        "evidence": "<Form> not found"
+      },
+      {
+        "id": "a-autocomplete",
+        "description": "Autocomplete for job title",
+        "severity": "required",
+        "passed": false,
+        "evidence": "<Autocomplete> not found"
+      }
+    ],
+    "passRate": 0.9091,
+    "requiredPassRate": 0.8947,
+    "weightedPassRate": 0.8987,
+    "total": 22
+  },
+  "validatePackageVersion": "0.0.1",
+  "playwrightVersion": null,
+  "resolvedModelId": "claude-sonnet-4-6",
+  "claudeCliVersion": "2.1.185 (Claude Code)",
+  "sessionId": "a390fe06-6222-4c61-87f9-8973d8ca5c30"
+}

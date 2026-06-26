@@ -1,0 +1,709 @@
+{
+  "runId": "haiku-full-stack-P-10-r2",
+  "promptId": "P-10",
+  "model": "haiku",
+  "config": "full-stack",
+  "timestamp": "2026-06-22T08:19:17.569Z",
+  "quality": {
+    "overall": 73.6,
+    "categories": {
+      "A": {
+        "category": "A",
+        "label": "Design System API",
+        "score": 68.38,
+        "weight": 0.225,
+        "weightedScore": 15.39,
+        "errorCount": 0,
+        "warningCount": 5,
+        "issues": [
+          {
+            "type": "technical",
+            "severity": "warning",
+            "source": "design-system-usage",
+            "component": "span",
+            "message": "Raw <span> used instead of a Marigold component.",
+            "suggestion": "Raw <span> used instead of a Marigold content component. Search the Marigold docs for content alternatives.",
+            "location": {
+              "file": "TestApp.tsx",
+              "line": 360,
+              "column": 15
+            },
+            "details": {
+              "htmlElement": "span"
+            }
+          },
+          {
+            "type": "technical",
+            "severity": "warning",
+            "source": "design-system-usage",
+            "component": "strong",
+            "message": "Raw <strong> used instead of a Marigold component.",
+            "suggestion": "Replace <strong> with the appropriate Marigold component. Search the Marigold docs for alternatives.",
+            "location": {
+              "file": "TestApp.tsx",
+              "line": 704,
+              "column": 17
+            },
+            "details": {
+              "htmlElement": "strong"
+            }
+          },
+          {
+            "type": "technical",
+            "severity": "warning",
+            "source": "design-system-usage",
+            "component": "strong",
+            "message": "Raw <strong> used instead of a Marigold component.",
+            "suggestion": "Replace <strong> with the appropriate Marigold component. Search the Marigold docs for alternatives.",
+            "location": {
+              "file": "TestApp.tsx",
+              "line": 707,
+              "column": 17
+            },
+            "details": {
+              "htmlElement": "strong"
+            }
+          },
+          {
+            "type": "technical",
+            "severity": "warning",
+            "source": "design-system-usage",
+            "component": "strong",
+            "message": "Raw <strong> used instead of a Marigold component.",
+            "suggestion": "Replace <strong> with the appropriate Marigold component. Search the Marigold docs for alternatives.",
+            "location": {
+              "file": "TestApp.tsx",
+              "line": 710,
+              "column": 17
+            },
+            "details": {
+              "htmlElement": "strong"
+            }
+          },
+          {
+            "type": "technical",
+            "severity": "warning",
+            "source": "design-system-usage",
+            "component": "strong",
+            "message": "Raw <strong> used instead of a Marigold component.",
+            "suggestion": "Replace <strong> with the appropriate Marigold component. Search the Marigold docs for alternatives.",
+            "location": {
+              "file": "TestApp.tsx",
+              "line": 716,
+              "column": 17
+            },
+            "details": {
+              "htmlElement": "strong"
+            }
+          }
+        ]
+      },
+      "B": {
+        "category": "B",
+        "label": "Token Compliance",
+        "score": 89.39,
+        "weight": 0.1,
+        "weightedScore": 8.94,
+        "errorCount": 0,
+        "warningCount": 1,
+        "issues": [
+          {
+            "type": "style",
+            "severity": "warning",
+            "source": "token-compliance",
+            "component": "thead",
+            "message": "Computed background-color value \"oklab(0.999994 0.0000455678 0.0000200868 / 0.9)\" on <thead> (“MemberActionProjectDate”) does not map to a known design token.",
+            "suggestion": "If this is intentional, ignore the warning. Otherwise, use a Marigold variant or a theme-rui token instead of a hard-coded value.",
+            "details": {
+              "property": "background-color",
+              "value": "oklab(0.999994 0.0000455678 0.0000200868 / 0.9)",
+              "selector": "body:nth-child(2) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > main:nth-child(3) > div:nth-child(1) > div:nth-child(1) > div:nth-child(3) > div:nth-child(2) > table:nth-child(3) > thead:nth-child(1)",
+              "fingerprint": "MemberActionProjectDate",
+              "scope": "page"
+            }
+          }
+        ]
+      },
+      "C": {
+        "category": "C",
+        "label": "DOM / Structure",
+        "score": 65,
+        "weight": 0.225,
+        "weightedScore": 14.63,
+        "errorCount": 1,
+        "warningCount": 0,
+        "issues": [
+          {
+            "type": "technical",
+            "severity": "error",
+            "source": "composition-validator",
+            "component": "ActionBar",
+            "message": "<ActionBar> is used without any of its sub-components.",
+            "suggestion": "Use compound children: <ActionBar.Button>.",
+            "location": {
+              "file": "TestApp.tsx",
+              "line": 776,
+              "column": 9
+            },
+            "details": {
+              "expected": [
+                "Button"
+              ],
+              "found": []
+            }
+          }
+        ]
+      },
+      "D": {
+        "category": "D",
+        "label": "Spatial & A11y",
+        "score": 71.72,
+        "weight": 0.225,
+        "weightedScore": 16.14,
+        "errorCount": 0,
+        "warningCount": 4,
+        "issues": [
+          {
+            "type": "a11y",
+            "severity": "warning",
+            "source": "responsive-checker",
+            "component": "a",
+            "message": "Touch target too small at mobile (375px): a elements are 65x20px (minimum 24x24px per WCAG 2.5.8).",
+            "suggestion": "Increase the clickable area. Marigold interactive components have built-in minimum sizes — check if custom styling reduces the target.",
+            "details": {
+              "breakpoint": "mobile",
+              "tag": "a",
+              "count": 1,
+              "minWidth": 65,
+              "minHeight": 20,
+              "scope": "page"
+            }
+          },
+          {
+            "type": "a11y",
+            "severity": "warning",
+            "source": "responsive-checker",
+            "component": "link",
+            "message": "Touch target too small at mobile (375px): link elements are 76x20px (minimum 24x24px per WCAG 2.5.8).",
+            "suggestion": "Increase the clickable area. Marigold interactive components have built-in minimum sizes — check if custom styling reduces the target.",
+            "details": {
+              "breakpoint": "mobile",
+              "tag": "link",
+              "count": 1,
+              "minWidth": 76,
+              "minHeight": 20,
+              "scope": "page"
+            }
+          },
+          {
+            "type": "a11y",
+            "severity": "warning",
+            "source": "keyboard-a11y",
+            "component": "a",
+            "message": "Interactive element <a> (a) is not reachable via Tab key.",
+            "suggestion": "Ensure the element is focusable. Marigold interactive components are focusable by default — check if a parent has tabindex=\"-1\" or focus is trapped.",
+            "details": {
+              "selector": "body:nth-child(2) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > aside:nth-child(1) > div:nth-child(1) > nav:nth-child(2) > div:nth-child(1) > div:nth-child(1) > a:nth-child(1)",
+              "role": "a",
+              "scope": "page"
+            }
+          },
+          {
+            "type": "a11y",
+            "severity": "warning",
+            "source": "keyboard-a11y",
+            "component": "button",
+            "message": "Interactive element <button> (button) is not reachable via Tab key.",
+            "suggestion": "Ensure the element is focusable. Marigold interactive components are focusable by default — check if a parent has tabindex=\"-1\" or focus is trapped.",
+            "details": {
+              "selector": "body:nth-child(2) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > header:nth-child(2) > div:nth-child(1) > button:nth-child(1)",
+              "role": "button",
+              "scope": "page"
+            }
+          }
+        ]
+      },
+      "E": {
+        "category": "E",
+        "label": "Functional Completeness",
+        "score": 82.29,
+        "weight": 0.225,
+        "weightedScore": 18.52,
+        "errorCount": 0,
+        "warningCount": 0,
+        "issues": []
+      }
+    },
+    "renderSuccess": true
+  },
+  "efficiency": {
+    "durationMs": 321909,
+    "costUsd": 1.0475047000000002,
+    "inputTokens": 100,
+    "outputTokens": 28900,
+    "cacheReadTokens": 5606157,
+    "cacheCreationTokens": 170138,
+    "totalTokens": 29000,
+    "numTurns": 81
+  },
+  "report": {
+    "file": "TestApp.tsx",
+    "errors": [
+      {
+        "type": "technical",
+        "severity": "error",
+        "source": "composition-validator",
+        "component": "ActionBar",
+        "message": "<ActionBar> is used without any of its sub-components.",
+        "suggestion": "Use compound children: <ActionBar.Button>.",
+        "location": {
+          "file": "TestApp.tsx",
+          "line": 776,
+          "column": 9
+        },
+        "details": {
+          "expected": [
+            "Button"
+          ],
+          "found": []
+        }
+      }
+    ],
+    "warnings": [
+      {
+        "type": "technical",
+        "severity": "warning",
+        "source": "design-system-usage",
+        "component": "span",
+        "message": "Raw <span> used instead of a Marigold component.",
+        "suggestion": "Raw <span> used instead of a Marigold content component. Search the Marigold docs for content alternatives.",
+        "location": {
+          "file": "TestApp.tsx",
+          "line": 360,
+          "column": 15
+        },
+        "details": {
+          "htmlElement": "span"
+        }
+      },
+      {
+        "type": "technical",
+        "severity": "warning",
+        "source": "design-system-usage",
+        "component": "strong",
+        "message": "Raw <strong> used instead of a Marigold component.",
+        "suggestion": "Replace <strong> with the appropriate Marigold component. Search the Marigold docs for alternatives.",
+        "location": {
+          "file": "TestApp.tsx",
+          "line": 704,
+          "column": 17
+        },
+        "details": {
+          "htmlElement": "strong"
+        }
+      },
+      {
+        "type": "technical",
+        "severity": "warning",
+        "source": "design-system-usage",
+        "component": "strong",
+        "message": "Raw <strong> used instead of a Marigold component.",
+        "suggestion": "Replace <strong> with the appropriate Marigold component. Search the Marigold docs for alternatives.",
+        "location": {
+          "file": "TestApp.tsx",
+          "line": 707,
+          "column": 17
+        },
+        "details": {
+          "htmlElement": "strong"
+        }
+      },
+      {
+        "type": "technical",
+        "severity": "warning",
+        "source": "design-system-usage",
+        "component": "strong",
+        "message": "Raw <strong> used instead of a Marigold component.",
+        "suggestion": "Replace <strong> with the appropriate Marigold component. Search the Marigold docs for alternatives.",
+        "location": {
+          "file": "TestApp.tsx",
+          "line": 710,
+          "column": 17
+        },
+        "details": {
+          "htmlElement": "strong"
+        }
+      },
+      {
+        "type": "technical",
+        "severity": "warning",
+        "source": "design-system-usage",
+        "component": "strong",
+        "message": "Raw <strong> used instead of a Marigold component.",
+        "suggestion": "Replace <strong> with the appropriate Marigold component. Search the Marigold docs for alternatives.",
+        "location": {
+          "file": "TestApp.tsx",
+          "line": 716,
+          "column": 17
+        },
+        "details": {
+          "htmlElement": "strong"
+        }
+      },
+      {
+        "type": "style",
+        "severity": "warning",
+        "source": "token-compliance",
+        "component": "thead",
+        "message": "Computed background-color value \"oklab(0.999994 0.0000455678 0.0000200868 / 0.9)\" on <thead> (“MemberActionProjectDate”) does not map to a known design token.",
+        "suggestion": "If this is intentional, ignore the warning. Otherwise, use a Marigold variant or a theme-rui token instead of a hard-coded value.",
+        "details": {
+          "property": "background-color",
+          "value": "oklab(0.999994 0.0000455678 0.0000200868 / 0.9)",
+          "selector": "body:nth-child(2) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > main:nth-child(3) > div:nth-child(1) > div:nth-child(1) > div:nth-child(3) > div:nth-child(2) > table:nth-child(3) > thead:nth-child(1)",
+          "fingerprint": "MemberActionProjectDate",
+          "scope": "page"
+        }
+      },
+      {
+        "type": "a11y",
+        "severity": "warning",
+        "source": "responsive-checker",
+        "component": "a",
+        "message": "Touch target too small at mobile (375px): a elements are 65x20px (minimum 24x24px per WCAG 2.5.8).",
+        "suggestion": "Increase the clickable area. Marigold interactive components have built-in minimum sizes — check if custom styling reduces the target.",
+        "details": {
+          "breakpoint": "mobile",
+          "tag": "a",
+          "count": 1,
+          "minWidth": 65,
+          "minHeight": 20,
+          "scope": "page"
+        }
+      },
+      {
+        "type": "a11y",
+        "severity": "warning",
+        "source": "responsive-checker",
+        "component": "link",
+        "message": "Touch target too small at mobile (375px): link elements are 76x20px (minimum 24x24px per WCAG 2.5.8).",
+        "suggestion": "Increase the clickable area. Marigold interactive components have built-in minimum sizes — check if custom styling reduces the target.",
+        "details": {
+          "breakpoint": "mobile",
+          "tag": "link",
+          "count": 1,
+          "minWidth": 76,
+          "minHeight": 20,
+          "scope": "page"
+        }
+      },
+      {
+        "type": "a11y",
+        "severity": "warning",
+        "source": "keyboard-a11y",
+        "component": "a",
+        "message": "Interactive element <a> (a) is not reachable via Tab key.",
+        "suggestion": "Ensure the element is focusable. Marigold interactive components are focusable by default — check if a parent has tabindex=\"-1\" or focus is trapped.",
+        "details": {
+          "selector": "body:nth-child(2) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > aside:nth-child(1) > div:nth-child(1) > nav:nth-child(2) > div:nth-child(1) > div:nth-child(1) > a:nth-child(1)",
+          "role": "a",
+          "scope": "page"
+        }
+      },
+      {
+        "type": "a11y",
+        "severity": "warning",
+        "source": "keyboard-a11y",
+        "component": "button",
+        "message": "Interactive element <button> (button) is not reachable via Tab key.",
+        "suggestion": "Ensure the element is focusable. Marigold interactive components are focusable by default — check if a parent has tabindex=\"-1\" or focus is trapped.",
+        "details": {
+          "selector": "body:nth-child(2) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > header:nth-child(2) > div:nth-child(1) > button:nth-child(1)",
+          "role": "button",
+          "scope": "page"
+        }
+      }
+    ],
+    "passed": [
+      "TypeScript compilation",
+      "All Marigold props are valid",
+      "Overlay accessible names",
+      "Compound component placement",
+      "Section headers",
+      "Collection item ids",
+      "Layout usage",
+      "Table usage",
+      "Component conventions",
+      "Theme variant compliance",
+      "No overlapping components detected"
+    ],
+    "metadata": {
+      "renderTimeMs": 2246,
+      "componentsFound": [
+        "button",
+        "li",
+        "a",
+        "span",
+        "table",
+        "thead",
+        "th",
+        "div",
+        "tbody",
+        "tr",
+        "td"
+      ],
+      "checksRun": [
+        "technical",
+        "spatial",
+        "a11y"
+      ],
+      "coverage": {
+        "staticValuesChecked": 61,
+        "dynamicValuesSkipped": 58,
+        "spreadPropsBypassed": 0
+      },
+      "widthUtilization": 1
+    },
+    "markdown": "marigold-validate: TestApp.tsx — 1 error(s), 10 warning(s)\n\n[error/technical] <ActionBar>: <ActionBar> is used without any of its sub-components. (TestApp.tsx:776:9)\n  → Use compound children: <ActionBar.Button>.\n  data: {expected=[\"Button\"], found=[]}\n[warning/technical] <span>: Raw <span> used instead of a Marigold component. (TestApp.tsx:360:15)\n  → Raw <span> used instead of a Marigold content component. Search the Marigold docs for content alternatives.\n  data: {htmlElement=span}\n[warning/technical] <strong>: Raw <strong> used instead of a Marigold component. (TestApp.tsx:704:17)\n  → Replace <strong> with the appropriate Marigold component. Search the Marigold docs for alternatives.\n  data: {htmlElement=strong}\n[warning/technical] <strong>: Raw <strong> used instead of a Marigold component. (TestApp.tsx:707:17)\n  → Replace <strong> with the appropriate Marigold component. Search the Marigold docs for alternatives.\n  data: {htmlElement=strong}\n[warning/technical] <strong>: Raw <strong> used instead of a Marigold component. (TestApp.tsx:710:17)\n  → Replace <strong> with the appropriate Marigold component. Search the Marigold docs for alternatives.\n  data: {htmlElement=strong}\n[warning/technical] <strong>: Raw <strong> used instead of a Marigold component. (TestApp.tsx:716:17)\n  → Replace <strong> with the appropriate Marigold component. Search the Marigold docs for alternatives.\n  data: {htmlElement=strong}\n[warning/style] <thead>: Computed background-color value \"oklab(0.999994 0.0000455678 0.0000200868 / 0.9)\" on <thead> (“MemberActionProjectDate”) does not map to a known design token.\n  → If this is intentional, ignore the warning. Otherwise, use a Marigold variant or a theme-rui token instead of a hard-coded value.\n  data: {property=background-color, value=oklab(0.999994 0.0000455678 0.0000200868 / 0.9), selector=body:nth-child(2) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > ..., fingerprint=MemberActionProjectDate, scope=page}\n[warning/a11y] <a>: Touch target too small at mobile (375px): a elements are 65x20px (minimum 24x24px per WCAG 2.5.8).\n  → Increase the clickable area. Marigold interactive components have built-in minimum sizes — check if custom styling reduces the target.\n  data: {breakpoint=mobile, tag=a, count=1, minWidth=65, minHeight=20, scope=page}\n[warning/a11y] <a>: Interactive element <a> (a) is not reachable via Tab key.\n  → Ensure the element is focusable. Marigold interactive components are focusable by default — check if a parent has tabindex=\"-1\" or focus is trapped.\n  data: {selector=body:nth-child(2) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > ..., role=a, scope=page}\n[warning/a11y] <button>: Interactive element <button> (button) is not reachable via Tab key.\n  → Ensure the element is focusable. Marigold interactive components are focusable by default — check if a parent has tabindex=\"-1\" or focus is trapped.\n  data: {selector=body:nth-child(2) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > ..., role=button, scope=page}\n[warning/a11y] <link>: Touch target too small at mobile (375px): link elements are 76x20px (minimum 24x24px per WCAG 2.5.8).\n  → Increase the clickable area. Marigold interactive components have built-in minimum sizes — check if custom styling reduces the target.\n  data: {breakpoint=mobile, tag=link, count=1, minWidth=76, minHeight=20, scope=page}\n\npassed: TypeScript compilation, All Marigold props are valid, Overlay accessible names, Compound component placement, Section headers, Collection item ids, Layout usage, Table usage, Component conventions, Theme variant compliance, No overlapping components detected\n\nchecks run: technical, spatial, a11y"
+  },
+  "componentsFound": [
+    "button",
+    "li",
+    "a",
+    "span",
+    "table",
+    "thead",
+    "th",
+    "div",
+    "tbody",
+    "tr",
+    "td"
+  ],
+  "renderTimeMs": 2246,
+  "sourceCode": "import { useState } from 'react';\nimport {\n  AppLayout,\n  Sidebar,\n  TopNavigation,\n  Breadcrumbs,\n  Button,\n  Stack,\n  Inset,\n  Headline,\n  Card,\n  Tiles,\n  Text,\n  Table,\n  Badge,\n  SearchField,\n  Select,\n  Dialog,\n  TextField,\n  TextArea,\n  Menu,\n  Drawer,\n  ActionBar,\n  Inline,\n  useToast,\n  DateFormat,\n  NumericFormat,\n  Tabs,\n  Tooltip,\n  SectionMessage,\n  Switch,\n} from '@marigold/components';\n\ntype Page = 'dashboard' | 'members' | 'projects' | 'calendar' | 'files' | 'settings';\ntype ViewMode = 'table' | 'cards';\n\ninterface Member {\n  id: string;\n  name: string;\n  email: string;\n  role: 'Developer' | 'Designer' | 'Manager' | 'QA';\n  status: 'Active' | 'On Leave';\n  joinedDate: Date;\n}\n\ninterface Project {\n  id: string;\n  name: string;\n  lead: string;\n  members: number;\n  deadline: Date;\n  progress: number;\n  status: 'Active' | 'On Hold' | 'Completed';\n}\n\ninterface ActivityLog {\n  id: string;\n  member: string;\n  action: 'Commit' | 'Review' | 'Deploy';\n  project: string;\n  date: Date;\n}\n\ninterface FileItem {\n  id: string;\n  name: string;\n  type: string;\n  size: number;\n  uploadedBy: string;\n  date: Date;\n}\n\nconst initialMembers: Member[] = [\n  {\n    id: '1',\n    name: 'Alice Johnson',\n    email: 'alice@example.com',\n    role: 'Developer',\n    status: 'Active',\n    joinedDate: new Date(2023, 0, 15),\n  },\n  {\n    id: '2',\n    name: 'Bob Smith',\n    email: 'bob@example.com',\n    role: 'Designer',\n    status: 'Active',\n    joinedDate: new Date(2023, 3, 20),\n  },\n  {\n    id: '3',\n    name: 'Carol White',\n    email: 'carol@example.com',\n    role: 'Manager',\n    status: 'On Leave',\n    joinedDate: new Date(2022, 6, 10),\n  },\n  {\n    id: '4',\n    name: 'David Brown',\n    email: 'david@example.com',\n    role: 'Developer',\n    status: 'Active',\n    joinedDate: new Date(2023, 9, 5),\n  },\n  {\n    id: '5',\n    name: 'Emma Davis',\n    email: 'emma@example.com',\n    role: 'QA',\n    status: 'Active',\n    joinedDate: new Date(2023, 2, 18),\n  },\n  {\n    id: '6',\n    name: 'Frank Miller',\n    email: 'frank@example.com',\n    role: 'Developer',\n    status: 'Active',\n    joinedDate: new Date(2023, 5, 12),\n  },\n];\n\nconst initialProjects: Project[] = [\n  {\n    id: '1',\n    name: 'Website Redesign',\n    lead: 'Bob Smith',\n    members: 4,\n    deadline: new Date(2026, 7, 15),\n    progress: 75,\n    status: 'Active',\n  },\n  {\n    id: '2',\n    name: 'Mobile App',\n    lead: 'Alice Johnson',\n    members: 5,\n    deadline: new Date(2026, 8, 30),\n    progress: 45,\n    status: 'Active',\n  },\n  {\n    id: '3',\n    name: 'API Integration',\n    lead: 'David Brown',\n    members: 3,\n    deadline: new Date(2026, 6, 20),\n    progress: 90,\n    status: 'Active',\n  },\n  {\n    id: '4',\n    name: 'Dashboard V2',\n    lead: 'Emma Davis',\n    members: 2,\n    deadline: new Date(2026, 9, 10),\n    progress: 30,\n    status: 'On Hold',\n  },\n  {\n    id: '5',\n    name: 'Legacy System Cleanup',\n    lead: 'Frank Miller',\n    members: 3,\n    deadline: new Date(2026, 5, 30),\n    progress: 100,\n    status: 'Completed',\n  },\n];\n\nconst activityData: ActivityLog[] = [\n  {\n    id: '1',\n    member: 'Alice Johnson',\n    action: 'Commit',\n    project: 'Mobile App',\n    date: new Date(2026, 4, 28),\n  },\n  {\n    id: '2',\n    member: 'Bob Smith',\n    action: 'Review',\n    project: 'Website Redesign',\n    date: new Date(2026, 4, 27),\n  },\n  {\n    id: '3',\n    member: 'David Brown',\n    action: 'Deploy',\n    project: 'API Integration',\n    date: new Date(2026, 4, 26),\n  },\n  {\n    id: '4',\n    member: 'Emma Davis',\n    action: 'Commit',\n    project: 'Dashboard V2',\n    date: new Date(2026, 4, 25),\n  },\n  {\n    id: '5',\n    member: 'Frank Miller',\n    action: 'Review',\n    project: 'Website Redesign',\n    date: new Date(2026, 4, 24),\n  },\n];\n\nconst upcomingEvents = [\n  {\n    id: '1',\n    date: new Date(2026, 5, 25),\n    name: 'Sprint Planning',\n    type: 'Meeting' as const,\n  },\n  {\n    id: '2',\n    date: new Date(2026, 5, 30),\n    name: 'Project Deadline',\n    type: 'Deadline' as const,\n  },\n  {\n    id: '3',\n    date: new Date(2026, 6, 5),\n    name: 'Team Lunch',\n    type: 'Social' as const,\n  },\n  {\n    id: '4',\n    date: new Date(2026, 6, 15),\n    name: 'Review Meeting',\n    type: 'Meeting' as const,\n  },\n];\n\nconst fileData: FileItem[] = [\n  {\n    id: '1',\n    name: 'Q2 Report',\n    type: 'Documents',\n    size: 2400000,\n    uploadedBy: 'Carol White',\n    date: new Date(2026, 4, 20),\n  },\n  {\n    id: '2',\n    name: 'Team Photo',\n    type: 'Images',\n    size: 5200000,\n    uploadedBy: 'Alice Johnson',\n    date: new Date(2026, 4, 18),\n  },\n  {\n    id: '3',\n    name: 'Budget Spreadsheet',\n    type: 'Spreadsheets',\n    size: 1800000,\n    uploadedBy: 'Bob Smith',\n    date: new Date(2026, 4, 15),\n  },\n  {\n    id: '4',\n    name: 'Product Mockup',\n    type: 'Images',\n    size: 8900000,\n    uploadedBy: 'Bob Smith',\n    date: new Date(2026, 4, 10),\n  },\n  {\n    id: '5',\n    name: 'Design Guidelines',\n    type: 'Documents',\n    size: 1200000,\n    uploadedBy: 'Bob Smith',\n    date: new Date(2026, 4, 5),\n  },\n];\n\nconst getActionVariant = (action: string) => {\n  switch (action) {\n    case 'Commit':\n      return 'info';\n    case 'Review':\n      return 'warning';\n    case 'Deploy':\n      return 'success';\n    default:\n      return 'default';\n  }\n};\n\nconst getStatusVariant = (status: string) => {\n  switch (status) {\n    case 'Active':\n    case 'On Leave':\n      return status === 'Active' ? 'success' : 'warning';\n    case 'Completed':\n      return 'success';\n    case 'On Hold':\n      return 'warning';\n    default:\n      return 'default';\n  }\n};\n\nconst getEventVariant = (type: string) => {\n  switch (type) {\n    case 'Meeting':\n      return 'info';\n    case 'Deadline':\n      return 'warning';\n    case 'Social':\n      return 'success';\n    default:\n      return 'default';\n  }\n};\n\nconst DashboardPage = ({ memberCount }: { memberCount: number }) => (\n  <Stack space={4}>\n    <Headline level={1}>Team Overview</Headline>\n\n    <Tiles tilesWidth=\"200px\" space={3}>\n      <Card p={4}>\n        <Stack space={2} alignX=\"center\">\n          <Text weight=\"bold\" size=\"lg\">\n            Members\n          </Text>\n          <Text size=\"xl\" weight=\"bold\">\n            {memberCount}\n          </Text>\n        </Stack>\n      </Card>\n      <Card p={4}>\n        <Stack space={2} alignX=\"center\">\n          <Text weight=\"bold\" size=\"lg\">\n            Active Projects\n          </Text>\n          <Text size=\"xl\" weight=\"bold\">\n            5\n          </Text>\n        </Stack>\n      </Card>\n      <Card p={4}>\n        <Stack space={2} alignX=\"center\">\n          <Text weight=\"bold\" size=\"lg\">\n            Upcoming Deadlines\n          </Text>\n          <Text size=\"xl\" weight=\"bold\">\n            8\n          </Text>\n        </Stack>\n      </Card>\n      <Card p={4}>\n        <Stack space={2} alignX=\"center\">\n          <Text weight=\"bold\" size=\"lg\">\n            Hours This Week\n            <Tooltip.Trigger>\n              <span role=\"img\" aria-label=\"info\">\n                {' '}\n                ℹ️\n              </span>\n              <Tooltip>Aggregate of all team members.</Tooltip>\n            </Tooltip.Trigger>\n          </Text>\n          <Text size=\"xl\" weight=\"bold\">\n            <NumericFormat value={342} />\n          </Text>\n        </Stack>\n      </Card>\n    </Tiles>\n\n    <Stack space={2}>\n      <Headline level={2}>Recent Activity</Headline>\n      <Table aria-label=\"Recent Activity\">\n        <Table.Header>\n          <Table.Column rowHeader>Member</Table.Column>\n          <Table.Column>Action</Table.Column>\n          <Table.Column>Project</Table.Column>\n          <Table.Column>Date</Table.Column>\n        </Table.Header>\n        <Table.Body>\n          {activityData.map((item) => (\n            <Table.Row key={item.id}>\n              <Table.Cell>{item.member}</Table.Cell>\n              <Table.Cell>\n                <Badge variant={getActionVariant(item.action)}>\n                  {item.action}\n                </Badge>\n              </Table.Cell>\n              <Table.Cell>{item.project}</Table.Cell>\n              <Table.Cell>\n                <DateFormat value={item.date} year=\"numeric\" month=\"long\" day=\"numeric\" />\n              </Table.Cell>\n            </Table.Row>\n          ))}\n        </Table.Body>\n      </Table>\n    </Stack>\n\n    <SectionMessage variant=\"info\">\n      Sprint 14 ends in 3 days. Review the project board for outstanding\n      tasks.\n    </SectionMessage>\n  </Stack>\n);\n\nconst MembersPage = ({\n  members,\n  onMembersChange,\n}: {\n  members: Member[];\n  onMembersChange: (members: Member[]) => void;\n}) => {\n  const { addToast } = useToast();\n  const [searchTerm, setSearchTerm] = useState('');\n  const [roleFilter, setRoleFilter] = useState('All Roles');\n  const [viewMode, setViewMode] = useState<ViewMode>('table');\n  const [editingMember, setEditingMember] = useState<Member | null>(null);\n  const [selectedMemberId, setSelectedMemberId] = useState<string | null>(null);\n  const [showDetailPanel, setShowDetailPanel] = useState(false);\n\n  const [formData, setFormData] = useState({\n    name: '',\n    email: '',\n    role: 'Developer' as Member['role'],\n    startDate: null as any,\n    bio: '',\n  });\n\n  const filteredMembers = members.filter((member) => {\n    const matchesSearch = member.name\n      .toLowerCase()\n      .includes(searchTerm.toLowerCase());\n    const matchesRole =\n      roleFilter === 'All Roles' || member.role === roleFilter;\n    return matchesSearch && matchesRole;\n  });\n\n  const handleAddMember = () => {\n    if (!formData.name.trim() || !formData.email.trim()) {\n      addToast({\n        title: 'Validation Error',\n        description: 'Please fill in all required fields.',\n        variant: 'error',\n      });\n      return;\n    }\n\n    const newMember: Member = {\n      id: Math.random().toString(),\n      name: formData.name,\n      email: formData.email,\n      role: formData.role,\n      status: 'Active',\n      joinedDate: new Date(),\n    };\n\n    if (editingMember) {\n      onMembersChange(\n        members.map((m) => (m.id === editingMember.id ? { ...newMember, id: m.id } : m))\n      );\n      setEditingMember(null);\n      addToast({\n        title: 'Member Updated',\n        description: `${formData.name} has been updated.`,\n        variant: 'success',\n      });\n    } else {\n      onMembersChange([...members, newMember]);\n      addToast({\n        title: 'Member Added',\n        description: `${formData.name} has been added to the team.`,\n        variant: 'success',\n      });\n    }\n\n    setFormData({ name: '', email: '', role: 'Developer', startDate: null, bio: '' });\n  };\n\n  const handleRemoveMember = (id: string) => {\n    const memberToRemove = members.find((m) => m.id === id);\n    onMembersChange(members.filter((m) => m.id !== id));\n    addToast({\n      title: 'Member Removed',\n      description: `${memberToRemove?.name} has been removed.`,\n      variant: 'success',\n    });\n  };\n\n  const openEditDialog = (member: Member) => {\n    setEditingMember(member);\n    setFormData({\n      name: member.name,\n      email: member.email,\n      role: member.role,\n      startDate: null,\n      bio: '',\n    });\n  };\n\n  const selectedMember = filteredMembers.find((m) => m.id === selectedMemberId);\n\n  return (\n    <Stack space={4}>\n      <Headline level={1}>Team Members</Headline>\n\n      <Inline space={2}>\n        <SearchField\n          placeholder=\"Search members...\"\n          value={searchTerm}\n          onChange={setSearchTerm}\n        />\n        <Select\n          label=\"Role\"\n          selectedKey={roleFilter}\n          onSelectionChange={(key) => setRoleFilter(key as string)}\n        >\n          <Select.Option id=\"All Roles\">All Roles</Select.Option>\n          <Select.Option id=\"Developer\">Developer</Select.Option>\n          <Select.Option id=\"Designer\">Designer</Select.Option>\n          <Select.Option id=\"Manager\">Manager</Select.Option>\n          <Select.Option id=\"QA\">QA</Select.Option>\n        </Select>\n        <Button\n          variant={viewMode === 'table' ? 'primary' : 'secondary'}\n          onPress={() => setViewMode('table')}\n        >\n          Table\n        </Button>\n        <Button\n          variant={viewMode === 'cards' ? 'primary' : 'secondary'}\n          onPress={() => setViewMode('cards')}\n        >\n          Cards\n        </Button>\n        <Dialog.Trigger>\n          <Button variant=\"primary\">Add Member</Button>\n          <Dialog size=\"small\">\n            <Dialog.Title>\n              {editingMember ? 'Edit Member' : 'Add New Member'}\n            </Dialog.Title>\n            <Dialog.Content>\n              <Stack space={3}>\n                <TextField\n                  label=\"Full Name\"\n                  required\n                  value={formData.name}\n                  onChange={(val) =>\n                    setFormData({ ...formData, name: val })\n                  }\n                />\n                <TextField\n                  label=\"Email\"\n                  type=\"email\"\n                  required\n                  value={formData.email}\n                  onChange={(val) =>\n                    setFormData({ ...formData, email: val })\n                  }\n                />\n                <Select\n                  label=\"Role\"\n                  selectedKey={formData.role}\n                  onSelectionChange={(key) =>\n                    setFormData({\n                      ...formData,\n                      role: key as Member['role'],\n                    })\n                  }\n                >\n                  <Select.Option id=\"Developer\">Developer</Select.Option>\n                  <Select.Option id=\"Designer\">Designer</Select.Option>\n                  <Select.Option id=\"Manager\">Manager</Select.Option>\n                  <Select.Option id=\"QA\">QA</Select.Option>\n                </Select>\n                <TextArea\n                  label=\"Bio\"\n                  value={formData.bio}\n                  onChange={(val) =>\n                    setFormData({ ...formData, bio: val })\n                  }\n                  rows={3}\n                />\n              </Stack>\n            </Dialog.Content>\n            <Dialog.Actions>\n              <Button variant=\"secondary\" slot=\"close\">\n                Cancel\n              </Button>\n              <Button\n                variant=\"primary\"\n                onPress={() => {\n                  handleAddMember();\n                }}\n                slot=\"close\"\n              >\n                {editingMember ? 'Update' : 'Add'}\n              </Button>\n            </Dialog.Actions>\n          </Dialog>\n        </Dialog.Trigger>\n      </Inline>\n\n      {viewMode === 'table' ? (\n        <Table aria-label=\"Team Members\">\n          <Table.Header>\n            <Table.Column rowHeader>Name</Table.Column>\n            <Table.Column>Role</Table.Column>\n            <Table.Column>Email</Table.Column>\n            <Table.Column>Status</Table.Column>\n            <Table.Column>Joined</Table.Column>\n            <Table.Column>Actions</Table.Column>\n          </Table.Header>\n          <Table.Body>\n            {filteredMembers.map((member) => (\n              <Table.Row\n                key={member.id}\n              >\n                <Table.Cell>{member.name}</Table.Cell>\n                <Table.Cell>{member.role}</Table.Cell>\n                <Table.Cell>{member.email}</Table.Cell>\n                <Table.Cell>\n                  <Badge variant={getStatusVariant(member.status)}>\n                    {member.status}\n                  </Badge>\n                </Table.Cell>\n                <Table.Cell>\n                  <DateFormat\n                    value={member.joinedDate}\n                    year=\"numeric\"\n                    month=\"long\"\n                    day=\"numeric\"\n                  />\n                </Table.Cell>\n                <Table.Cell>\n                  <Menu>\n                    <Menu.Item\n                      id=\"edit\"\n                      onAction={() => openEditDialog(member)}\n                    >\n                      Edit\n                    </Menu.Item>\n                    <Menu.Item\n                      id=\"remove\"\n                      variant=\"destructive\"\n                      onAction={() => handleRemoveMember(member.id)}\n                    >\n                      Remove\n                    </Menu.Item>\n                  </Menu>\n                </Table.Cell>\n              </Table.Row>\n            ))}\n          </Table.Body>\n        </Table>\n      ) : (\n        <Tiles tilesWidth=\"250px\" space={3}>\n          {filteredMembers.map((member) => (\n            <Card\n              key={member.id}\n            >\n              <Stack space={2}>\n                <Headline level={3}>{member.name}</Headline>\n                <Badge variant=\"default\">{member.role}</Badge>\n                <Text size=\"small\">{member.email}</Text>\n                <Button\n                  size=\"small\"\n                  variant=\"secondary\"\n                  onPress={() => {\n                    setSelectedMemberId(member.id);\n                    setShowDetailPanel(true);\n                  }}\n                >\n                  View Profile\n                </Button>\n                <Menu>\n                  <Menu.Item\n                    id=\"edit\"\n                    onAction={() => openEditDialog(member)}\n                  >\n                    Edit\n                  </Menu.Item>\n                  <Menu.Item\n                    id=\"remove\"\n                    variant=\"destructive\"\n                    onAction={() => handleRemoveMember(member.id)}\n                  >\n                    Remove\n                  </Menu.Item>\n                </Menu>\n              </Stack>\n            </Card>\n          ))}\n        </Tiles>\n      )}\n\n      {showDetailPanel && selectedMember && (\n        <Drawer>\n            <Drawer.Title>{selectedMember.name}</Drawer.Title>\n            <Stack space={3}>\n              <Text>\n                <strong>Role:</strong> {selectedMember.role}\n              </Text>\n              <Text>\n                <strong>Email:</strong> {selectedMember.email}\n              </Text>\n              <Text>\n                <strong>Status:</strong>{' '}\n                <Badge variant={getStatusVariant(selectedMember.status)}>\n                  {selectedMember.status}\n                </Badge>\n              </Text>\n              <Text>\n                <strong>Joined:</strong>{' '}\n                <DateFormat\n                  value={selectedMember.joinedDate}\n                  year=\"numeric\"\n                  month=\"long\"\n                  day=\"numeric\"\n                />\n              </Text>\n            </Stack>\n            <Drawer.Actions>\n              <Button\n                variant=\"secondary\"\n                onPress={() => setShowDetailPanel(false)}\n              >\n                Close\n              </Button>\n            </Drawer.Actions>\n        </Drawer>\n      )}\n    </Stack>\n  );\n};\n\nconst ProjectsPage = ({ projects: initialProjects }: { projects: Project[] }) => {\n  const { addToast } = useToast();\n  const [projects, setProjects] = useState(initialProjects);\n  const [searchTerm, setSearchTerm] = useState('');\n  const [selectedIds, setSelectedIds] = useState<Set<string>>(new Set());\n\n  const filteredProjects = projects.filter((project) =>\n    project.name.toLowerCase().includes(searchTerm.toLowerCase())\n  );\n\n\n  const handleArchiveSelected = () => {\n    setProjects(\n      projects.filter((p) => !selectedIds.has(p.id))\n    );\n    addToast({\n      title: 'Projects Archived',\n      description: `${selectedIds.size} project(s) archived.`,\n      variant: 'success',\n    });\n    setSelectedIds(new Set());\n  };\n\n  return (\n    <Stack space={4}>\n      <Headline level={1}>Projects</Headline>\n\n      <Inline space={2}>\n        <SearchField\n          placeholder=\"Search projects...\"\n          value={searchTerm}\n          onChange={setSearchTerm}\n        />\n        <Button variant=\"primary\">New Project</Button>\n      </Inline>\n\n      {selectedIds.size > 0 && (\n        <ActionBar>\n          <Text>\n            {selectedIds.size} project{selectedIds.size !== 1 ? 's' : ''} selected\n          </Text>\n          <Button\n            variant=\"destructive\"\n            onPress={handleArchiveSelected}\n          >\n            Archive Selected\n          </Button>\n        </ActionBar>\n      )}\n\n      <Table aria-label=\"Projects\">\n        <Table.Header>\n          <Table.Column rowHeader>Project</Table.Column>\n          <Table.Column>Lead</Table.Column>\n          <Table.Column>Members</Table.Column>\n          <Table.Column>Deadline</Table.Column>\n          <Table.Column>Progress</Table.Column>\n          <Table.Column>Status</Table.Column>\n        </Table.Header>\n        <Table.Body>\n          {filteredProjects.map((project) => (\n            <Table.Row key={project.id}>\n              <Table.Cell>{project.name}</Table.Cell>\n              <Table.Cell>{project.lead}</Table.Cell>\n              <Table.Cell>{project.members}</Table.Cell>\n              <Table.Cell>\n                <DateFormat\n                  value={project.deadline}\n                  year=\"numeric\"\n                  month=\"long\"\n                  day=\"numeric\"\n                />\n              </Table.Cell>\n              <Table.Cell>{project.progress}%</Table.Cell>\n              <Table.Cell>\n                <Badge variant={getStatusVariant(project.status)}>\n                  {project.status}\n                </Badge>\n              </Table.Cell>\n            </Table.Row>\n          ))}\n        </Table.Body>\n      </Table>\n    </Stack>\n  );\n};\n\nconst CalendarPage = () => (\n  <Stack space={4}>\n    <Headline level={1}>Team Calendar</Headline>\n\n    <Card p={4}>\n      <Text>Calendar view - Current month</Text>\n    </Card>\n\n    <Stack space={2}>\n      <Headline level={2}>Upcoming Events</Headline>\n      <Stack space={2}>\n        {upcomingEvents.map((event) => (\n          <Card key={event.id} p={3}>\n            <Inline space={2}>\n              <Stack space={1}>\n                <Text weight=\"bold\">\n                  <DateFormat\n                    value={event.date}\n                    year=\"numeric\"\n                    month=\"long\"\n                    day=\"numeric\"\n                  />\n                </Text>\n                <Text>{event.name}</Text>\n              </Stack>\n              <Badge variant={getEventVariant(event.type)}>\n                {event.type}\n              </Badge>\n            </Inline>\n          </Card>\n        ))}\n      </Stack>\n    </Stack>\n  </Stack>\n);\n\nconst FilesPage = () => {\n  const { addToast } = useToast();\n  const [searchTerm, setSearchTerm] = useState('');\n  const [typeFilter, setTypeFilter] = useState('All');\n  const [files, setFiles] = useState(fileData);\n\n  const filteredFiles = files.filter((file) => {\n    const matchesSearch = file.name\n      .toLowerCase()\n      .includes(searchTerm.toLowerCase());\n    const matchesType = typeFilter === 'All' || file.type.toLowerCase() === typeFilter.toLowerCase();\n    return matchesSearch && matchesType;\n  });\n\n  const handleDelete = (id: string) => {\n    setFiles(files.filter((f) => f.id !== id));\n    addToast({\n      title: 'File Deleted',\n      description: 'The file has been deleted.',\n      variant: 'success',\n    });\n  };\n\n  return (\n    <Stack space={4}>\n      <Headline level={1}>Shared Files</Headline>\n\n      <Inline space={2}>\n        <SearchField\n          placeholder=\"Search files...\"\n          value={searchTerm}\n          onChange={setSearchTerm}\n        />\n        <Select\n          label=\"Type\"\n          selectedKey={typeFilter}\n          onSelectionChange={(key) => setTypeFilter(key as string)}\n        >\n          <Select.Option id=\"All\">All</Select.Option>\n          <Select.Option id=\"Documents\">Documents</Select.Option>\n          <Select.Option id=\"Images\">Images</Select.Option>\n          <Select.Option id=\"Spreadsheets\">Spreadsheets</Select.Option>\n        </Select>\n        <Dialog.Trigger>\n          <Button variant=\"primary\">Upload</Button>\n          <Dialog size=\"small\">\n            <Dialog.Title>Upload Files</Dialog.Title>\n            <Dialog.Content>\n              <Stack space={3}>\n                <Text>Select files to upload</Text>\n                <Select label=\"Category\" selectedKey=\"Documents\" onSelectionChange={() => {}}>\n                  <Select.Option id=\"Documents\">Documents</Select.Option>\n                  <Select.Option id=\"Images\">Images</Select.Option>\n                  <Select.Option id=\"Spreadsheets\">Spreadsheets</Select.Option>\n                </Select>\n                <TextArea label=\"Description\" rows={3} />\n              </Stack>\n            </Dialog.Content>\n            <Dialog.Actions>\n              <Button variant=\"secondary\" slot=\"close\">\n                Cancel\n              </Button>\n              <Button\n                variant=\"primary\"\n                slot=\"close\"\n                onPress={() =>\n                  addToast({\n                    title: 'Files uploaded successfully.',\n                    variant: 'success',\n                  })\n                }\n              >\n                Upload\n              </Button>\n            </Dialog.Actions>\n          </Dialog>\n        </Dialog.Trigger>\n      </Inline>\n\n      <Table aria-label=\"Shared Files\">\n        <Table.Header>\n          <Table.Column rowHeader>File Name</Table.Column>\n          <Table.Column>Type</Table.Column>\n          <Table.Column>Size</Table.Column>\n          <Table.Column>Uploaded By</Table.Column>\n          <Table.Column>Date</Table.Column>\n          <Table.Column>Actions</Table.Column>\n        </Table.Header>\n        <Table.Body>\n          {filteredFiles.map((file) => (\n            <Table.Row key={file.id}>\n              <Table.Cell>{file.name}</Table.Cell>\n              <Table.Cell>{file.type}</Table.Cell>\n              <Table.Cell>\n                <NumericFormat\n                  value={file.size}\n                  notation=\"compact\"\n                  style=\"unit\"\n                  unit=\"byte\"\n                  unitDisplay=\"narrow\"\n                />\n              </Table.Cell>\n              <Table.Cell>{file.uploadedBy}</Table.Cell>\n              <Table.Cell>\n                <DateFormat\n                  value={file.date}\n                  year=\"numeric\"\n                  month=\"long\"\n                  day=\"numeric\"\n                />\n              </Table.Cell>\n              <Table.Cell>\n                <Menu>\n                  <Menu.Item id=\"download\">Download</Menu.Item>\n                  <Menu.Item id=\"rename\">Rename</Menu.Item>\n                  <Menu.Item\n                    id=\"delete\"\n                    variant=\"destructive\"\n                    onAction={() => handleDelete(file.id)}\n                  >\n                    Delete\n                  </Menu.Item>\n                </Menu>\n              </Table.Cell>\n            </Table.Row>\n          ))}\n        </Table.Body>\n      </Table>\n    </Stack>\n  );\n};\n\nconst SettingsPage = ({ teamName, onTeamNameChange }: { teamName: string; onTeamNameChange: (name: string) => void }) => {\n  const { addToast } = useToast();\n  const [timezone, setTimezone] = useState<string>('UTC');\n  const [dateFormat, setDateFormat] = useState<string>('MM/DD/YYYY');\n  const [localTeamName, setLocalTeamName] = useState(teamName);\n  const [notificationSettings, setNotificationSettings] = useState({\n    newMember: true,\n    projectDeadline: true,\n    weeklyDigest: true,\n    mentions: true,\n    calendarReminders: false,\n  });\n\n  const handleSaveGeneral = () => {\n    onTeamNameChange(localTeamName);\n    addToast({\n      title: 'Settings updated.',\n      variant: 'success',\n    });\n  };\n\n  const handleSaveNotifications = () => {\n    addToast({\n      title: 'Notification preferences saved.',\n      variant: 'success',\n    });\n  };\n\n  return (\n    <Stack space={4}>\n      <Headline level={1}>Team Settings</Headline>\n\n      <Tabs aria-label=\"Settings tabs\">\n        <Tabs.List aria-label=\"Settings\">\n          <Tabs.Item id=\"general\">General</Tabs.Item>\n          <Tabs.Item id=\"notifications\">Notifications</Tabs.Item>\n          <Tabs.Item id=\"integrations\">Integrations</Tabs.Item>\n        </Tabs.List>\n\n        <Tabs.TabPanel id=\"general\">\n          <Stack space={3}>\n            <TextField\n              label=\"Team Name\"\n              value={localTeamName}\n              onChange={setLocalTeamName}\n            />\n            <TextField label=\"Description\" />\n            <Select label=\"Default Timezone\" selectedKey={timezone} onSelectionChange={(key) => setTimezone(key as string)}>\n              <Select.Option id=\"UTC\">UTC</Select.Option>\n              <Select.Option id=\"CET\">CET</Select.Option>\n              <Select.Option id=\"EST\">EST</Select.Option>\n              <Select.Option id=\"PST\">PST</Select.Option>\n            </Select>\n            <Select\n              label=\"Date Format\"\n              selectedKey={dateFormat}\n              onSelectionChange={(key) => setDateFormat(key as string)}\n            >\n              <Select.Option id=\"MM/DD/YYYY\">MM/DD/YYYY</Select.Option>\n              <Select.Option id=\"DD.MM.YYYY\">DD.MM.YYYY</Select.Option>\n              <Select.Option id=\"YYYY-MM-DD\">YYYY-MM-DD</Select.Option>\n            </Select>\n            <Button variant=\"primary\" onPress={handleSaveGeneral}>\n              Save\n            </Button>\n          </Stack>\n        </Tabs.TabPanel>\n\n        <Tabs.TabPanel id=\"notifications\">\n          <Stack space={3}>\n            <Switch\n              label=\"New member joins\"\n              selected={notificationSettings.newMember}\n              onChange={(val) =>\n                setNotificationSettings({\n                  ...notificationSettings,\n                  newMember: val,\n                })\n              }\n            />\n            <Text size=\"small\">Get notified when someone joins the team</Text>\n\n            <Switch\n              label=\"Project deadline approaching\"\n              selected={notificationSettings.projectDeadline}\n              onChange={(val) =>\n                setNotificationSettings({\n                  ...notificationSettings,\n                  projectDeadline: val,\n                })\n              }\n            />\n            <Text size=\"small\">Reminder 3 days before deadline</Text>\n\n            <Switch\n              label=\"Weekly digest\"\n              selected={notificationSettings.weeklyDigest}\n              onChange={(val) =>\n                setNotificationSettings({\n                  ...notificationSettings,\n                  weeklyDigest: val,\n                })\n              }\n            />\n            <Text size=\"small\">Summary of team activity every Monday</Text>\n\n            <Switch\n              label=\"Mention notifications\"\n              selected={notificationSettings.mentions}\n              onChange={(val) =>\n                setNotificationSettings({\n                  ...notificationSettings,\n                  mentions: val,\n                })\n              }\n            />\n            <Text size=\"small\">When someone mentions you in a comment</Text>\n\n            <Switch\n              label=\"Calendar reminders\"\n              selected={notificationSettings.calendarReminders}\n              onChange={(val) =>\n                setNotificationSettings({\n                  ...notificationSettings,\n                  calendarReminders: val,\n                })\n              }\n            />\n            <Text size=\"small\">15 minutes before scheduled events</Text>\n\n            <Button\n              variant=\"primary\"\n              onPress={handleSaveNotifications}\n            >\n              Save Preferences\n            </Button>\n          </Stack>\n        </Tabs.TabPanel>\n\n        <Tabs.TabPanel id=\"integrations\">\n          <Tiles tilesWidth=\"250px\" space={3}>\n            <Card p={4}>\n              <Stack space={2}>\n                <Headline level={3}>Slack</Headline>\n                <Badge variant=\"success\">Connected</Badge>\n                <Text size=\"small\">Sync team messages</Text>\n                <Button variant=\"secondary\">Disconnect</Button>\n              </Stack>\n            </Card>\n            <Card p={4}>\n              <Stack space={2}>\n                <Headline level={3}>GitHub</Headline>\n                <Badge variant=\"default\">Not Connected</Badge>\n                <Text size=\"small\">Sync repositories</Text>\n                <Button variant=\"primary\">Connect</Button>\n              </Stack>\n            </Card>\n            <Card p={4}>\n              <Stack space={2}>\n                <Headline level={3}>Jira</Headline>\n                <Badge variant=\"default\">Not Connected</Badge>\n                <Text size=\"small\">Sync project issues</Text>\n                <Button variant=\"primary\">Connect</Button>\n              </Stack>\n            </Card>\n          </Tiles>\n        </Tabs.TabPanel>\n      </Tabs>\n    </Stack>\n  );\n};\n\nconst TestApp = () => {\n  const [currentPage, setCurrentPage] = useState<Page>('dashboard');\n  const [members, setMembers] = useState(initialMembers);\n  const [teamName, setTeamName] = useState('TeamHub');\n\n  const getBreadcrumbLabel = () => {\n    const labels: Record<Page, string> = {\n      dashboard: 'Dashboard',\n      members: 'Members',\n      projects: 'Projects',\n      calendar: 'Calendar',\n      files: 'Files',\n      settings: 'Settings',\n    };\n    return labels[currentPage];\n  };\n\n  return (\n    <Sidebar.Provider defaultOpen>\n        <AppLayout>\n          <AppLayout.Sidebar>\n            <Sidebar.Header>{teamName}</Sidebar.Header>\n            <Sidebar.Nav>\n              <Sidebar.Item\n                href=\"#\"\n                aria-current={currentPage === 'dashboard'}\n                onPress={() => setCurrentPage('dashboard')}\n              >\n                Dashboard\n              </Sidebar.Item>\n              <Sidebar.Item\n                href=\"#\"\n                aria-current={currentPage === 'members'}\n                onPress={() => setCurrentPage('members')}\n              >\n                Members\n              </Sidebar.Item>\n              <Sidebar.Item\n                href=\"#\"\n                aria-current={currentPage === 'projects'}\n                onPress={() => setCurrentPage('projects')}\n              >\n                Projects\n              </Sidebar.Item>\n              <Sidebar.Item\n                href=\"#\"\n                aria-current={currentPage === 'calendar'}\n                onPress={() => setCurrentPage('calendar')}\n              >\n                Calendar\n              </Sidebar.Item>\n              <Sidebar.Item\n                href=\"#\"\n                aria-current={currentPage === 'files'}\n                onPress={() => setCurrentPage('files')}\n              >\n                Files\n              </Sidebar.Item>\n              <Sidebar.Separator />\n              <Sidebar.Item\n                href=\"#\"\n                aria-current={currentPage === 'settings'}\n                onPress={() => setCurrentPage('settings')}\n              >\n                Settings\n              </Sidebar.Item>\n            </Sidebar.Nav>\n          </AppLayout.Sidebar>\n\n          <AppLayout.Header>\n            <TopNavigation.Start>\n              <Sidebar.Toggle />\n            </TopNavigation.Start>\n            <TopNavigation.Middle>\n              <Breadcrumbs>\n                <Breadcrumbs.Item href=\"#\">TeamHub</Breadcrumbs.Item>\n                <Breadcrumbs.Item href=\"#\">\n                  {getBreadcrumbLabel()}\n                </Breadcrumbs.Item>\n              </Breadcrumbs>\n            </TopNavigation.Middle>\n            <TopNavigation.End>\n              <Tooltip.Trigger>\n                <Menu label=\"John Doe\">\n                  <Menu.Item id=\"profile\">Profile</Menu.Item>\n                  <Menu.Item id=\"preferences\">Preferences</Menu.Item>\n                  <Menu.Item id=\"signout\">Sign Out</Menu.Item>\n                </Menu>\n                <Tooltip>Account settings</Tooltip>\n              </Tooltip.Trigger>\n              <Tooltip.Trigger>\n                <Dialog.Trigger>\n                  <Button variant=\"ghost\" size=\"icon\">\n                    ?\n                  </Button>\n                  <Dialog size=\"small\">\n                    <Dialog.Title>Help</Dialog.Title>\n                    <Dialog.Content>\n                      <Text>\n                        Use the sidebar to navigate between sections.\n                      </Text>\n                    </Dialog.Content>\n                    <Dialog.Actions>\n                      <Button variant=\"secondary\" slot=\"close\">\n                        Close\n                      </Button>\n                    </Dialog.Actions>\n                  </Dialog>\n                </Dialog.Trigger>\n                <Tooltip>Help</Tooltip>\n              </Tooltip.Trigger>\n            </TopNavigation.End>\n          </AppLayout.Header>\n\n          <AppLayout.Main>\n            <Inset space={4}>\n              {currentPage === 'dashboard' && (\n                <DashboardPage memberCount={members.length} />\n              )}\n              {currentPage === 'members' && (\n                <MembersPage\n                  members={members}\n                  onMembersChange={setMembers}\n                />\n              )}\n              {currentPage === 'projects' && (\n                <ProjectsPage projects={initialProjects} />\n              )}\n              {currentPage === 'calendar' && <CalendarPage />}\n              {currentPage === 'files' && <FilesPage />}\n              {currentPage === 'settings' && (\n                <SettingsPage\n                  teamName={teamName}\n                  onTeamNameChange={setTeamName}\n                />\n              )}\n            </Inset>\n          </AppLayout.Main>\n        </AppLayout>\n      </Sidebar.Provider>\n  );\n};\n\nexport default TestApp;\n",
+  "assertions": {
+    "passed": [
+      {
+        "id": "a-import-marigold",
+        "description": "Imports from @marigold/components",
+        "severity": "required",
+        "passed": true,
+        "evidence": "import from \"@marigold/components\" found"
+      },
+      {
+        "id": "a-app-layout",
+        "description": "AppLayout for app shell",
+        "severity": "required",
+        "passed": true,
+        "evidence": "<AppLayout> found"
+      },
+      {
+        "id": "a-sidebar",
+        "description": "Sidebar navigation",
+        "severity": "required",
+        "passed": true,
+        "evidence": "<Sidebar> found"
+      },
+      {
+        "id": "a-top-nav",
+        "description": "TopNavigation bar",
+        "severity": "required",
+        "passed": true,
+        "evidence": "<TopNavigation> found"
+      },
+      {
+        "id": "a-breadcrumbs",
+        "description": "Breadcrumbs for navigation context",
+        "severity": "required",
+        "passed": true,
+        "evidence": "<Breadcrumbs> found"
+      },
+      {
+        "id": "a-table",
+        "description": "Table component",
+        "severity": "required",
+        "passed": true,
+        "evidence": "<Table> found"
+      },
+      {
+        "id": "a-table-header",
+        "description": "Table.Header compound component",
+        "severity": "required",
+        "passed": true,
+        "evidence": "<Table.Header> found"
+      },
+      {
+        "id": "a-table-body",
+        "description": "Table.Body compound component",
+        "severity": "required",
+        "passed": true,
+        "evidence": "<Table.Body> found"
+      },
+      {
+        "id": "a-badge",
+        "description": "Badge for status indicators",
+        "severity": "required",
+        "passed": true,
+        "evidence": "<Badge> found"
+      },
+      {
+        "id": "a-dialog",
+        "description": "Dialog for create/confirm actions",
+        "severity": "required",
+        "passed": true,
+        "evidence": "<Dialog> found"
+      },
+      {
+        "id": "a-menu",
+        "description": "Menu for user/context actions",
+        "severity": "required",
+        "passed": true,
+        "evidence": "<Menu> found"
+      },
+      {
+        "id": "a-tabs",
+        "description": "Tabs for settings/views",
+        "severity": "required",
+        "passed": true,
+        "evidence": "<Tabs> found"
+      },
+      {
+        "id": "a-search",
+        "description": "SearchField or Autocomplete for search",
+        "severity": "required",
+        "passed": true,
+        "evidence": "matched: <SearchField> found"
+      },
+      {
+        "id": "a-switch",
+        "description": "Switch for notification toggles",
+        "severity": "required",
+        "passed": true,
+        "evidence": "<Switch> found"
+      },
+      {
+        "id": "a-select",
+        "description": "Select for dropdowns",
+        "severity": "required",
+        "passed": true,
+        "evidence": "<Select> found"
+      },
+      {
+        "id": "a-card",
+        "description": "Card for summary/info display",
+        "severity": "required",
+        "passed": true,
+        "evidence": "<Card> found"
+      },
+      {
+        "id": "a-tooltip",
+        "description": "Tooltip for additional info",
+        "severity": "required",
+        "passed": true,
+        "evidence": "<Tooltip> found"
+      },
+      {
+        "id": "a-date-format",
+        "description": "DateFormat for date display",
+        "severity": "recommended",
+        "passed": true,
+        "evidence": "<DateFormat> found"
+      },
+      {
+        "id": "a-numeric-format",
+        "description": "NumericFormat for number display",
+        "severity": "recommended",
+        "passed": true,
+        "evidence": "<NumericFormat> found"
+      },
+      {
+        "id": "a-section-message",
+        "description": "SectionMessage for feedback",
+        "severity": "required",
+        "passed": true,
+        "evidence": "<SectionMessage> found"
+      },
+      {
+        "id": "a-tiles",
+        "description": "Tiles for card grid layout",
+        "severity": "recommended",
+        "passed": true,
+        "evidence": "<Tiles> found"
+      },
+      {
+        "id": "a-action-bar",
+        "description": "ActionBar for bulk actions",
+        "severity": "recommended",
+        "passed": true,
+        "evidence": "<ActionBar> found"
+      },
+      {
+        "id": "a-no-onclick-on-marigold",
+        "description": "No onClick on Marigold buttons",
+        "severity": "recommended",
+        "passed": true,
+        "evidence": "\"/<Button[^>]*onClick/\" correctly absent"
+      },
+      {
+        "id": "a-multi-page",
+        "description": "State-based page switching",
+        "severity": "recommended",
+        "passed": true,
+        "evidence": "pattern \"/useState/\" found"
+      },
+      {
+        "id": "a-toast",
+        "description": "Toast notification after upload",
+        "severity": "recommended",
+        "passed": true,
+        "evidence": "matched: pattern \"/useToast/\" found"
+      }
+    ],
+    "failed": [
+      {
+        "id": "a-datepicker",
+        "description": "DatePicker for date selection",
+        "severity": "required",
+        "passed": false,
+        "evidence": "<DatePicker> not found"
+      },
+      {
+        "id": "a-contextual-help",
+        "description": "ContextualHelp component",
+        "severity": "required",
+        "passed": false,
+        "evidence": "<ContextualHelp> not found"
+      },
+      {
+        "id": "a-calendar",
+        "description": "Calendar for team calendar page",
+        "severity": "required",
+        "passed": false,
+        "evidence": "<Calendar> not found"
+      },
+      {
+        "id": "a-filefield",
+        "description": "FileField for file upload",
+        "severity": "required",
+        "passed": false,
+        "evidence": "<FileField> not found"
+      },
+      {
+        "id": "a-toggle-button",
+        "description": "ToggleButton for view mode",
+        "severity": "recommended",
+        "passed": false,
+        "evidence": "none matched: <ToggleButton> not found; <ToggleButtonGroup> not found"
+      }
+    ],
+    "passRate": 0.8333,
+    "requiredPassRate": 0.8182,
+    "weightedPassRate": 0.8229,
+    "total": 30
+  },
+  "validatePackageVersion": "0.0.1",
+  "playwrightVersion": null,
+  "resolvedModelId": "claude-haiku-4-5",
+  "claudeCliVersion": "2.1.185 (Claude Code)",
+  "sessionId": "e2eebd64-9f1e-49ce-9f2a-97d731ada622"
+}

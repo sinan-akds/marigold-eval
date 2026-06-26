@@ -1,0 +1,341 @@
+{
+  "runId": "sonnet-mcp-stack-P-09-r3",
+  "promptId": "P-09",
+  "model": "sonnet",
+  "config": "mcp-stack",
+  "timestamp": "2026-06-23T09:21:37.507Z",
+  "quality": {
+    "overall": 55.58,
+    "categories": {
+      "A": {
+        "category": "A",
+        "label": "Design System API",
+        "score": 100,
+        "weight": 0.225,
+        "weightedScore": 22.5,
+        "errorCount": 0,
+        "warningCount": 0,
+        "issues": []
+      },
+      "B": {
+        "category": "B",
+        "label": "Token Compliance",
+        "score": 0,
+        "weight": 0.1,
+        "weightedScore": 0,
+        "errorCount": 0,
+        "warningCount": 0,
+        "issues": []
+      },
+      "C": {
+        "category": "C",
+        "label": "DOM / Structure",
+        "score": 57.13,
+        "weight": 0.225,
+        "weightedScore": 12.85,
+        "errorCount": 1,
+        "warningCount": 1,
+        "issues": [
+          {
+            "type": "technical",
+            "severity": "error",
+            "source": "compiler",
+            "component": "TypeScript",
+            "message": "TS2305: Module '\"@internationalized/date\"' has no exported member 'TimeValue'.",
+            "suggestion": "Fix the TypeScript error reported by the compiler. The exact location is included in the issue location field.",
+            "location": {
+              "file": "TestApp.tsx",
+              "line": 2,
+              "column": 26
+            }
+          },
+          {
+            "type": "technical",
+            "severity": "warning",
+            "source": "layout-usage",
+            "component": "Stack",
+            "message": "<Stack> wraps a single child. A flow layout earns its place only with two or more children; with one child it adds a wrapper that does nothing.",
+            "suggestion": "Render the child directly instead of wrapping it in <Stack>. For single-child spacing use Inset, Center, Breakout or Aspect.",
+            "location": {
+              "file": "TestApp.tsx",
+              "line": 246,
+              "column": 9
+            },
+            "details": {
+              "layout": "Stack",
+              "childCount": 1
+            }
+          }
+        ]
+      },
+      "D": {
+        "category": "D",
+        "label": "Spatial & A11y",
+        "score": 0,
+        "weight": 0.225,
+        "weightedScore": 0,
+        "errorCount": 0,
+        "warningCount": 0,
+        "issues": []
+      },
+      "E": {
+        "category": "E",
+        "label": "Functional Completeness",
+        "score": 89.87,
+        "weight": 0.225,
+        "weightedScore": 20.22,
+        "errorCount": 0,
+        "warningCount": 0,
+        "issues": []
+      }
+    },
+    "renderSuccess": false
+  },
+  "efficiency": {
+    "durationMs": 1314934,
+    "costUsd": 4.293223500000002,
+    "inputTokens": 95,
+    "outputTokens": 56234,
+    "cacheReadTokens": 8552885,
+    "cacheCreationTokens": 147042,
+    "totalTokens": 56329,
+    "numTurns": 93
+  },
+  "report": {
+    "file": "TestApp.tsx",
+    "errors": [
+      {
+        "type": "technical",
+        "severity": "error",
+        "source": "compiler",
+        "component": "TypeScript",
+        "message": "TS2305: Module '\"@internationalized/date\"' has no exported member 'TimeValue'.",
+        "suggestion": "Fix the TypeScript error reported by the compiler. The exact location is included in the issue location field.",
+        "location": {
+          "file": "TestApp.tsx",
+          "line": 2,
+          "column": 26
+        }
+      }
+    ],
+    "warnings": [
+      {
+        "type": "technical",
+        "severity": "warning",
+        "source": "layout-usage",
+        "component": "Stack",
+        "message": "<Stack> wraps a single child. A flow layout earns its place only with two or more children; with one child it adds a wrapper that does nothing.",
+        "suggestion": "Render the child directly instead of wrapping it in <Stack>. For single-child spacing use Inset, Center, Breakout or Aspect.",
+        "location": {
+          "file": "TestApp.tsx",
+          "line": 246,
+          "column": 9
+        },
+        "details": {
+          "layout": "Stack",
+          "childCount": 1
+        }
+      }
+    ],
+    "passed": [
+      "All Marigold props are valid",
+      "Component composition",
+      "Overlay accessible names",
+      "Compound component placement",
+      "Section headers",
+      "Collection item ids",
+      "Design system usage",
+      "Table usage",
+      "Component conventions",
+      "Theme variant compliance"
+    ],
+    "metadata": {
+      "renderTimeMs": 0,
+      "componentsFound": [],
+      "checksRun": [
+        "technical",
+        "spatial",
+        "a11y"
+      ],
+      "coverage": {
+        "staticValuesChecked": 33,
+        "dynamicValuesSkipped": 38,
+        "spreadPropsBypassed": 0
+      },
+      "widthUtilization": null
+    },
+    "markdown": "marigold-validate: TestApp.tsx — 1 error(s), 1 warning(s)\n\n[error/technical] <TypeScript>: TS2305: Module '\"@internationalized/date\"' has no exported member 'TimeValue'. (TestApp.tsx:2:26)\n  → Fix the TypeScript error reported by the compiler. The exact location is included in the issue location field.\n[warning/technical] <Stack>: <Stack> wraps a single child. A flow layout earns its place only with two or more children; with one child it adds a wrapper that does nothing. (TestApp.tsx:246:9)\n  → Render the child directly instead of wrapping it in <Stack>. For single-child spacing use Inset, Center, Breakout or Aspect.\n  data: {layout=Stack, childCount=1}\n\npassed: All Marigold props are valid, Component composition, Overlay accessible names, Compound component placement, Section headers, Collection item ids, Design system usage, Table usage, Component conventions, Theme variant compliance\n\nchecks run: technical, spatial, a11y"
+  },
+  "componentsFound": [],
+  "renderTimeMs": 0,
+  "sourceCode": "import { useState } from 'react';\nimport type { DateValue, TimeValue } from '@internationalized/date';\nimport type { Key } from '@react-types/shared';\nimport {\n  Accordion,\n  Button,\n  Card,\n  Checkbox,\n  ComboBox,\n  DatePicker,\n  FileField,\n  Headline,\n  Inline,\n  Inset,\n  Loader,\n  NumberField,\n  Radio,\n  SectionMessage,\n  Select,\n  Split,\n  Stack,\n  Switch,\n  TagField,\n  Text,\n  TextArea,\n  TextField,\n  TimeField,\n  ToastProvider,\n  useToast,\n} from '@marigold/components';\n\ninterface FormData {\n  fullName: string;\n  email: string;\n  phone: string;\n  company: string;\n  jobTitle: string;\n  eventDate: DateValue | null;\n  timeSlot: TimeValue | null;\n  sessionTrack: string;\n  dietary: string;\n  numGuests: number;\n  specialRequests: string;\n  tshirtSize: string;\n  topics: Key[];\n  commPrefs: string[];\n  hasAccessibility: boolean;\n  accessibilityDetails: string;\n  agreedToTerms: boolean;\n}\n\nconst STEPS = [\n  { id: 1, title: 'Personal Information' },\n  { id: 2, title: 'Event Details' },\n  { id: 3, title: 'Preferences' },\n  { id: 4, title: 'Review & Confirm' },\n];\n\nconst JOB_TITLES = [\n  'Developer',\n  'Designer',\n  'Product Manager',\n  'Engineering Manager',\n  'CTO',\n  'Other',\n];\n\nconst DIETARY_OPTIONS = [\n  'None',\n  'Vegetarian',\n  'Vegan',\n  'Gluten-Free',\n  'Kosher',\n  'Halal',\n];\n\nconst TOPIC_OPTIONS = [\n  'AI/ML',\n  'Web Development',\n  'Cloud',\n  'Security',\n  'DevOps',\n  'Mobile',\n  'Data Science',\n];\n\nconst TSHIRT_SIZES = ['XS', 'S', 'M', 'L', 'XL', 'XXL'];\n\nconst COMM_PREFS = [\n  { value: 'email-updates', label: 'Email updates about the event' },\n  { value: 'sms-reminders', label: 'SMS reminders' },\n  { value: 'post-survey', label: 'Post-event survey' },\n  { value: 'newsletter', label: 'Newsletter subscription' },\n];\n\nconst INITIAL_DATA: FormData = {\n  fullName: '',\n  email: '',\n  phone: '',\n  company: '',\n  jobTitle: '',\n  eventDate: null,\n  timeSlot: null,\n  sessionTrack: '',\n  dietary: '',\n  numGuests: 0,\n  specialRequests: '',\n  tshirtSize: '',\n  topics: [],\n  commPrefs: [],\n  hasAccessibility: false,\n  accessibilityDetails: '',\n  agreedToTerms: false,\n};\n\nfunction generateConfirmation(): string {\n  const chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';\n  let result = 'EVT-';\n  for (let i = 0; i < 8; i++) {\n    result += chars.charAt(Math.floor(Math.random() * chars.length));\n  }\n  return result;\n}\n\nfunction formatDate(date: DateValue | null): string {\n  if (!date) return '—';\n  return `${String(date.month).padStart(2, '0')}/${String(date.day).padStart(2, '0')}/${date.year}`;\n}\n\nfunction formatTime(time: TimeValue | null): string {\n  if (!time) return '—';\n  return `${String(time.hour).padStart(2, '0')}:${String(time.minute).padStart(2, '0')}`;\n}\n\nfunction RegistrationForm() {\n  const { addToast } = useToast();\n  const [currentStep, setCurrentStep] = useState(1);\n  const [submitting, setSubmitting] = useState(false);\n  const [submitted, setSubmitted] = useState(false);\n  const [confirmationNumber] = useState(() => generateConfirmation());\n  const [errors, setErrors] = useState<Record<string, string>>({});\n  const [formData, setFormData] = useState<FormData>(INITIAL_DATA);\n\n  const updateField = (field: keyof FormData, value: unknown) => {\n    setFormData(prev => ({ ...prev, [field]: value }));\n    setErrors(prev => {\n      const next = { ...prev };\n      delete next[field];\n      return next;\n    });\n  };\n\n  const validateStep = (step: number): boolean => {\n    const newErrors: Record<string, string> = {};\n\n    if (step === 1) {\n      if (!formData.fullName.trim()) {\n        newErrors.fullName = 'Full name is required';\n      }\n      if (!formData.email.trim()) {\n        newErrors.email = 'Email is required';\n      } else if (!/^[^\\s@]+@[^\\s@]+\\.[^\\s@]+$/.test(formData.email)) {\n        newErrors.email = 'Please enter a valid email address';\n      }\n    }\n\n    if (step === 2) {\n      if (!formData.eventDate) {\n        newErrors.eventDate = 'Event date is required';\n      }\n    }\n\n    setErrors(newErrors);\n    return Object.keys(newErrors).length === 0;\n  };\n\n  const handleNext = () => {\n    if (validateStep(currentStep)) {\n      setCurrentStep(prev => Math.min(prev + 1, 4));\n    }\n  };\n\n  const handleBack = () => {\n    setCurrentStep(prev => Math.max(prev - 1, 1));\n  };\n\n  const handleSubmit = async () => {\n    if (!formData.agreedToTerms) return;\n    setSubmitting(true);\n    await new Promise<void>(resolve => setTimeout(resolve, 1000));\n    setSubmitting(false);\n    setSubmitted(true);\n    addToast({ title: 'Registration submitted successfully', variant: 'success' });\n  };\n\n  const handleReset = () => {\n    setSubmitted(false);\n    setCurrentStep(1);\n    setFormData(INITIAL_DATA);\n    setErrors({});\n  };\n\n  if (submitting) {\n    return (\n      <Card>\n        <Stack space={4} alignX=\"center\">\n          <Loader />\n          <Text>Submitting your registration…</Text>\n        </Stack>\n      </Card>\n    );\n  }\n\n  if (submitted) {\n    return (\n      <Stack space={4}>\n        <SectionMessage variant=\"success\">\n          <SectionMessage.Title>Registration confirmed!</SectionMessage.Title>\n          <SectionMessage.Content>\n            Your registration has been successfully submitted.\n          </SectionMessage.Content>\n        </SectionMessage>\n        <Card>\n          <Stack space={4}>\n            <Headline level={3}>Registration Summary</Headline>\n            <Stack space={2}>\n              <Inline space={2}>\n                <Text weight=\"bold\">Name:</Text>\n                <Text>{formData.fullName}</Text>\n              </Inline>\n              <Inline space={2}>\n                <Text weight=\"bold\">Email:</Text>\n                <Text>{formData.email}</Text>\n              </Inline>\n              <Inline space={2}>\n                <Text weight=\"bold\">Event Date:</Text>\n                <Text>{formatDate(formData.eventDate)}</Text>\n              </Inline>\n              <Inline space={2}>\n                <Text weight=\"bold\">Confirmation #:</Text>\n                <Text>{confirmationNumber}</Text>\n              </Inline>\n            </Stack>\n          </Stack>\n        </Card>\n        <Stack alignX=\"left\">\n          <Button variant=\"primary\" onPress={handleReset}>\n            Register Another\n          </Button>\n        </Stack>\n      </Stack>\n    );\n  }\n\n  const step = STEPS[currentStep - 1];\n\n  return (\n    <Card>\n      <Stack space={6}>\n        {/* Step header */}\n        <Stack space={1}>\n          <Text>\n            Step {currentStep} of {STEPS.length} — {step.title}\n          </Text>\n          <Headline level={2}>{step.title}</Headline>\n        </Stack>\n\n        {/* Step 1: Personal Information */}\n        {currentStep === 1 && (\n          <Stack space={4}>\n            <TextField\n              label=\"Full Name\"\n              required\n              value={formData.fullName}\n              onChange={v => updateField('fullName', v)}\n              error={!!errors.fullName}\n              errorMessage={errors.fullName}\n            />\n            <TextField\n              label=\"Email\"\n              type=\"email\"\n              required\n              value={formData.email}\n              onChange={v => updateField('email', v)}\n              error={!!errors.email}\n              errorMessage={errors.email}\n            />\n            <TextField\n              label=\"Phone Number\"\n              type=\"tel\"\n              value={formData.phone}\n              onChange={v => updateField('phone', v)}\n            />\n            <TextField\n              label=\"Company / Organization\"\n              value={formData.company}\n              onChange={v => updateField('company', v)}\n            />\n            <ComboBox\n              label=\"Job Title\"\n              value={formData.jobTitle}\n              onChange={v => updateField('jobTitle', v)}\n              menuTrigger=\"focus\"\n            >\n              {JOB_TITLES.map(title => (\n                <ComboBox.Option key={title} id={title}>\n                  {title}\n                </ComboBox.Option>\n              ))}\n            </ComboBox>\n            <FileField label=\"Profile Photo\" accept={['image/*']} />\n            <SectionMessage variant=\"info\">\n              <SectionMessage.Content>\n                Your information will only be used for this event.\n              </SectionMessage.Content>\n            </SectionMessage>\n          </Stack>\n        )}\n\n        {/* Step 2: Event Details */}\n        {currentStep === 2 && (\n          <Stack space={4}>\n            <DatePicker\n              label=\"Event Date\"\n              required\n              value={formData.eventDate ?? undefined}\n              onChange={v => updateField('eventDate', v ?? null)}\n              error={!!errors.eventDate}\n              errorMessage={errors.eventDate}\n            />\n            <TimeField\n              label=\"Preferred Time Slot\"\n              value={formData.timeSlot ?? undefined}\n              onChange={v => updateField('timeSlot', v)}\n            />\n            <Radio.Group\n              label=\"Session Track\"\n              value={formData.sessionTrack}\n              onChange={v => updateField('sessionTrack', v)}\n            >\n              <Radio value=\"technical\">Technical</Radio>\n              <Radio value=\"design\">Design</Radio>\n              <Radio value=\"business\">Business</Radio>\n              <Radio value=\"workshop\">Workshop</Radio>\n            </Radio.Group>\n            <ComboBox\n              label=\"Dietary Requirements\"\n              value={formData.dietary}\n              onChange={v => updateField('dietary', v)}\n              menuTrigger=\"focus\"\n            >\n              {DIETARY_OPTIONS.map(opt => (\n                <ComboBox.Option key={opt} id={opt}>\n                  {opt}\n                </ComboBox.Option>\n              ))}\n            </ComboBox>\n            <NumberField\n              label=\"Number of Guests\"\n              minValue={0}\n              maxValue={5}\n              value={formData.numGuests}\n              onChange={v => updateField('numGuests', v)}\n            />\n            <TextArea\n              label=\"Special Requests\"\n              value={formData.specialRequests}\n              onChange={v => updateField('specialRequests', v)}\n              rows={4}\n            />\n          </Stack>\n        )}\n\n        {/* Step 3: Preferences */}\n        {currentStep === 3 && (\n          <Stack space={4}>\n            <Select\n              label=\"T-Shirt Size\"\n              selectedKey={formData.tshirtSize || null}\n              onSelectionChange={k => updateField('tshirtSize', String(k))}\n            >\n              {TSHIRT_SIZES.map(size => (\n                <Select.Option key={size} id={size}>\n                  {size}\n                </Select.Option>\n              ))}\n            </Select>\n            <TagField\n              label=\"Topics of Interest\"\n              value={formData.topics}\n              onChange={keys => updateField('topics', keys)}\n            >\n              {TOPIC_OPTIONS.map(topic => (\n                <TagField.Option key={topic} id={topic}>\n                  {topic}\n                </TagField.Option>\n              ))}\n            </TagField>\n            <Checkbox.Group\n              label=\"Communication Preferences\"\n              value={formData.commPrefs}\n              onChange={vals => updateField('commPrefs', vals)}\n            >\n              {COMM_PREFS.map(pref => (\n                <Checkbox key={pref.value} value={pref.value} label={pref.label} />\n              ))}\n            </Checkbox.Group>\n            <Stack space={3}>\n              <Inline space={3} alignY=\"center\">\n                <Switch\n                  selected={formData.hasAccessibility}\n                  onChange={v => updateField('hasAccessibility', v)}\n                  aria-label=\"I have accessibility requirements\"\n                />\n                <Text>I have accessibility requirements</Text>\n              </Inline>\n              {formData.hasAccessibility && (\n                <TextArea\n                  label=\"Accessibility Details\"\n                  value={formData.accessibilityDetails}\n                  onChange={v => updateField('accessibilityDetails', v)}\n                  rows={3}\n                />\n              )}\n            </Stack>\n          </Stack>\n        )}\n\n        {/* Step 4: Review & Confirm */}\n        {currentStep === 4 && (\n          <Stack space={6}>\n            <Accordion>\n              <Accordion.Item id=\"personal\">\n                <Accordion.Header>Personal Information</Accordion.Header>\n                <Accordion.Content>\n                  <Inset space={2}>\n                    <Stack space={2}>\n                      <Inline space={2}>\n                        <Text weight=\"bold\">Name:</Text>\n                        <Text>{formData.fullName || '—'}</Text>\n                      </Inline>\n                      <Inline space={2}>\n                        <Text weight=\"bold\">Email:</Text>\n                        <Text>{formData.email || '—'}</Text>\n                      </Inline>\n                      <Inline space={2}>\n                        <Text weight=\"bold\">Phone:</Text>\n                        <Text>{formData.phone || '—'}</Text>\n                      </Inline>\n                      <Inline space={2}>\n                        <Text weight=\"bold\">Company:</Text>\n                        <Text>{formData.company || '—'}</Text>\n                      </Inline>\n                      <Inline space={2}>\n                        <Text weight=\"bold\">Job Title:</Text>\n                        <Text>{formData.jobTitle || '—'}</Text>\n                      </Inline>\n                    </Stack>\n                  </Inset>\n                </Accordion.Content>\n              </Accordion.Item>\n\n              <Accordion.Item id=\"event\">\n                <Accordion.Header>Event Details</Accordion.Header>\n                <Accordion.Content>\n                  <Inset space={2}>\n                    <Stack space={2}>\n                      <Inline space={2}>\n                        <Text weight=\"bold\">Date:</Text>\n                        <Text>{formatDate(formData.eventDate)}</Text>\n                      </Inline>\n                      <Inline space={2}>\n                        <Text weight=\"bold\">Time:</Text>\n                        <Text>{formatTime(formData.timeSlot)}</Text>\n                      </Inline>\n                      <Inline space={2}>\n                        <Text weight=\"bold\">Track:</Text>\n                        <Text>\n                          {formData.sessionTrack\n                            ? formData.sessionTrack.charAt(0).toUpperCase() +\n                              formData.sessionTrack.slice(1)\n                            : '—'}\n                        </Text>\n                      </Inline>\n                      <Inline space={2}>\n                        <Text weight=\"bold\">Dietary:</Text>\n                        <Text>{formData.dietary || '—'}</Text>\n                      </Inline>\n                      <Inline space={2}>\n                        <Text weight=\"bold\">Guests:</Text>\n                        <Text>{formData.numGuests}</Text>\n                      </Inline>\n                      {formData.specialRequests && (\n                        <Stack space={1}>\n                          <Text weight=\"bold\">Special Requests:</Text>\n                          <Text>{formData.specialRequests}</Text>\n                        </Stack>\n                      )}\n                    </Stack>\n                  </Inset>\n                </Accordion.Content>\n              </Accordion.Item>\n\n              <Accordion.Item id=\"preferences\">\n                <Accordion.Header>Preferences</Accordion.Header>\n                <Accordion.Content>\n                  <Inset space={2}>\n                    <Stack space={2}>\n                      <Inline space={2}>\n                        <Text weight=\"bold\">T-Shirt Size:</Text>\n                        <Text>{formData.tshirtSize || '—'}</Text>\n                      </Inline>\n                      <Stack space={1}>\n                        <Text weight=\"bold\">Topics:</Text>\n                        <Text>\n                          {formData.topics.length > 0\n                            ? formData.topics.map(String).join(', ')\n                            : '—'}\n                        </Text>\n                      </Stack>\n                      <Stack space={1}>\n                        <Text weight=\"bold\">Communication Preferences:</Text>\n                        {formData.commPrefs.length > 0 ? (\n                          formData.commPrefs.map(val => {\n                            const pref = COMM_PREFS.find(p => p.value === val);\n                            return <Text key={val}>{pref?.label ?? val}</Text>;\n                          })\n                        ) : (\n                          <Text>—</Text>\n                        )}\n                      </Stack>\n                      <Inline space={2}>\n                        <Text weight=\"bold\">Accessibility Needs:</Text>\n                        <Text>\n                          {formData.hasAccessibility\n                            ? formData.accessibilityDetails || 'Yes (no details provided)'\n                            : 'None'}\n                        </Text>\n                      </Inline>\n                    </Stack>\n                  </Inset>\n                </Accordion.Content>\n              </Accordion.Item>\n            </Accordion>\n\n            <Checkbox\n              label=\"I agree to the terms and conditions\"\n              checked={formData.agreedToTerms}\n              onChange={v => updateField('agreedToTerms', v)}\n            />\n          </Stack>\n        )}\n\n        {/* Navigation */}\n        <Inline space={3}>\n          <Button\n            variant=\"secondary\"\n            onPress={handleBack}\n            disabled={currentStep === 1}\n          >\n            Back\n          </Button>\n          <Split />\n          {currentStep < 4 ? (\n            <Button variant=\"primary\" onPress={handleNext}>\n              Next\n            </Button>\n          ) : (\n            <Button\n              variant=\"primary\"\n              onPress={handleSubmit}\n              disabled={!formData.agreedToTerms}\n            >\n              Submit Registration\n            </Button>\n          )}\n        </Inline>\n      </Stack>\n    </Card>\n  );\n}\n\nconst TestApp = () => {\n  return (\n    <Stack space={0}>\n      <ToastProvider position=\"bottom-right\" />\n      <Inset space={8}>\n        <RegistrationForm />\n      </Inset>\n    </Stack>\n  );\n};\n\nexport default TestApp;\n",
+  "assertions": {
+    "passed": [
+      {
+        "id": "a-import-marigold",
+        "description": "Imports from @marigold/components",
+        "severity": "required",
+        "passed": true,
+        "evidence": "import from \"@marigold/components\" found"
+      },
+      {
+        "id": "a-text-field",
+        "description": "TextField for text inputs",
+        "severity": "required",
+        "passed": true,
+        "evidence": "<TextField> found"
+      },
+      {
+        "id": "a-datepicker",
+        "description": "DatePicker for event date",
+        "severity": "required",
+        "passed": true,
+        "evidence": "<DatePicker> found"
+      },
+      {
+        "id": "a-timefield",
+        "description": "TimeField for time slot",
+        "severity": "required",
+        "passed": true,
+        "evidence": "<TimeField> found"
+      },
+      {
+        "id": "a-radio",
+        "description": "Radio/RadioGroup for session track",
+        "severity": "required",
+        "passed": true,
+        "evidence": "matched: <Radio> found"
+      },
+      {
+        "id": "a-combobox",
+        "description": "ComboBox for dietary requirements",
+        "severity": "required",
+        "passed": true,
+        "evidence": "<ComboBox> found"
+      },
+      {
+        "id": "a-numberfield",
+        "description": "NumberField for guests",
+        "severity": "required",
+        "passed": true,
+        "evidence": "<NumberField> found"
+      },
+      {
+        "id": "a-select",
+        "description": "Select for t-shirt size",
+        "severity": "required",
+        "passed": true,
+        "evidence": "<Select> found"
+      },
+      {
+        "id": "a-tagfield",
+        "description": "TagField for topics of interest",
+        "severity": "required",
+        "passed": true,
+        "evidence": "<TagField> found"
+      },
+      {
+        "id": "a-checkbox",
+        "description": "Checkbox for communication preferences",
+        "severity": "required",
+        "passed": true,
+        "evidence": "matched: <Checkbox> found"
+      },
+      {
+        "id": "a-switch",
+        "description": "Switch for accessibility needs",
+        "severity": "required",
+        "passed": true,
+        "evidence": "<Switch> found"
+      },
+      {
+        "id": "a-textarea",
+        "description": "TextArea for special requests",
+        "severity": "required",
+        "passed": true,
+        "evidence": "<TextArea> found"
+      },
+      {
+        "id": "a-filefield",
+        "description": "FileField for profile photo",
+        "severity": "required",
+        "passed": true,
+        "evidence": "<FileField> found"
+      },
+      {
+        "id": "a-accordion",
+        "description": "Accordion for review sections",
+        "severity": "required",
+        "passed": true,
+        "evidence": "<Accordion> found"
+      },
+      {
+        "id": "a-button",
+        "description": "Button for navigation/submit",
+        "severity": "required",
+        "passed": true,
+        "evidence": "<Button> found"
+      },
+      {
+        "id": "a-card",
+        "description": "Card as form container",
+        "severity": "required",
+        "passed": true,
+        "evidence": "<Card> found"
+      },
+      {
+        "id": "a-section-message",
+        "description": "SectionMessage for info/success",
+        "severity": "required",
+        "passed": true,
+        "evidence": "<SectionMessage> found"
+      },
+      {
+        "id": "a-loader",
+        "description": "Loader for submission",
+        "severity": "recommended",
+        "passed": true,
+        "evidence": "<Loader> found"
+      },
+      {
+        "id": "a-step-state",
+        "description": "Multi-step state management (useState)",
+        "severity": "recommended",
+        "passed": true,
+        "evidence": "pattern \"/useState/\" found"
+      },
+      {
+        "id": "a-toast",
+        "description": "Toast notification after submission",
+        "severity": "recommended",
+        "passed": true,
+        "evidence": "matched: pattern \"/useToast/\" found"
+      }
+    ],
+    "failed": [
+      {
+        "id": "a-form",
+        "description": "Form component",
+        "severity": "required",
+        "passed": false,
+        "evidence": "<Form> not found"
+      },
+      {
+        "id": "a-autocomplete",
+        "description": "Autocomplete for job title",
+        "severity": "required",
+        "passed": false,
+        "evidence": "<Autocomplete> not found"
+      }
+    ],
+    "passRate": 0.9091,
+    "requiredPassRate": 0.8947,
+    "weightedPassRate": 0.8987,
+    "total": 22
+  },
+  "validatePackageVersion": "0.0.1",
+  "playwrightVersion": null,
+  "resolvedModelId": "claude-sonnet-4-6",
+  "claudeCliVersion": "2.1.185 (Claude Code)",
+  "sessionId": "be8a584b-52fe-43bf-97d1-1c9f2c5dbc7e"
+}

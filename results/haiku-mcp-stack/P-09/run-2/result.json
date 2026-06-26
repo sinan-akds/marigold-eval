@@ -1,0 +1,1156 @@
+{
+  "runId": "haiku-mcp-stack-P-09-r2",
+  "promptId": "P-09",
+  "model": "haiku",
+  "config": "mcp-stack",
+  "timestamp": "2026-06-21T10:32:10.624Z",
+  "quality": {
+    "overall": 27.11,
+    "categories": {
+      "A": {
+        "category": "A",
+        "label": "Design System API",
+        "score": 47.08,
+        "weight": 0.225,
+        "weightedScore": 10.59,
+        "errorCount": 4,
+        "warningCount": 6,
+        "issues": [
+          {
+            "type": "technical",
+            "severity": "error",
+            "source": "prop-validator",
+            "component": "FileField",
+            "message": "Prop \"onChange\" does not exist on <FileField>.",
+            "suggestion": "Remove the prop. Available props: variant, size, width, disabled, accept, multiple, name, render, dir, lang, hidden, inert, translate, onClick, onClickCapture, ….",
+            "location": {
+              "file": "TestApp.tsx",
+              "line": 310,
+              "column": 19
+            },
+            "details": {
+              "used": "onChange",
+              "available": [
+                "variant",
+                "size",
+                "width",
+                "disabled",
+                "accept",
+                "multiple",
+                "name",
+                "render",
+                "dir",
+                "lang",
+                "hidden",
+                "inert",
+                "translate",
+                "onClick",
+                "onClickCapture"
+              ]
+            }
+          },
+          {
+            "type": "technical",
+            "severity": "error",
+            "source": "prop-validator",
+            "component": "NumberField",
+            "message": "Prop \"min\" does not exist on <NumberField>.",
+            "suggestion": "Remove the prop. Available props: variant, size, width, disabled, required, error, readOnly, hideStepper, placeholder, render, id, dir, lang, hidden, inert, ….",
+            "location": {
+              "file": "TestApp.tsx",
+              "line": 375,
+              "column": 19
+            },
+            "details": {
+              "used": "min",
+              "available": [
+                "variant",
+                "size",
+                "width",
+                "disabled",
+                "required",
+                "error",
+                "readOnly",
+                "hideStepper",
+                "placeholder",
+                "render",
+                "id",
+                "dir",
+                "lang",
+                "hidden",
+                "inert"
+              ]
+            }
+          },
+          {
+            "type": "technical",
+            "severity": "error",
+            "source": "prop-validator",
+            "component": "NumberField",
+            "message": "Prop \"max\" does not exist on <NumberField>.",
+            "suggestion": "Remove the prop. Available props: variant, size, width, disabled, required, error, readOnly, hideStepper, placeholder, render, id, dir, lang, hidden, inert, ….",
+            "location": {
+              "file": "TestApp.tsx",
+              "line": 376,
+              "column": 19
+            },
+            "details": {
+              "used": "max",
+              "available": [
+                "variant",
+                "size",
+                "width",
+                "disabled",
+                "required",
+                "error",
+                "readOnly",
+                "hideStepper",
+                "placeholder",
+                "render",
+                "id",
+                "dir",
+                "lang",
+                "hidden",
+                "inert"
+              ]
+            }
+          },
+          {
+            "type": "technical",
+            "severity": "error",
+            "source": "prop-validator",
+            "component": "Text",
+            "message": "Prop \"onClick\" does not exist on <Text>.",
+            "suggestion": "Remove the prop. Available props: children, color, as, slot, variant, size, id, aria-label, aria-labelledby, aria-describedby, aria-details, render, align, fontSize, weight, ….",
+            "location": {
+              "file": "TestApp.tsx",
+              "line": 697,
+              "column": 15
+            },
+            "details": {
+              "used": "onClick",
+              "available": [
+                "children",
+                "color",
+                "as",
+                "slot",
+                "variant",
+                "size",
+                "id",
+                "aria-label",
+                "aria-labelledby",
+                "aria-describedby",
+                "aria-details",
+                "render",
+                "align",
+                "fontSize",
+                "weight"
+              ]
+            }
+          },
+          {
+            "type": "technical",
+            "severity": "warning",
+            "source": "design-system-usage",
+            "component": "div",
+            "message": "Raw <div> used instead of a Marigold component.",
+            "suggestion": "Raw <div> used instead of a Marigold layout component. Search the Marigold docs for layout alternatives.",
+            "location": {
+              "file": "TestApp.tsx",
+              "line": 180,
+              "column": 15
+            },
+            "details": {
+              "htmlElement": "div"
+            }
+          },
+          {
+            "type": "technical",
+            "severity": "warning",
+            "source": "design-system-usage",
+            "component": "div",
+            "message": "Raw <div> used instead of a Marigold component.",
+            "suggestion": "Raw <div> used instead of a Marigold layout component. Search the Marigold docs for layout alternatives.",
+            "location": {
+              "file": "TestApp.tsx",
+              "line": 183,
+              "column": 17
+            },
+            "details": {
+              "htmlElement": "div"
+            }
+          },
+          {
+            "type": "technical",
+            "severity": "warning",
+            "source": "design-system-usage",
+            "component": "Text",
+            "message": "className on the Marigold component <Text> bypasses the design system. Marigold components are styled through their own props (variant, size, space, …).",
+            "suggestion": "Remove className from <Text> and use its built-in props, or move the utility classes onto a wrapping native element.",
+            "location": {
+              "file": "TestApp.tsx",
+              "line": 211,
+              "column": 45
+            },
+            "details": {
+              "marigoldComponent": "Text",
+              "prop": "className"
+            }
+          },
+          {
+            "type": "technical",
+            "severity": "warning",
+            "source": "design-system-usage",
+            "component": "input",
+            "message": "Raw <input> used instead of a Marigold component.",
+            "suggestion": "Use <Input> from @marigold/components instead of <input>.",
+            "location": {
+              "file": "TestApp.tsx",
+              "line": 679,
+              "column": 7
+            },
+            "details": {
+              "htmlElement": "input"
+            }
+          },
+          {
+            "type": "technical",
+            "severity": "warning",
+            "source": "design-system-usage",
+            "component": "Stack",
+            "message": "className on the Marigold component <Stack> bypasses the design system. Marigold components are styled through their own props (variant, size, space, …).",
+            "suggestion": "Remove className from <Stack> and use its built-in props, or move the utility classes onto a wrapping native element.",
+            "location": {
+              "file": "TestApp.tsx",
+              "line": 690,
+              "column": 11
+            },
+            "details": {
+              "marigoldComponent": "Stack",
+              "prop": "className"
+            }
+          },
+          {
+            "type": "technical",
+            "severity": "warning",
+            "source": "design-system-usage",
+            "component": "Text",
+            "message": "className on the Marigold component <Text> bypasses the design system. Marigold components are styled through their own props (variant, size, space, …).",
+            "suggestion": "Remove className from <Text> and use its built-in props, or move the utility classes onto a wrapping native element.",
+            "location": {
+              "file": "TestApp.tsx",
+              "line": 696,
+              "column": 15
+            },
+            "details": {
+              "marigoldComponent": "Text",
+              "prop": "className"
+            }
+          }
+        ]
+      },
+      "B": {
+        "category": "B",
+        "label": "Token Compliance",
+        "score": 0,
+        "weight": 0.1,
+        "weightedScore": 0,
+        "errorCount": 0,
+        "warningCount": 0,
+        "issues": []
+      },
+      "C": {
+        "category": "C",
+        "label": "DOM / Structure",
+        "score": 0,
+        "weight": 0.225,
+        "weightedScore": 0,
+        "errorCount": 12,
+        "warningCount": 3,
+        "issues": [
+          {
+            "type": "technical",
+            "severity": "error",
+            "source": "compiler",
+            "component": "TypeScript",
+            "message": "TS2322: Type '{ children: string; weight: \"bold\"; className: string; }' is not assignable to type 'IntrinsicAttributes & TextProps'.\n  Property 'className' does not exist on type 'IntrinsicAttributes & TextProps'.",
+            "suggestion": "Fix the TypeScript error reported by the compiler. The exact location is included in the issue location field.",
+            "location": {
+              "file": "TestApp.tsx",
+              "line": 211,
+              "column": 45
+            }
+          },
+          {
+            "type": "technical",
+            "severity": "error",
+            "source": "compiler",
+            "component": "TypeScript",
+            "message": "TS2322: Type '{ children: Element; position: \"bottom-right\"; }' is not assignable to type 'IntrinsicAttributes & ToastProviderProps'.\n  Property 'children' does not exist on type 'IntrinsicAttributes & ToastProviderProps'.",
+            "suggestion": "Fix the TypeScript error reported by the compiler. The exact location is included in the issue location field.",
+            "location": {
+              "file": "TestApp.tsx",
+              "line": 231,
+              "column": 6
+            }
+          },
+          {
+            "type": "technical",
+            "severity": "error",
+            "source": "compiler",
+            "component": "TypeScript",
+            "message": "TS2322: Type 'string' is not assignable to type 'DateValue | null | undefined'.",
+            "suggestion": "Fix the TypeScript error reported by the compiler. The exact location is included in the issue location field.",
+            "location": {
+              "file": "TestApp.tsx",
+              "line": 332,
+              "column": 19
+            }
+          },
+          {
+            "type": "technical",
+            "severity": "error",
+            "source": "compiler",
+            "component": "TypeScript",
+            "message": "TS2322: Type 'DateValue | null' is not assignable to type 'string | undefined'.\n  Type 'null' is not assignable to type 'string | undefined'.",
+            "suggestion": "Fix the TypeScript error reported by the compiler. The exact location is included in the issue location field.",
+            "location": {
+              "file": "TestApp.tsx",
+              "line": 333,
+              "column": 51
+            }
+          },
+          {
+            "type": "technical",
+            "severity": "error",
+            "source": "compiler",
+            "component": "TypeScript",
+            "message": "TS2322: Type 'string' is not assignable to type 'TimeValue | null | undefined'.",
+            "suggestion": "Fix the TypeScript error reported by the compiler. The exact location is included in the issue location field.",
+            "location": {
+              "file": "TestApp.tsx",
+              "line": 339,
+              "column": 19
+            }
+          },
+          {
+            "type": "technical",
+            "severity": "error",
+            "source": "compiler",
+            "component": "TypeScript",
+            "message": "TS2322: Type 'TimeValue | null' is not assignable to type 'string | undefined'.\n  Type 'null' is not assignable to type 'string | undefined'.",
+            "suggestion": "Fix the TypeScript error reported by the compiler. The exact location is included in the issue location field.",
+            "location": {
+              "file": "TestApp.tsx",
+              "line": 340,
+              "column": 51
+            }
+          },
+          {
+            "type": "technical",
+            "severity": "error",
+            "source": "compiler",
+            "component": "TypeScript",
+            "message": "TS18047: 'keys' is possibly 'null'.",
+            "suggestion": "Fix the TypeScript error reported by the compiler. The exact location is included in the issue location field.",
+            "location": {
+              "file": "TestApp.tsx",
+              "line": 362,
+              "column": 44
+            }
+          },
+          {
+            "type": "technical",
+            "severity": "error",
+            "source": "compiler",
+            "component": "TypeScript",
+            "message": "TS2339: Property 'map' does not exist on type 'Key'.\n  Property 'map' does not exist on type 'string'.",
+            "suggestion": "Fix the TypeScript error reported by the compiler. The exact location is included in the issue location field.",
+            "location": {
+              "file": "TestApp.tsx",
+              "line": 362,
+              "column": 49
+            }
+          },
+          {
+            "type": "technical",
+            "severity": "error",
+            "source": "compiler",
+            "component": "TypeScript",
+            "message": "TS18047: 'keys' is possibly 'null'.",
+            "suggestion": "Fix the TypeScript error reported by the compiler. The exact location is included in the issue location field.",
+            "location": {
+              "file": "TestApp.tsx",
+              "line": 413,
+              "column": 52
+            }
+          },
+          {
+            "type": "technical",
+            "severity": "error",
+            "source": "compiler",
+            "component": "TypeScript",
+            "message": "TS2339: Property 'map' does not exist on type 'Key'.\n  Property 'map' does not exist on type 'string'.",
+            "suggestion": "Fix the TypeScript error reported by the compiler. The exact location is included in the issue location field.",
+            "location": {
+              "file": "TestApp.tsx",
+              "line": 413,
+              "column": 57
+            }
+          },
+          {
+            "type": "technical",
+            "severity": "error",
+            "source": "compiler",
+            "component": "TypeScript",
+            "message": "TS2322: Type '{ children: Element[]; space: 1; className: string; }' is not assignable to type 'IntrinsicAttributes & StackProps'.\n  Property 'className' does not exist on type 'IntrinsicAttributes & StackProps'.",
+            "suggestion": "Fix the TypeScript error reported by the compiler. The exact location is included in the issue location field.",
+            "location": {
+              "file": "TestApp.tsx",
+              "line": 690,
+              "column": 11
+            }
+          },
+          {
+            "type": "technical",
+            "severity": "error",
+            "source": "compiler",
+            "component": "TypeScript",
+            "message": "TS2322: Type '{ children: string; key: string; size: \"sm\"; className: string; onClick: () => void; }' is not assignable to type 'IntrinsicAttributes & TextProps'.\n  Property 'className' does not exist on type 'IntrinsicAttributes & TextProps'.",
+            "suggestion": "Fix the TypeScript error reported by the compiler. The exact location is included in the issue location field.",
+            "location": {
+              "file": "TestApp.tsx",
+              "line": 696,
+              "column": 15
+            }
+          },
+          {
+            "type": "technical",
+            "severity": "warning",
+            "source": "layout-usage",
+            "component": "Stack",
+            "message": "<Stack> wraps a single child. A flow layout earns its place only with two or more children; with one child it adds a wrapper that does nothing.",
+            "suggestion": "Render the child directly instead of wrapping it in <Stack>. For single-child spacing use Inset, Center, Breakout or Aspect.",
+            "location": {
+              "file": "TestApp.tsx",
+              "line": 176,
+              "column": 7
+            },
+            "details": {
+              "layout": "Stack",
+              "childCount": 1
+            }
+          },
+          {
+            "type": "technical",
+            "severity": "warning",
+            "source": "layout-usage",
+            "component": "Stack",
+            "message": "<Stack> wraps a single child. A flow layout earns its place only with two or more children; with one child it adds a wrapper that does nothing.",
+            "suggestion": "Render the child directly instead of wrapping it in <Stack>. For single-child spacing use Inset, Center, Breakout or Aspect.",
+            "location": {
+              "file": "TestApp.tsx",
+              "line": 232,
+              "column": 7
+            },
+            "details": {
+              "layout": "Stack",
+              "childCount": 1
+            }
+          },
+          {
+            "type": "technical",
+            "severity": "warning",
+            "source": "layout-usage",
+            "component": "Stack",
+            "message": "<Stack> wraps a single child. A flow layout earns its place only with two or more children; with one child it adds a wrapper that does nothing.",
+            "suggestion": "Render the child directly instead of wrapping it in <Stack>. For single-child spacing use Inset, Center, Breakout or Aspect.",
+            "location": {
+              "file": "TestApp.tsx",
+              "line": 317,
+              "column": 19
+            },
+            "details": {
+              "layout": "Stack",
+              "childCount": 1
+            }
+          }
+        ]
+      },
+      "D": {
+        "category": "D",
+        "label": "Spatial & A11y",
+        "score": 0,
+        "weight": 0.225,
+        "weightedScore": 0,
+        "errorCount": 0,
+        "warningCount": 0,
+        "issues": []
+      },
+      "E": {
+        "category": "E",
+        "label": "Functional Completeness",
+        "score": 73.42,
+        "weight": 0.225,
+        "weightedScore": 16.52,
+        "errorCount": 0,
+        "warningCount": 0,
+        "issues": []
+      }
+    },
+    "renderSuccess": false
+  },
+  "efficiency": {
+    "durationMs": 267084,
+    "costUsd": 0.7845266,
+    "inputTokens": 93,
+    "outputTokens": 13957,
+    "cacheReadTokens": 2856836,
+    "cacheCreationTokens": 213827,
+    "totalTokens": 14050,
+    "numTurns": 61
+  },
+  "report": {
+    "file": "TestApp.tsx",
+    "errors": [
+      {
+        "type": "technical",
+        "severity": "error",
+        "source": "compiler",
+        "component": "TypeScript",
+        "message": "TS2322: Type '{ children: string; weight: \"bold\"; className: string; }' is not assignable to type 'IntrinsicAttributes & TextProps'.\n  Property 'className' does not exist on type 'IntrinsicAttributes & TextProps'.",
+        "suggestion": "Fix the TypeScript error reported by the compiler. The exact location is included in the issue location field.",
+        "location": {
+          "file": "TestApp.tsx",
+          "line": 211,
+          "column": 45
+        }
+      },
+      {
+        "type": "technical",
+        "severity": "error",
+        "source": "compiler",
+        "component": "TypeScript",
+        "message": "TS2322: Type '{ children: Element; position: \"bottom-right\"; }' is not assignable to type 'IntrinsicAttributes & ToastProviderProps'.\n  Property 'children' does not exist on type 'IntrinsicAttributes & ToastProviderProps'.",
+        "suggestion": "Fix the TypeScript error reported by the compiler. The exact location is included in the issue location field.",
+        "location": {
+          "file": "TestApp.tsx",
+          "line": 231,
+          "column": 6
+        }
+      },
+      {
+        "type": "technical",
+        "severity": "error",
+        "source": "compiler",
+        "component": "TypeScript",
+        "message": "TS2322: Type 'string' is not assignable to type 'DateValue | null | undefined'.",
+        "suggestion": "Fix the TypeScript error reported by the compiler. The exact location is included in the issue location field.",
+        "location": {
+          "file": "TestApp.tsx",
+          "line": 332,
+          "column": 19
+        }
+      },
+      {
+        "type": "technical",
+        "severity": "error",
+        "source": "compiler",
+        "component": "TypeScript",
+        "message": "TS2322: Type 'DateValue | null' is not assignable to type 'string | undefined'.\n  Type 'null' is not assignable to type 'string | undefined'.",
+        "suggestion": "Fix the TypeScript error reported by the compiler. The exact location is included in the issue location field.",
+        "location": {
+          "file": "TestApp.tsx",
+          "line": 333,
+          "column": 51
+        }
+      },
+      {
+        "type": "technical",
+        "severity": "error",
+        "source": "compiler",
+        "component": "TypeScript",
+        "message": "TS2322: Type 'string' is not assignable to type 'TimeValue | null | undefined'.",
+        "suggestion": "Fix the TypeScript error reported by the compiler. The exact location is included in the issue location field.",
+        "location": {
+          "file": "TestApp.tsx",
+          "line": 339,
+          "column": 19
+        }
+      },
+      {
+        "type": "technical",
+        "severity": "error",
+        "source": "compiler",
+        "component": "TypeScript",
+        "message": "TS2322: Type 'TimeValue | null' is not assignable to type 'string | undefined'.\n  Type 'null' is not assignable to type 'string | undefined'.",
+        "suggestion": "Fix the TypeScript error reported by the compiler. The exact location is included in the issue location field.",
+        "location": {
+          "file": "TestApp.tsx",
+          "line": 340,
+          "column": 51
+        }
+      },
+      {
+        "type": "technical",
+        "severity": "error",
+        "source": "compiler",
+        "component": "TypeScript",
+        "message": "TS18047: 'keys' is possibly 'null'.",
+        "suggestion": "Fix the TypeScript error reported by the compiler. The exact location is included in the issue location field.",
+        "location": {
+          "file": "TestApp.tsx",
+          "line": 362,
+          "column": 44
+        }
+      },
+      {
+        "type": "technical",
+        "severity": "error",
+        "source": "compiler",
+        "component": "TypeScript",
+        "message": "TS2339: Property 'map' does not exist on type 'Key'.\n  Property 'map' does not exist on type 'string'.",
+        "suggestion": "Fix the TypeScript error reported by the compiler. The exact location is included in the issue location field.",
+        "location": {
+          "file": "TestApp.tsx",
+          "line": 362,
+          "column": 49
+        }
+      },
+      {
+        "type": "technical",
+        "severity": "error",
+        "source": "compiler",
+        "component": "TypeScript",
+        "message": "TS18047: 'keys' is possibly 'null'.",
+        "suggestion": "Fix the TypeScript error reported by the compiler. The exact location is included in the issue location field.",
+        "location": {
+          "file": "TestApp.tsx",
+          "line": 413,
+          "column": 52
+        }
+      },
+      {
+        "type": "technical",
+        "severity": "error",
+        "source": "compiler",
+        "component": "TypeScript",
+        "message": "TS2339: Property 'map' does not exist on type 'Key'.\n  Property 'map' does not exist on type 'string'.",
+        "suggestion": "Fix the TypeScript error reported by the compiler. The exact location is included in the issue location field.",
+        "location": {
+          "file": "TestApp.tsx",
+          "line": 413,
+          "column": 57
+        }
+      },
+      {
+        "type": "technical",
+        "severity": "error",
+        "source": "compiler",
+        "component": "TypeScript",
+        "message": "TS2322: Type '{ children: Element[]; space: 1; className: string; }' is not assignable to type 'IntrinsicAttributes & StackProps'.\n  Property 'className' does not exist on type 'IntrinsicAttributes & StackProps'.",
+        "suggestion": "Fix the TypeScript error reported by the compiler. The exact location is included in the issue location field.",
+        "location": {
+          "file": "TestApp.tsx",
+          "line": 690,
+          "column": 11
+        }
+      },
+      {
+        "type": "technical",
+        "severity": "error",
+        "source": "compiler",
+        "component": "TypeScript",
+        "message": "TS2322: Type '{ children: string; key: string; size: \"sm\"; className: string; onClick: () => void; }' is not assignable to type 'IntrinsicAttributes & TextProps'.\n  Property 'className' does not exist on type 'IntrinsicAttributes & TextProps'.",
+        "suggestion": "Fix the TypeScript error reported by the compiler. The exact location is included in the issue location field.",
+        "location": {
+          "file": "TestApp.tsx",
+          "line": 696,
+          "column": 15
+        }
+      },
+      {
+        "type": "technical",
+        "severity": "error",
+        "source": "prop-validator",
+        "component": "FileField",
+        "message": "Prop \"onChange\" does not exist on <FileField>.",
+        "suggestion": "Remove the prop. Available props: variant, size, width, disabled, accept, multiple, name, render, dir, lang, hidden, inert, translate, onClick, onClickCapture, ….",
+        "location": {
+          "file": "TestApp.tsx",
+          "line": 310,
+          "column": 19
+        },
+        "details": {
+          "used": "onChange",
+          "available": [
+            "variant",
+            "size",
+            "width",
+            "disabled",
+            "accept",
+            "multiple",
+            "name",
+            "render",
+            "dir",
+            "lang",
+            "hidden",
+            "inert",
+            "translate",
+            "onClick",
+            "onClickCapture"
+          ]
+        }
+      },
+      {
+        "type": "technical",
+        "severity": "error",
+        "source": "prop-validator",
+        "component": "NumberField",
+        "message": "Prop \"min\" does not exist on <NumberField>.",
+        "suggestion": "Remove the prop. Available props: variant, size, width, disabled, required, error, readOnly, hideStepper, placeholder, render, id, dir, lang, hidden, inert, ….",
+        "location": {
+          "file": "TestApp.tsx",
+          "line": 375,
+          "column": 19
+        },
+        "details": {
+          "used": "min",
+          "available": [
+            "variant",
+            "size",
+            "width",
+            "disabled",
+            "required",
+            "error",
+            "readOnly",
+            "hideStepper",
+            "placeholder",
+            "render",
+            "id",
+            "dir",
+            "lang",
+            "hidden",
+            "inert"
+          ]
+        }
+      },
+      {
+        "type": "technical",
+        "severity": "error",
+        "source": "prop-validator",
+        "component": "NumberField",
+        "message": "Prop \"max\" does not exist on <NumberField>.",
+        "suggestion": "Remove the prop. Available props: variant, size, width, disabled, required, error, readOnly, hideStepper, placeholder, render, id, dir, lang, hidden, inert, ….",
+        "location": {
+          "file": "TestApp.tsx",
+          "line": 376,
+          "column": 19
+        },
+        "details": {
+          "used": "max",
+          "available": [
+            "variant",
+            "size",
+            "width",
+            "disabled",
+            "required",
+            "error",
+            "readOnly",
+            "hideStepper",
+            "placeholder",
+            "render",
+            "id",
+            "dir",
+            "lang",
+            "hidden",
+            "inert"
+          ]
+        }
+      },
+      {
+        "type": "technical",
+        "severity": "error",
+        "source": "prop-validator",
+        "component": "Text",
+        "message": "Prop \"onClick\" does not exist on <Text>.",
+        "suggestion": "Remove the prop. Available props: children, color, as, slot, variant, size, id, aria-label, aria-labelledby, aria-describedby, aria-details, render, align, fontSize, weight, ….",
+        "location": {
+          "file": "TestApp.tsx",
+          "line": 697,
+          "column": 15
+        },
+        "details": {
+          "used": "onClick",
+          "available": [
+            "children",
+            "color",
+            "as",
+            "slot",
+            "variant",
+            "size",
+            "id",
+            "aria-label",
+            "aria-labelledby",
+            "aria-describedby",
+            "aria-details",
+            "render",
+            "align",
+            "fontSize",
+            "weight"
+          ]
+        }
+      }
+    ],
+    "warnings": [
+      {
+        "type": "technical",
+        "severity": "warning",
+        "source": "design-system-usage",
+        "component": "div",
+        "message": "Raw <div> used instead of a Marigold component.",
+        "suggestion": "Raw <div> used instead of a Marigold layout component. Search the Marigold docs for layout alternatives.",
+        "location": {
+          "file": "TestApp.tsx",
+          "line": 180,
+          "column": 15
+        },
+        "details": {
+          "htmlElement": "div"
+        }
+      },
+      {
+        "type": "technical",
+        "severity": "warning",
+        "source": "design-system-usage",
+        "component": "div",
+        "message": "Raw <div> used instead of a Marigold component.",
+        "suggestion": "Raw <div> used instead of a Marigold layout component. Search the Marigold docs for layout alternatives.",
+        "location": {
+          "file": "TestApp.tsx",
+          "line": 183,
+          "column": 17
+        },
+        "details": {
+          "htmlElement": "div"
+        }
+      },
+      {
+        "type": "technical",
+        "severity": "warning",
+        "source": "design-system-usage",
+        "component": "Text",
+        "message": "className on the Marigold component <Text> bypasses the design system. Marigold components are styled through their own props (variant, size, space, …).",
+        "suggestion": "Remove className from <Text> and use its built-in props, or move the utility classes onto a wrapping native element.",
+        "location": {
+          "file": "TestApp.tsx",
+          "line": 211,
+          "column": 45
+        },
+        "details": {
+          "marigoldComponent": "Text",
+          "prop": "className"
+        }
+      },
+      {
+        "type": "technical",
+        "severity": "warning",
+        "source": "design-system-usage",
+        "component": "input",
+        "message": "Raw <input> used instead of a Marigold component.",
+        "suggestion": "Use <Input> from @marigold/components instead of <input>.",
+        "location": {
+          "file": "TestApp.tsx",
+          "line": 679,
+          "column": 7
+        },
+        "details": {
+          "htmlElement": "input"
+        }
+      },
+      {
+        "type": "technical",
+        "severity": "warning",
+        "source": "design-system-usage",
+        "component": "Stack",
+        "message": "className on the Marigold component <Stack> bypasses the design system. Marigold components are styled through their own props (variant, size, space, …).",
+        "suggestion": "Remove className from <Stack> and use its built-in props, or move the utility classes onto a wrapping native element.",
+        "location": {
+          "file": "TestApp.tsx",
+          "line": 690,
+          "column": 11
+        },
+        "details": {
+          "marigoldComponent": "Stack",
+          "prop": "className"
+        }
+      },
+      {
+        "type": "technical",
+        "severity": "warning",
+        "source": "design-system-usage",
+        "component": "Text",
+        "message": "className on the Marigold component <Text> bypasses the design system. Marigold components are styled through their own props (variant, size, space, …).",
+        "suggestion": "Remove className from <Text> and use its built-in props, or move the utility classes onto a wrapping native element.",
+        "location": {
+          "file": "TestApp.tsx",
+          "line": 696,
+          "column": 15
+        },
+        "details": {
+          "marigoldComponent": "Text",
+          "prop": "className"
+        }
+      },
+      {
+        "type": "technical",
+        "severity": "warning",
+        "source": "layout-usage",
+        "component": "Stack",
+        "message": "<Stack> wraps a single child. A flow layout earns its place only with two or more children; with one child it adds a wrapper that does nothing.",
+        "suggestion": "Render the child directly instead of wrapping it in <Stack>. For single-child spacing use Inset, Center, Breakout or Aspect.",
+        "location": {
+          "file": "TestApp.tsx",
+          "line": 176,
+          "column": 7
+        },
+        "details": {
+          "layout": "Stack",
+          "childCount": 1
+        }
+      },
+      {
+        "type": "technical",
+        "severity": "warning",
+        "source": "layout-usage",
+        "component": "Stack",
+        "message": "<Stack> wraps a single child. A flow layout earns its place only with two or more children; with one child it adds a wrapper that does nothing.",
+        "suggestion": "Render the child directly instead of wrapping it in <Stack>. For single-child spacing use Inset, Center, Breakout or Aspect.",
+        "location": {
+          "file": "TestApp.tsx",
+          "line": 232,
+          "column": 7
+        },
+        "details": {
+          "layout": "Stack",
+          "childCount": 1
+        }
+      },
+      {
+        "type": "technical",
+        "severity": "warning",
+        "source": "layout-usage",
+        "component": "Stack",
+        "message": "<Stack> wraps a single child. A flow layout earns its place only with two or more children; with one child it adds a wrapper that does nothing.",
+        "suggestion": "Render the child directly instead of wrapping it in <Stack>. For single-child spacing use Inset, Center, Breakout or Aspect.",
+        "location": {
+          "file": "TestApp.tsx",
+          "line": 317,
+          "column": 19
+        },
+        "details": {
+          "layout": "Stack",
+          "childCount": 1
+        }
+      }
+    ],
+    "passed": [
+      "Component composition",
+      "Overlay accessible names",
+      "Compound component placement",
+      "Section headers",
+      "Collection item ids",
+      "Table usage",
+      "Component conventions",
+      "Theme variant compliance"
+    ],
+    "metadata": {
+      "renderTimeMs": 0,
+      "componentsFound": [],
+      "checksRun": [
+        "technical",
+        "spatial",
+        "a11y"
+      ],
+      "coverage": {
+        "staticValuesChecked": 63,
+        "dynamicValuesSkipped": 27,
+        "spreadPropsBypassed": 0
+      },
+      "widthUtilization": null
+    },
+    "markdown": "marigold-validate: TestApp.tsx — 16 error(s), 9 warning(s)\n\n[error/technical] <FileField>: Prop \"onChange\" does not exist on <FileField>. (TestApp.tsx:310:19)\n  → Remove the prop. Available props: variant, size, width, disabled, accept, multiple, name, render, dir, lang, hidden, inert, translate, onClick, onClickCapture, ….\n  data: {used=onChange, available=[\"variant\",\"size\",\"width\",\"disabled\",\"accept\",\"multiple\",\"name\",\"render\", …]}\n[error/technical] <NumberField>: Prop \"min\" does not exist on <NumberField>. (TestApp.tsx:375:19)\n  → Remove the prop. Available props: variant, size, width, disabled, required, error, readOnly, hideStepper, placeholder, render, id, dir, lang, hidden, inert, ….\n  data: {used=min, available=[\"variant\",\"size\",\"width\",\"disabled\",\"required\",\"error\",\"readOnly\",\"hideStepper\", …]}\n[error/technical] <NumberField>: Prop \"max\" does not exist on <NumberField>. (TestApp.tsx:376:19)\n  → Remove the prop. Available props: variant, size, width, disabled, required, error, readOnly, hideStepper, placeholder, render, id, dir, lang, hidden, inert, ….\n  data: {used=max, available=[\"variant\",\"size\",\"width\",\"disabled\",\"required\",\"error\",\"readOnly\",\"hideStepper\", …]}\n[error/technical] <Text>: Prop \"onClick\" does not exist on <Text>. (TestApp.tsx:697:15)\n  → Remove the prop. Available props: children, color, as, slot, variant, size, id, aria-label, aria-labelledby, aria-describedby, aria-details, render, align, fontSize, weight, ….\n  data: {used=onClick, available=[\"children\",\"color\",\"as\",\"slot\",\"variant\",\"size\",\"id\",\"aria-label\", …]}\n[error/technical] <TypeScript>: TS2322: Type '{ children: string; weight: \"bold\"; className: string; }' is not assignable to type 'IntrinsicAttributes & TextProps'.\n  Property 'className' does not exist on type 'IntrinsicAttributes & TextProps'. (TestApp.tsx:211:45)\n  → Fix the TypeScript error reported by the compiler. The exact location is included in the issue location field.\n[error/technical] <TypeScript>: TS2322: Type '{ children: Element; position: \"bottom-right\"; }' is not assignable to type 'IntrinsicAttributes & ToastProviderProps'.\n  Property 'children' does not exist on type 'IntrinsicAttributes & ToastProviderProps'. (TestApp.tsx:231:6)\n  → Fix the TypeScript error reported by the compiler. The exact location is included in the issue location field.\n[error/technical] <TypeScript>: TS2322: Type 'string' is not assignable to type 'DateValue | null | undefined'. (TestApp.tsx:332:19)\n  → Fix the TypeScript error reported by the compiler. The exact location is included in the issue location field.\n[error/technical] <TypeScript>: TS2322: Type 'DateValue | null' is not assignable to type 'string | undefined'.\n  Type 'null' is not assignable to type 'string | undefined'. (TestApp.tsx:333:51)\n  → Fix the TypeScript error reported by the compiler. The exact location is included in the issue location field.\n[error/technical] <TypeScript>: TS2322: Type 'string' is not assignable to type 'TimeValue | null | undefined'. (TestApp.tsx:339:19)\n  → Fix the TypeScript error reported by the compiler. The exact location is included in the issue location field.\n[error/technical] <TypeScript>: TS2322: Type 'TimeValue | null' is not assignable to type 'string | undefined'.\n  Type 'null' is not assignable to type 'string | undefined'. (TestApp.tsx:340:51)\n  → Fix the TypeScript error reported by the compiler. The exact location is included in the issue location field.\n[error/technical] <TypeScript>: TS18047: 'keys' is possibly 'null'. (TestApp.tsx:362:44)\n  → Fix the TypeScript error reported by the compiler. The exact location is included in the issue location field.\n[error/technical] <TypeScript>: TS2339: Property 'map' does not exist on type 'Key'.\n  Property 'map' does not exist on type 'string'. (TestApp.tsx:362:49)\n  → Fix the TypeScript error reported by the compiler. The exact location is included in the issue location field.\n[error/technical] <TypeScript>: TS18047: 'keys' is possibly 'null'. (TestApp.tsx:413:52)\n  → Fix the TypeScript error reported by the compiler. The exact location is included in the issue location field.\n[error/technical] <TypeScript>: TS2339: Property 'map' does not exist on type 'Key'.\n  Property 'map' does not exist on type 'string'. (TestApp.tsx:413:57)\n  → Fix the TypeScript error reported by the compiler. The exact location is included in the issue location field.\n[error/technical] <TypeScript>: TS2322: Type '{ children: Element[]; space: 1; className: string; }' is not assignable to type 'IntrinsicAttributes & StackProps'.\n  Property 'className' does not exist on type 'IntrinsicAttributes & StackProps'. (TestApp.tsx:690:11)\n  → Fix the TypeScript error reported by the compiler. The exact location is included in the issue location field.\n[error/technical] <TypeScript>: TS2322: Type '{ children: string; key: string; size: \"sm\"; className: string; onClick: () => void; }' is not assignable to type 'IntrinsicAttributes & TextProps'.\n  Property 'className' does not exist on type 'IntrinsicAttributes & TextProps'. (TestApp.tsx:696:15)\n  → Fix the TypeScript error reported by the compiler. The exact location is included in the issue location field.\n[warning/technical] <div>: Raw <div> used instead of a Marigold component. (TestApp.tsx:180:15)\n  → Raw <div> used instead of a Marigold layout component. Search the Marigold docs for layout alternatives.\n  data: {htmlElement=div}\n[warning/technical] <div>: Raw <div> used instead of a Marigold component. (TestApp.tsx:183:17)\n  → Raw <div> used instead of a Marigold layout component. Search the Marigold docs for layout alternatives.\n  data: {htmlElement=div}\n[warning/technical] <input>: Raw <input> used instead of a Marigold component. (TestApp.tsx:679:7)\n  → Use <Input> from @marigold/components instead of <input>.\n  data: {htmlElement=input}\n[warning/technical] <Stack>: className on the Marigold component <Stack> bypasses the design system. Marigold components are styled through their own props (variant, size, space, …). (TestApp.tsx:690:11)\n  → Remove className from <Stack> and use its built-in props, or move the utility classes onto a wrapping native element.\n  data: {marigoldComponent=Stack, prop=className}\n[warning/technical] <Stack>: <Stack> wraps a single child. A flow layout earns its place only with two or more children; with one child it adds a wrapper that does nothing. (TestApp.tsx:176:7)\n  → Render the child directly instead of wrapping it in <Stack>. For single-child spacing use Inset, Center, Breakout or Aspect.\n  data: {layout=Stack, childCount=1}\n[warning/technical] <Stack>: <Stack> wraps a single child. A flow layout earns its place only with two or more children; with one child it adds a wrapper that does nothing. (TestApp.tsx:232:7)\n  → Render the child directly instead of wrapping it in <Stack>. For single-child spacing use Inset, Center, Breakout or Aspect.\n  data: {layout=Stack, childCount=1}\n[warning/technical] <Stack>: <Stack> wraps a single child. A flow layout earns its place only with two or more children; with one child it adds a wrapper that does nothing. (TestApp.tsx:317:19)\n  → Render the child directly instead of wrapping it in <Stack>. For single-child spacing use Inset, Center, Breakout or Aspect.\n  data: {layout=Stack, childCount=1}\n[warning/technical] <Text>: className on the Marigold component <Text> bypasses the design system. Marigold components are styled through their own props (variant, size, space, …). (TestApp.tsx:211:45)\n  → Remove className from <Text> and use its built-in props, or move the utility classes onto a wrapping native element.\n  data: {marigoldComponent=Text, prop=className}\n[warning/technical] <Text>: className on the Marigold component <Text> bypasses the design system. Marigold components are styled through their own props (variant, size, space, …). (TestApp.tsx:696:15)\n  → Remove className from <Text> and use its built-in props, or move the utility classes onto a wrapping native element.\n  data: {marigoldComponent=Text, prop=className}\n\npassed: Component composition, Overlay accessible names, Compound component placement, Section headers, Collection item ids, Table usage, Component conventions, Theme variant compliance\n\nchecks run: technical, spatial, a11y"
+  },
+  "componentsFound": [],
+  "renderTimeMs": 0,
+  "sourceCode": "import { useState } from 'react';\nimport {\n  Button,\n  Card,\n  Stack,\n  Inline,\n  TextField,\n  Select,\n  Checkbox,\n  NumberField,\n  TextArea,\n  Switch,\n  FileField,\n  DateField,\n  TimeField,\n  TagField,\n  Radio,\n  SectionMessage,\n  Headline,\n  Text,\n  Accordion,\n  useToast,\n  ToastProvider,\n} from '@marigold/components';\n\ninterface RegistrationData {\n  // Step 1\n  fullName: string;\n  email: string;\n  phone: string;\n  company: string;\n  jobTitle: string;\n  profilePhoto: File | null;\n\n  // Step 2\n  eventDate: string;\n  timeSlot: string;\n  sessionTrack: string;\n  dietaryRequirements: string[];\n  numGuests: number;\n  specialRequests: string;\n\n  // Step 3\n  tshirtSize: string;\n  topicsOfInterest: string[];\n  emailUpdates: boolean;\n  smsReminders: boolean;\n  postEventSurvey: boolean;\n  newsletterSubscription: boolean;\n  hasAccessibilityNeeds: boolean;\n  accessibilityDetails: string;\n}\n\nconst defaultData: RegistrationData = {\n  fullName: '',\n  email: '',\n  phone: '',\n  company: '',\n  jobTitle: '',\n  profilePhoto: null,\n  eventDate: '',\n  timeSlot: '',\n  sessionTrack: '',\n  dietaryRequirements: [],\n  numGuests: 0,\n  specialRequests: '',\n  tshirtSize: '',\n  topicsOfInterest: [],\n  emailUpdates: false,\n  smsReminders: false,\n  postEventSurvey: false,\n  newsletterSubscription: false,\n  hasAccessibilityNeeds: false,\n  accessibilityDetails: '',\n};\n\nconst jobTitleSuggestions = [\n  'Developer',\n  'Designer',\n  'Product Manager',\n  'Engineering Manager',\n  'CTO',\n  'Other',\n];\n\nconst tshirtSizes = ['XS', 'S', 'M', 'L', 'XL', 'XXL'];\n\nconst topicSuggestions = [\n  'AI/ML',\n  'Web Development',\n  'Cloud',\n  'Security',\n  'DevOps',\n  'Mobile',\n  'Data Science',\n];\n\nconst dietaryOptions = [\n  'None',\n  'Vegetarian',\n  'Vegan',\n  'Gluten-Free',\n  'Kosher',\n  'Halal',\n];\n\nconst TestApp = () => {\n  const [step, setStep] = useState(1);\n  const [data, setData] = useState<RegistrationData>(defaultData);\n  const [submitted, setSubmitted] = useState(false);\n  const [loading, setLoading] = useState(false);\n  const [confirmationNumber, setConfirmationNumber] = useState('');\n  const { addToast } = useToast();\n\n  const [errors, setErrors] = useState<Record<string, string>>({});\n\n  const validateStep = (stepNum: number): boolean => {\n    const newErrors: Record<string, string> = {};\n\n    if (stepNum === 1) {\n      if (!data.fullName.trim()) newErrors.fullName = 'Full Name is required';\n      if (!data.email.trim()) {\n        newErrors.email = 'Email is required';\n      } else if (!/^[^\\s@]+@[^\\s@]+\\.[^\\s@]+$/.test(data.email)) {\n        newErrors.email = 'Please enter a valid email address';\n      }\n    } else if (stepNum === 2) {\n      if (!data.eventDate) newErrors.eventDate = 'Event Date is required';\n    }\n\n    setErrors(newErrors);\n    return Object.keys(newErrors).length === 0;\n  };\n\n  const handleNext = () => {\n    if (validateStep(step)) {\n      if (step < 4) {\n        setStep(step + 1);\n      }\n    }\n  };\n\n  const handleBack = () => {\n    if (step > 1) {\n      setStep(step - 1);\n    }\n  };\n\n  const handleSubmit = async () => {\n    setLoading(true);\n    await new Promise(resolve => setTimeout(resolve, 1000));\n    const confirmation = `EVT-${Math.random().toString(36).substring(2, 11).toUpperCase()}`;\n    setConfirmationNumber(confirmation);\n    setSubmitted(true);\n    setLoading(false);\n    addToast({\n      title: 'Registration submitted successfully',\n      variant: 'success',\n      timeout: 5000,\n    });\n  };\n\n  const handleRegisterAnother = () => {\n    setStep(1);\n    setData(defaultData);\n    setSubmitted(false);\n    setErrors({});\n  };\n\n  const updateData = (updates: Partial<RegistrationData>) => {\n    setData(prev => ({ ...prev, ...updates }));\n  };\n\n  if (submitted) {\n    return (\n      <Stack space={6} alignX=\"center\">\n        <Card variant=\"default\" stretch>\n          <Stack space={6} alignX=\"center\" alignY=\"center\">\n            {loading ? (\n              <div className=\"text-4xl animate-spin\">⟳</div>\n            ) : (\n              <>\n                <div className=\"text-6xl\">✓</div>\n                <SectionMessage variant=\"success\">\n                  <SectionMessage.Title>\n                    Registration confirmed!\n                  </SectionMessage.Title>\n                  <SectionMessage.Content>\n                    Thank you for registering for the event.\n                  </SectionMessage.Content>\n                </SectionMessage>\n\n                <Card variant=\"default\" stretch>\n                  <Stack space={3}>\n                    <Headline level={4}>Your Registration Summary</Headline>\n                    <Stack space={2}>\n                      <Inline alignX=\"between\">\n                        <Text weight=\"bold\">Name:</Text>\n                        <Text>{data.fullName}</Text>\n                      </Inline>\n                      <Inline alignX=\"between\">\n                        <Text weight=\"bold\">Email:</Text>\n                        <Text>{data.email}</Text>\n                      </Inline>\n                      <Inline alignX=\"between\">\n                        <Text weight=\"bold\">Event Date:</Text>\n                        <Text>{data.eventDate || 'Not specified'}</Text>\n                      </Inline>\n                      <Inline alignX=\"between\">\n                        <Text weight=\"bold\">Confirmation #:</Text>\n                        <Text weight=\"bold\" className=\"text-primary-600\">\n                          {confirmationNumber}\n                        </Text>\n                      </Inline>\n                    </Stack>\n                  </Stack>\n                </Card>\n\n                <Button variant=\"primary\" onPress={handleRegisterAnother}>\n                  Register Another\n                </Button>\n              </>\n            )}\n          </Stack>\n        </Card>\n      </Stack>\n    );\n  }\n\n  return (\n    <ToastProvider position=\"bottom-right\">\n      <Stack space={6} alignX=\"center\">\n        <Card variant=\"default\" stretch>\n          <Stack space={6}>\n            {/* Step Header */}\n            <Stack space={2}>\n              <Headline level={3}>\n                Step {step} of 4 — {\n                  step === 1\n                    ? 'Personal Information'\n                    : step === 2\n                      ? 'Event Details'\n                      : step === 3\n                        ? 'Preferences'\n                        : 'Review & Confirm'\n                }\n              </Headline>\n              <Text variant=\"muted\">\n                {step === 1 && 'Tell us about yourself'}\n                {step === 2 && 'Choose your event preferences'}\n                {step === 3 && 'Select your preferences'}\n                {step === 4 && 'Review your information before submitting'}\n              </Text>\n            </Stack>\n\n            {/* Step 1: Personal Information */}\n            {step === 1 && (\n              <Stack space={4}>\n                <SectionMessage variant=\"info\">\n                  <SectionMessage.Title>Privacy Notice</SectionMessage.Title>\n                  <SectionMessage.Content>\n                    Your information will only be used for this event.\n                  </SectionMessage.Content>\n                </SectionMessage>\n\n                <TextField\n                  label=\"Full Name\"\n                  required\n                  value={data.fullName}\n                  onChange={value => updateData({ fullName: value })}\n                  errorMessage={errors.fullName}\n                  placeholder=\"John Doe\"\n                />\n\n                <TextField\n                  label=\"Email\"\n                  required\n                  type=\"email\"\n                  value={data.email}\n                  onChange={value => updateData({ email: value })}\n                  errorMessage={errors.email}\n                  placeholder=\"john@example.com\"\n                />\n\n                <TextField\n                  label=\"Phone Number\"\n                  value={data.phone}\n                  onChange={value => updateData({ phone: value })}\n                  placeholder=\"+1 (555) 000-0000\"\n                />\n\n                <TextField\n                  label=\"Company / Organization\"\n                  value={data.company}\n                  onChange={value => updateData({ company: value })}\n                  placeholder=\"Your Company\"\n                />\n\n                <ComboBoxWrapper\n                  label=\"Job Title\"\n                  value={data.jobTitle}\n                  onChange={value => updateData({ jobTitle: value })}\n                  suggestions={jobTitleSuggestions}\n                  placeholder=\"Select or type job title\"\n                />\n\n                <FileField\n                  label=\"Profile Photo\"\n                  accept={['image/*']}\n                  onChange={files => {\n                    if (files.length > 0) {\n                      updateData({ profilePhoto: files[0] });\n                    }\n                  }}\n                />\n                {data.profilePhoto && (\n                  <Stack space={2}>\n                    <Text size=\"xs\" variant=\"muted\">\n                      Photo selected: {data.profilePhoto.name}\n                    </Text>\n                  </Stack>\n                )}\n              </Stack>\n            )}\n\n            {/* Step 2: Event Details */}\n            {step === 2 && (\n              <Stack space={4}>\n                <DateField\n                  label=\"Event Date\"\n                  required\n                  value={data.eventDate}\n                  onChange={value => updateData({ eventDate: value })}\n                  errorMessage={errors.eventDate}\n                />\n\n                <TimeField\n                  label=\"Preferred Time Slot\"\n                  value={data.timeSlot}\n                  onChange={value => updateData({ timeSlot: value })}\n                />\n\n                <Select\n                  label=\"Session Track\"\n                  value={data.sessionTrack}\n                  onSelectionChange={value =>\n                    updateData({ sessionTrack: value as string })\n                  }\n                >\n                  <Select.Option id=\"technical\">Technical</Select.Option>\n                  <Select.Option id=\"design\">Design</Select.Option>\n                  <Select.Option id=\"business\">Business</Select.Option>\n                  <Select.Option id=\"workshop\">Workshop</Select.Option>\n                </Select>\n\n                <TagField\n                  label=\"Dietary Requirements\"\n                  placeholder=\"Select dietary needs...\"\n                  value={data.dietaryRequirements}\n                  onSelectionChange={keys =>\n                    updateData({\n                      dietaryRequirements: keys.map(k => String(k)),\n                    })\n                  }\n                >\n                  {dietaryOptions.map(option => (\n                    <TagField.Option key={option} id={option}>\n                      {option}\n                    </TagField.Option>\n                  ))}\n                </TagField>\n\n                <NumberField\n                  label=\"Number of Guests\"\n                  min={0}\n                  max={5}\n                  value={data.numGuests}\n                  onChange={value => updateData({ numGuests: value ?? 0 })}\n                />\n\n                <TextArea\n                  label=\"Special Requests\"\n                  value={data.specialRequests}\n                  onChange={value => updateData({ specialRequests: value })}\n                  placeholder=\"Any special accommodations or requests...\"\n                  rows={4}\n                />\n              </Stack>\n            )}\n\n            {/* Step 3: Preferences */}\n            {step === 3 && (\n              <Stack space={4}>\n                <Select\n                  label=\"T-Shirt Size\"\n                  value={data.tshirtSize}\n                  onSelectionChange={value =>\n                    updateData({ tshirtSize: value as string })\n                  }\n                >\n                  {tshirtSizes.map(size => (\n                    <Select.Option key={size} id={size}>\n                      {size}\n                    </Select.Option>\n                  ))}\n                </Select>\n\n                <TagField\n                  label=\"Topics of Interest\"\n                  placeholder=\"Select topics...\"\n                  value={data.topicsOfInterest}\n                  onSelectionChange={keys =>\n                    updateData({ topicsOfInterest: keys.map(k => String(k)) })\n                  }\n                >\n                  {topicSuggestions.map(topic => (\n                    <TagField.Option key={topic} id={topic}>\n                      {topic}\n                    </TagField.Option>\n                  ))}\n                </TagField>\n\n                <Stack space={3}>\n                  <Headline level={5}>Communication Preferences</Headline>\n                  <Checkbox\n                    label=\"Email updates about the event\"\n                    value=\"emailUpdates\"\n                    checked={data.emailUpdates}\n                    onChange={() =>\n                      updateData({ emailUpdates: !data.emailUpdates })\n                    }\n                  />\n                  <Checkbox\n                    label=\"SMS reminders\"\n                    value=\"smsReminders\"\n                    checked={data.smsReminders}\n                    onChange={() =>\n                      updateData({ smsReminders: !data.smsReminders })\n                    }\n                  />\n                  <Checkbox\n                    label=\"Post-event survey\"\n                    value=\"postEventSurvey\"\n                    checked={data.postEventSurvey}\n                    onChange={() =>\n                      updateData({ postEventSurvey: !data.postEventSurvey })\n                    }\n                  />\n                  <Checkbox\n                    label=\"Newsletter subscription\"\n                    value=\"newsletterSubscription\"\n                    checked={data.newsletterSubscription}\n                    onChange={() =>\n                      updateData({\n                        newsletterSubscription: !data.newsletterSubscription,\n                      })\n                    }\n                  />\n                </Stack>\n\n                <Stack space={3}>\n                  <Switch\n                    label=\"I have accessibility requirements\"\n                    selected={data.hasAccessibilityNeeds}\n                    onChange={() =>\n                      updateData({\n                        hasAccessibilityNeeds: !data.hasAccessibilityNeeds,\n                      })\n                    }\n                  />\n                  {data.hasAccessibilityNeeds && (\n                    <TextArea\n                      label=\"Accessibility Details\"\n                      value={data.accessibilityDetails}\n                      onChange={value =>\n                        updateData({ accessibilityDetails: value })\n                      }\n                      placeholder=\"Please describe your accessibility needs...\"\n                      rows={4}\n                    />\n                  )}\n                </Stack>\n              </Stack>\n            )}\n\n            {/* Step 4: Review & Confirm */}\n            {step === 4 && (\n              <Stack space={4}>\n                <Accordion>\n                  <Accordion.Item>\n                    <Accordion.Header>Personal Information</Accordion.Header>\n                    <Accordion.Content>\n                      <Stack space={2}>\n                        <Inline alignX=\"between\">\n                          <Text weight=\"bold\">Full Name:</Text>\n                          <Text>{data.fullName}</Text>\n                        </Inline>\n                        <Inline alignX=\"between\">\n                          <Text weight=\"bold\">Email:</Text>\n                          <Text>{data.email}</Text>\n                        </Inline>\n                        {data.phone && (\n                          <Inline alignX=\"between\">\n                            <Text weight=\"bold\">Phone:</Text>\n                            <Text>{data.phone}</Text>\n                          </Inline>\n                        )}\n                        {data.company && (\n                          <Inline alignX=\"between\">\n                            <Text weight=\"bold\">Company:</Text>\n                            <Text>{data.company}</Text>\n                          </Inline>\n                        )}\n                        {data.jobTitle && (\n                          <Inline alignX=\"between\">\n                            <Text weight=\"bold\">Job Title:</Text>\n                            <Text>{data.jobTitle}</Text>\n                          </Inline>\n                        )}\n                        {data.profilePhoto && (\n                          <Inline alignX=\"between\">\n                            <Text weight=\"bold\">Profile Photo:</Text>\n                            <Text size=\"xs\" variant=\"muted\">\n                              {data.profilePhoto.name}\n                            </Text>\n                          </Inline>\n                        )}\n                      </Stack>\n                    </Accordion.Content>\n                  </Accordion.Item>\n\n                  <Accordion.Item>\n                    <Accordion.Header>Event Details</Accordion.Header>\n                    <Accordion.Content>\n                      <Stack space={2}>\n                        {data.eventDate && (\n                          <Inline alignX=\"between\">\n                            <Text weight=\"bold\">Event Date:</Text>\n                            <Text>{data.eventDate}</Text>\n                          </Inline>\n                        )}\n                        {data.timeSlot && (\n                          <Inline alignX=\"between\">\n                            <Text weight=\"bold\">Time Slot:</Text>\n                            <Text>{data.timeSlot}</Text>\n                          </Inline>\n                        )}\n                        {data.sessionTrack && (\n                          <Inline alignX=\"between\">\n                            <Text weight=\"bold\">Track:</Text>\n                            <Text>{data.sessionTrack}</Text>\n                          </Inline>\n                        )}\n                        {data.dietaryRequirements.length > 0 && (\n                          <Inline alignX=\"between\">\n                            <Text weight=\"bold\">Dietary:</Text>\n                            <Text>{data.dietaryRequirements.join(', ')}</Text>\n                          </Inline>\n                        )}\n                        <Inline alignX=\"between\">\n                          <Text weight=\"bold\">Guests:</Text>\n                          <Text>{data.numGuests}</Text>\n                        </Inline>\n                        {data.specialRequests && (\n                          <Stack space={1}>\n                            <Text weight=\"bold\">Special Requests:</Text>\n                            <Text size=\"sm\">{data.specialRequests}</Text>\n                          </Stack>\n                        )}\n                      </Stack>\n                    </Accordion.Content>\n                  </Accordion.Item>\n\n                  <Accordion.Item>\n                    <Accordion.Header>Preferences</Accordion.Header>\n                    <Accordion.Content>\n                      <Stack space={2}>\n                        {data.tshirtSize && (\n                          <Inline alignX=\"between\">\n                            <Text weight=\"bold\">T-Shirt Size:</Text>\n                            <Text>{data.tshirtSize}</Text>\n                          </Inline>\n                        )}\n                        {data.topicsOfInterest.length > 0 && (\n                          <Stack space={1}>\n                            <Text weight=\"bold\">Topics:</Text>\n                            <Text size=\"sm\">\n                              {data.topicsOfInterest.join(', ')}\n                            </Text>\n                          </Stack>\n                        )}\n                        <Stack space={1}>\n                          <Text weight=\"bold\">Preferences:</Text>\n                          <Stack space={0.5}>\n                            {data.emailUpdates && (\n                              <Text size=\"sm\">✓ Email updates</Text>\n                            )}\n                            {data.smsReminders && (\n                              <Text size=\"sm\">✓ SMS reminders</Text>\n                            )}\n                            {data.postEventSurvey && (\n                              <Text size=\"sm\">✓ Post-event survey</Text>\n                            )}\n                            {data.newsletterSubscription && (\n                              <Text size=\"sm\">✓ Newsletter</Text>\n                            )}\n                          </Stack>\n                        </Stack>\n                      </Stack>\n                    </Accordion.Content>\n                  </Accordion.Item>\n                </Accordion>\n\n                <Checkbox\n                  label=\"I agree to the terms and conditions\"\n                  value=\"termsAgreed\"\n                  checked={data.fullName !== ''}\n                  onChange={() => {}}\n                />\n              </Stack>\n            )}\n\n            {/* Navigation Buttons */}\n            <Inline alignX=\"between\" space={4}>\n              <Button\n                disabled={step === 1}\n                onPress={handleBack}\n                variant=\"secondary\"\n              >\n                Back\n              </Button>\n              {step < 4 ? (\n                <Button variant=\"primary\" onPress={handleNext}>\n                  Next\n                </Button>\n              ) : (\n                <Button\n                  variant=\"primary\"\n                  loading={loading}\n                  onPress={handleSubmit}\n                >\n                  Submit Registration\n                </Button>\n              )}\n            </Inline>\n          </Stack>\n        </Card>\n      </Stack>\n    </ToastProvider>\n  );\n};\n\n/* ComboBox-like wrapper using Select for job title autocomplete */\nfunction ComboBoxWrapper({\n  label,\n  value,\n  onChange,\n  suggestions,\n  placeholder,\n}: {\n  label: string;\n  value: string;\n  onChange: (value: string) => void;\n  suggestions: string[];\n  placeholder: string;\n}) {\n  const [isOpen, setIsOpen] = useState(false);\n  const [inputValue, setInputValue] = useState(value);\n\n  const filtered = suggestions.filter(s =>\n    s.toLowerCase().includes(inputValue.toLowerCase())\n  );\n\n  return (\n    <Stack space={2}>\n      <Text size=\"sm\" weight=\"bold\">\n        {label}\n      </Text>\n      <input\n        type=\"text\"\n        value={inputValue}\n        onChange={e => setInputValue(e.target.value)}\n        onFocus={() => setIsOpen(true)}\n        placeholder={placeholder}\n        className=\"border border-secondary-300 rounded px-2 py-2\"\n      />\n      {isOpen && filtered.length > 0 && (\n        <Stack\n          space={1}\n          className=\"border border-secondary-300 rounded bg-bg-body\"\n        >\n          {filtered.map(suggestion => (\n            <Text\n              key={suggestion}\n              size=\"sm\"\n              className=\"px-2 py-1 cursor-pointer hover:bg-primary-100\"\n              onClick={() => {\n                onChange(suggestion);\n                setInputValue(suggestion);\n                setIsOpen(false);\n              }}\n            >\n              {suggestion}\n            </Text>\n          ))}\n        </Stack>\n      )}\n    </Stack>\n  );\n}\n\nexport default TestApp;\n",
+  "assertions": {
+    "passed": [
+      {
+        "id": "a-import-marigold",
+        "description": "Imports from @marigold/components",
+        "severity": "required",
+        "passed": true,
+        "evidence": "import from \"@marigold/components\" found"
+      },
+      {
+        "id": "a-text-field",
+        "description": "TextField for text inputs",
+        "severity": "required",
+        "passed": true,
+        "evidence": "<TextField> found"
+      },
+      {
+        "id": "a-timefield",
+        "description": "TimeField for time slot",
+        "severity": "required",
+        "passed": true,
+        "evidence": "<TimeField> found"
+      },
+      {
+        "id": "a-numberfield",
+        "description": "NumberField for guests",
+        "severity": "required",
+        "passed": true,
+        "evidence": "<NumberField> found"
+      },
+      {
+        "id": "a-select",
+        "description": "Select for t-shirt size",
+        "severity": "required",
+        "passed": true,
+        "evidence": "<Select> found"
+      },
+      {
+        "id": "a-tagfield",
+        "description": "TagField for topics of interest",
+        "severity": "required",
+        "passed": true,
+        "evidence": "<TagField> found"
+      },
+      {
+        "id": "a-checkbox",
+        "description": "Checkbox for communication preferences",
+        "severity": "required",
+        "passed": true,
+        "evidence": "matched: <Checkbox> found"
+      },
+      {
+        "id": "a-switch",
+        "description": "Switch for accessibility needs",
+        "severity": "required",
+        "passed": true,
+        "evidence": "<Switch> found"
+      },
+      {
+        "id": "a-textarea",
+        "description": "TextArea for special requests",
+        "severity": "required",
+        "passed": true,
+        "evidence": "<TextArea> found"
+      },
+      {
+        "id": "a-filefield",
+        "description": "FileField for profile photo",
+        "severity": "required",
+        "passed": true,
+        "evidence": "<FileField> found"
+      },
+      {
+        "id": "a-accordion",
+        "description": "Accordion for review sections",
+        "severity": "required",
+        "passed": true,
+        "evidence": "<Accordion> found"
+      },
+      {
+        "id": "a-button",
+        "description": "Button for navigation/submit",
+        "severity": "required",
+        "passed": true,
+        "evidence": "<Button> found"
+      },
+      {
+        "id": "a-card",
+        "description": "Card as form container",
+        "severity": "required",
+        "passed": true,
+        "evidence": "<Card> found"
+      },
+      {
+        "id": "a-section-message",
+        "description": "SectionMessage for info/success",
+        "severity": "required",
+        "passed": true,
+        "evidence": "<SectionMessage> found"
+      },
+      {
+        "id": "a-step-state",
+        "description": "Multi-step state management (useState)",
+        "severity": "recommended",
+        "passed": true,
+        "evidence": "pattern \"/useState/\" found"
+      },
+      {
+        "id": "a-toast",
+        "description": "Toast notification after submission",
+        "severity": "recommended",
+        "passed": true,
+        "evidence": "matched: pattern \"/useToast/\" found"
+      }
+    ],
+    "failed": [
+      {
+        "id": "a-form",
+        "description": "Form component",
+        "severity": "required",
+        "passed": false,
+        "evidence": "<Form> not found"
+      },
+      {
+        "id": "a-datepicker",
+        "description": "DatePicker for event date",
+        "severity": "required",
+        "passed": false,
+        "evidence": "<DatePicker> not found"
+      },
+      {
+        "id": "a-radio",
+        "description": "Radio/RadioGroup for session track",
+        "severity": "required",
+        "passed": false,
+        "evidence": "none matched: <Radio> not found; <RadioGroup> not found"
+      },
+      {
+        "id": "a-combobox",
+        "description": "ComboBox for dietary requirements",
+        "severity": "required",
+        "passed": false,
+        "evidence": "<ComboBox> not found"
+      },
+      {
+        "id": "a-autocomplete",
+        "description": "Autocomplete for job title",
+        "severity": "required",
+        "passed": false,
+        "evidence": "<Autocomplete> not found"
+      },
+      {
+        "id": "a-loader",
+        "description": "Loader for submission",
+        "severity": "recommended",
+        "passed": false,
+        "evidence": "<Loader> not found"
+      }
+    ],
+    "passRate": 0.7273,
+    "requiredPassRate": 0.7368,
+    "weightedPassRate": 0.7342,
+    "total": 22
+  },
+  "validatePackageVersion": "0.0.1",
+  "playwrightVersion": null,
+  "resolvedModelId": "claude-haiku-4-5",
+  "claudeCliVersion": "2.1.185 (Claude Code)",
+  "sessionId": "52769f55-1e97-4e78-a94f-ab8b4cfb7e05"
+}

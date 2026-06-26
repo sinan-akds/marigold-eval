@@ -1,0 +1,701 @@
+{
+  "runId": "opus-bare-P-06-r2",
+  "promptId": "P-06",
+  "model": "opus",
+  "config": "bare",
+  "timestamp": "2026-06-25T20:43:54.592Z",
+  "quality": {
+    "overall": 36.94,
+    "categories": {
+      "A": {
+        "category": "A",
+        "label": "Design System API",
+        "score": 51.01,
+        "weight": 0.225,
+        "weightedScore": 11.48,
+        "errorCount": 6,
+        "warningCount": 0,
+        "issues": [
+          {
+            "type": "technical",
+            "severity": "error",
+            "source": "prop-validator",
+            "component": "Switch",
+            "message": "Prop \"isSelected\" does not exist on <Switch>.",
+            "suggestion": "Replace \"isSelected\" with \"selected\".",
+            "location": {
+              "file": "TestApp.tsx",
+              "line": 204,
+              "column": 15
+            },
+            "details": {
+              "used": "isSelected",
+              "available": [
+                "variant",
+                "size",
+                "label",
+                "width",
+                "disabled",
+                "readOnly",
+                "selected",
+                "render",
+                "id",
+                "dir",
+                "lang",
+                "hidden",
+                "inert",
+                "translate",
+                "onClick"
+              ]
+            }
+          },
+          {
+            "type": "technical",
+            "severity": "error",
+            "source": "prop-validator",
+            "component": "Tiles",
+            "message": "Prop \"columns\" does not exist on <Tiles>.",
+            "suggestion": "Remove the prop. Available props: space, children, tilesWidth, stretch, equalHeight, role, aria-live, id, aria-label, aria-labelledby, aria-describedby, aria-details.",
+            "location": {
+              "file": "TestApp.tsx",
+              "line": 423,
+              "column": 16
+            },
+            "details": {
+              "used": "columns",
+              "available": [
+                "space",
+                "children",
+                "tilesWidth",
+                "stretch",
+                "equalHeight",
+                "role",
+                "aria-live",
+                "id",
+                "aria-label",
+                "aria-labelledby",
+                "aria-describedby",
+                "aria-details"
+              ]
+            }
+          },
+          {
+            "type": "technical",
+            "severity": "error",
+            "source": "prop-validator",
+            "component": "Button",
+            "message": "Prop \"isDisabled\" does not exist on <Button>.",
+            "suggestion": "Replace \"isDisabled\" with \"disabled\".",
+            "location": {
+              "file": "TestApp.tsx",
+              "line": 433,
+              "column": 19
+            },
+            "details": {
+              "used": "isDisabled",
+              "available": [
+                "variant",
+                "size",
+                "fullWidth",
+                "children",
+                "disabled",
+                "loading",
+                "render",
+                "id",
+                "dir",
+                "lang",
+                "hidden",
+                "inert",
+                "translate",
+                "onClick",
+                "onClickCapture"
+              ]
+            }
+          },
+          {
+            "type": "technical",
+            "severity": "error",
+            "source": "prop-validator",
+            "component": "Inline",
+            "message": "Prop \"align\" does not exist on <Inline>.",
+            "suggestion": "Remove the prop. Available props: space, children, noWrap, alignX, alignY, role, aria-live, id, aria-label, aria-labelledby, aria-describedby, aria-details.",
+            "location": {
+              "file": "TestApp.tsx",
+              "line": 444,
+              "column": 41
+            },
+            "details": {
+              "used": "align",
+              "available": [
+                "space",
+                "children",
+                "noWrap",
+                "alignX",
+                "alignY",
+                "role",
+                "aria-live",
+                "id",
+                "aria-label",
+                "aria-labelledby",
+                "aria-describedby",
+                "aria-details"
+              ]
+            }
+          },
+          {
+            "type": "technical",
+            "severity": "error",
+            "source": "prop-validator",
+            "component": "Button",
+            "message": "Prop \"isDisabled\" does not exist on <Button>.",
+            "suggestion": "Replace \"isDisabled\" with \"disabled\".",
+            "location": {
+              "file": "TestApp.tsx",
+              "line": 447,
+              "column": 11
+            },
+            "details": {
+              "used": "isDisabled",
+              "available": [
+                "variant",
+                "size",
+                "fullWidth",
+                "children",
+                "disabled",
+                "loading",
+                "render",
+                "id",
+                "dir",
+                "lang",
+                "hidden",
+                "inert",
+                "translate",
+                "onClick",
+                "onClickCapture"
+              ]
+            }
+          },
+          {
+            "type": "technical",
+            "severity": "error",
+            "source": "prop-validator",
+            "component": "Button",
+            "message": "Prop \"isDisabled\" does not exist on <Button>.",
+            "suggestion": "Replace \"isDisabled\" with \"disabled\".",
+            "location": {
+              "file": "TestApp.tsx",
+              "line": 455,
+              "column": 11
+            },
+            "details": {
+              "used": "isDisabled",
+              "available": [
+                "variant",
+                "size",
+                "fullWidth",
+                "children",
+                "disabled",
+                "loading",
+                "render",
+                "id",
+                "dir",
+                "lang",
+                "hidden",
+                "inert",
+                "translate",
+                "onClick",
+                "onClickCapture"
+              ]
+            }
+          }
+        ]
+      },
+      "B": {
+        "category": "B",
+        "label": "Token Compliance",
+        "score": 0,
+        "weight": 0.1,
+        "weightedScore": 0,
+        "errorCount": 0,
+        "warningCount": 0,
+        "issues": []
+      },
+      "C": {
+        "category": "C",
+        "label": "DOM / Structure",
+        "score": 39.38,
+        "weight": 0.225,
+        "weightedScore": 8.86,
+        "errorCount": 3,
+        "warningCount": 0,
+        "issues": [
+          {
+            "type": "technical",
+            "severity": "error",
+            "source": "compiler",
+            "component": "TypeScript",
+            "message": "TS2322: Type '{ children: string; key: string; value: string; }' is not assignable to type 'IntrinsicAttributes & CheckboxProps & RefAttributes<HTMLLabelElement>'.\n  Property 'children' does not exist on type 'IntrinsicAttributes & CheckboxProps & RefAttributes<HTMLLabelElement>'.",
+            "suggestion": "Fix the TypeScript error reported by the compiler. The exact location is included in the issue location field.",
+            "location": {
+              "file": "TestApp.tsx",
+              "line": 175,
+              "column": 12
+            }
+          },
+          {
+            "type": "technical",
+            "severity": "error",
+            "source": "compiler",
+            "component": "TypeScript",
+            "message": "TS2322: Type '{ children: string; key: string; value: string; }' is not assignable to type 'IntrinsicAttributes & CheckboxProps & RefAttributes<HTMLLabelElement>'.\n  Property 'children' does not exist on type 'IntrinsicAttributes & CheckboxProps & RefAttributes<HTMLLabelElement>'.",
+            "suggestion": "Fix the TypeScript error reported by the compiler. The exact location is included in the issue location field.",
+            "location": {
+              "file": "TestApp.tsx",
+              "line": 196,
+              "column": 12
+            }
+          },
+          {
+            "type": "technical",
+            "severity": "error",
+            "source": "compiler",
+            "component": "TypeScript",
+            "message": "TS2322: Type '{ children: string; isSelected: boolean; onChange: Dispatch<SetStateAction<boolean>>; }' is not assignable to type 'IntrinsicAttributes & SwitchProps & RefAttributes<HTMLLabelElement>'.\n  Property 'children' does not exist on type 'IntrinsicAttributes & SwitchProps & RefAttributes<HTMLLabelElement>'.",
+            "suggestion": "Fix the TypeScript error reported by the compiler. The exact location is included in the issue location field.",
+            "location": {
+              "file": "TestApp.tsx",
+              "line": 204,
+              "column": 8
+            }
+          }
+        ]
+      },
+      "D": {
+        "category": "D",
+        "label": "Spatial & A11y",
+        "score": 0,
+        "weight": 0.225,
+        "weightedScore": 0,
+        "errorCount": 0,
+        "warningCount": 0,
+        "issues": []
+      },
+      "E": {
+        "category": "E",
+        "label": "Functional Completeness",
+        "score": 73.77,
+        "weight": 0.225,
+        "weightedScore": 16.6,
+        "errorCount": 0,
+        "warningCount": 0,
+        "issues": []
+      }
+    },
+    "renderSuccess": false
+  },
+  "efficiency": {
+    "durationMs": 279524,
+    "costUsd": 0.9413935,
+    "inputTokens": 734,
+    "outputTokens": 23951,
+    "cacheReadTokens": 135631,
+    "cacheCreationTokens": 27005,
+    "totalTokens": 24685,
+    "numTurns": 6
+  },
+  "report": {
+    "file": "TestApp.tsx",
+    "errors": [
+      {
+        "type": "technical",
+        "severity": "error",
+        "source": "compiler",
+        "component": "TypeScript",
+        "message": "TS2322: Type '{ children: string; key: string; value: string; }' is not assignable to type 'IntrinsicAttributes & CheckboxProps & RefAttributes<HTMLLabelElement>'.\n  Property 'children' does not exist on type 'IntrinsicAttributes & CheckboxProps & RefAttributes<HTMLLabelElement>'.",
+        "suggestion": "Fix the TypeScript error reported by the compiler. The exact location is included in the issue location field.",
+        "location": {
+          "file": "TestApp.tsx",
+          "line": 175,
+          "column": 12
+        }
+      },
+      {
+        "type": "technical",
+        "severity": "error",
+        "source": "compiler",
+        "component": "TypeScript",
+        "message": "TS2322: Type '{ children: string; key: string; value: string; }' is not assignable to type 'IntrinsicAttributes & CheckboxProps & RefAttributes<HTMLLabelElement>'.\n  Property 'children' does not exist on type 'IntrinsicAttributes & CheckboxProps & RefAttributes<HTMLLabelElement>'.",
+        "suggestion": "Fix the TypeScript error reported by the compiler. The exact location is included in the issue location field.",
+        "location": {
+          "file": "TestApp.tsx",
+          "line": 196,
+          "column": 12
+        }
+      },
+      {
+        "type": "technical",
+        "severity": "error",
+        "source": "compiler",
+        "component": "TypeScript",
+        "message": "TS2322: Type '{ children: string; isSelected: boolean; onChange: Dispatch<SetStateAction<boolean>>; }' is not assignable to type 'IntrinsicAttributes & SwitchProps & RefAttributes<HTMLLabelElement>'.\n  Property 'children' does not exist on type 'IntrinsicAttributes & SwitchProps & RefAttributes<HTMLLabelElement>'.",
+        "suggestion": "Fix the TypeScript error reported by the compiler. The exact location is included in the issue location field.",
+        "location": {
+          "file": "TestApp.tsx",
+          "line": 204,
+          "column": 8
+        }
+      },
+      {
+        "type": "technical",
+        "severity": "error",
+        "source": "prop-validator",
+        "component": "Switch",
+        "message": "Prop \"isSelected\" does not exist on <Switch>.",
+        "suggestion": "Replace \"isSelected\" with \"selected\".",
+        "location": {
+          "file": "TestApp.tsx",
+          "line": 204,
+          "column": 15
+        },
+        "details": {
+          "used": "isSelected",
+          "available": [
+            "variant",
+            "size",
+            "label",
+            "width",
+            "disabled",
+            "readOnly",
+            "selected",
+            "render",
+            "id",
+            "dir",
+            "lang",
+            "hidden",
+            "inert",
+            "translate",
+            "onClick"
+          ]
+        }
+      },
+      {
+        "type": "technical",
+        "severity": "error",
+        "source": "prop-validator",
+        "component": "Tiles",
+        "message": "Prop \"columns\" does not exist on <Tiles>.",
+        "suggestion": "Remove the prop. Available props: space, children, tilesWidth, stretch, equalHeight, role, aria-live, id, aria-label, aria-labelledby, aria-describedby, aria-details.",
+        "location": {
+          "file": "TestApp.tsx",
+          "line": 423,
+          "column": 16
+        },
+        "details": {
+          "used": "columns",
+          "available": [
+            "space",
+            "children",
+            "tilesWidth",
+            "stretch",
+            "equalHeight",
+            "role",
+            "aria-live",
+            "id",
+            "aria-label",
+            "aria-labelledby",
+            "aria-describedby",
+            "aria-details"
+          ]
+        }
+      },
+      {
+        "type": "technical",
+        "severity": "error",
+        "source": "prop-validator",
+        "component": "Button",
+        "message": "Prop \"isDisabled\" does not exist on <Button>.",
+        "suggestion": "Replace \"isDisabled\" with \"disabled\".",
+        "location": {
+          "file": "TestApp.tsx",
+          "line": 433,
+          "column": 19
+        },
+        "details": {
+          "used": "isDisabled",
+          "available": [
+            "variant",
+            "size",
+            "fullWidth",
+            "children",
+            "disabled",
+            "loading",
+            "render",
+            "id",
+            "dir",
+            "lang",
+            "hidden",
+            "inert",
+            "translate",
+            "onClick",
+            "onClickCapture"
+          ]
+        }
+      },
+      {
+        "type": "technical",
+        "severity": "error",
+        "source": "prop-validator",
+        "component": "Inline",
+        "message": "Prop \"align\" does not exist on <Inline>.",
+        "suggestion": "Remove the prop. Available props: space, children, noWrap, alignX, alignY, role, aria-live, id, aria-label, aria-labelledby, aria-describedby, aria-details.",
+        "location": {
+          "file": "TestApp.tsx",
+          "line": 444,
+          "column": 41
+        },
+        "details": {
+          "used": "align",
+          "available": [
+            "space",
+            "children",
+            "noWrap",
+            "alignX",
+            "alignY",
+            "role",
+            "aria-live",
+            "id",
+            "aria-label",
+            "aria-labelledby",
+            "aria-describedby",
+            "aria-details"
+          ]
+        }
+      },
+      {
+        "type": "technical",
+        "severity": "error",
+        "source": "prop-validator",
+        "component": "Button",
+        "message": "Prop \"isDisabled\" does not exist on <Button>.",
+        "suggestion": "Replace \"isDisabled\" with \"disabled\".",
+        "location": {
+          "file": "TestApp.tsx",
+          "line": 447,
+          "column": 11
+        },
+        "details": {
+          "used": "isDisabled",
+          "available": [
+            "variant",
+            "size",
+            "fullWidth",
+            "children",
+            "disabled",
+            "loading",
+            "render",
+            "id",
+            "dir",
+            "lang",
+            "hidden",
+            "inert",
+            "translate",
+            "onClick",
+            "onClickCapture"
+          ]
+        }
+      },
+      {
+        "type": "technical",
+        "severity": "error",
+        "source": "prop-validator",
+        "component": "Button",
+        "message": "Prop \"isDisabled\" does not exist on <Button>.",
+        "suggestion": "Replace \"isDisabled\" with \"disabled\".",
+        "location": {
+          "file": "TestApp.tsx",
+          "line": 455,
+          "column": 11
+        },
+        "details": {
+          "used": "isDisabled",
+          "available": [
+            "variant",
+            "size",
+            "fullWidth",
+            "children",
+            "disabled",
+            "loading",
+            "render",
+            "id",
+            "dir",
+            "lang",
+            "hidden",
+            "inert",
+            "translate",
+            "onClick",
+            "onClickCapture"
+          ]
+        }
+      }
+    ],
+    "warnings": [],
+    "passed": [
+      "Component composition",
+      "Overlay accessible names",
+      "Compound component placement",
+      "Section headers",
+      "Collection item ids",
+      "Design system usage",
+      "Layout usage",
+      "Table usage",
+      "Component conventions",
+      "Theme variant compliance"
+    ],
+    "metadata": {
+      "renderTimeMs": 0,
+      "componentsFound": [],
+      "checksRun": [
+        "technical",
+        "spatial",
+        "a11y"
+      ],
+      "coverage": {
+        "staticValuesChecked": 14,
+        "dynamicValuesSkipped": 15,
+        "spreadPropsBypassed": 0
+      },
+      "widthUtilization": null
+    },
+    "markdown": "marigold-validate: TestApp.tsx — 9 error(s), 0 warning(s)\n\n[error/technical] <Button>: Prop \"isDisabled\" does not exist on <Button>. (TestApp.tsx:433:19)\n  → Replace \"isDisabled\" with \"disabled\".\n  data: {used=isDisabled, available=[\"variant\",\"size\",\"fullWidth\",\"children\",\"disabled\",\"loading\",\"render\",\"id\", …]}\n[error/technical] <Button>: Prop \"isDisabled\" does not exist on <Button>. (TestApp.tsx:447:11)\n  → Replace \"isDisabled\" with \"disabled\".\n  data: {used=isDisabled, available=[\"variant\",\"size\",\"fullWidth\",\"children\",\"disabled\",\"loading\",\"render\",\"id\", …]}\n[error/technical] <Button>: Prop \"isDisabled\" does not exist on <Button>. (TestApp.tsx:455:11)\n  → Replace \"isDisabled\" with \"disabled\".\n  data: {used=isDisabled, available=[\"variant\",\"size\",\"fullWidth\",\"children\",\"disabled\",\"loading\",\"render\",\"id\", …]}\n[error/technical] <Inline>: Prop \"align\" does not exist on <Inline>. (TestApp.tsx:444:41)\n  → Remove the prop. Available props: space, children, noWrap, alignX, alignY, role, aria-live, id, aria-label, aria-labelledby, aria-describedby, aria-details.\n  data: {used=align, available=[\"space\",\"children\",\"noWrap\",\"alignX\",\"alignY\",\"role\",\"aria-live\",\"id\", …]}\n[error/technical] <Switch>: Prop \"isSelected\" does not exist on <Switch>. (TestApp.tsx:204:15)\n  → Replace \"isSelected\" with \"selected\".\n  data: {used=isSelected, available=[\"variant\",\"size\",\"label\",\"width\",\"disabled\",\"readOnly\",\"selected\",\"render\", …]}\n[error/technical] <Tiles>: Prop \"columns\" does not exist on <Tiles>. (TestApp.tsx:423:16)\n  → Remove the prop. Available props: space, children, tilesWidth, stretch, equalHeight, role, aria-live, id, aria-label, aria-labelledby, aria-describedby, aria-details.\n  data: {used=columns, available=[\"space\",\"children\",\"tilesWidth\",\"stretch\",\"equalHeight\",\"role\",\"aria-live\",\"id\", …]}\n[error/technical] <TypeScript>: TS2322: Type '{ children: string; key: string; value: string; }' is not assignable to type 'IntrinsicAttributes & CheckboxProps & RefAttributes<HTMLLabelElement>'.\n  Property 'children' does not exist on type 'IntrinsicAttributes & CheckboxProps & RefAttributes<HTMLLabelElement>'. (TestApp.tsx:175:12)\n  → Fix the TypeScript error reported by the compiler. The exact location is included in the issue location field.\n[error/technical] <TypeScript>: TS2322: Type '{ children: string; key: string; value: string; }' is not assignable to type 'IntrinsicAttributes & CheckboxProps & RefAttributes<HTMLLabelElement>'.\n  Property 'children' does not exist on type 'IntrinsicAttributes & CheckboxProps & RefAttributes<HTMLLabelElement>'. (TestApp.tsx:196:12)\n  → Fix the TypeScript error reported by the compiler. The exact location is included in the issue location field.\n[error/technical] <TypeScript>: TS2322: Type '{ children: string; isSelected: boolean; onChange: Dispatch<SetStateAction<boolean>>; }' is not assignable to type 'IntrinsicAttributes & SwitchProps & RefAttributes<HTMLLabelElement>'.\n  Property 'children' does not exist on type 'IntrinsicAttributes & SwitchProps & RefAttributes<HTMLLabelElement>'. (TestApp.tsx:204:8)\n  → Fix the TypeScript error reported by the compiler. The exact location is included in the issue location field.\n\npassed: Component composition, Overlay accessible names, Compound component placement, Section headers, Collection item ids, Design system usage, Layout usage, Table usage, Component conventions, Theme variant compliance\n\nchecks run: technical, spatial, a11y"
+  },
+  "componentsFound": [],
+  "renderTimeMs": 0,
+  "sourceCode": "import { useMemo, useState } from 'react';\nimport {\n  Badge,\n  Button,\n  Card,\n  Checkbox,\n  CheckboxGroup,\n  Dialog,\n  Divider,\n  Headline,\n  Inline,\n  SearchField,\n  Select,\n  Slider,\n  Stack,\n  Switch,\n  Text,\n  Tiles,\n} from '@marigold/components';\n\ntype Status = 'New' | 'Sale' | 'Sold Out';\n\ninterface Product {\n  id: number;\n  name: string;\n  price: number;\n  category: string;\n  sizes: string[];\n  status: Status;\n  description: string;\n  popularity: number;\n  added: number;\n}\n\nconst CATEGORIES = ['T-Shirts', 'Hoodies', 'Accessories', 'Posters', 'Stickers'];\nconst SIZES = ['XS', 'S', 'M', 'L', 'XL'];\nconst MAX_PRICE = 100;\nconst PAGE_SIZE = 3;\n\nconst SORT_OPTIONS = [\n  { id: 'newest', label: 'Newest' },\n  { id: 'price-asc', label: 'Price: Low to High' },\n  { id: 'price-desc', label: 'Price: High to Low' },\n  { id: 'popular', label: 'Most Popular' },\n];\n\nconst PRODUCTS: Product[] = [\n  {\n    id: 1,\n    name: 'Classic Logo Tee',\n    price: 24.99,\n    category: 'T-Shirts',\n    sizes: ['S', 'M', 'L', 'XL'],\n    status: 'New',\n    description: 'A soft cotton tee featuring our signature embroidered logo.',\n    popularity: 72,\n    added: 8,\n  },\n  {\n    id: 2,\n    name: 'Cozy Pullover Hoodie',\n    price: 49.99,\n    category: 'Hoodies',\n    sizes: ['S', 'M', 'L', 'XL'],\n    status: 'Sale',\n    description: 'Brushed fleece hoodie with a roomy front pocket for chilly days.',\n    popularity: 95,\n    added: 6,\n  },\n  {\n    id: 3,\n    name: 'Enamel Pin Set',\n    price: 12.99,\n    category: 'Accessories',\n    sizes: [],\n    status: 'New',\n    description: 'A collectible set of five hard enamel pins with rubber clutches.',\n    popularity: 40,\n    added: 7,\n  },\n  {\n    id: 4,\n    name: 'Retro Travel Poster',\n    price: 18.0,\n    category: 'Posters',\n    sizes: [],\n    status: 'Sold Out',\n    description: 'Vintage-inspired print on heavy matte stock, ready to frame.',\n    popularity: 33,\n    added: 4,\n  },\n  {\n    id: 5,\n    name: 'Sticker Variety Pack',\n    price: 6.99,\n    category: 'Stickers',\n    sizes: [],\n    status: 'New',\n    description: 'Ten weatherproof vinyl stickers perfect for laptops and bottles.',\n    popularity: 58,\n    added: 5,\n  },\n  {\n    id: 6,\n    name: 'Premium Zip Hoodie',\n    price: 64.99,\n    category: 'Hoodies',\n    sizes: ['XS', 'S', 'M', 'L', 'XL'],\n    status: 'Sale',\n    description: 'Full-zip heavyweight hoodie with a brushed interior and metal pulls.',\n    popularity: 88,\n    added: 3,\n  },\n  {\n    id: 7,\n    name: 'Graphic Art Tee',\n    price: 29.99,\n    category: 'T-Shirts',\n    sizes: ['XS', 'S', 'M', 'L'],\n    status: 'New',\n    description: 'Limited-edition tee with an exclusive screen-printed artwork.',\n    popularity: 64,\n    added: 2,\n  },\n  {\n    id: 8,\n    name: 'Canvas Tote Bag',\n    price: 21.99,\n    category: 'Accessories',\n    sizes: [],\n    status: 'Sold Out',\n    description: 'Durable organic-canvas tote with reinforced shoulder straps.',\n    popularity: 51,\n    added: 1,\n  },\n];\n\ninterface AppliedFilters {\n  categories: string[];\n  sizes: string[];\n  maxPrice: number;\n  inStock: boolean;\n}\n\nconst DEFAULT_FILTERS: AppliedFilters = {\n  categories: [],\n  sizes: [],\n  maxPrice: MAX_PRICE,\n  inStock: false,\n};\n\ninterface FilterPanelProps {\n  applied: AppliedFilters;\n  onApply: (filters: AppliedFilters) => void;\n  onReset: () => void;\n  close: () => void;\n}\n\nconst FilterPanel = ({ applied, onApply, onReset, close }: FilterPanelProps) => {\n  const [categories, setCategories] = useState<string[]>(applied.categories);\n  const [sizes, setSizes] = useState<string[]>(applied.sizes);\n  const [maxPrice, setMaxPrice] = useState<number>(applied.maxPrice);\n  const [inStock, setInStock] = useState<boolean>(applied.inStock);\n\n  return (\n    <Stack space={6}>\n      <Headline level={2}>Filters</Headline>\n\n      <CheckboxGroup\n        label=\"Category\"\n        value={categories}\n        onChange={setCategories}\n      >\n        {CATEGORIES.map((c) => (\n          <Checkbox key={c} value={c}>\n            {c}\n          </Checkbox>\n        ))}\n      </CheckboxGroup>\n\n      <Divider />\n\n      <Slider\n        label=\"Price range\"\n        minValue={0}\n        maxValue={MAX_PRICE}\n        value={maxPrice}\n        onChange={(value) => setMaxPrice(value as number)}\n        formatOptions={{ style: 'currency', currency: 'USD' }}\n      />\n\n      <Divider />\n\n      <CheckboxGroup label=\"Size\" value={sizes} onChange={setSizes}>\n        {SIZES.map((s) => (\n          <Checkbox key={s} value={s}>\n            {s}\n          </Checkbox>\n        ))}\n      </CheckboxGroup>\n\n      <Divider />\n\n      <Switch isSelected={inStock} onChange={setInStock}>\n        In stock only\n      </Switch>\n\n      <Inline space={4}>\n        <Button\n          variant=\"primary\"\n          onPress={() => {\n            onApply({ categories, sizes, maxPrice, inStock });\n            close();\n          }}\n        >\n          Apply Filters\n        </Button>\n        <Button\n          variant=\"secondary\"\n          onPress={() => {\n            setCategories([]);\n            setSizes([]);\n            setMaxPrice(MAX_PRICE);\n            setInStock(false);\n            onReset();\n          }}\n        >\n          Reset\n        </Button>\n      </Inline>\n    </Stack>\n  );\n};\n\nconst TestApp = () => {\n  const [search, setSearch] = useState('');\n  const [sort, setSort] = useState<string>('newest');\n  const [applied, setApplied] = useState<AppliedFilters>(DEFAULT_FILTERS);\n  const [page, setPage] = useState(1);\n  const [cart, setCart] = useState(0);\n\n  const updateSearch = (value: string) => {\n    setSearch(value);\n    setPage(1);\n  };\n\n  const updateSort = (key: string) => {\n    setSort(key);\n    setPage(1);\n  };\n\n  const applyFilters = (filters: AppliedFilters) => {\n    setApplied(filters);\n    setPage(1);\n  };\n\n  const resetFilters = () => {\n    setApplied(DEFAULT_FILTERS);\n    setPage(1);\n  };\n\n  const clearAll = () => {\n    setSearch('');\n    setApplied(DEFAULT_FILTERS);\n    setPage(1);\n  };\n\n  const filtered = useMemo(() => {\n    const query = search.trim().toLowerCase();\n    const list = PRODUCTS.filter((p) => {\n      if (query && !p.name.toLowerCase().includes(query)) return false;\n      if (applied.categories.length && !applied.categories.includes(p.category))\n        return false;\n      if (\n        applied.sizes.length &&\n        !applied.sizes.some((s) => p.sizes.includes(s))\n      )\n        return false;\n      if (p.price > applied.maxPrice) return false;\n      if (applied.inStock && p.status === 'Sold Out') return false;\n      return true;\n    });\n\n    return list.sort((a, b) => {\n      switch (sort) {\n        case 'price-asc':\n          return a.price - b.price;\n        case 'price-desc':\n          return b.price - a.price;\n        case 'popular':\n          return b.popularity - a.popularity;\n        default:\n          return b.added - a.added;\n      }\n    });\n  }, [search, sort, applied]);\n\n  const totalPages = Math.max(1, Math.ceil(filtered.length / PAGE_SIZE));\n  const currentPage = Math.min(page, totalPages);\n  const pageItems = filtered.slice(\n    (currentPage - 1) * PAGE_SIZE,\n    currentPage * PAGE_SIZE\n  );\n\n  const chips: { key: string; label: string; clear: () => void }[] = [];\n  if (search.trim()) {\n    chips.push({\n      key: 'search',\n      label: `Search: \"${search.trim()}\"`,\n      clear: () => updateSearch(''),\n    });\n  }\n  applied.categories.forEach((c) =>\n    chips.push({\n      key: `cat-${c}`,\n      label: `Category: ${c}`,\n      clear: () =>\n        applyFilters({\n          ...applied,\n          categories: applied.categories.filter((x) => x !== c),\n        }),\n    })\n  );\n  applied.sizes.forEach((s) =>\n    chips.push({\n      key: `size-${s}`,\n      label: `Size: ${s}`,\n      clear: () =>\n        applyFilters({\n          ...applied,\n          sizes: applied.sizes.filter((x) => x !== s),\n        }),\n    })\n  );\n  if (applied.maxPrice < MAX_PRICE) {\n    chips.push({\n      key: 'price',\n      label: `Max price: $${applied.maxPrice}`,\n      clear: () => applyFilters({ ...applied, maxPrice: MAX_PRICE }),\n    });\n  }\n  if (applied.inStock) {\n    chips.push({\n      key: 'instock',\n      label: 'In stock only',\n      clear: () => applyFilters({ ...applied, inStock: false }),\n    });\n  }\n\n  return (\n    <Stack space={8}>\n      <Stack space={2}>\n        <Inline space={4} alignY=\"center\">\n          <Headline level={1}>Merchandise Store</Headline>\n          <Badge>{`Cart: ${cart}`}</Badge>\n        </Inline>\n        <Text>Browse our collection of branded merchandise.</Text>\n      </Stack>\n\n      <Inline space={4} alignY=\"bottom\">\n        <SearchField\n          label=\"Search\"\n          placeholder=\"Search products by name\"\n          value={search}\n          onChange={updateSearch}\n        />\n        <Select\n          label=\"Sort by\"\n          selectedKey={sort}\n          onSelectionChange={(key) => updateSort(String(key))}\n        >\n          {SORT_OPTIONS.map((option) => (\n            <Select.Option key={option.id} id={option.id}>\n              {option.label}\n            </Select.Option>\n          ))}\n        </Select>\n        <Dialog.Trigger>\n          <Button variant=\"secondary\">Filters</Button>\n          <Dialog aria-label=\"Product filters\" closeButton>\n            {({ close }) => (\n              <FilterPanel\n                applied={applied}\n                onApply={applyFilters}\n                onReset={resetFilters}\n                close={close}\n              />\n            )}\n          </Dialog>\n        </Dialog.Trigger>\n      </Inline>\n\n      <Inline space={3} alignY=\"center\">\n        {chips.length === 0 ? (\n          <Text>No filters applied</Text>\n        ) : (\n          <>\n            {chips.map((chip) => (\n              <Button\n                key={chip.key}\n                variant=\"secondary\"\n                onPress={chip.clear}\n              >\n                {`${chip.label}  ✕`}\n              </Button>\n            ))}\n            <Button variant=\"text\" onPress={clearAll}>\n              Clear all\n            </Button>\n          </>\n        )}\n      </Inline>\n\n      {pageItems.length === 0 ? (\n        <Stack space={4} alignX=\"center\">\n          <Headline level={2}>No products found</Headline>\n          <Text>Try adjusting your filters or search query.</Text>\n          <Button variant=\"primary\" onPress={clearAll}>\n            Clear all filters\n          </Button>\n        </Stack>\n      ) : (\n        <Tiles columns={[1, 2, 4]} space={6}>\n          {pageItems.map((product) => (\n            <Card key={product.id}>\n              <Stack space={3}>\n                <Badge>{product.status}</Badge>\n                <Headline level={3}>{product.name}</Headline>\n                <Text>{product.description}</Text>\n                <Text>{`$${product.price.toFixed(2)}`}</Text>\n                <Button\n                  variant=\"primary\"\n                  isDisabled={product.status === 'Sold Out'}\n                  onPress={() => setCart((c) => c + 1)}\n                >\n                  Add to Cart\n                </Button>\n              </Stack>\n            </Card>\n          ))}\n        </Tiles>\n      )}\n\n      <Inline space={4} alignY=\"center\" align=\"center\">\n        <Button\n          variant=\"secondary\"\n          isDisabled={currentPage === 1}\n          onPress={() => setPage((p) => Math.max(1, p - 1))}\n        >\n          Previous\n        </Button>\n        <Text>{`Page ${currentPage} of ${totalPages}`}</Text>\n        <Button\n          variant=\"secondary\"\n          isDisabled={currentPage === totalPages}\n          onPress={() => setPage((p) => Math.min(totalPages, p + 1))}\n        >\n          Next\n        </Button>\n      </Inline>\n    </Stack>\n  );\n};\n\nexport default TestApp;\n",
+  "assertions": {
+    "passed": [
+      {
+        "id": "a-import-marigold",
+        "description": "Imports from @marigold/components",
+        "severity": "required",
+        "passed": true,
+        "evidence": "import from \"@marigold/components\" found"
+      },
+      {
+        "id": "a-search",
+        "description": "SearchField for product search",
+        "severity": "required",
+        "passed": true,
+        "evidence": "<SearchField> found"
+      },
+      {
+        "id": "a-checkbox",
+        "description": "Checkbox for filter options",
+        "severity": "required",
+        "passed": true,
+        "evidence": "matched: <Checkbox> found; <CheckboxGroup> found"
+      },
+      {
+        "id": "a-slider",
+        "description": "Slider for price range",
+        "severity": "required",
+        "passed": true,
+        "evidence": "<Slider> found"
+      },
+      {
+        "id": "a-switch",
+        "description": "Switch for availability filter",
+        "severity": "required",
+        "passed": true,
+        "evidence": "<Switch> found"
+      },
+      {
+        "id": "a-card",
+        "description": "Card for product display",
+        "severity": "required",
+        "passed": true,
+        "evidence": "<Card> found"
+      },
+      {
+        "id": "a-badge",
+        "description": "Badge for product status",
+        "severity": "required",
+        "passed": true,
+        "evidence": "<Badge> found"
+      },
+      {
+        "id": "a-button",
+        "description": "Button for add to cart",
+        "severity": "required",
+        "passed": true,
+        "evidence": "<Button> found"
+      },
+      {
+        "id": "a-tiles",
+        "description": "Tiles layout for product grid",
+        "severity": "required",
+        "passed": true,
+        "evidence": "<Tiles> found"
+      },
+      {
+        "id": "a-headline",
+        "description": "Headline for page title",
+        "severity": "required",
+        "passed": true,
+        "evidence": "<Headline> found"
+      },
+      {
+        "id": "a-select",
+        "description": "Select for sort dropdown",
+        "severity": "required",
+        "passed": true,
+        "evidence": "<Select> found"
+      },
+      {
+        "id": "a-no-onclick-on-marigold",
+        "description": "No onClick on Marigold Button",
+        "severity": "recommended",
+        "passed": true,
+        "evidence": "\"/<Button[^>]*onClick/\" correctly absent"
+      }
+    ],
+    "failed": [
+      {
+        "id": "a-drawer",
+        "description": "Drawer for filter panel",
+        "severity": "required",
+        "passed": false,
+        "evidence": "<Drawer> not found"
+      },
+      {
+        "id": "a-tag-group",
+        "description": "Tag.Group for applied filters",
+        "severity": "required",
+        "passed": false,
+        "evidence": "none matched: <Tag> not found; <TagGroup> not found"
+      },
+      {
+        "id": "a-pagination",
+        "description": "Pagination component",
+        "severity": "required",
+        "passed": false,
+        "evidence": "<Pagination> not found"
+      },
+      {
+        "id": "a-empty-state",
+        "description": "EmptyState when no products match",
+        "severity": "required",
+        "passed": false,
+        "evidence": "<EmptyState> not found"
+      }
+    ],
+    "passRate": 0.75,
+    "requiredPassRate": 0.7333,
+    "weightedPassRate": 0.7377,
+    "total": 16
+  },
+  "validatePackageVersion": "0.0.1",
+  "playwrightVersion": null,
+  "resolvedModelId": "claude-opus-4-8",
+  "claudeCliVersion": "2.1.185 (Claude Code)",
+  "sessionId": "20077d5d-8762-489a-a566-a220264c5f2a"
+}

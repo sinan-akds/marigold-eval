@@ -1,0 +1,326 @@
+{
+  "runId": "haiku-mcp-stack-P-04-r3",
+  "promptId": "P-04",
+  "model": "haiku",
+  "config": "mcp-stack",
+  "timestamp": "2026-06-23T05:57:41.665Z",
+  "quality": {
+    "overall": 92.35,
+    "categories": {
+      "A": {
+        "category": "A",
+        "label": "Design System API",
+        "score": 100,
+        "weight": 0.225,
+        "weightedScore": 22.5,
+        "errorCount": 0,
+        "warningCount": 0,
+        "issues": []
+      },
+      "B": {
+        "category": "B",
+        "label": "Token Compliance",
+        "score": 100,
+        "weight": 0.1,
+        "weightedScore": 10,
+        "errorCount": 0,
+        "warningCount": 0,
+        "issues": []
+      },
+      "C": {
+        "category": "C",
+        "label": "DOM / Structure",
+        "score": 100,
+        "weight": 0.225,
+        "weightedScore": 22.5,
+        "errorCount": 0,
+        "warningCount": 0,
+        "issues": []
+      },
+      "D": {
+        "category": "D",
+        "label": "Spatial & A11y",
+        "score": 75.51,
+        "weight": 0.225,
+        "weightedScore": 16.99,
+        "errorCount": 0,
+        "warningCount": 3,
+        "issues": [
+          {
+            "type": "a11y",
+            "severity": "warning",
+            "source": "aom-extractor",
+            "component": "html",
+            "message": "Document should have one main landmark (landmark-one-main)",
+            "suggestion": "Wrap your page content in `<AppLayout>` with `<AppLayout.Main>` to provide a `<main>` landmark. Import AppLayout from `@marigold/components`.",
+            "details": {
+              "ruleId": "landmark-one-main",
+              "impact": "moderate",
+              "target": [
+                "html"
+              ],
+              "html": "<html lang=\"en\" data-theme=\"rui\">",
+              "scope": "page"
+            }
+          },
+          {
+            "type": "a11y",
+            "severity": "warning",
+            "source": "aom-extractor",
+            "component": "page",
+            "message": "All page content should be contained by landmarks — 13 elements affected (region)",
+            "suggestion": "All page content must be inside a landmark region. Use `<AppLayout>` with `<AppLayout.Main>` for the main area, `<TopNavigation>` for the header (`<header>`), and `<Sidebar>` for side navigation (`<aside>`). Import from `@marigold/components`.",
+            "details": {
+              "ruleId": "region",
+              "impact": "moderate",
+              "affectedCount": 13,
+              "scope": "page"
+            }
+          },
+          {
+            "type": "a11y",
+            "severity": "warning",
+            "source": "keyboard-a11y",
+            "component": "input",
+            "message": "Component order inconsistency: Tab moved from <input> at (396, 508) to <input> at (0, 342).",
+            "suggestion": "Reorder components in JSX to match the visual layout, or use Marigold layout components (Stack, Columns) to control both visual and DOM order.",
+            "details": {
+              "from": {
+                "component": "input",
+                "x": 396,
+                "y": 508
+              },
+              "to": {
+                "component": "input",
+                "x": 0,
+                "y": 342
+              },
+              "scope": "page"
+            }
+          }
+        ]
+      },
+      "E": {
+        "category": "E",
+        "label": "Functional Completeness",
+        "score": 90.48,
+        "weight": 0.225,
+        "weightedScore": 20.36,
+        "errorCount": 0,
+        "warningCount": 0,
+        "issues": []
+      }
+    },
+    "renderSuccess": true
+  },
+  "efficiency": {
+    "durationMs": 202259,
+    "costUsd": 0.3642953,
+    "inputTokens": 87,
+    "outputTokens": 7271,
+    "cacheReadTokens": 1137953,
+    "cacheCreationTokens": 106545,
+    "totalTokens": 7358,
+    "numTurns": 33
+  },
+  "report": {
+    "file": "TestApp.tsx",
+    "errors": [],
+    "warnings": [
+      {
+        "type": "a11y",
+        "severity": "warning",
+        "source": "aom-extractor",
+        "component": "html",
+        "message": "Document should have one main landmark (landmark-one-main)",
+        "suggestion": "Wrap your page content in `<AppLayout>` with `<AppLayout.Main>` to provide a `<main>` landmark. Import AppLayout from `@marigold/components`.",
+        "details": {
+          "ruleId": "landmark-one-main",
+          "impact": "moderate",
+          "target": [
+            "html"
+          ],
+          "html": "<html lang=\"en\" data-theme=\"rui\">",
+          "scope": "page"
+        }
+      },
+      {
+        "type": "a11y",
+        "severity": "warning",
+        "source": "aom-extractor",
+        "component": "page",
+        "message": "All page content should be contained by landmarks — 13 elements affected (region)",
+        "suggestion": "All page content must be inside a landmark region. Use `<AppLayout>` with `<AppLayout.Main>` for the main area, `<TopNavigation>` for the header (`<header>`), and `<Sidebar>` for side navigation (`<aside>`). Import from `@marigold/components`.",
+        "details": {
+          "ruleId": "region",
+          "impact": "moderate",
+          "affectedCount": 13,
+          "scope": "page"
+        }
+      },
+      {
+        "type": "a11y",
+        "severity": "warning",
+        "source": "keyboard-a11y",
+        "component": "input",
+        "message": "Component order inconsistency: Tab moved from <input> at (396, 508) to <input> at (0, 342).",
+        "suggestion": "Reorder components in JSX to match the visual layout, or use Marigold layout components (Stack, Columns) to control both visual and DOM order.",
+        "details": {
+          "from": {
+            "component": "input",
+            "x": 396,
+            "y": 508
+          },
+          "to": {
+            "component": "input",
+            "x": 0,
+            "y": 342
+          },
+          "scope": "page"
+        }
+      }
+    ],
+    "passed": [
+      "TypeScript compilation",
+      "All Marigold props are valid",
+      "Component composition",
+      "Overlay accessible names",
+      "Compound component placement",
+      "Section headers",
+      "Collection item ids",
+      "Design system usage",
+      "Layout usage",
+      "Table usage",
+      "Component conventions",
+      "Theme variant compliance",
+      "No overlapping components detected",
+      "Responsive layout"
+    ],
+    "metadata": {
+      "renderTimeMs": 1966,
+      "componentsFound": [
+        "div",
+        "button",
+        "input"
+      ],
+      "checksRun": [
+        "technical",
+        "spatial",
+        "a11y"
+      ],
+      "coverage": {
+        "staticValuesChecked": 58,
+        "dynamicValuesSkipped": 0,
+        "spreadPropsBypassed": 0
+      },
+      "widthUtilization": 0.7359375
+    },
+    "markdown": "marigold-validate: TestApp.tsx — 0 error(s), 3 warning(s)\n\n[warning/a11y] <html>: Document should have one main landmark (landmark-one-main)\n  → Wrap your page content in `<AppLayout>` with `<AppLayout.Main>` to provide a `<main>` landmark. Import AppLayout from `@marigold/components`.\n  data: {ruleId=landmark-one-main, impact=moderate, target=[\"html\"], html=<html lang=\"en\" data-theme=\"rui\">, scope=page}\n[warning/a11y] <input>: Component order inconsistency: Tab moved from <input> at (396, 508) to <input> at (0, 342).\n  → Reorder components in JSX to match the visual layout, or use Marigold layout components (Stack, Columns) to control both visual and DOM order.\n  data: {from={\"component\":\"input\",\"x\":396,\"y\":508}, to={\"component\":\"input\",\"x\":0,\"y\":342}, scope=page}\n[warning/a11y] <page>: All page content should be contained by landmarks — 13 elements affected (region)\n  → All page content must be inside a landmark region. Use `<AppLayout>` with `<AppLayout.Main>` for the main area, `<TopNavigation>` for the header (`<header>`), and `<Sidebar>` for side navigation (`<aside>`). Import from `@marigold/components`.\n  data: {ruleId=region, impact=moderate, affectedCount=13, scope=page}\n\npassed: TypeScript compilation, All Marigold props are valid, Component composition, Overlay accessible names, Compound component placement, Section headers, Collection item ids, Design system usage, Layout usage, Table usage, Component conventions, Theme variant compliance, No overlapping components detected, Responsive layout\n\nchecks run: technical, spatial, a11y"
+  },
+  "componentsFound": [
+    "div",
+    "button",
+    "input"
+  ],
+  "renderTimeMs": 1966,
+  "sourceCode": "import { useState } from 'react';\nimport {\n  Button,\n  Card,\n  Headline,\n  Inline,\n  NumberField,\n  SectionMessage,\n  Stack,\n  Text,\n  TextField,\n} from '@marigold/components';\n\nconst TestApp = () => {\n  const [earlyBirdQty, setEarlyBirdQty] = useState(0);\n  const [regularQty, setRegularQty] = useState(0);\n  const [vipQty, setVipQty] = useState(0);\n\n  const [fullName, setFullName] = useState('');\n  const [email, setEmail] = useState('');\n  const [phone, setPhone] = useState('');\n\n  const [feedback, setFeedback] = useState<{\n    type: 'success' | 'error' | null;\n    message: string;\n  }>({ type: null, message: '' });\n\n  const EARLY_BIRD_PRICE = 49;\n  const REGULAR_PRICE = 79;\n  const VIP_PRICE = 149;\n\n  const earlyBirdSubtotal = earlyBirdQty * EARLY_BIRD_PRICE;\n  const regularSubtotal = regularQty * REGULAR_PRICE;\n  const vipSubtotal = vipQty * VIP_PRICE;\n  const grandTotal = earlyBirdSubtotal + regularSubtotal + vipSubtotal;\n\n  const totalTickets = earlyBirdQty + regularQty + vipQty;\n\n  const isValidEmail = (value: string) => {\n    return /^[^\\s@]+@[^\\s@]+\\.[^\\s@]+$/.test(value);\n  };\n\n  const handlePurchase = () => {\n    let errors: string[] = [];\n\n    if (totalTickets === 0) {\n      errors.push('Please select at least one ticket.');\n    }\n    if (!fullName.trim()) {\n      errors.push('Full Name is required.');\n    }\n    if (!email.trim()) {\n      errors.push('Email is required.');\n    } else if (!isValidEmail(email)) {\n      errors.push('Please enter a valid email address.');\n    }\n\n    if (errors.length > 0) {\n      setFeedback({\n        type: 'error',\n        message: errors.join(' '),\n      });\n      return;\n    }\n\n    setFeedback({\n      type: 'success',\n      message: `Order confirmed! ${totalTickets} ticket(s) for ${fullName}. A confirmation email has been sent to ${email}.`,\n    });\n\n    setEarlyBirdQty(0);\n    setRegularQty(0);\n    setVipQty(0);\n    setFullName('');\n    setEmail('');\n    setPhone('');\n  };\n\n  return (\n    <Stack space=\"section\">\n      {/* Event Header */}\n      <Stack space=\"regular\">\n        <Headline level=\"1\">Summer Music Festival 2026</Headline>\n        <Inline space=\"group\">\n          <Text weight=\"bold\">July 15-17, 2026</Text>\n          <Text>•</Text>\n          <Text weight=\"bold\">Stadtpark Freiburg</Text>\n        </Inline>\n        <Text>Three days of live music featuring local and international artists.</Text>\n      </Stack>\n\n      {/* Ticket Categories */}\n      <Stack space=\"group\">\n        <Headline level=\"2\">Select Your Tickets</Headline>\n        <Inline space=\"group\">\n          {/* Early Bird Card */}\n          <Card>\n            <Stack space=\"group\" alignX=\"stretch\">\n              <Stack space=\"tight\">\n                <Headline level=\"3\">Early Bird</Headline>\n                <Text size=\"lg\" weight=\"bold\">\n                  $49\n                </Text>\n                <Text size=\"sm\">Limited offer</Text>\n                <Text variant=\"muted\" size=\"sm\">\n                  Only 12 left\n                </Text>\n              </Stack>\n              <NumberField\n                label=\"Quantity\"\n                value={earlyBirdQty}\n                onChange={setEarlyBirdQty}\n                minValue={0}\n                maxValue={12}\n                width=\"1/3\"\n              />\n            </Stack>\n          </Card>\n\n          {/* Regular Card */}\n          <Card>\n            <Stack space=\"group\" alignX=\"stretch\">\n              <Stack space=\"tight\">\n                <Headline level=\"3\">Regular</Headline>\n                <Text size=\"lg\" weight=\"bold\">\n                  $79\n                </Text>\n                <Text size=\"sm\">Standard admission</Text>\n                <Text variant=\"muted\" size=\"sm\">\n                  Available\n                </Text>\n              </Stack>\n              <NumberField\n                label=\"Quantity\"\n                value={regularQty}\n                onChange={setRegularQty}\n                minValue={0}\n                width=\"1/3\"\n              />\n            </Stack>\n          </Card>\n\n          {/* VIP Card */}\n          <Card>\n            <Stack space=\"group\" alignX=\"stretch\">\n              <Stack space=\"tight\">\n                <Headline level=\"3\">VIP</Headline>\n                <Text size=\"lg\" weight=\"bold\">\n                  $149\n                </Text>\n                <Text size=\"sm\" color=\"destructive\" weight=\"bold\">\n                  Sold Out\n                </Text>\n              </Stack>\n              <NumberField\n                label=\"Quantity\"\n                value={vipQty}\n                onChange={setVipQty}\n                minValue={0}\n                disabled\n              />\n            </Stack>\n          </Card>\n        </Inline>\n      </Stack>\n\n      {/* Buyer Information Form */}\n      <Stack space=\"group\">\n        <Headline level=\"2\">Buyer Information</Headline>\n        <Stack space=\"regular\">\n          <TextField\n            label=\"Full Name\"\n            value={fullName}\n            onChange={setFullName}\n            required\n          />\n          <TextField\n            label=\"Email\"\n            type=\"email\"\n            value={email}\n            onChange={setEmail}\n            required\n          />\n          <TextField\n            label=\"Phone Number\"\n            value={phone}\n            onChange={setPhone}\n          />\n        </Stack>\n      </Stack>\n\n      {/* Order Summary */}\n      <Stack space=\"group\">\n        <Headline level=\"2\">Order Summary</Headline>\n        <Card>\n          <Stack space=\"regular\">\n            {earlyBirdQty > 0 && (\n              <Inline alignX=\"between\">\n                <Text>\n                  Early Bird × {earlyBirdQty}\n                </Text>\n                <Text weight=\"bold\">\n                  ${earlyBirdSubtotal}\n                </Text>\n              </Inline>\n            )}\n            {regularQty > 0 && (\n              <Inline alignX=\"between\">\n                <Text>\n                  Regular × {regularQty}\n                </Text>\n                <Text weight=\"bold\">\n                  ${regularSubtotal}\n                </Text>\n              </Inline>\n            )}\n            {vipQty > 0 && (\n              <Inline alignX=\"between\">\n                <Text>\n                  VIP × {vipQty}\n                </Text>\n                <Text weight=\"bold\">\n                  ${vipSubtotal}\n                </Text>\n              </Inline>\n            )}\n            {totalTickets === 0 && (\n              <Text variant=\"muted\" size=\"sm\">\n                No tickets selected\n              </Text>\n            )}\n            <Inline alignX=\"between\">\n              <Text size=\"lg\" weight=\"bold\">\n                Grand Total:\n              </Text>\n              <Text size=\"lg\" weight=\"bold\">\n                ${grandTotal}\n              </Text>\n            </Inline>\n          </Stack>\n        </Card>\n      </Stack>\n\n      {/* Feedback Messages */}\n      {feedback.type === 'error' && (\n        <SectionMessage>\n          <SectionMessage.Title>Purchase Could Not Be Completed</SectionMessage.Title>\n          <SectionMessage.Content>\n            <Text>{feedback.message}</Text>\n          </SectionMessage.Content>\n        </SectionMessage>\n      )}\n\n      {feedback.type === 'success' && (\n        <SectionMessage>\n          <SectionMessage.Title>Order Confirmed!</SectionMessage.Title>\n          <SectionMessage.Content>\n            <Text>{feedback.message}</Text>\n          </SectionMessage.Content>\n        </SectionMessage>\n      )}\n\n      {/* Purchase Button */}\n      <Button variant=\"primary\" onPress={handlePurchase} fullWidth>\n        Purchase Tickets\n      </Button>\n    </Stack>\n  );\n};\n\nexport default TestApp;\n",
+  "assertions": {
+    "passed": [
+      {
+        "id": "a-import-marigold",
+        "description": "Imports from @marigold/components",
+        "severity": "required",
+        "passed": true,
+        "evidence": "import from \"@marigold/components\" found"
+      },
+      {
+        "id": "a-has-button",
+        "description": "Button component present",
+        "severity": "required",
+        "passed": true,
+        "evidence": "<Button> found"
+      },
+      {
+        "id": "a-has-form-input",
+        "description": "Uses at least one form input component",
+        "severity": "required",
+        "passed": true,
+        "evidence": "matched: <TextField> found; <NumberField> found"
+      },
+      {
+        "id": "a-has-layout-primitive",
+        "description": "Uses at least one layout component",
+        "severity": "required",
+        "passed": true,
+        "evidence": "matched: <Stack> found; <Card> found; <Inline> found"
+      },
+      {
+        "id": "a-price-indicator",
+        "description": "Shows pricing information",
+        "severity": "recommended",
+        "passed": true,
+        "evidence": "pattern \"/\\$|€|price|cost|total|amount/i\" found"
+      },
+      {
+        "id": "a-has-quantity-mechanism",
+        "description": "Has a mechanism for selecting ticket quantity",
+        "severity": "required",
+        "passed": true,
+        "evidence": "matched: <NumberField> found; pattern \"/quantity|qty|amount|count|tickets?\\s*:/i\" found"
+      },
+      {
+        "id": "a-has-feedback-mechanism",
+        "description": "Has user feedback mechanism",
+        "severity": "required",
+        "passed": true,
+        "evidence": "matched: <SectionMessage> found; pattern \"/error|success|confirm/i\" found"
+      },
+      {
+        "id": "a-no-onclick-on-marigold",
+        "description": "No onClick on Marigold Button components",
+        "severity": "recommended",
+        "passed": true,
+        "evidence": "\"/<Button[^>]*onClick/\" correctly absent"
+      },
+      {
+        "id": "a-has-headline",
+        "description": "Headline for event name",
+        "severity": "required",
+        "passed": true,
+        "evidence": "<Headline> found"
+      },
+      {
+        "id": "a-sold-out-state",
+        "description": "Sold-out state indicated",
+        "severity": "required",
+        "passed": true,
+        "evidence": "matched: pattern \"/sold.?out|unavailable|disabled/i\" found"
+      },
+      {
+        "id": "a-card",
+        "description": "Ticket category cards",
+        "severity": "required",
+        "passed": true,
+        "evidence": "<Card> found"
+      }
+    ],
+    "failed": [
+      {
+        "id": "a-has-form",
+        "description": "Form component wrapping buyer info",
+        "severity": "required",
+        "passed": false,
+        "evidence": "<Form> not found"
+      }
+    ],
+    "passRate": 0.9167,
+    "requiredPassRate": 0.9,
+    "weightedPassRate": 0.9048,
+    "total": 12
+  },
+  "validatePackageVersion": "0.0.1",
+  "playwrightVersion": null,
+  "resolvedModelId": "claude-haiku-4-5",
+  "claudeCliVersion": "2.1.185 (Claude Code)",
+  "sessionId": "ebd09d68-03c5-44c4-b258-e8f7be875c83"
+}

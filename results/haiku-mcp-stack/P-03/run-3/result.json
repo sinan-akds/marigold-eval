@@ -1,0 +1,399 @@
+{
+  "runId": "haiku-mcp-stack-P-03-r3",
+  "promptId": "P-03",
+  "model": "haiku",
+  "config": "mcp-stack",
+  "timestamp": "2026-06-22T14:34:10.635Z",
+  "quality": {
+    "overall": 86.7,
+    "categories": {
+      "A": {
+        "category": "A",
+        "label": "Design System API",
+        "score": 85.86,
+        "weight": 0.225,
+        "weightedScore": 19.32,
+        "errorCount": 0,
+        "warningCount": 1,
+        "issues": [
+          {
+            "type": "technical",
+            "severity": "warning",
+            "source": "design-system-usage",
+            "component": "nav",
+            "message": "Raw <nav> used instead of a Marigold component.",
+            "suggestion": "Raw <nav> used instead of a Marigold navigation component. Search the Marigold docs for navigation alternatives.",
+            "location": {
+              "file": "TestApp.tsx",
+              "line": 21,
+              "column": 7
+            },
+            "details": {
+              "htmlElement": "nav"
+            }
+          }
+        ]
+      },
+      "B": {
+        "category": "B",
+        "label": "Token Compliance",
+        "score": 100,
+        "weight": 0.1,
+        "weightedScore": 10,
+        "errorCount": 0,
+        "warningCount": 0,
+        "issues": []
+      },
+      "C": {
+        "category": "C",
+        "label": "DOM / Structure",
+        "score": 100,
+        "weight": 0.225,
+        "weightedScore": 22.5,
+        "errorCount": 0,
+        "warningCount": 0,
+        "issues": []
+      },
+      "D": {
+        "category": "D",
+        "label": "Spatial & A11y",
+        "score": 71.72,
+        "weight": 0.225,
+        "weightedScore": 16.14,
+        "errorCount": 0,
+        "warningCount": 4,
+        "issues": [
+          {
+            "type": "a11y",
+            "severity": "warning",
+            "source": "aom-extractor",
+            "component": ".flex-wrap.gap-\\(--space\\).items-center > .max-w-\\(--maxTextWidth\\):nth-child(3)",
+            "message": "Elements must meet minimum color contrast ratio thresholds (color-contrast)",
+            "suggestion": "Use Marigold theme tokens for colors instead of custom CSS values. Components styled through the theme automatically meet contrast requirements. Avoid overriding colors with `className` or inline `style`.",
+            "details": {
+              "ruleId": "color-contrast",
+              "impact": "serious",
+              "target": [
+                ".flex-wrap.gap-\\(--space\\).items-center > .max-w-\\(--maxTextWidth\\):nth-child(3)"
+              ],
+              "html": "<div class=\"max-w-(--maxTextWidth)\" style=\"color: var(--color-muted, muted);\">Published May 15, 2026</div>",
+              "scope": "page"
+            }
+          },
+          {
+            "type": "a11y",
+            "severity": "warning",
+            "source": "aom-extractor",
+            "component": "html",
+            "message": "Document should have one main landmark (landmark-one-main)",
+            "suggestion": "Wrap your page content in `<AppLayout>` with `<AppLayout.Main>` to provide a `<main>` landmark. Import AppLayout from `@marigold/components`.",
+            "details": {
+              "ruleId": "landmark-one-main",
+              "impact": "moderate",
+              "target": [
+                "html"
+              ],
+              "html": "<html lang=\"en\" data-theme=\"rui\">",
+              "scope": "page"
+            }
+          },
+          {
+            "type": "a11y",
+            "severity": "warning",
+            "source": "aom-extractor",
+            "component": "page",
+            "message": "All page content should be contained by landmarks — 9 elements affected (region)",
+            "suggestion": "All page content must be inside a landmark region. Use `<AppLayout>` with `<AppLayout.Main>` for the main area, `<TopNavigation>` for the header (`<header>`), and `<Sidebar>` for side navigation (`<aside>`). Import from `@marigold/components`.",
+            "details": {
+              "ruleId": "region",
+              "impact": "moderate",
+              "affectedCount": 9,
+              "scope": "page"
+            }
+          },
+          {
+            "type": "a11y",
+            "severity": "warning",
+            "source": "keyboard-a11y",
+            "component": "button",
+            "message": "Interactive element <button> (button) is not reachable via Tab key.",
+            "suggestion": "Ensure the element is focusable. Marigold interactive components are focusable by default — check if a parent has tabindex=\"-1\" or focus is trapped.",
+            "details": {
+              "selector": "body:nth-child(2) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > nav:nth-child(1) > div:nth-child(1) > ol:nth-child(3) > li:nth-child(1) > button:nth-child(1)",
+              "role": "button",
+              "scope": "page"
+            }
+          }
+        ]
+      },
+      "E": {
+        "category": "E",
+        "label": "Functional Completeness",
+        "score": 83.33,
+        "weight": 0.225,
+        "weightedScore": 18.75,
+        "errorCount": 0,
+        "warningCount": 0,
+        "issues": []
+      }
+    },
+    "renderSuccess": true
+  },
+  "efficiency": {
+    "durationMs": 126774,
+    "costUsd": 0.29177620000000004,
+    "inputTokens": 74,
+    "outputTokens": 6021,
+    "cacheReadTokens": 1264262,
+    "cacheCreationTokens": 63277,
+    "totalTokens": 6095,
+    "numTurns": 38
+  },
+  "report": {
+    "file": "TestApp.tsx",
+    "errors": [],
+    "warnings": [
+      {
+        "type": "technical",
+        "severity": "warning",
+        "source": "design-system-usage",
+        "component": "nav",
+        "message": "Raw <nav> used instead of a Marigold component.",
+        "suggestion": "Raw <nav> used instead of a Marigold navigation component. Search the Marigold docs for navigation alternatives.",
+        "location": {
+          "file": "TestApp.tsx",
+          "line": 21,
+          "column": 7
+        },
+        "details": {
+          "htmlElement": "nav"
+        }
+      },
+      {
+        "type": "a11y",
+        "severity": "warning",
+        "source": "aom-extractor",
+        "component": ".flex-wrap.gap-\\(--space\\).items-center > .max-w-\\(--maxTextWidth\\):nth-child(3)",
+        "message": "Elements must meet minimum color contrast ratio thresholds (color-contrast)",
+        "suggestion": "Use Marigold theme tokens for colors instead of custom CSS values. Components styled through the theme automatically meet contrast requirements. Avoid overriding colors with `className` or inline `style`.",
+        "details": {
+          "ruleId": "color-contrast",
+          "impact": "serious",
+          "target": [
+            ".flex-wrap.gap-\\(--space\\).items-center > .max-w-\\(--maxTextWidth\\):nth-child(3)"
+          ],
+          "html": "<div class=\"max-w-(--maxTextWidth)\" style=\"color: var(--color-muted, muted);\">Published May 15, 2026</div>",
+          "scope": "page"
+        }
+      },
+      {
+        "type": "a11y",
+        "severity": "warning",
+        "source": "aom-extractor",
+        "component": "html",
+        "message": "Document should have one main landmark (landmark-one-main)",
+        "suggestion": "Wrap your page content in `<AppLayout>` with `<AppLayout.Main>` to provide a `<main>` landmark. Import AppLayout from `@marigold/components`.",
+        "details": {
+          "ruleId": "landmark-one-main",
+          "impact": "moderate",
+          "target": [
+            "html"
+          ],
+          "html": "<html lang=\"en\" data-theme=\"rui\">",
+          "scope": "page"
+        }
+      },
+      {
+        "type": "a11y",
+        "severity": "warning",
+        "source": "aom-extractor",
+        "component": "page",
+        "message": "All page content should be contained by landmarks — 9 elements affected (region)",
+        "suggestion": "All page content must be inside a landmark region. Use `<AppLayout>` with `<AppLayout.Main>` for the main area, `<TopNavigation>` for the header (`<header>`), and `<Sidebar>` for side navigation (`<aside>`). Import from `@marigold/components`.",
+        "details": {
+          "ruleId": "region",
+          "impact": "moderate",
+          "affectedCount": 9,
+          "scope": "page"
+        }
+      },
+      {
+        "type": "a11y",
+        "severity": "warning",
+        "source": "keyboard-a11y",
+        "component": "button",
+        "message": "Interactive element <button> (button) is not reachable via Tab key.",
+        "suggestion": "Ensure the element is focusable. Marigold interactive components are focusable by default — check if a parent has tabindex=\"-1\" or focus is trapped.",
+        "details": {
+          "selector": "body:nth-child(2) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > nav:nth-child(1) > div:nth-child(1) > ol:nth-child(3) > li:nth-child(1) > button:nth-child(1)",
+          "role": "button",
+          "scope": "page"
+        }
+      }
+    ],
+    "passed": [
+      "TypeScript compilation",
+      "All Marigold props are valid",
+      "Component composition",
+      "Overlay accessible names",
+      "Compound component placement",
+      "Section headers",
+      "Collection item ids",
+      "Layout usage",
+      "Table usage",
+      "Component conventions",
+      "Theme variant compliance",
+      "No overlapping components detected",
+      "Responsive layout"
+    ],
+    "metadata": {
+      "renderTimeMs": 1618,
+      "componentsFound": [
+        "li",
+        "button",
+        "span",
+        "a"
+      ],
+      "checksRun": [
+        "technical",
+        "spatial",
+        "a11y"
+      ],
+      "coverage": {
+        "staticValuesChecked": 15,
+        "dynamicValuesSkipped": 15,
+        "spreadPropsBypassed": 0
+      },
+      "widthUtilization": 1
+    },
+    "markdown": "marigold-validate: TestApp.tsx — 0 error(s), 5 warning(s)\n\n[warning/technical] <nav>: Raw <nav> used instead of a Marigold component. (TestApp.tsx:21:7)\n  → Raw <nav> used instead of a Marigold navigation component. Search the Marigold docs for navigation alternatives.\n  data: {htmlElement=nav}\n[warning/a11y] <.flex-wrap.gap-\\(--space\\).items-center > .max-w-\\(--maxTextWidth\\):nth-child(3)>: Elements must meet minimum color contrast ratio thresholds (color-contrast)\n  → Use Marigold theme tokens for colors instead of custom CSS values. Components styled through the theme automatically meet contrast requirements. Avoid overriding colors with `className` or inline `style`.\n  data: {ruleId=color-contrast, impact=serious, target=[\".flex-wrap.gap-\\\\(--space\\\\).items-center > .max-w-\\\\(--maxTextWidth\\\\):nth-child(3)\"], html=<div class=\"max-w-(--maxTextWidth)\" style=\"color: var(--color-muted, muted);\"..., scope=page}\n[warning/a11y] <button>: Interactive element <button> (button) is not reachable via Tab key.\n  → Ensure the element is focusable. Marigold interactive components are focusable by default — check if a parent has tabindex=\"-1\" or focus is trapped.\n  data: {selector=body:nth-child(2) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > ..., role=button, scope=page}\n[warning/a11y] <html>: Document should have one main landmark (landmark-one-main)\n  → Wrap your page content in `<AppLayout>` with `<AppLayout.Main>` to provide a `<main>` landmark. Import AppLayout from `@marigold/components`.\n  data: {ruleId=landmark-one-main, impact=moderate, target=[\"html\"], html=<html lang=\"en\" data-theme=\"rui\">, scope=page}\n[warning/a11y] <page>: All page content should be contained by landmarks — 9 elements affected (region)\n  → All page content must be inside a landmark region. Use `<AppLayout>` with `<AppLayout.Main>` for the main area, `<TopNavigation>` for the header (`<header>`), and `<Sidebar>` for side navigation (`<aside>`). Import from `@marigold/components`.\n  data: {ruleId=region, impact=moderate, affectedCount=9, scope=page}\n\npassed: TypeScript compilation, All Marigold props are valid, Component composition, Overlay accessible names, Compound component placement, Section headers, Collection item ids, Layout usage, Table usage, Component conventions, Theme variant compliance, No overlapping components detected, Responsive layout\n\nchecks run: technical, spatial, a11y"
+  },
+  "componentsFound": [
+    "li",
+    "button",
+    "span",
+    "a"
+  ],
+  "renderTimeMs": 1618,
+  "sourceCode": "import {\n  Badge,\n  Breadcrumbs,\n  Card,\n  Center,\n  Divider,\n  Headline,\n  Inline,\n  Link,\n  List,\n  SectionMessage,\n  Stack,\n  Text,\n  Tiles,\n} from '@marigold/components';\n\nconst TestApp = () => {\n  return (\n    <Center maxWidth=\"large\" space={6}>\n      {/* Breadcrumb Navigation */}\n      <nav aria-label=\"Breadcrumbs\">\n        <Breadcrumbs>\n          <Breadcrumbs.Item href=\"#blog\">Blog</Breadcrumbs.Item>\n          <Breadcrumbs.Item href=\"#frontend\">Frontend</Breadcrumbs.Item>\n          <Breadcrumbs.Item href=\"#accessibility\">Accessibility</Breadcrumbs.Item>\n        </Breadcrumbs>\n      </nav>\n\n      {/* Article Content */}\n      <Stack space={4} stretch>\n        {/* Article Header */}\n        <Stack space={3}>\n          <Headline size=\"level-1\">Building Accessible Design Systems</Headline>\n\n          {/* Author Info */}\n          <Inline space={3} alignY=\"center\">\n            <Text weight=\"bold\">Sarah Chen</Text>\n            <Badge>Staff Engineer</Badge>\n            <Text color=\"muted\">Published May 15, 2026</Text>\n          </Inline>\n\n          <Divider variant=\"bold\" />\n        </Stack>\n\n        {/* Article Body */}\n        <Stack space={4}>\n          {/* First Paragraph */}\n          <Text as=\"p\">\n            Accessibility is not an afterthought—it's a fundamental principle that should guide the design of every system. When we build design systems with accessibility at the core, we create products that are usable by everyone, regardless of their abilities. This approach strengthens our designs, improves code quality, and demonstrates our commitment to inclusive design.\n          </Text>\n\n          {/* Info Callout */}\n          <SectionMessage>\n            <SectionMessage.Title>Accessibility Series</SectionMessage.Title>\n            <SectionMessage.Content>\n              This article is part of our accessibility series. Check out the full series for more.\n            </SectionMessage.Content>\n          </SectionMessage>\n\n          {/* Second Paragraph */}\n          <Text as=\"p\">\n            The key to building accessible design systems lies in understanding the diverse needs of your users. By incorporating semantic HTML, proper ARIA attributes, and keyboard navigation from the start, we create systems that naturally support assistive technologies. Testing with real users who rely on these technologies is invaluable.\n          </Text>\n\n          {/* Key Points List */}\n          <List>\n            <List.Item>Semantic HTML as the foundation</List.Item>\n            <List.Item>ARIA attributes for complex widgets</List.Item>\n            <List.Item>Keyboard navigation patterns</List.Item>\n            <List.Item>Color contrast and visual indicators</List.Item>\n          </List>\n\n          {/* Final Paragraph */}\n          <Text as=\"p\">\n            As you continue to develop your design system, remember that accessibility is an ongoing journey. Regular audits, user testing, and feedback from the community will help you identify areas for improvement. By maintaining accessibility as a priority, you're not just building better products—you're creating opportunities for everyone to participate fully in digital experiences.\n          </Text>\n        </Stack>\n\n        {/* Tags Section */}\n        <Stack space={3}>\n          <Divider variant=\"bold\" />\n          <Inline space={2}>\n            <Badge>Accessibility</Badge>\n            <Badge>Design Systems</Badge>\n            <Badge>React</Badge>\n            <Badge>WCAG</Badge>\n          </Inline>\n        </Stack>\n\n        {/* Related Articles Section */}\n        <Stack space={3}>\n          <Headline size=\"level-2\">Related Articles</Headline>\n          <Tiles tilesWidth=\"250px\" space={3} stretch>\n            {/* Article Card 1 */}\n            <Card p={4}>\n              <Stack space={2}>\n                <Headline size=\"level-3\">Testing Accessibility Compliance</Headline>\n                <Text size=\"small\">\n                  Learn how to implement automated testing to ensure your design system meets WCAG standards.\n                </Text>\n                <Link href=\"#article1\">Read more →</Link>\n              </Stack>\n            </Card>\n\n            {/* Article Card 2 */}\n            <Card p={4}>\n              <Stack space={2}>\n                <Headline size=\"level-3\">Keyboard Navigation Patterns</Headline>\n                <Text size=\"small\">\n                  Explore best practices for implementing keyboard navigation in complex interactive components.\n                </Text>\n                <Link href=\"#article2\">Read more →</Link>\n              </Stack>\n            </Card>\n\n            {/* Article Card 3 */}\n            <Card p={4}>\n              <Stack space={2}>\n                <Headline size=\"level-3\">Color Contrast in Design Systems</Headline>\n                <Text size=\"small\">\n                  Discover how to choose colors that meet accessibility standards while maintaining visual appeal.\n                </Text>\n                <Link href=\"#article3\">Read more →</Link>\n              </Stack>\n            </Card>\n          </Tiles>\n        </Stack>\n      </Stack>\n    </Center>\n  );\n};\n\nexport default TestApp;\n",
+  "assertions": {
+    "passed": [
+      {
+        "id": "a-import-marigold",
+        "description": "Imports from @marigold/components",
+        "severity": "required",
+        "passed": true,
+        "evidence": "import from \"@marigold/components\" found"
+      },
+      {
+        "id": "a-headline",
+        "description": "Headline for article title",
+        "severity": "required",
+        "passed": true,
+        "evidence": "<Headline> found"
+      },
+      {
+        "id": "a-text",
+        "description": "Text component for paragraphs",
+        "severity": "required",
+        "passed": true,
+        "evidence": "<Text> found"
+      },
+      {
+        "id": "a-breadcrumbs",
+        "description": "Breadcrumbs navigation",
+        "severity": "required",
+        "passed": true,
+        "evidence": "<Breadcrumbs> found"
+      },
+      {
+        "id": "a-divider",
+        "description": "Divider between sections",
+        "severity": "required",
+        "passed": true,
+        "evidence": "<Divider> found"
+      },
+      {
+        "id": "a-list",
+        "description": "List component for article items",
+        "severity": "required",
+        "passed": true,
+        "evidence": "<List> found"
+      },
+      {
+        "id": "a-badge",
+        "description": "Badge for author role",
+        "severity": "required",
+        "passed": true,
+        "evidence": "<Badge> found"
+      },
+      {
+        "id": "a-link",
+        "description": "Link component (not anchor tag)",
+        "severity": "required",
+        "passed": true,
+        "evidence": "<Link> found"
+      },
+      {
+        "id": "a-card",
+        "description": "Card for related articles",
+        "severity": "required",
+        "passed": true,
+        "evidence": "<Card> found"
+      },
+      {
+        "id": "a-section-message",
+        "description": "SectionMessage for callout",
+        "severity": "required",
+        "passed": true,
+        "evidence": "<SectionMessage> found"
+      },
+      {
+        "id": "a-layout",
+        "description": "Uses layout primitives",
+        "severity": "required",
+        "passed": true,
+        "evidence": "matched: <Stack> found; <Inline> found"
+      },
+      {
+        "id": "a-no-raw-html",
+        "description": "No raw anchor/div/span elements",
+        "severity": "recommended",
+        "passed": true,
+        "evidence": "\"/^(a|div|span|p|h[1-6]|ul|ol|li|button|input|select|textarea|table)$/\" correctly absent"
+      }
+    ],
+    "failed": [
+      {
+        "id": "a-container",
+        "description": "Container for reading width",
+        "severity": "required",
+        "passed": false,
+        "evidence": "<Container> not found"
+      },
+      {
+        "id": "a-tag",
+        "description": "Tag component for article tags",
+        "severity": "required",
+        "passed": false,
+        "evidence": "none matched: <Tag> not found; <TagGroup> not found"
+      },
+      {
+        "id": "a-columns-responsive",
+        "description": "Columns for related articles (responsive)",
+        "severity": "recommended",
+        "passed": false,
+        "evidence": "<Columns> not found"
+      }
+    ],
+    "passRate": 0.8,
+    "requiredPassRate": 0.8462,
+    "weightedPassRate": 0.8333,
+    "total": 15
+  },
+  "validatePackageVersion": "0.0.1",
+  "playwrightVersion": null,
+  "resolvedModelId": "claude-haiku-4-5",
+  "claudeCliVersion": "2.1.185 (Claude Code)",
+  "sessionId": "5a7f2cc0-2e65-401b-916e-4736e916a816"
+}

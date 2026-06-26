@@ -1,0 +1,242 @@
+{
+  "runId": "haiku-full-stack-P-03-r2",
+  "promptId": "P-03",
+  "model": "haiku",
+  "config": "full-stack",
+  "timestamp": "2026-06-21T11:43:07.206Z",
+  "quality": {
+    "overall": 98.33,
+    "categories": {
+      "A": {
+        "category": "A",
+        "label": "Design System API",
+        "score": 100,
+        "weight": 0.225,
+        "weightedScore": 22.5,
+        "errorCount": 0,
+        "warningCount": 0,
+        "issues": []
+      },
+      "B": {
+        "category": "B",
+        "label": "Token Compliance",
+        "score": 100,
+        "weight": 0.1,
+        "weightedScore": 10,
+        "errorCount": 0,
+        "warningCount": 0,
+        "issues": []
+      },
+      "C": {
+        "category": "C",
+        "label": "DOM / Structure",
+        "score": 100,
+        "weight": 0.225,
+        "weightedScore": 22.5,
+        "errorCount": 0,
+        "warningCount": 0,
+        "issues": []
+      },
+      "D": {
+        "category": "D",
+        "label": "Spatial & A11y",
+        "score": 100,
+        "weight": 0.225,
+        "weightedScore": 22.5,
+        "errorCount": 0,
+        "warningCount": 0,
+        "issues": []
+      },
+      "E": {
+        "category": "E",
+        "label": "Functional Completeness",
+        "score": 92.59,
+        "weight": 0.225,
+        "weightedScore": 20.83,
+        "errorCount": 0,
+        "warningCount": 0,
+        "issues": []
+      }
+    },
+    "renderSuccess": true
+  },
+  "efficiency": {
+    "durationMs": 241796,
+    "costUsd": 0.8429310000000001,
+    "inputTokens": 122,
+    "outputTokens": 11973,
+    "cacheReadTokens": 3325330,
+    "cacheCreationTokens": 224730,
+    "totalTokens": 12095,
+    "numTurns": 62
+  },
+  "report": {
+    "file": "TestApp.tsx",
+    "errors": [],
+    "warnings": [],
+    "passed": [
+      "TypeScript compilation",
+      "All Marigold props are valid",
+      "Component composition",
+      "Overlay accessible names",
+      "Compound component placement",
+      "Section headers",
+      "Collection item ids",
+      "Design system usage",
+      "Layout usage",
+      "Table usage",
+      "Component conventions",
+      "Theme variant compliance",
+      "No overlapping components detected",
+      "Responsive layout",
+      "Accessibility checks"
+    ],
+    "metadata": {
+      "renderTimeMs": 1766,
+      "componentsFound": [
+        "li",
+        "a",
+        "span"
+      ],
+      "checksRun": [
+        "technical",
+        "spatial",
+        "a11y"
+      ],
+      "coverage": {
+        "staticValuesChecked": 11,
+        "dynamicValuesSkipped": 12,
+        "spreadPropsBypassed": 0
+      },
+      "widthUtilization": 1
+    },
+    "markdown": "marigold-validate: TestApp.tsx — ok\n\npassed: TypeScript compilation, All Marigold props are valid, Component composition, Overlay accessible names, Compound component placement, Section headers, Collection item ids, Design system usage, Layout usage, Table usage, Component conventions, Theme variant compliance, No overlapping components detected, Responsive layout, Accessibility checks\n\nchecks run: technical, spatial, a11y"
+  },
+  "componentsFound": [
+    "li",
+    "a",
+    "span"
+  ],
+  "renderTimeMs": 1766,
+  "sourceCode": "import {\n  AppLayout,\n  Badge,\n  Breadcrumbs,\n  Card,\n  Columns,\n  Container,\n  Divider,\n  Headline,\n  Inline,\n  Link,\n  List,\n  SectionMessage,\n  Stack,\n  Text,\n} from '@marigold/components';\n\nconst TestApp = () => {\n  return (\n    <AppLayout>\n      <AppLayout.Main>\n        <Container>\n      <Stack space={6}>\n        {/* Breadcrumbs */}\n        <Breadcrumbs>\n          <Breadcrumbs.Item href=\"/\">Blog</Breadcrumbs.Item>\n          <Breadcrumbs.Item href=\"/frontend\">Frontend</Breadcrumbs.Item>\n          <Breadcrumbs.Item href=\"/accessibility\">Accessibility</Breadcrumbs.Item>\n        </Breadcrumbs>\n\n        <Stack space={6}>\n          {/* Article Header */}\n          <Stack space={4}>\n            <Headline level=\"1\">Building Accessible Design Systems</Headline>\n\n            {/* Author info row */}\n            <Inline space={2} alignY=\"center\">\n              <Text weight=\"bold\">Sarah Chen</Text>\n              <Badge>Staff Engineer</Badge>\n              <Text>Published May 15, 2026</Text>\n            </Inline>\n\n            <Divider />\n          </Stack>\n\n          {/* Article Body */}\n          <Stack space={6}>\n            {/* First paragraph */}\n            <Text>\n              Creating accessible design systems is essential for ensuring that\n              all users, regardless of their abilities, can interact with digital\n              products effectively. Accessibility should not be an afterthought\n              but rather a fundamental principle embedded in every aspect of\n              design and development. When we prioritize accessibility from the\n              start, we create better products for everyone.\n            </Text>\n\n            {/* Info callout */}\n            <SectionMessage>\n              <SectionMessage.Title>Accessibility Series</SectionMessage.Title>\n              <SectionMessage.Content>\n                <Text>\n                  This article is part of our accessibility series. Check out\n                  the full series for more.\n                </Text>\n              </SectionMessage.Content>\n            </SectionMessage>\n\n            {/* Second paragraph */}\n            <Text>\n              The foundation of accessible design lies in understanding the\n              diverse needs of users and implementing solutions that address\n              these needs comprehensively. By following established guidelines\n              and best practices, we can create inclusive experiences that serve\n              a broader audience. Accessibility benefits everyone, not just\n              people with disabilities.\n            </Text>\n\n            {/* List of items */}\n            <List>\n              <List.Item>Semantic HTML as the foundation</List.Item>\n              <List.Item>ARIA attributes for complex widgets</List.Item>\n              <List.Item>Keyboard navigation patterns</List.Item>\n              <List.Item>Color contrast and visual indicators</List.Item>\n            </List>\n\n            {/* Final paragraph */}\n            <Text>\n              Implementing these practices requires commitment and ongoing\n              education, but the payoff is immense. Teams that embrace\n              accessibility find themselves building more resilient, robust\n              products that work better for all users. Start with these\n              foundational principles today, and your users will thank you\n              tomorrow.\n            </Text>\n          </Stack>\n\n          {/* Tags */}\n          <Stack space={2}>\n            <Divider />\n            <Inline space={2}>\n              <Badge variant=\"primary\">Accessibility</Badge>\n              <Badge variant=\"primary\">Design Systems</Badge>\n              <Badge variant=\"primary\">React</Badge>\n              <Badge variant=\"primary\">WCAG</Badge>\n            </Inline>\n          </Stack>\n\n          {/* Related Articles Section */}\n          <Stack space={4}>\n            <Divider />\n            <Headline level=\"2\">Related Articles</Headline>\n\n            <Columns columns={[1, 1, 1]} space={4} collapseAt=\"40em\">\n              {/* Card 1 */}\n              <Card>\n                <Stack space={3}>\n                  <Headline level=\"3\">\n                    Testing for Accessibility Compliance\n                  </Headline>\n                  <Text>\n                    Learn the tools and techniques to test your design systems\n                    for accessibility standards.\n                  </Text>\n                  <Link href=\"/\">Read more →</Link>\n                </Stack>\n              </Card>\n\n              {/* Card 2 */}\n              <Card>\n                <Stack space={3}>\n                  <Headline level=\"3\">Advanced ARIA Patterns</Headline>\n                  <Text>\n                    Explore complex ARIA attributes and patterns for creating\n                    truly accessible components.\n                  </Text>\n                  <Link href=\"/\">Read more →</Link>\n                </Stack>\n              </Card>\n\n              {/* Card 3 */}\n              <Card>\n                <Stack space={3}>\n                  <Headline level=\"3\">Inclusive Design Principles</Headline>\n                  <Text>\n                    Discover the core principles of inclusive design and how to\n                    apply them to your work.\n                  </Text>\n                  <Link href=\"/\">Read more →</Link>\n                </Stack>\n              </Card>\n            </Columns>\n          </Stack>\n        </Stack>\n      </Stack>\n        </Container>\n      </AppLayout.Main>\n    </AppLayout>\n  );\n};\n\nexport default TestApp;\n",
+  "assertions": {
+    "passed": [
+      {
+        "id": "a-import-marigold",
+        "description": "Imports from @marigold/components",
+        "severity": "required",
+        "passed": true,
+        "evidence": "import from \"@marigold/components\" found"
+      },
+      {
+        "id": "a-container",
+        "description": "Container for reading width",
+        "severity": "required",
+        "passed": true,
+        "evidence": "<Container> found"
+      },
+      {
+        "id": "a-headline",
+        "description": "Headline for article title",
+        "severity": "required",
+        "passed": true,
+        "evidence": "<Headline> found"
+      },
+      {
+        "id": "a-text",
+        "description": "Text component for paragraphs",
+        "severity": "required",
+        "passed": true,
+        "evidence": "<Text> found"
+      },
+      {
+        "id": "a-breadcrumbs",
+        "description": "Breadcrumbs navigation",
+        "severity": "required",
+        "passed": true,
+        "evidence": "<Breadcrumbs> found"
+      },
+      {
+        "id": "a-divider",
+        "description": "Divider between sections",
+        "severity": "required",
+        "passed": true,
+        "evidence": "<Divider> found"
+      },
+      {
+        "id": "a-list",
+        "description": "List component for article items",
+        "severity": "required",
+        "passed": true,
+        "evidence": "<List> found"
+      },
+      {
+        "id": "a-badge",
+        "description": "Badge for author role",
+        "severity": "required",
+        "passed": true,
+        "evidence": "<Badge> found"
+      },
+      {
+        "id": "a-link",
+        "description": "Link component (not anchor tag)",
+        "severity": "required",
+        "passed": true,
+        "evidence": "<Link> found"
+      },
+      {
+        "id": "a-card",
+        "description": "Card for related articles",
+        "severity": "required",
+        "passed": true,
+        "evidence": "<Card> found"
+      },
+      {
+        "id": "a-section-message",
+        "description": "SectionMessage for callout",
+        "severity": "required",
+        "passed": true,
+        "evidence": "<SectionMessage> found"
+      },
+      {
+        "id": "a-layout",
+        "description": "Uses layout primitives",
+        "severity": "required",
+        "passed": true,
+        "evidence": "matched: <Stack> found; <Columns> found; <Inline> found"
+      },
+      {
+        "id": "a-columns-responsive",
+        "description": "Columns for related articles (responsive)",
+        "severity": "recommended",
+        "passed": true,
+        "evidence": "<Columns> found"
+      },
+      {
+        "id": "a-no-raw-html",
+        "description": "No raw anchor/div/span elements",
+        "severity": "recommended",
+        "passed": true,
+        "evidence": "\"/^(a|div|span|p|h[1-6]|ul|ol|li|button|input|select|textarea|table)$/\" correctly absent"
+      }
+    ],
+    "failed": [
+      {
+        "id": "a-tag",
+        "description": "Tag component for article tags",
+        "severity": "required",
+        "passed": false,
+        "evidence": "none matched: <Tag> not found; <TagGroup> not found"
+      }
+    ],
+    "passRate": 0.9333,
+    "requiredPassRate": 0.9231,
+    "weightedPassRate": 0.9259,
+    "total": 15
+  },
+  "validatePackageVersion": "0.0.1",
+  "playwrightVersion": null,
+  "resolvedModelId": "claude-haiku-4-5",
+  "claudeCliVersion": "2.1.185 (Claude Code)",
+  "sessionId": "98b6455b-925c-4a16-9c63-0c0b543ae0ad"
+}

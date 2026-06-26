@@ -1,0 +1,612 @@
+{
+  "runId": "haiku-full-stack-P-02-r2",
+  "promptId": "P-02",
+  "model": "haiku",
+  "config": "full-stack",
+  "timestamp": "2026-06-21T11:37:08.193Z",
+  "quality": {
+    "overall": 81.67,
+    "categories": {
+      "A": {
+        "category": "A",
+        "label": "Design System API",
+        "score": 62.58,
+        "weight": 0.225,
+        "weightedScore": 14.08,
+        "errorCount": 0,
+        "warningCount": 7,
+        "issues": [
+          {
+            "type": "technical",
+            "severity": "warning",
+            "source": "design-system-usage",
+            "component": "div",
+            "message": "Raw <div> used instead of a Marigold component.",
+            "suggestion": "Raw <div> used instead of a Marigold layout component. Search the Marigold docs for layout alternatives.",
+            "location": {
+              "file": "TestApp.tsx",
+              "line": 9,
+              "column": 5
+            },
+            "details": {
+              "htmlElement": "div"
+            }
+          },
+          {
+            "type": "technical",
+            "severity": "warning",
+            "source": "design-system-usage",
+            "component": "div",
+            "message": "Inline style on <div> bypasses the design system (display, justifyContent, alignItems, minHeight, padding).",
+            "suggestion": "Use Marigold layout components (Stack, Columns, Inset, Container) and theme tokens instead of inline styles.",
+            "location": {
+              "file": "TestApp.tsx",
+              "line": 9,
+              "column": 10
+            },
+            "details": {
+              "cssProperties": [
+                "display",
+                "justifyContent",
+                "alignItems",
+                "minHeight",
+                "padding"
+              ]
+            }
+          },
+          {
+            "type": "technical",
+            "severity": "warning",
+            "source": "design-system-usage",
+            "component": "img",
+            "message": "Inline style on <img> bypasses the design system (width, height, borderRadius, objectFit, flexShrink).",
+            "suggestion": "Use Marigold layout components (Stack, Columns, Inset, Container) and theme tokens instead of inline styles.",
+            "location": {
+              "file": "TestApp.tsx",
+              "line": 17,
+              "column": 15
+            },
+            "details": {
+              "cssProperties": [
+                "width",
+                "height",
+                "borderRadius",
+                "objectFit",
+                "flexShrink"
+              ]
+            }
+          },
+          {
+            "type": "technical",
+            "severity": "warning",
+            "source": "design-system-usage",
+            "component": "div",
+            "message": "Raw <div> used instead of a Marigold component.",
+            "suggestion": "Raw <div> used instead of a Marigold layout component. Search the Marigold docs for layout alternatives.",
+            "location": {
+              "file": "TestApp.tsx",
+              "line": 27,
+              "column": 13
+            },
+            "details": {
+              "htmlElement": "div"
+            }
+          },
+          {
+            "type": "technical",
+            "severity": "warning",
+            "source": "design-system-usage",
+            "component": "div",
+            "message": "Raw <div> used instead of a Marigold component.",
+            "suggestion": "Raw <div> used instead of a Marigold layout component. Search the Marigold docs for layout alternatives.",
+            "location": {
+              "file": "TestApp.tsx",
+              "line": 31,
+              "column": 13
+            },
+            "details": {
+              "htmlElement": "div"
+            }
+          },
+          {
+            "type": "technical",
+            "severity": "warning",
+            "source": "design-system-usage",
+            "component": "div",
+            "message": "Raw <div> used instead of a Marigold component.",
+            "suggestion": "Raw <div> used instead of a Marigold layout component. Search the Marigold docs for layout alternatives.",
+            "location": {
+              "file": "TestApp.tsx",
+              "line": 35,
+              "column": 13
+            },
+            "details": {
+              "htmlElement": "div"
+            }
+          },
+          {
+            "type": "technical",
+            "severity": "warning",
+            "source": "design-system-usage",
+            "component": "div",
+            "message": "Raw <div> used instead of a Marigold component.",
+            "suggestion": "Raw <div> used instead of a Marigold layout component. Search the Marigold docs for layout alternatives.",
+            "location": {
+              "file": "TestApp.tsx",
+              "line": 39,
+              "column": 13
+            },
+            "details": {
+              "htmlElement": "div"
+            }
+          }
+        ]
+      },
+      "B": {
+        "category": "B",
+        "label": "Token Compliance",
+        "score": 85,
+        "weight": 0.1,
+        "weightedScore": 8.5,
+        "errorCount": 0,
+        "warningCount": 2,
+        "issues": [
+          {
+            "type": "style",
+            "severity": "warning",
+            "source": "token-compliance",
+            "component": "div",
+            "message": "Inline style \"padding: 20px\" on <div> (“Jane DoeActiveRoleSenior DeveloperDepart”) uses a hardcoded value instead of a design token.",
+            "suggestion": "Use var(--token-name) or a Marigold component prop instead of hardcoding \"20px\".",
+            "details": {
+              "property": "padding",
+              "value": "20px",
+              "inline": true,
+              "selector": "body:nth-child(2) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1)",
+              "fingerprint": "Jane DoeActiveRoleSenior DeveloperDepart",
+              "scope": "page"
+            }
+          },
+          {
+            "type": "style",
+            "severity": "warning",
+            "source": "token-compliance",
+            "component": "img",
+            "message": "Inline style \"border-radius: 8px\" on <img> uses a hardcoded value instead of a design token.",
+            "suggestion": "Use var(--token-name) or a Marigold component prop instead of hardcoding \"8px\".",
+            "details": {
+              "property": "border-radius",
+              "value": "8px",
+              "inline": true,
+              "selector": "body:nth-child(2) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > img:nth-child(1)",
+              "scope": "page"
+            }
+          }
+        ]
+      },
+      "C": {
+        "category": "C",
+        "label": "DOM / Structure",
+        "score": 100,
+        "weight": 0.225,
+        "weightedScore": 22.5,
+        "errorCount": 0,
+        "warningCount": 0,
+        "issues": []
+      },
+      "D": {
+        "category": "D",
+        "label": "Spatial & A11y",
+        "score": 75.51,
+        "weight": 0.225,
+        "weightedScore": 16.99,
+        "errorCount": 0,
+        "warningCount": 3,
+        "issues": [
+          {
+            "type": "spatial",
+            "severity": "warning",
+            "source": "overflow-detector",
+            "component": "body:nth-child(2) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1)",
+            "message": "Flex container children are wrapping to 2 rows (2 children, container 1208px wide, content 1312px wide).",
+            "suggestion": "Consider using <Columns collapseAt=\"...\"> for responsive multi-column layout, or <Stack> for vertical arrangement.",
+            "details": {
+              "containerSelector": "body:nth-child(2) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1)",
+              "rowCount": 2,
+              "childCount": 2,
+              "containerWidth": 1208,
+              "totalChildrenWidth": 1312,
+              "isAutoFitGrid": false,
+              "hasZeroWidthChild": false,
+              "scope": "page"
+            }
+          },
+          {
+            "type": "a11y",
+            "severity": "warning",
+            "source": "aom-extractor",
+            "component": "html",
+            "message": "Document should have one main landmark (landmark-one-main)",
+            "suggestion": "Wrap your page content in `<AppLayout>` with `<AppLayout.Main>` to provide a `<main>` landmark. Import AppLayout from `@marigold/components`.",
+            "details": {
+              "ruleId": "landmark-one-main",
+              "impact": "moderate",
+              "target": [
+                "html"
+              ],
+              "html": "<html lang=\"en\" data-theme=\"rui\">",
+              "scope": "page"
+            }
+          },
+          {
+            "type": "a11y",
+            "severity": "warning",
+            "source": "aom-extractor",
+            "component": "page",
+            "message": "All page content should be contained by landmarks — 3 elements affected (region)",
+            "suggestion": "All page content must be inside a landmark region. Use `<AppLayout>` with `<AppLayout.Main>` for the main area, `<TopNavigation>` for the header (`<header>`), and `<Sidebar>` for side navigation (`<aside>`). Import from `@marigold/components`.",
+            "details": {
+              "ruleId": "region",
+              "impact": "moderate",
+              "affectedCount": 3,
+              "scope": "page"
+            }
+          }
+        ]
+      },
+      "E": {
+        "category": "E",
+        "label": "Functional Completeness",
+        "score": 87.1,
+        "weight": 0.225,
+        "weightedScore": 19.6,
+        "errorCount": 0,
+        "warningCount": 0,
+        "issues": []
+      }
+    },
+    "renderSuccess": true
+  },
+  "efficiency": {
+    "durationMs": 92636,
+    "costUsd": 0.3135059,
+    "inputTokens": 116,
+    "outputTokens": 6532,
+    "cacheReadTokens": 1120209,
+    "cacheCreationTokens": 83954,
+    "totalTokens": 6648,
+    "numTurns": 32
+  },
+  "report": {
+    "file": "TestApp.tsx",
+    "errors": [],
+    "warnings": [
+      {
+        "type": "technical",
+        "severity": "warning",
+        "source": "design-system-usage",
+        "component": "div",
+        "message": "Raw <div> used instead of a Marigold component.",
+        "suggestion": "Raw <div> used instead of a Marigold layout component. Search the Marigold docs for layout alternatives.",
+        "location": {
+          "file": "TestApp.tsx",
+          "line": 9,
+          "column": 5
+        },
+        "details": {
+          "htmlElement": "div"
+        }
+      },
+      {
+        "type": "technical",
+        "severity": "warning",
+        "source": "design-system-usage",
+        "component": "div",
+        "message": "Inline style on <div> bypasses the design system (display, justifyContent, alignItems, minHeight, padding).",
+        "suggestion": "Use Marigold layout components (Stack, Columns, Inset, Container) and theme tokens instead of inline styles.",
+        "location": {
+          "file": "TestApp.tsx",
+          "line": 9,
+          "column": 10
+        },
+        "details": {
+          "cssProperties": [
+            "display",
+            "justifyContent",
+            "alignItems",
+            "minHeight",
+            "padding"
+          ]
+        }
+      },
+      {
+        "type": "technical",
+        "severity": "warning",
+        "source": "design-system-usage",
+        "component": "img",
+        "message": "Inline style on <img> bypasses the design system (width, height, borderRadius, objectFit, flexShrink).",
+        "suggestion": "Use Marigold layout components (Stack, Columns, Inset, Container) and theme tokens instead of inline styles.",
+        "location": {
+          "file": "TestApp.tsx",
+          "line": 17,
+          "column": 15
+        },
+        "details": {
+          "cssProperties": [
+            "width",
+            "height",
+            "borderRadius",
+            "objectFit",
+            "flexShrink"
+          ]
+        }
+      },
+      {
+        "type": "technical",
+        "severity": "warning",
+        "source": "design-system-usage",
+        "component": "div",
+        "message": "Raw <div> used instead of a Marigold component.",
+        "suggestion": "Raw <div> used instead of a Marigold layout component. Search the Marigold docs for layout alternatives.",
+        "location": {
+          "file": "TestApp.tsx",
+          "line": 27,
+          "column": 13
+        },
+        "details": {
+          "htmlElement": "div"
+        }
+      },
+      {
+        "type": "technical",
+        "severity": "warning",
+        "source": "design-system-usage",
+        "component": "div",
+        "message": "Raw <div> used instead of a Marigold component.",
+        "suggestion": "Raw <div> used instead of a Marigold layout component. Search the Marigold docs for layout alternatives.",
+        "location": {
+          "file": "TestApp.tsx",
+          "line": 31,
+          "column": 13
+        },
+        "details": {
+          "htmlElement": "div"
+        }
+      },
+      {
+        "type": "technical",
+        "severity": "warning",
+        "source": "design-system-usage",
+        "component": "div",
+        "message": "Raw <div> used instead of a Marigold component.",
+        "suggestion": "Raw <div> used instead of a Marigold layout component. Search the Marigold docs for layout alternatives.",
+        "location": {
+          "file": "TestApp.tsx",
+          "line": 35,
+          "column": 13
+        },
+        "details": {
+          "htmlElement": "div"
+        }
+      },
+      {
+        "type": "technical",
+        "severity": "warning",
+        "source": "design-system-usage",
+        "component": "div",
+        "message": "Raw <div> used instead of a Marigold component.",
+        "suggestion": "Raw <div> used instead of a Marigold layout component. Search the Marigold docs for layout alternatives.",
+        "location": {
+          "file": "TestApp.tsx",
+          "line": 39,
+          "column": 13
+        },
+        "details": {
+          "htmlElement": "div"
+        }
+      },
+      {
+        "type": "spatial",
+        "severity": "warning",
+        "source": "overflow-detector",
+        "component": "body:nth-child(2) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1)",
+        "message": "Flex container children are wrapping to 2 rows (2 children, container 1208px wide, content 1312px wide).",
+        "suggestion": "Consider using <Columns collapseAt=\"...\"> for responsive multi-column layout, or <Stack> for vertical arrangement.",
+        "details": {
+          "containerSelector": "body:nth-child(2) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1)",
+          "rowCount": 2,
+          "childCount": 2,
+          "containerWidth": 1208,
+          "totalChildrenWidth": 1312,
+          "isAutoFitGrid": false,
+          "hasZeroWidthChild": false,
+          "scope": "page"
+        }
+      },
+      {
+        "type": "style",
+        "severity": "warning",
+        "source": "token-compliance",
+        "component": "div",
+        "message": "Inline style \"padding: 20px\" on <div> (“Jane DoeActiveRoleSenior DeveloperDepart”) uses a hardcoded value instead of a design token.",
+        "suggestion": "Use var(--token-name) or a Marigold component prop instead of hardcoding \"20px\".",
+        "details": {
+          "property": "padding",
+          "value": "20px",
+          "inline": true,
+          "selector": "body:nth-child(2) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1)",
+          "fingerprint": "Jane DoeActiveRoleSenior DeveloperDepart",
+          "scope": "page"
+        }
+      },
+      {
+        "type": "style",
+        "severity": "warning",
+        "source": "token-compliance",
+        "component": "img",
+        "message": "Inline style \"border-radius: 8px\" on <img> uses a hardcoded value instead of a design token.",
+        "suggestion": "Use var(--token-name) or a Marigold component prop instead of hardcoding \"8px\".",
+        "details": {
+          "property": "border-radius",
+          "value": "8px",
+          "inline": true,
+          "selector": "body:nth-child(2) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > img:nth-child(1)",
+          "scope": "page"
+        }
+      },
+      {
+        "type": "a11y",
+        "severity": "warning",
+        "source": "aom-extractor",
+        "component": "html",
+        "message": "Document should have one main landmark (landmark-one-main)",
+        "suggestion": "Wrap your page content in `<AppLayout>` with `<AppLayout.Main>` to provide a `<main>` landmark. Import AppLayout from `@marigold/components`.",
+        "details": {
+          "ruleId": "landmark-one-main",
+          "impact": "moderate",
+          "target": [
+            "html"
+          ],
+          "html": "<html lang=\"en\" data-theme=\"rui\">",
+          "scope": "page"
+        }
+      },
+      {
+        "type": "a11y",
+        "severity": "warning",
+        "source": "aom-extractor",
+        "component": "page",
+        "message": "All page content should be contained by landmarks — 3 elements affected (region)",
+        "suggestion": "All page content must be inside a landmark region. Use `<AppLayout>` with `<AppLayout.Main>` for the main area, `<TopNavigation>` for the header (`<header>`), and `<Sidebar>` for side navigation (`<aside>`). Import from `@marigold/components`.",
+        "details": {
+          "ruleId": "region",
+          "impact": "moderate",
+          "affectedCount": 3,
+          "scope": "page"
+        }
+      }
+    ],
+    "passed": [
+      "TypeScript compilation",
+      "All Marigold props are valid",
+      "Component composition",
+      "Overlay accessible names",
+      "Compound component placement",
+      "Section headers",
+      "Collection item ids",
+      "Layout usage",
+      "Table usage",
+      "Component conventions",
+      "Theme variant compliance",
+      "Responsive layout"
+    ],
+    "metadata": {
+      "renderTimeMs": 1612,
+      "componentsFound": [
+        "button"
+      ],
+      "checksRun": [
+        "technical",
+        "spatial",
+        "a11y"
+      ],
+      "coverage": {
+        "staticValuesChecked": 24,
+        "dynamicValuesSkipped": 0,
+        "spreadPropsBypassed": 0
+      },
+      "widthUtilization": 0.94375
+    },
+    "markdown": "marigold-validate: TestApp.tsx — 0 error(s), 12 warning(s)\n\n[warning/technical] <div>: Raw <div> used instead of a Marigold component. (TestApp.tsx:9:5)\n  → Raw <div> used instead of a Marigold layout component. Search the Marigold docs for layout alternatives.\n  data: {htmlElement=div}\n[warning/technical] <div>: Inline style on <div> bypasses the design system (display, justifyContent, alignItems, minHeight, padding). (TestApp.tsx:9:10)\n  → Use Marigold layout components (Stack, Columns, Inset, Container) and theme tokens instead of inline styles.\n  data: {cssProperties=[\"display\",\"justifyContent\",\"alignItems\",\"minHeight\",\"padding\"]}\n[warning/technical] <div>: Raw <div> used instead of a Marigold component. (TestApp.tsx:27:13)\n  → Raw <div> used instead of a Marigold layout component. Search the Marigold docs for layout alternatives.\n  data: {htmlElement=div}\n[warning/technical] <div>: Raw <div> used instead of a Marigold component. (TestApp.tsx:31:13)\n  → Raw <div> used instead of a Marigold layout component. Search the Marigold docs for layout alternatives.\n  data: {htmlElement=div}\n[warning/technical] <div>: Raw <div> used instead of a Marigold component. (TestApp.tsx:35:13)\n  → Raw <div> used instead of a Marigold layout component. Search the Marigold docs for layout alternatives.\n  data: {htmlElement=div}\n[warning/technical] <div>: Raw <div> used instead of a Marigold component. (TestApp.tsx:39:13)\n  → Raw <div> used instead of a Marigold layout component. Search the Marigold docs for layout alternatives.\n  data: {htmlElement=div}\n[warning/technical] <img>: Inline style on <img> bypasses the design system (width, height, borderRadius, objectFit, flexShrink). (TestApp.tsx:17:15)\n  → Use Marigold layout components (Stack, Columns, Inset, Container) and theme tokens instead of inline styles.\n  data: {cssProperties=[\"width\",\"height\",\"borderRadius\",\"objectFit\",\"flexShrink\"]}\n[warning/spatial] <body:nth-child(2) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1)>: Flex container children are wrapping to 2 rows (2 children, container 1208px wide, content 1312px wide).\n  → Consider using <Columns collapseAt=\"...\"> for responsive multi-column layout, or <Stack> for vertical arrangement.\n  data: {containerSelector=body:nth-child(2) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > ..., rowCount=2, childCount=2, containerWidth=1208, totalChildrenWidth=1312, isAutoFitGrid=false, hasZeroWidthChild=false, scope=page}\n[warning/style] <div>: Inline style \"padding: 20px\" on <div> (“Jane DoeActiveRoleSenior DeveloperDepart”) uses a hardcoded value instead of a design token.\n  → Use var(--token-name) or a Marigold component prop instead of hardcoding \"20px\".\n  data: {property=padding, value=20px, inline=true, selector=body:nth-child(2) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1), fingerprint=Jane DoeActiveRoleSenior DeveloperDepart, scope=page}\n[warning/style] <img>: Inline style \"border-radius: 8px\" on <img> uses a hardcoded value instead of a design token.\n  → Use var(--token-name) or a Marigold component prop instead of hardcoding \"8px\".\n  data: {property=border-radius, value=8px, inline=true, selector=body:nth-child(2) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > ..., scope=page}\n[warning/a11y] <html>: Document should have one main landmark (landmark-one-main)\n  → Wrap your page content in `<AppLayout>` with `<AppLayout.Main>` to provide a `<main>` landmark. Import AppLayout from `@marigold/components`.\n  data: {ruleId=landmark-one-main, impact=moderate, target=[\"html\"], html=<html lang=\"en\" data-theme=\"rui\">, scope=page}\n[warning/a11y] <page>: All page content should be contained by landmarks — 3 elements affected (region)\n  → All page content must be inside a landmark region. Use `<AppLayout>` with `<AppLayout.Main>` for the main area, `<TopNavigation>` for the header (`<header>`), and `<Sidebar>` for side navigation (`<aside>`). Import from `@marigold/components`.\n  data: {ruleId=region, impact=moderate, affectedCount=3, scope=page}\n\npassed: TypeScript compilation, All Marigold props are valid, Component composition, Overlay accessible names, Compound component placement, Section headers, Collection item ids, Layout usage, Table usage, Component conventions, Theme variant compliance, Responsive layout\n\nchecks run: technical, spatial, a11y"
+  },
+  "componentsFound": [
+    "button"
+  ],
+  "renderTimeMs": 1612,
+  "sourceCode": "import { useState } from 'react';\nimport { Stack, Inline, Button, Badge, Headline, Text, Inset } from '@marigold/components';\n\nconst TestApp = () => {\n  const [messageAction, setMessageAction] = useState(false);\n  const [editAction, setEditAction] = useState(false);\n\n  return (\n    <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', minHeight: '100vh', padding: '20px' }}>\n      <Inset space=\"square-relaxed\">\n        <Stack space=\"group\">\n          {/* Header with Avatar and Status */}\n          <Inline space=\"regular\" alignY=\"center\">\n            <img\n              src=\"https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=200&h=200&fit=crop\"\n              alt=\"Jane Doe\"\n              style={{ width: '80px', height: '80px', borderRadius: '8px', objectFit: 'cover', flexShrink: 0 }}\n            />\n            <Stack space=\"related\" stretch>\n              <Headline size=\"level-4\">Jane Doe</Headline>\n              <Badge variant=\"success\">Active</Badge>\n            </Stack>\n          </Inline>\n\n          {/* Details Section */}\n          <Stack space=\"related\">\n            <div>\n              <Text weight=\"medium\" size=\"xs\" variant=\"muted\">Role</Text>\n              <Text>Senior Developer</Text>\n            </div>\n            <div>\n              <Text weight=\"medium\" size=\"xs\" variant=\"muted\">Department</Text>\n              <Text>Engineering</Text>\n            </div>\n            <div>\n              <Text weight=\"medium\" size=\"xs\" variant=\"muted\">Email</Text>\n              <Text>jane.doe@example.com</Text>\n            </div>\n            <div>\n              <Text weight=\"medium\" size=\"xs\" variant=\"muted\">Location</Text>\n              <Text>Freiburg, Germany</Text>\n            </div>\n          </Stack>\n\n          {/* Bio Section */}\n          <Text variant=\"muted\">\n            Jane is a talented senior developer with 8+ years of experience building scalable applications.\n            She specializes in frontend architecture and loves mentoring junior team members.\n          </Text>\n\n          {/* Action Buttons */}\n          <Inline space=\"related\" alignY=\"center\">\n            <Button\n              variant=\"primary\"\n              onPress={() => setMessageAction(!messageAction)}\n            >\n              Send Message\n            </Button>\n            <Button\n              variant=\"secondary\"\n              onPress={() => setEditAction(!editAction)}\n            >\n              Edit Profile\n            </Button>\n          </Inline>\n\n          {/* Action Feedback */}\n          {messageAction && (\n            <Text color=\"success\">\n              Message action triggered!\n            </Text>\n          )}\n          {editAction && (\n            <Text color=\"success\">\n              Edit profile action triggered!\n            </Text>\n          )}\n        </Stack>\n      </Inset>\n    </div>\n  );\n};\n\nexport default TestApp;\n",
+  "assertions": {
+    "passed": [
+      {
+        "id": "a-import-marigold",
+        "description": "Imports from @marigold/components",
+        "severity": "required",
+        "passed": true,
+        "evidence": "import from \"@marigold/components\" found"
+      },
+      {
+        "id": "a-image",
+        "description": "Includes a profile image (img tag or image URL)",
+        "severity": "recommended",
+        "passed": true,
+        "evidence": "matched: pattern \"/<img/\" found; pattern \"/placeholder.*image|avatar|profile.*photo/i\" found"
+      },
+      {
+        "id": "a-headline",
+        "description": "Headline for user name",
+        "severity": "required",
+        "passed": true,
+        "evidence": "<Headline> found"
+      },
+      {
+        "id": "a-badge",
+        "description": "Badge for status indicator",
+        "severity": "required",
+        "passed": true,
+        "evidence": "<Badge> found"
+      },
+      {
+        "id": "a-text",
+        "description": "Text component for details",
+        "severity": "required",
+        "passed": true,
+        "evidence": "<Text> found"
+      },
+      {
+        "id": "a-button",
+        "description": "Button component for actions",
+        "severity": "required",
+        "passed": true,
+        "evidence": "<Button> found"
+      },
+      {
+        "id": "a-layout",
+        "description": "Uses layout primitives (Stack, Columns, or Inline)",
+        "severity": "required",
+        "passed": true,
+        "evidence": "matched: <Stack> found; <Inline> found"
+      },
+      {
+        "id": "a-no-onclick-on-marigold",
+        "description": "No onClick on Marigold Button components",
+        "severity": "recommended",
+        "passed": true,
+        "evidence": "\"/<Button[^>]*onClick/\" correctly absent"
+      },
+      {
+        "id": "a-user-details",
+        "description": "Shows user details (role, department, email)",
+        "severity": "recommended",
+        "passed": true,
+        "evidence": "pattern \"/role|department|email|location/i\" found"
+      }
+    ],
+    "failed": [
+      {
+        "id": "a-card",
+        "description": "Card component as container",
+        "severity": "required",
+        "passed": false,
+        "evidence": "<Card> not found"
+      }
+    ],
+    "passRate": 0.9,
+    "requiredPassRate": 0.8571,
+    "weightedPassRate": 0.871,
+    "total": 10
+  },
+  "validatePackageVersion": "0.0.1",
+  "playwrightVersion": null,
+  "resolvedModelId": "claude-haiku-4-5",
+  "claudeCliVersion": "2.1.185 (Claude Code)",
+  "sessionId": "ae2e4c99-02d2-4ec6-94e3-4e223d4d1823"
+}

@@ -1,0 +1,445 @@
+{
+  "runId": "haiku-mcp-stack-P-04-r2",
+  "promptId": "P-04",
+  "model": "haiku",
+  "config": "mcp-stack",
+  "timestamp": "2026-06-21T09:42:05.622Z",
+  "quality": {
+    "overall": 81.43,
+    "categories": {
+      "A": {
+        "category": "A",
+        "label": "Design System API",
+        "score": 80,
+        "weight": 0.225,
+        "weightedScore": 18,
+        "errorCount": 0,
+        "warningCount": 2,
+        "issues": [
+          {
+            "type": "technical",
+            "severity": "warning",
+            "source": "design-system-usage",
+            "component": "span",
+            "message": "Raw <span> used instead of a Marigold component.",
+            "suggestion": "Raw <span> used instead of a Marigold content component. Search the Marigold docs for content alternatives.",
+            "location": {
+              "file": "TestApp.tsx",
+              "line": 153,
+              "column": 25
+            },
+            "details": {
+              "htmlElement": "span"
+            }
+          },
+          {
+            "type": "technical",
+            "severity": "warning",
+            "source": "design-system-usage",
+            "component": "span",
+            "message": "Inline style on <span> bypasses the design system (color).",
+            "suggestion": "Use Marigold layout components (Stack, Columns, Inset, Container) and theme tokens instead of inline styles.",
+            "location": {
+              "file": "TestApp.tsx",
+              "line": 153,
+              "column": 31
+            },
+            "details": {
+              "cssProperties": [
+                "color"
+              ]
+            }
+          }
+        ]
+      },
+      "B": {
+        "category": "B",
+        "label": "Token Compliance",
+        "score": 100,
+        "weight": 0.1,
+        "weightedScore": 10,
+        "errorCount": 0,
+        "warningCount": 0,
+        "issues": []
+      },
+      "C": {
+        "category": "C",
+        "label": "DOM / Structure",
+        "score": 75.25,
+        "weight": 0.225,
+        "weightedScore": 16.93,
+        "errorCount": 0,
+        "warningCount": 1,
+        "issues": [
+          {
+            "type": "technical",
+            "severity": "warning",
+            "source": "layout-usage",
+            "component": "Stack",
+            "message": "<Stack> wraps a single child. A flow layout earns its place only with two or more children; with one child it adds a wrapper that does nothing.",
+            "suggestion": "Render the child directly instead of wrapping it in <Stack>. For single-child spacing use Inset, Center, Breakout or Aspect.",
+            "location": {
+              "file": "TestApp.tsx",
+              "line": 263,
+              "column": 7
+            },
+            "details": {
+              "layout": "Stack",
+              "childCount": 1
+            }
+          }
+        ]
+      },
+      "D": {
+        "category": "D",
+        "label": "Spatial & A11y",
+        "score": 71.72,
+        "weight": 0.225,
+        "weightedScore": 16.14,
+        "errorCount": 0,
+        "warningCount": 4,
+        "issues": [
+          {
+            "type": "spatial",
+            "severity": "warning",
+            "source": "responsive-checker",
+            "component": "page",
+            "message": "Content uses only 30% of the desktop width (1280px): it stays in a narrow, mobile-shaped band instead of adapting to the available space.",
+            "suggestion": "Let the layout grow with the viewport using Marigold responsive primitives — <Columns collapseAt=\"...\"> for multi-column areas, AppLayout for the shell, Stack/Inline for flow — instead of a fixed-width container. (Intentionally centred max-width reading columns are fine and may trip this; treat it as a relative signal.)",
+            "details": {
+              "widthUtilization": 0.30078125,
+              "contentElements": 43,
+              "scope": "page"
+            }
+          },
+          {
+            "type": "a11y",
+            "severity": "warning",
+            "source": "aom-extractor",
+            "component": ".items-stretch.gap-y-\\(--space\\).flex-col > .items-stretch.gap-y-\\(--space\\).flex-col:nth-child(1) > .items-stretch.gap-y-\\(--space\\).flex-col > .max-w-\\(--maxTextWidth\\):nth-child(3)",
+            "message": "Elements must meet minimum color contrast ratio thresholds (color-contrast)",
+            "suggestion": "Use Marigold theme tokens for colors instead of custom CSS values. Components styled through the theme automatically meet contrast requirements. Avoid overriding colors with `className` or inline `style`.",
+            "details": {
+              "ruleId": "color-contrast",
+              "impact": "serious",
+              "target": [
+                ".items-stretch.gap-y-\\(--space\\).flex-col > .items-stretch.gap-y-\\(--space\\).flex-col:nth-child(1) > .items-stretch.gap-y-\\(--space\\).flex-col > .max-w-\\(--maxTextWidth\\):nth-child(3)"
+              ],
+              "html": "<div class=\"max-w-(--maxTextWidth)\" style=\"color: var(--color-muted, muted);\">Three days of live music featuring local and international artists.</div>",
+              "scope": "page"
+            }
+          },
+          {
+            "type": "a11y",
+            "severity": "warning",
+            "source": "aom-extractor",
+            "component": "html",
+            "message": "Document should have one main landmark (landmark-one-main)",
+            "suggestion": "Wrap your page content in `<AppLayout>` with `<AppLayout.Main>` to provide a `<main>` landmark. Import AppLayout from `@marigold/components`.",
+            "details": {
+              "ruleId": "landmark-one-main",
+              "impact": "moderate",
+              "target": [
+                "html"
+              ],
+              "html": "<html lang=\"en\" data-theme=\"rui\">",
+              "scope": "page"
+            }
+          },
+          {
+            "type": "a11y",
+            "severity": "warning",
+            "source": "aom-extractor",
+            "component": "page",
+            "message": "All page content should be contained by landmarks — 4 elements affected (region)",
+            "suggestion": "All page content must be inside a landmark region. Use `<AppLayout>` with `<AppLayout.Main>` for the main area, `<TopNavigation>` for the header (`<header>`), and `<Sidebar>` for side navigation (`<aside>`). Import from `@marigold/components`.",
+            "details": {
+              "ruleId": "region",
+              "impact": "moderate",
+              "affectedCount": 4,
+              "scope": "page"
+            }
+          }
+        ]
+      },
+      "E": {
+        "category": "E",
+        "label": "Functional Completeness",
+        "score": 90.48,
+        "weight": 0.225,
+        "weightedScore": 20.36,
+        "errorCount": 0,
+        "warningCount": 0,
+        "issues": []
+      }
+    },
+    "renderSuccess": true
+  },
+  "efficiency": {
+    "durationMs": 359839,
+    "costUsd": 0.30066539999999997,
+    "inputTokens": 89,
+    "outputTokens": 6845,
+    "cacheReadTokens": 1114654,
+    "cacheCreationTokens": 73145,
+    "totalTokens": 6934,
+    "numTurns": 31
+  },
+  "report": {
+    "file": "TestApp.tsx",
+    "errors": [],
+    "warnings": [
+      {
+        "type": "technical",
+        "severity": "warning",
+        "source": "design-system-usage",
+        "component": "span",
+        "message": "Raw <span> used instead of a Marigold component.",
+        "suggestion": "Raw <span> used instead of a Marigold content component. Search the Marigold docs for content alternatives.",
+        "location": {
+          "file": "TestApp.tsx",
+          "line": 153,
+          "column": 25
+        },
+        "details": {
+          "htmlElement": "span"
+        }
+      },
+      {
+        "type": "technical",
+        "severity": "warning",
+        "source": "design-system-usage",
+        "component": "span",
+        "message": "Inline style on <span> bypasses the design system (color).",
+        "suggestion": "Use Marigold layout components (Stack, Columns, Inset, Container) and theme tokens instead of inline styles.",
+        "location": {
+          "file": "TestApp.tsx",
+          "line": 153,
+          "column": 31
+        },
+        "details": {
+          "cssProperties": [
+            "color"
+          ]
+        }
+      },
+      {
+        "type": "technical",
+        "severity": "warning",
+        "source": "layout-usage",
+        "component": "Stack",
+        "message": "<Stack> wraps a single child. A flow layout earns its place only with two or more children; with one child it adds a wrapper that does nothing.",
+        "suggestion": "Render the child directly instead of wrapping it in <Stack>. For single-child spacing use Inset, Center, Breakout or Aspect.",
+        "location": {
+          "file": "TestApp.tsx",
+          "line": 263,
+          "column": 7
+        },
+        "details": {
+          "layout": "Stack",
+          "childCount": 1
+        }
+      },
+      {
+        "type": "spatial",
+        "severity": "warning",
+        "source": "responsive-checker",
+        "component": "page",
+        "message": "Content uses only 30% of the desktop width (1280px): it stays in a narrow, mobile-shaped band instead of adapting to the available space.",
+        "suggestion": "Let the layout grow with the viewport using Marigold responsive primitives — <Columns collapseAt=\"...\"> for multi-column areas, AppLayout for the shell, Stack/Inline for flow — instead of a fixed-width container. (Intentionally centred max-width reading columns are fine and may trip this; treat it as a relative signal.)",
+        "details": {
+          "widthUtilization": 0.30078125,
+          "contentElements": 43,
+          "scope": "page"
+        }
+      },
+      {
+        "type": "a11y",
+        "severity": "warning",
+        "source": "aom-extractor",
+        "component": ".items-stretch.gap-y-\\(--space\\).flex-col > .items-stretch.gap-y-\\(--space\\).flex-col:nth-child(1) > .items-stretch.gap-y-\\(--space\\).flex-col > .max-w-\\(--maxTextWidth\\):nth-child(3)",
+        "message": "Elements must meet minimum color contrast ratio thresholds (color-contrast)",
+        "suggestion": "Use Marigold theme tokens for colors instead of custom CSS values. Components styled through the theme automatically meet contrast requirements. Avoid overriding colors with `className` or inline `style`.",
+        "details": {
+          "ruleId": "color-contrast",
+          "impact": "serious",
+          "target": [
+            ".items-stretch.gap-y-\\(--space\\).flex-col > .items-stretch.gap-y-\\(--space\\).flex-col:nth-child(1) > .items-stretch.gap-y-\\(--space\\).flex-col > .max-w-\\(--maxTextWidth\\):nth-child(3)"
+          ],
+          "html": "<div class=\"max-w-(--maxTextWidth)\" style=\"color: var(--color-muted, muted);\">Three days of live music featuring local and international artists.</div>",
+          "scope": "page"
+        }
+      },
+      {
+        "type": "a11y",
+        "severity": "warning",
+        "source": "aom-extractor",
+        "component": "html",
+        "message": "Document should have one main landmark (landmark-one-main)",
+        "suggestion": "Wrap your page content in `<AppLayout>` with `<AppLayout.Main>` to provide a `<main>` landmark. Import AppLayout from `@marigold/components`.",
+        "details": {
+          "ruleId": "landmark-one-main",
+          "impact": "moderate",
+          "target": [
+            "html"
+          ],
+          "html": "<html lang=\"en\" data-theme=\"rui\">",
+          "scope": "page"
+        }
+      },
+      {
+        "type": "a11y",
+        "severity": "warning",
+        "source": "aom-extractor",
+        "component": "page",
+        "message": "All page content should be contained by landmarks — 4 elements affected (region)",
+        "suggestion": "All page content must be inside a landmark region. Use `<AppLayout>` with `<AppLayout.Main>` for the main area, `<TopNavigation>` for the header (`<header>`), and `<Sidebar>` for side navigation (`<aside>`). Import from `@marigold/components`.",
+        "details": {
+          "ruleId": "region",
+          "impact": "moderate",
+          "affectedCount": 4,
+          "scope": "page"
+        }
+      }
+    ],
+    "passed": [
+      "TypeScript compilation",
+      "All Marigold props are valid",
+      "Component composition",
+      "Overlay accessible names",
+      "Compound component placement",
+      "Section headers",
+      "Collection item ids",
+      "Table usage",
+      "Component conventions",
+      "Theme variant compliance",
+      "No overlapping components detected"
+    ],
+    "metadata": {
+      "renderTimeMs": 1534,
+      "componentsFound": [
+        "div",
+        "input",
+        "button"
+      ],
+      "checksRun": [
+        "technical",
+        "spatial",
+        "a11y"
+      ],
+      "coverage": {
+        "staticValuesChecked": 22,
+        "dynamicValuesSkipped": 12,
+        "spreadPropsBypassed": 0
+      },
+      "widthUtilization": 0.30078125
+    },
+    "markdown": "marigold-validate: TestApp.tsx — 0 error(s), 7 warning(s)\n\n[warning/technical] <span>: Raw <span> used instead of a Marigold component. (TestApp.tsx:153:25)\n  → Raw <span> used instead of a Marigold content component. Search the Marigold docs for content alternatives.\n  data: {htmlElement=span}\n[warning/technical] <span>: Inline style on <span> bypasses the design system (color). (TestApp.tsx:153:31)\n  → Use Marigold layout components (Stack, Columns, Inset, Container) and theme tokens instead of inline styles.\n  data: {cssProperties=[\"color\"]}\n[warning/technical] <Stack>: <Stack> wraps a single child. A flow layout earns its place only with two or more children; with one child it adds a wrapper that does nothing. (TestApp.tsx:263:7)\n  → Render the child directly instead of wrapping it in <Stack>. For single-child spacing use Inset, Center, Breakout or Aspect.\n  data: {layout=Stack, childCount=1}\n[warning/spatial] <page>: Content uses only 30% of the desktop width (1280px): it stays in a narrow, mobile-shaped band instead of adapting to the available space.\n  → Let the layout grow with the viewport using Marigold responsive primitives — <Columns collapseAt=\"...\"> for multi-column areas, AppLayout for the shell, Stack/Inline for flow — instead of a fixed-width container. (Intentionally centred max-width reading columns are fine and may trip this; treat it as a relative signal.)\n  data: {widthUtilization=0.30078125, contentElements=43, scope=page}\n[warning/a11y] <.items-stretch.gap-y-\\(--space\\).flex-col > .items-stretch.gap-y-\\(--space\\).flex-col:nth-child(1) > .items-stretch.gap-y-\\(--space\\).flex-col > .max-w-\\(--maxTextWidth\\):nth-child(3)>: Elements must meet minimum color contrast ratio thresholds (color-contrast)\n  → Use Marigold theme tokens for colors instead of custom CSS values. Components styled through the theme automatically meet contrast requirements. Avoid overriding colors with `className` or inline `style`.\n  data: {ruleId=color-contrast, impact=serious, target=[\".items-stretch.gap-y-\\\\(--space\\\\).flex-col > .items-stretch.gap-y-\\\\(--space\\\\).flex-col:nth-child(1) > .items-stret…, html=<div class=\"max-w-(--maxTextWidth)\" style=\"color: var(--color-muted, muted);\"..., scope=page}\n[warning/a11y] <html>: Document should have one main landmark (landmark-one-main)\n  → Wrap your page content in `<AppLayout>` with `<AppLayout.Main>` to provide a `<main>` landmark. Import AppLayout from `@marigold/components`.\n  data: {ruleId=landmark-one-main, impact=moderate, target=[\"html\"], html=<html lang=\"en\" data-theme=\"rui\">, scope=page}\n[warning/a11y] <page>: All page content should be contained by landmarks — 4 elements affected (region)\n  → All page content must be inside a landmark region. Use `<AppLayout>` with `<AppLayout.Main>` for the main area, `<TopNavigation>` for the header (`<header>`), and `<Sidebar>` for side navigation (`<aside>`). Import from `@marigold/components`.\n  data: {ruleId=region, impact=moderate, affectedCount=4, scope=page}\n\npassed: TypeScript compilation, All Marigold props are valid, Component composition, Overlay accessible names, Compound component placement, Section headers, Collection item ids, Table usage, Component conventions, Theme variant compliance, No overlapping components detected\n\nchecks run: technical, spatial, a11y"
+  },
+  "componentsFound": [
+    "div",
+    "input",
+    "button"
+  ],
+  "renderTimeMs": 1534,
+  "sourceCode": "import { useState } from 'react';\nimport {\n  Button,\n  Card,\n  Divider,\n  Headline,\n  Inline,\n  NumberField,\n  SectionMessage,\n  Stack,\n  Text,\n  TextField,\n} from '@marigold/components';\n\ninterface TicketCategory {\n  id: string;\n  name: string;\n  price: number;\n  description: string;\n  stock?: number;\n  maxPerOrder?: number;\n  soldOut?: boolean;\n}\n\nconst TICKET_CATEGORIES: TicketCategory[] = [\n  {\n    id: 'early-bird',\n    name: 'Early Bird',\n    price: 49,\n    description: 'Limited availability',\n    stock: 12,\n    maxPerOrder: 12,\n  },\n  {\n    id: 'regular',\n    name: 'Regular',\n    price: 79,\n    description: 'Standard admission',\n  },\n  {\n    id: 'vip',\n    name: 'VIP',\n    price: 149,\n    description: 'Premium experience',\n    soldOut: true,\n  },\n];\n\nconst TestApp = () => {\n  const [quantities, setQuantities] = useState<Record<string, number>>({\n    'early-bird': 0,\n    regular: 0,\n    vip: 0,\n  });\n\n  const [fullName, setFullName] = useState('');\n  const [email, setEmail] = useState('');\n  const [phone, setPhone] = useState('');\n  const [successMessage, setSuccessMessage] = useState('');\n  const [errorMessage, setErrorMessage] = useState('');\n\n  const emailRegex = /^[^\\s@]+@[^\\s@]+\\.[^\\s@]+$/;\n  const isEmailValid = email.length === 0 || emailRegex.test(email);\n\n  const handleQuantityChange = (categoryId: string, value: number) => {\n    const category = TICKET_CATEGORIES.find(c => c.id === categoryId);\n    const maxAllowed = category?.maxPerOrder ?? Infinity;\n    const validValue = Math.min(Math.max(0, value), maxAllowed);\n    setQuantities(prev => ({\n      ...prev,\n      [categoryId]: validValue,\n    }));\n  };\n\n  const calculateSubtotal = (categoryId: string) => {\n    const category = TICKET_CATEGORIES.find(c => c.id === categoryId);\n    return (category?.price ?? 0) * quantities[categoryId];\n  };\n\n  const totalQuantity = Object.values(quantities).reduce((sum, q) => sum + q, 0);\n  const grandTotal = Object.keys(quantities).reduce(\n    (sum, categoryId) => sum + calculateSubtotal(categoryId),\n    0\n  );\n\n  const handlePurchase = () => {\n    setSuccessMessage('');\n    setErrorMessage('');\n\n    if (totalQuantity === 0) {\n      setErrorMessage('Please select at least one ticket to purchase.');\n      return;\n    }\n\n    if (!fullName.trim()) {\n      setErrorMessage('Please enter your full name.');\n      return;\n    }\n\n    if (!email.trim()) {\n      setErrorMessage('Please enter your email address.');\n      return;\n    }\n\n    if (!isEmailValid) {\n      setErrorMessage('Please enter a valid email address.');\n      return;\n    }\n\n    const ticketSummary = TICKET_CATEGORIES.filter(c => quantities[c.id] > 0)\n      .map(c => `${quantities[c.id]} ${c.name}`)\n      .join(', ');\n\n    setSuccessMessage(\n      `Order confirmed! You've purchased ${ticketSummary} for $${grandTotal.toFixed(2)}. Confirmation sent to ${email}.`\n    );\n\n    setQuantities({ 'early-bird': 0, regular: 0, vip: 0 });\n    setFullName('');\n    setEmail('');\n    setPhone('');\n  };\n\n  return (\n    <Stack space={8}>\n      {/* Event Header */}\n      <Stack space={3}>\n        <Headline level=\"1\">Summer Music Festival 2026</Headline>\n        <Stack space={2}>\n          <Text weight=\"medium\">July 15-17, 2026</Text>\n          <Text weight=\"medium\">Stadtpark Freiburg</Text>\n          <Text color=\"muted\">\n            Three days of live music featuring local and international artists.\n          </Text>\n        </Stack>\n      </Stack>\n\n      <Divider />\n\n      {/* Ticket Categories */}\n      <Stack space={4}>\n        <Headline level=\"2\">Ticket Categories</Headline>\n        <Stack space={4}>\n          {TICKET_CATEGORIES.map(category => (\n            <Card key={category.id}>\n              <Stack space={3}>\n                <Stack space={1}>\n                  <Headline level=\"3\">{category.name}</Headline>\n                  <Inline space={2}>\n                    <Text weight=\"bold\">${category.price}</Text>\n                    <Text color=\"muted\" size=\"sm\">\n                      {category.soldOut ? (\n                        <span style={{ color: 'var(--color-feedback-error)' }}>\n                          Sold Out\n                        </span>\n                      ) : category.stock ? (\n                        `Only ${category.stock} left`\n                      ) : (\n                        'Available'\n                      )}\n                    </Text>\n                  </Inline>\n                  <Text color=\"muted\" size=\"sm\">\n                    {category.description}\n                  </Text>\n                </Stack>\n\n                <NumberField\n                  label=\"Quantity\"\n                  value={quantities[category.id]}\n                  onChange={value => handleQuantityChange(category.id, value)}\n                  minValue={0}\n                  maxValue={category.maxPerOrder ?? 999}\n                  disabled={category.soldOut}\n                  width=\"1/4\"\n                  hideStepper\n                />\n              </Stack>\n            </Card>\n          ))}\n        </Stack>\n      </Stack>\n\n      <Divider />\n\n      {/* Buyer Information */}\n      <Stack space={4}>\n        <Headline level=\"2\">Buyer Information</Headline>\n        <Stack space={3}>\n          <TextField\n            label=\"Full Name\"\n            value={fullName}\n            onChange={setFullName}\n            required\n          />\n          <TextField\n            label=\"Email\"\n            type=\"email\"\n            value={email}\n            onChange={setEmail}\n            required\n            error={email.length > 0 && !isEmailValid}\n            errorMessage={\n              email.length > 0 && !isEmailValid\n                ? 'Please enter a valid email address'\n                : undefined\n            }\n          />\n          <TextField label=\"Phone Number\" value={phone} onChange={setPhone} />\n        </Stack>\n      </Stack>\n\n      <Divider />\n\n      {/* Order Summary */}\n      <Stack space={4}>\n        <Headline level=\"2\">Order Summary</Headline>\n        <Card>\n          <Stack space={3}>\n            {TICKET_CATEGORIES.filter(c => quantities[c.id] > 0).map(\n              category => (\n                <Inline key={category.id} alignX=\"between\">\n                  <Text>\n                    {quantities[category.id]}x {category.name}\n                  </Text>\n                  <Text weight=\"bold\">\n                    ${calculateSubtotal(category.id).toFixed(2)}\n                  </Text>\n                </Inline>\n              )\n            )}\n            {totalQuantity > 0 && <Divider />}\n            <Inline alignX=\"between\">\n              <Text weight=\"bold\">Grand Total:</Text>\n              <Text\n                weight=\"bold\"\n                size=\"lg\"\n                color={totalQuantity > 0 ? 'default' : 'muted'}\n              >\n                ${grandTotal.toFixed(2)}\n              </Text>\n            </Inline>\n          </Stack>\n        </Card>\n      </Stack>\n\n      {/* Messages */}\n      {successMessage && (\n        <SectionMessage variant=\"success\">\n          <SectionMessage.Title>Order Confirmed!</SectionMessage.Title>\n          <SectionMessage.Content>{successMessage}</SectionMessage.Content>\n        </SectionMessage>\n      )}\n\n      {errorMessage && (\n        <SectionMessage variant=\"error\">\n          <SectionMessage.Title>Cannot Complete Order</SectionMessage.Title>\n          <SectionMessage.Content>{errorMessage}</SectionMessage.Content>\n        </SectionMessage>\n      )}\n\n      {/* Submit Button */}\n      <Stack alignX=\"right\">\n        <Button variant=\"primary\" onPress={handlePurchase}>\n          Purchase Tickets\n        </Button>\n      </Stack>\n    </Stack>\n  );\n};\n\nexport default TestApp;\n",
+  "assertions": {
+    "passed": [
+      {
+        "id": "a-import-marigold",
+        "description": "Imports from @marigold/components",
+        "severity": "required",
+        "passed": true,
+        "evidence": "import from \"@marigold/components\" found"
+      },
+      {
+        "id": "a-has-button",
+        "description": "Button component present",
+        "severity": "required",
+        "passed": true,
+        "evidence": "<Button> found"
+      },
+      {
+        "id": "a-has-form-input",
+        "description": "Uses at least one form input component",
+        "severity": "required",
+        "passed": true,
+        "evidence": "matched: <TextField> found; <NumberField> found"
+      },
+      {
+        "id": "a-has-layout-primitive",
+        "description": "Uses at least one layout component",
+        "severity": "required",
+        "passed": true,
+        "evidence": "matched: <Stack> found; <Card> found; <Inline> found"
+      },
+      {
+        "id": "a-price-indicator",
+        "description": "Shows pricing information",
+        "severity": "recommended",
+        "passed": true,
+        "evidence": "pattern \"/\\$|€|price|cost|total|amount/i\" found"
+      },
+      {
+        "id": "a-has-quantity-mechanism",
+        "description": "Has a mechanism for selecting ticket quantity",
+        "severity": "required",
+        "passed": true,
+        "evidence": "matched: <NumberField> found; pattern \"/quantity|qty|amount|count|tickets?\\s*:/i\" found"
+      },
+      {
+        "id": "a-has-feedback-mechanism",
+        "description": "Has user feedback mechanism",
+        "severity": "required",
+        "passed": true,
+        "evidence": "matched: <SectionMessage> found; pattern \"/error|success|confirm/i\" found"
+      },
+      {
+        "id": "a-no-onclick-on-marigold",
+        "description": "No onClick on Marigold Button components",
+        "severity": "recommended",
+        "passed": true,
+        "evidence": "\"/<Button[^>]*onClick/\" correctly absent"
+      },
+      {
+        "id": "a-has-headline",
+        "description": "Headline for event name",
+        "severity": "required",
+        "passed": true,
+        "evidence": "<Headline> found"
+      },
+      {
+        "id": "a-sold-out-state",
+        "description": "Sold-out state indicated",
+        "severity": "required",
+        "passed": true,
+        "evidence": "matched: pattern \"/sold.?out|unavailable|disabled/i\" found"
+      },
+      {
+        "id": "a-card",
+        "description": "Ticket category cards",
+        "severity": "required",
+        "passed": true,
+        "evidence": "<Card> found"
+      }
+    ],
+    "failed": [
+      {
+        "id": "a-has-form",
+        "description": "Form component wrapping buyer info",
+        "severity": "required",
+        "passed": false,
+        "evidence": "<Form> not found"
+      }
+    ],
+    "passRate": 0.9167,
+    "requiredPassRate": 0.9,
+    "weightedPassRate": 0.9048,
+    "total": 12
+  },
+  "validatePackageVersion": "0.0.1",
+  "playwrightVersion": null,
+  "resolvedModelId": "claude-haiku-4-5",
+  "claudeCliVersion": "2.1.185 (Claude Code)",
+  "sessionId": "944a1c1c-fbcf-427d-9687-417557e5006a"
+}

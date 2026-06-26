@@ -1,0 +1,451 @@
+{
+  "runId": "sonnet-full-stack-P-09-r1",
+  "promptId": "P-09",
+  "model": "sonnet",
+  "config": "full-stack",
+  "timestamp": "2026-06-25T17:58:02.666Z",
+  "quality": {
+    "overall": 89.52,
+    "categories": {
+      "A": {
+        "category": "A",
+        "label": "Design System API",
+        "score": 85.86,
+        "weight": 0.225,
+        "weightedScore": 19.32,
+        "errorCount": 0,
+        "warningCount": 1,
+        "issues": [
+          {
+            "type": "technical",
+            "severity": "warning",
+            "source": "design-system-usage",
+            "component": "img",
+            "message": "Inline style on <img> bypasses the design system (width, height, borderRadius, objectFit).",
+            "suggestion": "Use Marigold layout components (Stack, Columns, Inset, Container) and theme tokens instead of inline styles.",
+            "location": {
+              "file": "TestApp.tsx",
+              "line": 348,
+              "column": 21
+            },
+            "details": {
+              "cssProperties": [
+                "width",
+                "height",
+                "borderRadius",
+                "objectFit"
+              ]
+            }
+          }
+        ]
+      },
+      "B": {
+        "category": "B",
+        "label": "Token Compliance",
+        "score": 81.63,
+        "weight": 0.1,
+        "weightedScore": 8.16,
+        "errorCount": 0,
+        "warningCount": 3,
+        "issues": [
+          {
+            "type": "style",
+            "severity": "warning",
+            "source": "token-compliance",
+            "component": "button",
+            "message": "Computed color value \"oklab(0.444 0.00309857 0.0105546 / 0.8)\" on <button> (“Show suggestions”) does not map to a known design token.",
+            "suggestion": "If this is intentional, ignore the warning. Otherwise, use a Marigold variant or a theme-rui token instead of a hard-coded value.",
+            "details": {
+              "property": "color",
+              "value": "oklab(0.444 0.00309857 0.0105546 / 0.8)",
+              "selector": "body:nth-child(2) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > main:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div:nth-child(3) > div:nth-child(7) > div:nth-child(2) > button:nth-child(2)",
+              "fingerprint": "Show suggestions",
+              "scope": "page"
+            }
+          },
+          {
+            "type": "style",
+            "severity": "warning",
+            "source": "token-compliance",
+            "component": "button",
+            "message": "Computed border-color value \"oklab(0.444 0.00309857 0.0105546 / 0.8)\" on <button> (“Show suggestions”) does not map to a known design token.",
+            "suggestion": "If this is intentional, ignore the warning. Otherwise, use a Marigold variant or a theme-rui token instead of a hard-coded value.",
+            "details": {
+              "property": "border-color",
+              "value": "oklab(0.444 0.00309857 0.0105546 / 0.8)",
+              "selector": "body:nth-child(2) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > main:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div:nth-child(3) > div:nth-child(7) > div:nth-child(2) > button:nth-child(2)",
+              "fingerprint": "Show suggestions",
+              "scope": "page"
+            }
+          },
+          {
+            "type": "style",
+            "severity": "warning",
+            "source": "token-compliance",
+            "component": "button",
+            "message": "Computed outline-color value \"oklab(0.444 0.00309857 0.0105546 / 0.8)\" on <button> (“Show suggestions”) does not map to a known design token.",
+            "suggestion": "If this is intentional, ignore the warning. Otherwise, use a Marigold variant or a theme-rui token instead of a hard-coded value.",
+            "details": {
+              "property": "outline-color",
+              "value": "oklab(0.444 0.00309857 0.0105546 / 0.8)",
+              "selector": "body:nth-child(2) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > main:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div:nth-child(3) > div:nth-child(7) > div:nth-child(2) > button:nth-child(2)",
+              "fingerprint": "Show suggestions",
+              "scope": "page"
+            }
+          }
+        ]
+      },
+      "C": {
+        "category": "C",
+        "label": "DOM / Structure",
+        "score": 100,
+        "weight": 0.225,
+        "weightedScore": 22.5,
+        "errorCount": 0,
+        "warningCount": 0,
+        "issues": []
+      },
+      "D": {
+        "category": "D",
+        "label": "Spatial & A11y",
+        "score": 85.86,
+        "weight": 0.225,
+        "weightedScore": 19.32,
+        "errorCount": 0,
+        "warningCount": 1,
+        "issues": [
+          {
+            "type": "a11y",
+            "severity": "warning",
+            "source": "keyboard-a11y",
+            "component": "input",
+            "message": "Interactive element <input> (input) is not reachable via Tab key.",
+            "suggestion": "Ensure the element is focusable. Marigold interactive components are focusable by default — check if a parent has tabindex=\"-1\" or focus is trapped.",
+            "details": {
+              "selector": "body:nth-child(2) > div:nth-child(2) > div:nth-child(1) > div:nth-child(1) > main:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div:nth-child(3) > div:nth-child(2) > div:nth-child(2) > input:nth-child(1)",
+              "role": "input",
+              "scope": "page"
+            }
+          }
+        ]
+      },
+      "E": {
+        "category": "E",
+        "label": "Functional Completeness",
+        "score": 89.87,
+        "weight": 0.225,
+        "weightedScore": 20.22,
+        "errorCount": 0,
+        "warningCount": 0,
+        "issues": []
+      }
+    },
+    "renderSuccess": true
+  },
+  "efficiency": {
+    "durationMs": 1204819,
+    "costUsd": 4.473595199999997,
+    "inputTokens": 102,
+    "outputTokens": 51790,
+    "cacheReadTokens": 9578314,
+    "cacheCreationTokens": 135005,
+    "totalTokens": 51892,
+    "numTurns": 117
+  },
+  "report": {
+    "file": "TestApp.tsx",
+    "errors": [],
+    "warnings": [
+      {
+        "type": "technical",
+        "severity": "warning",
+        "source": "design-system-usage",
+        "component": "img",
+        "message": "Inline style on <img> bypasses the design system (width, height, borderRadius, objectFit).",
+        "suggestion": "Use Marigold layout components (Stack, Columns, Inset, Container) and theme tokens instead of inline styles.",
+        "location": {
+          "file": "TestApp.tsx",
+          "line": 348,
+          "column": 21
+        },
+        "details": {
+          "cssProperties": [
+            "width",
+            "height",
+            "borderRadius",
+            "objectFit"
+          ]
+        }
+      },
+      {
+        "type": "style",
+        "severity": "warning",
+        "source": "token-compliance",
+        "component": "button",
+        "message": "Computed color value \"oklab(0.444 0.00309857 0.0105546 / 0.8)\" on <button> (“Show suggestions”) does not map to a known design token.",
+        "suggestion": "If this is intentional, ignore the warning. Otherwise, use a Marigold variant or a theme-rui token instead of a hard-coded value.",
+        "details": {
+          "property": "color",
+          "value": "oklab(0.444 0.00309857 0.0105546 / 0.8)",
+          "selector": "body:nth-child(2) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > main:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div:nth-child(3) > div:nth-child(7) > div:nth-child(2) > button:nth-child(2)",
+          "fingerprint": "Show suggestions",
+          "scope": "page"
+        }
+      },
+      {
+        "type": "style",
+        "severity": "warning",
+        "source": "token-compliance",
+        "component": "button",
+        "message": "Computed border-color value \"oklab(0.444 0.00309857 0.0105546 / 0.8)\" on <button> (“Show suggestions”) does not map to a known design token.",
+        "suggestion": "If this is intentional, ignore the warning. Otherwise, use a Marigold variant or a theme-rui token instead of a hard-coded value.",
+        "details": {
+          "property": "border-color",
+          "value": "oklab(0.444 0.00309857 0.0105546 / 0.8)",
+          "selector": "body:nth-child(2) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > main:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div:nth-child(3) > div:nth-child(7) > div:nth-child(2) > button:nth-child(2)",
+          "fingerprint": "Show suggestions",
+          "scope": "page"
+        }
+      },
+      {
+        "type": "style",
+        "severity": "warning",
+        "source": "token-compliance",
+        "component": "button",
+        "message": "Computed outline-color value \"oklab(0.444 0.00309857 0.0105546 / 0.8)\" on <button> (“Show suggestions”) does not map to a known design token.",
+        "suggestion": "If this is intentional, ignore the warning. Otherwise, use a Marigold variant or a theme-rui token instead of a hard-coded value.",
+        "details": {
+          "property": "outline-color",
+          "value": "oklab(0.444 0.00309857 0.0105546 / 0.8)",
+          "selector": "body:nth-child(2) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > main:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div:nth-child(3) > div:nth-child(7) > div:nth-child(2) > button:nth-child(2)",
+          "fingerprint": "Show suggestions",
+          "scope": "page"
+        }
+      },
+      {
+        "type": "a11y",
+        "severity": "warning",
+        "source": "keyboard-a11y",
+        "component": "input",
+        "message": "Interactive element <input> (input) is not reachable via Tab key.",
+        "suggestion": "Ensure the element is focusable. Marigold interactive components are focusable by default — check if a parent has tabindex=\"-1\" or focus is trapped.",
+        "details": {
+          "selector": "body:nth-child(2) > div:nth-child(2) > div:nth-child(1) > div:nth-child(1) > main:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div:nth-child(3) > div:nth-child(2) > div:nth-child(2) > input:nth-child(1)",
+          "role": "input",
+          "scope": "page"
+        }
+      }
+    ],
+    "passed": [
+      "TypeScript compilation",
+      "All Marigold props are valid",
+      "Component composition",
+      "Overlay accessible names",
+      "Compound component placement",
+      "Section headers",
+      "Collection item ids",
+      "Layout usage",
+      "Table usage",
+      "Component conventions",
+      "Theme variant compliance",
+      "No overlapping components detected",
+      "Responsive layout"
+    ],
+    "metadata": {
+      "renderTimeMs": 1634,
+      "componentsFound": [
+        "div",
+        "input",
+        "button"
+      ],
+      "checksRun": [
+        "technical",
+        "spatial",
+        "a11y"
+      ],
+      "coverage": {
+        "staticValuesChecked": 37,
+        "dynamicValuesSkipped": 33,
+        "spreadPropsBypassed": 0
+      },
+      "widthUtilization": 0.9359375
+    },
+    "markdown": "marigold-validate: TestApp.tsx — 0 error(s), 5 warning(s)\n\n[warning/technical] <img>: Inline style on <img> bypasses the design system (width, height, borderRadius, objectFit). (TestApp.tsx:348:21)\n  → Use Marigold layout components (Stack, Columns, Inset, Container) and theme tokens instead of inline styles.\n  data: {cssProperties=[\"width\",\"height\",\"borderRadius\",\"objectFit\"]}\n[warning/style] <button>: Computed color value \"oklab(0.444 0.00309857 0.0105546 / 0.8)\" on <button> (“Show suggestions”) does not map to a known design token.\n  → If this is intentional, ignore the warning. Otherwise, use a Marigold variant or a theme-rui token instead of a hard-coded value.\n  data: {property=color, value=oklab(0.444 0.00309857 0.0105546 / 0.8), selector=body:nth-child(2) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > ..., fingerprint=Show suggestions, scope=page}\n[warning/style] <button>: Computed border-color value \"oklab(0.444 0.00309857 0.0105546 / 0.8)\" on <button> (“Show suggestions”) does not map to a known design token.\n  → If this is intentional, ignore the warning. Otherwise, use a Marigold variant or a theme-rui token instead of a hard-coded value.\n  data: {property=border-color, value=oklab(0.444 0.00309857 0.0105546 / 0.8), selector=body:nth-child(2) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > ..., fingerprint=Show suggestions, scope=page}\n[warning/style] <button>: Computed outline-color value \"oklab(0.444 0.00309857 0.0105546 / 0.8)\" on <button> (“Show suggestions”) does not map to a known design token.\n  → If this is intentional, ignore the warning. Otherwise, use a Marigold variant or a theme-rui token instead of a hard-coded value.\n  data: {property=outline-color, value=oklab(0.444 0.00309857 0.0105546 / 0.8), selector=body:nth-child(2) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > ..., fingerprint=Show suggestions, scope=page}\n[warning/a11y] <input>: Interactive element <input> (input) is not reachable via Tab key.\n  → Ensure the element is focusable. Marigold interactive components are focusable by default — check if a parent has tabindex=\"-1\" or focus is trapped.\n  data: {selector=body:nth-child(2) > div:nth-child(2) > div:nth-child(1) > div:nth-child(1) > ..., role=input, scope=page}\n\npassed: TypeScript compilation, All Marigold props are valid, Component composition, Overlay accessible names, Compound component placement, Section headers, Collection item ids, Layout usage, Table usage, Component conventions, Theme variant compliance, No overlapping components detected, Responsive layout\n\nchecks run: technical, spatial, a11y"
+  },
+  "componentsFound": [
+    "div",
+    "input",
+    "button"
+  ],
+  "renderTimeMs": 1634,
+  "sourceCode": "import { useState } from 'react';\nimport type { DateValue } from '@internationalized/date';\nimport {\n  Stack,\n  Inline,\n  Inset,\n  Card,\n  Headline,\n  Text,\n  SectionMessage,\n  Loader,\n  TextField,\n  TextArea,\n  NumberField,\n  Select,\n  DatePicker,\n  TimeField,\n  Checkbox,\n  ComboBox,\n  Radio,\n  Switch,\n  TagField,\n  FileField,\n  Accordion,\n  Button,\n  ToastProvider,\n  useToast,\n  Divider,\n  Center,\n  AppLayout,\n  type TimeValue,\n} from '@marigold/components';\n\n// ── Types ──────────────────────────────────────────────────────────────────────\n\ntype FormData = {\n  // Step 1\n  fullName: string;\n  email: string;\n  phone: string;\n  company: string;\n  jobTitle: string;\n  profilePhotoPreview: string;\n  // Step 2\n  eventDate: DateValue | null;\n  timeSlot: TimeValue | null;\n  sessionTrack: string;\n  dietaryRequirements: string;\n  numberOfGuests: number;\n  specialRequests: string;\n  // Step 3\n  tshirtSize: string;\n  topicsOfInterest: string[];\n  communicationPrefs: string[];\n  hasAccessibilityNeeds: boolean;\n  accessibilityDetails: string;\n  // Step 4\n  termsAgreed: boolean;\n};\n\ntype FormErrors = Partial<Record<keyof FormData, string>>;\n\n// ── Constants ──────────────────────────────────────────────────────────────────\n\nconst INITIAL_FORM: FormData = {\n  fullName: '',\n  email: '',\n  phone: '',\n  company: '',\n  jobTitle: '',\n  profilePhotoPreview: '',\n  eventDate: null,\n  timeSlot: null,\n  sessionTrack: '',\n  dietaryRequirements: '',\n  numberOfGuests: 0,\n  specialRequests: '',\n  tshirtSize: '',\n  topicsOfInterest: [],\n  communicationPrefs: [],\n  hasAccessibilityNeeds: false,\n  accessibilityDetails: '',\n  termsAgreed: false,\n};\n\nconst STEPS = [\n  'Personal Information',\n  'Event Details',\n  'Preferences',\n  'Review & Confirm',\n];\n\nconst DIETARY_OPTIONS = ['None', 'Vegetarian', 'Vegan', 'Gluten-Free', 'Kosher', 'Halal'];\nconst TOPIC_OPTIONS = ['AI/ML', 'Web Development', 'Cloud', 'Security', 'DevOps', 'Mobile', 'Data Science'];\nconst TSHIRT_SIZES = ['XS', 'S', 'M', 'L', 'XL', 'XXL'];\nconst JOB_TITLES = ['Developer', 'Designer', 'Product Manager', 'Engineering Manager', 'CTO', 'Other'];\n\nconst COMM_PREFS = [\n  { value: 'email-updates', label: 'Email updates about the event' },\n  { value: 'sms-reminders', label: 'SMS reminders' },\n  { value: 'post-survey', label: 'Post-event survey' },\n  { value: 'newsletter', label: 'Newsletter subscription' },\n];\n\nconst SESSION_TRACKS = [\n  { value: 'technical', label: 'Technical' },\n  { value: 'design', label: 'Design' },\n  { value: 'business', label: 'Business' },\n  { value: 'workshop', label: 'Workshop' },\n];\n\n// ── Helpers ────────────────────────────────────────────────────────────────────\n\nconst generateConfirmationNumber = () => {\n  const chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';\n  let result = 'EVT-';\n  for (let i = 0; i < 8; i++) {\n    result += chars.charAt(Math.floor(Math.random() * chars.length));\n  }\n  return result;\n};\n\nconst formatDate = (date: DateValue | null): string => {\n  if (!date) return '—';\n  return `${String(date.day).padStart(2, '0')}/${String(date.month).padStart(2, '0')}/${date.year}`;\n};\n\nconst formatTime = (time: TimeValue | null): string => {\n  if (!time) return '—';\n  return `${String(time.hour).padStart(2, '0')}:${String(time.minute).padStart(2, '0')}`;\n};\n\nconst isValidEmail = (email: string) =>\n  /^[^\\s@]+@[^\\s@]+\\.[^\\s@]+$/.test(email);\n\n// ── Inner component (uses useToast) ────────────────────────────────────────────\n\nconst RegistrationForm = () => {\n  const { addToast } = useToast();\n\n  const [step, setStep] = useState(1);\n  const [formData, setFormData] = useState<FormData>(INITIAL_FORM);\n  const [errors, setErrors] = useState<FormErrors>({});\n  const [loading, setLoading] = useState(false);\n  const [submitted, setSubmitted] = useState(false);\n  const [confirmNumber, setConfirmNumber] = useState('');\n  const [reviewExpanded, setReviewExpanded] = useState<Set<string | number>>(\n    new Set(['personal', 'event', 'preferences'])\n  );\n\n  const update = <K extends keyof FormData>(key: K, value: FormData[K]) => {\n    setFormData(prev => ({ ...prev, [key]: value }));\n    if (errors[key]) setErrors(prev => ({ ...prev, [key]: undefined }));\n  };\n\n  const validate = (s: number): boolean => {\n    const errs: FormErrors = {};\n    if (s === 1) {\n      if (!formData.fullName.trim()) errs.fullName = 'Full name is required.';\n      if (!formData.email.trim()) {\n        errs.email = 'Email is required.';\n      } else if (!isValidEmail(formData.email)) {\n        errs.email = 'Please enter a valid email address.';\n      }\n    }\n    if (s === 2) {\n      if (!formData.eventDate) errs.eventDate = 'Event date is required.';\n    }\n    setErrors(errs);\n    return Object.keys(errs).length === 0;\n  };\n\n  const handleNext = () => {\n    if (validate(step)) setStep(prev => prev + 1);\n  };\n\n  const handleBack = () => {\n    setErrors({});\n    setStep(prev => prev - 1);\n  };\n\n  const handleSubmit = () => {\n    if (!formData.termsAgreed) return;\n    const num = generateConfirmationNumber();\n    setConfirmNumber(num);\n    setLoading(true);\n    setTimeout(() => {\n      setLoading(false);\n      setSubmitted(true);\n      addToast({ title: 'Registration submitted successfully', variant: 'success' });\n    }, 1000);\n  };\n\n  const handleReset = () => {\n    setStep(1);\n    setFormData(INITIAL_FORM);\n    setErrors({});\n    setLoading(false);\n    setSubmitted(false);\n    setConfirmNumber('');\n    setReviewExpanded(new Set(['personal', 'event', 'preferences']));\n  };\n\n  // ── Loading ──────────────────────────────────────────────────────────────────\n  if (loading) {\n    return (\n      <Center>\n        <Inset space={8}>\n          <Stack space={4} alignX=\"center\">\n            <Loader />\n            <Text>Processing your registration…</Text>\n          </Stack>\n        </Inset>\n      </Center>\n    );\n  }\n\n  // ── Success ──────────────────────────────────────────────────────────────────\n  if (submitted) {\n    return (\n      <Inset space={6}>\n        <Stack space={6}>\n          <SectionMessage variant=\"success\">\n            <SectionMessage.Title>Registration confirmed!</SectionMessage.Title>\n            <SectionMessage.Content>\n              Your registration has been successfully submitted.\n            </SectionMessage.Content>\n          </SectionMessage>\n\n          <Card>\n            <Inset spaceX=\"padding-regular\" spaceY=\"padding-regular\">\n              <Stack space={3}>\n                <Headline level=\"1\">Registration Summary</Headline>\n                <Stack space={2}>\n                  <Inline space={2}>\n                    <Text weight=\"bold\">Name:</Text>\n                    <Text>{formData.fullName}</Text>\n                  </Inline>\n                  <Inline space={2}>\n                    <Text weight=\"bold\">Email:</Text>\n                    <Text>{formData.email}</Text>\n                  </Inline>\n                  <Inline space={2}>\n                    <Text weight=\"bold\">Event Date:</Text>\n                    <Text>{formatDate(formData.eventDate)}</Text>\n                  </Inline>\n                  <Inline space={2}>\n                    <Text weight=\"bold\">Confirmation #:</Text>\n                    <Text>{confirmNumber}</Text>\n                  </Inline>\n                </Stack>\n              </Stack>\n            </Inset>\n          </Card>\n\n          <Button variant=\"primary\" onPress={handleReset}>\n            Register Another\n          </Button>\n        </Stack>\n      </Inset>\n    );\n  }\n\n  // ── Form ─────────────────────────────────────────────────────────────────────\n  return (\n    <Inset space={6}>\n      <Card stretch>\n        <Inset spaceX=\"padding-regular\" spaceY=\"padding-regular\">\n          <Stack space={6}>\n\n            {/* Header */}\n            <Headline level=\"1\">\n              Step {step} of 4 — {STEPS[step - 1]}\n            </Headline>\n\n            <Divider />\n\n            {/* ─── Step 1: Personal Information ─────────────────────────────── */}\n            {step === 1 && (\n              <Stack space={4}>\n                <SectionMessage>\n                  <SectionMessage.Title>Privacy Notice</SectionMessage.Title>\n                  <SectionMessage.Content>\n                    Your information will only be used for this event.\n                  </SectionMessage.Content>\n                </SectionMessage>\n\n                <TextField\n                  label=\"Full Name\"\n                  value={formData.fullName}\n                  onChange={v => update('fullName', v)}\n                  required\n                  error={!!errors.fullName}\n                  errorMessage={errors.fullName}\n                />\n\n                <TextField\n                  label=\"Email\"\n                  type=\"email\"\n                  value={formData.email}\n                  onChange={v => update('email', v)}\n                  required\n                  error={!!errors.email}\n                  errorMessage={errors.email}\n                />\n\n                <TextField\n                  label=\"Phone Number\"\n                  type=\"tel\"\n                  value={formData.phone}\n                  onChange={v => update('phone', v)}\n                />\n\n                <TextField\n                  label=\"Company / Organization\"\n                  value={formData.company}\n                  onChange={v => update('company', v)}\n                />\n\n                <ComboBox\n                  label=\"Job Title\"\n                  value={formData.jobTitle}\n                  onChange={v => update('jobTitle', v as string)}\n                  allowsCustomValue\n                  menuTrigger=\"focus\"\n                >\n                  {JOB_TITLES.map(t => (\n                    <ComboBox.Option key={t} id={t}>{t}</ComboBox.Option>\n                  ))}\n                </ComboBox>\n\n                <FileField\n                  label=\"Profile Photo\"\n                  accept={['image/*']}\n                  onDrop={async e => {\n                    const fileItem = e.items.find(item => item.kind === 'file');\n                    if (fileItem && fileItem.kind === 'file') {\n                      const file = await fileItem.getFile();\n                      update('profilePhotoPreview', URL.createObjectURL(file));\n                    }\n                  }}\n                />\n\n                {formData.profilePhotoPreview && (\n                  <img\n                    src={formData.profilePhotoPreview}\n                    alt=\"Profile photo preview\"\n                    style={{ width: 80, height: 80, borderRadius: 8, objectFit: 'cover' }}\n                  />\n                )}\n              </Stack>\n            )}\n\n            {/* ─── Step 2: Event Details ─────────────────────────────────────── */}\n            {step === 2 && (\n              <Stack space={4}>\n                <DatePicker\n                  label=\"Event Date\"\n                  value={formData.eventDate}\n                  onChange={v => update('eventDate', v)}\n                  required\n                  error={!!errors.eventDate}\n                  errorMessage={errors.eventDate}\n                />\n\n                <TimeField\n                  label=\"Preferred Time Slot\"\n                  value={formData.timeSlot}\n                  onChange={v => update('timeSlot', v)}\n                />\n\n                <Radio.Group\n                  label=\"Session Track\"\n                  value={formData.sessionTrack}\n                  onChange={v => update('sessionTrack', v)}\n                >\n                  {SESSION_TRACKS.map(t => (\n                    <Radio key={t.value} value={t.value}>{t.label}</Radio>\n                  ))}\n                </Radio.Group>\n\n                <ComboBox\n                  label=\"Dietary Requirements\"\n                  value={formData.dietaryRequirements}\n                  onChange={v => update('dietaryRequirements', v as string)}\n                  allowsCustomValue\n                  menuTrigger=\"focus\"\n                >\n                  {DIETARY_OPTIONS.map(opt => (\n                    <ComboBox.Option key={opt} id={opt}>{opt}</ComboBox.Option>\n                  ))}\n                </ComboBox>\n\n                <NumberField\n                  label=\"Number of Guests\"\n                  value={formData.numberOfGuests}\n                  onChange={v => update('numberOfGuests', v)}\n                  minValue={0}\n                  maxValue={5}\n                  width=\"1/4\"\n                />\n\n                <TextArea\n                  label=\"Special Requests\"\n                  value={formData.specialRequests}\n                  onChange={v => update('specialRequests', v)}\n                  rows={3}\n                />\n              </Stack>\n            )}\n\n            {/* ─── Step 3: Preferences ──────────────────────────────────────── */}\n            {step === 3 && (\n              <Stack space={4}>\n                <Select\n                  label=\"T-Shirt Size\"\n                  selectedKey={formData.tshirtSize || null}\n                  onSelectionChange={k => update('tshirtSize', k as string)}\n                >\n                  {TSHIRT_SIZES.map(s => (\n                    <Select.Option key={s} id={s}>{s}</Select.Option>\n                  ))}\n                </Select>\n\n                <TagField\n                  label=\"Topics of Interest\"\n                  value={formData.topicsOfInterest}\n                  onChange={v => update('topicsOfInterest', v as string[])}\n                >\n                  {TOPIC_OPTIONS.map(topic => (\n                    <TagField.Option key={topic} id={topic}>{topic}</TagField.Option>\n                  ))}\n                </TagField>\n\n                <Checkbox.Group\n                  label=\"Communication Preferences\"\n                  value={formData.communicationPrefs}\n                  onChange={v => update('communicationPrefs', v)}\n                >\n                  {COMM_PREFS.map(p => (\n                    <Checkbox key={p.value} value={p.value} label={p.label} />\n                  ))}\n                </Checkbox.Group>\n\n                <Stack space={2}>\n                  <Switch\n                    label=\"I have accessibility requirements\"\n                    selected={formData.hasAccessibilityNeeds}\n                    onChange={v => update('hasAccessibilityNeeds', v)}\n                  />\n                  {formData.hasAccessibilityNeeds && (\n                    <TextArea\n                      label=\"Accessibility Details\"\n                      value={formData.accessibilityDetails}\n                      onChange={v => update('accessibilityDetails', v)}\n                      rows={3}\n                      placeholder=\"Please describe your accessibility requirements\"\n                    />\n                  )}\n                </Stack>\n              </Stack>\n            )}\n\n            {/* ─── Step 4: Review & Confirm ─────────────────────────────────── */}\n            {step === 4 && (\n              <Stack space={4}>\n                <Accordion\n                  expandedKeys={reviewExpanded}\n                  onExpandedChange={keys => setReviewExpanded(keys as Set<string | number>)}\n                >\n                  <Accordion.Item id=\"personal\">\n                    <Accordion.Header>Personal Information</Accordion.Header>\n                    <Accordion.Content>\n                      <Stack space={2}>\n                        <Inline space={2}>\n                          <Text weight=\"bold\">Full Name:</Text>\n                          <Text>{formData.fullName || '—'}</Text>\n                        </Inline>\n                        <Inline space={2}>\n                          <Text weight=\"bold\">Email:</Text>\n                          <Text>{formData.email || '—'}</Text>\n                        </Inline>\n                        <Inline space={2}>\n                          <Text weight=\"bold\">Phone:</Text>\n                          <Text>{formData.phone || '—'}</Text>\n                        </Inline>\n                        <Inline space={2}>\n                          <Text weight=\"bold\">Company:</Text>\n                          <Text>{formData.company || '—'}</Text>\n                        </Inline>\n                        <Inline space={2}>\n                          <Text weight=\"bold\">Job Title:</Text>\n                          <Text>{formData.jobTitle || '—'}</Text>\n                        </Inline>\n                      </Stack>\n                    </Accordion.Content>\n                  </Accordion.Item>\n\n                  <Accordion.Item id=\"event\">\n                    <Accordion.Header>Event Details</Accordion.Header>\n                    <Accordion.Content>\n                      <Stack space={2}>\n                        <Inline space={2}>\n                          <Text weight=\"bold\">Date:</Text>\n                          <Text>{formatDate(formData.eventDate)}</Text>\n                        </Inline>\n                        <Inline space={2}>\n                          <Text weight=\"bold\">Time Slot:</Text>\n                          <Text>{formatTime(formData.timeSlot)}</Text>\n                        </Inline>\n                        <Inline space={2}>\n                          <Text weight=\"bold\">Session Track:</Text>\n                          <Text>\n                            {SESSION_TRACKS.find(t => t.value === formData.sessionTrack)?.label || '—'}\n                          </Text>\n                        </Inline>\n                        <Inline space={2}>\n                          <Text weight=\"bold\">Dietary Requirements:</Text>\n                          <Text>{formData.dietaryRequirements || '—'}</Text>\n                        </Inline>\n                        <Inline space={2}>\n                          <Text weight=\"bold\">Number of Guests:</Text>\n                          <Text>{formData.numberOfGuests}</Text>\n                        </Inline>\n                        {formData.specialRequests && (\n                          <Stack space={1}>\n                            <Text weight=\"bold\">Special Requests:</Text>\n                            <Text>{formData.specialRequests}</Text>\n                          </Stack>\n                        )}\n                      </Stack>\n                    </Accordion.Content>\n                  </Accordion.Item>\n\n                  <Accordion.Item id=\"preferences\">\n                    <Accordion.Header>Preferences</Accordion.Header>\n                    <Accordion.Content>\n                      <Stack space={2}>\n                        <Inline space={2}>\n                          <Text weight=\"bold\">T-Shirt Size:</Text>\n                          <Text>{formData.tshirtSize || '—'}</Text>\n                        </Inline>\n                        <Stack space={1}>\n                          <Text weight=\"bold\">Topics of Interest:</Text>\n                          <Text>\n                            {formData.topicsOfInterest.length > 0\n                              ? formData.topicsOfInterest.join(', ')\n                              : '—'}\n                          </Text>\n                        </Stack>\n                        <Stack space={1}>\n                          <Text weight=\"bold\">Communication Preferences:</Text>\n                          <Text>\n                            {formData.communicationPrefs.length > 0\n                              ? formData.communicationPrefs\n                                  .map(v => COMM_PREFS.find(p => p.value === v)?.label ?? v)\n                                  .join(', ')\n                              : '—'}\n                          </Text>\n                        </Stack>\n                        {formData.hasAccessibilityNeeds && (\n                          <Stack space={1}>\n                            <Text weight=\"bold\">Accessibility Needs:</Text>\n                            <Text>{formData.accessibilityDetails || '—'}</Text>\n                          </Stack>\n                        )}\n                      </Stack>\n                    </Accordion.Content>\n                  </Accordion.Item>\n                </Accordion>\n\n                <Checkbox\n                  label=\"I agree to the terms and conditions\"\n                  checked={formData.termsAgreed}\n                  onChange={v => update('termsAgreed', v)}\n                  required\n                />\n              </Stack>\n            )}\n\n            <Divider />\n\n            {/* Navigation */}\n            <Inline space={4}>\n              <Button\n                variant=\"secondary\"\n                onPress={handleBack}\n                disabled={step === 1}\n              >\n                Back\n              </Button>\n\n              {step < 4 ? (\n                <Button variant=\"primary\" onPress={handleNext}>\n                  Next\n                </Button>\n              ) : (\n                <Button\n                  variant=\"primary\"\n                  onPress={handleSubmit}\n                  disabled={!formData.termsAgreed}\n                >\n                  Submit Registration\n                </Button>\n              )}\n            </Inline>\n\n          </Stack>\n        </Inset>\n      </Card>\n    </Inset>\n  );\n};\n\n// ── Default export ─────────────────────────────────────────────────────────────\n\nconst TestApp = () => (\n  <>\n    <ToastProvider position=\"bottom-right\" />\n    <AppLayout>\n      <AppLayout.Main>\n        <RegistrationForm />\n      </AppLayout.Main>\n    </AppLayout>\n  </>\n);\n\nexport default TestApp;\n",
+  "assertions": {
+    "passed": [
+      {
+        "id": "a-import-marigold",
+        "description": "Imports from @marigold/components",
+        "severity": "required",
+        "passed": true,
+        "evidence": "import from \"@marigold/components\" found"
+      },
+      {
+        "id": "a-text-field",
+        "description": "TextField for text inputs",
+        "severity": "required",
+        "passed": true,
+        "evidence": "<TextField> found"
+      },
+      {
+        "id": "a-datepicker",
+        "description": "DatePicker for event date",
+        "severity": "required",
+        "passed": true,
+        "evidence": "<DatePicker> found"
+      },
+      {
+        "id": "a-timefield",
+        "description": "TimeField for time slot",
+        "severity": "required",
+        "passed": true,
+        "evidence": "<TimeField> found"
+      },
+      {
+        "id": "a-radio",
+        "description": "Radio/RadioGroup for session track",
+        "severity": "required",
+        "passed": true,
+        "evidence": "matched: <Radio> found"
+      },
+      {
+        "id": "a-combobox",
+        "description": "ComboBox for dietary requirements",
+        "severity": "required",
+        "passed": true,
+        "evidence": "<ComboBox> found"
+      },
+      {
+        "id": "a-numberfield",
+        "description": "NumberField for guests",
+        "severity": "required",
+        "passed": true,
+        "evidence": "<NumberField> found"
+      },
+      {
+        "id": "a-select",
+        "description": "Select for t-shirt size",
+        "severity": "required",
+        "passed": true,
+        "evidence": "<Select> found"
+      },
+      {
+        "id": "a-tagfield",
+        "description": "TagField for topics of interest",
+        "severity": "required",
+        "passed": true,
+        "evidence": "<TagField> found"
+      },
+      {
+        "id": "a-checkbox",
+        "description": "Checkbox for communication preferences",
+        "severity": "required",
+        "passed": true,
+        "evidence": "matched: <Checkbox> found"
+      },
+      {
+        "id": "a-switch",
+        "description": "Switch for accessibility needs",
+        "severity": "required",
+        "passed": true,
+        "evidence": "<Switch> found"
+      },
+      {
+        "id": "a-textarea",
+        "description": "TextArea for special requests",
+        "severity": "required",
+        "passed": true,
+        "evidence": "<TextArea> found"
+      },
+      {
+        "id": "a-filefield",
+        "description": "FileField for profile photo",
+        "severity": "required",
+        "passed": true,
+        "evidence": "<FileField> found"
+      },
+      {
+        "id": "a-accordion",
+        "description": "Accordion for review sections",
+        "severity": "required",
+        "passed": true,
+        "evidence": "<Accordion> found"
+      },
+      {
+        "id": "a-button",
+        "description": "Button for navigation/submit",
+        "severity": "required",
+        "passed": true,
+        "evidence": "<Button> found"
+      },
+      {
+        "id": "a-card",
+        "description": "Card as form container",
+        "severity": "required",
+        "passed": true,
+        "evidence": "<Card> found"
+      },
+      {
+        "id": "a-section-message",
+        "description": "SectionMessage for info/success",
+        "severity": "required",
+        "passed": true,
+        "evidence": "<SectionMessage> found"
+      },
+      {
+        "id": "a-loader",
+        "description": "Loader for submission",
+        "severity": "recommended",
+        "passed": true,
+        "evidence": "<Loader> found"
+      },
+      {
+        "id": "a-step-state",
+        "description": "Multi-step state management (useState)",
+        "severity": "recommended",
+        "passed": true,
+        "evidence": "pattern \"/useState/\" found"
+      },
+      {
+        "id": "a-toast",
+        "description": "Toast notification after submission",
+        "severity": "recommended",
+        "passed": true,
+        "evidence": "matched: pattern \"/useToast/\" found"
+      }
+    ],
+    "failed": [
+      {
+        "id": "a-form",
+        "description": "Form component",
+        "severity": "required",
+        "passed": false,
+        "evidence": "<Form> not found"
+      },
+      {
+        "id": "a-autocomplete",
+        "description": "Autocomplete for job title",
+        "severity": "required",
+        "passed": false,
+        "evidence": "<Autocomplete> not found"
+      }
+    ],
+    "passRate": 0.9091,
+    "requiredPassRate": 0.8947,
+    "weightedPassRate": 0.8987,
+    "total": 22
+  },
+  "validatePackageVersion": "0.0.1",
+  "playwrightVersion": null,
+  "resolvedModelId": "claude-sonnet-4-6",
+  "claudeCliVersion": "2.1.185 (Claude Code)",
+  "sessionId": "6589abd3-9e5d-4837-8873-37ea6ecf519e"
+}

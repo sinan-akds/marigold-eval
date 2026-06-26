@@ -1,0 +1,458 @@
+{
+  "runId": "sonnet-mcp-stack-P-07-r2",
+  "promptId": "P-07",
+  "model": "sonnet",
+  "config": "mcp-stack",
+  "timestamp": "2026-06-23T02:13:00.290Z",
+  "quality": {
+    "overall": 46.88,
+    "categories": {
+      "A": {
+        "category": "A",
+        "label": "Design System API",
+        "score": 80,
+        "weight": 0.225,
+        "weightedScore": 18,
+        "errorCount": 1,
+        "warningCount": 0,
+        "issues": [
+          {
+            "type": "technical",
+            "severity": "error",
+            "source": "prop-validator",
+            "component": "Drawer",
+            "message": "Prop \"onOpenChange\" does not exist on <Drawer>.",
+            "suggestion": "Remove the prop. Available props: size, variant, open, keyboardDismissable, closeButton, role, children, render, id, dir, lang, hidden, inert, translate, onClick, ….",
+            "location": {
+              "file": "TestApp.tsx",
+              "line": 540,
+              "column": 11
+            },
+            "details": {
+              "used": "onOpenChange",
+              "available": [
+                "size",
+                "variant",
+                "open",
+                "keyboardDismissable",
+                "closeButton",
+                "role",
+                "children",
+                "render",
+                "id",
+                "dir",
+                "lang",
+                "hidden",
+                "inert",
+                "translate",
+                "onClick"
+              ]
+            }
+          }
+        ]
+      },
+      "B": {
+        "category": "B",
+        "label": "Token Compliance",
+        "score": 0,
+        "weight": 0.1,
+        "weightedScore": 0,
+        "errorCount": 0,
+        "warningCount": 0,
+        "issues": []
+      },
+      "C": {
+        "category": "C",
+        "label": "DOM / Structure",
+        "score": 34.52,
+        "weight": 0.225,
+        "weightedScore": 7.77,
+        "errorCount": 3,
+        "warningCount": 1,
+        "issues": [
+          {
+            "type": "technical",
+            "severity": "error",
+            "source": "compiler",
+            "component": "TypeScript",
+            "message": "TS2345: Argument of type 'Key' is not assignable to parameter of type 'SetStateAction<string>'.\n  Type 'number' is not assignable to type 'SetStateAction<string>'.",
+            "suggestion": "Fix the TypeScript error reported by the compiler. The exact location is included in the issue location field.",
+            "location": {
+              "file": "TestApp.tsx",
+              "line": 345,
+              "column": 28
+            }
+          },
+          {
+            "type": "technical",
+            "severity": "error",
+            "source": "compiler",
+            "component": "TypeScript",
+            "message": "TS2345: Argument of type 'Key' is not assignable to parameter of type 'SetStateAction<string>'.\n  Type 'number' is not assignable to type 'SetStateAction<string>'.",
+            "suggestion": "Fix the TypeScript error reported by the compiler. The exact location is included in the issue location field.",
+            "location": {
+              "file": "TestApp.tsx",
+              "line": 346,
+              "column": 28
+            }
+          },
+          {
+            "type": "technical",
+            "severity": "error",
+            "source": "composition-validator",
+            "component": "ActionMenu",
+            "message": "<ActionMenu> is used without any of its sub-components.",
+            "suggestion": "Use compound children: <ActionMenu.Item>, <ActionMenu.Section>.",
+            "location": {
+              "file": "TestApp.tsx",
+              "line": 297,
+              "column": 15
+            },
+            "details": {
+              "expected": [
+                "Item",
+                "Section"
+              ],
+              "found": []
+            }
+          },
+          {
+            "type": "technical",
+            "severity": "warning",
+            "source": "layout-usage",
+            "component": "Inline",
+            "message": "<Inline> wraps a single child. A flow layout earns its place only with two or more children; with one child it adds a wrapper that does nothing.",
+            "suggestion": "Render the child directly instead of wrapping it in <Inline>. For single-child spacing use Inset, Center, Breakout or Aspect.",
+            "location": {
+              "file": "TestApp.tsx",
+              "line": 365,
+              "column": 9
+            },
+            "details": {
+              "layout": "Inline",
+              "childCount": 1
+            }
+          }
+        ]
+      },
+      "D": {
+        "category": "D",
+        "label": "Spatial & A11y",
+        "score": 0,
+        "weight": 0.225,
+        "weightedScore": 0,
+        "errorCount": 0,
+        "warningCount": 0,
+        "issues": []
+      },
+      "E": {
+        "category": "E",
+        "label": "Functional Completeness",
+        "score": 93.85,
+        "weight": 0.225,
+        "weightedScore": 21.12,
+        "errorCount": 0,
+        "warningCount": 0,
+        "issues": []
+      }
+    },
+    "renderSuccess": false
+  },
+  "efficiency": {
+    "durationMs": 1245672,
+    "costUsd": 3.6407218000000006,
+    "inputTokens": 81,
+    "outputTokens": 73205,
+    "cacheReadTokens": 6131796,
+    "cacheCreationTokens": 114950,
+    "totalTokens": 73286,
+    "numTurns": 73
+  },
+  "report": {
+    "file": "TestApp.tsx",
+    "errors": [
+      {
+        "type": "technical",
+        "severity": "error",
+        "source": "compiler",
+        "component": "TypeScript",
+        "message": "TS2345: Argument of type 'Key' is not assignable to parameter of type 'SetStateAction<string>'.\n  Type 'number' is not assignable to type 'SetStateAction<string>'.",
+        "suggestion": "Fix the TypeScript error reported by the compiler. The exact location is included in the issue location field.",
+        "location": {
+          "file": "TestApp.tsx",
+          "line": 345,
+          "column": 28
+        }
+      },
+      {
+        "type": "technical",
+        "severity": "error",
+        "source": "compiler",
+        "component": "TypeScript",
+        "message": "TS2345: Argument of type 'Key' is not assignable to parameter of type 'SetStateAction<string>'.\n  Type 'number' is not assignable to type 'SetStateAction<string>'.",
+        "suggestion": "Fix the TypeScript error reported by the compiler. The exact location is included in the issue location field.",
+        "location": {
+          "file": "TestApp.tsx",
+          "line": 346,
+          "column": 28
+        }
+      },
+      {
+        "type": "technical",
+        "severity": "error",
+        "source": "prop-validator",
+        "component": "Drawer",
+        "message": "Prop \"onOpenChange\" does not exist on <Drawer>.",
+        "suggestion": "Remove the prop. Available props: size, variant, open, keyboardDismissable, closeButton, role, children, render, id, dir, lang, hidden, inert, translate, onClick, ….",
+        "location": {
+          "file": "TestApp.tsx",
+          "line": 540,
+          "column": 11
+        },
+        "details": {
+          "used": "onOpenChange",
+          "available": [
+            "size",
+            "variant",
+            "open",
+            "keyboardDismissable",
+            "closeButton",
+            "role",
+            "children",
+            "render",
+            "id",
+            "dir",
+            "lang",
+            "hidden",
+            "inert",
+            "translate",
+            "onClick"
+          ]
+        }
+      },
+      {
+        "type": "technical",
+        "severity": "error",
+        "source": "composition-validator",
+        "component": "ActionMenu",
+        "message": "<ActionMenu> is used without any of its sub-components.",
+        "suggestion": "Use compound children: <ActionMenu.Item>, <ActionMenu.Section>.",
+        "location": {
+          "file": "TestApp.tsx",
+          "line": 297,
+          "column": 15
+        },
+        "details": {
+          "expected": [
+            "Item",
+            "Section"
+          ],
+          "found": []
+        }
+      }
+    ],
+    "warnings": [
+      {
+        "type": "technical",
+        "severity": "warning",
+        "source": "layout-usage",
+        "component": "Inline",
+        "message": "<Inline> wraps a single child. A flow layout earns its place only with two or more children; with one child it adds a wrapper that does nothing.",
+        "suggestion": "Render the child directly instead of wrapping it in <Inline>. For single-child spacing use Inset, Center, Breakout or Aspect.",
+        "location": {
+          "file": "TestApp.tsx",
+          "line": 365,
+          "column": 9
+        },
+        "details": {
+          "layout": "Inline",
+          "childCount": 1
+        }
+      }
+    ],
+    "passed": [
+      "Overlay accessible names",
+      "Compound component placement",
+      "Section headers",
+      "Collection item ids",
+      "Design system usage",
+      "Table usage",
+      "Component conventions",
+      "Theme variant compliance"
+    ],
+    "metadata": {
+      "renderTimeMs": 0,
+      "componentsFound": [],
+      "checksRun": [
+        "technical",
+        "spatial",
+        "a11y"
+      ],
+      "coverage": {
+        "staticValuesChecked": 23,
+        "dynamicValuesSkipped": 16,
+        "spreadPropsBypassed": 0
+      },
+      "widthUtilization": null
+    },
+    "markdown": "marigold-validate: TestApp.tsx — 4 error(s), 1 warning(s)\n\n[error/technical] <ActionMenu>: <ActionMenu> is used without any of its sub-components. (TestApp.tsx:297:15)\n  → Use compound children: <ActionMenu.Item>, <ActionMenu.Section>.\n  data: {expected=[\"Item\",\"Section\"], found=[]}\n[error/technical] <Drawer>: Prop \"onOpenChange\" does not exist on <Drawer>. (TestApp.tsx:540:11)\n  → Remove the prop. Available props: size, variant, open, keyboardDismissable, closeButton, role, children, render, id, dir, lang, hidden, inert, translate, onClick, ….\n  data: {used=onOpenChange, available=[\"size\",\"variant\",\"open\",\"keyboardDismissable\",\"closeButton\",\"role\",\"children\",\"render\", …]}\n[error/technical] <TypeScript>: TS2345: Argument of type 'Key' is not assignable to parameter of type 'SetStateAction<string>'.\n  Type 'number' is not assignable to type 'SetStateAction<string>'. (TestApp.tsx:345:28)\n  → Fix the TypeScript error reported by the compiler. The exact location is included in the issue location field.\n[error/technical] <TypeScript>: TS2345: Argument of type 'Key' is not assignable to parameter of type 'SetStateAction<string>'.\n  Type 'number' is not assignable to type 'SetStateAction<string>'. (TestApp.tsx:346:28)\n  → Fix the TypeScript error reported by the compiler. The exact location is included in the issue location field.\n[warning/technical] <Inline>: <Inline> wraps a single child. A flow layout earns its place only with two or more children; with one child it adds a wrapper that does nothing. (TestApp.tsx:365:9)\n  → Render the child directly instead of wrapping it in <Inline>. For single-child spacing use Inset, Center, Breakout or Aspect.\n  data: {layout=Inline, childCount=1}\n\npassed: Overlay accessible names, Compound component placement, Section headers, Collection item ids, Design system usage, Table usage, Component conventions, Theme variant compliance\n\nchecks run: technical, spatial, a11y"
+  },
+  "componentsFound": [],
+  "renderTimeMs": 0,
+  "sourceCode": "import { useMemo, useState } from 'react';\nimport type { DateValue } from '@internationalized/date';\nimport {\n  Accordion,\n  ActionMenu,\n  Autocomplete,\n  Badge,\n  Button,\n  Columns,\n  DatePicker,\n  Dialog,\n  Drawer,\n  Headline,\n  Inline,\n  Menu,\n  SectionMessage,\n  Select,\n  Stack,\n  Table,\n  Tabs,\n  Text,\n  TextArea,\n  TextField,\n} from '@marigold/components';\n\ntype BookingStatus = 'Confirmed' | 'Pending' | 'Cancelled';\n\ninterface Booking {\n  id: string;\n  customer: string;\n  email: string;\n  venue: string;\n  date: string;\n  timeSlot: string;\n  status: BookingStatus;\n  notes: string;\n}\n\nconst VENUES = [\n  'Main Hall',\n  'Conference Room A',\n  'Conference Room B',\n  'Rooftop Terrace',\n  'Workshop Studio',\n];\n\nconst TIME_SLOTS = ['09:00-12:00', '12:00-15:00', '15:00-18:00', '18:00-21:00'];\n\nconst INITIAL_BOOKINGS: Booking[] = [\n  {\n    id: 'BK-001',\n    customer: 'Alice Johnson',\n    email: 'alice@example.com',\n    venue: 'Main Hall',\n    date: '2026-06-23',\n    timeSlot: '09:00-12:00',\n    status: 'Confirmed',\n    notes: 'Anniversary celebration with family.',\n  },\n  {\n    id: 'BK-002',\n    customer: 'Bob Smith',\n    email: 'bob@example.com',\n    venue: 'Conference Room A',\n    date: '2026-06-23',\n    timeSlot: '12:00-15:00',\n    status: 'Pending',\n    notes: 'Quarterly team meeting.',\n  },\n  {\n    id: 'BK-003',\n    customer: 'Carol Davis',\n    email: 'carol@example.com',\n    venue: 'Rooftop Terrace',\n    date: '2026-06-24',\n    timeSlot: '18:00-21:00',\n    status: 'Confirmed',\n    notes: '',\n  },\n  {\n    id: 'BK-004',\n    customer: 'David Lee',\n    email: 'david@example.com',\n    venue: 'Workshop Studio',\n    date: '2026-06-20',\n    timeSlot: '15:00-18:00',\n    status: 'Cancelled',\n    notes: 'Cancelled due to scheduling conflict.',\n  },\n  {\n    id: 'BK-005',\n    customer: 'Emma Wilson',\n    email: 'emma@example.com',\n    venue: 'Conference Room B',\n    date: '2026-06-25',\n    timeSlot: '09:00-12:00',\n    status: 'Pending',\n    notes: 'Product launch preparation.',\n  },\n  {\n    id: 'BK-006',\n    customer: 'Frank Brown',\n    email: 'frank@example.com',\n    venue: 'Main Hall',\n    date: '2026-06-23',\n    timeSlot: '15:00-18:00',\n    status: 'Confirmed',\n    notes: 'Corporate networking event.',\n  },\n  {\n    id: 'BK-007',\n    customer: 'Grace Chen',\n    email: 'grace@example.com',\n    venue: 'Rooftop Terrace',\n    date: '2026-06-27',\n    timeSlot: '12:00-15:00',\n    status: 'Pending',\n    notes: '',\n  },\n];\n\nfunction statusVariant(s: BookingStatus): 'success' | 'warning' | 'default' {\n  if (s === 'Confirmed') return 'success';\n  if (s === 'Pending') return 'warning';\n  return 'default';\n}\n\nfunction formatDate(d: string) {\n  const [y, m, day] = d.split('-');\n  return `${day}/${m}/${y}`;\n}\n\nfunction getTodayStr() {\n  const t = new Date();\n  return t.toISOString().split('T')[0];\n}\n\nfunction getWeekBounds() {\n  const today = new Date();\n  today.setHours(0, 0, 0, 0);\n  const dow = today.getDay();\n  const start = new Date(today);\n  start.setDate(today.getDate() - (dow === 0 ? 6 : dow - 1));\n  const end = new Date(start);\n  end.setDate(start.getDate() + 6);\n  end.setHours(23, 59, 59, 999);\n  return { start, end };\n}\n\nfunction dateValueToStr(dv: DateValue) {\n  return `${dv.year}-${String(dv.month).padStart(2, '0')}-${String(dv.day).padStart(2, '0')}`;\n}\n\nconst TestApp = () => {\n  const [bookings, setBookings] = useState<Booking[]>(INITIAL_BOOKINGS);\n\n  // Filter bar state\n  const [filterDate, setFilterDate] = useState<DateValue | null>(null);\n  const [venueSearch, setVenueSearch] = useState('');\n  const [filterVenue, setFilterVenue] = useState('');\n  const [filterStatus, setFilterStatus] = useState('All');\n\n  // Tab state\n  const [activeTab, setActiveTab] = useState('all');\n\n  // Overlay state\n  const [showNewBooking, setShowNewBooking] = useState(false);\n  const [detailBooking, setDetailBooking] = useState<Booking | null>(null);\n  const [editBooking, setEditBooking] = useState<Booking | null>(null);\n\n  // New booking form\n  const [newCustomer, setNewCustomer] = useState('');\n  const [newEmail, setNewEmail] = useState('');\n  const [newVenue, setNewVenue] = useState('');\n  const [newDate, setNewDate] = useState<DateValue | null>(null);\n  const [newTimeSlot, setNewTimeSlot] = useState('');\n  const [newNotes, setNewNotes] = useState('');\n\n  // Edit booking form\n  const [editCustomer, setEditCustomer] = useState('');\n  const [editEmail, setEditEmail] = useState('');\n  const [editVenue, setEditVenue] = useState('');\n  const [editTimeSlot, setEditTimeSlot] = useState('');\n  const [editNotes, setEditNotes] = useState('');\n\n  const openEdit = (booking: Booking) => {\n    setEditBooking(booking);\n    setEditCustomer(booking.customer);\n    setEditEmail(booking.email);\n    setEditVenue(booking.venue);\n    setEditTimeSlot(booking.timeSlot);\n    setEditNotes(booking.notes);\n  };\n\n  const submitEdit = (close: () => void) => {\n    if (!editBooking || !editCustomer.trim()) return;\n    setBookings(prev =>\n      prev.map(b =>\n        b.id === editBooking.id\n          ? { ...b, customer: editCustomer, email: editEmail, venue: editVenue, timeSlot: editTimeSlot, notes: editNotes }\n          : b\n      )\n    );\n    close();\n  };\n\n  const todayStr = getTodayStr();\n\n  const filteredBookings = useMemo(() => {\n    const { start, end } = getWeekBounds();\n    return bookings.filter(b => {\n      if (activeTab === 'today' && b.date !== todayStr) return false;\n      if (activeTab === 'week') {\n        const bd = new Date(b.date + 'T00:00:00');\n        if (bd < start || bd > end) return false;\n      }\n      if (filterDate && b.date !== dateValueToStr(filterDate)) return false;\n      if (filterVenue && !b.venue.toLowerCase().includes(filterVenue.toLowerCase())) return false;\n      if (filterStatus !== 'All' && b.status !== filterStatus) return false;\n      return true;\n    });\n  }, [bookings, activeTab, filterDate, filterVenue, filterStatus, todayStr]);\n\n  const mainHallTodayCount = bookings.filter(\n    b => b.venue === 'Main Hall' && b.date === todayStr && b.status !== 'Cancelled'\n  ).length;\n  const mainHallRemaining = TIME_SLOTS.length - mainHallTodayCount;\n  const showCapacityAlert = mainHallRemaining <= 2;\n\n  const clearFilters = () => {\n    setFilterDate(null);\n    setVenueSearch('');\n    setFilterVenue('');\n    setFilterStatus('All');\n  };\n\n  const cancelBooking = (id: string) => {\n    setBookings(prev =>\n      prev.map(b => (b.id === id ? { ...b, status: 'Cancelled' as BookingStatus } : b))\n    );\n    if (detailBooking?.id === id) {\n      setDetailBooking(prev => (prev ? { ...prev, status: 'Cancelled' } : prev));\n    }\n  };\n\n  const submitNewBooking = (close: () => void) => {\n    if (!newCustomer.trim()) return;\n    const newId = `BK-${String(bookings.length + 1).padStart(3, '0')}`;\n    const dateStr = newDate ? dateValueToStr(newDate) : todayStr;\n    setBookings(prev => [\n      ...prev,\n      {\n        id: newId,\n        customer: newCustomer,\n        email: newEmail,\n        venue: newVenue || VENUES[0],\n        date: dateStr,\n        timeSlot: newTimeSlot || TIME_SLOTS[0],\n        status: 'Pending',\n        notes: newNotes,\n      },\n    ]);\n    setNewCustomer('');\n    setNewEmail('');\n    setNewVenue('');\n    setNewDate(null);\n    setNewTimeSlot('');\n    setNewNotes('');\n    close();\n  };\n\n  const tableContent = (\n    <Table aria-label=\"Bookings table\">\n      <Table.Header>\n        <Table.Column rowHeader>Booking ID</Table.Column>\n        <Table.Column>Customer</Table.Column>\n        <Table.Column>Venue</Table.Column>\n        <Table.Column>Date</Table.Column>\n        <Table.Column>Time Slot</Table.Column>\n        <Table.Column>Status</Table.Column>\n        <Table.Column>Actions</Table.Column>\n      </Table.Header>\n      <Table.Body>\n        {filteredBookings.map(booking => (\n          <Table.Row key={booking.id} id={booking.id}>\n            <Table.Cell>\n              <Text weight=\"medium\">{booking.id}</Text>\n            </Table.Cell>\n            <Table.Cell>{booking.customer}</Table.Cell>\n            <Table.Cell>{booking.venue}</Table.Cell>\n            <Table.Cell>{formatDate(booking.date)}</Table.Cell>\n            <Table.Cell>{booking.timeSlot}</Table.Cell>\n            <Table.Cell>\n              <Badge variant={statusVariant(booking.status)}>{booking.status}</Badge>\n            </Table.Cell>\n            <Table.Cell>\n              <ActionMenu>\n                <Menu.Item id=\"view\" onAction={() => setDetailBooking(booking)}>\n                  View Details\n                </Menu.Item>\n                <Menu.Item id=\"edit\" onAction={() => openEdit(booking)}>\n                  Edit\n                </Menu.Item>\n                <Menu.Item\n                  id=\"cancel\"\n                  variant=\"destructive\"\n                  onAction={() => cancelBooking(booking.id)}\n                >\n                  Cancel Booking\n                </Menu.Item>\n              </ActionMenu>\n            </Table.Cell>\n          </Table.Row>\n        ))}\n      </Table.Body>\n    </Table>\n  );\n\n  return (\n    <Stack space={6}>\n      {/* Header */}\n      <Inline alignX=\"between\" alignY=\"center\" space={4}>\n        <Headline level={2}>Booking Management</Headline>\n        <Button variant=\"primary\" onPress={() => setShowNewBooking(true)}>\n          New Booking\n        </Button>\n      </Inline>\n\n      {/* Filter Bar */}\n      <Columns columns={[1, 1, 1, 'fit']} space={4} collapseAt=\"600px\">\n        <DatePicker\n          label=\"Date\"\n          value={filterDate ?? undefined}\n          onChange={val => setFilterDate(val ?? null)}\n        />\n        <Autocomplete\n          label=\"Venue\"\n          value={venueSearch}\n          onChange={val => {\n            setVenueSearch(val);\n            setFilterVenue(val);\n          }}\n          onSubmit={(key, val) => {\n            const chosen = key ? String(key) : (val ?? '');\n            setFilterVenue(chosen);\n            setVenueSearch(chosen);\n          }}\n        >\n          {VENUES.map(v => (\n            <Autocomplete.Option key={v} id={v}>\n              {v}\n            </Autocomplete.Option>\n          ))}\n        </Autocomplete>\n        <Select\n          label=\"Status\"\n          selectedKey={filterStatus}\n          onSelectionChange={k => setFilterStatus(String(k))}\n        >\n          <Select.Option id=\"All\">All</Select.Option>\n          <Select.Option id=\"Confirmed\">Confirmed</Select.Option>\n          <Select.Option id=\"Pending\">Pending</Select.Option>\n          <Select.Option id=\"Cancelled\">Cancelled</Select.Option>\n        </Select>\n        <Inline alignY=\"bottom\" space={0}>\n          <Button variant=\"secondary\" onPress={clearFilters}>\n            Clear Filters\n          </Button>\n        </Inline>\n      </Columns>\n\n      {/* Capacity Alert */}\n      {showCapacityAlert && (\n        <SectionMessage variant=\"warning\">\n          <SectionMessage.Title>Venue Nearly Full</SectionMessage.Title>\n          <SectionMessage.Content>\n            Main Hall has only {mainHallRemaining} slot\n            {mainHallRemaining !== 1 ? 's' : ''} remaining for today.\n          </SectionMessage.Content>\n        </SectionMessage>\n      )}\n\n      {/* Tabs + Table */}\n      <Tabs\n        selectedKey={activeTab}\n        onSelectionChange={k => setActiveTab(String(k))}\n        aria-label=\"Booking views\"\n      >\n        <Tabs.List aria-label=\"Booking view options\">\n          <Tabs.Item id=\"all\">All Bookings</Tabs.Item>\n          <Tabs.Item id=\"today\">Today</Tabs.Item>\n          <Tabs.Item id=\"week\">This Week</Tabs.Item>\n        </Tabs.List>\n        <Tabs.TabPanel id=\"all\">{tableContent}</Tabs.TabPanel>\n        <Tabs.TabPanel id=\"today\">{tableContent}</Tabs.TabPanel>\n        <Tabs.TabPanel id=\"week\">{tableContent}</Tabs.TabPanel>\n      </Tabs>\n\n      {/* New Booking Dialog */}\n      <Dialog\n        open={showNewBooking}\n        onOpenChange={setShowNewBooking}\n        closeButton\n        size=\"medium\"\n      >\n        {({ close }) => (\n          <>\n            <Dialog.Title>New Booking</Dialog.Title>\n            <Dialog.Content>\n              <Stack space={4}>\n                <TextField\n                  label=\"Customer Name\"\n                  required\n                  value={newCustomer}\n                  onChange={setNewCustomer}\n                />\n                <TextField\n                  label=\"Customer Email\"\n                  type=\"email\"\n                  value={newEmail}\n                  onChange={setNewEmail}\n                />\n                <Select\n                  label=\"Venue\"\n                  selectedKey={newVenue || null}\n                  onSelectionChange={k => setNewVenue(String(k))}\n                >\n                  {VENUES.map(v => (\n                    <Select.Option key={v} id={v}>\n                      {v}\n                    </Select.Option>\n                  ))}\n                </Select>\n                <DatePicker\n                  label=\"Date\"\n                  value={newDate ?? undefined}\n                  onChange={val => setNewDate(val ?? null)}\n                />\n                <Select\n                  label=\"Time Slot\"\n                  selectedKey={newTimeSlot || null}\n                  onSelectionChange={k => setNewTimeSlot(String(k))}\n                >\n                  {TIME_SLOTS.map(t => (\n                    <Select.Option key={t} id={t}>\n                      {t}\n                    </Select.Option>\n                  ))}\n                </Select>\n                <TextArea\n                  label=\"Notes\"\n                  value={newNotes}\n                  onChange={setNewNotes}\n                  rows={3}\n                />\n              </Stack>\n            </Dialog.Content>\n            <Dialog.Actions>\n              <Button variant=\"secondary\" slot=\"close\">\n                Cancel\n              </Button>\n              <Button variant=\"primary\" onPress={() => submitNewBooking(close)}>\n                Create Booking\n              </Button>\n            </Dialog.Actions>\n          </>\n        )}\n      </Dialog>\n\n      {/* Edit Booking Dialog */}\n      <Dialog\n        open={!!editBooking}\n        onOpenChange={isOpen => { if (!isOpen) setEditBooking(null); }}\n        closeButton\n        size=\"medium\"\n      >\n        {({ close }) => (\n          <>\n            <Dialog.Title>Edit Booking {editBooking?.id}</Dialog.Title>\n            <Dialog.Content>\n              <Stack space={4}>\n                <TextField\n                  label=\"Customer Name\"\n                  required\n                  value={editCustomer}\n                  onChange={setEditCustomer}\n                />\n                <TextField\n                  label=\"Customer Email\"\n                  type=\"email\"\n                  value={editEmail}\n                  onChange={setEditEmail}\n                />\n                <Select\n                  label=\"Venue\"\n                  selectedKey={editVenue || null}\n                  onSelectionChange={k => setEditVenue(String(k))}\n                >\n                  {VENUES.map(v => (\n                    <Select.Option key={v} id={v}>\n                      {v}\n                    </Select.Option>\n                  ))}\n                </Select>\n                <Select\n                  label=\"Time Slot\"\n                  selectedKey={editTimeSlot || null}\n                  onSelectionChange={k => setEditTimeSlot(String(k))}\n                >\n                  {TIME_SLOTS.map(t => (\n                    <Select.Option key={t} id={t}>\n                      {t}\n                    </Select.Option>\n                  ))}\n                </Select>\n                <TextArea\n                  label=\"Notes\"\n                  value={editNotes}\n                  onChange={setEditNotes}\n                  rows={3}\n                />\n              </Stack>\n            </Dialog.Content>\n            <Dialog.Actions>\n              <Button variant=\"secondary\" slot=\"close\">\n                Cancel\n              </Button>\n              <Button variant=\"primary\" onPress={() => submitEdit(close)}>\n                Save Changes\n              </Button>\n            </Dialog.Actions>\n          </>\n        )}\n      </Dialog>\n\n      {/* Detail Drawer */}\n      {detailBooking && (\n        <Drawer\n          open={!!detailBooking}\n          onOpenChange={isOpen => { if (!isOpen) setDetailBooking(null); }}\n          closeButton\n          size=\"medium\"\n        >\n          <Drawer.Title>Booking {detailBooking.id}</Drawer.Title>\n          <Drawer.Content>\n            <Stack space={4}>\n              <Inline space={2} alignY=\"center\">\n                <Text weight=\"bold\">Status</Text>\n                <Badge variant={statusVariant(detailBooking.status)}>\n                  {detailBooking.status}\n                </Badge>\n              </Inline>\n\n              <Stack space={2}>\n                <Text weight=\"bold\">Customer Information</Text>\n                <Text>{detailBooking.customer}</Text>\n                <Text>{detailBooking.email}</Text>\n              </Stack>\n\n              <Stack space={2}>\n                <Text weight=\"bold\">Venue &amp; Schedule</Text>\n                <Text>{detailBooking.venue}</Text>\n                <Text>\n                  {formatDate(detailBooking.date)} · {detailBooking.timeSlot}\n                </Text>\n              </Stack>\n\n              <Stack space={2}>\n                <Text weight=\"bold\">Notes</Text>\n                <Text>{detailBooking.notes || 'No notes provided.'}</Text>\n              </Stack>\n\n              <Accordion allowsMultipleExpanded>\n                <Accordion.Item id=\"payment\">\n                  <Accordion.Header>Payment History</Accordion.Header>\n                  <Accordion.Content>\n                    <Stack space={2}>\n                      <Text>\n                        Invoice #INV-2026-{detailBooking.id.slice(-3)} — €450.00 — Paid\n                      </Text>\n                      <Text>\n                        Payment received on {formatDate(detailBooking.date)} via credit card.\n                      </Text>\n                    </Stack>\n                  </Accordion.Content>\n                </Accordion.Item>\n                <Accordion.Item id=\"comms\">\n                  <Accordion.Header>Communication Log</Accordion.Header>\n                  <Accordion.Content>\n                    <Stack space={2}>\n                      <Text>\n                        Confirmation email sent to {detailBooking.email}.\n                      </Text>\n                      <Text>Reminder scheduled 24 hours before event.</Text>\n                    </Stack>\n                  </Accordion.Content>\n                </Accordion.Item>\n              </Accordion>\n            </Stack>\n          </Drawer.Content>\n          <Drawer.Actions>\n            <Button onPress={() => setDetailBooking(null)}>Close</Button>\n            <Button\n              variant=\"destructive\"\n              onPress={() => {\n                cancelBooking(detailBooking.id);\n                setDetailBooking(null);\n              }}\n            >\n              Cancel Booking\n            </Button>\n          </Drawer.Actions>\n        </Drawer>\n      )}\n    </Stack>\n  );\n};\n\nexport default TestApp;\n",
+  "assertions": {
+    "passed": [
+      {
+        "id": "a-import-marigold",
+        "description": "Imports from @marigold/components",
+        "severity": "required",
+        "passed": true,
+        "evidence": "import from \"@marigold/components\" found"
+      },
+      {
+        "id": "a-table",
+        "description": "Table component for bookings",
+        "severity": "required",
+        "passed": true,
+        "evidence": "<Table> found"
+      },
+      {
+        "id": "a-table-header",
+        "description": "Table.Header sub-component",
+        "severity": "required",
+        "passed": true,
+        "evidence": "<Table.Header> found"
+      },
+      {
+        "id": "a-table-body",
+        "description": "Table.Body sub-component",
+        "severity": "required",
+        "passed": true,
+        "evidence": "<Table.Body> found"
+      },
+      {
+        "id": "a-date-picker",
+        "description": "DatePicker for date filtering",
+        "severity": "required",
+        "passed": true,
+        "evidence": "<DatePicker> found"
+      },
+      {
+        "id": "a-combobox",
+        "description": "ComboBox or SearchField for venue search",
+        "severity": "required",
+        "passed": true,
+        "evidence": "matched: <Autocomplete> found"
+      },
+      {
+        "id": "a-dialog",
+        "description": "Dialog for create booking form",
+        "severity": "required",
+        "passed": true,
+        "evidence": "<Dialog> found"
+      },
+      {
+        "id": "a-tabs",
+        "description": "Tabs for booking views",
+        "severity": "required",
+        "passed": true,
+        "evidence": "<Tabs> found"
+      },
+      {
+        "id": "a-menu",
+        "description": "Menu for row actions",
+        "severity": "required",
+        "passed": true,
+        "evidence": "<Menu> found"
+      },
+      {
+        "id": "a-badge",
+        "description": "Badge for booking status",
+        "severity": "required",
+        "passed": true,
+        "evidence": "<Badge> found"
+      },
+      {
+        "id": "a-button",
+        "description": "Button component",
+        "severity": "required",
+        "passed": true,
+        "evidence": "<Button> found"
+      },
+      {
+        "id": "a-select",
+        "description": "Select for status filter / form dropdowns",
+        "severity": "required",
+        "passed": true,
+        "evidence": "<Select> found"
+      },
+      {
+        "id": "a-text-field",
+        "description": "TextField in booking form",
+        "severity": "required",
+        "passed": true,
+        "evidence": "<TextField> found"
+      },
+      {
+        "id": "a-drawer",
+        "description": "Drawer for booking detail view",
+        "severity": "recommended",
+        "passed": true,
+        "evidence": "<Drawer> found"
+      },
+      {
+        "id": "a-accordion",
+        "description": "Accordion for detail sections",
+        "severity": "recommended",
+        "passed": true,
+        "evidence": "<Accordion> found"
+      },
+      {
+        "id": "a-section-message",
+        "description": "SectionMessage for capacity alerts",
+        "severity": "required",
+        "passed": true,
+        "evidence": "<SectionMessage> found"
+      },
+      {
+        "id": "a-headline",
+        "description": "Headline for page title",
+        "severity": "recommended",
+        "passed": true,
+        "evidence": "<Headline> found"
+      },
+      {
+        "id": "a-no-onclick-on-marigold",
+        "description": "No onClick on Marigold Button components",
+        "severity": "recommended",
+        "passed": true,
+        "evidence": "\"/<Button[^>]*onClick/\" correctly absent"
+      },
+      {
+        "id": "a-textarea",
+        "description": "TextArea for booking notes",
+        "severity": "recommended",
+        "passed": true,
+        "evidence": "<TextArea> found"
+      }
+    ],
+    "failed": [
+      {
+        "id": "a-form",
+        "description": "Form component in create dialog",
+        "severity": "required",
+        "passed": false,
+        "evidence": "<Form> not found"
+      }
+    ],
+    "passRate": 0.95,
+    "requiredPassRate": 0.9333,
+    "weightedPassRate": 0.9385,
+    "total": 20
+  },
+  "validatePackageVersion": "0.0.1",
+  "playwrightVersion": null,
+  "resolvedModelId": "claude-sonnet-4-6",
+  "claudeCliVersion": "2.1.185 (Claude Code)",
+  "sessionId": "fd0ce542-1125-4389-b4cb-cc066fed612d"
+}

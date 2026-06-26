@@ -1,0 +1,1325 @@
+{
+  "runId": "haiku-full-stack-P-07-r1",
+  "promptId": "P-07",
+  "model": "haiku",
+  "config": "full-stack",
+  "timestamp": "2026-06-22T07:56:14.249Z",
+  "quality": {
+    "overall": 62.92,
+    "categories": {
+      "A": {
+        "category": "A",
+        "label": "Design System API",
+        "score": 65.36,
+        "weight": 0.225,
+        "weightedScore": 14.71,
+        "errorCount": 0,
+        "warningCount": 6,
+        "issues": [
+          {
+            "type": "technical",
+            "severity": "warning",
+            "source": "design-system-usage",
+            "component": "div",
+            "message": "Raw <div> used instead of a Marigold component.",
+            "suggestion": "Raw <div> used instead of a Marigold layout component. Search the Marigold docs for layout alternatives.",
+            "location": {
+              "file": "TestApp.tsx",
+              "line": 526,
+              "column": 9
+            },
+            "details": {
+              "htmlElement": "div"
+            }
+          },
+          {
+            "type": "technical",
+            "severity": "warning",
+            "source": "design-system-usage",
+            "component": "strong",
+            "message": "Raw <strong> used instead of a Marigold component.",
+            "suggestion": "Replace <strong> with the appropriate Marigold component. Search the Marigold docs for alternatives.",
+            "location": {
+              "file": "TestApp.tsx",
+              "line": 540,
+              "column": 19
+            },
+            "details": {
+              "htmlElement": "strong"
+            }
+          },
+          {
+            "type": "technical",
+            "severity": "warning",
+            "source": "design-system-usage",
+            "component": "strong",
+            "message": "Raw <strong> used instead of a Marigold component.",
+            "suggestion": "Replace <strong> with the appropriate Marigold component. Search the Marigold docs for alternatives.",
+            "location": {
+              "file": "TestApp.tsx",
+              "line": 543,
+              "column": 19
+            },
+            "details": {
+              "htmlElement": "strong"
+            }
+          },
+          {
+            "type": "technical",
+            "severity": "warning",
+            "source": "design-system-usage",
+            "component": "strong",
+            "message": "Raw <strong> used instead of a Marigold component.",
+            "suggestion": "Replace <strong> with the appropriate Marigold component. Search the Marigold docs for alternatives.",
+            "location": {
+              "file": "TestApp.tsx",
+              "line": 550,
+              "column": 19
+            },
+            "details": {
+              "htmlElement": "strong"
+            }
+          },
+          {
+            "type": "technical",
+            "severity": "warning",
+            "source": "design-system-usage",
+            "component": "strong",
+            "message": "Raw <strong> used instead of a Marigold component.",
+            "suggestion": "Replace <strong> with the appropriate Marigold component. Search the Marigold docs for alternatives.",
+            "location": {
+              "file": "TestApp.tsx",
+              "line": 553,
+              "column": 19
+            },
+            "details": {
+              "htmlElement": "strong"
+            }
+          },
+          {
+            "type": "technical",
+            "severity": "warning",
+            "source": "design-system-usage",
+            "component": "strong",
+            "message": "Raw <strong> used instead of a Marigold component.",
+            "suggestion": "Replace <strong> with the appropriate Marigold component. Search the Marigold docs for alternatives.",
+            "location": {
+              "file": "TestApp.tsx",
+              "line": 556,
+              "column": 19
+            },
+            "details": {
+              "htmlElement": "strong"
+            }
+          }
+        ]
+      },
+      "B": {
+        "category": "B",
+        "label": "Token Compliance",
+        "score": 89.39,
+        "weight": 0.1,
+        "weightedScore": 8.94,
+        "errorCount": 0,
+        "warningCount": 1,
+        "issues": [
+          {
+            "type": "style",
+            "severity": "warning",
+            "source": "token-compliance",
+            "component": "thead",
+            "message": "Computed background-color value \"oklab(0.999994 0.0000455678 0.0000200868 / 0.9)\" on <thead> (“Booking IDCustomerVenueDateTime SlotStat”) does not map to a known design token.",
+            "suggestion": "If this is intentional, ignore the warning. Otherwise, use a Marigold variant or a theme-rui token instead of a hard-coded value.",
+            "details": {
+              "property": "background-color",
+              "value": "oklab(0.999994 0.0000455678 0.0000200868 / 0.9)",
+              "selector": "body:nth-child(2) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div:nth-child(4) > div:nth-child(3) > div:nth-child(2) > div:nth-child(1) > table:nth-child(3) > thead:nth-child(1)",
+              "fingerprint": "Booking IDCustomerVenueDateTime SlotStat",
+              "scope": "page"
+            }
+          }
+        ]
+      },
+      "C": {
+        "category": "C",
+        "label": "DOM / Structure",
+        "score": 39.38,
+        "weight": 0.225,
+        "weightedScore": 8.86,
+        "errorCount": 3,
+        "warningCount": 0,
+        "issues": [
+          {
+            "type": "technical",
+            "severity": "error",
+            "source": "composition-validator",
+            "component": "ActionMenu",
+            "message": "<ActionMenu> is used without any of its sub-components.",
+            "suggestion": "Use compound children: <ActionMenu.Item>, <ActionMenu.Section>.",
+            "location": {
+              "file": "TestApp.tsx",
+              "line": 400,
+              "column": 23
+            },
+            "details": {
+              "expected": [
+                "Item",
+                "Section"
+              ],
+              "found": []
+            }
+          },
+          {
+            "type": "technical",
+            "severity": "error",
+            "source": "composition-validator",
+            "component": "ActionMenu",
+            "message": "<ActionMenu> is used without any of its sub-components.",
+            "suggestion": "Use compound children: <ActionMenu.Item>, <ActionMenu.Section>.",
+            "location": {
+              "file": "TestApp.tsx",
+              "line": 449,
+              "column": 23
+            },
+            "details": {
+              "expected": [
+                "Item",
+                "Section"
+              ],
+              "found": []
+            }
+          },
+          {
+            "type": "technical",
+            "severity": "error",
+            "source": "composition-validator",
+            "component": "ActionMenu",
+            "message": "<ActionMenu> is used without any of its sub-components.",
+            "suggestion": "Use compound children: <ActionMenu.Item>, <ActionMenu.Section>.",
+            "location": {
+              "file": "TestApp.tsx",
+              "line": 498,
+              "column": 23
+            },
+            "details": {
+              "expected": [
+                "Item",
+                "Section"
+              ],
+              "found": []
+            }
+          }
+        ]
+      },
+      "D": {
+        "category": "D",
+        "label": "Spatial & A11y",
+        "score": 35.19,
+        "weight": 0.225,
+        "weightedScore": 7.92,
+        "errorCount": 0,
+        "warningCount": 21,
+        "issues": [
+          {
+            "type": "spatial",
+            "severity": "warning",
+            "source": "overflow-detector",
+            "component": "body:nth-child(2) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div:nth-child(3) > div:nth-child(2)",
+            "message": "Flex container children are wrapping to 6 rows (7 children, container 1280px wide, content 4030px wide).",
+            "suggestion": "Consider using <Columns collapseAt=\"...\"> for responsive multi-column layout, or <Stack> for vertical arrangement.",
+            "details": {
+              "containerSelector": "body:nth-child(2) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div:nth-child(3) > div:nth-child(2)",
+              "rowCount": 6,
+              "childCount": 7,
+              "containerWidth": 1280,
+              "totalChildrenWidth": 4030,
+              "isAutoFitGrid": false,
+              "hasZeroWidthChild": false,
+              "scope": "page"
+            }
+          },
+          {
+            "type": "spatial",
+            "severity": "warning",
+            "source": "responsive-checker",
+            "component": "table",
+            "message": "Content overflows viewport at reflow (320px) (320px): scroll width 525px exceeds viewport by 205px. Widest element: <table> (“All bookings”) extends to 525px.",
+            "suggestion": "Tabular content needs a 2D layout and is exempt from reflow, but it should not widen the whole page. Wrap the table in <Scrollable> so it scrolls horizontally on its own.",
+            "details": {
+              "breakpoint": "reflow (320px)",
+              "scrollWidth": 525,
+              "viewportWidth": 320,
+              "culprit": "table",
+              "culpritSelector": "body:nth-child(2) > div:nth-child(2) > div:nth-child(1) > div:nth-child(1) > div:nth-child(4) > div:nth-child(3) > div:nth-child(2) > div:nth-child(1) > table:nth-child(3)",
+              "tabular": true,
+              "scope": "page"
+            }
+          },
+          {
+            "type": "spatial",
+            "severity": "warning",
+            "source": "responsive-checker",
+            "component": "table",
+            "message": "Content overflows viewport at mobile (375px): scroll width 525px exceeds viewport by 150px. Widest element: <table> (“All bookings”) extends to 525px.",
+            "suggestion": "Tabular content needs a 2D layout and is exempt from reflow, but it should not widen the whole page. Wrap the table in <Scrollable> so it scrolls horizontally on its own.",
+            "details": {
+              "breakpoint": "mobile",
+              "scrollWidth": 525,
+              "viewportWidth": 375,
+              "culprit": "table",
+              "culpritSelector": "body:nth-child(2) > div:nth-child(2) > div:nth-child(1) > div:nth-child(1) > div:nth-child(4) > div:nth-child(3) > div:nth-child(2) > div:nth-child(1) > table:nth-child(3)",
+              "tabular": true,
+              "scope": "page"
+            }
+          },
+          {
+            "type": "a11y",
+            "severity": "warning",
+            "source": "responsive-checker",
+            "component": "select",
+            "message": "Touch target too small at mobile (375px): select elements are 104x21px (minimum 24x24px per WCAG 2.5.8).",
+            "suggestion": "Increase the clickable area. Marigold interactive components have built-in minimum sizes — check if custom styling reduces the target.",
+            "details": {
+              "breakpoint": "mobile",
+              "tag": "select",
+              "count": 1,
+              "minWidth": 104,
+              "minHeight": 21,
+              "scope": "page"
+            }
+          },
+          {
+            "type": "a11y",
+            "severity": "warning",
+            "source": "aom-extractor",
+            "component": "#react-aria6400181292-_r_2l_",
+            "message": "Buttons must have discernible text (button-name)",
+            "suggestion": "https://dequeuniversity.com/rules/axe/4.11/button-name?application=playwright",
+            "details": {
+              "ruleId": "button-name",
+              "impact": "critical",
+              "target": [
+                "#react-aria6400181292-_r_2l_"
+              ],
+              "html": "<button class=\"ui-button-base gap-2...\" data-rac=\"\" type=\"button\" tabindex=\"0\" aria-haspopup=\"true\" aria-expanded=\"false\" id=\"react-aria6400181292...\" data-react-aria-pres...=\"true\">",
+              "scope": "page"
+            }
+          },
+          {
+            "type": "a11y",
+            "severity": "warning",
+            "source": "aom-extractor",
+            "component": "#react-aria6400181292-_r_33_",
+            "message": "Buttons must have discernible text (button-name)",
+            "suggestion": "https://dequeuniversity.com/rules/axe/4.11/button-name?application=playwright",
+            "details": {
+              "ruleId": "button-name",
+              "impact": "critical",
+              "target": [
+                "#react-aria6400181292-_r_33_"
+              ],
+              "html": "<button class=\"ui-button-base gap-2...\" data-rac=\"\" type=\"button\" tabindex=\"0\" aria-haspopup=\"true\" aria-expanded=\"false\" id=\"react-aria6400181292...\" data-react-aria-pres...=\"true\">",
+              "scope": "page"
+            }
+          },
+          {
+            "type": "a11y",
+            "severity": "warning",
+            "source": "aom-extractor",
+            "component": "#react-aria6400181292-_r_3h_",
+            "message": "Buttons must have discernible text (button-name)",
+            "suggestion": "https://dequeuniversity.com/rules/axe/4.11/button-name?application=playwright",
+            "details": {
+              "ruleId": "button-name",
+              "impact": "critical",
+              "target": [
+                "#react-aria6400181292-_r_3h_"
+              ],
+              "html": "<button class=\"ui-button-base gap-2...\" data-rac=\"\" type=\"button\" tabindex=\"0\" aria-haspopup=\"true\" aria-expanded=\"false\" id=\"react-aria6400181292...\" data-react-aria-pres...=\"true\">",
+              "scope": "page"
+            }
+          },
+          {
+            "type": "a11y",
+            "severity": "warning",
+            "source": "aom-extractor",
+            "component": "#react-aria6400181292-_r_3v_",
+            "message": "Buttons must have discernible text (button-name)",
+            "suggestion": "https://dequeuniversity.com/rules/axe/4.11/button-name?application=playwright",
+            "details": {
+              "ruleId": "button-name",
+              "impact": "critical",
+              "target": [
+                "#react-aria6400181292-_r_3v_"
+              ],
+              "html": "<button class=\"ui-button-base gap-2...\" data-rac=\"\" type=\"button\" tabindex=\"0\" aria-haspopup=\"true\" aria-expanded=\"false\" id=\"react-aria6400181292...\" data-react-aria-pres...=\"true\">",
+              "scope": "page"
+            }
+          },
+          {
+            "type": "a11y",
+            "severity": "warning",
+            "source": "aom-extractor",
+            "component": "#react-aria6400181292-_r_4d_",
+            "message": "Buttons must have discernible text (button-name)",
+            "suggestion": "https://dequeuniversity.com/rules/axe/4.11/button-name?application=playwright",
+            "details": {
+              "ruleId": "button-name",
+              "impact": "critical",
+              "target": [
+                "#react-aria6400181292-_r_4d_"
+              ],
+              "html": "<button class=\"ui-button-base gap-2...\" data-rac=\"\" type=\"button\" tabindex=\"0\" aria-haspopup=\"true\" aria-expanded=\"false\" id=\"react-aria6400181292...\" data-react-aria-pres...=\"true\">",
+              "scope": "page"
+            }
+          },
+          {
+            "type": "a11y",
+            "severity": "warning",
+            "source": "aom-extractor",
+            "component": "#react-aria6400181292-_r_4r_",
+            "message": "Buttons must have discernible text (button-name)",
+            "suggestion": "https://dequeuniversity.com/rules/axe/4.11/button-name?application=playwright",
+            "details": {
+              "ruleId": "button-name",
+              "impact": "critical",
+              "target": [
+                "#react-aria6400181292-_r_4r_"
+              ],
+              "html": "<button class=\"ui-button-base gap-2...\" data-rac=\"\" type=\"button\" tabindex=\"0\" aria-haspopup=\"true\" aria-expanded=\"false\" id=\"react-aria6400181292...\" data-react-aria-pres...=\"true\">",
+              "scope": "page"
+            }
+          },
+          {
+            "type": "a11y",
+            "severity": "warning",
+            "source": "aom-extractor",
+            "component": ".gap-y-\\(--space\\).items-stretch.flex-col:nth-child(3) > h3",
+            "message": "Heading levels should only increase by one (heading-order)",
+            "suggestion": "Use `<Headline level={N}>` with sequential levels (1, 2, 3…). Do not skip heading levels. Import Headline from `@marigold/components`.",
+            "details": {
+              "ruleId": "heading-order",
+              "impact": "moderate",
+              "target": [
+                ".gap-y-\\(--space\\).items-stretch.flex-col:nth-child(3) > h3"
+              ],
+              "html": "<h3 class=\"text-xl font-semibold max-w-(--maxHeadlineWidth) text-left\">Filters</h3>",
+              "scope": "page"
+            }
+          },
+          {
+            "type": "a11y",
+            "severity": "warning",
+            "source": "aom-extractor",
+            "component": "html",
+            "message": "Document should have one main landmark (landmark-one-main)",
+            "suggestion": "Wrap your page content in `<AppLayout>` with `<AppLayout.Main>` to provide a `<main>` landmark. Import AppLayout from `@marigold/components`.",
+            "details": {
+              "ruleId": "landmark-one-main",
+              "impact": "moderate",
+              "target": [
+                "html"
+              ],
+              "html": "<html lang=\"en\" data-theme=\"rui\">",
+              "scope": "page"
+            }
+          },
+          {
+            "type": "a11y",
+            "severity": "warning",
+            "source": "aom-extractor",
+            "component": "page",
+            "message": "All page content should be contained by landmarks — 10 elements affected (region)",
+            "suggestion": "All page content must be inside a landmark region. Use `<AppLayout>` with `<AppLayout.Main>` for the main area, `<TopNavigation>` for the header (`<header>`), and `<Sidebar>` for side navigation (`<aside>`). Import from `@marigold/components`.",
+            "details": {
+              "ruleId": "region",
+              "impact": "moderate",
+              "affectedCount": 10,
+              "scope": "page"
+            }
+          },
+          {
+            "type": "a11y",
+            "severity": "warning",
+            "source": "aom-extractor",
+            "component": "#react-aria6400181292-_r_2l_",
+            "message": "Buttons must have discernible text (button-name) (in a revealed overlay)",
+            "suggestion": "https://dequeuniversity.com/rules/axe/4.11/button-name?application=playwright",
+            "details": {
+              "ruleId": "button-name",
+              "impact": "critical",
+              "target": [
+                "#react-aria6400181292-_r_2l_"
+              ],
+              "html": "<button class=\"ui-button-base gap-2...\" data-rac=\"\" type=\"button\" tabindex=\"0\" aria-haspopup=\"true\" aria-expanded=\"false\" id=\"react-aria6400181292...\" data-react-aria-pres...=\"true\">",
+              "scope": "page"
+            }
+          },
+          {
+            "type": "a11y",
+            "severity": "warning",
+            "source": "aom-extractor",
+            "component": "#react-aria6400181292-_r_33_",
+            "message": "Buttons must have discernible text (button-name) (in a revealed overlay)",
+            "suggestion": "https://dequeuniversity.com/rules/axe/4.11/button-name?application=playwright",
+            "details": {
+              "ruleId": "button-name",
+              "impact": "critical",
+              "target": [
+                "#react-aria6400181292-_r_33_"
+              ],
+              "html": "<button class=\"ui-button-base gap-2...\" data-rac=\"\" type=\"button\" tabindex=\"0\" aria-haspopup=\"true\" aria-expanded=\"false\" id=\"react-aria6400181292...\" data-react-aria-pres...=\"true\">",
+              "scope": "page"
+            }
+          },
+          {
+            "type": "a11y",
+            "severity": "warning",
+            "source": "aom-extractor",
+            "component": "#react-aria6400181292-_r_3h_",
+            "message": "Buttons must have discernible text (button-name) (in a revealed overlay)",
+            "suggestion": "https://dequeuniversity.com/rules/axe/4.11/button-name?application=playwright",
+            "details": {
+              "ruleId": "button-name",
+              "impact": "critical",
+              "target": [
+                "#react-aria6400181292-_r_3h_"
+              ],
+              "html": "<button class=\"ui-button-base gap-2...\" data-rac=\"\" type=\"button\" tabindex=\"0\" aria-haspopup=\"true\" aria-expanded=\"false\" id=\"react-aria6400181292...\" data-react-aria-pres...=\"true\">",
+              "scope": "page"
+            }
+          },
+          {
+            "type": "a11y",
+            "severity": "warning",
+            "source": "aom-extractor",
+            "component": "#react-aria6400181292-_r_3v_",
+            "message": "Buttons must have discernible text (button-name) (in a revealed overlay)",
+            "suggestion": "https://dequeuniversity.com/rules/axe/4.11/button-name?application=playwright",
+            "details": {
+              "ruleId": "button-name",
+              "impact": "critical",
+              "target": [
+                "#react-aria6400181292-_r_3v_"
+              ],
+              "html": "<button class=\"ui-button-base gap-2...\" data-rac=\"\" type=\"button\" tabindex=\"0\" aria-haspopup=\"true\" aria-expanded=\"false\" id=\"react-aria6400181292...\" data-react-aria-pres...=\"true\">",
+              "scope": "page"
+            }
+          },
+          {
+            "type": "a11y",
+            "severity": "warning",
+            "source": "aom-extractor",
+            "component": "#react-aria6400181292-_r_4d_",
+            "message": "Buttons must have discernible text (button-name) (in a revealed overlay)",
+            "suggestion": "https://dequeuniversity.com/rules/axe/4.11/button-name?application=playwright",
+            "details": {
+              "ruleId": "button-name",
+              "impact": "critical",
+              "target": [
+                "#react-aria6400181292-_r_4d_"
+              ],
+              "html": "<button class=\"ui-button-base gap-2...\" data-rac=\"\" type=\"button\" tabindex=\"0\" aria-haspopup=\"true\" aria-expanded=\"false\" id=\"react-aria6400181292...\" data-react-aria-pres...=\"true\">",
+              "scope": "page"
+            }
+          },
+          {
+            "type": "a11y",
+            "severity": "warning",
+            "source": "aom-extractor",
+            "component": "#react-aria6400181292-_r_4r_",
+            "message": "Buttons must have discernible text (button-name) (in a revealed overlay)",
+            "suggestion": "https://dequeuniversity.com/rules/axe/4.11/button-name?application=playwright",
+            "details": {
+              "ruleId": "button-name",
+              "impact": "critical",
+              "target": [
+                "#react-aria6400181292-_r_4r_"
+              ],
+              "html": "<button class=\"ui-button-base gap-2...\" data-rac=\"\" type=\"button\" tabindex=\"0\" aria-haspopup=\"true\" aria-expanded=\"false\" id=\"react-aria6400181292...\" data-react-aria-pres...=\"true\">",
+              "scope": "page"
+            }
+          },
+          {
+            "type": "a11y",
+            "severity": "warning",
+            "source": "keyboard-a11y",
+            "component": "span",
+            "message": "Interactive element <span> (spinbutton) is not reachable via Tab key.",
+            "suggestion": "Ensure the element is focusable. Marigold interactive components are focusable by default — check if a parent has tabindex=\"-1\" or focus is trapped.",
+            "details": {
+              "selector": "body:nth-child(2) > div:nth-child(2) > div:nth-child(1) > div:nth-child(1) > div:nth-child(3) > div:nth-child(2) > div:nth-child(1) > div:nth-child(2) > div:nth-child(1) > span:nth-child(1)",
+              "role": "spinbutton",
+              "scope": "page"
+            }
+          },
+          {
+            "type": "a11y",
+            "severity": "warning",
+            "source": "keyboard-a11y",
+            "component": "button",
+            "message": "Interactive element <button> (button) is not reachable via Tab key.",
+            "suggestion": "Ensure the element is focusable. Marigold interactive components are focusable by default — check if a parent has tabindex=\"-1\" or focus is trapped.",
+            "details": {
+              "selector": "body:nth-child(2) > div:nth-child(2) > div:nth-child(1) > div:nth-child(1) > div:nth-child(3) > div:nth-child(2) > div:nth-child(1) > div:nth-child(2) > button:nth-child(3)",
+              "role": "button",
+              "scope": "page"
+            }
+          }
+        ]
+      },
+      "E": {
+        "category": "E",
+        "label": "Functional Completeness",
+        "score": 100,
+        "weight": 0.225,
+        "weightedScore": 22.5,
+        "errorCount": 0,
+        "warningCount": 0,
+        "issues": []
+      }
+    },
+    "renderSuccess": true
+  },
+  "efficiency": {
+    "durationMs": 224508,
+    "costUsd": 0.6069351,
+    "inputTokens": 90,
+    "outputTokens": 15050,
+    "cacheReadTokens": 2492111,
+    "cacheCreationTokens": 140624,
+    "totalTokens": 15140,
+    "numTurns": 50
+  },
+  "report": {
+    "file": "TestApp.tsx",
+    "errors": [
+      {
+        "type": "technical",
+        "severity": "error",
+        "source": "composition-validator",
+        "component": "ActionMenu",
+        "message": "<ActionMenu> is used without any of its sub-components.",
+        "suggestion": "Use compound children: <ActionMenu.Item>, <ActionMenu.Section>.",
+        "location": {
+          "file": "TestApp.tsx",
+          "line": 400,
+          "column": 23
+        },
+        "details": {
+          "expected": [
+            "Item",
+            "Section"
+          ],
+          "found": []
+        }
+      },
+      {
+        "type": "technical",
+        "severity": "error",
+        "source": "composition-validator",
+        "component": "ActionMenu",
+        "message": "<ActionMenu> is used without any of its sub-components.",
+        "suggestion": "Use compound children: <ActionMenu.Item>, <ActionMenu.Section>.",
+        "location": {
+          "file": "TestApp.tsx",
+          "line": 449,
+          "column": 23
+        },
+        "details": {
+          "expected": [
+            "Item",
+            "Section"
+          ],
+          "found": []
+        }
+      },
+      {
+        "type": "technical",
+        "severity": "error",
+        "source": "composition-validator",
+        "component": "ActionMenu",
+        "message": "<ActionMenu> is used without any of its sub-components.",
+        "suggestion": "Use compound children: <ActionMenu.Item>, <ActionMenu.Section>.",
+        "location": {
+          "file": "TestApp.tsx",
+          "line": 498,
+          "column": 23
+        },
+        "details": {
+          "expected": [
+            "Item",
+            "Section"
+          ],
+          "found": []
+        }
+      }
+    ],
+    "warnings": [
+      {
+        "type": "technical",
+        "severity": "warning",
+        "source": "design-system-usage",
+        "component": "div",
+        "message": "Raw <div> used instead of a Marigold component.",
+        "suggestion": "Raw <div> used instead of a Marigold layout component. Search the Marigold docs for layout alternatives.",
+        "location": {
+          "file": "TestApp.tsx",
+          "line": 526,
+          "column": 9
+        },
+        "details": {
+          "htmlElement": "div"
+        }
+      },
+      {
+        "type": "technical",
+        "severity": "warning",
+        "source": "design-system-usage",
+        "component": "strong",
+        "message": "Raw <strong> used instead of a Marigold component.",
+        "suggestion": "Replace <strong> with the appropriate Marigold component. Search the Marigold docs for alternatives.",
+        "location": {
+          "file": "TestApp.tsx",
+          "line": 540,
+          "column": 19
+        },
+        "details": {
+          "htmlElement": "strong"
+        }
+      },
+      {
+        "type": "technical",
+        "severity": "warning",
+        "source": "design-system-usage",
+        "component": "strong",
+        "message": "Raw <strong> used instead of a Marigold component.",
+        "suggestion": "Replace <strong> with the appropriate Marigold component. Search the Marigold docs for alternatives.",
+        "location": {
+          "file": "TestApp.tsx",
+          "line": 543,
+          "column": 19
+        },
+        "details": {
+          "htmlElement": "strong"
+        }
+      },
+      {
+        "type": "technical",
+        "severity": "warning",
+        "source": "design-system-usage",
+        "component": "strong",
+        "message": "Raw <strong> used instead of a Marigold component.",
+        "suggestion": "Replace <strong> with the appropriate Marigold component. Search the Marigold docs for alternatives.",
+        "location": {
+          "file": "TestApp.tsx",
+          "line": 550,
+          "column": 19
+        },
+        "details": {
+          "htmlElement": "strong"
+        }
+      },
+      {
+        "type": "technical",
+        "severity": "warning",
+        "source": "design-system-usage",
+        "component": "strong",
+        "message": "Raw <strong> used instead of a Marigold component.",
+        "suggestion": "Replace <strong> with the appropriate Marigold component. Search the Marigold docs for alternatives.",
+        "location": {
+          "file": "TestApp.tsx",
+          "line": 553,
+          "column": 19
+        },
+        "details": {
+          "htmlElement": "strong"
+        }
+      },
+      {
+        "type": "technical",
+        "severity": "warning",
+        "source": "design-system-usage",
+        "component": "strong",
+        "message": "Raw <strong> used instead of a Marigold component.",
+        "suggestion": "Replace <strong> with the appropriate Marigold component. Search the Marigold docs for alternatives.",
+        "location": {
+          "file": "TestApp.tsx",
+          "line": 556,
+          "column": 19
+        },
+        "details": {
+          "htmlElement": "strong"
+        }
+      },
+      {
+        "type": "spatial",
+        "severity": "warning",
+        "source": "overflow-detector",
+        "component": "body:nth-child(2) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div:nth-child(3) > div:nth-child(2)",
+        "message": "Flex container children are wrapping to 6 rows (7 children, container 1280px wide, content 4030px wide).",
+        "suggestion": "Consider using <Columns collapseAt=\"...\"> for responsive multi-column layout, or <Stack> for vertical arrangement.",
+        "details": {
+          "containerSelector": "body:nth-child(2) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div:nth-child(3) > div:nth-child(2)",
+          "rowCount": 6,
+          "childCount": 7,
+          "containerWidth": 1280,
+          "totalChildrenWidth": 4030,
+          "isAutoFitGrid": false,
+          "hasZeroWidthChild": false,
+          "scope": "page"
+        }
+      },
+      {
+        "type": "style",
+        "severity": "warning",
+        "source": "token-compliance",
+        "component": "thead",
+        "message": "Computed background-color value \"oklab(0.999994 0.0000455678 0.0000200868 / 0.9)\" on <thead> (“Booking IDCustomerVenueDateTime SlotStat”) does not map to a known design token.",
+        "suggestion": "If this is intentional, ignore the warning. Otherwise, use a Marigold variant or a theme-rui token instead of a hard-coded value.",
+        "details": {
+          "property": "background-color",
+          "value": "oklab(0.999994 0.0000455678 0.0000200868 / 0.9)",
+          "selector": "body:nth-child(2) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div:nth-child(4) > div:nth-child(3) > div:nth-child(2) > div:nth-child(1) > table:nth-child(3) > thead:nth-child(1)",
+          "fingerprint": "Booking IDCustomerVenueDateTime SlotStat",
+          "scope": "page"
+        }
+      },
+      {
+        "type": "spatial",
+        "severity": "warning",
+        "source": "responsive-checker",
+        "component": "table",
+        "message": "Content overflows viewport at reflow (320px) (320px): scroll width 525px exceeds viewport by 205px. Widest element: <table> (“All bookings”) extends to 525px.",
+        "suggestion": "Tabular content needs a 2D layout and is exempt from reflow, but it should not widen the whole page. Wrap the table in <Scrollable> so it scrolls horizontally on its own.",
+        "details": {
+          "breakpoint": "reflow (320px)",
+          "scrollWidth": 525,
+          "viewportWidth": 320,
+          "culprit": "table",
+          "culpritSelector": "body:nth-child(2) > div:nth-child(2) > div:nth-child(1) > div:nth-child(1) > div:nth-child(4) > div:nth-child(3) > div:nth-child(2) > div:nth-child(1) > table:nth-child(3)",
+          "tabular": true,
+          "scope": "page"
+        }
+      },
+      {
+        "type": "spatial",
+        "severity": "warning",
+        "source": "responsive-checker",
+        "component": "table",
+        "message": "Content overflows viewport at mobile (375px): scroll width 525px exceeds viewport by 150px. Widest element: <table> (“All bookings”) extends to 525px.",
+        "suggestion": "Tabular content needs a 2D layout and is exempt from reflow, but it should not widen the whole page. Wrap the table in <Scrollable> so it scrolls horizontally on its own.",
+        "details": {
+          "breakpoint": "mobile",
+          "scrollWidth": 525,
+          "viewportWidth": 375,
+          "culprit": "table",
+          "culpritSelector": "body:nth-child(2) > div:nth-child(2) > div:nth-child(1) > div:nth-child(1) > div:nth-child(4) > div:nth-child(3) > div:nth-child(2) > div:nth-child(1) > table:nth-child(3)",
+          "tabular": true,
+          "scope": "page"
+        }
+      },
+      {
+        "type": "a11y",
+        "severity": "warning",
+        "source": "responsive-checker",
+        "component": "select",
+        "message": "Touch target too small at mobile (375px): select elements are 104x21px (minimum 24x24px per WCAG 2.5.8).",
+        "suggestion": "Increase the clickable area. Marigold interactive components have built-in minimum sizes — check if custom styling reduces the target.",
+        "details": {
+          "breakpoint": "mobile",
+          "tag": "select",
+          "count": 1,
+          "minWidth": 104,
+          "minHeight": 21,
+          "scope": "page"
+        }
+      },
+      {
+        "type": "a11y",
+        "severity": "warning",
+        "source": "aom-extractor",
+        "component": "#react-aria6400181292-_r_2l_",
+        "message": "Buttons must have discernible text (button-name)",
+        "suggestion": "https://dequeuniversity.com/rules/axe/4.11/button-name?application=playwright",
+        "details": {
+          "ruleId": "button-name",
+          "impact": "critical",
+          "target": [
+            "#react-aria6400181292-_r_2l_"
+          ],
+          "html": "<button class=\"ui-button-base gap-2...\" data-rac=\"\" type=\"button\" tabindex=\"0\" aria-haspopup=\"true\" aria-expanded=\"false\" id=\"react-aria6400181292...\" data-react-aria-pres...=\"true\">",
+          "scope": "page"
+        }
+      },
+      {
+        "type": "a11y",
+        "severity": "warning",
+        "source": "aom-extractor",
+        "component": "#react-aria6400181292-_r_33_",
+        "message": "Buttons must have discernible text (button-name)",
+        "suggestion": "https://dequeuniversity.com/rules/axe/4.11/button-name?application=playwright",
+        "details": {
+          "ruleId": "button-name",
+          "impact": "critical",
+          "target": [
+            "#react-aria6400181292-_r_33_"
+          ],
+          "html": "<button class=\"ui-button-base gap-2...\" data-rac=\"\" type=\"button\" tabindex=\"0\" aria-haspopup=\"true\" aria-expanded=\"false\" id=\"react-aria6400181292...\" data-react-aria-pres...=\"true\">",
+          "scope": "page"
+        }
+      },
+      {
+        "type": "a11y",
+        "severity": "warning",
+        "source": "aom-extractor",
+        "component": "#react-aria6400181292-_r_3h_",
+        "message": "Buttons must have discernible text (button-name)",
+        "suggestion": "https://dequeuniversity.com/rules/axe/4.11/button-name?application=playwright",
+        "details": {
+          "ruleId": "button-name",
+          "impact": "critical",
+          "target": [
+            "#react-aria6400181292-_r_3h_"
+          ],
+          "html": "<button class=\"ui-button-base gap-2...\" data-rac=\"\" type=\"button\" tabindex=\"0\" aria-haspopup=\"true\" aria-expanded=\"false\" id=\"react-aria6400181292...\" data-react-aria-pres...=\"true\">",
+          "scope": "page"
+        }
+      },
+      {
+        "type": "a11y",
+        "severity": "warning",
+        "source": "aom-extractor",
+        "component": "#react-aria6400181292-_r_3v_",
+        "message": "Buttons must have discernible text (button-name)",
+        "suggestion": "https://dequeuniversity.com/rules/axe/4.11/button-name?application=playwright",
+        "details": {
+          "ruleId": "button-name",
+          "impact": "critical",
+          "target": [
+            "#react-aria6400181292-_r_3v_"
+          ],
+          "html": "<button class=\"ui-button-base gap-2...\" data-rac=\"\" type=\"button\" tabindex=\"0\" aria-haspopup=\"true\" aria-expanded=\"false\" id=\"react-aria6400181292...\" data-react-aria-pres...=\"true\">",
+          "scope": "page"
+        }
+      },
+      {
+        "type": "a11y",
+        "severity": "warning",
+        "source": "aom-extractor",
+        "component": "#react-aria6400181292-_r_4d_",
+        "message": "Buttons must have discernible text (button-name)",
+        "suggestion": "https://dequeuniversity.com/rules/axe/4.11/button-name?application=playwright",
+        "details": {
+          "ruleId": "button-name",
+          "impact": "critical",
+          "target": [
+            "#react-aria6400181292-_r_4d_"
+          ],
+          "html": "<button class=\"ui-button-base gap-2...\" data-rac=\"\" type=\"button\" tabindex=\"0\" aria-haspopup=\"true\" aria-expanded=\"false\" id=\"react-aria6400181292...\" data-react-aria-pres...=\"true\">",
+          "scope": "page"
+        }
+      },
+      {
+        "type": "a11y",
+        "severity": "warning",
+        "source": "aom-extractor",
+        "component": "#react-aria6400181292-_r_4r_",
+        "message": "Buttons must have discernible text (button-name)",
+        "suggestion": "https://dequeuniversity.com/rules/axe/4.11/button-name?application=playwright",
+        "details": {
+          "ruleId": "button-name",
+          "impact": "critical",
+          "target": [
+            "#react-aria6400181292-_r_4r_"
+          ],
+          "html": "<button class=\"ui-button-base gap-2...\" data-rac=\"\" type=\"button\" tabindex=\"0\" aria-haspopup=\"true\" aria-expanded=\"false\" id=\"react-aria6400181292...\" data-react-aria-pres...=\"true\">",
+          "scope": "page"
+        }
+      },
+      {
+        "type": "a11y",
+        "severity": "warning",
+        "source": "aom-extractor",
+        "component": ".gap-y-\\(--space\\).items-stretch.flex-col:nth-child(3) > h3",
+        "message": "Heading levels should only increase by one (heading-order)",
+        "suggestion": "Use `<Headline level={N}>` with sequential levels (1, 2, 3…). Do not skip heading levels. Import Headline from `@marigold/components`.",
+        "details": {
+          "ruleId": "heading-order",
+          "impact": "moderate",
+          "target": [
+            ".gap-y-\\(--space\\).items-stretch.flex-col:nth-child(3) > h3"
+          ],
+          "html": "<h3 class=\"text-xl font-semibold max-w-(--maxHeadlineWidth) text-left\">Filters</h3>",
+          "scope": "page"
+        }
+      },
+      {
+        "type": "a11y",
+        "severity": "warning",
+        "source": "aom-extractor",
+        "component": "html",
+        "message": "Document should have one main landmark (landmark-one-main)",
+        "suggestion": "Wrap your page content in `<AppLayout>` with `<AppLayout.Main>` to provide a `<main>` landmark. Import AppLayout from `@marigold/components`.",
+        "details": {
+          "ruleId": "landmark-one-main",
+          "impact": "moderate",
+          "target": [
+            "html"
+          ],
+          "html": "<html lang=\"en\" data-theme=\"rui\">",
+          "scope": "page"
+        }
+      },
+      {
+        "type": "a11y",
+        "severity": "warning",
+        "source": "aom-extractor",
+        "component": "page",
+        "message": "All page content should be contained by landmarks — 10 elements affected (region)",
+        "suggestion": "All page content must be inside a landmark region. Use `<AppLayout>` with `<AppLayout.Main>` for the main area, `<TopNavigation>` for the header (`<header>`), and `<Sidebar>` for side navigation (`<aside>`). Import from `@marigold/components`.",
+        "details": {
+          "ruleId": "region",
+          "impact": "moderate",
+          "affectedCount": 10,
+          "scope": "page"
+        }
+      },
+      {
+        "type": "a11y",
+        "severity": "warning",
+        "source": "aom-extractor",
+        "component": "#react-aria6400181292-_r_2l_",
+        "message": "Buttons must have discernible text (button-name) (in a revealed overlay)",
+        "suggestion": "https://dequeuniversity.com/rules/axe/4.11/button-name?application=playwright",
+        "details": {
+          "ruleId": "button-name",
+          "impact": "critical",
+          "target": [
+            "#react-aria6400181292-_r_2l_"
+          ],
+          "html": "<button class=\"ui-button-base gap-2...\" data-rac=\"\" type=\"button\" tabindex=\"0\" aria-haspopup=\"true\" aria-expanded=\"false\" id=\"react-aria6400181292...\" data-react-aria-pres...=\"true\">",
+          "scope": "page"
+        }
+      },
+      {
+        "type": "a11y",
+        "severity": "warning",
+        "source": "aom-extractor",
+        "component": "#react-aria6400181292-_r_33_",
+        "message": "Buttons must have discernible text (button-name) (in a revealed overlay)",
+        "suggestion": "https://dequeuniversity.com/rules/axe/4.11/button-name?application=playwright",
+        "details": {
+          "ruleId": "button-name",
+          "impact": "critical",
+          "target": [
+            "#react-aria6400181292-_r_33_"
+          ],
+          "html": "<button class=\"ui-button-base gap-2...\" data-rac=\"\" type=\"button\" tabindex=\"0\" aria-haspopup=\"true\" aria-expanded=\"false\" id=\"react-aria6400181292...\" data-react-aria-pres...=\"true\">",
+          "scope": "page"
+        }
+      },
+      {
+        "type": "a11y",
+        "severity": "warning",
+        "source": "aom-extractor",
+        "component": "#react-aria6400181292-_r_3h_",
+        "message": "Buttons must have discernible text (button-name) (in a revealed overlay)",
+        "suggestion": "https://dequeuniversity.com/rules/axe/4.11/button-name?application=playwright",
+        "details": {
+          "ruleId": "button-name",
+          "impact": "critical",
+          "target": [
+            "#react-aria6400181292-_r_3h_"
+          ],
+          "html": "<button class=\"ui-button-base gap-2...\" data-rac=\"\" type=\"button\" tabindex=\"0\" aria-haspopup=\"true\" aria-expanded=\"false\" id=\"react-aria6400181292...\" data-react-aria-pres...=\"true\">",
+          "scope": "page"
+        }
+      },
+      {
+        "type": "a11y",
+        "severity": "warning",
+        "source": "aom-extractor",
+        "component": "#react-aria6400181292-_r_3v_",
+        "message": "Buttons must have discernible text (button-name) (in a revealed overlay)",
+        "suggestion": "https://dequeuniversity.com/rules/axe/4.11/button-name?application=playwright",
+        "details": {
+          "ruleId": "button-name",
+          "impact": "critical",
+          "target": [
+            "#react-aria6400181292-_r_3v_"
+          ],
+          "html": "<button class=\"ui-button-base gap-2...\" data-rac=\"\" type=\"button\" tabindex=\"0\" aria-haspopup=\"true\" aria-expanded=\"false\" id=\"react-aria6400181292...\" data-react-aria-pres...=\"true\">",
+          "scope": "page"
+        }
+      },
+      {
+        "type": "a11y",
+        "severity": "warning",
+        "source": "aom-extractor",
+        "component": "#react-aria6400181292-_r_4d_",
+        "message": "Buttons must have discernible text (button-name) (in a revealed overlay)",
+        "suggestion": "https://dequeuniversity.com/rules/axe/4.11/button-name?application=playwright",
+        "details": {
+          "ruleId": "button-name",
+          "impact": "critical",
+          "target": [
+            "#react-aria6400181292-_r_4d_"
+          ],
+          "html": "<button class=\"ui-button-base gap-2...\" data-rac=\"\" type=\"button\" tabindex=\"0\" aria-haspopup=\"true\" aria-expanded=\"false\" id=\"react-aria6400181292...\" data-react-aria-pres...=\"true\">",
+          "scope": "page"
+        }
+      },
+      {
+        "type": "a11y",
+        "severity": "warning",
+        "source": "aom-extractor",
+        "component": "#react-aria6400181292-_r_4r_",
+        "message": "Buttons must have discernible text (button-name) (in a revealed overlay)",
+        "suggestion": "https://dequeuniversity.com/rules/axe/4.11/button-name?application=playwright",
+        "details": {
+          "ruleId": "button-name",
+          "impact": "critical",
+          "target": [
+            "#react-aria6400181292-_r_4r_"
+          ],
+          "html": "<button class=\"ui-button-base gap-2...\" data-rac=\"\" type=\"button\" tabindex=\"0\" aria-haspopup=\"true\" aria-expanded=\"false\" id=\"react-aria6400181292...\" data-react-aria-pres...=\"true\">",
+          "scope": "page"
+        }
+      },
+      {
+        "type": "a11y",
+        "severity": "warning",
+        "source": "keyboard-a11y",
+        "component": "span",
+        "message": "Interactive element <span> (spinbutton) is not reachable via Tab key.",
+        "suggestion": "Ensure the element is focusable. Marigold interactive components are focusable by default — check if a parent has tabindex=\"-1\" or focus is trapped.",
+        "details": {
+          "selector": "body:nth-child(2) > div:nth-child(2) > div:nth-child(1) > div:nth-child(1) > div:nth-child(3) > div:nth-child(2) > div:nth-child(1) > div:nth-child(2) > div:nth-child(1) > span:nth-child(1)",
+          "role": "spinbutton",
+          "scope": "page"
+        }
+      },
+      {
+        "type": "a11y",
+        "severity": "warning",
+        "source": "keyboard-a11y",
+        "component": "button",
+        "message": "Interactive element <button> (button) is not reachable via Tab key.",
+        "suggestion": "Ensure the element is focusable. Marigold interactive components are focusable by default — check if a parent has tabindex=\"-1\" or focus is trapped.",
+        "details": {
+          "selector": "body:nth-child(2) > div:nth-child(2) > div:nth-child(1) > div:nth-child(1) > div:nth-child(3) > div:nth-child(2) > div:nth-child(1) > div:nth-child(2) > button:nth-child(3)",
+          "role": "button",
+          "scope": "page"
+        }
+      }
+    ],
+    "passed": [
+      "TypeScript compilation",
+      "All Marigold props are valid",
+      "Overlay accessible names",
+      "Compound component placement",
+      "Section headers",
+      "Collection item ids",
+      "Layout usage",
+      "Table usage",
+      "Component conventions",
+      "Theme variant compliance"
+    ],
+    "metadata": {
+      "renderTimeMs": 2746,
+      "componentsFound": [
+        "div",
+        "span",
+        "button",
+        "input",
+        "table",
+        "thead",
+        "th",
+        "tbody",
+        "tr",
+        "td"
+      ],
+      "checksRun": [
+        "technical",
+        "spatial",
+        "a11y"
+      ],
+      "coverage": {
+        "staticValuesChecked": 24,
+        "dynamicValuesSkipped": 15,
+        "spreadPropsBypassed": 0
+      },
+      "widthUtilization": 1
+    },
+    "markdown": "marigold-validate: TestApp.tsx — 3 error(s), 28 warning(s)\n\n[error/technical] <ActionMenu>: <ActionMenu> is used without any of its sub-components. (TestApp.tsx:400:23)\n  → Use compound children: <ActionMenu.Item>, <ActionMenu.Section>.\n  data: {expected=[\"Item\",\"Section\"], found=[]}\n[error/technical] <ActionMenu>: <ActionMenu> is used without any of its sub-components. (TestApp.tsx:449:23)\n  → Use compound children: <ActionMenu.Item>, <ActionMenu.Section>.\n  data: {expected=[\"Item\",\"Section\"], found=[]}\n[error/technical] <ActionMenu>: <ActionMenu> is used without any of its sub-components. (TestApp.tsx:498:23)\n  → Use compound children: <ActionMenu.Item>, <ActionMenu.Section>.\n  data: {expected=[\"Item\",\"Section\"], found=[]}\n[warning/technical] <div>: Raw <div> used instead of a Marigold component. (TestApp.tsx:526:9)\n  → Raw <div> used instead of a Marigold layout component. Search the Marigold docs for layout alternatives.\n  data: {htmlElement=div}\n[warning/technical] <strong>: Raw <strong> used instead of a Marigold component. (TestApp.tsx:540:19)\n  → Replace <strong> with the appropriate Marigold component. Search the Marigold docs for alternatives.\n  data: {htmlElement=strong}\n[warning/technical] <strong>: Raw <strong> used instead of a Marigold component. (TestApp.tsx:543:19)\n  → Replace <strong> with the appropriate Marigold component. Search the Marigold docs for alternatives.\n  data: {htmlElement=strong}\n[warning/technical] <strong>: Raw <strong> used instead of a Marigold component. (TestApp.tsx:550:19)\n  → Replace <strong> with the appropriate Marigold component. Search the Marigold docs for alternatives.\n  data: {htmlElement=strong}\n[warning/technical] <strong>: Raw <strong> used instead of a Marigold component. (TestApp.tsx:553:19)\n  → Replace <strong> with the appropriate Marigold component. Search the Marigold docs for alternatives.\n  data: {htmlElement=strong}\n[warning/technical] <strong>: Raw <strong> used instead of a Marigold component. (TestApp.tsx:556:19)\n  → Replace <strong> with the appropriate Marigold component. Search the Marigold docs for alternatives.\n  data: {htmlElement=strong}\n[warning/spatial] <body:nth-child(2) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div:nth-child(3) > div:nth-child(2)>: Flex container children are wrapping to 6 rows (7 children, container 1280px wide, content 4030px wide).\n  → Consider using <Columns collapseAt=\"...\"> for responsive multi-column layout, or <Stack> for vertical arrangement.\n  data: {containerSelector=body:nth-child(2) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > ..., rowCount=6, childCount=7, containerWidth=1280, totalChildrenWidth=4030, isAutoFitGrid=false, hasZeroWidthChild=false, scope=page}\n[warning/spatial] <table>: Content overflows viewport at reflow (320px) (320px): scroll width 525px exceeds viewport by 205px. Widest element: <table> (“All bookings”) extends to 525px.\n  → Tabular content needs a 2D layout and is exempt from reflow, but it should not widen the whole page. Wrap the table in <Scrollable> so it scrolls horizontally on its own.\n  data: {breakpoint=reflow (320px), scrollWidth=525, viewportWidth=320, culprit=table, culpritSelector=body:nth-child(2) > div:nth-child(2) > div:nth-child(1) > div:nth-child(1) > ..., tabular=true, scope=page}\n[warning/spatial] <table>: Content overflows viewport at mobile (375px): scroll width 525px exceeds viewport by 150px. Widest element: <table> (“All bookings”) extends to 525px.\n  → Tabular content needs a 2D layout and is exempt from reflow, but it should not widen the whole page. Wrap the table in <Scrollable> so it scrolls horizontally on its own.\n  data: {breakpoint=mobile, scrollWidth=525, viewportWidth=375, culprit=table, culpritSelector=body:nth-child(2) > div:nth-child(2) > div:nth-child(1) > div:nth-child(1) > ..., tabular=true, scope=page}\n[warning/style] <thead>: Computed background-color value \"oklab(0.999994 0.0000455678 0.0000200868 / 0.9)\" on <thead> (“Booking IDCustomerVenueDateTime SlotStat”) does not map to a known design token.\n  → If this is intentional, ignore the warning. Otherwise, use a Marigold variant or a theme-rui token instead of a hard-coded value.\n  data: {property=background-color, value=oklab(0.999994 0.0000455678 0.0000200868 / 0.9), selector=body:nth-child(2) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > ..., fingerprint=Booking IDCustomerVenueDateTime SlotStat, scope=page}\n[warning/a11y] <.gap-y-\\(--space\\).items-stretch.flex-col:nth-child(3) > h3>: Heading levels should only increase by one (heading-order)\n  → Use `<Headline level={N}>` with sequential levels (1, 2, 3…). Do not skip heading levels. Import Headline from `@marigold/components`.\n  data: {ruleId=heading-order, impact=moderate, target=[\".gap-y-\\\\(--space\\\\).items-stretch.flex-col:nth-child(3) > h3\"], html=<h3 class=\"text-xl font-semibold max-w-(--maxHeadlineWidth) text-left\">Filter..., scope=page}\n[warning/a11y] <#react-aria6400181292-_r_2l_>: Buttons must have discernible text (button-name)\n  → https://dequeuniversity.com/rules/axe/4.11/button-name?application=playwright\n  data: {ruleId=button-name, impact=critical, target=[\"#react-aria6400181292-_r_2l_\"], html=<button class=\"ui-button-base gap-2...\" data-rac=\"\" type=\"button\" tabindex=\"0..., scope=page}\n[warning/a11y] <#react-aria6400181292-_r_2l_>: Buttons must have discernible text (button-name) (in a revealed overlay)\n  → https://dequeuniversity.com/rules/axe/4.11/button-name?application=playwright\n  data: {ruleId=button-name, impact=critical, target=[\"#react-aria6400181292-_r_2l_\"], html=<button class=\"ui-button-base gap-2...\" data-rac=\"\" type=\"button\" tabindex=\"0..., scope=page}\n[warning/a11y] <#react-aria6400181292-_r_33_>: Buttons must have discernible text (button-name)\n  → https://dequeuniversity.com/rules/axe/4.11/button-name?application=playwright\n  data: {ruleId=button-name, impact=critical, target=[\"#react-aria6400181292-_r_33_\"], html=<button class=\"ui-button-base gap-2...\" data-rac=\"\" type=\"button\" tabindex=\"0..., scope=page}\n[warning/a11y] <#react-aria6400181292-_r_33_>: Buttons must have discernible text (button-name) (in a revealed overlay)\n  → https://dequeuniversity.com/rules/axe/4.11/button-name?application=playwright\n  data: {ruleId=button-name, impact=critical, target=[\"#react-aria6400181292-_r_33_\"], html=<button class=\"ui-button-base gap-2...\" data-rac=\"\" type=\"button\" tabindex=\"0..., scope=page}\n[warning/a11y] <#react-aria6400181292-_r_3h_>: Buttons must have discernible text (button-name)\n  → https://dequeuniversity.com/rules/axe/4.11/button-name?application=playwright\n  data: {ruleId=button-name, impact=critical, target=[\"#react-aria6400181292-_r_3h_\"], html=<button class=\"ui-button-base gap-2...\" data-rac=\"\" type=\"button\" tabindex=\"0..., scope=page}\n[warning/a11y] <#react-aria6400181292-_r_3h_>: Buttons must have discernible text (button-name) (in a revealed overlay)\n  → https://dequeuniversity.com/rules/axe/4.11/button-name?application=playwright\n  data: {ruleId=button-name, impact=critical, target=[\"#react-aria6400181292-_r_3h_\"], html=<button class=\"ui-button-base gap-2...\" data-rac=\"\" type=\"button\" tabindex=\"0..., scope=page}\n[warning/a11y] <#react-aria6400181292-_r_3v_>: Buttons must have discernible text (button-name)\n  → https://dequeuniversity.com/rules/axe/4.11/button-name?application=playwright\n  data: {ruleId=button-name, impact=critical, target=[\"#react-aria6400181292-_r_3v_\"], html=<button class=\"ui-button-base gap-2...\" data-rac=\"\" type=\"button\" tabindex=\"0..., scope=page}\n[warning/a11y] <#react-aria6400181292-_r_3v_>: Buttons must have discernible text (button-name) (in a revealed overlay)\n  → https://dequeuniversity.com/rules/axe/4.11/button-name?application=playwright\n  data: {ruleId=button-name, impact=critical, target=[\"#react-aria6400181292-_r_3v_\"], html=<button class=\"ui-button-base gap-2...\" data-rac=\"\" type=\"button\" tabindex=\"0..., scope=page}\n[warning/a11y] <#react-aria6400181292-_r_4d_>: Buttons must have discernible text (button-name)\n  → https://dequeuniversity.com/rules/axe/4.11/button-name?application=playwright\n  data: {ruleId=button-name, impact=critical, target=[\"#react-aria6400181292-_r_4d_\"], html=<button class=\"ui-button-base gap-2...\" data-rac=\"\" type=\"button\" tabindex=\"0..., scope=page}\n[warning/a11y] <#react-aria6400181292-_r_4d_>: Buttons must have discernible text (button-name) (in a revealed overlay)\n  → https://dequeuniversity.com/rules/axe/4.11/button-name?application=playwright\n  data: {ruleId=button-name, impact=critical, target=[\"#react-aria6400181292-_r_4d_\"], html=<button class=\"ui-button-base gap-2...\" data-rac=\"\" type=\"button\" tabindex=\"0..., scope=page}\n[warning/a11y] <#react-aria6400181292-_r_4r_>: Buttons must have discernible text (button-name)\n  → https://dequeuniversity.com/rules/axe/4.11/button-name?application=playwright\n  data: {ruleId=button-name, impact=critical, target=[\"#react-aria6400181292-_r_4r_\"], html=<button class=\"ui-button-base gap-2...\" data-rac=\"\" type=\"button\" tabindex=\"0..., scope=page}\n[warning/a11y] <#react-aria6400181292-_r_4r_>: Buttons must have discernible text (button-name) (in a revealed overlay)\n  → https://dequeuniversity.com/rules/axe/4.11/button-name?application=playwright\n  data: {ruleId=button-name, impact=critical, target=[\"#react-aria6400181292-_r_4r_\"], html=<button class=\"ui-button-base gap-2...\" data-rac=\"\" type=\"button\" tabindex=\"0..., scope=page}\n[warning/a11y] <button>: Interactive element <button> (button) is not reachable via Tab key.\n  → Ensure the element is focusable. Marigold interactive components are focusable by default — check if a parent has tabindex=\"-1\" or focus is trapped.\n  data: {selector=body:nth-child(2) > div:nth-child(2) > div:nth-child(1) > div:nth-child(1) > ..., role=button, scope=page}\n[warning/a11y] <html>: Document should have one main landmark (landmark-one-main)\n  → Wrap your page content in `<AppLayout>` with `<AppLayout.Main>` to provide a `<main>` landmark. Import AppLayout from `@marigold/components`.\n  data: {ruleId=landmark-one-main, impact=moderate, target=[\"html\"], html=<html lang=\"en\" data-theme=\"rui\">, scope=page}\n[warning/a11y] <page>: All page content should be contained by landmarks — 10 elements affected (region)\n  → All page content must be inside a landmark region. Use `<AppLayout>` with `<AppLayout.Main>` for the main area, `<TopNavigation>` for the header (`<header>`), and `<Sidebar>` for side navigation (`<aside>`). Import from `@marigold/components`.\n  data: {ruleId=region, impact=moderate, affectedCount=10, scope=page}\n[warning/a11y] <select>: Touch target too small at mobile (375px): select elements are 104x21px (minimum 24x24px per WCAG 2.5.8).\n  → Increase the clickable area. Marigold interactive components have built-in minimum sizes — check if custom styling reduces the target.\n  data: {breakpoint=mobile, tag=select, count=1, minWidth=104, minHeight=21, scope=page}\n[warning/a11y] <span>: Interactive element <span> (spinbutton) is not reachable via Tab key.\n  → Ensure the element is focusable. Marigold interactive components are focusable by default — check if a parent has tabindex=\"-1\" or focus is trapped.\n  data: {selector=body:nth-child(2) > div:nth-child(2) > div:nth-child(1) > div:nth-child(1) > ..., role=spinbutton, scope=page}\n\npassed: TypeScript compilation, All Marigold props are valid, Overlay accessible names, Compound component placement, Section headers, Collection item ids, Layout usage, Table usage, Component conventions, Theme variant compliance\n\nchecks run: technical, spatial, a11y"
+  },
+  "componentsFound": [
+    "div",
+    "span",
+    "button",
+    "input",
+    "table",
+    "thead",
+    "th",
+    "tbody",
+    "tr",
+    "td"
+  ],
+  "renderTimeMs": 2746,
+  "sourceCode": "import { useState, useMemo } from 'react';\nimport {\n  Stack,\n  Inline,\n  Button,\n  DatePicker,\n  Autocomplete,\n  Select,\n  Table,\n  Tabs,\n  Dialog,\n  TextField,\n  TextArea,\n  Form,\n  ActionMenu,\n  Menu,\n  Badge,\n  SectionMessage,\n  Drawer,\n  Accordion,\n  Headline,\n  Text,\n} from '@marigold/components';\nimport { parseDate } from '@internationalized/date';\n\ninterface Booking {\n  id: string;\n  customer: string;\n  email: string;\n  venue: string;\n  date: string;\n  timeSlot: string;\n  status: 'Confirmed' | 'Pending' | 'Cancelled';\n  notes?: string;\n}\n\nconst VENUES = [\n  'Main Hall',\n  'Conference Room A',\n  'Conference Room B',\n  'Rooftop Terrace',\n  'Workshop Studio',\n];\n\nconst TIME_SLOTS = ['09:00-12:00', '12:00-15:00', '15:00-18:00', '18:00-21:00'];\n\nconst SAMPLE_BOOKINGS: Booking[] = [\n  {\n    id: 'BK001',\n    customer: 'John Smith',\n    email: 'john@example.com',\n    venue: 'Main Hall',\n    date: '2026-06-22',\n    timeSlot: '09:00-12:00',\n    status: 'Confirmed',\n    notes: 'Corporate event with 100 guests',\n  },\n  {\n    id: 'BK002',\n    customer: 'Alice Johnson',\n    email: 'alice@example.com',\n    venue: 'Conference Room A',\n    date: '2026-06-22',\n    timeSlot: '12:00-15:00',\n    status: 'Pending',\n    notes: 'Team meeting setup',\n  },\n  {\n    id: 'BK003',\n    customer: 'Bob Wilson',\n    email: 'bob@example.com',\n    venue: 'Rooftop Terrace',\n    date: '2026-06-23',\n    timeSlot: '15:00-18:00',\n    status: 'Confirmed',\n    notes: 'Wedding reception',\n  },\n  {\n    id: 'BK004',\n    customer: 'Carol Davis',\n    email: 'carol@example.com',\n    venue: 'Workshop Studio',\n    date: '2026-06-24',\n    timeSlot: '09:00-12:00',\n    status: 'Cancelled',\n    notes: 'Original booking cancelled',\n  },\n  {\n    id: 'BK005',\n    customer: 'David Lee',\n    email: 'david@example.com',\n    venue: 'Conference Room B',\n    date: '2026-06-25',\n    timeSlot: '14:00-17:00',\n    status: 'Confirmed',\n    notes: 'Product launch presentation',\n  },\n  {\n    id: 'BK006',\n    customer: 'Emma Brown',\n    email: 'emma@example.com',\n    venue: 'Main Hall',\n    date: '2026-06-26',\n    timeSlot: '18:00-21:00',\n    status: 'Pending',\n    notes: 'Charity gala',\n  },\n];\n\nconst TestApp = () => {\n  const [bookings, setBookings] = useState<Booking[]>(SAMPLE_BOOKINGS);\n  const [selectedDate, setSelectedDate] = useState<any>(parseDate('2026-06-22'));\n  const [selectedVenue, setSelectedVenue] = useState<string>('');\n  const [selectedStatus, setSelectedStatus] = useState<string>('All');\n  const [activeTab, setActiveTab] = useState<string>('all');\n  const [selectedBooking, setSelectedBooking] = useState<Booking | null>(null);\n  const [isDetailOpen, setIsDetailOpen] = useState(false);\n\n  const today = parseDate('2026-06-22');\n  const weekStart = today;\n  const weekEnd = parseDate('2026-06-28');\n\n  const getDateString = (date: any) => {\n    return `${date.year}-${String(date.month).padStart(2, '0')}-${String(date.day).padStart(2, '0')}`;\n  };\n\n  const isWithinWeek = (dateStr: string) => {\n    const parts = dateStr.split('-');\n    const year = parseInt(parts[0]);\n    const month = parseInt(parts[1]);\n    const day = parseInt(parts[2]);\n    const date = { year, month, day };\n\n    const isAfterOrEqualStart =\n      date.year > weekStart.year ||\n      (date.year === weekStart.year && date.month > weekStart.month) ||\n      (date.year === weekStart.year && date.month === weekStart.month && date.day >= weekStart.day);\n\n    const isBeforeOrEqualEnd =\n      date.year < weekEnd.year ||\n      (date.year === weekEnd.year && date.month < weekEnd.month) ||\n      (date.year === weekEnd.year && date.month === weekEnd.month && date.day <= weekEnd.day);\n\n    return isAfterOrEqualStart && isBeforeOrEqualEnd;\n  };\n\n  const filteredBookings = useMemo(() => {\n    return bookings.filter((booking) => {\n      let passesDateFilter = true;\n      let passesVenueFilter = !selectedVenue || booking.venue === selectedVenue;\n      let passesStatusFilter =\n        selectedStatus === 'All' || booking.status === selectedStatus;\n\n      if (activeTab === 'today') {\n        passesDateFilter = booking.date === getDateString(today);\n      } else if (activeTab === 'week') {\n        passesDateFilter = isWithinWeek(booking.date);\n      }\n\n      return passesDateFilter && passesVenueFilter && passesStatusFilter;\n    });\n  }, [bookings, activeTab, selectedDate, selectedVenue, selectedStatus]);\n\n  const venueCapacity: Record<string, number> = {\n    'Main Hall': 2,\n    'Conference Room A': 5,\n    'Conference Room B': 3,\n    'Rooftop Terrace': 4,\n    'Workshop Studio': 6,\n  };\n\n  const todayBookingsForVenue = (venue: string) => {\n    return bookings.filter(\n      (b) => b.venue === venue && b.date === getDateString(today)\n    ).length;\n  };\n\n  const checkCapacityAlert = () => {\n    for (const venue of VENUES) {\n      const remaining = venueCapacity[venue] - todayBookingsForVenue(venue);\n      if (remaining <= 2 && remaining > 0) {\n        return { venue, remaining };\n      }\n    }\n    return null;\n  };\n\n  const capacityAlert = checkCapacityAlert();\n\n  const handleNewBooking = (formData: any) => {\n    const newBooking: Booking = {\n      id: `BK${String(bookings.length + 1).padStart(3, '0')}`,\n      customer: formData.customerName,\n      email: formData.customerEmail,\n      venue: formData.venue,\n      date: formData.date,\n      timeSlot: formData.timeSlot,\n      status: 'Pending',\n      notes: formData.notes,\n    };\n    setBookings([...bookings, newBooking]);\n  };\n\n  const handleMenuAction = (bookingId: string, action: string) => {\n    const booking = bookings.find((b) => b.id === bookingId);\n    if (!booking) return;\n\n    switch (action) {\n      case 'view':\n        setSelectedBooking(booking);\n        setIsDetailOpen(true);\n        break;\n      case 'cancel':\n        setBookings(\n          bookings.map((b) =>\n            b.id === bookingId ? { ...b, status: 'Cancelled' as const } : b\n          )\n        );\n        break;\n      default:\n        break;\n    }\n  };\n\n  const statusVariant = (status: string) => {\n    switch (status) {\n      case 'Confirmed':\n        return 'success';\n      case 'Pending':\n        return 'warning';\n      case 'Cancelled':\n        return 'default';\n      default:\n        return 'default';\n    }\n  };\n\n  return (\n    <Stack space={4}>\n      <Headline level=\"1\">Booking Management</Headline>\n\n      {capacityAlert && (\n        <SectionMessage variant=\"warning\">\n          <SectionMessage.Title>Capacity Alert</SectionMessage.Title>\n          <SectionMessage.Content>\n            {capacityAlert.venue} has only {capacityAlert.remaining} slots\n            remaining for today.\n          </SectionMessage.Content>\n        </SectionMessage>\n      )}\n\n      <Stack space={3}>\n        <Headline level=\"3\">Filters</Headline>\n        <Inline space={3}>\n          <DatePicker\n            label=\"Date\"\n            value={selectedDate}\n            onChange={(val) => setSelectedDate(val)}\n          />\n          <Autocomplete\n            label=\"Venue\"\n            menuTrigger=\"focus\"\n            selectedKey={selectedVenue || undefined}\n            onSelectionChange={(key) => setSelectedVenue(String(key) || '')}\n          >\n            {VENUES.map((venue) => (\n              <Autocomplete.Option key={venue} id={venue}>\n                {venue}\n              </Autocomplete.Option>\n            ))}\n          </Autocomplete>\n          <Select\n            label=\"Status\"\n            selectedKey={selectedStatus}\n            onSelectionChange={(key) => setSelectedStatus(String(key))}\n          >\n            <Select.Option id=\"All\">All</Select.Option>\n            <Select.Option id=\"Confirmed\">Confirmed</Select.Option>\n            <Select.Option id=\"Pending\">Pending</Select.Option>\n            <Select.Option id=\"Cancelled\">Cancelled</Select.Option>\n          </Select>\n          <Button\n            variant=\"secondary\"\n            onPress={() => {\n              setSelectedDate(parseDate('2026-06-22'));\n              setSelectedVenue('');\n              setSelectedStatus('All');\n            }}\n          >\n            Clear Filters\n          </Button>\n        </Inline>\n      </Stack>\n\n      <Stack space={3}>\n        <Inline space={2} alignY=\"center\">\n          <Headline level=\"3\">Bookings</Headline>\n          <Dialog.Trigger>\n            <Button variant=\"primary\">New Booking</Button>\n            <Dialog size=\"small\">\n              {({ close }) => (\n                <Form\n                  onSubmit={(formData: any) => {\n                    handleNewBooking(formData);\n                    close();\n                  }}\n                >\n                  <Dialog.Title>Create New Booking</Dialog.Title>\n                  <Dialog.Content>\n                    <Stack space={3}>\n                      <TextField\n                        name=\"customerName\"\n                        label=\"Customer Name\"\n                        required\n                      />\n                      <TextField\n                        name=\"customerEmail\"\n                        label=\"Customer Email\"\n                        type=\"email\"\n                      />\n                      <Select\n                        name=\"venue\"\n                        label=\"Venue\"\n                        required\n                      >\n                        {VENUES.map((venue) => (\n                          <Select.Option key={venue} id={venue}>\n                            {venue}\n                          </Select.Option>\n                        ))}\n                      </Select>\n                      <DatePicker name=\"date\" label=\"Date\" required />\n                      <Select\n                        name=\"timeSlot\"\n                        label=\"Time Slot\"\n                        required\n                      >\n                        {TIME_SLOTS.map((slot) => (\n                          <Select.Option key={slot} id={slot}>\n                            {slot}\n                          </Select.Option>\n                        ))}\n                      </Select>\n                      <TextArea\n                        name=\"notes\"\n                        label=\"Notes\"\n                        rows={3}\n                      />\n                    </Stack>\n                  </Dialog.Content>\n                  <Dialog.Actions>\n                    <Button variant=\"secondary\" slot=\"close\">\n                      Cancel\n                    </Button>\n                    <Button variant=\"primary\" type=\"submit\">\n                      Create Booking\n                    </Button>\n                  </Dialog.Actions>\n                </Form>\n              )}\n            </Dialog>\n          </Dialog.Trigger>\n        </Inline>\n\n        <Tabs\n          aria-label=\"Booking views\"\n          selectedKey={activeTab}\n          onSelectionChange={(key) => setActiveTab(String(key))}\n        >\n          <Tabs.List aria-label=\"View options\">\n            <Tabs.Item id=\"all\">All Bookings</Tabs.Item>\n            <Tabs.Item id=\"today\">Today</Tabs.Item>\n            <Tabs.Item id=\"week\">This Week</Tabs.Item>\n          </Tabs.List>\n          <Tabs.TabPanel id=\"all\">\n            <Table aria-label=\"All bookings\" size=\"compact\">\n              <Table.Header>\n                <Table.Column rowHeader>Booking ID</Table.Column>\n                <Table.Column>Customer</Table.Column>\n                <Table.Column>Venue</Table.Column>\n                <Table.Column>Date</Table.Column>\n                <Table.Column>Time Slot</Table.Column>\n                <Table.Column>Status</Table.Column>\n                <Table.Column>Actions</Table.Column>\n              </Table.Header>\n              <Table.Body items={filteredBookings}>\n                {(booking) => (\n                  <Table.Row key={booking.id}>\n                    <Table.Cell>{booking.id}</Table.Cell>\n                    <Table.Cell>{booking.customer}</Table.Cell>\n                    <Table.Cell>{booking.venue}</Table.Cell>\n                    <Table.Cell>{booking.date}</Table.Cell>\n                    <Table.Cell>{booking.timeSlot}</Table.Cell>\n                    <Table.Cell>\n                      <Badge variant={statusVariant(booking.status)}>\n                        {booking.status}\n                      </Badge>\n                    </Table.Cell>\n                    <Table.Cell>\n                      <ActionMenu>\n                        <Menu.Item\n                          id=\"view\"\n                          onAction={() => handleMenuAction(booking.id, 'view')}\n                        >\n                          View Details\n                        </Menu.Item>\n                        <Menu.Item id=\"edit\">\n                          Edit\n                        </Menu.Item>\n                        <Menu.Item\n                          id=\"cancel\"\n                          variant=\"destructive\"\n                          onAction={() => handleMenuAction(booking.id, 'cancel')}\n                        >\n                          Cancel Booking\n                        </Menu.Item>\n                      </ActionMenu>\n                    </Table.Cell>\n                  </Table.Row>\n                )}\n              </Table.Body>\n            </Table>\n          </Tabs.TabPanel>\n          <Tabs.TabPanel id=\"today\">\n            <Table aria-label=\"Today's bookings\" size=\"compact\">\n              <Table.Header>\n                <Table.Column rowHeader>Booking ID</Table.Column>\n                <Table.Column>Customer</Table.Column>\n                <Table.Column>Venue</Table.Column>\n                <Table.Column>Date</Table.Column>\n                <Table.Column>Time Slot</Table.Column>\n                <Table.Column>Status</Table.Column>\n                <Table.Column>Actions</Table.Column>\n              </Table.Header>\n              <Table.Body items={filteredBookings}>\n                {(booking) => (\n                  <Table.Row key={booking.id}>\n                    <Table.Cell>{booking.id}</Table.Cell>\n                    <Table.Cell>{booking.customer}</Table.Cell>\n                    <Table.Cell>{booking.venue}</Table.Cell>\n                    <Table.Cell>{booking.date}</Table.Cell>\n                    <Table.Cell>{booking.timeSlot}</Table.Cell>\n                    <Table.Cell>\n                      <Badge variant={statusVariant(booking.status)}>\n                        {booking.status}\n                      </Badge>\n                    </Table.Cell>\n                    <Table.Cell>\n                      <ActionMenu>\n                        <Menu.Item\n                          id=\"view\"\n                          onAction={() => handleMenuAction(booking.id, 'view')}\n                        >\n                          View Details\n                        </Menu.Item>\n                        <Menu.Item id=\"edit\">\n                          Edit\n                        </Menu.Item>\n                        <Menu.Item\n                          id=\"cancel\"\n                          variant=\"destructive\"\n                          onAction={() => handleMenuAction(booking.id, 'cancel')}\n                        >\n                          Cancel Booking\n                        </Menu.Item>\n                      </ActionMenu>\n                    </Table.Cell>\n                  </Table.Row>\n                )}\n              </Table.Body>\n            </Table>\n          </Tabs.TabPanel>\n          <Tabs.TabPanel id=\"week\">\n            <Table aria-label=\"This week's bookings\" size=\"compact\">\n              <Table.Header>\n                <Table.Column rowHeader>Booking ID</Table.Column>\n                <Table.Column>Customer</Table.Column>\n                <Table.Column>Venue</Table.Column>\n                <Table.Column>Date</Table.Column>\n                <Table.Column>Time Slot</Table.Column>\n                <Table.Column>Status</Table.Column>\n                <Table.Column>Actions</Table.Column>\n              </Table.Header>\n              <Table.Body items={filteredBookings}>\n                {(booking) => (\n                  <Table.Row key={booking.id}>\n                    <Table.Cell>{booking.id}</Table.Cell>\n                    <Table.Cell>{booking.customer}</Table.Cell>\n                    <Table.Cell>{booking.venue}</Table.Cell>\n                    <Table.Cell>{booking.date}</Table.Cell>\n                    <Table.Cell>{booking.timeSlot}</Table.Cell>\n                    <Table.Cell>\n                      <Badge variant={statusVariant(booking.status)}>\n                        {booking.status}\n                      </Badge>\n                    </Table.Cell>\n                    <Table.Cell>\n                      <ActionMenu>\n                        <Menu.Item\n                          id=\"view\"\n                          onAction={() => handleMenuAction(booking.id, 'view')}\n                        >\n                          View Details\n                        </Menu.Item>\n                        <Menu.Item id=\"edit\">\n                          Edit\n                        </Menu.Item>\n                        <Menu.Item\n                          id=\"cancel\"\n                          variant=\"destructive\"\n                          onAction={() => handleMenuAction(booking.id, 'cancel')}\n                        >\n                          Cancel Booking\n                        </Menu.Item>\n                      </ActionMenu>\n                    </Table.Cell>\n                  </Table.Row>\n                )}\n              </Table.Body>\n            </Table>\n          </Tabs.TabPanel>\n        </Tabs>\n      </Stack>\n\n      <Drawer.Trigger open={isDetailOpen} onOpenChange={setIsDetailOpen}>\n        <div></div>\n        <Drawer size=\"medium\" closeButton>\n          {selectedBooking && (\n            <Stack space={4}>\n              <Stack space={1}>\n                <Headline level=\"2\">{selectedBooking.id}</Headline>\n                <Badge variant={statusVariant(selectedBooking.status)}>\n                  {selectedBooking.status}\n                </Badge>\n              </Stack>\n\n              <Stack space={2}>\n                <Headline level=\"3\">Customer Information</Headline>\n                <Text>\n                  <strong>Name:</strong> {selectedBooking.customer}\n                </Text>\n                <Text>\n                  <strong>Email:</strong> {selectedBooking.email}\n                </Text>\n              </Stack>\n\n              <Stack space={2}>\n                <Headline level=\"3\">Booking Details</Headline>\n                <Text>\n                  <strong>Venue:</strong> {selectedBooking.venue}\n                </Text>\n                <Text>\n                  <strong>Date:</strong> {selectedBooking.date}\n                </Text>\n                <Text>\n                  <strong>Time Slot:</strong> {selectedBooking.timeSlot}\n                </Text>\n              </Stack>\n\n              {selectedBooking.notes && (\n                <Stack space={2}>\n                  <Headline level=\"3\">Notes</Headline>\n                  <Text>{selectedBooking.notes}</Text>\n                </Stack>\n              )}\n\n              <Accordion>\n                <Accordion.Item>\n                  <Accordion.Header>Payment History</Accordion.Header>\n                  <Accordion.Content>\n                    <Text>No payments recorded yet.</Text>\n                  </Accordion.Content>\n                </Accordion.Item>\n                <Accordion.Item>\n                  <Accordion.Header>Communication Log</Accordion.Header>\n                  <Accordion.Content>\n                    <Text>Booking created on 2026-06-22</Text>\n                  </Accordion.Content>\n                </Accordion.Item>\n              </Accordion>\n            </Stack>\n          )}\n        </Drawer>\n      </Drawer.Trigger>\n    </Stack>\n  );\n};\n\nexport default TestApp;\n",
+  "assertions": {
+    "passed": [
+      {
+        "id": "a-import-marigold",
+        "description": "Imports from @marigold/components",
+        "severity": "required",
+        "passed": true,
+        "evidence": "import from \"@marigold/components\" found"
+      },
+      {
+        "id": "a-table",
+        "description": "Table component for bookings",
+        "severity": "required",
+        "passed": true,
+        "evidence": "<Table> found"
+      },
+      {
+        "id": "a-table-header",
+        "description": "Table.Header sub-component",
+        "severity": "required",
+        "passed": true,
+        "evidence": "<Table.Header> found"
+      },
+      {
+        "id": "a-table-body",
+        "description": "Table.Body sub-component",
+        "severity": "required",
+        "passed": true,
+        "evidence": "<Table.Body> found"
+      },
+      {
+        "id": "a-date-picker",
+        "description": "DatePicker for date filtering",
+        "severity": "required",
+        "passed": true,
+        "evidence": "<DatePicker> found"
+      },
+      {
+        "id": "a-combobox",
+        "description": "ComboBox or SearchField for venue search",
+        "severity": "required",
+        "passed": true,
+        "evidence": "matched: <Autocomplete> found"
+      },
+      {
+        "id": "a-dialog",
+        "description": "Dialog for create booking form",
+        "severity": "required",
+        "passed": true,
+        "evidence": "<Dialog> found"
+      },
+      {
+        "id": "a-tabs",
+        "description": "Tabs for booking views",
+        "severity": "required",
+        "passed": true,
+        "evidence": "<Tabs> found"
+      },
+      {
+        "id": "a-menu",
+        "description": "Menu for row actions",
+        "severity": "required",
+        "passed": true,
+        "evidence": "<Menu> found"
+      },
+      {
+        "id": "a-badge",
+        "description": "Badge for booking status",
+        "severity": "required",
+        "passed": true,
+        "evidence": "<Badge> found"
+      },
+      {
+        "id": "a-button",
+        "description": "Button component",
+        "severity": "required",
+        "passed": true,
+        "evidence": "<Button> found"
+      },
+      {
+        "id": "a-select",
+        "description": "Select for status filter / form dropdowns",
+        "severity": "required",
+        "passed": true,
+        "evidence": "<Select> found"
+      },
+      {
+        "id": "a-text-field",
+        "description": "TextField in booking form",
+        "severity": "required",
+        "passed": true,
+        "evidence": "<TextField> found"
+      },
+      {
+        "id": "a-drawer",
+        "description": "Drawer for booking detail view",
+        "severity": "recommended",
+        "passed": true,
+        "evidence": "<Drawer> found"
+      },
+      {
+        "id": "a-accordion",
+        "description": "Accordion for detail sections",
+        "severity": "recommended",
+        "passed": true,
+        "evidence": "<Accordion> found"
+      },
+      {
+        "id": "a-section-message",
+        "description": "SectionMessage for capacity alerts",
+        "severity": "required",
+        "passed": true,
+        "evidence": "<SectionMessage> found"
+      },
+      {
+        "id": "a-headline",
+        "description": "Headline for page title",
+        "severity": "recommended",
+        "passed": true,
+        "evidence": "<Headline> found"
+      },
+      {
+        "id": "a-no-onclick-on-marigold",
+        "description": "No onClick on Marigold Button components",
+        "severity": "recommended",
+        "passed": true,
+        "evidence": "\"/<Button[^>]*onClick/\" correctly absent"
+      },
+      {
+        "id": "a-form",
+        "description": "Form component in create dialog",
+        "severity": "required",
+        "passed": true,
+        "evidence": "<Form> found"
+      },
+      {
+        "id": "a-textarea",
+        "description": "TextArea for booking notes",
+        "severity": "recommended",
+        "passed": true,
+        "evidence": "<TextArea> found"
+      }
+    ],
+    "failed": [],
+    "passRate": 1,
+    "requiredPassRate": 1,
+    "weightedPassRate": 1,
+    "total": 20
+  },
+  "validatePackageVersion": "0.0.1",
+  "playwrightVersion": null,
+  "resolvedModelId": "claude-haiku-4-5",
+  "claudeCliVersion": "2.1.185 (Claude Code)",
+  "sessionId": "82689e9b-a850-45cc-bd83-58305f67a415"
+}

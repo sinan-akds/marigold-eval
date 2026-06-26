@@ -1,0 +1,915 @@
+{
+  "runId": "haiku-mcp-stack-P-08-r1",
+  "promptId": "P-08",
+  "model": "haiku",
+  "config": "mcp-stack",
+  "timestamp": "2026-06-22T07:18:46.719Z",
+  "quality": {
+    "overall": 68.08,
+    "categories": {
+      "A": {
+        "category": "A",
+        "label": "Design System API",
+        "score": 71.72,
+        "weight": 0.225,
+        "weightedScore": 16.14,
+        "errorCount": 0,
+        "warningCount": 4,
+        "issues": [
+          {
+            "type": "technical",
+            "severity": "warning",
+            "source": "design-system-usage",
+            "component": "div",
+            "message": "Raw <div> used instead of a Marigold component.",
+            "suggestion": "Raw <div> used instead of a Marigold layout component. Search the Marigold docs for layout alternatives.",
+            "location": {
+              "file": "TestApp.tsx",
+              "line": 155,
+              "column": 15
+            },
+            "details": {
+              "htmlElement": "div"
+            }
+          },
+          {
+            "type": "technical",
+            "severity": "warning",
+            "source": "design-system-usage",
+            "component": "div",
+            "message": "Raw <div> used instead of a Marigold component.",
+            "suggestion": "Raw <div> used instead of a Marigold layout component. Search the Marigold docs for layout alternatives.",
+            "location": {
+              "file": "TestApp.tsx",
+              "line": 510,
+              "column": 13
+            },
+            "details": {
+              "htmlElement": "div"
+            }
+          },
+          {
+            "type": "technical",
+            "severity": "warning",
+            "source": "design-system-usage",
+            "component": "div",
+            "message": "Raw <div> used instead of a Marigold component.",
+            "suggestion": "Raw <div> used instead of a Marigold layout component. Search the Marigold docs for layout alternatives.",
+            "location": {
+              "file": "TestApp.tsx",
+              "line": 521,
+              "column": 13
+            },
+            "details": {
+              "htmlElement": "div"
+            }
+          },
+          {
+            "type": "technical",
+            "severity": "warning",
+            "source": "design-system-usage",
+            "component": "div",
+            "message": "Raw <div> used instead of a Marigold component.",
+            "suggestion": "Raw <div> used instead of a Marigold layout component. Search the Marigold docs for layout alternatives.",
+            "location": {
+              "file": "TestApp.tsx",
+              "line": 685,
+              "column": 11
+            },
+            "details": {
+              "htmlElement": "div"
+            }
+          }
+        ]
+      },
+      "B": {
+        "category": "B",
+        "label": "Token Compliance",
+        "score": 89.39,
+        "weight": 0.1,
+        "weightedScore": 8.94,
+        "errorCount": 0,
+        "warningCount": 1,
+        "issues": [
+          {
+            "type": "style",
+            "severity": "warning",
+            "source": "token-compliance",
+            "component": "thead",
+            "message": "Computed background-color value \"oklab(0.999994 0.0000455678 0.0000200868 / 0.9)\" on <thead> (“EventDateVenueTickets SoldStatus”) does not map to a known design token.",
+            "suggestion": "If this is intentional, ignore the warning. Otherwise, use a Marigold variant or a theme-rui token instead of a hard-coded value.",
+            "details": {
+              "property": "background-color",
+              "value": "oklab(0.999994 0.0000455678 0.0000200868 / 0.9)",
+              "selector": "body:nth-child(2) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > main:nth-child(3) > div:nth-child(1) > div:nth-child(1) > div:nth-child(4) > div:nth-child(2) > table:nth-child(3) > thead:nth-child(1)",
+              "fingerprint": "EventDateVenueTickets SoldStatus",
+              "scope": "page"
+            }
+          }
+        ]
+      },
+      "C": {
+        "category": "C",
+        "label": "DOM / Structure",
+        "score": 44.66,
+        "weight": 0.225,
+        "weightedScore": 10.05,
+        "errorCount": 0,
+        "warningCount": 5,
+        "issues": [
+          {
+            "type": "technical",
+            "severity": "warning",
+            "source": "layout-usage",
+            "component": "Stack",
+            "message": "<Stack> wraps a single child. A flow layout earns its place only with two or more children; with one child it adds a wrapper that does nothing.",
+            "suggestion": "Render the child directly instead of wrapping it in <Stack>. For single-child spacing use Inset, Center, Breakout or Aspect.",
+            "location": {
+              "file": "TestApp.tsx",
+              "line": 145,
+              "column": 11
+            },
+            "details": {
+              "layout": "Stack",
+              "childCount": 1
+            }
+          },
+          {
+            "type": "technical",
+            "severity": "warning",
+            "source": "layout-usage",
+            "component": "Stack",
+            "message": "<Stack> wraps a single child. A flow layout earns its place only with two or more children; with one child it adds a wrapper that does nothing.",
+            "suggestion": "Render the child directly instead of wrapping it in <Stack>. For single-child spacing use Inset, Center, Breakout or Aspect.",
+            "location": {
+              "file": "TestApp.tsx",
+              "line": 544,
+              "column": 15
+            },
+            "details": {
+              "layout": "Stack",
+              "childCount": 1
+            }
+          },
+          {
+            "type": "technical",
+            "severity": "warning",
+            "source": "layout-usage",
+            "component": "Stack",
+            "message": "<Stack> wraps a single child. A flow layout earns its place only with two or more children; with one child it adds a wrapper that does nothing.",
+            "suggestion": "Render the child directly instead of wrapping it in <Stack>. For single-child spacing use Inset, Center, Breakout or Aspect.",
+            "location": {
+              "file": "TestApp.tsx",
+              "line": 558,
+              "column": 15
+            },
+            "details": {
+              "layout": "Stack",
+              "childCount": 1
+            }
+          },
+          {
+            "type": "technical",
+            "severity": "warning",
+            "source": "layout-usage",
+            "component": "Stack",
+            "message": "<Stack> wraps a single child. A flow layout earns its place only with two or more children; with one child it adds a wrapper that does nothing.",
+            "suggestion": "Render the child directly instead of wrapping it in <Stack>. For single-child spacing use Inset, Center, Breakout or Aspect.",
+            "location": {
+              "file": "TestApp.tsx",
+              "line": 572,
+              "column": 15
+            },
+            "details": {
+              "layout": "Stack",
+              "childCount": 1
+            }
+          },
+          {
+            "type": "technical",
+            "severity": "warning",
+            "source": "layout-usage",
+            "component": "Stack",
+            "message": "<Stack> wraps a single child. A flow layout earns its place only with two or more children; with one child it adds a wrapper that does nothing.",
+            "suggestion": "Render the child directly instead of wrapping it in <Stack>. For single-child spacing use Inset, Center, Breakout or Aspect.",
+            "location": {
+              "file": "TestApp.tsx",
+              "line": 586,
+              "column": 15
+            },
+            "details": {
+              "layout": "Stack",
+              "childCount": 1
+            }
+          }
+        ]
+      },
+      "D": {
+        "category": "D",
+        "label": "Spatial & A11y",
+        "score": 60,
+        "weight": 0.225,
+        "weightedScore": 13.5,
+        "errorCount": 0,
+        "warningCount": 8,
+        "issues": [
+          {
+            "type": "a11y",
+            "severity": "warning",
+            "source": "responsive-checker",
+            "component": "a",
+            "message": "Touch target too small at mobile (375px): a elements are 68x20px (minimum 24x24px per WCAG 2.5.8).",
+            "suggestion": "Increase the clickable area. Marigold interactive components have built-in minimum sizes — check if custom styling reduces the target.",
+            "details": {
+              "breakpoint": "mobile",
+              "tag": "a",
+              "count": 1,
+              "minWidth": 68,
+              "minHeight": 20,
+              "scope": "page"
+            }
+          },
+          {
+            "type": "a11y",
+            "severity": "warning",
+            "source": "responsive-checker",
+            "component": "link",
+            "message": "Touch target too small at mobile (375px): link elements are 76x20px (minimum 24x24px per WCAG 2.5.8).",
+            "suggestion": "Increase the clickable area. Marigold interactive components have built-in minimum sizes — check if custom styling reduces the target.",
+            "details": {
+              "breakpoint": "mobile",
+              "tag": "link",
+              "count": 1,
+              "minWidth": 76,
+              "minHeight": 20,
+              "scope": "page"
+            }
+          },
+          {
+            "type": "a11y",
+            "severity": "warning",
+            "source": "aom-extractor",
+            "component": "header > header",
+            "message": "Banner landmark should not be contained in another landmark (landmark-banner-is-top-level)",
+            "suggestion": "Place `<TopNavigation>` (renders `<header>`) at the top level of the page, not nested inside another landmark. Import from `@marigold/components`.",
+            "details": {
+              "ruleId": "landmark-banner-is-top-level",
+              "impact": "moderate",
+              "target": [
+                "header > header"
+              ],
+              "html": "<header class=\"grid grid-cols-[auto_1fr_auto] [grid-template-areas:'start_middle_end'] [grid-area:header] sticky top-0 z-1 w-full min-h-14 bg-background border-b border-border gap-4 px-3 sm:gap-6 md:g",
+              "scope": "page"
+            }
+          },
+          {
+            "type": "a11y",
+            "severity": "warning",
+            "source": "aom-extractor",
+            "component": ".h-dvh > header",
+            "message": "Document should not have more than one banner landmark (landmark-no-duplicate-banner)",
+            "suggestion": "Only use one `<TopNavigation>` per page — it renders a `<header>` banner landmark.",
+            "details": {
+              "ruleId": "landmark-no-duplicate-banner",
+              "impact": "moderate",
+              "target": [
+                ".h-dvh > header"
+              ],
+              "html": "<header class=\"grid grid-cols-[auto_1fr_auto] [grid-template-areas:'start_middle_end'] [grid-area:header] sticky top-0 z-1 w-full min-h-14 bg-background border-b border-border gap-4 px-3 sm:gap-6 md:g",
+              "scope": "page"
+            }
+          },
+          {
+            "type": "a11y",
+            "severity": "warning",
+            "source": "aom-extractor",
+            "component": ".h-dvh > header",
+            "message": "Landmarks should have a unique role or role/label/title (i.e. accessible name) combination (landmark-unique)",
+            "suggestion": "When using multiple landmark components of the same type, give each a unique `aria-label`. For example: `<Sidebar aria-label=\"Filters\">` and `<Sidebar aria-label=\"Settings\">`.",
+            "details": {
+              "ruleId": "landmark-unique",
+              "impact": "moderate",
+              "target": [
+                ".h-dvh > header"
+              ],
+              "html": "<header class=\"grid grid-cols-[auto_1fr_auto] [grid-template-areas:'start_middle_end'] [grid-area:header] sticky top-0 z-1 w-full min-h-14 bg-background border-b border-border gap-4 px-3 sm:gap-6 md:g",
+              "scope": "page"
+            }
+          },
+          {
+            "type": "a11y",
+            "severity": "warning",
+            "source": "keyboard-a11y",
+            "component": "a",
+            "message": "Interactive element <a> (button) is not reachable via Tab key.",
+            "suggestion": "Ensure the element is focusable. Marigold interactive components are focusable by default — check if a parent has tabindex=\"-1\" or focus is trapped.",
+            "details": {
+              "selector": "body:nth-child(2) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > aside:nth-child(1) > div:nth-child(1) > nav:nth-child(2) > div:nth-child(1) > div:nth-child(1) > a:nth-child(1)",
+              "role": "button",
+              "scope": "page"
+            }
+          },
+          {
+            "type": "a11y",
+            "severity": "warning",
+            "source": "keyboard-a11y",
+            "component": "button",
+            "message": "Interactive element <button> (button) is not reachable via Tab key.",
+            "suggestion": "Ensure the element is focusable. Marigold interactive components are focusable by default — check if a parent has tabindex=\"-1\" or focus is trapped.",
+            "details": {
+              "selector": "body:nth-child(2) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > header:nth-child(2) > header:nth-child(1) > div:nth-child(1) > button:nth-child(1)",
+              "role": "button",
+              "scope": "page"
+            }
+          },
+          {
+            "type": "a11y",
+            "severity": "warning",
+            "source": "keyboard-a11y",
+            "component": "a",
+            "message": "Interactive element <a> (a) is not reachable via Tab key.",
+            "suggestion": "Ensure the element is focusable. Marigold interactive components are focusable by default — check if a parent has tabindex=\"-1\" or focus is trapped.",
+            "details": {
+              "selector": "body:nth-child(2) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > header:nth-child(2) > header:nth-child(1) > nav:nth-child(2) > div:nth-child(1) > ol:nth-child(3) > li:nth-child(1) > a:nth-child(1)",
+              "role": "a",
+              "scope": "page"
+            }
+          }
+        ]
+      },
+      "E": {
+        "category": "E",
+        "label": "Functional Completeness",
+        "score": 86.46,
+        "weight": 0.225,
+        "weightedScore": 19.45,
+        "errorCount": 0,
+        "warningCount": 0,
+        "issues": []
+      }
+    },
+    "renderSuccess": true
+  },
+  "efficiency": {
+    "durationMs": 213895,
+    "costUsd": 0.8725852000000001,
+    "inputTokens": 102,
+    "outputTokens": 25704,
+    "cacheReadTokens": 2804392,
+    "cacheCreationTokens": 231003,
+    "totalTokens": 25806,
+    "numTurns": 53
+  },
+  "report": {
+    "file": "TestApp.tsx",
+    "errors": [],
+    "warnings": [
+      {
+        "type": "technical",
+        "severity": "warning",
+        "source": "design-system-usage",
+        "component": "div",
+        "message": "Raw <div> used instead of a Marigold component.",
+        "suggestion": "Raw <div> used instead of a Marigold layout component. Search the Marigold docs for layout alternatives.",
+        "location": {
+          "file": "TestApp.tsx",
+          "line": 155,
+          "column": 15
+        },
+        "details": {
+          "htmlElement": "div"
+        }
+      },
+      {
+        "type": "technical",
+        "severity": "warning",
+        "source": "design-system-usage",
+        "component": "div",
+        "message": "Raw <div> used instead of a Marigold component.",
+        "suggestion": "Raw <div> used instead of a Marigold layout component. Search the Marigold docs for layout alternatives.",
+        "location": {
+          "file": "TestApp.tsx",
+          "line": 510,
+          "column": 13
+        },
+        "details": {
+          "htmlElement": "div"
+        }
+      },
+      {
+        "type": "technical",
+        "severity": "warning",
+        "source": "design-system-usage",
+        "component": "div",
+        "message": "Raw <div> used instead of a Marigold component.",
+        "suggestion": "Raw <div> used instead of a Marigold layout component. Search the Marigold docs for layout alternatives.",
+        "location": {
+          "file": "TestApp.tsx",
+          "line": 521,
+          "column": 13
+        },
+        "details": {
+          "htmlElement": "div"
+        }
+      },
+      {
+        "type": "technical",
+        "severity": "warning",
+        "source": "design-system-usage",
+        "component": "div",
+        "message": "Raw <div> used instead of a Marigold component.",
+        "suggestion": "Raw <div> used instead of a Marigold layout component. Search the Marigold docs for layout alternatives.",
+        "location": {
+          "file": "TestApp.tsx",
+          "line": 685,
+          "column": 11
+        },
+        "details": {
+          "htmlElement": "div"
+        }
+      },
+      {
+        "type": "technical",
+        "severity": "warning",
+        "source": "layout-usage",
+        "component": "Stack",
+        "message": "<Stack> wraps a single child. A flow layout earns its place only with two or more children; with one child it adds a wrapper that does nothing.",
+        "suggestion": "Render the child directly instead of wrapping it in <Stack>. For single-child spacing use Inset, Center, Breakout or Aspect.",
+        "location": {
+          "file": "TestApp.tsx",
+          "line": 145,
+          "column": 11
+        },
+        "details": {
+          "layout": "Stack",
+          "childCount": 1
+        }
+      },
+      {
+        "type": "technical",
+        "severity": "warning",
+        "source": "layout-usage",
+        "component": "Stack",
+        "message": "<Stack> wraps a single child. A flow layout earns its place only with two or more children; with one child it adds a wrapper that does nothing.",
+        "suggestion": "Render the child directly instead of wrapping it in <Stack>. For single-child spacing use Inset, Center, Breakout or Aspect.",
+        "location": {
+          "file": "TestApp.tsx",
+          "line": 544,
+          "column": 15
+        },
+        "details": {
+          "layout": "Stack",
+          "childCount": 1
+        }
+      },
+      {
+        "type": "technical",
+        "severity": "warning",
+        "source": "layout-usage",
+        "component": "Stack",
+        "message": "<Stack> wraps a single child. A flow layout earns its place only with two or more children; with one child it adds a wrapper that does nothing.",
+        "suggestion": "Render the child directly instead of wrapping it in <Stack>. For single-child spacing use Inset, Center, Breakout or Aspect.",
+        "location": {
+          "file": "TestApp.tsx",
+          "line": 558,
+          "column": 15
+        },
+        "details": {
+          "layout": "Stack",
+          "childCount": 1
+        }
+      },
+      {
+        "type": "technical",
+        "severity": "warning",
+        "source": "layout-usage",
+        "component": "Stack",
+        "message": "<Stack> wraps a single child. A flow layout earns its place only with two or more children; with one child it adds a wrapper that does nothing.",
+        "suggestion": "Render the child directly instead of wrapping it in <Stack>. For single-child spacing use Inset, Center, Breakout or Aspect.",
+        "location": {
+          "file": "TestApp.tsx",
+          "line": 572,
+          "column": 15
+        },
+        "details": {
+          "layout": "Stack",
+          "childCount": 1
+        }
+      },
+      {
+        "type": "technical",
+        "severity": "warning",
+        "source": "layout-usage",
+        "component": "Stack",
+        "message": "<Stack> wraps a single child. A flow layout earns its place only with two or more children; with one child it adds a wrapper that does nothing.",
+        "suggestion": "Render the child directly instead of wrapping it in <Stack>. For single-child spacing use Inset, Center, Breakout or Aspect.",
+        "location": {
+          "file": "TestApp.tsx",
+          "line": 586,
+          "column": 15
+        },
+        "details": {
+          "layout": "Stack",
+          "childCount": 1
+        }
+      },
+      {
+        "type": "style",
+        "severity": "warning",
+        "source": "token-compliance",
+        "component": "thead",
+        "message": "Computed background-color value \"oklab(0.999994 0.0000455678 0.0000200868 / 0.9)\" on <thead> (“EventDateVenueTickets SoldStatus”) does not map to a known design token.",
+        "suggestion": "If this is intentional, ignore the warning. Otherwise, use a Marigold variant or a theme-rui token instead of a hard-coded value.",
+        "details": {
+          "property": "background-color",
+          "value": "oklab(0.999994 0.0000455678 0.0000200868 / 0.9)",
+          "selector": "body:nth-child(2) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > main:nth-child(3) > div:nth-child(1) > div:nth-child(1) > div:nth-child(4) > div:nth-child(2) > table:nth-child(3) > thead:nth-child(1)",
+          "fingerprint": "EventDateVenueTickets SoldStatus",
+          "scope": "page"
+        }
+      },
+      {
+        "type": "a11y",
+        "severity": "warning",
+        "source": "responsive-checker",
+        "component": "a",
+        "message": "Touch target too small at mobile (375px): a elements are 68x20px (minimum 24x24px per WCAG 2.5.8).",
+        "suggestion": "Increase the clickable area. Marigold interactive components have built-in minimum sizes — check if custom styling reduces the target.",
+        "details": {
+          "breakpoint": "mobile",
+          "tag": "a",
+          "count": 1,
+          "minWidth": 68,
+          "minHeight": 20,
+          "scope": "page"
+        }
+      },
+      {
+        "type": "a11y",
+        "severity": "warning",
+        "source": "responsive-checker",
+        "component": "link",
+        "message": "Touch target too small at mobile (375px): link elements are 76x20px (minimum 24x24px per WCAG 2.5.8).",
+        "suggestion": "Increase the clickable area. Marigold interactive components have built-in minimum sizes — check if custom styling reduces the target.",
+        "details": {
+          "breakpoint": "mobile",
+          "tag": "link",
+          "count": 1,
+          "minWidth": 76,
+          "minHeight": 20,
+          "scope": "page"
+        }
+      },
+      {
+        "type": "a11y",
+        "severity": "warning",
+        "source": "aom-extractor",
+        "component": "header > header",
+        "message": "Banner landmark should not be contained in another landmark (landmark-banner-is-top-level)",
+        "suggestion": "Place `<TopNavigation>` (renders `<header>`) at the top level of the page, not nested inside another landmark. Import from `@marigold/components`.",
+        "details": {
+          "ruleId": "landmark-banner-is-top-level",
+          "impact": "moderate",
+          "target": [
+            "header > header"
+          ],
+          "html": "<header class=\"grid grid-cols-[auto_1fr_auto] [grid-template-areas:'start_middle_end'] [grid-area:header] sticky top-0 z-1 w-full min-h-14 bg-background border-b border-border gap-4 px-3 sm:gap-6 md:g",
+          "scope": "page"
+        }
+      },
+      {
+        "type": "a11y",
+        "severity": "warning",
+        "source": "aom-extractor",
+        "component": ".h-dvh > header",
+        "message": "Document should not have more than one banner landmark (landmark-no-duplicate-banner)",
+        "suggestion": "Only use one `<TopNavigation>` per page — it renders a `<header>` banner landmark.",
+        "details": {
+          "ruleId": "landmark-no-duplicate-banner",
+          "impact": "moderate",
+          "target": [
+            ".h-dvh > header"
+          ],
+          "html": "<header class=\"grid grid-cols-[auto_1fr_auto] [grid-template-areas:'start_middle_end'] [grid-area:header] sticky top-0 z-1 w-full min-h-14 bg-background border-b border-border gap-4 px-3 sm:gap-6 md:g",
+          "scope": "page"
+        }
+      },
+      {
+        "type": "a11y",
+        "severity": "warning",
+        "source": "aom-extractor",
+        "component": ".h-dvh > header",
+        "message": "Landmarks should have a unique role or role/label/title (i.e. accessible name) combination (landmark-unique)",
+        "suggestion": "When using multiple landmark components of the same type, give each a unique `aria-label`. For example: `<Sidebar aria-label=\"Filters\">` and `<Sidebar aria-label=\"Settings\">`.",
+        "details": {
+          "ruleId": "landmark-unique",
+          "impact": "moderate",
+          "target": [
+            ".h-dvh > header"
+          ],
+          "html": "<header class=\"grid grid-cols-[auto_1fr_auto] [grid-template-areas:'start_middle_end'] [grid-area:header] sticky top-0 z-1 w-full min-h-14 bg-background border-b border-border gap-4 px-3 sm:gap-6 md:g",
+          "scope": "page"
+        }
+      },
+      {
+        "type": "a11y",
+        "severity": "warning",
+        "source": "keyboard-a11y",
+        "component": "a",
+        "message": "Interactive element <a> (button) is not reachable via Tab key.",
+        "suggestion": "Ensure the element is focusable. Marigold interactive components are focusable by default — check if a parent has tabindex=\"-1\" or focus is trapped.",
+        "details": {
+          "selector": "body:nth-child(2) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > aside:nth-child(1) > div:nth-child(1) > nav:nth-child(2) > div:nth-child(1) > div:nth-child(1) > a:nth-child(1)",
+          "role": "button",
+          "scope": "page"
+        }
+      },
+      {
+        "type": "a11y",
+        "severity": "warning",
+        "source": "keyboard-a11y",
+        "component": "button",
+        "message": "Interactive element <button> (button) is not reachable via Tab key.",
+        "suggestion": "Ensure the element is focusable. Marigold interactive components are focusable by default — check if a parent has tabindex=\"-1\" or focus is trapped.",
+        "details": {
+          "selector": "body:nth-child(2) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > header:nth-child(2) > header:nth-child(1) > div:nth-child(1) > button:nth-child(1)",
+          "role": "button",
+          "scope": "page"
+        }
+      },
+      {
+        "type": "a11y",
+        "severity": "warning",
+        "source": "keyboard-a11y",
+        "component": "a",
+        "message": "Interactive element <a> (a) is not reachable via Tab key.",
+        "suggestion": "Ensure the element is focusable. Marigold interactive components are focusable by default — check if a parent has tabindex=\"-1\" or focus is trapped.",
+        "details": {
+          "selector": "body:nth-child(2) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > header:nth-child(2) > header:nth-child(1) > nav:nth-child(2) > div:nth-child(1) > ol:nth-child(3) > li:nth-child(1) > a:nth-child(1)",
+          "role": "a",
+          "scope": "page"
+        }
+      }
+    ],
+    "passed": [
+      "TypeScript compilation",
+      "All Marigold props are valid",
+      "Component composition",
+      "Overlay accessible names",
+      "Compound component placement",
+      "Section headers",
+      "Collection item ids",
+      "Table usage",
+      "Component conventions",
+      "Theme variant compliance",
+      "No overlapping components detected"
+    ],
+    "metadata": {
+      "renderTimeMs": 1664,
+      "componentsFound": [
+        "button",
+        "li",
+        "a",
+        "span",
+        "table",
+        "thead",
+        "th",
+        "div",
+        "tbody",
+        "tr",
+        "td"
+      ],
+      "checksRun": [
+        "technical",
+        "spatial",
+        "a11y"
+      ],
+      "coverage": {
+        "staticValuesChecked": 95,
+        "dynamicValuesSkipped": 57,
+        "spreadPropsBypassed": 0
+      },
+      "widthUtilization": 1
+    },
+    "markdown": "marigold-validate: TestApp.tsx — 0 error(s), 18 warning(s)\n\n[warning/technical] <div>: Raw <div> used instead of a Marigold component. (TestApp.tsx:155:15)\n  → Raw <div> used instead of a Marigold layout component. Search the Marigold docs for layout alternatives.\n  data: {htmlElement=div}\n[warning/technical] <div>: Raw <div> used instead of a Marigold component. (TestApp.tsx:510:13)\n  → Raw <div> used instead of a Marigold layout component. Search the Marigold docs for layout alternatives.\n  data: {htmlElement=div}\n[warning/technical] <div>: Raw <div> used instead of a Marigold component. (TestApp.tsx:521:13)\n  → Raw <div> used instead of a Marigold layout component. Search the Marigold docs for layout alternatives.\n  data: {htmlElement=div}\n[warning/technical] <div>: Raw <div> used instead of a Marigold component. (TestApp.tsx:685:11)\n  → Raw <div> used instead of a Marigold layout component. Search the Marigold docs for layout alternatives.\n  data: {htmlElement=div}\n[warning/technical] <Stack>: <Stack> wraps a single child. A flow layout earns its place only with two or more children; with one child it adds a wrapper that does nothing. (TestApp.tsx:145:11)\n  → Render the child directly instead of wrapping it in <Stack>. For single-child spacing use Inset, Center, Breakout or Aspect.\n  data: {layout=Stack, childCount=1}\n[warning/technical] <Stack>: <Stack> wraps a single child. A flow layout earns its place only with two or more children; with one child it adds a wrapper that does nothing. (TestApp.tsx:544:15)\n  → Render the child directly instead of wrapping it in <Stack>. For single-child spacing use Inset, Center, Breakout or Aspect.\n  data: {layout=Stack, childCount=1}\n[warning/technical] <Stack>: <Stack> wraps a single child. A flow layout earns its place only with two or more children; with one child it adds a wrapper that does nothing. (TestApp.tsx:558:15)\n  → Render the child directly instead of wrapping it in <Stack>. For single-child spacing use Inset, Center, Breakout or Aspect.\n  data: {layout=Stack, childCount=1}\n[warning/technical] <Stack>: <Stack> wraps a single child. A flow layout earns its place only with two or more children; with one child it adds a wrapper that does nothing. (TestApp.tsx:572:15)\n  → Render the child directly instead of wrapping it in <Stack>. For single-child spacing use Inset, Center, Breakout or Aspect.\n  data: {layout=Stack, childCount=1}\n[warning/technical] <Stack>: <Stack> wraps a single child. A flow layout earns its place only with two or more children; with one child it adds a wrapper that does nothing. (TestApp.tsx:586:15)\n  → Render the child directly instead of wrapping it in <Stack>. For single-child spacing use Inset, Center, Breakout or Aspect.\n  data: {layout=Stack, childCount=1}\n[warning/style] <thead>: Computed background-color value \"oklab(0.999994 0.0000455678 0.0000200868 / 0.9)\" on <thead> (“EventDateVenueTickets SoldStatus”) does not map to a known design token.\n  → If this is intentional, ignore the warning. Otherwise, use a Marigold variant or a theme-rui token instead of a hard-coded value.\n  data: {property=background-color, value=oklab(0.999994 0.0000455678 0.0000200868 / 0.9), selector=body:nth-child(2) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > ..., fingerprint=EventDateVenueTickets SoldStatus, scope=page}\n[warning/a11y] <.h-dvh > header>: Document should not have more than one banner landmark (landmark-no-duplicate-banner)\n  → Only use one `<TopNavigation>` per page — it renders a `<header>` banner landmark.\n  data: {ruleId=landmark-no-duplicate-banner, impact=moderate, target=[\".h-dvh > header\"], html=<header class=\"grid grid-cols-[auto_1fr_auto] [grid-template-areas:'start_mid..., scope=page}\n[warning/a11y] <.h-dvh > header>: Landmarks should have a unique role or role/label/title (i.e. accessible name) combination (landmark-unique)\n  → When using multiple landmark components of the same type, give each a unique `aria-label`. For example: `<Sidebar aria-label=\"Filters\">` and `<Sidebar aria-label=\"Settings\">`.\n  data: {ruleId=landmark-unique, impact=moderate, target=[\".h-dvh > header\"], html=<header class=\"grid grid-cols-[auto_1fr_auto] [grid-template-areas:'start_mid..., scope=page}\n[warning/a11y] <a>: Touch target too small at mobile (375px): a elements are 68x20px (minimum 24x24px per WCAG 2.5.8).\n  → Increase the clickable area. Marigold interactive components have built-in minimum sizes — check if custom styling reduces the target.\n  data: {breakpoint=mobile, tag=a, count=1, minWidth=68, minHeight=20, scope=page}\n[warning/a11y] <a>: Interactive element <a> (button) is not reachable via Tab key.\n  → Ensure the element is focusable. Marigold interactive components are focusable by default — check if a parent has tabindex=\"-1\" or focus is trapped.\n  data: {selector=body:nth-child(2) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > ..., role=button, scope=page}\n[warning/a11y] <a>: Interactive element <a> (a) is not reachable via Tab key.\n  → Ensure the element is focusable. Marigold interactive components are focusable by default — check if a parent has tabindex=\"-1\" or focus is trapped.\n  data: {selector=body:nth-child(2) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > ..., role=a, scope=page}\n[warning/a11y] <button>: Interactive element <button> (button) is not reachable via Tab key.\n  → Ensure the element is focusable. Marigold interactive components are focusable by default — check if a parent has tabindex=\"-1\" or focus is trapped.\n  data: {selector=body:nth-child(2) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > ..., role=button, scope=page}\n[warning/a11y] <header > header>: Banner landmark should not be contained in another landmark (landmark-banner-is-top-level)\n  → Place `<TopNavigation>` (renders `<header>`) at the top level of the page, not nested inside another landmark. Import from `@marigold/components`.\n  data: {ruleId=landmark-banner-is-top-level, impact=moderate, target=[\"header > header\"], html=<header class=\"grid grid-cols-[auto_1fr_auto] [grid-template-areas:'start_mid..., scope=page}\n[warning/a11y] <link>: Touch target too small at mobile (375px): link elements are 76x20px (minimum 24x24px per WCAG 2.5.8).\n  → Increase the clickable area. Marigold interactive components have built-in minimum sizes — check if custom styling reduces the target.\n  data: {breakpoint=mobile, tag=link, count=1, minWidth=76, minHeight=20, scope=page}\n\npassed: TypeScript compilation, All Marigold props are valid, Component composition, Overlay accessible names, Compound component placement, Section headers, Collection item ids, Table usage, Component conventions, Theme variant compliance, No overlapping components detected\n\nchecks run: technical, spatial, a11y"
+  },
+  "componentsFound": [
+    "button",
+    "li",
+    "a",
+    "span",
+    "table",
+    "thead",
+    "th",
+    "div",
+    "tbody",
+    "tr",
+    "td"
+  ],
+  "renderTimeMs": 1664,
+  "sourceCode": "'use client';\n\nimport { useState } from 'react';\nimport {\n  AppLayout,\n  Sidebar,\n  TopNavigation,\n  Breadcrumbs,\n  Button,\n  Menu,\n  Dialog,\n  TextField,\n  TextArea,\n  DatePicker,\n  SearchField,\n  Table,\n  Stack,\n  Inline,\n  Card,\n  Headline,\n  Text,\n  Badge,\n  SectionMessage,\n  Tabs,\n  Accordion,\n  Switch,\n  Inset,\n} from '@marigold/components';\n\ntype PageType = 'dashboard' | 'events' | 'attendees' | 'reports' | 'settings';\ntype ReportsTab = 'revenue' | 'attendance' | 'overview';\ntype SettingsTab = 'general' | 'notifications';\n\nconst EventHub = () => {\n  const [currentPage, setCurrentPage] = useState<PageType>('dashboard');\n  const [reportsTab, setReportsTab] = useState<ReportsTab>('revenue');\n  const [settingsTab, setSettingsTab] = useState<SettingsTab>('general');\n  const [eventSearchQuery, setEventSearchQuery] = useState('');\n  const [attendeeSearchQuery, setAttendeeSearchQuery] = useState('');\n  const [signOutDialogOpen, setSignOutDialogOpen] = useState(false);\n  const [newEvent, setNewEvent] = useState({\n    name: '',\n    location: '',\n    capacity: '',\n    description: '',\n  });\n\n  const eventsData = [\n    { id: 1, name: 'Summer Music Festival', date: '2025-07-15', location: 'Central Park', capacity: 500, status: 'On Sale' },\n    { id: 2, name: 'Tech Conference 2025', date: '2025-08-20', location: 'Convention Center', capacity: 2000, status: 'On Sale' },\n    { id: 3, name: 'Jazz Night', date: '2025-06-30', location: 'Blue Note Venue', capacity: 200, status: 'Sold Out' },\n    { id: 4, name: 'Art Exhibition', date: '2025-07-01', location: 'Modern Art Museum', capacity: 300, status: 'Draft' },\n    { id: 5, name: 'Comedy Show', date: '2025-07-10', location: 'Laugh Factory', capacity: 150, status: 'On Sale' },\n    { id: 6, name: 'Film Festival', date: '2025-08-10', location: 'Cinema Plaza', capacity: 400, status: 'On Sale' },\n  ];\n\n  const upcomingEventsData = [\n    { id: 1, name: 'Summer Music Festival', date: '2025-07-15', venue: 'Central Park', ticketsSold: 425, status: 'On Sale' },\n    { id: 2, name: 'Tech Conference', date: '2025-08-20', venue: 'Convention Center', ticketsSold: 1800, status: 'On Sale' },\n    { id: 3, name: 'Jazz Night', date: '2025-06-30', venue: 'Blue Note', ticketsSold: 200, status: 'Sold Out' },\n    { id: 4, name: 'Comedy Show', date: '2025-07-10', venue: 'Laugh Factory', ticketsSold: 120, status: 'On Sale' },\n    { id: 5, name: 'Art Exhibition', date: '2025-07-01', venue: 'Art Museum', ticketsSold: 85, status: 'Draft' },\n    { id: 6, name: 'Film Festival', date: '2025-08-10', venue: 'Cinema Plaza', ticketsSold: 320, status: 'On Sale' },\n  ];\n\n  const attendeesData = [\n    { id: 1, name: 'Alice Johnson', email: 'alice@example.com', eventsAttended: 5, lastActive: '2025-06-20', status: 'Active' },\n    { id: 2, name: 'Bob Smith', email: 'bob@example.com', eventsAttended: 2, lastActive: '2025-05-15', status: 'Inactive' },\n    { id: 3, name: 'Carol White', email: 'carol@example.com', eventsAttended: 8, lastActive: '2025-06-19', status: 'Active' },\n    { id: 4, name: 'David Brown', email: 'david@example.com', eventsAttended: 3, lastActive: '2025-06-21', status: 'Active' },\n    { id: 5, name: 'Eva Green', email: 'eva@example.com', eventsAttended: 1, lastActive: '2025-04-10', status: 'Inactive' },\n    { id: 6, name: 'Frank Miller', email: 'frank@example.com', eventsAttended: 6, lastActive: '2025-06-22', status: 'Active' },\n  ];\n\n  const filteredEvents = eventsData.filter(\n    e => e.name.toLowerCase().includes(eventSearchQuery.toLowerCase()) ||\n         e.location.toLowerCase().includes(eventSearchQuery.toLowerCase())\n  );\n\n  const filteredAttendees = attendeesData.filter(\n    a => a.name.toLowerCase().includes(attendeeSearchQuery.toLowerCase()) ||\n         a.email.toLowerCase().includes(attendeeSearchQuery.toLowerCase())\n  );\n\n  const getStatusVariant = (status: string) => {\n    switch (status) {\n      case 'On Sale':\n        return 'success';\n      case 'Draft':\n        return 'warning';\n      case 'Sold Out':\n        return 'error';\n      case 'Active':\n        return 'success';\n      case 'Inactive':\n        return 'warning';\n      default:\n        return 'default';\n    }\n  };\n\n  const handleCreateEvent = () => {\n    setNewEvent({\n      name: '',\n      location: '',\n      capacity: '',\n      description: '',\n    });\n  };\n\n  const handleSignOut = async () => {\n    setSignOutDialogOpen(false);\n  };\n\n  const renderDashboard = () => (\n    <Stack space={6}>\n      <Headline level={1}>Dashboard Overview</Headline>\n\n      <SectionMessage variant=\"info\">\n        Welcome back! You have 3 events starting this week.\n      </SectionMessage>\n\n      <Inline space={4}>\n        <Card>\n          <Stack space={2}>\n            <Text size=\"small\" variant=\"muted\">\n              Total Events\n            </Text>\n            <Text size=\"xl\" weight=\"bold\">\n              24\n            </Text>\n          </Stack>\n        </Card>\n        <Card>\n          <Stack space={2}>\n            <Text size=\"small\" variant=\"muted\">\n              Tickets Sold\n            </Text>\n            <Text size=\"xl\" weight=\"bold\">\n              1,849\n            </Text>\n          </Stack>\n        </Card>\n        <Card>\n          <Stack space={2}>\n            <Inline space={2} alignY=\"center\">\n              <Stack space={0}>\n                <Text size=\"small\" variant=\"muted\">\n                  Revenue\n                </Text>\n                <Text size=\"xl\" weight=\"bold\">\n                  $45,230\n                </Text>\n              </Stack>\n              <div title=\"Net revenue after fees and refunds\">\n                <Button variant=\"icon\" size=\"icon\" aria-label=\"Revenue info\">\n                  ⓘ\n                </Button>\n              </div>\n            </Inline>\n          </Stack>\n        </Card>\n        <Card>\n          <Stack space={2}>\n            <Text size=\"small\" variant=\"muted\">\n              Upcoming\n            </Text>\n            <Text size=\"xl\" weight=\"bold\">\n              8\n            </Text>\n          </Stack>\n        </Card>\n      </Inline>\n\n      <Stack space={3}>\n        <Headline level={2}>Upcoming Events</Headline>\n        <Table aria-label=\"Upcoming events table\">\n          <Table.Header>\n            <Table.Column rowHeader>Event</Table.Column>\n            <Table.Column>Date</Table.Column>\n            <Table.Column>Venue</Table.Column>\n            <Table.Column>Tickets Sold</Table.Column>\n            <Table.Column>Status</Table.Column>\n          </Table.Header>\n          <Table.Body items={upcomingEventsData}>\n            {item => (\n              <Table.Row key={item.id}>\n                <Table.Cell>{item.name}</Table.Cell>\n                <Table.Cell>{item.date}</Table.Cell>\n                <Table.Cell>{item.venue}</Table.Cell>\n                <Table.Cell>{item.ticketsSold}</Table.Cell>\n                <Table.Cell>\n                  <Badge variant={getStatusVariant(item.status) as any}>{item.status}</Badge>\n                </Table.Cell>\n              </Table.Row>\n            )}\n          </Table.Body>\n        </Table>\n      </Stack>\n    </Stack>\n  );\n\n  const renderEvents = () => (\n    <Stack space={4}>\n      <Headline level={1}>Events</Headline>\n\n      <Inline space={2} alignY=\"bottom\">\n        <SearchField\n          placeholder=\"Search by name or location...\"\n          value={eventSearchQuery}\n          onChange={setEventSearchQuery}\n        />\n        <Dialog.Trigger>\n          <Button variant=\"primary\">Create Event</Button>\n          <Dialog size=\"small\">\n            <Dialog.Title>Create Event</Dialog.Title>\n            <Dialog.Content>\n              <Stack space={3}>\n                <TextField\n                  label=\"Event Name\"\n                  required\n                  value={newEvent.name}\n                  onChange={v => setNewEvent({ ...newEvent, name: v })}\n                />\n                <DatePicker\n                  label=\"Date\"\n                />\n                <TextField\n                  label=\"Location\"\n                  value={newEvent.location}\n                  onChange={v => setNewEvent({ ...newEvent, location: v })}\n                />\n                <TextField\n                  label=\"Capacity\"\n                  type=\"number\"\n                  value={newEvent.capacity}\n                  onChange={v => setNewEvent({ ...newEvent, capacity: v })}\n                />\n                <TextArea\n                  label=\"Description\"\n                  rows={4}\n                  value={newEvent.description}\n                  onChange={v => setNewEvent({ ...newEvent, description: v })}\n                />\n              </Stack>\n            </Dialog.Content>\n            <Dialog.Actions>\n              <Button variant=\"secondary\" slot=\"close\">\n                Cancel\n              </Button>\n              <Button variant=\"primary\" onPress={handleCreateEvent} slot=\"close\">\n                Create\n              </Button>\n            </Dialog.Actions>\n          </Dialog>\n        </Dialog.Trigger>\n      </Inline>\n\n      <Table aria-label=\"Events table\">\n        <Table.Header>\n          <Table.Column rowHeader>Name</Table.Column>\n          <Table.Column>Date</Table.Column>\n          <Table.Column>Location</Table.Column>\n          <Table.Column>Capacity</Table.Column>\n          <Table.Column>Status</Table.Column>\n        </Table.Header>\n        <Table.Body items={filteredEvents}>\n          {item => (\n            <Table.Row key={item.id}>\n              <Table.Cell>{item.name}</Table.Cell>\n              <Table.Cell>{item.date}</Table.Cell>\n              <Table.Cell>{item.location}</Table.Cell>\n              <Table.Cell>{item.capacity}</Table.Cell>\n              <Table.Cell>\n                <Badge variant={getStatusVariant(item.status) as any}>{item.status}</Badge>\n              </Table.Cell>\n            </Table.Row>\n          )}\n        </Table.Body>\n      </Table>\n    </Stack>\n  );\n\n  const renderAttendees = () => (\n    <Stack space={4}>\n      <Headline level={1}>Attendees</Headline>\n\n      <Inline space={2} alignY=\"bottom\">\n        <SearchField\n          placeholder=\"Search by name or email...\"\n          value={attendeeSearchQuery}\n          onChange={setAttendeeSearchQuery}\n        />\n        <Text variant=\"muted\">{filteredAttendees.length} attendees</Text>\n      </Inline>\n\n      <Table aria-label=\"Attendees table\">\n        <Table.Header>\n          <Table.Column rowHeader>Name</Table.Column>\n          <Table.Column>Email</Table.Column>\n          <Table.Column>Events Attended</Table.Column>\n          <Table.Column>Last Active</Table.Column>\n          <Table.Column>Status</Table.Column>\n        </Table.Header>\n        <Table.Body items={filteredAttendees}>\n          {item => (\n            <Table.Row key={item.id}>\n              <Table.Cell>{item.name}</Table.Cell>\n              <Table.Cell>{item.email}</Table.Cell>\n              <Table.Cell>{item.eventsAttended}</Table.Cell>\n              <Table.Cell>{item.lastActive}</Table.Cell>\n              <Table.Cell>\n                <Badge variant={getStatusVariant(item.status) as any}>{item.status}</Badge>\n              </Table.Cell>\n            </Table.Row>\n          )}\n        </Table.Body>\n      </Table>\n    </Stack>\n  );\n\n  const renderReports = () => (\n    <Stack space={4}>\n      <Headline level={1}>Reports</Headline>\n\n      <Tabs selectedKey={reportsTab} onSelectionChange={k => setReportsTab(k as ReportsTab)}>\n        <Tabs.List aria-label=\"Report tabs\">\n          <Tabs.Item key=\"revenue\" id=\"revenue\">Revenue</Tabs.Item>\n          <Tabs.Item key=\"attendance\" id=\"attendance\">Attendance</Tabs.Item>\n          <Tabs.Item key=\"overview\" id=\"overview\">Overview</Tabs.Item>\n        </Tabs.List>\n        <Tabs.TabPanel id=\"revenue\">\n          <Stack space={4}>\n            <Inline space={4}>\n              <Card>\n                <Stack space={2}>\n                  <Text size=\"small\" variant=\"muted\">\n                    Total Revenue\n                  </Text>\n                  <Text size=\"xl\" weight=\"bold\">\n                    $45,230\n                  </Text>\n                </Stack>\n              </Card>\n              <Card>\n                <Stack space={2}>\n                  <Text size=\"small\" variant=\"muted\">\n                    This Month\n                  </Text>\n                  <Text size=\"xl\" weight=\"bold\">\n                    $8,420\n                  </Text>\n                </Stack>\n              </Card>\n              <Card>\n                <Stack space={2}>\n                  <Text size=\"small\" variant=\"muted\">\n                    Average per Event\n                  </Text>\n                  <Text size=\"xl\" weight=\"bold\">\n                    $1,885\n                  </Text>\n                </Stack>\n              </Card>\n              <Card>\n                <Stack space={2}>\n                  <Text size=\"small\" variant=\"muted\">\n                    Refunds\n                  </Text>\n                  <Text size=\"xl\" weight=\"bold\">\n                    $1,230\n                  </Text>\n                </Stack>\n              </Card>\n            </Inline>\n            <SectionMessage variant=\"success\">\n              Revenue is up 12% compared to last month.\n            </SectionMessage>\n          </Stack>\n        </Tabs.TabPanel>\n\n        <Tabs.TabPanel id=\"attendance\">\n          <Stack space={4}>\n            <Inline space={4}>\n              <Card>\n                <Stack space={2}>\n                  <Text size=\"small\" variant=\"muted\">\n                    Total Attendees\n                  </Text>\n                  <Text size=\"xl\" weight=\"bold\">\n                    3,200\n                  </Text>\n                </Stack>\n              </Card>\n              <Card>\n                <Stack space={2}>\n                  <Text size=\"small\" variant=\"muted\">\n                    Repeat Visitors\n                  </Text>\n                  <Text size=\"xl\" weight=\"bold\">\n                    890\n                  </Text>\n                </Stack>\n              </Card>\n              <Card>\n                <Stack space={2}>\n                  <Text size=\"small\" variant=\"muted\">\n                    Average per Event\n                  </Text>\n                  <Text size=\"xl\" weight=\"bold\">\n                    178\n                  </Text>\n                </Stack>\n              </Card>\n              <Card>\n                <Stack space={2}>\n                  <Text size=\"small\" variant=\"muted\">\n                    No-shows\n                  </Text>\n                  <Text size=\"xl\" weight=\"bold\">\n                    145\n                  </Text>\n                </Stack>\n              </Card>\n            </Inline>\n\n            <Stack space={3}>\n              <Headline level={3}>Top Events by Attendance</Headline>\n              <Table aria-label=\"Top events by attendance\">\n                <Table.Header>\n                  <Table.Column rowHeader>Event</Table.Column>\n                  <Table.Column>Date</Table.Column>\n                  <Table.Column>Attendees</Table.Column>\n                  <Table.Column>Capacity</Table.Column>\n                  <Table.Column>Fill Rate</Table.Column>\n                </Table.Header>\n                <Table.Body items={[\n                  { event: 'Tech Conference', date: '2025-08-20', attendees: 1950, capacity: 2000, fillRate: '97.5%' },\n                  { event: 'Summer Music Festival', date: '2025-07-15', attendees: 485, capacity: 500, fillRate: '97%' },\n                  { event: 'Comedy Show', date: '2025-07-10', attendees: 145, capacity: 150, fillRate: '96.7%' },\n                  { event: 'Film Festival', date: '2025-08-10', attendees: 375, capacity: 400, fillRate: '93.8%' },\n                ]}>\n                  {item => (\n                    <Table.Row key={item.event}>\n                      <Table.Cell>{item.event}</Table.Cell>\n                      <Table.Cell>{item.date}</Table.Cell>\n                      <Table.Cell>{item.attendees}</Table.Cell>\n                      <Table.Cell>{item.capacity}</Table.Cell>\n                      <Table.Cell>{item.fillRate}</Table.Cell>\n                    </Table.Row>\n                  )}\n                </Table.Body>\n              </Table>\n            </Stack>\n          </Stack>\n        </Tabs.TabPanel>\n\n        <Tabs.TabPanel id=\"overview\">\n          <Stack space={4}>\n            <Text>\n              This quarter has been exceptional for event attendance and revenue. We've successfully hosted 24 events\n              with an average fill rate of 94% across all venues. The combination of summer events and conference seasons\n              has driven consistent growth in both ticket sales and attendee satisfaction.\n            </Text>\n\n            <Accordion>\n              <Accordion.Item id=\"q1\">\n                <Accordion.Header>Q1 Summary</Accordion.Header>\n                <Accordion.Content>\n                  Q1 saw solid performance with 6 major events and an average attendance of 165 per event. The quarter was\n                  focused on building momentum with early-season promotions that resulted in a 8% increase in repeat\n                  visitors.\n                </Accordion.Content>\n              </Accordion.Item>\n              <Accordion.Item id=\"q2\">\n                <Accordion.Header>Q2 Summary</Accordion.Header>\n                <Accordion.Content>\n                  Q2 performance exceeded expectations with 8 events generating $18,500 in revenue. The summer festival\n                  season drove strong attendance and we saw a 15% increase in ticket sales compared to Q1.\n                </Accordion.Content>\n              </Accordion.Item>\n              <Accordion.Item id=\"q3\">\n                <Accordion.Header>Q3 Summary</Accordion.Header>\n                <Accordion.Content>\n                  Q3 continues the positive trend with conference season bringing enterprise customers. We've already\n                  booked 10 major events with strong early sales. Late summer festivals are performing exceptionally well.\n                </Accordion.Content>\n              </Accordion.Item>\n            </Accordion>\n          </Stack>\n        </Tabs.TabPanel>\n      </Tabs>\n    </Stack>\n  );\n\n  const renderSettings = () => (\n    <Stack space={4}>\n      <Headline level={1}>Settings</Headline>\n\n      <Tabs selectedKey={settingsTab} onSelectionChange={k => setSettingsTab(k as SettingsTab)}>\n        <Tabs.List aria-label=\"Settings tabs\">\n          <Tabs.Item key=\"general\" id=\"general\">General</Tabs.Item>\n          <Tabs.Item key=\"notifications\" id=\"notifications\">Notifications</Tabs.Item>\n        </Tabs.List>\n        <Tabs.TabPanel id=\"general\">\n          <Stack space={4}>\n            <TextField label=\"Organization Name\" defaultValue=\"EventHub Inc.\" />\n            <TextField label=\"Contact Email\" type=\"email\" defaultValue=\"support@eventhub.com\" />\n\n            <div>\n              <Text weight=\"medium\" size=\"small\">\n                Default Currency\n              </Text>\n              <Inline space={2}>\n                <Button variant=\"secondary\">USD</Button>\n                <Button variant=\"secondary\">EUR</Button>\n                <Button variant=\"secondary\">GBP</Button>\n              </Inline>\n            </div>\n\n            <div>\n              <Text weight=\"medium\" size=\"small\">\n                Default Timezone\n              </Text>\n              <Inline space={2}>\n                <Button variant=\"secondary\">UTC</Button>\n                <Button variant=\"secondary\">CET</Button>\n                <Button variant=\"secondary\">EST</Button>\n                <Button variant=\"secondary\">PST</Button>\n              </Inline>\n            </div>\n\n            <Button variant=\"primary\">\n              Save Changes\n            </Button>\n\n            <SectionMessage variant=\"success\">Settings saved successfully.</SectionMessage>\n          </Stack>\n        </Tabs.TabPanel>\n\n        <Tabs.TabPanel id=\"notifications\">\n          <Stack space={4}>\n            <Card>\n              <Stack space={3}>\n                <Inline space={3} alignY=\"center\">\n                  <Stack space={1}>\n                    <Text weight=\"medium\">Email Notifications</Text>\n                    <Text size=\"small\" variant=\"muted\">\n                      Receive email alerts for important events\n                    </Text>\n                  </Stack>\n                  <Switch defaultSelected />\n                </Inline>\n              </Stack>\n            </Card>\n\n            <Card>\n              <Stack space={3}>\n                <Inline space={3} alignY=\"center\">\n                  <Stack space={1}>\n                    <Text weight=\"medium\">SMS Notifications</Text>\n                    <Text size=\"small\" variant=\"muted\">\n                      Get text messages for urgent updates\n                    </Text>\n                  </Stack>\n                  <Switch />\n                </Inline>\n              </Stack>\n            </Card>\n\n            <Card>\n              <Stack space={3}>\n                <Inline space={3} alignY=\"center\">\n                  <Stack space={1}>\n                    <Text weight=\"medium\">Weekly Digest</Text>\n                    <Text size=\"small\" variant=\"muted\">\n                      Receive a weekly summary of your events\n                    </Text>\n                  </Stack>\n                  <Switch defaultSelected />\n                </Inline>\n              </Stack>\n            </Card>\n\n            <Card>\n              <Stack space={3}>\n                <Inline space={3} alignY=\"center\">\n                  <Stack space={1}>\n                    <Text weight=\"medium\">Marketing Emails</Text>\n                    <Text size=\"small\" variant=\"muted\">\n                      Get updates about new features and offers\n                    </Text>\n                  </Stack>\n                  <Switch />\n                </Inline>\n              </Stack>\n            </Card>\n\n            <Button variant=\"primary\">\n              Save Preferences\n            </Button>\n          </Stack>\n        </Tabs.TabPanel>\n      </Tabs>\n    </Stack>\n  );\n\n  const getBreadcrumbs = () => {\n    const labels: Record<PageType, string> = {\n      dashboard: 'Dashboard',\n      events: 'Events',\n      attendees: 'Attendees',\n      reports: 'Reports',\n      settings: 'Settings',\n    };\n    return labels[currentPage];\n  };\n\n  return (\n    <Sidebar.Provider defaultOpen>\n      <AppLayout>\n        <AppLayout.Sidebar>\n          <Sidebar.Header>\n            <Headline level={2}>EventHub</Headline>\n          </Sidebar.Header>\n          <Sidebar.Nav current={currentPage}>\n            <Sidebar.Item onPress={() => setCurrentPage('dashboard')} active={currentPage === 'dashboard'}>\n              Dashboard\n            </Sidebar.Item>\n            <Sidebar.Item onPress={() => setCurrentPage('events')} active={currentPage === 'events'}>\n              Events\n            </Sidebar.Item>\n            <Sidebar.Item onPress={() => setCurrentPage('attendees')} active={currentPage === 'attendees'}>\n              Attendees\n            </Sidebar.Item>\n            <Sidebar.Item onPress={() => setCurrentPage('reports')} active={currentPage === 'reports'}>\n              Reports\n            </Sidebar.Item>\n            <Sidebar.Separator />\n            <Sidebar.Item onPress={() => setCurrentPage('settings')} active={currentPage === 'settings'}>\n              Settings\n            </Sidebar.Item>\n            <Sidebar.Separator />\n          </Sidebar.Nav>\n          <Sidebar.Footer>\n            <Sidebar.Item onPress={() => {}}>Help & Support</Sidebar.Item>\n          </Sidebar.Footer>\n        </AppLayout.Sidebar>\n\n        <AppLayout.Header>\n          <TopNavigation>\n            <TopNavigation.Start>\n              <Sidebar.Toggle />\n            </TopNavigation.Start>\n            <TopNavigation.Middle>\n              <Breadcrumbs>\n                <Breadcrumbs.Item href=\"#\">EventHub</Breadcrumbs.Item>\n                <Breadcrumbs.Item href=\"#\">{getBreadcrumbs()}</Breadcrumbs.Item>\n              </Breadcrumbs>\n            </TopNavigation.Middle>\n            <TopNavigation.End>\n              <Menu label=\"Account\" onAction={action => {\n                if (action === 'signout') setSignOutDialogOpen(true);\n              }}>\n                <Menu.Item id=\"profile\">Profile</Menu.Item>\n                <Menu.Item id=\"signout\">Sign out</Menu.Item>\n              </Menu>\n            </TopNavigation.End>\n          </TopNavigation>\n        </AppLayout.Header>\n\n        <AppLayout.Main>\n          <Inset space={4}>\n            {currentPage === 'dashboard' && renderDashboard()}\n            {currentPage === 'events' && renderEvents()}\n            {currentPage === 'attendees' && renderAttendees()}\n            {currentPage === 'reports' && renderReports()}\n            {currentPage === 'settings' && renderSettings()}\n          </Inset>\n        </AppLayout.Main>\n      </AppLayout>\n\n      {signOutDialogOpen && (\n        <Dialog.Trigger dismissable={false}>\n          <div />\n          <Dialog size=\"small\">\n            <Dialog.Title>Are you sure you want to sign out?</Dialog.Title>\n            <Dialog.Actions>\n              <Button variant=\"secondary\" slot=\"close\">\n                Cancel\n              </Button>\n              <Button variant=\"primary\" slot=\"close\" onPress={handleSignOut}>\n                Sign out\n              </Button>\n            </Dialog.Actions>\n          </Dialog>\n        </Dialog.Trigger>\n      )}\n    </Sidebar.Provider>\n  );\n};\n\nexport default EventHub;\n",
+  "assertions": {
+    "passed": [
+      {
+        "id": "a-import-marigold",
+        "description": "Imports from @marigold/components",
+        "severity": "required",
+        "passed": true,
+        "evidence": "import from \"@marigold/components\" found"
+      },
+      {
+        "id": "a-table",
+        "description": "Table component present",
+        "severity": "required",
+        "passed": true,
+        "evidence": "<Table> found"
+      },
+      {
+        "id": "a-table-header",
+        "description": "Table.Header sub-component used",
+        "severity": "required",
+        "passed": true,
+        "evidence": "<Table.Header> found"
+      },
+      {
+        "id": "a-table-body",
+        "description": "Table.Body sub-component used",
+        "severity": "required",
+        "passed": true,
+        "evidence": "<Table.Body> found"
+      },
+      {
+        "id": "a-badge",
+        "description": "Badge component for status indicators",
+        "severity": "required",
+        "passed": true,
+        "evidence": "<Badge> found"
+      },
+      {
+        "id": "a-search-field",
+        "description": "SearchField for filtering",
+        "severity": "required",
+        "passed": true,
+        "evidence": "<SearchField> found"
+      },
+      {
+        "id": "a-menu",
+        "description": "Menu for user account dropdown",
+        "severity": "required",
+        "passed": true,
+        "evidence": "<Menu> found"
+      },
+      {
+        "id": "a-dialog",
+        "description": "Dialog for create event / sign out",
+        "severity": "required",
+        "passed": true,
+        "evidence": "<Dialog> found"
+      },
+      {
+        "id": "a-date-picker",
+        "description": "DatePicker in create event form",
+        "severity": "required",
+        "passed": true,
+        "evidence": "<DatePicker> found"
+      },
+      {
+        "id": "a-tabs",
+        "description": "Tabs for reports/settings sections",
+        "severity": "required",
+        "passed": true,
+        "evidence": "<Tabs> found"
+      },
+      {
+        "id": "a-accordion",
+        "description": "Accordion for Q summaries",
+        "severity": "required",
+        "passed": true,
+        "evidence": "<Accordion> found"
+      },
+      {
+        "id": "a-card",
+        "description": "Card component for stat cards",
+        "severity": "required",
+        "passed": true,
+        "evidence": "<Card> found"
+      },
+      {
+        "id": "a-text-field",
+        "description": "TextField in forms",
+        "severity": "required",
+        "passed": true,
+        "evidence": "<TextField> found"
+      },
+      {
+        "id": "a-switch",
+        "description": "Switch for notification toggles",
+        "severity": "required",
+        "passed": true,
+        "evidence": "<Switch> found"
+      },
+      {
+        "id": "a-button",
+        "description": "Button component",
+        "severity": "required",
+        "passed": true,
+        "evidence": "<Button> found"
+      },
+      {
+        "id": "a-breadcrumbs",
+        "description": "Breadcrumbs for page context",
+        "severity": "required",
+        "passed": true,
+        "evidence": "<Breadcrumbs> found"
+      },
+      {
+        "id": "a-section-message",
+        "description": "SectionMessage for info/success alerts",
+        "severity": "required",
+        "passed": true,
+        "evidence": "<SectionMessage> found"
+      },
+      {
+        "id": "a-no-onclick-on-marigold",
+        "description": "No onClick on Marigold Button components",
+        "severity": "recommended",
+        "passed": true,
+        "evidence": "\"/<Button[^>]*onClick/\" correctly absent"
+      },
+      {
+        "id": "a-headline",
+        "description": "Headline component for page titles",
+        "severity": "required",
+        "passed": true,
+        "evidence": "<Headline> found"
+      },
+      {
+        "id": "a-dialog-trigger",
+        "description": "Dialog.Trigger for overlay pattern",
+        "severity": "recommended",
+        "passed": true,
+        "evidence": "<Dialog.Trigger> found"
+      },
+      {
+        "id": "a-textarea",
+        "description": "TextArea for event description",
+        "severity": "recommended",
+        "passed": true,
+        "evidence": "<TextArea> found"
+      },
+      {
+        "id": "a-app-layout",
+        "description": "AppLayout component for app shell structure",
+        "severity": "required",
+        "passed": true,
+        "evidence": "<AppLayout> found"
+      },
+      {
+        "id": "a-sidebar",
+        "description": "Sidebar component for navigation",
+        "severity": "required",
+        "passed": true,
+        "evidence": "matched: <Sidebar> found; <AppLayout.Sidebar> found"
+      }
+    ],
+    "failed": [
+      {
+        "id": "a-select",
+        "description": "Select dropdown",
+        "severity": "required",
+        "passed": false,
+        "evidence": "<Select> not found"
+      },
+      {
+        "id": "a-form",
+        "description": "Form component",
+        "severity": "required",
+        "passed": false,
+        "evidence": "<Form> not found"
+      },
+      {
+        "id": "a-tooltip",
+        "description": "Tooltip on revenue card",
+        "severity": "required",
+        "passed": false,
+        "evidence": "<Tooltip> not found"
+      },
+      {
+        "id": "a-number-field",
+        "description": "NumberField for capacity input",
+        "severity": "recommended",
+        "passed": false,
+        "evidence": "<NumberField> not found"
+      }
+    ],
+    "passRate": 0.8519,
+    "requiredPassRate": 0.8696,
+    "weightedPassRate": 0.8646,
+    "total": 27
+  },
+  "validatePackageVersion": "0.0.1",
+  "playwrightVersion": null,
+  "resolvedModelId": "claude-haiku-4-5",
+  "claudeCliVersion": "2.1.185 (Claude Code)",
+  "sessionId": "5348ce3e-267c-4082-8799-2c192e06e3b8"
+}

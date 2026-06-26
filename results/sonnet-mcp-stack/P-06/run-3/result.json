@@ -1,0 +1,264 @@
+{
+  "runId": "sonnet-mcp-stack-P-06-r3",
+  "promptId": "P-06",
+  "model": "sonnet",
+  "config": "mcp-stack",
+  "timestamp": "2026-06-23T01:39:47.486Z",
+  "quality": {
+    "overall": 59.63,
+    "categories": {
+      "A": {
+        "category": "A",
+        "label": "Design System API",
+        "score": 100,
+        "weight": 0.225,
+        "weightedScore": 22.5,
+        "errorCount": 0,
+        "warningCount": 0,
+        "issues": []
+      },
+      "B": {
+        "category": "B",
+        "label": "Token Compliance",
+        "score": 0,
+        "weight": 0.1,
+        "weightedScore": 0,
+        "errorCount": 0,
+        "warningCount": 0,
+        "issues": []
+      },
+      "C": {
+        "category": "C",
+        "label": "DOM / Structure",
+        "score": 65,
+        "weight": 0.225,
+        "weightedScore": 14.63,
+        "errorCount": 1,
+        "warningCount": 0,
+        "issues": [
+          {
+            "type": "technical",
+            "severity": "error",
+            "source": "compiler",
+            "component": "TypeScript",
+            "message": "TS2322: Type '(keys: Set<string>) => void' is not assignable to type '(keys: Set<Key>) => void'.\n  Types of parameters 'keys' and 'keys' are incompatible.\n    Type 'Set<Key>' is not assignable to type 'Set<string>'.\n      Type 'Key' is not assignable to type 'string'.\n        Type 'number' is not assignable to type 'string'.",
+            "suggestion": "Fix the TypeScript error reported by the compiler. The exact location is included in the issue location field.",
+            "location": {
+              "file": "TestApp.tsx",
+              "line": 270,
+              "column": 17
+            }
+          }
+        ]
+      },
+      "D": {
+        "category": "D",
+        "label": "Spatial & A11y",
+        "score": 0,
+        "weight": 0.225,
+        "weightedScore": 0,
+        "errorCount": 0,
+        "warningCount": 0,
+        "issues": []
+      },
+      "E": {
+        "category": "E",
+        "label": "Functional Completeness",
+        "score": 100,
+        "weight": 0.225,
+        "weightedScore": 22.5,
+        "errorCount": 0,
+        "warningCount": 0,
+        "issues": []
+      }
+    },
+    "renderSuccess": false
+  },
+  "efficiency": {
+    "durationMs": 1252654,
+    "costUsd": 4.653981000000001,
+    "inputTokens": 107,
+    "outputTokens": 67311,
+    "cacheReadTokens": 9241870,
+    "cacheCreationTokens": 142735,
+    "totalTokens": 67418,
+    "numTurns": 95
+  },
+  "report": {
+    "file": "TestApp.tsx",
+    "errors": [
+      {
+        "type": "technical",
+        "severity": "error",
+        "source": "compiler",
+        "component": "TypeScript",
+        "message": "TS2322: Type '(keys: Set<string>) => void' is not assignable to type '(keys: Set<Key>) => void'.\n  Types of parameters 'keys' and 'keys' are incompatible.\n    Type 'Set<Key>' is not assignable to type 'Set<string>'.\n      Type 'Key' is not assignable to type 'string'.\n        Type 'number' is not assignable to type 'string'.",
+        "suggestion": "Fix the TypeScript error reported by the compiler. The exact location is included in the issue location field.",
+        "location": {
+          "file": "TestApp.tsx",
+          "line": 270,
+          "column": 17
+        }
+      }
+    ],
+    "warnings": [],
+    "passed": [
+      "All Marigold props are valid",
+      "Component composition",
+      "Overlay accessible names",
+      "Compound component placement",
+      "Section headers",
+      "Collection item ids",
+      "Design system usage",
+      "Layout usage",
+      "Table usage",
+      "Component conventions",
+      "Theme variant compliance"
+    ],
+    "metadata": {
+      "renderTimeMs": 0,
+      "componentsFound": [],
+      "checksRun": [
+        "technical",
+        "spatial",
+        "a11y"
+      ],
+      "coverage": {
+        "staticValuesChecked": 13,
+        "dynamicValuesSkipped": 13,
+        "spreadPropsBypassed": 0
+      },
+      "widthUtilization": null
+    },
+    "markdown": "marigold-validate: TestApp.tsx — 1 error(s), 0 warning(s)\n\n[error/technical] <TypeScript>: TS2322: Type '(keys: Set<string>) => void' is not assignable to type '(keys: Set<Key>) => void'.\n  Types of parameters 'keys' and 'keys' are incompatible.\n    Type 'Set<Key>' is not assignable to type 'Set<string>'.\n      Type 'Key' is not assignable to type 'string'.\n        Type 'number' is not assignable to type 'string'. (TestApp.tsx:270:17)\n  → Fix the TypeScript error reported by the compiler. The exact location is included in the issue location field.\n\npassed: All Marigold props are valid, Component composition, Overlay accessible names, Compound component placement, Section headers, Collection item ids, Design system usage, Layout usage, Table usage, Component conventions, Theme variant compliance\n\nchecks run: technical, spatial, a11y"
+  },
+  "componentsFound": [],
+  "renderTimeMs": 0,
+  "sourceCode": "import { useMemo, useState } from 'react';\nimport {\n  Badge,\n  Button,\n  Card,\n  Checkbox,\n  Drawer,\n  EmptyState,\n  Headline,\n  Inline,\n  Inset,\n  Pagination,\n  SearchField,\n  Select,\n  Slider,\n  Stack,\n  Switch,\n  Tag,\n  Text,\n  Tiles,\n} from '@marigold/components';\n\ntype Status = 'New' | 'Sale' | 'Sold Out';\n\ntype Product = {\n  id: number;\n  name: string;\n  price: number;\n  category: string;\n  status: Status;\n  description: string;\n  sizes: string[];\n  soldOut: boolean;\n  popularity: number;\n};\n\nconst PRODUCTS: Product[] = [\n  { id: 1, name: 'Logo T-Shirt', price: 24.99, category: 'T-Shirts', status: 'New', description: 'Classic crew-neck tee with embroidered logo on the chest.', sizes: ['S', 'M', 'L', 'XL'], soldOut: false, popularity: 95 },\n  { id: 2, name: 'Hoodie Pullover', price: 49.99, category: 'Hoodies', status: 'Sale', description: 'Warm fleece hoodie with kangaroo pocket and adjustable drawstring.', sizes: ['S', 'M', 'L', 'XL'], soldOut: false, popularity: 88 },\n  { id: 3, name: 'Enamel Pin Set', price: 12.99, category: 'Accessories', status: 'New', description: 'Set of three collectible enamel pins with unique designs.', sizes: ['XS'], soldOut: false, popularity: 72 },\n  { id: 4, name: 'Art Poster', price: 19.99, category: 'Posters', status: 'Sold Out', description: 'High-quality 18×24 inch art print on matte paper.', sizes: ['XS'], soldOut: true, popularity: 65 },\n  { id: 5, name: 'Sticker Pack', price: 9.99, category: 'Stickers', status: 'New', description: 'Pack of 10 durable vinyl stickers for any surface.', sizes: ['XS'], soldOut: false, popularity: 90 },\n  { id: 6, name: 'Zip-Up Hoodie', price: 59.99, category: 'Hoodies', status: 'Sold Out', description: 'Full-zip hoodie with side pockets and ribbed cuffs.', sizes: ['XS', 'S', 'M', 'L'], soldOut: true, popularity: 80 },\n  { id: 7, name: 'Tote Bag', price: 14.99, category: 'Accessories', status: 'Sale', description: 'Durable canvas tote bag with logo print and inner pocket.', sizes: ['XS'], soldOut: false, popularity: 85 },\n  { id: 8, name: 'Vintage Tee', price: 29.99, category: 'T-Shirts', status: 'New', description: 'Soft-washed vintage-style tee with distressed logo graphic.', sizes: ['XS', 'S', 'M', 'L', 'XL'], soldOut: false, popularity: 78 },\n  { id: 9, name: 'Snapback Cap', price: 22.99, category: 'Accessories', status: 'New', description: 'Adjustable snapback cap with embroidered logo on the front.', sizes: ['XS'], soldOut: false, popularity: 76 },\n  { id: 10, name: 'Graphic Tee', price: 27.99, category: 'T-Shirts', status: 'Sale', description: 'Bold graphic tee featuring limited-edition artwork.', sizes: ['S', 'M', 'L'], soldOut: false, popularity: 84 },\n  { id: 11, name: 'Crewneck Sweatshirt', price: 44.99, category: 'Hoodies', status: 'New', description: 'Heavyweight crewneck sweatshirt in brushed fleece fabric.', sizes: ['S', 'M', 'L', 'XL'], soldOut: false, popularity: 70 },\n  { id: 12, name: 'Landscape Poster', price: 17.99, category: 'Posters', status: 'New', description: 'Stunning landscape photography print, 24×36 inches.', sizes: ['XS'], soldOut: false, popularity: 60 },\n  { id: 13, name: 'Clear Sticker Set', price: 7.99, category: 'Stickers', status: 'Sale', description: 'Transparent vinyl stickers that look great on any surface.', sizes: ['XS'], soldOut: false, popularity: 82 },\n  { id: 14, name: 'Bomber Jacket', price: 89.99, category: 'Hoodies', status: 'New', description: 'Satin bomber jacket with ribbed trim and embroidered logo patch.', sizes: ['S', 'M', 'L'], soldOut: false, popularity: 91 },\n  { id: 15, name: 'Phone Case', price: 15.99, category: 'Accessories', status: 'Sale', description: 'Slim hard-shell phone case with printed logo design.', sizes: ['XS'], soldOut: false, popularity: 68 },\n  { id: 16, name: 'Pocket Tee', price: 21.99, category: 'T-Shirts', status: 'New', description: 'Lightweight pocket tee in premium combed cotton blend.', sizes: ['XS', 'S', 'M'], soldOut: false, popularity: 74 },\n  { id: 17, name: 'Fleece Joggers', price: 39.99, category: 'Hoodies', status: 'Sale', description: 'Cozy fleece joggers with elastic waistband and deep pockets.', sizes: ['S', 'M', 'L', 'XL'], soldOut: false, popularity: 87 },\n  { id: 18, name: 'Keychain', price: 8.99, category: 'Accessories', status: 'New', description: 'Durable metal keychain with enamel logo accent.', sizes: ['XS'], soldOut: false, popularity: 55 },\n  { id: 19, name: 'Motivational Poster', price: 16.99, category: 'Posters', status: 'New', description: 'Inspirational typography print on premium matte paper.', sizes: ['XS'], soldOut: false, popularity: 63 },\n  { id: 20, name: 'Holographic Sticker', price: 5.99, category: 'Stickers', status: 'New', description: 'Eye-catching holographic sticker with a foil finish.', sizes: ['XS'], soldOut: false, popularity: 79 },\n  { id: 21, name: 'V-Neck Tee', price: 23.99, category: 'T-Shirts', status: 'Sale', description: 'Classic v-neck tee in a relaxed fit with soft jersey fabric.', sizes: ['XS', 'S', 'M', 'L', 'XL'], soldOut: false, popularity: 82 },\n  { id: 22, name: 'Quarter-Zip', price: 54.99, category: 'Hoodies', status: 'New', description: 'Sporty quarter-zip pullover with moisture-wicking performance fabric.', sizes: ['S', 'M', 'L'], soldOut: false, popularity: 86 },\n  { id: 23, name: 'Sunglasses', price: 34.99, category: 'Accessories', status: 'New', description: 'UV400 polarized sunglasses with a branded hard case.', sizes: ['XS'], soldOut: false, popularity: 71 },\n  { id: 24, name: 'Abstract Poster', price: 21.99, category: 'Posters', status: 'Sale', description: 'Modern abstract art print, perfect for any living space.', sizes: ['XS'], soldOut: false, popularity: 67 },\n];\n\nconst CATEGORIES = ['T-Shirts', 'Hoodies', 'Accessories', 'Posters', 'Stickers'];\nconst SIZES = ['XS', 'S', 'M', 'L', 'XL'];\nconst PAGE_SIZE = 8;\n\nfunction badgeVariant(status: Status) {\n  if (status === 'New') return 'info' as const;\n  if (status === 'Sale') return 'warning' as const;\n  return 'error' as const;\n}\n\nexport default function TestApp() {\n  const [search, setSearch] = useState('');\n  const [sort, setSort] = useState('newest');\n  const [categories, setCategories] = useState<string[]>([]);\n  const [priceRange, setPriceRange] = useState<number[]>([0, 100]);\n  const [sizes, setSizes] = useState<string[]>([]);\n  const [inStock, setInStock] = useState(false);\n  const [page, setPage] = useState(1);\n\n  const filtered = useMemo(() => {\n    let list = [...PRODUCTS];\n\n    if (search.trim()) {\n      const q = search.toLowerCase();\n      list = list.filter(p => p.name.toLowerCase().includes(q));\n    }\n    if (categories.length > 0) {\n      list = list.filter(p => categories.includes(p.category));\n    }\n    if (priceRange[0] > 0 || priceRange[1] < 100) {\n      list = list.filter(p => p.price >= priceRange[0] && p.price <= priceRange[1]);\n    }\n    if (sizes.length > 0) {\n      list = list.filter(p => p.sizes.some(s => sizes.includes(s)));\n    }\n    if (inStock) {\n      list = list.filter(p => !p.soldOut);\n    }\n\n    if (sort === 'price-asc') list.sort((a, b) => a.price - b.price);\n    else if (sort === 'price-desc') list.sort((a, b) => b.price - a.price);\n    else if (sort === 'popular') list.sort((a, b) => b.popularity - a.popularity);\n\n    return list;\n  }, [search, sort, categories, priceRange, sizes, inStock]);\n\n  const totalPages = Math.max(1, Math.ceil(filtered.length / PAGE_SIZE));\n  const currentPage = Math.min(page, totalPages);\n  const pageProducts = filtered.slice(\n    (currentPage - 1) * PAGE_SIZE,\n    currentPage * PAGE_SIZE\n  );\n\n  const chips = [\n    ...categories.map(c => ({ key: `cat-${c}`, label: c })),\n    ...sizes.map(s => ({ key: `sz-${s}`, label: `Size: ${s}` })),\n    ...(priceRange[0] > 0 || priceRange[1] < 100\n      ? [{ key: 'price', label: `$${priceRange[0]}–$${priceRange[1]}` }]\n      : []),\n    ...(inStock ? [{ key: 'instock', label: 'In stock only' }] : []),\n    ...(search.trim() ? [{ key: 'search', label: `\"${search}\"` }] : []),\n  ];\n\n  function removeChip(key: string) {\n    if (key.startsWith('cat-')) {\n      const cat = key.slice(4);\n      setCategories(prev => prev.filter(c => c !== cat));\n    } else if (key.startsWith('sz-')) {\n      const sz = key.slice(3);\n      setSizes(prev => prev.filter(s => s !== sz));\n    } else if (key === 'price') {\n      setPriceRange([0, 100]);\n    } else if (key === 'instock') {\n      setInStock(false);\n    } else if (key === 'search') {\n      setSearch('');\n    }\n    setPage(1);\n  }\n\n  function clearAll() {\n    setSearch('');\n    setCategories([]);\n    setPriceRange([0, 100]);\n    setSizes([]);\n    setInStock(false);\n    setPage(1);\n  }\n\n  function resetFilters() {\n    setCategories([]);\n    setPriceRange([0, 100]);\n    setSizes([]);\n    setInStock(false);\n    setPage(1);\n  }\n\n  return (\n    <Inset space={6}>\n      <Stack space={6}>\n        {/* Header */}\n        <Stack space={2}>\n          <Headline level={1}>Merchandise Store</Headline>\n          <Text>Browse our collection of branded merchandise.</Text>\n        </Stack>\n\n        {/* Toolbar */}\n        <Inline space={4} alignY=\"center\">\n          <SearchField\n            label=\"Search\"\n            width={64}\n            value={search}\n            onChange={val => {\n              setSearch(val);\n              setPage(1);\n            }}\n          />\n          <Select\n            label=\"Sort by\"\n            width={56}\n            value={sort}\n            onChange={val => {\n              setSort(String(val));\n              setPage(1);\n            }}\n          >\n            <Select.Option id=\"newest\">Newest</Select.Option>\n            <Select.Option id=\"price-asc\">Price: Low to High</Select.Option>\n            <Select.Option id=\"price-desc\">Price: High to Low</Select.Option>\n            <Select.Option id=\"popular\">Most Popular</Select.Option>\n          </Select>\n          <Drawer.Trigger>\n            <Button variant=\"secondary\">Filters</Button>\n            <Drawer closeButton>\n              <Drawer.Title>Filters</Drawer.Title>\n              <Drawer.Content>\n                <Stack space={6}>\n                  <Checkbox.Group\n                    label=\"Category\"\n                    value={categories}\n                    onChange={val => {\n                      setCategories(val);\n                      setPage(1);\n                    }}\n                  >\n                    {CATEGORIES.map(cat => (\n                      <Checkbox key={cat} value={cat} label={cat} />\n                    ))}\n                  </Checkbox.Group>\n\n                  <Slider\n                    label=\"Price range\"\n                    minValue={0}\n                    maxValue={100}\n                    value={priceRange}\n                    thumbLabels={['min', 'max']}\n                    onChange={val => {\n                      setPriceRange(val as number[]);\n                      setPage(1);\n                    }}\n                    formatOptions={{ style: 'currency', currency: 'USD' }}\n                  />\n\n                  <Checkbox.Group\n                    label=\"Size\"\n                    value={sizes}\n                    onChange={val => {\n                      setSizes(val);\n                      setPage(1);\n                    }}\n                  >\n                    {SIZES.map(size => (\n                      <Checkbox key={size} value={size} label={size} />\n                    ))}\n                  </Checkbox.Group>\n\n                  <Switch\n                    label=\"In stock only\"\n                    selected={inStock}\n                    onChange={val => {\n                      setInStock(Boolean(val));\n                      setPage(1);\n                    }}\n                  />\n                </Stack>\n              </Drawer.Content>\n              <Drawer.Actions>\n                <Button slot=\"close\" onPress={resetFilters}>\n                  Reset\n                </Button>\n                <Button slot=\"close\" variant=\"primary\">\n                  Apply Filters\n                </Button>\n              </Drawer.Actions>\n            </Drawer>\n          </Drawer.Trigger>\n        </Inline>\n\n        {/* Applied filter chips */}\n        <Inline space={2} alignY=\"center\">\n          {chips.length === 0 ? (\n            <Text color=\"secondary\">No filters applied</Text>\n          ) : (\n            <>\n              <Tag.Group\n                aria-label=\"Active filters\"\n                onRemove={(keys: Set<string>) => keys.forEach(k => removeChip(k))}\n              >\n                {chips.map(chip => (\n                  <Tag key={chip.key} id={chip.key}>\n                    {chip.label}\n                  </Tag>\n                ))}\n              </Tag.Group>\n              <Button variant=\"secondary\" onPress={clearAll}>\n                Clear all\n              </Button>\n            </>\n          )}\n        </Inline>\n\n        {/* Product grid or empty state */}\n        {filtered.length === 0 ? (\n          <EmptyState\n            title=\"No products found\"\n            description=\"Try adjusting your filters or search query.\"\n            action={\n              <Button variant=\"primary\" onPress={clearAll}>\n                Clear all filters\n              </Button>\n            }\n          />\n        ) : (\n          <Tiles tilesWidth=\"260px\" space={4} stretch equalHeight>\n            {pageProducts.map(p => (\n              <Card key={p.id} p={4}>\n                <Stack space={3}>\n                  <Inline alignX=\"between\" alignY=\"center\">\n                    <Text weight=\"bold\">{p.name}</Text>\n                    <Badge variant={badgeVariant(p.status)}>{p.status}</Badge>\n                  </Inline>\n                  <Text weight=\"bold\">${p.price.toFixed(2)}</Text>\n                  <Text>{p.description}</Text>\n                  <Button\n                    variant=\"primary\"\n                    disabled={p.soldOut}\n                    onPress={() => {}}\n                  >\n                    {p.soldOut ? 'Sold Out' : 'Add to Cart'}\n                  </Button>\n                </Stack>\n              </Card>\n            ))}\n          </Tiles>\n        )}\n\n        {/* Pagination */}\n        <Inline alignX=\"center\" alignY=\"center\" space={4}>\n          <Text>\n            Page {currentPage} of {totalPages}\n          </Text>\n          <Pagination\n            totalItems={filtered.length}\n            pageSize={PAGE_SIZE}\n            page={currentPage}\n            onChange={setPage}\n          />\n        </Inline>\n      </Stack>\n    </Inset>\n  );\n}\n",
+  "assertions": {
+    "passed": [
+      {
+        "id": "a-import-marigold",
+        "description": "Imports from @marigold/components",
+        "severity": "required",
+        "passed": true,
+        "evidence": "import from \"@marigold/components\" found"
+      },
+      {
+        "id": "a-search",
+        "description": "SearchField for product search",
+        "severity": "required",
+        "passed": true,
+        "evidence": "<SearchField> found"
+      },
+      {
+        "id": "a-drawer",
+        "description": "Drawer for filter panel",
+        "severity": "required",
+        "passed": true,
+        "evidence": "<Drawer> found"
+      },
+      {
+        "id": "a-checkbox",
+        "description": "Checkbox for filter options",
+        "severity": "required",
+        "passed": true,
+        "evidence": "matched: <Checkbox> found"
+      },
+      {
+        "id": "a-slider",
+        "description": "Slider for price range",
+        "severity": "required",
+        "passed": true,
+        "evidence": "<Slider> found"
+      },
+      {
+        "id": "a-switch",
+        "description": "Switch for availability filter",
+        "severity": "required",
+        "passed": true,
+        "evidence": "<Switch> found"
+      },
+      {
+        "id": "a-tag-group",
+        "description": "Tag.Group for applied filters",
+        "severity": "required",
+        "passed": true,
+        "evidence": "matched: <Tag> found"
+      },
+      {
+        "id": "a-card",
+        "description": "Card for product display",
+        "severity": "required",
+        "passed": true,
+        "evidence": "<Card> found"
+      },
+      {
+        "id": "a-badge",
+        "description": "Badge for product status",
+        "severity": "required",
+        "passed": true,
+        "evidence": "<Badge> found"
+      },
+      {
+        "id": "a-button",
+        "description": "Button for add to cart",
+        "severity": "required",
+        "passed": true,
+        "evidence": "<Button> found"
+      },
+      {
+        "id": "a-pagination",
+        "description": "Pagination component",
+        "severity": "required",
+        "passed": true,
+        "evidence": "<Pagination> found"
+      },
+      {
+        "id": "a-tiles",
+        "description": "Tiles layout for product grid",
+        "severity": "required",
+        "passed": true,
+        "evidence": "<Tiles> found"
+      },
+      {
+        "id": "a-empty-state",
+        "description": "EmptyState when no products match",
+        "severity": "required",
+        "passed": true,
+        "evidence": "<EmptyState> found"
+      },
+      {
+        "id": "a-headline",
+        "description": "Headline for page title",
+        "severity": "required",
+        "passed": true,
+        "evidence": "<Headline> found"
+      },
+      {
+        "id": "a-select",
+        "description": "Select for sort dropdown",
+        "severity": "required",
+        "passed": true,
+        "evidence": "<Select> found"
+      },
+      {
+        "id": "a-no-onclick-on-marigold",
+        "description": "No onClick on Marigold Button",
+        "severity": "recommended",
+        "passed": true,
+        "evidence": "\"/<Button[^>]*onClick/\" correctly absent"
+      }
+    ],
+    "failed": [],
+    "passRate": 1,
+    "requiredPassRate": 1,
+    "weightedPassRate": 1,
+    "total": 16
+  },
+  "validatePackageVersion": "0.0.1",
+  "playwrightVersion": null,
+  "resolvedModelId": "claude-sonnet-4-6",
+  "claudeCliVersion": "2.1.185 (Claude Code)",
+  "sessionId": "a09cac71-26d3-43a8-b2ae-ca7e05282109"
+}

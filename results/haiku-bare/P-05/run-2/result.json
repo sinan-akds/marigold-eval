@@ -1,0 +1,1970 @@
+{
+  "runId": "haiku-bare-P-05-r2",
+  "promptId": "P-05",
+  "model": "haiku",
+  "config": "bare",
+  "timestamp": "2026-06-21T09:07:28.988Z",
+  "quality": {
+    "overall": 14.65,
+    "categories": {
+      "A": {
+        "category": "A",
+        "label": "Design System API",
+        "score": 0,
+        "weight": 0.225,
+        "weightedScore": 0,
+        "errorCount": 10,
+        "warningCount": 36,
+        "issues": [
+          {
+            "type": "technical",
+            "severity": "error",
+            "source": "prop-validator",
+            "component": "TextField",
+            "message": "Prop \"isRequired\" does not exist on <TextField>.",
+            "suggestion": "Replace \"isRequired\" with \"required\".",
+            "location": {
+              "file": "TestApp.tsx",
+              "line": 76,
+              "column": 15
+            },
+            "details": {
+              "used": "isRequired",
+              "available": [
+                "variant",
+                "size",
+                "width",
+                "disabled",
+                "required",
+                "error",
+                "readOnly",
+                "min",
+                "max",
+                "value",
+                "defaultValue",
+                "placeholder",
+                "render",
+                "id",
+                "dir"
+              ]
+            }
+          },
+          {
+            "type": "technical",
+            "severity": "error",
+            "source": "design-system-usage",
+            "component": "DisclosureGroup",
+            "message": "<DisclosureGroup> is not a Marigold component. It is not exported from @marigold/components.",
+            "suggestion": "<DisclosureGroup> does not exist in @marigold/components. Search the Marigold docs for the correct component.",
+            "location": {
+              "file": "TestApp.tsx",
+              "line": 70,
+              "column": 7
+            },
+            "details": {
+              "hallucinated": true,
+              "importedFrom": "@marigold/components"
+            }
+          },
+          {
+            "type": "technical",
+            "severity": "error",
+            "source": "design-system-usage",
+            "component": "Disclosure",
+            "message": "<Disclosure> is not a Marigold component. It is not exported from @marigold/components.",
+            "suggestion": "<Disclosure> does not exist in @marigold/components. Search the Marigold docs for the correct component.",
+            "location": {
+              "file": "TestApp.tsx",
+              "line": 72,
+              "column": 9
+            },
+            "details": {
+              "hallucinated": true,
+              "importedFrom": "@marigold/components"
+            }
+          },
+          {
+            "type": "technical",
+            "severity": "error",
+            "source": "design-system-usage",
+            "component": "Textarea",
+            "message": "<Textarea> is not a Marigold component. It is not exported from @marigold/components.",
+            "suggestion": "<Textarea> does not exist in @marigold/components. Search the Marigold docs for the correct component.",
+            "location": {
+              "file": "TestApp.tsx",
+              "line": 92,
+              "column": 13
+            },
+            "details": {
+              "hallucinated": true,
+              "importedFrom": "@marigold/components"
+            }
+          },
+          {
+            "type": "technical",
+            "severity": "error",
+            "source": "design-system-usage",
+            "component": "Message",
+            "message": "<Message> is not a Marigold component. It is not exported from @marigold/components.",
+            "suggestion": "<Message> does not exist in @marigold/components. Search the Marigold docs for the correct component.",
+            "location": {
+              "file": "TestApp.tsx",
+              "line": 100,
+              "column": 15
+            },
+            "details": {
+              "hallucinated": true,
+              "importedFrom": "@marigold/components"
+            }
+          },
+          {
+            "type": "technical",
+            "severity": "error",
+            "source": "design-system-usage",
+            "component": "Disclosure",
+            "message": "<Disclosure> is not a Marigold component. It is not exported from @marigold/components.",
+            "suggestion": "<Disclosure> does not exist in @marigold/components. Search the Marigold docs for the correct component.",
+            "location": {
+              "file": "TestApp.tsx",
+              "line": 113,
+              "column": 9
+            },
+            "details": {
+              "hallucinated": true,
+              "importedFrom": "@marigold/components"
+            }
+          },
+          {
+            "type": "technical",
+            "severity": "error",
+            "source": "design-system-usage",
+            "component": "Disclosure",
+            "message": "<Disclosure> is not a Marigold component. It is not exported from @marigold/components.",
+            "suggestion": "<Disclosure> does not exist in @marigold/components. Search the Marigold docs for the correct component.",
+            "location": {
+              "file": "TestApp.tsx",
+              "line": 152,
+              "column": 9
+            },
+            "details": {
+              "hallucinated": true,
+              "importedFrom": "@marigold/components"
+            }
+          },
+          {
+            "type": "technical",
+            "severity": "error",
+            "source": "design-system-usage",
+            "component": "Message",
+            "message": "<Message> is not a Marigold component. It is not exported from @marigold/components.",
+            "suggestion": "<Message> does not exist in @marigold/components. Search the Marigold docs for the correct component.",
+            "location": {
+              "file": "TestApp.tsx",
+              "line": 205,
+              "column": 15
+            },
+            "details": {
+              "hallucinated": true,
+              "importedFrom": "@marigold/components"
+            }
+          },
+          {
+            "type": "technical",
+            "severity": "error",
+            "source": "design-system-usage",
+            "component": "Disclosure",
+            "message": "<Disclosure> is not a Marigold component. It is not exported from @marigold/components.",
+            "suggestion": "<Disclosure> does not exist in @marigold/components. Search the Marigold docs for the correct component.",
+            "location": {
+              "file": "TestApp.tsx",
+              "line": 217,
+              "column": 9
+            },
+            "details": {
+              "hallucinated": true,
+              "importedFrom": "@marigold/components"
+            }
+          },
+          {
+            "type": "technical",
+            "severity": "error",
+            "source": "design-system-usage",
+            "component": "Message",
+            "message": "<Message> is not a Marigold component. It is not exported from @marigold/components.",
+            "suggestion": "<Message> does not exist in @marigold/components. Search the Marigold docs for the correct component.",
+            "location": {
+              "file": "TestApp.tsx",
+              "line": 258,
+              "column": 15
+            },
+            "details": {
+              "hallucinated": true,
+              "importedFrom": "@marigold/components"
+            }
+          },
+          {
+            "type": "technical",
+            "severity": "warning",
+            "source": "design-system-usage",
+            "component": "div",
+            "message": "Raw <div> used instead of a Marigold component.",
+            "suggestion": "Raw <div> used instead of a Marigold layout component. Search the Marigold docs for layout alternatives.",
+            "location": {
+              "file": "TestApp.tsx",
+              "line": 67,
+              "column": 5
+            },
+            "details": {
+              "htmlElement": "div"
+            }
+          },
+          {
+            "type": "technical",
+            "severity": "warning",
+            "source": "design-system-usage",
+            "component": "h1",
+            "message": "Raw <h1> used instead of a Marigold component.",
+            "suggestion": "Raw <h1> used instead of a Marigold content component. Search the Marigold docs for content alternatives.",
+            "location": {
+              "file": "TestApp.tsx",
+              "line": 68,
+              "column": 7
+            },
+            "details": {
+              "htmlElement": "h1"
+            }
+          },
+          {
+            "type": "technical",
+            "severity": "warning",
+            "source": "design-system-usage",
+            "component": "div",
+            "message": "Raw <div> used instead of a Marigold component.",
+            "suggestion": "Raw <div> used instead of a Marigold layout component. Search the Marigold docs for layout alternatives.",
+            "location": {
+              "file": "TestApp.tsx",
+              "line": 73,
+              "column": 11
+            },
+            "details": {
+              "htmlElement": "div"
+            }
+          },
+          {
+            "type": "technical",
+            "severity": "warning",
+            "source": "design-system-usage",
+            "component": "div",
+            "message": "Raw <div> used instead of a Marigold component.",
+            "suggestion": "Raw <div> used instead of a Marigold layout component. Search the Marigold docs for layout alternatives.",
+            "location": {
+              "file": "TestApp.tsx",
+              "line": 114,
+              "column": 11
+            },
+            "details": {
+              "htmlElement": "div"
+            }
+          },
+          {
+            "type": "technical",
+            "severity": "warning",
+            "source": "design-system-usage",
+            "component": "div",
+            "message": "Raw <div> used instead of a Marigold component.",
+            "suggestion": "Raw <div> used instead of a Marigold layout component. Search the Marigold docs for layout alternatives.",
+            "location": {
+              "file": "TestApp.tsx",
+              "line": 115,
+              "column": 13
+            },
+            "details": {
+              "htmlElement": "div"
+            }
+          },
+          {
+            "type": "technical",
+            "severity": "warning",
+            "source": "design-system-usage",
+            "component": "label",
+            "message": "Raw <label> used instead of a Marigold component.",
+            "suggestion": "Use <Label> from @marigold/components instead of <label>.",
+            "location": {
+              "file": "TestApp.tsx",
+              "line": 116,
+              "column": 15
+            },
+            "details": {
+              "htmlElement": "label"
+            }
+          },
+          {
+            "type": "technical",
+            "severity": "warning",
+            "source": "design-system-usage",
+            "component": "option",
+            "message": "Raw <option> used instead of a Marigold component.",
+            "suggestion": "Replace <option> with the appropriate Marigold component. Search the Marigold docs for alternatives.",
+            "location": {
+              "file": "TestApp.tsx",
+              "line": 129,
+              "column": 15
+            },
+            "details": {
+              "htmlElement": "option"
+            }
+          },
+          {
+            "type": "technical",
+            "severity": "warning",
+            "source": "design-system-usage",
+            "component": "option",
+            "message": "Raw <option> used instead of a Marigold component.",
+            "suggestion": "Replace <option> with the appropriate Marigold component. Search the Marigold docs for alternatives.",
+            "location": {
+              "file": "TestApp.tsx",
+              "line": 130,
+              "column": 15
+            },
+            "details": {
+              "htmlElement": "option"
+            }
+          },
+          {
+            "type": "technical",
+            "severity": "warning",
+            "source": "design-system-usage",
+            "component": "option",
+            "message": "Raw <option> used instead of a Marigold component.",
+            "suggestion": "Replace <option> with the appropriate Marigold component. Search the Marigold docs for alternatives.",
+            "location": {
+              "file": "TestApp.tsx",
+              "line": 131,
+              "column": 15
+            },
+            "details": {
+              "htmlElement": "option"
+            }
+          },
+          {
+            "type": "technical",
+            "severity": "warning",
+            "source": "design-system-usage",
+            "component": "div",
+            "message": "Raw <div> used instead of a Marigold component.",
+            "suggestion": "Raw <div> used instead of a Marigold layout component. Search the Marigold docs for layout alternatives.",
+            "location": {
+              "file": "TestApp.tsx",
+              "line": 134,
+              "column": 13
+            },
+            "details": {
+              "htmlElement": "div"
+            }
+          },
+          {
+            "type": "technical",
+            "severity": "warning",
+            "source": "design-system-usage",
+            "component": "div",
+            "message": "Raw <div> used instead of a Marigold component.",
+            "suggestion": "Raw <div> used instead of a Marigold layout component. Search the Marigold docs for layout alternatives.",
+            "location": {
+              "file": "TestApp.tsx",
+              "line": 139,
+              "column": 15
+            },
+            "details": {
+              "htmlElement": "div"
+            }
+          },
+          {
+            "type": "technical",
+            "severity": "warning",
+            "source": "design-system-usage",
+            "component": "label",
+            "message": "Raw <label> used instead of a Marigold component.",
+            "suggestion": "Use <Label> from @marigold/components instead of <label>.",
+            "location": {
+              "file": "TestApp.tsx",
+              "line": 140,
+              "column": 17
+            },
+            "details": {
+              "htmlElement": "label"
+            }
+          },
+          {
+            "type": "technical",
+            "severity": "warning",
+            "source": "design-system-usage",
+            "component": "p",
+            "message": "Raw <p> used instead of a Marigold component.",
+            "suggestion": "Raw <p> used instead of a Marigold content component. Search the Marigold docs for content alternatives.",
+            "location": {
+              "file": "TestApp.tsx",
+              "line": 143,
+              "column": 17
+            },
+            "details": {
+              "htmlElement": "p"
+            }
+          },
+          {
+            "type": "technical",
+            "severity": "warning",
+            "source": "design-system-usage",
+            "component": "div",
+            "message": "Raw <div> used instead of a Marigold component.",
+            "suggestion": "Raw <div> used instead of a Marigold layout component. Search the Marigold docs for layout alternatives.",
+            "location": {
+              "file": "TestApp.tsx",
+              "line": 153,
+              "column": 11
+            },
+            "details": {
+              "htmlElement": "div"
+            }
+          },
+          {
+            "type": "technical",
+            "severity": "warning",
+            "source": "design-system-usage",
+            "component": "div",
+            "message": "Raw <div> used instead of a Marigold component.",
+            "suggestion": "Raw <div> used instead of a Marigold layout component. Search the Marigold docs for layout alternatives.",
+            "location": {
+              "file": "TestApp.tsx",
+              "line": 154,
+              "column": 13
+            },
+            "details": {
+              "htmlElement": "div"
+            }
+          },
+          {
+            "type": "technical",
+            "severity": "warning",
+            "source": "design-system-usage",
+            "component": "label",
+            "message": "Raw <label> used instead of a Marigold component.",
+            "suggestion": "Use <Label> from @marigold/components instead of <label>.",
+            "location": {
+              "file": "TestApp.tsx",
+              "line": 155,
+              "column": 15
+            },
+            "details": {
+              "htmlElement": "label"
+            }
+          },
+          {
+            "type": "technical",
+            "severity": "warning",
+            "source": "design-system-usage",
+            "component": "div",
+            "message": "Raw <div> used instead of a Marigold component.",
+            "suggestion": "Raw <div> used instead of a Marigold layout component. Search the Marigold docs for layout alternatives.",
+            "location": {
+              "file": "TestApp.tsx",
+              "line": 158,
+              "column": 15
+            },
+            "details": {
+              "htmlElement": "div"
+            }
+          },
+          {
+            "type": "technical",
+            "severity": "warning",
+            "source": "design-system-usage",
+            "component": "label",
+            "message": "Raw <label> used instead of a Marigold component.",
+            "suggestion": "Use <Label> from @marigold/components instead of <label>.",
+            "location": {
+              "file": "TestApp.tsx",
+              "line": 163,
+              "column": 17
+            },
+            "details": {
+              "htmlElement": "label"
+            }
+          },
+          {
+            "type": "technical",
+            "severity": "warning",
+            "source": "design-system-usage",
+            "component": "div",
+            "message": "Raw <div> used instead of a Marigold component.",
+            "suggestion": "Raw <div> used instead of a Marigold layout component. Search the Marigold docs for layout alternatives.",
+            "location": {
+              "file": "TestApp.tsx",
+              "line": 167,
+              "column": 15
+            },
+            "details": {
+              "htmlElement": "div"
+            }
+          },
+          {
+            "type": "technical",
+            "severity": "warning",
+            "source": "design-system-usage",
+            "component": "label",
+            "message": "Raw <label> used instead of a Marigold component.",
+            "suggestion": "Use <Label> from @marigold/components instead of <label>.",
+            "location": {
+              "file": "TestApp.tsx",
+              "line": 172,
+              "column": 17
+            },
+            "details": {
+              "htmlElement": "label"
+            }
+          },
+          {
+            "type": "technical",
+            "severity": "warning",
+            "source": "design-system-usage",
+            "component": "div",
+            "message": "Raw <div> used instead of a Marigold component.",
+            "suggestion": "Raw <div> used instead of a Marigold layout component. Search the Marigold docs for layout alternatives.",
+            "location": {
+              "file": "TestApp.tsx",
+              "line": 176,
+              "column": 15
+            },
+            "details": {
+              "htmlElement": "div"
+            }
+          },
+          {
+            "type": "technical",
+            "severity": "warning",
+            "source": "design-system-usage",
+            "component": "label",
+            "message": "Raw <label> used instead of a Marigold component.",
+            "suggestion": "Use <Label> from @marigold/components instead of <label>.",
+            "location": {
+              "file": "TestApp.tsx",
+              "line": 181,
+              "column": 17
+            },
+            "details": {
+              "htmlElement": "label"
+            }
+          },
+          {
+            "type": "technical",
+            "severity": "warning",
+            "source": "design-system-usage",
+            "component": "div",
+            "message": "Raw <div> used instead of a Marigold component.",
+            "suggestion": "Raw <div> used instead of a Marigold layout component. Search the Marigold docs for layout alternatives.",
+            "location": {
+              "file": "TestApp.tsx",
+              "line": 183,
+              "column": 15
+            },
+            "details": {
+              "htmlElement": "div"
+            }
+          },
+          {
+            "type": "technical",
+            "severity": "warning",
+            "source": "design-system-usage",
+            "component": "label",
+            "message": "Raw <label> used instead of a Marigold component.",
+            "suggestion": "Use <Label> from @marigold/components instead of <label>.",
+            "location": {
+              "file": "TestApp.tsx",
+              "line": 188,
+              "column": 17
+            },
+            "details": {
+              "htmlElement": "label"
+            }
+          },
+          {
+            "type": "technical",
+            "severity": "warning",
+            "source": "design-system-usage",
+            "component": "option",
+            "message": "Raw <option> used instead of a Marigold component.",
+            "suggestion": "Replace <option> with the appropriate Marigold component. Search the Marigold docs for alternatives.",
+            "location": {
+              "file": "TestApp.tsx",
+              "line": 199,
+              "column": 15
+            },
+            "details": {
+              "htmlElement": "option"
+            }
+          },
+          {
+            "type": "technical",
+            "severity": "warning",
+            "source": "design-system-usage",
+            "component": "option",
+            "message": "Raw <option> used instead of a Marigold component.",
+            "suggestion": "Replace <option> with the appropriate Marigold component. Search the Marigold docs for alternatives.",
+            "location": {
+              "file": "TestApp.tsx",
+              "line": 200,
+              "column": 15
+            },
+            "details": {
+              "htmlElement": "option"
+            }
+          },
+          {
+            "type": "technical",
+            "severity": "warning",
+            "source": "design-system-usage",
+            "component": "option",
+            "message": "Raw <option> used instead of a Marigold component.",
+            "suggestion": "Replace <option> with the appropriate Marigold component. Search the Marigold docs for alternatives.",
+            "location": {
+              "file": "TestApp.tsx",
+              "line": 201,
+              "column": 15
+            },
+            "details": {
+              "htmlElement": "option"
+            }
+          },
+          {
+            "type": "technical",
+            "severity": "warning",
+            "source": "design-system-usage",
+            "component": "div",
+            "message": "Raw <div> used instead of a Marigold component.",
+            "suggestion": "Raw <div> used instead of a Marigold layout component. Search the Marigold docs for layout alternatives.",
+            "location": {
+              "file": "TestApp.tsx",
+              "line": 218,
+              "column": 11
+            },
+            "details": {
+              "htmlElement": "div"
+            }
+          },
+          {
+            "type": "technical",
+            "severity": "warning",
+            "source": "design-system-usage",
+            "component": "div",
+            "message": "Raw <div> used instead of a Marigold component.",
+            "suggestion": "Raw <div> used instead of a Marigold layout component. Search the Marigold docs for layout alternatives.",
+            "location": {
+              "file": "TestApp.tsx",
+              "line": 219,
+              "column": 13
+            },
+            "details": {
+              "htmlElement": "div"
+            }
+          },
+          {
+            "type": "technical",
+            "severity": "warning",
+            "source": "design-system-usage",
+            "component": "label",
+            "message": "Raw <label> used instead of a Marigold component.",
+            "suggestion": "Use <Label> from @marigold/components instead of <label>.",
+            "location": {
+              "file": "TestApp.tsx",
+              "line": 220,
+              "column": 15
+            },
+            "details": {
+              "htmlElement": "label"
+            }
+          },
+          {
+            "type": "technical",
+            "severity": "warning",
+            "source": "design-system-usage",
+            "component": "div",
+            "message": "Raw <div> used instead of a Marigold component.",
+            "suggestion": "Raw <div> used instead of a Marigold layout component. Search the Marigold docs for layout alternatives.",
+            "location": {
+              "file": "TestApp.tsx",
+              "line": 233,
+              "column": 13
+            },
+            "details": {
+              "htmlElement": "div"
+            }
+          },
+          {
+            "type": "technical",
+            "severity": "warning",
+            "source": "design-system-usage",
+            "component": "label",
+            "message": "Raw <label> used instead of a Marigold component.",
+            "suggestion": "Use <Label> from @marigold/components instead of <label>.",
+            "location": {
+              "file": "TestApp.tsx",
+              "line": 238,
+              "column": 15
+            },
+            "details": {
+              "htmlElement": "label"
+            }
+          },
+          {
+            "type": "technical",
+            "severity": "warning",
+            "source": "design-system-usage",
+            "component": "div",
+            "message": "Raw <div> used instead of a Marigold component.",
+            "suggestion": "Raw <div> used instead of a Marigold layout component. Search the Marigold docs for layout alternatives.",
+            "location": {
+              "file": "TestApp.tsx",
+              "line": 241,
+              "column": 13
+            },
+            "details": {
+              "htmlElement": "div"
+            }
+          },
+          {
+            "type": "technical",
+            "severity": "warning",
+            "source": "design-system-usage",
+            "component": "div",
+            "message": "Raw <div> used instead of a Marigold component.",
+            "suggestion": "Raw <div> used instead of a Marigold layout component. Search the Marigold docs for layout alternatives.",
+            "location": {
+              "file": "TestApp.tsx",
+              "line": 247,
+              "column": 15
+            },
+            "details": {
+              "htmlElement": "div"
+            }
+          },
+          {
+            "type": "technical",
+            "severity": "warning",
+            "source": "design-system-usage",
+            "component": "label",
+            "message": "Raw <label> used instead of a Marigold component.",
+            "suggestion": "Use <Label> from @marigold/components instead of <label>.",
+            "location": {
+              "file": "TestApp.tsx",
+              "line": 248,
+              "column": 17
+            },
+            "details": {
+              "htmlElement": "label"
+            }
+          },
+          {
+            "type": "technical",
+            "severity": "warning",
+            "source": "design-system-usage",
+            "component": "p",
+            "message": "Raw <p> used instead of a Marigold component.",
+            "suggestion": "Raw <p> used instead of a Marigold content component. Search the Marigold docs for content alternatives.",
+            "location": {
+              "file": "TestApp.tsx",
+              "line": 251,
+              "column": 17
+            },
+            "details": {
+              "htmlElement": "p"
+            }
+          }
+        ]
+      },
+      "B": {
+        "category": "B",
+        "label": "Token Compliance",
+        "score": 0,
+        "weight": 0.1,
+        "weightedScore": 0,
+        "errorCount": 0,
+        "warningCount": 0,
+        "issues": []
+      },
+      "C": {
+        "category": "C",
+        "label": "DOM / Structure",
+        "score": 1.01,
+        "weight": 0.225,
+        "weightedScore": 0.23,
+        "errorCount": 8,
+        "warningCount": 0,
+        "issues": [
+          {
+            "type": "technical",
+            "severity": "error",
+            "source": "compiler",
+            "component": "TypeScript",
+            "message": "TS2305: Module '\"@marigold/components\"' has no exported member 'Disclosure'.",
+            "suggestion": "Fix the TypeScript error reported by the compiler. The exact location is included in the issue location field.",
+            "location": {
+              "file": "TestApp.tsx",
+              "line": 3,
+              "column": 3
+            }
+          },
+          {
+            "type": "technical",
+            "severity": "error",
+            "source": "compiler",
+            "component": "TypeScript",
+            "message": "TS2305: Module '\"@marigold/components\"' has no exported member 'DisclosureGroup'.",
+            "suggestion": "Fix the TypeScript error reported by the compiler. The exact location is included in the issue location field.",
+            "location": {
+              "file": "TestApp.tsx",
+              "line": 4,
+              "column": 3
+            }
+          },
+          {
+            "type": "technical",
+            "severity": "error",
+            "source": "compiler",
+            "component": "TypeScript",
+            "message": "TS2724: '\"@marigold/components\"' has no exported member named 'Textarea'. Did you mean 'TextArea'?",
+            "suggestion": "Fix the TypeScript error reported by the compiler. The exact location is included in the issue location field.",
+            "location": {
+              "file": "TestApp.tsx",
+              "line": 6,
+              "column": 3
+            }
+          },
+          {
+            "type": "technical",
+            "severity": "error",
+            "source": "compiler",
+            "component": "TypeScript",
+            "message": "TS2305: Module '\"@marigold/components\"' has no exported member 'Message'.",
+            "suggestion": "Fix the TypeScript error reported by the compiler. The exact location is included in the issue location field.",
+            "location": {
+              "file": "TestApp.tsx",
+              "line": 12,
+              "column": 3
+            }
+          },
+          {
+            "type": "technical",
+            "severity": "error",
+            "source": "compiler",
+            "component": "TypeScript",
+            "message": "TS2322: Type 'Dispatch<SetStateAction<string>>' is not assignable to type '(value: Key | null) => void'.\n  Types of parameters 'value' and 'value' are incompatible.\n    Type 'Key | null' is not assignable to type 'SetStateAction<string>'.\n      Type 'null' is not assignable to type 'SetStateAction<string>'.",
+            "suggestion": "Fix the TypeScript error reported by the compiler. The exact location is included in the issue location field.",
+            "location": {
+              "file": "TestApp.tsx",
+              "line": 127,
+              "column": 15
+            }
+          },
+          {
+            "type": "technical",
+            "severity": "error",
+            "source": "compiler",
+            "component": "TypeScript",
+            "message": "TS2322: Type 'Dispatch<SetStateAction<string>>' is not assignable to type '(value: Key | null) => void'.\n  Types of parameters 'value' and 'value' are incompatible.\n    Type 'Key | null' is not assignable to type 'SetStateAction<string>'.\n      Type 'null' is not assignable to type 'SetStateAction<string>'.",
+            "suggestion": "Fix the TypeScript error reported by the compiler. The exact location is included in the issue location field.",
+            "location": {
+              "file": "TestApp.tsx",
+              "line": 197,
+              "column": 15
+            }
+          },
+          {
+            "type": "technical",
+            "severity": "error",
+            "source": "composition-validator",
+            "component": "Select",
+            "message": "<Select> is used without any of its sub-components.",
+            "suggestion": "Use compound children: <Select.Option>, <Select.Section>.",
+            "location": {
+              "file": "TestApp.tsx",
+              "line": 124,
+              "column": 13
+            },
+            "details": {
+              "expected": [
+                "Option",
+                "Section"
+              ],
+              "found": []
+            }
+          },
+          {
+            "type": "technical",
+            "severity": "error",
+            "source": "composition-validator",
+            "component": "Select",
+            "message": "<Select> is used without any of its sub-components.",
+            "suggestion": "Use compound children: <Select.Option>, <Select.Section>.",
+            "location": {
+              "file": "TestApp.tsx",
+              "line": 194,
+              "column": 13
+            },
+            "details": {
+              "expected": [
+                "Option",
+                "Section"
+              ],
+              "found": []
+            }
+          }
+        ]
+      },
+      "D": {
+        "category": "D",
+        "label": "Spatial & A11y",
+        "score": 0,
+        "weight": 0.225,
+        "weightedScore": 0,
+        "errorCount": 0,
+        "warningCount": 0,
+        "issues": []
+      },
+      "E": {
+        "category": "E",
+        "label": "Functional Completeness",
+        "score": 64.1,
+        "weight": 0.225,
+        "weightedScore": 14.42,
+        "errorCount": 0,
+        "warningCount": 0,
+        "issues": []
+      }
+    },
+    "renderSuccess": false
+  },
+  "efficiency": {
+    "durationMs": 24412,
+    "costUsd": 0.060542200000000004,
+    "inputTokens": 32,
+    "outputTokens": 3062,
+    "cacheReadTokens": 108112,
+    "cacheCreationTokens": 16714,
+    "totalTokens": 3094,
+    "numTurns": 5
+  },
+  "report": {
+    "file": "TestApp.tsx",
+    "errors": [
+      {
+        "type": "technical",
+        "severity": "error",
+        "source": "compiler",
+        "component": "TypeScript",
+        "message": "TS2305: Module '\"@marigold/components\"' has no exported member 'Disclosure'.",
+        "suggestion": "Fix the TypeScript error reported by the compiler. The exact location is included in the issue location field.",
+        "location": {
+          "file": "TestApp.tsx",
+          "line": 3,
+          "column": 3
+        }
+      },
+      {
+        "type": "technical",
+        "severity": "error",
+        "source": "compiler",
+        "component": "TypeScript",
+        "message": "TS2305: Module '\"@marigold/components\"' has no exported member 'DisclosureGroup'.",
+        "suggestion": "Fix the TypeScript error reported by the compiler. The exact location is included in the issue location field.",
+        "location": {
+          "file": "TestApp.tsx",
+          "line": 4,
+          "column": 3
+        }
+      },
+      {
+        "type": "technical",
+        "severity": "error",
+        "source": "compiler",
+        "component": "TypeScript",
+        "message": "TS2724: '\"@marigold/components\"' has no exported member named 'Textarea'. Did you mean 'TextArea'?",
+        "suggestion": "Fix the TypeScript error reported by the compiler. The exact location is included in the issue location field.",
+        "location": {
+          "file": "TestApp.tsx",
+          "line": 6,
+          "column": 3
+        }
+      },
+      {
+        "type": "technical",
+        "severity": "error",
+        "source": "compiler",
+        "component": "TypeScript",
+        "message": "TS2305: Module '\"@marigold/components\"' has no exported member 'Message'.",
+        "suggestion": "Fix the TypeScript error reported by the compiler. The exact location is included in the issue location field.",
+        "location": {
+          "file": "TestApp.tsx",
+          "line": 12,
+          "column": 3
+        }
+      },
+      {
+        "type": "technical",
+        "severity": "error",
+        "source": "compiler",
+        "component": "TypeScript",
+        "message": "TS2322: Type 'Dispatch<SetStateAction<string>>' is not assignable to type '(value: Key | null) => void'.\n  Types of parameters 'value' and 'value' are incompatible.\n    Type 'Key | null' is not assignable to type 'SetStateAction<string>'.\n      Type 'null' is not assignable to type 'SetStateAction<string>'.",
+        "suggestion": "Fix the TypeScript error reported by the compiler. The exact location is included in the issue location field.",
+        "location": {
+          "file": "TestApp.tsx",
+          "line": 127,
+          "column": 15
+        }
+      },
+      {
+        "type": "technical",
+        "severity": "error",
+        "source": "compiler",
+        "component": "TypeScript",
+        "message": "TS2322: Type 'Dispatch<SetStateAction<string>>' is not assignable to type '(value: Key | null) => void'.\n  Types of parameters 'value' and 'value' are incompatible.\n    Type 'Key | null' is not assignable to type 'SetStateAction<string>'.\n      Type 'null' is not assignable to type 'SetStateAction<string>'.",
+        "suggestion": "Fix the TypeScript error reported by the compiler. The exact location is included in the issue location field.",
+        "location": {
+          "file": "TestApp.tsx",
+          "line": 197,
+          "column": 15
+        }
+      },
+      {
+        "type": "technical",
+        "severity": "error",
+        "source": "prop-validator",
+        "component": "TextField",
+        "message": "Prop \"isRequired\" does not exist on <TextField>.",
+        "suggestion": "Replace \"isRequired\" with \"required\".",
+        "location": {
+          "file": "TestApp.tsx",
+          "line": 76,
+          "column": 15
+        },
+        "details": {
+          "used": "isRequired",
+          "available": [
+            "variant",
+            "size",
+            "width",
+            "disabled",
+            "required",
+            "error",
+            "readOnly",
+            "min",
+            "max",
+            "value",
+            "defaultValue",
+            "placeholder",
+            "render",
+            "id",
+            "dir"
+          ]
+        }
+      },
+      {
+        "type": "technical",
+        "severity": "error",
+        "source": "composition-validator",
+        "component": "Select",
+        "message": "<Select> is used without any of its sub-components.",
+        "suggestion": "Use compound children: <Select.Option>, <Select.Section>.",
+        "location": {
+          "file": "TestApp.tsx",
+          "line": 124,
+          "column": 13
+        },
+        "details": {
+          "expected": [
+            "Option",
+            "Section"
+          ],
+          "found": []
+        }
+      },
+      {
+        "type": "technical",
+        "severity": "error",
+        "source": "composition-validator",
+        "component": "Select",
+        "message": "<Select> is used without any of its sub-components.",
+        "suggestion": "Use compound children: <Select.Option>, <Select.Section>.",
+        "location": {
+          "file": "TestApp.tsx",
+          "line": 194,
+          "column": 13
+        },
+        "details": {
+          "expected": [
+            "Option",
+            "Section"
+          ],
+          "found": []
+        }
+      },
+      {
+        "type": "technical",
+        "severity": "error",
+        "source": "design-system-usage",
+        "component": "DisclosureGroup",
+        "message": "<DisclosureGroup> is not a Marigold component. It is not exported from @marigold/components.",
+        "suggestion": "<DisclosureGroup> does not exist in @marigold/components. Search the Marigold docs for the correct component.",
+        "location": {
+          "file": "TestApp.tsx",
+          "line": 70,
+          "column": 7
+        },
+        "details": {
+          "hallucinated": true,
+          "importedFrom": "@marigold/components"
+        }
+      },
+      {
+        "type": "technical",
+        "severity": "error",
+        "source": "design-system-usage",
+        "component": "Disclosure",
+        "message": "<Disclosure> is not a Marigold component. It is not exported from @marigold/components.",
+        "suggestion": "<Disclosure> does not exist in @marigold/components. Search the Marigold docs for the correct component.",
+        "location": {
+          "file": "TestApp.tsx",
+          "line": 72,
+          "column": 9
+        },
+        "details": {
+          "hallucinated": true,
+          "importedFrom": "@marigold/components"
+        }
+      },
+      {
+        "type": "technical",
+        "severity": "error",
+        "source": "design-system-usage",
+        "component": "Textarea",
+        "message": "<Textarea> is not a Marigold component. It is not exported from @marigold/components.",
+        "suggestion": "<Textarea> does not exist in @marigold/components. Search the Marigold docs for the correct component.",
+        "location": {
+          "file": "TestApp.tsx",
+          "line": 92,
+          "column": 13
+        },
+        "details": {
+          "hallucinated": true,
+          "importedFrom": "@marigold/components"
+        }
+      },
+      {
+        "type": "technical",
+        "severity": "error",
+        "source": "design-system-usage",
+        "component": "Message",
+        "message": "<Message> is not a Marigold component. It is not exported from @marigold/components.",
+        "suggestion": "<Message> does not exist in @marigold/components. Search the Marigold docs for the correct component.",
+        "location": {
+          "file": "TestApp.tsx",
+          "line": 100,
+          "column": 15
+        },
+        "details": {
+          "hallucinated": true,
+          "importedFrom": "@marigold/components"
+        }
+      },
+      {
+        "type": "technical",
+        "severity": "error",
+        "source": "design-system-usage",
+        "component": "Disclosure",
+        "message": "<Disclosure> is not a Marigold component. It is not exported from @marigold/components.",
+        "suggestion": "<Disclosure> does not exist in @marigold/components. Search the Marigold docs for the correct component.",
+        "location": {
+          "file": "TestApp.tsx",
+          "line": 113,
+          "column": 9
+        },
+        "details": {
+          "hallucinated": true,
+          "importedFrom": "@marigold/components"
+        }
+      },
+      {
+        "type": "technical",
+        "severity": "error",
+        "source": "design-system-usage",
+        "component": "Disclosure",
+        "message": "<Disclosure> is not a Marigold component. It is not exported from @marigold/components.",
+        "suggestion": "<Disclosure> does not exist in @marigold/components. Search the Marigold docs for the correct component.",
+        "location": {
+          "file": "TestApp.tsx",
+          "line": 152,
+          "column": 9
+        },
+        "details": {
+          "hallucinated": true,
+          "importedFrom": "@marigold/components"
+        }
+      },
+      {
+        "type": "technical",
+        "severity": "error",
+        "source": "design-system-usage",
+        "component": "Message",
+        "message": "<Message> is not a Marigold component. It is not exported from @marigold/components.",
+        "suggestion": "<Message> does not exist in @marigold/components. Search the Marigold docs for the correct component.",
+        "location": {
+          "file": "TestApp.tsx",
+          "line": 205,
+          "column": 15
+        },
+        "details": {
+          "hallucinated": true,
+          "importedFrom": "@marigold/components"
+        }
+      },
+      {
+        "type": "technical",
+        "severity": "error",
+        "source": "design-system-usage",
+        "component": "Disclosure",
+        "message": "<Disclosure> is not a Marigold component. It is not exported from @marigold/components.",
+        "suggestion": "<Disclosure> does not exist in @marigold/components. Search the Marigold docs for the correct component.",
+        "location": {
+          "file": "TestApp.tsx",
+          "line": 217,
+          "column": 9
+        },
+        "details": {
+          "hallucinated": true,
+          "importedFrom": "@marigold/components"
+        }
+      },
+      {
+        "type": "technical",
+        "severity": "error",
+        "source": "design-system-usage",
+        "component": "Message",
+        "message": "<Message> is not a Marigold component. It is not exported from @marigold/components.",
+        "suggestion": "<Message> does not exist in @marigold/components. Search the Marigold docs for the correct component.",
+        "location": {
+          "file": "TestApp.tsx",
+          "line": 258,
+          "column": 15
+        },
+        "details": {
+          "hallucinated": true,
+          "importedFrom": "@marigold/components"
+        }
+      }
+    ],
+    "warnings": [
+      {
+        "type": "technical",
+        "severity": "warning",
+        "source": "design-system-usage",
+        "component": "div",
+        "message": "Raw <div> used instead of a Marigold component.",
+        "suggestion": "Raw <div> used instead of a Marigold layout component. Search the Marigold docs for layout alternatives.",
+        "location": {
+          "file": "TestApp.tsx",
+          "line": 67,
+          "column": 5
+        },
+        "details": {
+          "htmlElement": "div"
+        }
+      },
+      {
+        "type": "technical",
+        "severity": "warning",
+        "source": "design-system-usage",
+        "component": "h1",
+        "message": "Raw <h1> used instead of a Marigold component.",
+        "suggestion": "Raw <h1> used instead of a Marigold content component. Search the Marigold docs for content alternatives.",
+        "location": {
+          "file": "TestApp.tsx",
+          "line": 68,
+          "column": 7
+        },
+        "details": {
+          "htmlElement": "h1"
+        }
+      },
+      {
+        "type": "technical",
+        "severity": "warning",
+        "source": "design-system-usage",
+        "component": "div",
+        "message": "Raw <div> used instead of a Marigold component.",
+        "suggestion": "Raw <div> used instead of a Marigold layout component. Search the Marigold docs for layout alternatives.",
+        "location": {
+          "file": "TestApp.tsx",
+          "line": 73,
+          "column": 11
+        },
+        "details": {
+          "htmlElement": "div"
+        }
+      },
+      {
+        "type": "technical",
+        "severity": "warning",
+        "source": "design-system-usage",
+        "component": "div",
+        "message": "Raw <div> used instead of a Marigold component.",
+        "suggestion": "Raw <div> used instead of a Marigold layout component. Search the Marigold docs for layout alternatives.",
+        "location": {
+          "file": "TestApp.tsx",
+          "line": 114,
+          "column": 11
+        },
+        "details": {
+          "htmlElement": "div"
+        }
+      },
+      {
+        "type": "technical",
+        "severity": "warning",
+        "source": "design-system-usage",
+        "component": "div",
+        "message": "Raw <div> used instead of a Marigold component.",
+        "suggestion": "Raw <div> used instead of a Marigold layout component. Search the Marigold docs for layout alternatives.",
+        "location": {
+          "file": "TestApp.tsx",
+          "line": 115,
+          "column": 13
+        },
+        "details": {
+          "htmlElement": "div"
+        }
+      },
+      {
+        "type": "technical",
+        "severity": "warning",
+        "source": "design-system-usage",
+        "component": "label",
+        "message": "Raw <label> used instead of a Marigold component.",
+        "suggestion": "Use <Label> from @marigold/components instead of <label>.",
+        "location": {
+          "file": "TestApp.tsx",
+          "line": 116,
+          "column": 15
+        },
+        "details": {
+          "htmlElement": "label"
+        }
+      },
+      {
+        "type": "technical",
+        "severity": "warning",
+        "source": "design-system-usage",
+        "component": "option",
+        "message": "Raw <option> used instead of a Marigold component.",
+        "suggestion": "Replace <option> with the appropriate Marigold component. Search the Marigold docs for alternatives.",
+        "location": {
+          "file": "TestApp.tsx",
+          "line": 129,
+          "column": 15
+        },
+        "details": {
+          "htmlElement": "option"
+        }
+      },
+      {
+        "type": "technical",
+        "severity": "warning",
+        "source": "design-system-usage",
+        "component": "option",
+        "message": "Raw <option> used instead of a Marigold component.",
+        "suggestion": "Replace <option> with the appropriate Marigold component. Search the Marigold docs for alternatives.",
+        "location": {
+          "file": "TestApp.tsx",
+          "line": 130,
+          "column": 15
+        },
+        "details": {
+          "htmlElement": "option"
+        }
+      },
+      {
+        "type": "technical",
+        "severity": "warning",
+        "source": "design-system-usage",
+        "component": "option",
+        "message": "Raw <option> used instead of a Marigold component.",
+        "suggestion": "Replace <option> with the appropriate Marigold component. Search the Marigold docs for alternatives.",
+        "location": {
+          "file": "TestApp.tsx",
+          "line": 131,
+          "column": 15
+        },
+        "details": {
+          "htmlElement": "option"
+        }
+      },
+      {
+        "type": "technical",
+        "severity": "warning",
+        "source": "design-system-usage",
+        "component": "div",
+        "message": "Raw <div> used instead of a Marigold component.",
+        "suggestion": "Raw <div> used instead of a Marigold layout component. Search the Marigold docs for layout alternatives.",
+        "location": {
+          "file": "TestApp.tsx",
+          "line": 134,
+          "column": 13
+        },
+        "details": {
+          "htmlElement": "div"
+        }
+      },
+      {
+        "type": "technical",
+        "severity": "warning",
+        "source": "design-system-usage",
+        "component": "div",
+        "message": "Raw <div> used instead of a Marigold component.",
+        "suggestion": "Raw <div> used instead of a Marigold layout component. Search the Marigold docs for layout alternatives.",
+        "location": {
+          "file": "TestApp.tsx",
+          "line": 139,
+          "column": 15
+        },
+        "details": {
+          "htmlElement": "div"
+        }
+      },
+      {
+        "type": "technical",
+        "severity": "warning",
+        "source": "design-system-usage",
+        "component": "label",
+        "message": "Raw <label> used instead of a Marigold component.",
+        "suggestion": "Use <Label> from @marigold/components instead of <label>.",
+        "location": {
+          "file": "TestApp.tsx",
+          "line": 140,
+          "column": 17
+        },
+        "details": {
+          "htmlElement": "label"
+        }
+      },
+      {
+        "type": "technical",
+        "severity": "warning",
+        "source": "design-system-usage",
+        "component": "p",
+        "message": "Raw <p> used instead of a Marigold component.",
+        "suggestion": "Raw <p> used instead of a Marigold content component. Search the Marigold docs for content alternatives.",
+        "location": {
+          "file": "TestApp.tsx",
+          "line": 143,
+          "column": 17
+        },
+        "details": {
+          "htmlElement": "p"
+        }
+      },
+      {
+        "type": "technical",
+        "severity": "warning",
+        "source": "design-system-usage",
+        "component": "div",
+        "message": "Raw <div> used instead of a Marigold component.",
+        "suggestion": "Raw <div> used instead of a Marigold layout component. Search the Marigold docs for layout alternatives.",
+        "location": {
+          "file": "TestApp.tsx",
+          "line": 153,
+          "column": 11
+        },
+        "details": {
+          "htmlElement": "div"
+        }
+      },
+      {
+        "type": "technical",
+        "severity": "warning",
+        "source": "design-system-usage",
+        "component": "div",
+        "message": "Raw <div> used instead of a Marigold component.",
+        "suggestion": "Raw <div> used instead of a Marigold layout component. Search the Marigold docs for layout alternatives.",
+        "location": {
+          "file": "TestApp.tsx",
+          "line": 154,
+          "column": 13
+        },
+        "details": {
+          "htmlElement": "div"
+        }
+      },
+      {
+        "type": "technical",
+        "severity": "warning",
+        "source": "design-system-usage",
+        "component": "label",
+        "message": "Raw <label> used instead of a Marigold component.",
+        "suggestion": "Use <Label> from @marigold/components instead of <label>.",
+        "location": {
+          "file": "TestApp.tsx",
+          "line": 155,
+          "column": 15
+        },
+        "details": {
+          "htmlElement": "label"
+        }
+      },
+      {
+        "type": "technical",
+        "severity": "warning",
+        "source": "design-system-usage",
+        "component": "div",
+        "message": "Raw <div> used instead of a Marigold component.",
+        "suggestion": "Raw <div> used instead of a Marigold layout component. Search the Marigold docs for layout alternatives.",
+        "location": {
+          "file": "TestApp.tsx",
+          "line": 158,
+          "column": 15
+        },
+        "details": {
+          "htmlElement": "div"
+        }
+      },
+      {
+        "type": "technical",
+        "severity": "warning",
+        "source": "design-system-usage",
+        "component": "label",
+        "message": "Raw <label> used instead of a Marigold component.",
+        "suggestion": "Use <Label> from @marigold/components instead of <label>.",
+        "location": {
+          "file": "TestApp.tsx",
+          "line": 163,
+          "column": 17
+        },
+        "details": {
+          "htmlElement": "label"
+        }
+      },
+      {
+        "type": "technical",
+        "severity": "warning",
+        "source": "design-system-usage",
+        "component": "div",
+        "message": "Raw <div> used instead of a Marigold component.",
+        "suggestion": "Raw <div> used instead of a Marigold layout component. Search the Marigold docs for layout alternatives.",
+        "location": {
+          "file": "TestApp.tsx",
+          "line": 167,
+          "column": 15
+        },
+        "details": {
+          "htmlElement": "div"
+        }
+      },
+      {
+        "type": "technical",
+        "severity": "warning",
+        "source": "design-system-usage",
+        "component": "label",
+        "message": "Raw <label> used instead of a Marigold component.",
+        "suggestion": "Use <Label> from @marigold/components instead of <label>.",
+        "location": {
+          "file": "TestApp.tsx",
+          "line": 172,
+          "column": 17
+        },
+        "details": {
+          "htmlElement": "label"
+        }
+      },
+      {
+        "type": "technical",
+        "severity": "warning",
+        "source": "design-system-usage",
+        "component": "div",
+        "message": "Raw <div> used instead of a Marigold component.",
+        "suggestion": "Raw <div> used instead of a Marigold layout component. Search the Marigold docs for layout alternatives.",
+        "location": {
+          "file": "TestApp.tsx",
+          "line": 176,
+          "column": 15
+        },
+        "details": {
+          "htmlElement": "div"
+        }
+      },
+      {
+        "type": "technical",
+        "severity": "warning",
+        "source": "design-system-usage",
+        "component": "label",
+        "message": "Raw <label> used instead of a Marigold component.",
+        "suggestion": "Use <Label> from @marigold/components instead of <label>.",
+        "location": {
+          "file": "TestApp.tsx",
+          "line": 181,
+          "column": 17
+        },
+        "details": {
+          "htmlElement": "label"
+        }
+      },
+      {
+        "type": "technical",
+        "severity": "warning",
+        "source": "design-system-usage",
+        "component": "div",
+        "message": "Raw <div> used instead of a Marigold component.",
+        "suggestion": "Raw <div> used instead of a Marigold layout component. Search the Marigold docs for layout alternatives.",
+        "location": {
+          "file": "TestApp.tsx",
+          "line": 183,
+          "column": 15
+        },
+        "details": {
+          "htmlElement": "div"
+        }
+      },
+      {
+        "type": "technical",
+        "severity": "warning",
+        "source": "design-system-usage",
+        "component": "label",
+        "message": "Raw <label> used instead of a Marigold component.",
+        "suggestion": "Use <Label> from @marigold/components instead of <label>.",
+        "location": {
+          "file": "TestApp.tsx",
+          "line": 188,
+          "column": 17
+        },
+        "details": {
+          "htmlElement": "label"
+        }
+      },
+      {
+        "type": "technical",
+        "severity": "warning",
+        "source": "design-system-usage",
+        "component": "option",
+        "message": "Raw <option> used instead of a Marigold component.",
+        "suggestion": "Replace <option> with the appropriate Marigold component. Search the Marigold docs for alternatives.",
+        "location": {
+          "file": "TestApp.tsx",
+          "line": 199,
+          "column": 15
+        },
+        "details": {
+          "htmlElement": "option"
+        }
+      },
+      {
+        "type": "technical",
+        "severity": "warning",
+        "source": "design-system-usage",
+        "component": "option",
+        "message": "Raw <option> used instead of a Marigold component.",
+        "suggestion": "Replace <option> with the appropriate Marigold component. Search the Marigold docs for alternatives.",
+        "location": {
+          "file": "TestApp.tsx",
+          "line": 200,
+          "column": 15
+        },
+        "details": {
+          "htmlElement": "option"
+        }
+      },
+      {
+        "type": "technical",
+        "severity": "warning",
+        "source": "design-system-usage",
+        "component": "option",
+        "message": "Raw <option> used instead of a Marigold component.",
+        "suggestion": "Replace <option> with the appropriate Marigold component. Search the Marigold docs for alternatives.",
+        "location": {
+          "file": "TestApp.tsx",
+          "line": 201,
+          "column": 15
+        },
+        "details": {
+          "htmlElement": "option"
+        }
+      },
+      {
+        "type": "technical",
+        "severity": "warning",
+        "source": "design-system-usage",
+        "component": "div",
+        "message": "Raw <div> used instead of a Marigold component.",
+        "suggestion": "Raw <div> used instead of a Marigold layout component. Search the Marigold docs for layout alternatives.",
+        "location": {
+          "file": "TestApp.tsx",
+          "line": 218,
+          "column": 11
+        },
+        "details": {
+          "htmlElement": "div"
+        }
+      },
+      {
+        "type": "technical",
+        "severity": "warning",
+        "source": "design-system-usage",
+        "component": "div",
+        "message": "Raw <div> used instead of a Marigold component.",
+        "suggestion": "Raw <div> used instead of a Marigold layout component. Search the Marigold docs for layout alternatives.",
+        "location": {
+          "file": "TestApp.tsx",
+          "line": 219,
+          "column": 13
+        },
+        "details": {
+          "htmlElement": "div"
+        }
+      },
+      {
+        "type": "technical",
+        "severity": "warning",
+        "source": "design-system-usage",
+        "component": "label",
+        "message": "Raw <label> used instead of a Marigold component.",
+        "suggestion": "Use <Label> from @marigold/components instead of <label>.",
+        "location": {
+          "file": "TestApp.tsx",
+          "line": 220,
+          "column": 15
+        },
+        "details": {
+          "htmlElement": "label"
+        }
+      },
+      {
+        "type": "technical",
+        "severity": "warning",
+        "source": "design-system-usage",
+        "component": "div",
+        "message": "Raw <div> used instead of a Marigold component.",
+        "suggestion": "Raw <div> used instead of a Marigold layout component. Search the Marigold docs for layout alternatives.",
+        "location": {
+          "file": "TestApp.tsx",
+          "line": 233,
+          "column": 13
+        },
+        "details": {
+          "htmlElement": "div"
+        }
+      },
+      {
+        "type": "technical",
+        "severity": "warning",
+        "source": "design-system-usage",
+        "component": "label",
+        "message": "Raw <label> used instead of a Marigold component.",
+        "suggestion": "Use <Label> from @marigold/components instead of <label>.",
+        "location": {
+          "file": "TestApp.tsx",
+          "line": 238,
+          "column": 15
+        },
+        "details": {
+          "htmlElement": "label"
+        }
+      },
+      {
+        "type": "technical",
+        "severity": "warning",
+        "source": "design-system-usage",
+        "component": "div",
+        "message": "Raw <div> used instead of a Marigold component.",
+        "suggestion": "Raw <div> used instead of a Marigold layout component. Search the Marigold docs for layout alternatives.",
+        "location": {
+          "file": "TestApp.tsx",
+          "line": 241,
+          "column": 13
+        },
+        "details": {
+          "htmlElement": "div"
+        }
+      },
+      {
+        "type": "technical",
+        "severity": "warning",
+        "source": "design-system-usage",
+        "component": "div",
+        "message": "Raw <div> used instead of a Marigold component.",
+        "suggestion": "Raw <div> used instead of a Marigold layout component. Search the Marigold docs for layout alternatives.",
+        "location": {
+          "file": "TestApp.tsx",
+          "line": 247,
+          "column": 15
+        },
+        "details": {
+          "htmlElement": "div"
+        }
+      },
+      {
+        "type": "technical",
+        "severity": "warning",
+        "source": "design-system-usage",
+        "component": "label",
+        "message": "Raw <label> used instead of a Marigold component.",
+        "suggestion": "Use <Label> from @marigold/components instead of <label>.",
+        "location": {
+          "file": "TestApp.tsx",
+          "line": 248,
+          "column": 17
+        },
+        "details": {
+          "htmlElement": "label"
+        }
+      },
+      {
+        "type": "technical",
+        "severity": "warning",
+        "source": "design-system-usage",
+        "component": "p",
+        "message": "Raw <p> used instead of a Marigold component.",
+        "suggestion": "Raw <p> used instead of a Marigold content component. Search the Marigold docs for content alternatives.",
+        "location": {
+          "file": "TestApp.tsx",
+          "line": 251,
+          "column": 17
+        },
+        "details": {
+          "htmlElement": "p"
+        }
+      }
+    ],
+    "passed": [
+      "Overlay accessible names",
+      "Compound component placement",
+      "Section headers",
+      "Collection item ids",
+      "Layout usage",
+      "Table usage",
+      "Component conventions",
+      "Theme variant compliance"
+    ],
+    "metadata": {
+      "renderTimeMs": 0,
+      "componentsFound": [],
+      "checksRun": [
+        "technical",
+        "spatial",
+        "a11y"
+      ],
+      "coverage": {
+        "staticValuesChecked": 1,
+        "dynamicValuesSkipped": 0,
+        "spreadPropsBypassed": 0
+      },
+      "widthUtilization": null
+    },
+    "markdown": "marigold-validate: TestApp.tsx — 18 error(s), 36 warning(s)\n\n[error/technical] <Disclosure>: <Disclosure> is not a Marigold component. It is not exported from @marigold/components. (TestApp.tsx:72:9)\n  → <Disclosure> does not exist in @marigold/components. Search the Marigold docs for the correct component.\n  data: {hallucinated=true, importedFrom=@marigold/components}\n[error/technical] <Disclosure>: <Disclosure> is not a Marigold component. It is not exported from @marigold/components. (TestApp.tsx:113:9)\n  → <Disclosure> does not exist in @marigold/components. Search the Marigold docs for the correct component.\n  data: {hallucinated=true, importedFrom=@marigold/components}\n[error/technical] <Disclosure>: <Disclosure> is not a Marigold component. It is not exported from @marigold/components. (TestApp.tsx:152:9)\n  → <Disclosure> does not exist in @marigold/components. Search the Marigold docs for the correct component.\n  data: {hallucinated=true, importedFrom=@marigold/components}\n[error/technical] <Disclosure>: <Disclosure> is not a Marigold component. It is not exported from @marigold/components. (TestApp.tsx:217:9)\n  → <Disclosure> does not exist in @marigold/components. Search the Marigold docs for the correct component.\n  data: {hallucinated=true, importedFrom=@marigold/components}\n[error/technical] <DisclosureGroup>: <DisclosureGroup> is not a Marigold component. It is not exported from @marigold/components. (TestApp.tsx:70:7)\n  → <DisclosureGroup> does not exist in @marigold/components. Search the Marigold docs for the correct component.\n  data: {hallucinated=true, importedFrom=@marigold/components}\n[error/technical] <Message>: <Message> is not a Marigold component. It is not exported from @marigold/components. (TestApp.tsx:100:15)\n  → <Message> does not exist in @marigold/components. Search the Marigold docs for the correct component.\n  data: {hallucinated=true, importedFrom=@marigold/components}\n[error/technical] <Message>: <Message> is not a Marigold component. It is not exported from @marigold/components. (TestApp.tsx:205:15)\n  → <Message> does not exist in @marigold/components. Search the Marigold docs for the correct component.\n  data: {hallucinated=true, importedFrom=@marigold/components}\n[error/technical] <Message>: <Message> is not a Marigold component. It is not exported from @marigold/components. (TestApp.tsx:258:15)\n  → <Message> does not exist in @marigold/components. Search the Marigold docs for the correct component.\n  data: {hallucinated=true, importedFrom=@marigold/components}\n[error/technical] <Select>: <Select> is used without any of its sub-components. (TestApp.tsx:124:13)\n  → Use compound children: <Select.Option>, <Select.Section>.\n  data: {expected=[\"Option\",\"Section\"], found=[]}\n[error/technical] <Select>: <Select> is used without any of its sub-components. (TestApp.tsx:194:13)\n  → Use compound children: <Select.Option>, <Select.Section>.\n  data: {expected=[\"Option\",\"Section\"], found=[]}\n[error/technical] <Textarea>: <Textarea> is not a Marigold component. It is not exported from @marigold/components. (TestApp.tsx:92:13)\n  → <Textarea> does not exist in @marigold/components. Search the Marigold docs for the correct component.\n  data: {hallucinated=true, importedFrom=@marigold/components}\n[error/technical] <TextField>: Prop \"isRequired\" does not exist on <TextField>. (TestApp.tsx:76:15)\n  → Replace \"isRequired\" with \"required\".\n  data: {used=isRequired, available=[\"variant\",\"size\",\"width\",\"disabled\",\"required\",\"error\",\"readOnly\",\"min\", …]}\n[error/technical] <TypeScript>: TS2305: Module '\"@marigold/components\"' has no exported member 'Disclosure'. (TestApp.tsx:3:3)\n  → Fix the TypeScript error reported by the compiler. The exact location is included in the issue location field.\n[error/technical] <TypeScript>: TS2305: Module '\"@marigold/components\"' has no exported member 'DisclosureGroup'. (TestApp.tsx:4:3)\n  → Fix the TypeScript error reported by the compiler. The exact location is included in the issue location field.\n[error/technical] <TypeScript>: TS2724: '\"@marigold/components\"' has no exported member named 'Textarea'. Did you mean 'TextArea'? (TestApp.tsx:6:3)\n  → Fix the TypeScript error reported by the compiler. The exact location is included in the issue location field.\n[error/technical] <TypeScript>: TS2305: Module '\"@marigold/components\"' has no exported member 'Message'. (TestApp.tsx:12:3)\n  → Fix the TypeScript error reported by the compiler. The exact location is included in the issue location field.\n[error/technical] <TypeScript>: TS2322: Type 'Dispatch<SetStateAction<string>>' is not assignable to type '(value: Key | null) => void'.\n  Types of parameters 'value' and 'value' are incompatible.\n    Type 'Key | null' is not assignable to type 'SetStateAction<string>'.\n      Type 'null' is not assignable to type 'SetStateAction<string>'. (TestApp.tsx:127:15)\n  → Fix the TypeScript error reported by the compiler. The exact location is included in the issue location field.\n[error/technical] <TypeScript>: TS2322: Type 'Dispatch<SetStateAction<string>>' is not assignable to type '(value: Key | null) => void'.\n  Types of parameters 'value' and 'value' are incompatible.\n    Type 'Key | null' is not assignable to type 'SetStateAction<string>'.\n      Type 'null' is not assignable to type 'SetStateAction<string>'. (TestApp.tsx:197:15)\n  → Fix the TypeScript error reported by the compiler. The exact location is included in the issue location field.\n[warning/technical] <div>: Raw <div> used instead of a Marigold component. (TestApp.tsx:67:5)\n  → Raw <div> used instead of a Marigold layout component. Search the Marigold docs for layout alternatives.\n  data: {htmlElement=div}\n[warning/technical] <div>: Raw <div> used instead of a Marigold component. (TestApp.tsx:73:11)\n  → Raw <div> used instead of a Marigold layout component. Search the Marigold docs for layout alternatives.\n  data: {htmlElement=div}\n[warning/technical] <div>: Raw <div> used instead of a Marigold component. (TestApp.tsx:114:11)\n  → Raw <div> used instead of a Marigold layout component. Search the Marigold docs for layout alternatives.\n  data: {htmlElement=div}\n[warning/technical] <div>: Raw <div> used instead of a Marigold component. (TestApp.tsx:115:13)\n  → Raw <div> used instead of a Marigold layout component. Search the Marigold docs for layout alternatives.\n  data: {htmlElement=div}\n[warning/technical] <div>: Raw <div> used instead of a Marigold component. (TestApp.tsx:134:13)\n  → Raw <div> used instead of a Marigold layout component. Search the Marigold docs for layout alternatives.\n  data: {htmlElement=div}\n[warning/technical] <div>: Raw <div> used instead of a Marigold component. (TestApp.tsx:139:15)\n  → Raw <div> used instead of a Marigold layout component. Search the Marigold docs for layout alternatives.\n  data: {htmlElement=div}\n[warning/technical] <div>: Raw <div> used instead of a Marigold component. (TestApp.tsx:153:11)\n  → Raw <div> used instead of a Marigold layout component. Search the Marigold docs for layout alternatives.\n  data: {htmlElement=div}\n[warning/technical] <div>: Raw <div> used instead of a Marigold component. (TestApp.tsx:154:13)\n  → Raw <div> used instead of a Marigold layout component. Search the Marigold docs for layout alternatives.\n  data: {htmlElement=div}\n[warning/technical] <div>: Raw <div> used instead of a Marigold component. (TestApp.tsx:158:15)\n  → Raw <div> used instead of a Marigold layout component. Search the Marigold docs for layout alternatives.\n  data: {htmlElement=div}\n[warning/technical] <div>: Raw <div> used instead of a Marigold component. (TestApp.tsx:167:15)\n  → Raw <div> used instead of a Marigold layout component. Search the Marigold docs for layout alternatives.\n  data: {htmlElement=div}\n[warning/technical] <div>: Raw <div> used instead of a Marigold component. (TestApp.tsx:176:15)\n  → Raw <div> used instead of a Marigold layout component. Search the Marigold docs for layout alternatives.\n  data: {htmlElement=div}\n[warning/technical] <div>: Raw <div> used instead of a Marigold component. (TestApp.tsx:183:15)\n  → Raw <div> used instead of a Marigold layout component. Search the Marigold docs for layout alternatives.\n  data: {htmlElement=div}\n[warning/technical] <div>: Raw <div> used instead of a Marigold component. (TestApp.tsx:218:11)\n  → Raw <div> used instead of a Marigold layout component. Search the Marigold docs for layout alternatives.\n  data: {htmlElement=div}\n[warning/technical] <div>: Raw <div> used instead of a Marigold component. (TestApp.tsx:219:13)\n  → Raw <div> used instead of a Marigold layout component. Search the Marigold docs for layout alternatives.\n  data: {htmlElement=div}\n[warning/technical] <div>: Raw <div> used instead of a Marigold component. (TestApp.tsx:233:13)\n  → Raw <div> used instead of a Marigold layout component. Search the Marigold docs for layout alternatives.\n  data: {htmlElement=div}\n[warning/technical] <div>: Raw <div> used instead of a Marigold component. (TestApp.tsx:241:13)\n  → Raw <div> used instead of a Marigold layout component. Search the Marigold docs for layout alternatives.\n  data: {htmlElement=div}\n[warning/technical] <div>: Raw <div> used instead of a Marigold component. (TestApp.tsx:247:15)\n  → Raw <div> used instead of a Marigold layout component. Search the Marigold docs for layout alternatives.\n  data: {htmlElement=div}\n[warning/technical] <h1>: Raw <h1> used instead of a Marigold component. (TestApp.tsx:68:7)\n  → Raw <h1> used instead of a Marigold content component. Search the Marigold docs for content alternatives.\n  data: {htmlElement=h1}\n[warning/technical] <label>: Raw <label> used instead of a Marigold component. (TestApp.tsx:116:15)\n  → Use <Label> from @marigold/components instead of <label>.\n  data: {htmlElement=label}\n[warning/technical] <label>: Raw <label> used instead of a Marigold component. (TestApp.tsx:140:17)\n  → Use <Label> from @marigold/components instead of <label>.\n  data: {htmlElement=label}\n[warning/technical] <label>: Raw <label> used instead of a Marigold component. (TestApp.tsx:155:15)\n  → Use <Label> from @marigold/components instead of <label>.\n  data: {htmlElement=label}\n[warning/technical] <label>: Raw <label> used instead of a Marigold component. (TestApp.tsx:163:17)\n  → Use <Label> from @marigold/components instead of <label>.\n  data: {htmlElement=label}\n[warning/technical] <label>: Raw <label> used instead of a Marigold component. (TestApp.tsx:172:17)\n  → Use <Label> from @marigold/components instead of <label>.\n  data: {htmlElement=label}\n[warning/technical] <label>: Raw <label> used instead of a Marigold component. (TestApp.tsx:181:17)\n  → Use <Label> from @marigold/components instead of <label>.\n  data: {htmlElement=label}\n[warning/technical] <label>: Raw <label> used instead of a Marigold component. (TestApp.tsx:188:17)\n  → Use <Label> from @marigold/components instead of <label>.\n  data: {htmlElement=label}\n[warning/technical] <label>: Raw <label> used instead of a Marigold component. (TestApp.tsx:220:15)\n  → Use <Label> from @marigold/components instead of <label>.\n  data: {htmlElement=label}\n[warning/technical] <label>: Raw <label> used instead of a Marigold component. (TestApp.tsx:238:15)\n  → Use <Label> from @marigold/components instead of <label>.\n  data: {htmlElement=label}\n[warning/technical] <label>: Raw <label> used instead of a Marigold component. (TestApp.tsx:248:17)\n  → Use <Label> from @marigold/components instead of <label>.\n  data: {htmlElement=label}\n[warning/technical] <option>: Raw <option> used instead of a Marigold component. (TestApp.tsx:129:15)\n  → Replace <option> with the appropriate Marigold component. Search the Marigold docs for alternatives.\n  data: {htmlElement=option}\n[warning/technical] <option>: Raw <option> used instead of a Marigold component. (TestApp.tsx:130:15)\n  → Replace <option> with the appropriate Marigold component. Search the Marigold docs for alternatives.\n  data: {htmlElement=option}\n[warning/technical] <option>: Raw <option> used instead of a Marigold component. (TestApp.tsx:131:15)\n  → Replace <option> with the appropriate Marigold component. Search the Marigold docs for alternatives.\n  data: {htmlElement=option}\n[warning/technical] <option>: Raw <option> used instead of a Marigold component. (TestApp.tsx:199:15)\n  → Replace <option> with the appropriate Marigold component. Search the Marigold docs for alternatives.\n  data: {htmlElement=option}\n[warning/technical] <option>: Raw <option> used instead of a Marigold component. (TestApp.tsx:200:15)\n  → Replace <option> with the appropriate Marigold component. Search the Marigold docs for alternatives.\n  data: {htmlElement=option}\n[warning/technical] <option>: Raw <option> used instead of a Marigold component. (TestApp.tsx:201:15)\n  → Replace <option> with the appropriate Marigold component. Search the Marigold docs for alternatives.\n  data: {htmlElement=option}\n[warning/technical] <p>: Raw <p> used instead of a Marigold component. (TestApp.tsx:143:17)\n  → Raw <p> used instead of a Marigold content component. Search the Marigold docs for content alternatives.\n  data: {htmlElement=p}\n[warning/technical] <p>: Raw <p> used instead of a Marigold component. (TestApp.tsx:251:17)\n  → Raw <p> used instead of a Marigold content component. Search the Marigold docs for content alternatives.\n  data: {htmlElement=p}\n\npassed: Overlay accessible names, Compound component placement, Section headers, Collection item ids, Layout usage, Table usage, Component conventions, Theme variant compliance\n\nchecks run: technical, spatial, a11y"
+  },
+  "componentsFound": [],
+  "renderTimeMs": 0,
+  "sourceCode": "import { useState } from \"react\";\nimport {\n  Disclosure,\n  DisclosureGroup,\n  TextField,\n  Textarea,\n  Button,\n  RadioGroup,\n  Radio,\n  Select,\n  Checkbox,\n  Message,\n} from \"@marigold/components\";\n\nconst TestApp = () => {\n  // Profile section state\n  const [displayName, setDisplayName] = useState(\"\");\n  const [email, setEmail] = useState(\"\");\n  const [bio, setBio] = useState(\"\");\n  const [profileSaved, setProfileSaved] = useState(false);\n\n  // Appearance section state\n  const [theme, setTheme] = useState(\"system\");\n  const [language, setLanguage] = useState(\"en\");\n  const [compactMode, setCompactMode] = useState(false);\n\n  // Notifications section state\n  const [emailNotifications, setEmailNotifications] = useState(false);\n  const [pushNotifications, setPushNotifications] = useState(false);\n  const [weeklyDigest, setWeeklyDigest] = useState(false);\n  const [marketingEmails, setMarketingEmails] = useState(false);\n  const [notificationSound, setNotificationSound] = useState(\"default\");\n  const [notificationsSaved, setNotificationsSaved] = useState(false);\n\n  // Privacy section state\n  const [profileVisibility, setProfileVisibility] = useState(\"public\");\n  const [showOnlineStatus, setShowOnlineStatus] = useState(false);\n  const [allowSearchEngines, setAllowSearchEngines] = useState(false);\n  const [privacySaved, setPrivacySaved] = useState(false);\n\n  const isEmailValid = (email: string) => {\n    return /^[^\\s@]+@[^\\s@]+\\.[^\\s@]+$/.test(email);\n  };\n\n  const handleSaveProfile = () => {\n    if (!displayName.trim() || !isEmailValid(email)) {\n      return;\n    }\n    setProfileSaved(true);\n    setTimeout(() => setProfileSaved(false), 3000);\n  };\n\n  const handleSaveNotifications = () => {\n    setNotificationsSaved(true);\n    setTimeout(() => setNotificationsSaved(false), 3000);\n  };\n\n  const handleSavePrivacy = () => {\n    setPrivacySaved(true);\n    setTimeout(() => setPrivacySaved(false), 3000);\n  };\n\n  const isSearchEngineDisabled =\n    profileVisibility === \"team-only\" || profileVisibility === \"private\";\n\n  return (\n    <div className=\"max-w-2xl mx-auto p-6\">\n      <h1 className=\"text-3xl font-bold mb-8\">Settings</h1>\n\n      <DisclosureGroup>\n        {/* Profile Section */}\n        <Disclosure title=\"Profile\">\n          <div className=\"space-y-6\">\n            <TextField\n              label=\"Display Name\"\n              isRequired\n              value={displayName}\n              onChange={setDisplayName}\n              description=\"Your public display name\"\n            />\n\n            <TextField\n              label=\"Email Address\"\n              type=\"email\"\n              value={email}\n              onChange={setEmail}\n              description={\n                email && !isEmailValid(email) ? \"Invalid email format\" : \"\"\n              }\n            />\n\n            <Textarea\n              label=\"Bio\"\n              value={bio}\n              onChange={setBio}\n              description=\"Optional biography (max 500 characters)\"\n            />\n\n            {profileSaved && (\n              <Message variant=\"success\">Profile saved successfully!</Message>\n            )}\n\n            <Button\n              onPress={handleSaveProfile}\n              disabled={!displayName.trim() || !isEmailValid(email)}\n            >\n              Save Profile\n            </Button>\n          </div>\n        </Disclosure>\n\n        {/* Appearance Section */}\n        <Disclosure title=\"Appearance\">\n          <div className=\"space-y-6\">\n            <div>\n              <label className=\"block text-sm font-medium mb-3\">Theme</label>\n              <RadioGroup value={theme} onChange={setTheme}>\n                <Radio value=\"light\">Light</Radio>\n                <Radio value=\"dark\">Dark</Radio>\n                <Radio value=\"system\">System Default</Radio>\n              </RadioGroup>\n            </div>\n\n            <Select\n              label=\"Language\"\n              value={language}\n              onChange={setLanguage}\n            >\n              <option value=\"en\">English</option>\n              <option value=\"de\">German</option>\n              <option value=\"fr\">French</option>\n            </Select>\n\n            <div className=\"flex items-center gap-3\">\n              <Checkbox\n                checked={compactMode}\n                onChange={setCompactMode}\n              />\n              <div>\n                <label className=\"text-sm font-medium block\">\n                  Compact Mode\n                </label>\n                <p className=\"text-xs text-gray-600\">\n                  Reduce spacing and font size for denser layouts\n                </p>\n              </div>\n            </div>\n          </div>\n        </Disclosure>\n\n        {/* Notifications Section */}\n        <Disclosure title=\"Notifications\">\n          <div className=\"space-y-6\">\n            <div className=\"space-y-3\">\n              <label className=\"block text-sm font-medium mb-3\">\n                Notification Preferences\n              </label>\n              <div className=\"flex items-center gap-3\">\n                <Checkbox\n                  checked={emailNotifications}\n                  onChange={setEmailNotifications}\n                />\n                <label className=\"text-sm\">\n                  Email notifications for new messages\n                </label>\n              </div>\n              <div className=\"flex items-center gap-3\">\n                <Checkbox\n                  checked={pushNotifications}\n                  onChange={setPushNotifications}\n                />\n                <label className=\"text-sm\">\n                  Push notifications for mentions\n                </label>\n              </div>\n              <div className=\"flex items-center gap-3\">\n                <Checkbox\n                  checked={weeklyDigest}\n                  onChange={setWeeklyDigest}\n                />\n                <label className=\"text-sm\">Weekly activity digest</label>\n              </div>\n              <div className=\"flex items-center gap-3\">\n                <Checkbox\n                  checked={marketingEmails}\n                  onChange={setMarketingEmails}\n                />\n                <label className=\"text-sm\">\n                  Marketing and promotional emails\n                </label>\n              </div>\n            </div>\n\n            <Select\n              label=\"Notification Sound\"\n              value={notificationSound}\n              onChange={setNotificationSound}\n            >\n              <option value=\"default\">Default</option>\n              <option value=\"chime\">Chime</option>\n              <option value=\"none\">None</option>\n            </Select>\n\n            {notificationsSaved && (\n              <Message variant=\"success\">\n                Notification preferences saved!\n              </Message>\n            )}\n\n            <Button onPress={handleSaveNotifications}>\n              Save Notification Preferences\n            </Button>\n          </div>\n        </Disclosure>\n\n        {/* Privacy Section */}\n        <Disclosure title=\"Privacy\">\n          <div className=\"space-y-6\">\n            <div>\n              <label className=\"block text-sm font-medium mb-3\">\n                Profile Visibility\n              </label>\n              <RadioGroup\n                value={profileVisibility}\n                onChange={setProfileVisibility}\n              >\n                <Radio value=\"public\">Public</Radio>\n                <Radio value=\"team-only\">Team Only</Radio>\n                <Radio value=\"private\">Private</Radio>\n              </RadioGroup>\n            </div>\n\n            <div className=\"flex items-center gap-3\">\n              <Checkbox\n                checked={showOnlineStatus}\n                onChange={setShowOnlineStatus}\n              />\n              <label className=\"text-sm font-medium\">Show Online Status</label>\n            </div>\n\n            <div className=\"flex items-center gap-3\">\n              <Checkbox\n                checked={allowSearchEngines}\n                onChange={setAllowSearchEngines}\n                disabled={isSearchEngineDisabled}\n              />\n              <div>\n                <label className=\"text-sm font-medium block\">\n                  Allow Search Engines\n                </label>\n                <p className=\"text-xs text-gray-600\">\n                  Let search engines index your public profile\n                </p>\n              </div>\n            </div>\n\n            {privacySaved && (\n              <Message variant=\"success\">Privacy settings saved!</Message>\n            )}\n\n            <Button onPress={handleSavePrivacy}>Save Privacy Settings</Button>\n          </div>\n        </Disclosure>\n      </DisclosureGroup>\n    </div>\n  );\n};\n\nexport default TestApp;\n",
+  "assertions": {
+    "passed": [
+      {
+        "id": "a-import-marigold",
+        "description": "Imports from @marigold/components",
+        "severity": "required",
+        "passed": true,
+        "evidence": "import from \"@marigold/components\" found"
+      },
+      {
+        "id": "a-checkbox",
+        "description": "Checkbox or CheckboxGroup for multi-select",
+        "severity": "required",
+        "passed": true,
+        "evidence": "matched: <Checkbox> found"
+      },
+      {
+        "id": "a-radio-group",
+        "description": "RadioGroup for exclusive choices",
+        "severity": "required",
+        "passed": true,
+        "evidence": "matched: <RadioGroup> found; <Radio> found"
+      },
+      {
+        "id": "a-select",
+        "description": "Select dropdown",
+        "severity": "required",
+        "passed": true,
+        "evidence": "<Select> found"
+      },
+      {
+        "id": "a-text-field",
+        "description": "TextField for text inputs",
+        "severity": "required",
+        "passed": true,
+        "evidence": "<TextField> found"
+      },
+      {
+        "id": "a-button",
+        "description": "Button for save actions",
+        "severity": "required",
+        "passed": true,
+        "evidence": "<Button> found"
+      },
+      {
+        "id": "a-no-onclick-on-marigold",
+        "description": "No onClick on Marigold Button components",
+        "severity": "recommended",
+        "passed": true,
+        "evidence": "\"/<Button[^>]*onClick/\" correctly absent"
+      }
+    ],
+    "failed": [
+      {
+        "id": "a-accordion",
+        "description": "Accordion for settings sections",
+        "severity": "required",
+        "passed": false,
+        "evidence": "<Accordion> not found"
+      },
+      {
+        "id": "a-switch",
+        "description": "Switch for toggle settings",
+        "severity": "required",
+        "passed": false,
+        "evidence": "<Switch> not found"
+      },
+      {
+        "id": "a-textarea",
+        "description": "TextArea for bio/multi-line input",
+        "severity": "recommended",
+        "passed": false,
+        "evidence": "<TextArea> not found"
+      },
+      {
+        "id": "a-form",
+        "description": "Form component wrapping inputs",
+        "severity": "required",
+        "passed": false,
+        "evidence": "<Form> not found"
+      },
+      {
+        "id": "a-headline",
+        "description": "Headline for page title",
+        "severity": "recommended",
+        "passed": false,
+        "evidence": "<Headline> not found"
+      }
+    ],
+    "passRate": 0.5833,
+    "requiredPassRate": 0.6667,
+    "weightedPassRate": 0.641,
+    "total": 12
+  },
+  "validatePackageVersion": "0.0.1",
+  "playwrightVersion": null,
+  "resolvedModelId": "claude-haiku-4-5",
+  "claudeCliVersion": "2.1.185 (Claude Code)",
+  "sessionId": "eef1687f-204e-468f-a7c8-b9dad9fd7cb0"
+}

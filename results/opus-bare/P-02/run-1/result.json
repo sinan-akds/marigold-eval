@@ -1,0 +1,461 @@
+{
+  "runId": "opus-bare-P-02-r1",
+  "promptId": "P-02",
+  "model": "opus",
+  "config": "bare",
+  "timestamp": "2026-06-25T20:11:35.097Z",
+  "quality": {
+    "overall": 87.07,
+    "categories": {
+      "A": {
+        "category": "A",
+        "label": "Design System API",
+        "score": 75.51,
+        "weight": 0.225,
+        "weightedScore": 16.99,
+        "errorCount": 1,
+        "warningCount": 1,
+        "issues": [
+          {
+            "type": "technical",
+            "severity": "error",
+            "source": "prop-validator",
+            "component": "Text",
+            "message": "Prop \"fontWeight\" does not exist on <Text>.",
+            "suggestion": "Remove the prop. Available props: children, color, as, slot, variant, size, id, aria-label, aria-labelledby, aria-describedby, aria-details, render, align, fontSize, weight, ….",
+            "location": {
+              "file": "TestApp.tsx",
+              "line": 49,
+              "column": 21
+            },
+            "details": {
+              "used": "fontWeight",
+              "available": [
+                "children",
+                "color",
+                "as",
+                "slot",
+                "variant",
+                "size",
+                "id",
+                "aria-label",
+                "aria-labelledby",
+                "aria-describedby",
+                "aria-details",
+                "render",
+                "align",
+                "fontSize",
+                "weight"
+              ]
+            }
+          },
+          {
+            "type": "technical",
+            "severity": "warning",
+            "source": "design-system-usage",
+            "component": "img",
+            "message": "Inline style on <img> bypasses the design system (borderRadius, objectFit, display).",
+            "suggestion": "Use Marigold layout components (Stack, Columns, Inset, Container) and theme tokens instead of inline styles.",
+            "location": {
+              "file": "TestApp.tsx",
+              "line": 34,
+              "column": 13
+            },
+            "details": {
+              "cssProperties": [
+                "borderRadius",
+                "objectFit",
+                "display"
+              ]
+            }
+          }
+        ]
+      },
+      "B": {
+        "category": "B",
+        "label": "Token Compliance",
+        "score": 89.39,
+        "weight": 0.1,
+        "weightedScore": 8.94,
+        "errorCount": 0,
+        "warningCount": 1,
+        "issues": [
+          {
+            "type": "style",
+            "severity": "warning",
+            "source": "token-compliance",
+            "component": "img",
+            "message": "Inline style \"border-radius: 9999px\" on <img> uses a hardcoded value instead of a design token.",
+            "suggestion": "Use var(--token-name) or a Marigold component prop instead of hardcoding \"9999px\".",
+            "details": {
+              "property": "border-radius",
+              "value": "9999px",
+              "inline": true,
+              "selector": "body:nth-child(2) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > img:nth-child(1)",
+              "scope": "page"
+            }
+          }
+        ]
+      },
+      "C": {
+        "category": "C",
+        "label": "DOM / Structure",
+        "score": 100,
+        "weight": 0.225,
+        "weightedScore": 22.5,
+        "errorCount": 0,
+        "warningCount": 0,
+        "issues": []
+      },
+      "D": {
+        "category": "D",
+        "label": "Spatial & A11y",
+        "score": 71.72,
+        "weight": 0.225,
+        "weightedScore": 16.14,
+        "errorCount": 0,
+        "warningCount": 4,
+        "issues": [
+          {
+            "type": "spatial",
+            "severity": "warning",
+            "source": "responsive-checker",
+            "component": "page",
+            "message": "Content uses only 20% of the desktop width (1280px): it stays in a narrow, mobile-shaped band instead of adapting to the available space.",
+            "suggestion": "Let the layout grow with the viewport using Marigold responsive primitives — <Columns collapseAt=\"...\"> for multi-column areas, AppLayout for the shell, Stack/Inline for flow — instead of a fixed-width container. (Intentionally centred max-width reading columns are fine and may trip this; treat it as a relative signal.)",
+            "details": {
+              "widthUtilization": 0.2,
+              "contentElements": 14,
+              "scope": "page"
+            }
+          },
+          {
+            "type": "a11y",
+            "severity": "warning",
+            "source": "aom-extractor",
+            "component": "html",
+            "message": "Document should have one main landmark (landmark-one-main)",
+            "suggestion": "Wrap your page content in `<AppLayout>` with `<AppLayout.Main>` to provide a `<main>` landmark. Import AppLayout from `@marigold/components`.",
+            "details": {
+              "ruleId": "landmark-one-main",
+              "impact": "moderate",
+              "target": [
+                "html"
+              ],
+              "html": "<html lang=\"en\" data-theme=\"rui\">",
+              "scope": "page"
+            }
+          },
+          {
+            "type": "a11y",
+            "severity": "warning",
+            "source": "aom-extractor",
+            "component": "html",
+            "message": "Page should contain a level-one heading (page-has-heading-one)",
+            "suggestion": "Add a `<Headline level={1}>` component for the page title — it renders an `<h1>`. Import Headline from `@marigold/components`.",
+            "details": {
+              "ruleId": "page-has-heading-one",
+              "impact": "moderate",
+              "target": [
+                "html"
+              ],
+              "html": "<html lang=\"en\" data-theme=\"rui\">",
+              "scope": "page"
+            }
+          },
+          {
+            "type": "a11y",
+            "severity": "warning",
+            "source": "aom-extractor",
+            "component": "page",
+            "message": "All page content should be contained by landmarks — 3 elements affected (region)",
+            "suggestion": "All page content must be inside a landmark region. Use `<AppLayout>` with `<AppLayout.Main>` for the main area, `<TopNavigation>` for the header (`<header>`), and `<Sidebar>` for side navigation (`<aside>`). Import from `@marigold/components`.",
+            "details": {
+              "ruleId": "region",
+              "impact": "moderate",
+              "affectedCount": 3,
+              "scope": "page"
+            }
+          }
+        ]
+      },
+      "E": {
+        "category": "E",
+        "label": "Functional Completeness",
+        "score": 100,
+        "weight": 0.225,
+        "weightedScore": 22.5,
+        "errorCount": 0,
+        "warningCount": 0,
+        "issues": []
+      }
+    },
+    "renderSuccess": true
+  },
+  "efficiency": {
+    "durationMs": 64167,
+    "costUsd": 0.23713999999999996,
+    "inputTokens": 730,
+    "outputTokens": 5016,
+    "cacheReadTokens": 52418,
+    "cacheCreationTokens": 8108,
+    "totalTokens": 5746,
+    "numTurns": 4
+  },
+  "report": {
+    "file": "TestApp.tsx",
+    "errors": [
+      {
+        "type": "technical",
+        "severity": "error",
+        "source": "prop-validator",
+        "component": "Text",
+        "message": "Prop \"fontWeight\" does not exist on <Text>.",
+        "suggestion": "Remove the prop. Available props: children, color, as, slot, variant, size, id, aria-label, aria-labelledby, aria-describedby, aria-details, render, align, fontSize, weight, ….",
+        "location": {
+          "file": "TestApp.tsx",
+          "line": 49,
+          "column": 21
+        },
+        "details": {
+          "used": "fontWeight",
+          "available": [
+            "children",
+            "color",
+            "as",
+            "slot",
+            "variant",
+            "size",
+            "id",
+            "aria-label",
+            "aria-labelledby",
+            "aria-describedby",
+            "aria-details",
+            "render",
+            "align",
+            "fontSize",
+            "weight"
+          ]
+        }
+      }
+    ],
+    "warnings": [
+      {
+        "type": "technical",
+        "severity": "warning",
+        "source": "design-system-usage",
+        "component": "img",
+        "message": "Inline style on <img> bypasses the design system (borderRadius, objectFit, display).",
+        "suggestion": "Use Marigold layout components (Stack, Columns, Inset, Container) and theme tokens instead of inline styles.",
+        "location": {
+          "file": "TestApp.tsx",
+          "line": 34,
+          "column": 13
+        },
+        "details": {
+          "cssProperties": [
+            "borderRadius",
+            "objectFit",
+            "display"
+          ]
+        }
+      },
+      {
+        "type": "style",
+        "severity": "warning",
+        "source": "token-compliance",
+        "component": "img",
+        "message": "Inline style \"border-radius: 9999px\" on <img> uses a hardcoded value instead of a design token.",
+        "suggestion": "Use var(--token-name) or a Marigold component prop instead of hardcoding \"9999px\".",
+        "details": {
+          "property": "border-radius",
+          "value": "9999px",
+          "inline": true,
+          "selector": "body:nth-child(2) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > img:nth-child(1)",
+          "scope": "page"
+        }
+      },
+      {
+        "type": "spatial",
+        "severity": "warning",
+        "source": "responsive-checker",
+        "component": "page",
+        "message": "Content uses only 20% of the desktop width (1280px): it stays in a narrow, mobile-shaped band instead of adapting to the available space.",
+        "suggestion": "Let the layout grow with the viewport using Marigold responsive primitives — <Columns collapseAt=\"...\"> for multi-column areas, AppLayout for the shell, Stack/Inline for flow — instead of a fixed-width container. (Intentionally centred max-width reading columns are fine and may trip this; treat it as a relative signal.)",
+        "details": {
+          "widthUtilization": 0.2,
+          "contentElements": 14,
+          "scope": "page"
+        }
+      },
+      {
+        "type": "a11y",
+        "severity": "warning",
+        "source": "aom-extractor",
+        "component": "html",
+        "message": "Document should have one main landmark (landmark-one-main)",
+        "suggestion": "Wrap your page content in `<AppLayout>` with `<AppLayout.Main>` to provide a `<main>` landmark. Import AppLayout from `@marigold/components`.",
+        "details": {
+          "ruleId": "landmark-one-main",
+          "impact": "moderate",
+          "target": [
+            "html"
+          ],
+          "html": "<html lang=\"en\" data-theme=\"rui\">",
+          "scope": "page"
+        }
+      },
+      {
+        "type": "a11y",
+        "severity": "warning",
+        "source": "aom-extractor",
+        "component": "html",
+        "message": "Page should contain a level-one heading (page-has-heading-one)",
+        "suggestion": "Add a `<Headline level={1}>` component for the page title — it renders an `<h1>`. Import Headline from `@marigold/components`.",
+        "details": {
+          "ruleId": "page-has-heading-one",
+          "impact": "moderate",
+          "target": [
+            "html"
+          ],
+          "html": "<html lang=\"en\" data-theme=\"rui\">",
+          "scope": "page"
+        }
+      },
+      {
+        "type": "a11y",
+        "severity": "warning",
+        "source": "aom-extractor",
+        "component": "page",
+        "message": "All page content should be contained by landmarks — 3 elements affected (region)",
+        "suggestion": "All page content must be inside a landmark region. Use `<AppLayout>` with `<AppLayout.Main>` for the main area, `<TopNavigation>` for the header (`<header>`), and `<Sidebar>` for side navigation (`<aside>`). Import from `@marigold/components`.",
+        "details": {
+          "ruleId": "region",
+          "impact": "moderate",
+          "affectedCount": 3,
+          "scope": "page"
+        }
+      }
+    ],
+    "passed": [
+      "TypeScript compilation",
+      "Component composition",
+      "Overlay accessible names",
+      "Compound component placement",
+      "Section headers",
+      "Collection item ids",
+      "Layout usage",
+      "Table usage",
+      "Component conventions",
+      "Theme variant compliance",
+      "No overlapping components detected"
+    ],
+    "metadata": {
+      "renderTimeMs": 1591,
+      "componentsFound": [
+        "button"
+      ],
+      "checksRun": [
+        "technical",
+        "spatial",
+        "a11y"
+      ],
+      "coverage": {
+        "staticValuesChecked": 5,
+        "dynamicValuesSkipped": 8,
+        "spreadPropsBypassed": 0
+      },
+      "widthUtilization": 0.2
+    },
+    "markdown": "marigold-validate: TestApp.tsx — 1 error(s), 6 warning(s)\n\n[error/technical] <Text>: Prop \"fontWeight\" does not exist on <Text>. (TestApp.tsx:49:21)\n  → Remove the prop. Available props: children, color, as, slot, variant, size, id, aria-label, aria-labelledby, aria-describedby, aria-details, render, align, fontSize, weight, ….\n  data: {used=fontWeight, available=[\"children\",\"color\",\"as\",\"slot\",\"variant\",\"size\",\"id\",\"aria-label\", …]}\n[warning/technical] <img>: Inline style on <img> bypasses the design system (borderRadius, objectFit, display). (TestApp.tsx:34:13)\n  → Use Marigold layout components (Stack, Columns, Inset, Container) and theme tokens instead of inline styles.\n  data: {cssProperties=[\"borderRadius\",\"objectFit\",\"display\"]}\n[warning/spatial] <page>: Content uses only 20% of the desktop width (1280px): it stays in a narrow, mobile-shaped band instead of adapting to the available space.\n  → Let the layout grow with the viewport using Marigold responsive primitives — <Columns collapseAt=\"...\"> for multi-column areas, AppLayout for the shell, Stack/Inline for flow — instead of a fixed-width container. (Intentionally centred max-width reading columns are fine and may trip this; treat it as a relative signal.)\n  data: {widthUtilization=0.2, contentElements=14, scope=page}\n[warning/style] <img>: Inline style \"border-radius: 9999px\" on <img> uses a hardcoded value instead of a design token.\n  → Use var(--token-name) or a Marigold component prop instead of hardcoding \"9999px\".\n  data: {property=border-radius, value=9999px, inline=true, selector=body:nth-child(2) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > ..., scope=page}\n[warning/a11y] <html>: Document should have one main landmark (landmark-one-main)\n  → Wrap your page content in `<AppLayout>` with `<AppLayout.Main>` to provide a `<main>` landmark. Import AppLayout from `@marigold/components`.\n  data: {ruleId=landmark-one-main, impact=moderate, target=[\"html\"], html=<html lang=\"en\" data-theme=\"rui\">, scope=page}\n[warning/a11y] <html>: Page should contain a level-one heading (page-has-heading-one)\n  → Add a `<Headline level={1}>` component for the page title — it renders an `<h1>`. Import Headline from `@marigold/components`.\n  data: {ruleId=page-has-heading-one, impact=moderate, target=[\"html\"], html=<html lang=\"en\" data-theme=\"rui\">, scope=page}\n[warning/a11y] <page>: All page content should be contained by landmarks — 3 elements affected (region)\n  → All page content must be inside a landmark region. Use `<AppLayout>` with `<AppLayout.Main>` for the main area, `<TopNavigation>` for the header (`<header>`), and `<Sidebar>` for side navigation (`<aside>`). Import from `@marigold/components`.\n  data: {ruleId=region, impact=moderate, affectedCount=3, scope=page}\n\npassed: TypeScript compilation, Component composition, Overlay accessible names, Compound component placement, Section headers, Collection item ids, Layout usage, Table usage, Component conventions, Theme variant compliance, No overlapping components detected\n\nchecks run: technical, spatial, a11y"
+  },
+  "componentsFound": [
+    "button"
+  ],
+  "renderTimeMs": 1591,
+  "sourceCode": "import { useState } from 'react';\nimport {\n  Card,\n  Stack,\n  Inline,\n  Text,\n  Headline,\n  Button,\n  Badge,\n  Divider,\n} from '@marigold/components';\n\ntype Status = 'active' | 'away';\n\nconst DETAILS = [\n  { label: 'Role', value: 'Senior Developer' },\n  { label: 'Department', value: 'Engineering' },\n  { label: 'Email', value: 'jane.doe@example.com' },\n  { label: 'Location', value: 'Freiburg, Germany' },\n];\n\nconst TestApp = () => {\n  const [status, setStatus] = useState<Status>('active');\n\n  return (\n    <Card>\n      <Stack space={4}>\n        <Inline space={4} alignY=\"center\">\n          <img\n            src=\"https://i.pravatar.cc/96?img=47\"\n            alt=\"Portrait of Jane Doe\"\n            width={96}\n            height={96}\n            style={{ borderRadius: '9999px', objectFit: 'cover', display: 'block' }}\n          />\n          <Stack space={2}>\n            <Headline level={2}>Jane Doe</Headline>\n            <Badge variant={status === 'active' ? 'success' : 'warning'}>\n              {status === 'active' ? 'Active' : 'Away'}\n            </Badge>\n          </Stack>\n        </Inline>\n\n        <Divider />\n\n        <Stack space={2}>\n          {DETAILS.map((detail) => (\n            <Inline key={detail.label} space={2} alignY=\"center\">\n              <Text fontWeight=\"bold\">{detail.label}:</Text>\n              <Text>{detail.value}</Text>\n            </Inline>\n          ))}\n        </Stack>\n\n        <Divider />\n\n        <Text>\n          Jane is a senior developer on the Engineering team with a passion for\n          building accessible, well-crafted user interfaces. She enjoys mentoring\n          teammates, refining design systems, and shipping reliable software that\n          people love to use.\n        </Text>\n\n        <Inline space={3} alignY=\"center\">\n          <Button\n            variant=\"primary\"\n            onPress={() => alert('Message sent to Jane Doe')}\n          >\n            Send Message\n          </Button>\n          <Button\n            variant=\"secondary\"\n            onPress={() =>\n              setStatus((prev) => (prev === 'active' ? 'away' : 'active'))\n            }\n          >\n            Edit Profile\n          </Button>\n        </Inline>\n      </Stack>\n    </Card>\n  );\n};\n\nexport default TestApp;\n",
+  "assertions": {
+    "passed": [
+      {
+        "id": "a-import-marigold",
+        "description": "Imports from @marigold/components",
+        "severity": "required",
+        "passed": true,
+        "evidence": "import from \"@marigold/components\" found"
+      },
+      {
+        "id": "a-card",
+        "description": "Card component as container",
+        "severity": "required",
+        "passed": true,
+        "evidence": "<Card> found"
+      },
+      {
+        "id": "a-image",
+        "description": "Includes a profile image (img tag or image URL)",
+        "severity": "recommended",
+        "passed": true,
+        "evidence": "matched: pattern \"/<img/\" found; pattern \"/placeholder.*image|avatar|profile.*photo/i\" found"
+      },
+      {
+        "id": "a-headline",
+        "description": "Headline for user name",
+        "severity": "required",
+        "passed": true,
+        "evidence": "<Headline> found"
+      },
+      {
+        "id": "a-badge",
+        "description": "Badge for status indicator",
+        "severity": "required",
+        "passed": true,
+        "evidence": "<Badge> found"
+      },
+      {
+        "id": "a-text",
+        "description": "Text component for details",
+        "severity": "required",
+        "passed": true,
+        "evidence": "<Text> found"
+      },
+      {
+        "id": "a-button",
+        "description": "Button component for actions",
+        "severity": "required",
+        "passed": true,
+        "evidence": "<Button> found"
+      },
+      {
+        "id": "a-layout",
+        "description": "Uses layout primitives (Stack, Columns, or Inline)",
+        "severity": "required",
+        "passed": true,
+        "evidence": "matched: <Stack> found; <Inline> found"
+      },
+      {
+        "id": "a-no-onclick-on-marigold",
+        "description": "No onClick on Marigold Button components",
+        "severity": "recommended",
+        "passed": true,
+        "evidence": "\"/<Button[^>]*onClick/\" correctly absent"
+      },
+      {
+        "id": "a-user-details",
+        "description": "Shows user details (role, department, email)",
+        "severity": "recommended",
+        "passed": true,
+        "evidence": "pattern \"/role|department|email|location/i\" found"
+      }
+    ],
+    "failed": [],
+    "passRate": 1,
+    "requiredPassRate": 1,
+    "weightedPassRate": 1,
+    "total": 10
+  },
+  "validatePackageVersion": "0.0.1",
+  "playwrightVersion": null,
+  "resolvedModelId": "claude-opus-4-8",
+  "claudeCliVersion": "2.1.185 (Claude Code)",
+  "sessionId": "5c76a8bd-910b-43ac-8563-d5373981500c"
+}

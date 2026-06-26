@@ -1,0 +1,1350 @@
+{
+  "runId": "opus-bare-P-06-r3",
+  "promptId": "P-06",
+  "model": "opus",
+  "config": "bare",
+  "timestamp": "2026-06-25T20:48:43.815Z",
+  "quality": {
+    "overall": 23.42,
+    "categories": {
+      "A": {
+        "category": "A",
+        "label": "Design System API",
+        "score": 43.43,
+        "weight": 0.225,
+        "weightedScore": 9.77,
+        "errorCount": 1,
+        "warningCount": 14,
+        "issues": [
+          {
+            "type": "technical",
+            "severity": "error",
+            "source": "prop-validator",
+            "component": "Switch",
+            "message": "Prop \"checked\" does not exist on <Switch>.",
+            "suggestion": "Remove the prop. Available props: variant, size, label, width, disabled, readOnly, selected, render, id, dir, lang, hidden, inert, translate, onClick, ….",
+            "location": {
+              "file": "TestApp.tsx",
+              "line": 436,
+              "column": 21
+            },
+            "details": {
+              "used": "checked",
+              "available": [
+                "variant",
+                "size",
+                "label",
+                "width",
+                "disabled",
+                "readOnly",
+                "selected",
+                "render",
+                "id",
+                "dir",
+                "lang",
+                "hidden",
+                "inert",
+                "translate",
+                "onClick"
+              ]
+            }
+          },
+          {
+            "type": "technical",
+            "severity": "warning",
+            "source": "design-system-usage",
+            "component": "Stack",
+            "message": "Inline style on <Stack> bypasses the design system (padding, maxWidth, margin).",
+            "suggestion": "Use Marigold layout components (Stack, Columns, Inset, Container) and theme tokens instead of inline styles.",
+            "location": {
+              "file": "TestApp.tsx",
+              "line": 215,
+              "column": 22
+            },
+            "details": {
+              "cssProperties": [
+                "padding",
+                "maxWidth",
+                "margin"
+              ]
+            }
+          },
+          {
+            "type": "technical",
+            "severity": "warning",
+            "source": "design-system-usage",
+            "component": "Inline",
+            "message": "Inline style on <Inline> bypasses the design system (justifyContent, flexWrap).",
+            "suggestion": "Use Marigold layout components (Stack, Columns, Inset, Container) and theme tokens instead of inline styles.",
+            "location": {
+              "file": "TestApp.tsx",
+              "line": 221,
+              "column": 11
+            },
+            "details": {
+              "cssProperties": [
+                "justifyContent",
+                "flexWrap"
+              ]
+            }
+          },
+          {
+            "type": "technical",
+            "severity": "warning",
+            "source": "design-system-usage",
+            "component": "Inline",
+            "message": "Inline style on <Inline> bypasses the design system (flexWrap, alignItems).",
+            "suggestion": "Use Marigold layout components (Stack, Columns, Inset, Container) and theme tokens instead of inline styles.",
+            "location": {
+              "file": "TestApp.tsx",
+              "line": 235,
+              "column": 9
+            },
+            "details": {
+              "cssProperties": [
+                "flexWrap",
+                "alignItems"
+              ]
+            }
+          },
+          {
+            "type": "technical",
+            "severity": "warning",
+            "source": "design-system-usage",
+            "component": "Stack",
+            "message": "Inline style on <Stack> bypasses the design system (flex, minWidth).",
+            "suggestion": "Use Marigold layout components (Stack, Columns, Inset, Container) and theme tokens instead of inline styles.",
+            "location": {
+              "file": "TestApp.tsx",
+              "line": 237,
+              "column": 26
+            },
+            "details": {
+              "cssProperties": [
+                "flex",
+                "minWidth"
+              ]
+            }
+          },
+          {
+            "type": "technical",
+            "severity": "warning",
+            "source": "design-system-usage",
+            "component": "Stack",
+            "message": "Inline style on <Stack> bypasses the design system (flex, minWidth).",
+            "suggestion": "Use Marigold layout components (Stack, Columns, Inset, Container) and theme tokens instead of inline styles.",
+            "location": {
+              "file": "TestApp.tsx",
+              "line": 245,
+              "column": 26
+            },
+            "details": {
+              "cssProperties": [
+                "flex",
+                "minWidth"
+              ]
+            }
+          },
+          {
+            "type": "technical",
+            "severity": "warning",
+            "source": "design-system-usage",
+            "component": "Inline",
+            "message": "Inline style on <Inline> bypasses the design system (flexWrap).",
+            "suggestion": "Use Marigold layout components (Stack, Columns, Inset, Container) and theme tokens instead of inline styles.",
+            "location": {
+              "file": "TestApp.tsx",
+              "line": 264,
+              "column": 41
+            },
+            "details": {
+              "cssProperties": [
+                "flexWrap"
+              ]
+            }
+          },
+          {
+            "type": "technical",
+            "severity": "warning",
+            "source": "design-system-usage",
+            "component": "Stack",
+            "message": "Inline style on <Stack> bypasses the design system (textAlign, padding).",
+            "suggestion": "Use Marigold layout components (Stack, Columns, Inset, Container) and theme tokens instead of inline styles.",
+            "location": {
+              "file": "TestApp.tsx",
+              "line": 291,
+              "column": 11
+            },
+            "details": {
+              "cssProperties": [
+                "textAlign",
+                "padding"
+              ]
+            }
+          },
+          {
+            "type": "technical",
+            "severity": "warning",
+            "source": "design-system-usage",
+            "component": "Stack",
+            "message": "Inline style on <Stack> bypasses the design system (display, gridTemplateColumns, gap).",
+            "suggestion": "Use Marigold layout components (Stack, Columns, Inset, Container) and theme tokens instead of inline styles.",
+            "location": {
+              "file": "TestApp.tsx",
+              "line": 302,
+              "column": 11
+            },
+            "details": {
+              "cssProperties": [
+                "display",
+                "gridTemplateColumns",
+                "gap"
+              ]
+            }
+          },
+          {
+            "type": "technical",
+            "severity": "warning",
+            "source": "design-system-usage",
+            "component": "Stack",
+            "message": "Inline style on <Stack> bypasses the design system (height).",
+            "suggestion": "Use Marigold layout components (Stack, Columns, Inset, Container) and theme tokens instead of inline styles.",
+            "location": {
+              "file": "TestApp.tsx",
+              "line": 312,
+              "column": 34
+            },
+            "details": {
+              "cssProperties": [
+                "height"
+              ]
+            }
+          },
+          {
+            "type": "technical",
+            "severity": "warning",
+            "source": "design-system-usage",
+            "component": "Inline",
+            "message": "Inline style on <Inline> bypasses the design system (justifyContent).",
+            "suggestion": "Use Marigold layout components (Stack, Columns, Inset, Container) and theme tokens instead of inline styles.",
+            "location": {
+              "file": "TestApp.tsx",
+              "line": 316,
+              "column": 21
+            },
+            "details": {
+              "cssProperties": [
+                "justifyContent"
+              ]
+            }
+          },
+          {
+            "type": "technical",
+            "severity": "warning",
+            "source": "design-system-usage",
+            "component": "Inline",
+            "message": "Inline style on <Inline> bypasses the design system (justifyContent).",
+            "suggestion": "Use Marigold layout components (Stack, Columns, Inset, Container) and theme tokens instead of inline styles.",
+            "location": {
+              "file": "TestApp.tsx",
+              "line": 339,
+              "column": 43
+            },
+            "details": {
+              "cssProperties": [
+                "justifyContent"
+              ]
+            }
+          },
+          {
+            "type": "technical",
+            "severity": "warning",
+            "source": "design-system-usage",
+            "component": "Stack",
+            "message": "Inline style on <Stack> bypasses the design system (position, inset, background, zIndex).",
+            "suggestion": "Use Marigold layout components (Stack, Columns, Inset, Container) and theme tokens instead of inline styles.",
+            "location": {
+              "file": "TestApp.tsx",
+              "line": 363,
+              "column": 13
+            },
+            "details": {
+              "cssProperties": [
+                "position",
+                "inset",
+                "background",
+                "zIndex"
+              ]
+            }
+          },
+          {
+            "type": "technical",
+            "severity": "warning",
+            "source": "design-system-usage",
+            "component": "Stack",
+            "message": "Inline style on <Stack> bypasses the design system (position, top, right, height, width).",
+            "suggestion": "Use Marigold layout components (Stack, Columns, Inset, Container) and theme tokens instead of inline styles.",
+            "location": {
+              "file": "TestApp.tsx",
+              "line": 372,
+              "column": 13
+            },
+            "details": {
+              "cssProperties": [
+                "position",
+                "top",
+                "right",
+                "height",
+                "width"
+              ]
+            }
+          },
+          {
+            "type": "technical",
+            "severity": "warning",
+            "source": "design-system-usage",
+            "component": "Inline",
+            "message": "Inline style on <Inline> bypasses the design system (justifyContent).",
+            "suggestion": "Use Marigold layout components (Stack, Columns, Inset, Container) and theme tokens instead of inline styles.",
+            "location": {
+              "file": "TestApp.tsx",
+              "line": 388,
+              "column": 15
+            },
+            "details": {
+              "cssProperties": [
+                "justifyContent"
+              ]
+            }
+          }
+        ]
+      },
+      "B": {
+        "category": "B",
+        "label": "Token Compliance",
+        "score": 0,
+        "weight": 0.1,
+        "weightedScore": 0,
+        "errorCount": 0,
+        "warningCount": 0,
+        "issues": []
+      },
+      "C": {
+        "category": "C",
+        "label": "DOM / Structure",
+        "score": 0,
+        "weight": 0.225,
+        "weightedScore": 0,
+        "errorCount": 17,
+        "warningCount": 2,
+        "issues": [
+          {
+            "type": "technical",
+            "severity": "error",
+            "source": "compiler",
+            "component": "TypeScript",
+            "message": "TS2322: Type '{ children: (false | Element)[]; space: 6; style: { padding: number; maxWidth: number; margin: string; }; }' is not assignable to type 'IntrinsicAttributes & StackProps'.\n  Property 'style' does not exist on type 'IntrinsicAttributes & StackProps'.",
+            "suggestion": "Fix the TypeScript error reported by the compiler. The exact location is included in the issue location field.",
+            "location": {
+              "file": "TestApp.tsx",
+              "line": 215,
+              "column": 22
+            }
+          },
+          {
+            "type": "technical",
+            "severity": "error",
+            "source": "compiler",
+            "component": "TypeScript",
+            "message": "TS2322: Type '{ children: Element[]; space: 4; alignY: \"center\"; style: { justifyContent: string; flexWrap: string; }; }' is not assignable to type 'IntrinsicAttributes & InlineProps'.\n  Property 'style' does not exist on type 'IntrinsicAttributes & InlineProps'.",
+            "suggestion": "Fix the TypeScript error reported by the compiler. The exact location is included in the issue location field.",
+            "location": {
+              "file": "TestApp.tsx",
+              "line": 221,
+              "column": 11
+            }
+          },
+          {
+            "type": "technical",
+            "severity": "error",
+            "source": "compiler",
+            "component": "TypeScript",
+            "message": "TS2322: Type '{ children: Element[]; space: 4; alignY: \"bottom\"; style: { flexWrap: string; alignItems: string; }; }' is not assignable to type 'IntrinsicAttributes & InlineProps'.\n  Property 'style' does not exist on type 'IntrinsicAttributes & InlineProps'.",
+            "suggestion": "Fix the TypeScript error reported by the compiler. The exact location is included in the issue location field.",
+            "location": {
+              "file": "TestApp.tsx",
+              "line": 235,
+              "column": 9
+            }
+          },
+          {
+            "type": "technical",
+            "severity": "error",
+            "source": "compiler",
+            "component": "TypeScript",
+            "message": "TS2322: Type '{ children: Element; space: 0; style: { flex: string; minWidth: number; }; }' is not assignable to type 'IntrinsicAttributes & StackProps'.\n  Property 'style' does not exist on type 'IntrinsicAttributes & StackProps'.",
+            "suggestion": "Fix the TypeScript error reported by the compiler. The exact location is included in the issue location field.",
+            "location": {
+              "file": "TestApp.tsx",
+              "line": 237,
+              "column": 26
+            }
+          },
+          {
+            "type": "technical",
+            "severity": "error",
+            "source": "compiler",
+            "component": "TypeScript",
+            "message": "TS2322: Type '{ children: Element; space: 0; style: { flex: string; minWidth: number; }; }' is not assignable to type 'IntrinsicAttributes & StackProps'.\n  Property 'style' does not exist on type 'IntrinsicAttributes & StackProps'.",
+            "suggestion": "Fix the TypeScript error reported by the compiler. The exact location is included in the issue location field.",
+            "location": {
+              "file": "TestApp.tsx",
+              "line": 245,
+              "column": 26
+            }
+          },
+          {
+            "type": "technical",
+            "severity": "error",
+            "source": "compiler",
+            "component": "TypeScript",
+            "message": "TS2322: Type '{ children: Element; space: 2; alignY: \"center\"; style: { flexWrap: string; }; }' is not assignable to type 'IntrinsicAttributes & InlineProps'.\n  Property 'style' does not exist on type 'IntrinsicAttributes & InlineProps'.",
+            "suggestion": "Fix the TypeScript error reported by the compiler. The exact location is included in the issue location field.",
+            "location": {
+              "file": "TestApp.tsx",
+              "line": 264,
+              "column": 41
+            }
+          },
+          {
+            "type": "technical",
+            "severity": "error",
+            "source": "compiler",
+            "component": "TypeScript",
+            "message": "TS2322: Type '{ children: Element[]; space: 3; alignX: \"center\"; style: { textAlign: string; padding: string; }; }' is not assignable to type 'IntrinsicAttributes & StackProps'.\n  Property 'style' does not exist on type 'IntrinsicAttributes & StackProps'.",
+            "suggestion": "Fix the TypeScript error reported by the compiler. The exact location is included in the issue location field.",
+            "location": {
+              "file": "TestApp.tsx",
+              "line": 291,
+              "column": 11
+            }
+          },
+          {
+            "type": "technical",
+            "severity": "error",
+            "source": "compiler",
+            "component": "TypeScript",
+            "message": "TS2322: Type '{ children: Element[]; space: 0; style: { display: string; gridTemplateColumns: string; gap: number; }; }' is not assignable to type 'IntrinsicAttributes & StackProps'.\n  Property 'style' does not exist on type 'IntrinsicAttributes & StackProps'.",
+            "suggestion": "Fix the TypeScript error reported by the compiler. The exact location is included in the issue location field.",
+            "location": {
+              "file": "TestApp.tsx",
+              "line": 302,
+              "column": 11
+            }
+          },
+          {
+            "type": "technical",
+            "severity": "error",
+            "source": "compiler",
+            "component": "TypeScript",
+            "message": "TS2322: Type '{ children: Element[]; space: 3; style: { height: string; }; }' is not assignable to type 'IntrinsicAttributes & StackProps'.\n  Property 'style' does not exist on type 'IntrinsicAttributes & StackProps'.",
+            "suggestion": "Fix the TypeScript error reported by the compiler. The exact location is included in the issue location field.",
+            "location": {
+              "file": "TestApp.tsx",
+              "line": 312,
+              "column": 34
+            }
+          },
+          {
+            "type": "technical",
+            "severity": "error",
+            "source": "compiler",
+            "component": "TypeScript",
+            "message": "TS2322: Type '{ children: Element[]; space: 2; alignY: \"center\"; style: { justifyContent: string; }; }' is not assignable to type 'IntrinsicAttributes & InlineProps'.\n  Property 'style' does not exist on type 'IntrinsicAttributes & InlineProps'.",
+            "suggestion": "Fix the TypeScript error reported by the compiler. The exact location is included in the issue location field.",
+            "location": {
+              "file": "TestApp.tsx",
+              "line": 316,
+              "column": 21
+            }
+          },
+          {
+            "type": "technical",
+            "severity": "error",
+            "source": "compiler",
+            "component": "TypeScript",
+            "message": "TS2322: Type '{ children: Element[]; space: 3; alignY: \"center\"; style: { justifyContent: string; }; }' is not assignable to type 'IntrinsicAttributes & InlineProps'.\n  Property 'style' does not exist on type 'IntrinsicAttributes & InlineProps'.",
+            "suggestion": "Fix the TypeScript error reported by the compiler. The exact location is included in the issue location field.",
+            "location": {
+              "file": "TestApp.tsx",
+              "line": 339,
+              "column": 43
+            }
+          },
+          {
+            "type": "technical",
+            "severity": "error",
+            "source": "compiler",
+            "component": "TypeScript",
+            "message": "TS2322: Type '{ space: 0; style: { position: string; inset: number; background: string; zIndex: number; }; }' is not assignable to type 'IntrinsicAttributes & StackProps'.\n  Property 'style' does not exist on type 'IntrinsicAttributes & StackProps'.",
+            "suggestion": "Fix the TypeScript error reported by the compiler. The exact location is included in the issue location field.",
+            "location": {
+              "file": "TestApp.tsx",
+              "line": 363,
+              "column": 13
+            }
+          },
+          {
+            "type": "technical",
+            "severity": "error",
+            "source": "compiler",
+            "component": "TypeScript",
+            "message": "TS2322: Type '{ children: Element[]; space: 5; style: { position: string; top: number; right: number; height: string; width: string; background: string; boxShadow: string; zIndex: number; overflowY: string; padding: number; }; }' is not assignable to type 'IntrinsicAttributes & StackProps'.\n  Property 'style' does not exist on type 'IntrinsicAttributes & StackProps'.",
+            "suggestion": "Fix the TypeScript error reported by the compiler. The exact location is included in the issue location field.",
+            "location": {
+              "file": "TestApp.tsx",
+              "line": 372,
+              "column": 13
+            }
+          },
+          {
+            "type": "technical",
+            "severity": "error",
+            "source": "compiler",
+            "component": "TypeScript",
+            "message": "TS2322: Type '{ children: Element[]; space: 2; alignY: \"center\"; style: { justifyContent: string; }; }' is not assignable to type 'IntrinsicAttributes & InlineProps'.\n  Property 'style' does not exist on type 'IntrinsicAttributes & InlineProps'.",
+            "suggestion": "Fix the TypeScript error reported by the compiler. The exact location is included in the issue location field.",
+            "location": {
+              "file": "TestApp.tsx",
+              "line": 388,
+              "column": 15
+            }
+          },
+          {
+            "type": "technical",
+            "severity": "error",
+            "source": "compiler",
+            "component": "TypeScript",
+            "message": "TS2322: Type '{ children: string; key: string; value: string; }' is not assignable to type 'IntrinsicAttributes & CheckboxProps & RefAttributes<HTMLLabelElement>'.\n  Property 'children' does not exist on type 'IntrinsicAttributes & CheckboxProps & RefAttributes<HTMLLabelElement>'.",
+            "suggestion": "Fix the TypeScript error reported by the compiler. The exact location is included in the issue location field.",
+            "location": {
+              "file": "TestApp.tsx",
+              "line": 406,
+              "column": 18
+            }
+          },
+          {
+            "type": "technical",
+            "severity": "error",
+            "source": "compiler",
+            "component": "TypeScript",
+            "message": "TS2322: Type '{ children: string; key: string; value: string; }' is not assignable to type 'IntrinsicAttributes & CheckboxProps & RefAttributes<HTMLLabelElement>'.\n  Property 'children' does not exist on type 'IntrinsicAttributes & CheckboxProps & RefAttributes<HTMLLabelElement>'.",
+            "suggestion": "Fix the TypeScript error reported by the compiler. The exact location is included in the issue location field.",
+            "location": {
+              "file": "TestApp.tsx",
+              "line": 428,
+              "column": 18
+            }
+          },
+          {
+            "type": "technical",
+            "severity": "error",
+            "source": "compiler",
+            "component": "TypeScript",
+            "message": "TS2322: Type '{ children: string; checked: boolean; onChange: Dispatch<SetStateAction<boolean>>; }' is not assignable to type 'IntrinsicAttributes & SwitchProps & RefAttributes<HTMLLabelElement>'.\n  Property 'children' does not exist on type 'IntrinsicAttributes & SwitchProps & RefAttributes<HTMLLabelElement>'.",
+            "suggestion": "Fix the TypeScript error reported by the compiler. The exact location is included in the issue location field.",
+            "location": {
+              "file": "TestApp.tsx",
+              "line": 436,
+              "column": 14
+            }
+          },
+          {
+            "type": "technical",
+            "severity": "warning",
+            "source": "layout-usage",
+            "component": "Stack",
+            "message": "<Stack> wraps a single child. A flow layout earns its place only with two or more children; with one child it adds a wrapper that does nothing.",
+            "suggestion": "Render the child directly instead of wrapping it in <Stack>. For single-child spacing use Inset, Center, Breakout or Aspect.",
+            "location": {
+              "file": "TestApp.tsx",
+              "line": 237,
+              "column": 9
+            },
+            "details": {
+              "layout": "Stack",
+              "childCount": 1
+            }
+          },
+          {
+            "type": "technical",
+            "severity": "warning",
+            "source": "layout-usage",
+            "component": "Stack",
+            "message": "<Stack> wraps a single child. A flow layout earns its place only with two or more children; with one child it adds a wrapper that does nothing.",
+            "suggestion": "Render the child directly instead of wrapping it in <Stack>. For single-child spacing use Inset, Center, Breakout or Aspect.",
+            "location": {
+              "file": "TestApp.tsx",
+              "line": 245,
+              "column": 9
+            },
+            "details": {
+              "layout": "Stack",
+              "childCount": 1
+            }
+          }
+        ]
+      },
+      "D": {
+        "category": "D",
+        "label": "Spatial & A11y",
+        "score": 0,
+        "weight": 0.225,
+        "weightedScore": 0,
+        "errorCount": 0,
+        "warningCount": 0,
+        "issues": []
+      },
+      "E": {
+        "category": "E",
+        "label": "Functional Completeness",
+        "score": 60.66,
+        "weight": 0.225,
+        "weightedScore": 13.65,
+        "errorCount": 0,
+        "warningCount": 0,
+        "issues": []
+      }
+    },
+    "renderSuccess": false
+  },
+  "efficiency": {
+    "durationMs": 540003,
+    "costUsd": 1.693722,
+    "inputTokens": 865,
+    "outputTokens": 44050,
+    "cacheReadTokens": 213288,
+    "cacheCreationTokens": 48042,
+    "totalTokens": 44915,
+    "numTurns": 8
+  },
+  "report": {
+    "file": "TestApp.tsx",
+    "errors": [
+      {
+        "type": "technical",
+        "severity": "error",
+        "source": "compiler",
+        "component": "TypeScript",
+        "message": "TS2322: Type '{ children: (false | Element)[]; space: 6; style: { padding: number; maxWidth: number; margin: string; }; }' is not assignable to type 'IntrinsicAttributes & StackProps'.\n  Property 'style' does not exist on type 'IntrinsicAttributes & StackProps'.",
+        "suggestion": "Fix the TypeScript error reported by the compiler. The exact location is included in the issue location field.",
+        "location": {
+          "file": "TestApp.tsx",
+          "line": 215,
+          "column": 22
+        }
+      },
+      {
+        "type": "technical",
+        "severity": "error",
+        "source": "compiler",
+        "component": "TypeScript",
+        "message": "TS2322: Type '{ children: Element[]; space: 4; alignY: \"center\"; style: { justifyContent: string; flexWrap: string; }; }' is not assignable to type 'IntrinsicAttributes & InlineProps'.\n  Property 'style' does not exist on type 'IntrinsicAttributes & InlineProps'.",
+        "suggestion": "Fix the TypeScript error reported by the compiler. The exact location is included in the issue location field.",
+        "location": {
+          "file": "TestApp.tsx",
+          "line": 221,
+          "column": 11
+        }
+      },
+      {
+        "type": "technical",
+        "severity": "error",
+        "source": "compiler",
+        "component": "TypeScript",
+        "message": "TS2322: Type '{ children: Element[]; space: 4; alignY: \"bottom\"; style: { flexWrap: string; alignItems: string; }; }' is not assignable to type 'IntrinsicAttributes & InlineProps'.\n  Property 'style' does not exist on type 'IntrinsicAttributes & InlineProps'.",
+        "suggestion": "Fix the TypeScript error reported by the compiler. The exact location is included in the issue location field.",
+        "location": {
+          "file": "TestApp.tsx",
+          "line": 235,
+          "column": 9
+        }
+      },
+      {
+        "type": "technical",
+        "severity": "error",
+        "source": "compiler",
+        "component": "TypeScript",
+        "message": "TS2322: Type '{ children: Element; space: 0; style: { flex: string; minWidth: number; }; }' is not assignable to type 'IntrinsicAttributes & StackProps'.\n  Property 'style' does not exist on type 'IntrinsicAttributes & StackProps'.",
+        "suggestion": "Fix the TypeScript error reported by the compiler. The exact location is included in the issue location field.",
+        "location": {
+          "file": "TestApp.tsx",
+          "line": 237,
+          "column": 26
+        }
+      },
+      {
+        "type": "technical",
+        "severity": "error",
+        "source": "compiler",
+        "component": "TypeScript",
+        "message": "TS2322: Type '{ children: Element; space: 0; style: { flex: string; minWidth: number; }; }' is not assignable to type 'IntrinsicAttributes & StackProps'.\n  Property 'style' does not exist on type 'IntrinsicAttributes & StackProps'.",
+        "suggestion": "Fix the TypeScript error reported by the compiler. The exact location is included in the issue location field.",
+        "location": {
+          "file": "TestApp.tsx",
+          "line": 245,
+          "column": 26
+        }
+      },
+      {
+        "type": "technical",
+        "severity": "error",
+        "source": "compiler",
+        "component": "TypeScript",
+        "message": "TS2322: Type '{ children: Element; space: 2; alignY: \"center\"; style: { flexWrap: string; }; }' is not assignable to type 'IntrinsicAttributes & InlineProps'.\n  Property 'style' does not exist on type 'IntrinsicAttributes & InlineProps'.",
+        "suggestion": "Fix the TypeScript error reported by the compiler. The exact location is included in the issue location field.",
+        "location": {
+          "file": "TestApp.tsx",
+          "line": 264,
+          "column": 41
+        }
+      },
+      {
+        "type": "technical",
+        "severity": "error",
+        "source": "compiler",
+        "component": "TypeScript",
+        "message": "TS2322: Type '{ children: Element[]; space: 3; alignX: \"center\"; style: { textAlign: string; padding: string; }; }' is not assignable to type 'IntrinsicAttributes & StackProps'.\n  Property 'style' does not exist on type 'IntrinsicAttributes & StackProps'.",
+        "suggestion": "Fix the TypeScript error reported by the compiler. The exact location is included in the issue location field.",
+        "location": {
+          "file": "TestApp.tsx",
+          "line": 291,
+          "column": 11
+        }
+      },
+      {
+        "type": "technical",
+        "severity": "error",
+        "source": "compiler",
+        "component": "TypeScript",
+        "message": "TS2322: Type '{ children: Element[]; space: 0; style: { display: string; gridTemplateColumns: string; gap: number; }; }' is not assignable to type 'IntrinsicAttributes & StackProps'.\n  Property 'style' does not exist on type 'IntrinsicAttributes & StackProps'.",
+        "suggestion": "Fix the TypeScript error reported by the compiler. The exact location is included in the issue location field.",
+        "location": {
+          "file": "TestApp.tsx",
+          "line": 302,
+          "column": 11
+        }
+      },
+      {
+        "type": "technical",
+        "severity": "error",
+        "source": "compiler",
+        "component": "TypeScript",
+        "message": "TS2322: Type '{ children: Element[]; space: 3; style: { height: string; }; }' is not assignable to type 'IntrinsicAttributes & StackProps'.\n  Property 'style' does not exist on type 'IntrinsicAttributes & StackProps'.",
+        "suggestion": "Fix the TypeScript error reported by the compiler. The exact location is included in the issue location field.",
+        "location": {
+          "file": "TestApp.tsx",
+          "line": 312,
+          "column": 34
+        }
+      },
+      {
+        "type": "technical",
+        "severity": "error",
+        "source": "compiler",
+        "component": "TypeScript",
+        "message": "TS2322: Type '{ children: Element[]; space: 2; alignY: \"center\"; style: { justifyContent: string; }; }' is not assignable to type 'IntrinsicAttributes & InlineProps'.\n  Property 'style' does not exist on type 'IntrinsicAttributes & InlineProps'.",
+        "suggestion": "Fix the TypeScript error reported by the compiler. The exact location is included in the issue location field.",
+        "location": {
+          "file": "TestApp.tsx",
+          "line": 316,
+          "column": 21
+        }
+      },
+      {
+        "type": "technical",
+        "severity": "error",
+        "source": "compiler",
+        "component": "TypeScript",
+        "message": "TS2322: Type '{ children: Element[]; space: 3; alignY: \"center\"; style: { justifyContent: string; }; }' is not assignable to type 'IntrinsicAttributes & InlineProps'.\n  Property 'style' does not exist on type 'IntrinsicAttributes & InlineProps'.",
+        "suggestion": "Fix the TypeScript error reported by the compiler. The exact location is included in the issue location field.",
+        "location": {
+          "file": "TestApp.tsx",
+          "line": 339,
+          "column": 43
+        }
+      },
+      {
+        "type": "technical",
+        "severity": "error",
+        "source": "compiler",
+        "component": "TypeScript",
+        "message": "TS2322: Type '{ space: 0; style: { position: string; inset: number; background: string; zIndex: number; }; }' is not assignable to type 'IntrinsicAttributes & StackProps'.\n  Property 'style' does not exist on type 'IntrinsicAttributes & StackProps'.",
+        "suggestion": "Fix the TypeScript error reported by the compiler. The exact location is included in the issue location field.",
+        "location": {
+          "file": "TestApp.tsx",
+          "line": 363,
+          "column": 13
+        }
+      },
+      {
+        "type": "technical",
+        "severity": "error",
+        "source": "compiler",
+        "component": "TypeScript",
+        "message": "TS2322: Type '{ children: Element[]; space: 5; style: { position: string; top: number; right: number; height: string; width: string; background: string; boxShadow: string; zIndex: number; overflowY: string; padding: number; }; }' is not assignable to type 'IntrinsicAttributes & StackProps'.\n  Property 'style' does not exist on type 'IntrinsicAttributes & StackProps'.",
+        "suggestion": "Fix the TypeScript error reported by the compiler. The exact location is included in the issue location field.",
+        "location": {
+          "file": "TestApp.tsx",
+          "line": 372,
+          "column": 13
+        }
+      },
+      {
+        "type": "technical",
+        "severity": "error",
+        "source": "compiler",
+        "component": "TypeScript",
+        "message": "TS2322: Type '{ children: Element[]; space: 2; alignY: \"center\"; style: { justifyContent: string; }; }' is not assignable to type 'IntrinsicAttributes & InlineProps'.\n  Property 'style' does not exist on type 'IntrinsicAttributes & InlineProps'.",
+        "suggestion": "Fix the TypeScript error reported by the compiler. The exact location is included in the issue location field.",
+        "location": {
+          "file": "TestApp.tsx",
+          "line": 388,
+          "column": 15
+        }
+      },
+      {
+        "type": "technical",
+        "severity": "error",
+        "source": "compiler",
+        "component": "TypeScript",
+        "message": "TS2322: Type '{ children: string; key: string; value: string; }' is not assignable to type 'IntrinsicAttributes & CheckboxProps & RefAttributes<HTMLLabelElement>'.\n  Property 'children' does not exist on type 'IntrinsicAttributes & CheckboxProps & RefAttributes<HTMLLabelElement>'.",
+        "suggestion": "Fix the TypeScript error reported by the compiler. The exact location is included in the issue location field.",
+        "location": {
+          "file": "TestApp.tsx",
+          "line": 406,
+          "column": 18
+        }
+      },
+      {
+        "type": "technical",
+        "severity": "error",
+        "source": "compiler",
+        "component": "TypeScript",
+        "message": "TS2322: Type '{ children: string; key: string; value: string; }' is not assignable to type 'IntrinsicAttributes & CheckboxProps & RefAttributes<HTMLLabelElement>'.\n  Property 'children' does not exist on type 'IntrinsicAttributes & CheckboxProps & RefAttributes<HTMLLabelElement>'.",
+        "suggestion": "Fix the TypeScript error reported by the compiler. The exact location is included in the issue location field.",
+        "location": {
+          "file": "TestApp.tsx",
+          "line": 428,
+          "column": 18
+        }
+      },
+      {
+        "type": "technical",
+        "severity": "error",
+        "source": "compiler",
+        "component": "TypeScript",
+        "message": "TS2322: Type '{ children: string; checked: boolean; onChange: Dispatch<SetStateAction<boolean>>; }' is not assignable to type 'IntrinsicAttributes & SwitchProps & RefAttributes<HTMLLabelElement>'.\n  Property 'children' does not exist on type 'IntrinsicAttributes & SwitchProps & RefAttributes<HTMLLabelElement>'.",
+        "suggestion": "Fix the TypeScript error reported by the compiler. The exact location is included in the issue location field.",
+        "location": {
+          "file": "TestApp.tsx",
+          "line": 436,
+          "column": 14
+        }
+      },
+      {
+        "type": "technical",
+        "severity": "error",
+        "source": "prop-validator",
+        "component": "Switch",
+        "message": "Prop \"checked\" does not exist on <Switch>.",
+        "suggestion": "Remove the prop. Available props: variant, size, label, width, disabled, readOnly, selected, render, id, dir, lang, hidden, inert, translate, onClick, ….",
+        "location": {
+          "file": "TestApp.tsx",
+          "line": 436,
+          "column": 21
+        },
+        "details": {
+          "used": "checked",
+          "available": [
+            "variant",
+            "size",
+            "label",
+            "width",
+            "disabled",
+            "readOnly",
+            "selected",
+            "render",
+            "id",
+            "dir",
+            "lang",
+            "hidden",
+            "inert",
+            "translate",
+            "onClick"
+          ]
+        }
+      }
+    ],
+    "warnings": [
+      {
+        "type": "technical",
+        "severity": "warning",
+        "source": "design-system-usage",
+        "component": "Stack",
+        "message": "Inline style on <Stack> bypasses the design system (padding, maxWidth, margin).",
+        "suggestion": "Use Marigold layout components (Stack, Columns, Inset, Container) and theme tokens instead of inline styles.",
+        "location": {
+          "file": "TestApp.tsx",
+          "line": 215,
+          "column": 22
+        },
+        "details": {
+          "cssProperties": [
+            "padding",
+            "maxWidth",
+            "margin"
+          ]
+        }
+      },
+      {
+        "type": "technical",
+        "severity": "warning",
+        "source": "design-system-usage",
+        "component": "Inline",
+        "message": "Inline style on <Inline> bypasses the design system (justifyContent, flexWrap).",
+        "suggestion": "Use Marigold layout components (Stack, Columns, Inset, Container) and theme tokens instead of inline styles.",
+        "location": {
+          "file": "TestApp.tsx",
+          "line": 221,
+          "column": 11
+        },
+        "details": {
+          "cssProperties": [
+            "justifyContent",
+            "flexWrap"
+          ]
+        }
+      },
+      {
+        "type": "technical",
+        "severity": "warning",
+        "source": "design-system-usage",
+        "component": "Inline",
+        "message": "Inline style on <Inline> bypasses the design system (flexWrap, alignItems).",
+        "suggestion": "Use Marigold layout components (Stack, Columns, Inset, Container) and theme tokens instead of inline styles.",
+        "location": {
+          "file": "TestApp.tsx",
+          "line": 235,
+          "column": 9
+        },
+        "details": {
+          "cssProperties": [
+            "flexWrap",
+            "alignItems"
+          ]
+        }
+      },
+      {
+        "type": "technical",
+        "severity": "warning",
+        "source": "design-system-usage",
+        "component": "Stack",
+        "message": "Inline style on <Stack> bypasses the design system (flex, minWidth).",
+        "suggestion": "Use Marigold layout components (Stack, Columns, Inset, Container) and theme tokens instead of inline styles.",
+        "location": {
+          "file": "TestApp.tsx",
+          "line": 237,
+          "column": 26
+        },
+        "details": {
+          "cssProperties": [
+            "flex",
+            "minWidth"
+          ]
+        }
+      },
+      {
+        "type": "technical",
+        "severity": "warning",
+        "source": "design-system-usage",
+        "component": "Stack",
+        "message": "Inline style on <Stack> bypasses the design system (flex, minWidth).",
+        "suggestion": "Use Marigold layout components (Stack, Columns, Inset, Container) and theme tokens instead of inline styles.",
+        "location": {
+          "file": "TestApp.tsx",
+          "line": 245,
+          "column": 26
+        },
+        "details": {
+          "cssProperties": [
+            "flex",
+            "minWidth"
+          ]
+        }
+      },
+      {
+        "type": "technical",
+        "severity": "warning",
+        "source": "design-system-usage",
+        "component": "Inline",
+        "message": "Inline style on <Inline> bypasses the design system (flexWrap).",
+        "suggestion": "Use Marigold layout components (Stack, Columns, Inset, Container) and theme tokens instead of inline styles.",
+        "location": {
+          "file": "TestApp.tsx",
+          "line": 264,
+          "column": 41
+        },
+        "details": {
+          "cssProperties": [
+            "flexWrap"
+          ]
+        }
+      },
+      {
+        "type": "technical",
+        "severity": "warning",
+        "source": "design-system-usage",
+        "component": "Stack",
+        "message": "Inline style on <Stack> bypasses the design system (textAlign, padding).",
+        "suggestion": "Use Marigold layout components (Stack, Columns, Inset, Container) and theme tokens instead of inline styles.",
+        "location": {
+          "file": "TestApp.tsx",
+          "line": 291,
+          "column": 11
+        },
+        "details": {
+          "cssProperties": [
+            "textAlign",
+            "padding"
+          ]
+        }
+      },
+      {
+        "type": "technical",
+        "severity": "warning",
+        "source": "design-system-usage",
+        "component": "Stack",
+        "message": "Inline style on <Stack> bypasses the design system (display, gridTemplateColumns, gap).",
+        "suggestion": "Use Marigold layout components (Stack, Columns, Inset, Container) and theme tokens instead of inline styles.",
+        "location": {
+          "file": "TestApp.tsx",
+          "line": 302,
+          "column": 11
+        },
+        "details": {
+          "cssProperties": [
+            "display",
+            "gridTemplateColumns",
+            "gap"
+          ]
+        }
+      },
+      {
+        "type": "technical",
+        "severity": "warning",
+        "source": "design-system-usage",
+        "component": "Stack",
+        "message": "Inline style on <Stack> bypasses the design system (height).",
+        "suggestion": "Use Marigold layout components (Stack, Columns, Inset, Container) and theme tokens instead of inline styles.",
+        "location": {
+          "file": "TestApp.tsx",
+          "line": 312,
+          "column": 34
+        },
+        "details": {
+          "cssProperties": [
+            "height"
+          ]
+        }
+      },
+      {
+        "type": "technical",
+        "severity": "warning",
+        "source": "design-system-usage",
+        "component": "Inline",
+        "message": "Inline style on <Inline> bypasses the design system (justifyContent).",
+        "suggestion": "Use Marigold layout components (Stack, Columns, Inset, Container) and theme tokens instead of inline styles.",
+        "location": {
+          "file": "TestApp.tsx",
+          "line": 316,
+          "column": 21
+        },
+        "details": {
+          "cssProperties": [
+            "justifyContent"
+          ]
+        }
+      },
+      {
+        "type": "technical",
+        "severity": "warning",
+        "source": "design-system-usage",
+        "component": "Inline",
+        "message": "Inline style on <Inline> bypasses the design system (justifyContent).",
+        "suggestion": "Use Marigold layout components (Stack, Columns, Inset, Container) and theme tokens instead of inline styles.",
+        "location": {
+          "file": "TestApp.tsx",
+          "line": 339,
+          "column": 43
+        },
+        "details": {
+          "cssProperties": [
+            "justifyContent"
+          ]
+        }
+      },
+      {
+        "type": "technical",
+        "severity": "warning",
+        "source": "design-system-usage",
+        "component": "Stack",
+        "message": "Inline style on <Stack> bypasses the design system (position, inset, background, zIndex).",
+        "suggestion": "Use Marigold layout components (Stack, Columns, Inset, Container) and theme tokens instead of inline styles.",
+        "location": {
+          "file": "TestApp.tsx",
+          "line": 363,
+          "column": 13
+        },
+        "details": {
+          "cssProperties": [
+            "position",
+            "inset",
+            "background",
+            "zIndex"
+          ]
+        }
+      },
+      {
+        "type": "technical",
+        "severity": "warning",
+        "source": "design-system-usage",
+        "component": "Stack",
+        "message": "Inline style on <Stack> bypasses the design system (position, top, right, height, width).",
+        "suggestion": "Use Marigold layout components (Stack, Columns, Inset, Container) and theme tokens instead of inline styles.",
+        "location": {
+          "file": "TestApp.tsx",
+          "line": 372,
+          "column": 13
+        },
+        "details": {
+          "cssProperties": [
+            "position",
+            "top",
+            "right",
+            "height",
+            "width"
+          ]
+        }
+      },
+      {
+        "type": "technical",
+        "severity": "warning",
+        "source": "design-system-usage",
+        "component": "Inline",
+        "message": "Inline style on <Inline> bypasses the design system (justifyContent).",
+        "suggestion": "Use Marigold layout components (Stack, Columns, Inset, Container) and theme tokens instead of inline styles.",
+        "location": {
+          "file": "TestApp.tsx",
+          "line": 388,
+          "column": 15
+        },
+        "details": {
+          "cssProperties": [
+            "justifyContent"
+          ]
+        }
+      },
+      {
+        "type": "technical",
+        "severity": "warning",
+        "source": "layout-usage",
+        "component": "Stack",
+        "message": "<Stack> wraps a single child. A flow layout earns its place only with two or more children; with one child it adds a wrapper that does nothing.",
+        "suggestion": "Render the child directly instead of wrapping it in <Stack>. For single-child spacing use Inset, Center, Breakout or Aspect.",
+        "location": {
+          "file": "TestApp.tsx",
+          "line": 237,
+          "column": 9
+        },
+        "details": {
+          "layout": "Stack",
+          "childCount": 1
+        }
+      },
+      {
+        "type": "technical",
+        "severity": "warning",
+        "source": "layout-usage",
+        "component": "Stack",
+        "message": "<Stack> wraps a single child. A flow layout earns its place only with two or more children; with one child it adds a wrapper that does nothing.",
+        "suggestion": "Render the child directly instead of wrapping it in <Stack>. For single-child spacing use Inset, Center, Breakout or Aspect.",
+        "location": {
+          "file": "TestApp.tsx",
+          "line": 245,
+          "column": 9
+        },
+        "details": {
+          "layout": "Stack",
+          "childCount": 1
+        }
+      }
+    ],
+    "passed": [
+      "Component composition",
+      "Overlay accessible names",
+      "Compound component placement",
+      "Section headers",
+      "Collection item ids",
+      "Table usage",
+      "Component conventions",
+      "Theme variant compliance"
+    ],
+    "metadata": {
+      "renderTimeMs": 0,
+      "componentsFound": [],
+      "checksRun": [
+        "technical",
+        "spatial",
+        "a11y"
+      ],
+      "coverage": {
+        "staticValuesChecked": 25,
+        "dynamicValuesSkipped": 16,
+        "spreadPropsBypassed": 0
+      },
+      "widthUtilization": null
+    },
+    "markdown": "marigold-validate: TestApp.tsx — 18 error(s), 16 warning(s)\n\n[error/technical] <Switch>: Prop \"checked\" does not exist on <Switch>. (TestApp.tsx:436:21)\n  → Remove the prop. Available props: variant, size, label, width, disabled, readOnly, selected, render, id, dir, lang, hidden, inert, translate, onClick, ….\n  data: {used=checked, available=[\"variant\",\"size\",\"label\",\"width\",\"disabled\",\"readOnly\",\"selected\",\"render\", …]}\n[error/technical] <TypeScript>: TS2322: Type '{ children: (false | Element)[]; space: 6; style: { padding: number; maxWidth: number; margin: string; }; }' is not assignable to type 'IntrinsicAttributes & StackProps'.\n  Property 'style' does not exist on type 'IntrinsicAttributes & StackProps'. (TestApp.tsx:215:22)\n  → Fix the TypeScript error reported by the compiler. The exact location is included in the issue location field.\n[error/technical] <TypeScript>: TS2322: Type '{ children: Element[]; space: 4; alignY: \"center\"; style: { justifyContent: string; flexWrap: string; }; }' is not assignable to type 'IntrinsicAttributes & InlineProps'.\n  Property 'style' does not exist on type 'IntrinsicAttributes & InlineProps'. (TestApp.tsx:221:11)\n  → Fix the TypeScript error reported by the compiler. The exact location is included in the issue location field.\n[error/technical] <TypeScript>: TS2322: Type '{ children: Element[]; space: 4; alignY: \"bottom\"; style: { flexWrap: string; alignItems: string; }; }' is not assignable to type 'IntrinsicAttributes & InlineProps'.\n  Property 'style' does not exist on type 'IntrinsicAttributes & InlineProps'. (TestApp.tsx:235:9)\n  → Fix the TypeScript error reported by the compiler. The exact location is included in the issue location field.\n[error/technical] <TypeScript>: TS2322: Type '{ children: Element; space: 0; style: { flex: string; minWidth: number; }; }' is not assignable to type 'IntrinsicAttributes & StackProps'.\n  Property 'style' does not exist on type 'IntrinsicAttributes & StackProps'. (TestApp.tsx:237:26)\n  → Fix the TypeScript error reported by the compiler. The exact location is included in the issue location field.\n[error/technical] <TypeScript>: TS2322: Type '{ children: Element; space: 0; style: { flex: string; minWidth: number; }; }' is not assignable to type 'IntrinsicAttributes & StackProps'.\n  Property 'style' does not exist on type 'IntrinsicAttributes & StackProps'. (TestApp.tsx:245:26)\n  → Fix the TypeScript error reported by the compiler. The exact location is included in the issue location field.\n[error/technical] <TypeScript>: TS2322: Type '{ children: Element; space: 2; alignY: \"center\"; style: { flexWrap: string; }; }' is not assignable to type 'IntrinsicAttributes & InlineProps'.\n  Property 'style' does not exist on type 'IntrinsicAttributes & InlineProps'. (TestApp.tsx:264:41)\n  → Fix the TypeScript error reported by the compiler. The exact location is included in the issue location field.\n[error/technical] <TypeScript>: TS2322: Type '{ children: Element[]; space: 3; alignX: \"center\"; style: { textAlign: string; padding: string; }; }' is not assignable to type 'IntrinsicAttributes & StackProps'.\n  Property 'style' does not exist on type 'IntrinsicAttributes & StackProps'. (TestApp.tsx:291:11)\n  → Fix the TypeScript error reported by the compiler. The exact location is included in the issue location field.\n[error/technical] <TypeScript>: TS2322: Type '{ children: Element[]; space: 0; style: { display: string; gridTemplateColumns: string; gap: number; }; }' is not assignable to type 'IntrinsicAttributes & StackProps'.\n  Property 'style' does not exist on type 'IntrinsicAttributes & StackProps'. (TestApp.tsx:302:11)\n  → Fix the TypeScript error reported by the compiler. The exact location is included in the issue location field.\n[error/technical] <TypeScript>: TS2322: Type '{ children: Element[]; space: 3; style: { height: string; }; }' is not assignable to type 'IntrinsicAttributes & StackProps'.\n  Property 'style' does not exist on type 'IntrinsicAttributes & StackProps'. (TestApp.tsx:312:34)\n  → Fix the TypeScript error reported by the compiler. The exact location is included in the issue location field.\n[error/technical] <TypeScript>: TS2322: Type '{ children: Element[]; space: 2; alignY: \"center\"; style: { justifyContent: string; }; }' is not assignable to type 'IntrinsicAttributes & InlineProps'.\n  Property 'style' does not exist on type 'IntrinsicAttributes & InlineProps'. (TestApp.tsx:316:21)\n  → Fix the TypeScript error reported by the compiler. The exact location is included in the issue location field.\n[error/technical] <TypeScript>: TS2322: Type '{ children: Element[]; space: 3; alignY: \"center\"; style: { justifyContent: string; }; }' is not assignable to type 'IntrinsicAttributes & InlineProps'.\n  Property 'style' does not exist on type 'IntrinsicAttributes & InlineProps'. (TestApp.tsx:339:43)\n  → Fix the TypeScript error reported by the compiler. The exact location is included in the issue location field.\n[error/technical] <TypeScript>: TS2322: Type '{ space: 0; style: { position: string; inset: number; background: string; zIndex: number; }; }' is not assignable to type 'IntrinsicAttributes & StackProps'.\n  Property 'style' does not exist on type 'IntrinsicAttributes & StackProps'. (TestApp.tsx:363:13)\n  → Fix the TypeScript error reported by the compiler. The exact location is included in the issue location field.\n[error/technical] <TypeScript>: TS2322: Type '{ children: Element[]; space: 5; style: { position: string; top: number; right: number; height: string; width: string; background: string; boxShadow: string; zIndex: number; overflowY: string; padding: number; }; }' is not assignable to type 'IntrinsicAttributes & StackProps'.\n  Property 'style' does not exist on type 'IntrinsicAttributes & StackProps'. (TestApp.tsx:372:13)\n  → Fix the TypeScript error reported by the compiler. The exact location is included in the issue location field.\n[error/technical] <TypeScript>: TS2322: Type '{ children: Element[]; space: 2; alignY: \"center\"; style: { justifyContent: string; }; }' is not assignable to type 'IntrinsicAttributes & InlineProps'.\n  Property 'style' does not exist on type 'IntrinsicAttributes & InlineProps'. (TestApp.tsx:388:15)\n  → Fix the TypeScript error reported by the compiler. The exact location is included in the issue location field.\n[error/technical] <TypeScript>: TS2322: Type '{ children: string; key: string; value: string; }' is not assignable to type 'IntrinsicAttributes & CheckboxProps & RefAttributes<HTMLLabelElement>'.\n  Property 'children' does not exist on type 'IntrinsicAttributes & CheckboxProps & RefAttributes<HTMLLabelElement>'. (TestApp.tsx:406:18)\n  → Fix the TypeScript error reported by the compiler. The exact location is included in the issue location field.\n[error/technical] <TypeScript>: TS2322: Type '{ children: string; key: string; value: string; }' is not assignable to type 'IntrinsicAttributes & CheckboxProps & RefAttributes<HTMLLabelElement>'.\n  Property 'children' does not exist on type 'IntrinsicAttributes & CheckboxProps & RefAttributes<HTMLLabelElement>'. (TestApp.tsx:428:18)\n  → Fix the TypeScript error reported by the compiler. The exact location is included in the issue location field.\n[error/technical] <TypeScript>: TS2322: Type '{ children: string; checked: boolean; onChange: Dispatch<SetStateAction<boolean>>; }' is not assignable to type 'IntrinsicAttributes & SwitchProps & RefAttributes<HTMLLabelElement>'.\n  Property 'children' does not exist on type 'IntrinsicAttributes & SwitchProps & RefAttributes<HTMLLabelElement>'. (TestApp.tsx:436:14)\n  → Fix the TypeScript error reported by the compiler. The exact location is included in the issue location field.\n[warning/technical] <Inline>: Inline style on <Inline> bypasses the design system (justifyContent, flexWrap). (TestApp.tsx:221:11)\n  → Use Marigold layout components (Stack, Columns, Inset, Container) and theme tokens instead of inline styles.\n  data: {cssProperties=[\"justifyContent\",\"flexWrap\"]}\n[warning/technical] <Inline>: Inline style on <Inline> bypasses the design system (flexWrap, alignItems). (TestApp.tsx:235:9)\n  → Use Marigold layout components (Stack, Columns, Inset, Container) and theme tokens instead of inline styles.\n  data: {cssProperties=[\"flexWrap\",\"alignItems\"]}\n[warning/technical] <Inline>: Inline style on <Inline> bypasses the design system (flexWrap). (TestApp.tsx:264:41)\n  → Use Marigold layout components (Stack, Columns, Inset, Container) and theme tokens instead of inline styles.\n  data: {cssProperties=[\"flexWrap\"]}\n[warning/technical] <Inline>: Inline style on <Inline> bypasses the design system (justifyContent). (TestApp.tsx:316:21)\n  → Use Marigold layout components (Stack, Columns, Inset, Container) and theme tokens instead of inline styles.\n  data: {cssProperties=[\"justifyContent\"]}\n[warning/technical] <Inline>: Inline style on <Inline> bypasses the design system (justifyContent). (TestApp.tsx:339:43)\n  → Use Marigold layout components (Stack, Columns, Inset, Container) and theme tokens instead of inline styles.\n  data: {cssProperties=[\"justifyContent\"]}\n[warning/technical] <Inline>: Inline style on <Inline> bypasses the design system (justifyContent). (TestApp.tsx:388:15)\n  → Use Marigold layout components (Stack, Columns, Inset, Container) and theme tokens instead of inline styles.\n  data: {cssProperties=[\"justifyContent\"]}\n[warning/technical] <Stack>: Inline style on <Stack> bypasses the design system (padding, maxWidth, margin). (TestApp.tsx:215:22)\n  → Use Marigold layout components (Stack, Columns, Inset, Container) and theme tokens instead of inline styles.\n  data: {cssProperties=[\"padding\",\"maxWidth\",\"margin\"]}\n[warning/technical] <Stack>: Inline style on <Stack> bypasses the design system (flex, minWidth). (TestApp.tsx:237:26)\n  → Use Marigold layout components (Stack, Columns, Inset, Container) and theme tokens instead of inline styles.\n  data: {cssProperties=[\"flex\",\"minWidth\"]}\n[warning/technical] <Stack>: Inline style on <Stack> bypasses the design system (flex, minWidth). (TestApp.tsx:245:26)\n  → Use Marigold layout components (Stack, Columns, Inset, Container) and theme tokens instead of inline styles.\n  data: {cssProperties=[\"flex\",\"minWidth\"]}\n[warning/technical] <Stack>: Inline style on <Stack> bypasses the design system (textAlign, padding). (TestApp.tsx:291:11)\n  → Use Marigold layout components (Stack, Columns, Inset, Container) and theme tokens instead of inline styles.\n  data: {cssProperties=[\"textAlign\",\"padding\"]}\n[warning/technical] <Stack>: Inline style on <Stack> bypasses the design system (display, gridTemplateColumns, gap). (TestApp.tsx:302:11)\n  → Use Marigold layout components (Stack, Columns, Inset, Container) and theme tokens instead of inline styles.\n  data: {cssProperties=[\"display\",\"gridTemplateColumns\",\"gap\"]}\n[warning/technical] <Stack>: Inline style on <Stack> bypasses the design system (height). (TestApp.tsx:312:34)\n  → Use Marigold layout components (Stack, Columns, Inset, Container) and theme tokens instead of inline styles.\n  data: {cssProperties=[\"height\"]}\n[warning/technical] <Stack>: Inline style on <Stack> bypasses the design system (position, inset, background, zIndex). (TestApp.tsx:363:13)\n  → Use Marigold layout components (Stack, Columns, Inset, Container) and theme tokens instead of inline styles.\n  data: {cssProperties=[\"position\",\"inset\",\"background\",\"zIndex\"]}\n[warning/technical] <Stack>: Inline style on <Stack> bypasses the design system (position, top, right, height, width). (TestApp.tsx:372:13)\n  → Use Marigold layout components (Stack, Columns, Inset, Container) and theme tokens instead of inline styles.\n  data: {cssProperties=[\"position\",\"top\",\"right\",\"height\",\"width\"]}\n[warning/technical] <Stack>: <Stack> wraps a single child. A flow layout earns its place only with two or more children; with one child it adds a wrapper that does nothing. (TestApp.tsx:237:9)\n  → Render the child directly instead of wrapping it in <Stack>. For single-child spacing use Inset, Center, Breakout or Aspect.\n  data: {layout=Stack, childCount=1}\n[warning/technical] <Stack>: <Stack> wraps a single child. A flow layout earns its place only with two or more children; with one child it adds a wrapper that does nothing. (TestApp.tsx:245:9)\n  → Render the child directly instead of wrapping it in <Stack>. For single-child spacing use Inset, Center, Breakout or Aspect.\n  data: {layout=Stack, childCount=1}\n\npassed: Component composition, Overlay accessible names, Compound component placement, Section headers, Collection item ids, Table usage, Component conventions, Theme variant compliance\n\nchecks run: technical, spatial, a11y"
+  },
+  "componentsFound": [],
+  "renderTimeMs": 0,
+  "sourceCode": "import { useEffect, useMemo, useState } from 'react';\nimport {\n  Headline,\n  Text,\n  Button,\n  SearchField,\n  Select,\n  Checkbox,\n  CheckboxGroup,\n  Switch,\n  Slider,\n  Card,\n  Stack,\n  Inline,\n  Divider,\n} from '@marigold/components';\n\n/* ------------------------------------------------------------------ */\n/* Data                                                                */\n/* ------------------------------------------------------------------ */\n\ntype Status = 'new' | 'sale' | 'soldout';\n\ninterface Product {\n  id: number;\n  name: string;\n  price: number;\n  status: Status;\n  description: string;\n  category: string;\n  sizes: string[];\n  popularity: number;\n  inStock: boolean;\n  added: number; // higher = newer\n}\n\nconst CATEGORIES = [\n  { id: 'tshirts', label: 'T-Shirts' },\n  { id: 'hoodies', label: 'Hoodies' },\n  { id: 'accessories', label: 'Accessories' },\n  { id: 'posters', label: 'Posters' },\n  { id: 'stickers', label: 'Stickers' },\n];\n\nconst SIZES = ['XS', 'S', 'M', 'L', 'XL'];\n\nconst STATUS_LABEL: Record<Status, string> = {\n  new: 'New',\n  sale: 'Sale',\n  soldout: 'Sold Out',\n};\n\nconst RAW: Array<Omit<Product, 'id' | 'added' | 'inStock'>> = [\n  { name: 'Classic Logo Tee', price: 24.99, status: 'sale', description: 'Soft cotton tee with our signature embroidered logo.', category: 'tshirts', sizes: ['XS', 'S', 'M', 'L', 'XL'], popularity: 88 },\n  { name: 'Vintage Hoodie', price: 59.99, status: 'new', description: 'Heavyweight fleece hoodie with a relaxed vintage wash.', category: 'hoodies', sizes: ['S', 'M', 'L', 'XL'], popularity: 95 },\n  { name: 'Enamel Pin Set', price: 12.5, status: 'soldout', description: 'A set of three collectible hard-enamel pins.', category: 'accessories', sizes: [], popularity: 60 },\n  { name: 'Retro Poster', price: 18.0, status: 'new', description: 'Matte A2 poster featuring our retro brand artwork.', category: 'posters', sizes: [], popularity: 40 },\n  { name: 'Sticker Pack', price: 8.99, status: 'sale', description: 'Ten weatherproof vinyl stickers in assorted designs.', category: 'stickers', sizes: [], popularity: 70 },\n  { name: 'Premium Zip Hoodie', price: 74.99, status: 'soldout', description: 'Brushed-interior zip hoodie with metal hardware.', category: 'hoodies', sizes: ['S', 'M', 'L', 'XL'], popularity: 80 },\n  { name: 'Graphic Tee', price: 27.5, status: 'new', description: 'Bold front-print tee on combed ring-spun cotton.', category: 'tshirts', sizes: ['XS', 'S', 'M', 'L'], popularity: 65 },\n  { name: 'Canvas Tote Bag', price: 15.0, status: 'sale', description: 'Sturdy organic-cotton tote with reinforced handles.', category: 'accessories', sizes: [], popularity: 55 },\n  { name: 'Cuffed Beanie', price: 19.99, status: 'new', description: 'Ribbed knit beanie with a woven logo tag.', category: 'accessories', sizes: [], popularity: 50 },\n  { name: 'Art Print Poster', price: 22.0, status: 'sale', description: 'Limited-run giclée art print on heavy stock.', category: 'posters', sizes: [], popularity: 45 },\n  { name: 'Pocket Tee', price: 21.99, status: 'new', description: 'Everyday tee with a clean chest pocket detail.', category: 'tshirts', sizes: ['S', 'M', 'L', 'XL'], popularity: 58 },\n  { name: 'Fleece Hoodie', price: 64.99, status: 'new', description: 'Cozy midweight fleece hoodie for everyday wear.', category: 'hoodies', sizes: ['M', 'L', 'XL'], popularity: 90 },\n  { name: 'Holographic Stickers', price: 6.5, status: 'new', description: 'Shimmering holographic die-cut sticker sheet.', category: 'stickers', sizes: [], popularity: 62 },\n  { name: 'Snapback Cap', price: 24.0, status: 'sale', description: 'Structured six-panel cap with adjustable snap.', category: 'accessories', sizes: [], popularity: 52 },\n  { name: 'Long Sleeve Tee', price: 32.99, status: 'new', description: 'Lightweight long-sleeve tee with ribbed cuffs.', category: 'tshirts', sizes: ['S', 'M', 'L', 'XL'], popularity: 48 },\n  { name: 'Minimal Poster', price: 16.0, status: 'new', description: 'Clean typographic poster in a muted palette.', category: 'posters', sizes: [], popularity: 38 },\n  { name: 'Logo Sticker', price: 3.99, status: 'sale', description: 'Single durable logo sticker for laptops and bottles.', category: 'stickers', sizes: [], popularity: 75 },\n  { name: 'Oversized Hoodie', price: 69.99, status: 'new', description: 'Drop-shoulder oversized hoodie in premium fleece.', category: 'hoodies', sizes: ['XS', 'S', 'M', 'L', 'XL'], popularity: 85 },\n  { name: 'Striped Tee', price: 26.99, status: 'sale', description: 'Yarn-dyed striped tee with a soft hand feel.', category: 'tshirts', sizes: ['XS', 'S', 'M'], popularity: 44 },\n  { name: 'Ceramic Mug', price: 13.99, status: 'new', description: 'Glazed 12oz ceramic mug with wrap-around print.', category: 'accessories', sizes: [], popularity: 53 },\n  { name: 'Tour Poster', price: 20.0, status: 'new', description: 'Collectible tour poster with foil accents.', category: 'posters', sizes: [], popularity: 41 },\n  { name: 'Die-Cut Stickers', price: 9.5, status: 'new', description: 'Precision die-cut stickers in five shapes.', category: 'stickers', sizes: [], popularity: 57 },\n  { name: 'Cropped Hoodie', price: 54.99, status: 'sale', description: 'Cropped-fit hoodie with a kangaroo pocket.', category: 'hoodies', sizes: ['XS', 'S', 'M', 'L'], popularity: 72 },\n  { name: 'Performance Tee', price: 34.99, status: 'new', description: 'Moisture-wicking athletic tee for active days.', category: 'tshirts', sizes: ['S', 'M', 'L', 'XL'], popularity: 49 },\n];\n\nconst PRODUCTS: Product[] = RAW.map((p, i) => ({\n  ...p,\n  id: i,\n  added: RAW.length - i, // first item is newest\n  inStock: p.status !== 'soldout',\n}));\n\nconst SORT_OPTIONS = [\n  { id: 'newest', label: 'Newest' },\n  { id: 'price-asc', label: 'Price: Low to High' },\n  { id: 'price-desc', label: 'Price: High to Low' },\n  { id: 'popular', label: 'Most Popular' },\n];\n\nconst PAGE_SIZE = 8;\nconst MAX_PRICE = 100;\n\nconst formatPrice = (n: number) => `$${n.toFixed(2)}`;\nconst catLabel = (id: string) =>\n  CATEGORIES.find((c) => c.id === id)?.label ?? id;\n\n/* ------------------------------------------------------------------ */\n/* Component                                                           */\n/* ------------------------------------------------------------------ */\n\nconst TestApp = () => {\n  const [search, setSearch] = useState('');\n  const [sort, setSort] = useState('newest');\n\n  const [categories, setCategories] = useState<string[]>([]);\n  const [sizes, setSizes] = useState<string[]>([]);\n  const [maxPrice, setMaxPrice] = useState(MAX_PRICE);\n  const [inStockOnly, setInStockOnly] = useState(false);\n\n  const [panelOpen, setPanelOpen] = useState(false);\n  const [page, setPage] = useState(1);\n  const [cart, setCart] = useState(0);\n\n  const priceActive = maxPrice < MAX_PRICE;\n\n  /* ---- filtering + sorting ---- */\n  const results = useMemo(() => {\n    const query = search.trim().toLowerCase();\n    const filtered = PRODUCTS.filter((p) => {\n      if (query && !p.name.toLowerCase().includes(query)) return false;\n      if (categories.length && !categories.includes(p.category)) return false;\n      if (sizes.length && !p.sizes.some((s) => sizes.includes(s))) return false;\n      if (priceActive && p.price > maxPrice) return false;\n      if (inStockOnly && !p.inStock) return false;\n      return true;\n    });\n\n    const sorted = [...filtered];\n    switch (sort) {\n      case 'price-asc':\n        sorted.sort((a, b) => a.price - b.price);\n        break;\n      case 'price-desc':\n        sorted.sort((a, b) => b.price - a.price);\n        break;\n      case 'popular':\n        sorted.sort((a, b) => b.popularity - a.popularity);\n        break;\n      default:\n        sorted.sort((a, b) => b.added - a.added);\n    }\n    return sorted;\n  }, [search, sort, categories, sizes, maxPrice, priceActive, inStockOnly]);\n\n  const totalPages = Math.max(1, Math.ceil(results.length / PAGE_SIZE));\n  const effPage = Math.min(page, totalPages);\n\n  /* reset to first page whenever the result set changes */\n  useEffect(() => {\n    setPage(1);\n  }, [search, sort, categories.join('|'), sizes.join('|'), maxPrice, inStockOnly]);\n\n  const pageItems = results.slice(\n    (effPage - 1) * PAGE_SIZE,\n    effPage * PAGE_SIZE\n  );\n\n  /* ---- filter mutators ---- */\n  const resetFilters = () => {\n    setCategories([]);\n    setSizes([]);\n    setMaxPrice(MAX_PRICE);\n    setInStockOnly(false);\n  };\n\n  const clearAll = () => {\n    resetFilters();\n    setSearch('');\n  };\n\n  /* ---- active filter chips ---- */\n  const chips: Array<{ key: string; label: string; onRemove: () => void }> = [];\n  if (search.trim())\n    chips.push({\n      key: 'search',\n      label: `Search: “${search.trim()}”`,\n      onRemove: () => setSearch(''),\n    });\n  categories.forEach((c) =>\n    chips.push({\n      key: `cat-${c}`,\n      label: catLabel(c),\n      onRemove: () => setCategories((arr) => arr.filter((x) => x !== c)),\n    })\n  );\n  sizes.forEach((s) =>\n    chips.push({\n      key: `size-${s}`,\n      label: `Size: ${s}`,\n      onRemove: () => setSizes((arr) => arr.filter((x) => x !== s)),\n    })\n  );\n  if (priceActive)\n    chips.push({\n      key: 'price',\n      label: `Up to ${formatPrice(maxPrice)}`,\n      onRemove: () => setMaxPrice(MAX_PRICE),\n    });\n  if (inStockOnly)\n    chips.push({\n      key: 'stock',\n      label: 'In stock only',\n      onRemove: () => setInStockOnly(false),\n    });\n\n  /* ---------------------------------------------------------------- */\n  /* Render                                                           */\n  /* ---------------------------------------------------------------- */\n\n  return (\n    <Stack space={6} style={{ padding: 24, maxWidth: 1200, margin: '0 auto' }}>\n      {/* Header */}\n      <Stack space={1}>\n        <Inline\n          space={4}\n          alignY=\"center\"\n          style={{ justifyContent: 'space-between', flexWrap: 'wrap' }}\n        >\n          <Headline level=\"1\">Merchandise Store</Headline>\n          <Text>{`Cart: ${cart} item${cart === 1 ? '' : 's'}`}</Text>\n        </Inline>\n        <Text>Browse our collection of branded merchandise.</Text>\n      </Stack>\n\n      <Divider />\n\n      {/* Toolbar */}\n      <Inline\n        space={4}\n        alignY=\"bottom\"\n        style={{ flexWrap: 'wrap', alignItems: 'flex-end' }}\n      >\n        <Stack space={0} style={{ flex: '1 1 240px', minWidth: 200 }}>\n          <SearchField\n            label=\"Search\"\n            placeholder=\"Search products by name…\"\n            value={search}\n            onChange={setSearch}\n          />\n        </Stack>\n        <Stack space={0} style={{ flex: '0 1 220px', minWidth: 180 }}>\n          <Select\n            label=\"Sort by\"\n            selectedKey={sort}\n            onSelectionChange={(key) => setSort(String(key))}\n          >\n            {SORT_OPTIONS.map((o) => (\n              <Select.Option key={o.id} id={o.id}>\n                {o.label}\n              </Select.Option>\n            ))}\n          </Select>\n        </Stack>\n        <Button variant=\"secondary\" onPress={() => setPanelOpen(true)}>\n          Filters\n        </Button>\n      </Inline>\n\n      {/* Applied filters */}\n      <Inline space={2} alignY=\"center\" style={{ flexWrap: 'wrap' }}>\n        {chips.length === 0 ? (\n          <Text>No filters applied</Text>\n        ) : (\n          <>\n            {chips.map((chip) => (\n              <Button\n                key={chip.key}\n                size=\"small\"\n                variant=\"secondary\"\n                onPress={chip.onRemove}\n              >\n                {`${chip.label}  ✕`}\n              </Button>\n            ))}\n            <Button size=\"small\" variant=\"text\" onPress={clearAll}>\n              Clear all\n            </Button>\n          </>\n        )}\n      </Inline>\n\n      {/* Grid or empty state */}\n      {results.length === 0 ? (\n        <Stack\n          space={3}\n          alignX=\"center\"\n          style={{ textAlign: 'center', padding: '48px 16px' }}\n        >\n          <Headline level=\"3\">No products found</Headline>\n          <Text>Try adjusting your filters or search query.</Text>\n          <Button variant=\"primary\" onPress={clearAll}>\n            Clear all filters\n          </Button>\n        </Stack>\n      ) : (\n        <Stack\n          space={0}\n          style={{\n            display: 'grid',\n            gridTemplateColumns: 'repeat(auto-fill, minmax(240px, 1fr))',\n            gap: 16,\n          }}\n        >\n          {pageItems.map((p) => {\n            const soldOut = p.status === 'soldout';\n            return (\n              <Card key={p.id}>\n                <Stack space={3} style={{ height: '100%' }}>\n                  <Inline\n                    space={2}\n                    alignY=\"center\"\n                    style={{ justifyContent: 'space-between' }}\n                  >\n                    <Headline level=\"4\">{p.name}</Headline>\n                    <Text>{STATUS_LABEL[p.status]}</Text>\n                  </Inline>\n                  <Headline level=\"5\">{formatPrice(p.price)}</Headline>\n                  <Text>{p.description}</Text>\n                  <Button\n                    variant=\"primary\"\n                    disabled={soldOut}\n                    onPress={() => setCart((c) => c + 1)}\n                  >\n                    {soldOut ? 'Sold Out' : 'Add to Cart'}\n                  </Button>\n                </Stack>\n              </Card>\n            );\n          })}\n        </Stack>\n      )}\n\n      {/* Pagination */}\n      {results.length > 0 && (\n        <Inline space={3} alignY=\"center\" style={{ justifyContent: 'center' }}>\n          <Button\n            variant=\"secondary\"\n            disabled={effPage <= 1}\n            onPress={() => setPage((pg) => Math.max(1, pg - 1))}\n          >\n            Previous\n          </Button>\n          <Text>{`Page ${effPage} of ${totalPages}`}</Text>\n          <Button\n            variant=\"secondary\"\n            disabled={effPage >= totalPages}\n            onPress={() => setPage((pg) => Math.min(totalPages, pg + 1))}\n          >\n            Next\n          </Button>\n        </Inline>\n      )}\n\n      {/* Filter panel — slides in from the right edge */}\n      {panelOpen && (\n        <>\n          <Stack\n            space={0}\n            style={{\n              position: 'fixed',\n              inset: 0,\n              background: 'rgba(0,0,0,0.4)',\n              zIndex: 1000,\n            }}\n          />\n          <Stack\n            space={5}\n            style={{\n              position: 'fixed',\n              top: 0,\n              right: 0,\n              height: '100vh',\n              width: 'min(380px, 90vw)',\n              background: '#ffffff',\n              boxShadow: '-4px 0 16px rgba(0,0,0,0.15)',\n              zIndex: 1001,\n              overflowY: 'auto',\n              padding: 24,\n            }}\n          >\n            <Inline\n              space={2}\n              alignY=\"center\"\n              style={{ justifyContent: 'space-between' }}\n            >\n              <Headline level=\"3\">Filters</Headline>\n              <Button\n                size=\"small\"\n                variant=\"text\"\n                onPress={() => setPanelOpen(false)}\n              >\n                Close\n              </Button>\n            </Inline>\n\n            <CheckboxGroup\n              label=\"Category\"\n              value={categories}\n              onChange={setCategories}\n            >\n              {CATEGORIES.map((c) => (\n                <Checkbox key={c.id} value={c.id}>\n                  {c.label}\n                </Checkbox>\n              ))}\n            </CheckboxGroup>\n\n            <Divider />\n\n            <Slider\n              label=\"Price range\"\n              minValue={0}\n              maxValue={MAX_PRICE}\n              step={1}\n              value={maxPrice}\n              onChange={(v) => setMaxPrice(Array.isArray(v) ? v[0] : v)}\n              formatOptions={{ style: 'currency', currency: 'USD' }}\n            />\n\n            <Divider />\n\n            <CheckboxGroup label=\"Size\" value={sizes} onChange={setSizes}>\n              {SIZES.map((s) => (\n                <Checkbox key={s} value={s}>\n                  {s}\n                </Checkbox>\n              ))}\n            </CheckboxGroup>\n\n            <Divider />\n\n            <Switch checked={inStockOnly} onChange={setInStockOnly}>\n              In stock only\n            </Switch>\n\n            <Divider />\n\n            <Inline space={2}>\n              <Button variant=\"primary\" onPress={() => setPanelOpen(false)}>\n                Apply Filters\n              </Button>\n              <Button variant=\"secondary\" onPress={resetFilters}>\n                Reset\n              </Button>\n            </Inline>\n          </Stack>\n        </>\n      )}\n    </Stack>\n  );\n};\n\nexport default TestApp;\n",
+  "assertions": {
+    "passed": [
+      {
+        "id": "a-import-marigold",
+        "description": "Imports from @marigold/components",
+        "severity": "required",
+        "passed": true,
+        "evidence": "import from \"@marigold/components\" found"
+      },
+      {
+        "id": "a-search",
+        "description": "SearchField for product search",
+        "severity": "required",
+        "passed": true,
+        "evidence": "<SearchField> found"
+      },
+      {
+        "id": "a-checkbox",
+        "description": "Checkbox for filter options",
+        "severity": "required",
+        "passed": true,
+        "evidence": "matched: <Checkbox> found; <CheckboxGroup> found"
+      },
+      {
+        "id": "a-slider",
+        "description": "Slider for price range",
+        "severity": "required",
+        "passed": true,
+        "evidence": "<Slider> found"
+      },
+      {
+        "id": "a-switch",
+        "description": "Switch for availability filter",
+        "severity": "required",
+        "passed": true,
+        "evidence": "<Switch> found"
+      },
+      {
+        "id": "a-card",
+        "description": "Card for product display",
+        "severity": "required",
+        "passed": true,
+        "evidence": "<Card> found"
+      },
+      {
+        "id": "a-button",
+        "description": "Button for add to cart",
+        "severity": "required",
+        "passed": true,
+        "evidence": "<Button> found"
+      },
+      {
+        "id": "a-headline",
+        "description": "Headline for page title",
+        "severity": "required",
+        "passed": true,
+        "evidence": "<Headline> found"
+      },
+      {
+        "id": "a-select",
+        "description": "Select for sort dropdown",
+        "severity": "required",
+        "passed": true,
+        "evidence": "<Select> found"
+      },
+      {
+        "id": "a-no-onclick-on-marigold",
+        "description": "No onClick on Marigold Button",
+        "severity": "recommended",
+        "passed": true,
+        "evidence": "\"/<Button[^>]*onClick/\" correctly absent"
+      }
+    ],
+    "failed": [
+      {
+        "id": "a-drawer",
+        "description": "Drawer for filter panel",
+        "severity": "required",
+        "passed": false,
+        "evidence": "<Drawer> not found"
+      },
+      {
+        "id": "a-tag-group",
+        "description": "Tag.Group for applied filters",
+        "severity": "required",
+        "passed": false,
+        "evidence": "none matched: <Tag> not found; <TagGroup> not found"
+      },
+      {
+        "id": "a-badge",
+        "description": "Badge for product status",
+        "severity": "required",
+        "passed": false,
+        "evidence": "<Badge> not found"
+      },
+      {
+        "id": "a-pagination",
+        "description": "Pagination component",
+        "severity": "required",
+        "passed": false,
+        "evidence": "<Pagination> not found"
+      },
+      {
+        "id": "a-tiles",
+        "description": "Tiles layout for product grid",
+        "severity": "required",
+        "passed": false,
+        "evidence": "<Tiles> not found"
+      },
+      {
+        "id": "a-empty-state",
+        "description": "EmptyState when no products match",
+        "severity": "required",
+        "passed": false,
+        "evidence": "<EmptyState> not found"
+      }
+    ],
+    "passRate": 0.625,
+    "requiredPassRate": 0.6,
+    "weightedPassRate": 0.6066,
+    "total": 16
+  },
+  "validatePackageVersion": "0.0.1",
+  "playwrightVersion": null,
+  "resolvedModelId": "claude-opus-4-8",
+  "claudeCliVersion": "2.1.185 (Claude Code)",
+  "sessionId": "dd72946a-168f-453b-876d-69061e15a1bc"
+}

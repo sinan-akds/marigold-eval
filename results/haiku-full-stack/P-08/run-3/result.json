@@ -1,0 +1,489 @@
+{
+  "runId": "haiku-full-stack-P-08-r3",
+  "promptId": "P-08",
+  "model": "haiku",
+  "config": "full-stack",
+  "timestamp": "2026-06-22T15:41:32.805Z",
+  "quality": {
+    "overall": 86.26,
+    "categories": {
+      "A": {
+        "category": "A",
+        "label": "Design System API",
+        "score": 85.86,
+        "weight": 0.225,
+        "weightedScore": 19.32,
+        "errorCount": 0,
+        "warningCount": 1,
+        "issues": [
+          {
+            "type": "technical",
+            "severity": "warning",
+            "source": "design-system-usage",
+            "component": "nav",
+            "message": "Raw <nav> used instead of a Marigold component.",
+            "suggestion": "Raw <nav> used instead of a Marigold navigation component. Search the Marigold docs for navigation alternatives.",
+            "location": {
+              "file": "TestApp.tsx",
+              "line": 109,
+              "column": 13
+            },
+            "details": {
+              "htmlElement": "nav"
+            }
+          }
+        ]
+      },
+      "B": {
+        "category": "B",
+        "label": "Token Compliance",
+        "score": 89.39,
+        "weight": 0.1,
+        "weightedScore": 8.94,
+        "errorCount": 0,
+        "warningCount": 1,
+        "issues": [
+          {
+            "type": "style",
+            "severity": "warning",
+            "source": "token-compliance",
+            "component": "thead",
+            "message": "Computed background-color value \"oklab(0.999994 0.0000455678 0.0000200868 / 0.9)\" on <thead> (“EventDateVenueTickets SoldStatus”) does not map to a known design token.",
+            "suggestion": "If this is intentional, ignore the warning. Otherwise, use a Marigold variant or a theme-rui token instead of a hard-coded value.",
+            "details": {
+              "property": "background-color",
+              "value": "oklab(0.999994 0.0000455678 0.0000200868 / 0.9)",
+              "selector": "body:nth-child(2) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > main:nth-child(3) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div:nth-child(4) > div:nth-child(2) > table:nth-child(3) > thead:nth-child(1)",
+              "fingerprint": "EventDateVenueTickets SoldStatus",
+              "scope": "page"
+            }
+          }
+        ]
+      },
+      "C": {
+        "category": "C",
+        "label": "DOM / Structure",
+        "score": 100,
+        "weight": 0.225,
+        "weightedScore": 22.5,
+        "errorCount": 0,
+        "warningCount": 0,
+        "issues": []
+      },
+      "D": {
+        "category": "D",
+        "label": "Spatial & A11y",
+        "score": 75.51,
+        "weight": 0.225,
+        "weightedScore": 16.99,
+        "errorCount": 0,
+        "warningCount": 3,
+        "issues": [
+          {
+            "type": "a11y",
+            "severity": "warning",
+            "source": "responsive-checker",
+            "component": "a",
+            "message": "Touch target too small at mobile (375px): a elements are 68x20px (minimum 24x24px per WCAG 2.5.8).",
+            "suggestion": "Increase the clickable area. Marigold interactive components have built-in minimum sizes — check if custom styling reduces the target.",
+            "details": {
+              "breakpoint": "mobile",
+              "tag": "a",
+              "count": 1,
+              "minWidth": 68,
+              "minHeight": 20,
+              "scope": "page"
+            }
+          },
+          {
+            "type": "a11y",
+            "severity": "warning",
+            "source": "keyboard-a11y",
+            "component": "a",
+            "message": "Interactive element <a> (a) is not reachable via Tab key.",
+            "suggestion": "Ensure the element is focusable. Marigold interactive components are focusable by default — check if a parent has tabindex=\"-1\" or focus is trapped.",
+            "details": {
+              "selector": "body:nth-child(2) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > aside:nth-child(1) > div:nth-child(1) > nav:nth-child(2) > div:nth-child(1) > div:nth-child(1) > a:nth-child(1)",
+              "role": "a",
+              "scope": "page"
+            }
+          },
+          {
+            "type": "a11y",
+            "severity": "warning",
+            "source": "keyboard-a11y",
+            "component": "button",
+            "message": "Interactive element <button> (button) is not reachable via Tab key.",
+            "suggestion": "Ensure the element is focusable. Marigold interactive components are focusable by default — check if a parent has tabindex=\"-1\" or focus is trapped.",
+            "details": {
+              "selector": "body:nth-child(2) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > header:nth-child(2) > div:nth-child(1) > button:nth-child(1)",
+              "role": "button",
+              "scope": "page"
+            }
+          }
+        ]
+      },
+      "E": {
+        "category": "E",
+        "label": "Functional Completeness",
+        "score": 82.29,
+        "weight": 0.225,
+        "weightedScore": 18.52,
+        "errorCount": 0,
+        "warningCount": 0,
+        "issues": []
+      }
+    },
+    "renderSuccess": true
+  },
+  "efficiency": {
+    "durationMs": 247185,
+    "costUsd": 0.8964789,
+    "inputTokens": 116,
+    "outputTokens": 25065,
+    "cacheReadTokens": 3566119,
+    "cacheCreationTokens": 202683,
+    "totalTokens": 25181,
+    "numTurns": 63
+  },
+  "report": {
+    "file": "TestApp.tsx",
+    "errors": [],
+    "warnings": [
+      {
+        "type": "technical",
+        "severity": "warning",
+        "source": "design-system-usage",
+        "component": "nav",
+        "message": "Raw <nav> used instead of a Marigold component.",
+        "suggestion": "Raw <nav> used instead of a Marigold navigation component. Search the Marigold docs for navigation alternatives.",
+        "location": {
+          "file": "TestApp.tsx",
+          "line": 109,
+          "column": 13
+        },
+        "details": {
+          "htmlElement": "nav"
+        }
+      },
+      {
+        "type": "style",
+        "severity": "warning",
+        "source": "token-compliance",
+        "component": "thead",
+        "message": "Computed background-color value \"oklab(0.999994 0.0000455678 0.0000200868 / 0.9)\" on <thead> (“EventDateVenueTickets SoldStatus”) does not map to a known design token.",
+        "suggestion": "If this is intentional, ignore the warning. Otherwise, use a Marigold variant or a theme-rui token instead of a hard-coded value.",
+        "details": {
+          "property": "background-color",
+          "value": "oklab(0.999994 0.0000455678 0.0000200868 / 0.9)",
+          "selector": "body:nth-child(2) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > main:nth-child(3) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div:nth-child(4) > div:nth-child(2) > table:nth-child(3) > thead:nth-child(1)",
+          "fingerprint": "EventDateVenueTickets SoldStatus",
+          "scope": "page"
+        }
+      },
+      {
+        "type": "a11y",
+        "severity": "warning",
+        "source": "responsive-checker",
+        "component": "a",
+        "message": "Touch target too small at mobile (375px): a elements are 68x20px (minimum 24x24px per WCAG 2.5.8).",
+        "suggestion": "Increase the clickable area. Marigold interactive components have built-in minimum sizes — check if custom styling reduces the target.",
+        "details": {
+          "breakpoint": "mobile",
+          "tag": "a",
+          "count": 1,
+          "minWidth": 68,
+          "minHeight": 20,
+          "scope": "page"
+        }
+      },
+      {
+        "type": "a11y",
+        "severity": "warning",
+        "source": "keyboard-a11y",
+        "component": "a",
+        "message": "Interactive element <a> (a) is not reachable via Tab key.",
+        "suggestion": "Ensure the element is focusable. Marigold interactive components are focusable by default — check if a parent has tabindex=\"-1\" or focus is trapped.",
+        "details": {
+          "selector": "body:nth-child(2) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > aside:nth-child(1) > div:nth-child(1) > nav:nth-child(2) > div:nth-child(1) > div:nth-child(1) > a:nth-child(1)",
+          "role": "a",
+          "scope": "page"
+        }
+      },
+      {
+        "type": "a11y",
+        "severity": "warning",
+        "source": "keyboard-a11y",
+        "component": "button",
+        "message": "Interactive element <button> (button) is not reachable via Tab key.",
+        "suggestion": "Ensure the element is focusable. Marigold interactive components are focusable by default — check if a parent has tabindex=\"-1\" or focus is trapped.",
+        "details": {
+          "selector": "body:nth-child(2) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > header:nth-child(2) > div:nth-child(1) > button:nth-child(1)",
+          "role": "button",
+          "scope": "page"
+        }
+      }
+    ],
+    "passed": [
+      "TypeScript compilation",
+      "All Marigold props are valid",
+      "Component composition",
+      "Overlay accessible names",
+      "Compound component placement",
+      "Section headers",
+      "Collection item ids",
+      "Layout usage",
+      "Table usage",
+      "Component conventions",
+      "Theme variant compliance",
+      "No overlapping components detected"
+    ],
+    "metadata": {
+      "renderTimeMs": 1526,
+      "componentsFound": [
+        "button",
+        "li",
+        "a",
+        "span",
+        "table",
+        "thead",
+        "th",
+        "div",
+        "tbody",
+        "tr",
+        "td"
+      ],
+      "checksRun": [
+        "technical",
+        "spatial",
+        "a11y"
+      ],
+      "coverage": {
+        "staticValuesChecked": 86,
+        "dynamicValuesSkipped": 50,
+        "spreadPropsBypassed": 0
+      },
+      "widthUtilization": 1
+    },
+    "markdown": "marigold-validate: TestApp.tsx — 0 error(s), 5 warning(s)\n\n[warning/technical] <nav>: Raw <nav> used instead of a Marigold component. (TestApp.tsx:109:13)\n  → Raw <nav> used instead of a Marigold navigation component. Search the Marigold docs for navigation alternatives.\n  data: {htmlElement=nav}\n[warning/style] <thead>: Computed background-color value \"oklab(0.999994 0.0000455678 0.0000200868 / 0.9)\" on <thead> (“EventDateVenueTickets SoldStatus”) does not map to a known design token.\n  → If this is intentional, ignore the warning. Otherwise, use a Marigold variant or a theme-rui token instead of a hard-coded value.\n  data: {property=background-color, value=oklab(0.999994 0.0000455678 0.0000200868 / 0.9), selector=body:nth-child(2) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > ..., fingerprint=EventDateVenueTickets SoldStatus, scope=page}\n[warning/a11y] <a>: Touch target too small at mobile (375px): a elements are 68x20px (minimum 24x24px per WCAG 2.5.8).\n  → Increase the clickable area. Marigold interactive components have built-in minimum sizes — check if custom styling reduces the target.\n  data: {breakpoint=mobile, tag=a, count=1, minWidth=68, minHeight=20, scope=page}\n[warning/a11y] <a>: Interactive element <a> (a) is not reachable via Tab key.\n  → Ensure the element is focusable. Marigold interactive components are focusable by default — check if a parent has tabindex=\"-1\" or focus is trapped.\n  data: {selector=body:nth-child(2) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > ..., role=a, scope=page}\n[warning/a11y] <button>: Interactive element <button> (button) is not reachable via Tab key.\n  → Ensure the element is focusable. Marigold interactive components are focusable by default — check if a parent has tabindex=\"-1\" or focus is trapped.\n  data: {selector=body:nth-child(2) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > ..., role=button, scope=page}\n\npassed: TypeScript compilation, All Marigold props are valid, Component composition, Overlay accessible names, Compound component placement, Section headers, Collection item ids, Layout usage, Table usage, Component conventions, Theme variant compliance, No overlapping components detected\n\nchecks run: technical, spatial, a11y"
+  },
+  "componentsFound": [
+    "button",
+    "li",
+    "a",
+    "span",
+    "table",
+    "thead",
+    "th",
+    "div",
+    "tbody",
+    "tr",
+    "td"
+  ],
+  "renderTimeMs": 1526,
+  "sourceCode": "'use client';\n\nimport { useState, useMemo } from 'react';\nimport {\n  AppLayout,\n  Sidebar,\n  TopNavigation,\n  Breadcrumbs,\n  Menu,\n  Dialog,\n  Button,\n  Card,\n  Stack,\n  Inline,\n  Inset,\n  Table,\n  SearchField,\n  TextField,\n  NumberField,\n  Badge,\n  SectionMessage,\n  Headline,\n  Text,\n  Tabs,\n  Accordion,\n  Switch,\n  Container,\n} from '@marigold/components';\n\ntype Page = 'dashboard' | 'events' | 'attendees' | 'reports' | 'settings';\n\nconst TestApp = () => {\n  const [currentPage, setCurrentPage] = useState<Page>('dashboard');\n  const [signOutOpen, setSignOutOpen] = useState(false);\n\n  const getBreadcrumb = () => {\n    const labels: Record<Page, string> = {\n      dashboard: 'Dashboard',\n      events: 'Events',\n      attendees: 'Attendees',\n      reports: 'Reports',\n      settings: 'Settings',\n    };\n    return labels[currentPage];\n  };\n\n  const pageMap: Record<Page, string> = {\n    dashboard: '/dashboard',\n    events: '/events',\n    attendees: '/attendees',\n    reports: '/reports',\n    settings: '/settings',\n  };\n\n  return (\n    <Sidebar.Provider defaultOpen>\n      <AppLayout>\n        <AppLayout.Sidebar>\n          <Sidebar.Header>\n            <Text weight=\"bold\" size=\"sm\">\n              EventHub\n            </Text>\n          </Sidebar.Header>\n          <Sidebar.Nav current={pageMap[currentPage]}>\n            <Sidebar.Item\n              href=\"/dashboard\"\n              onPress={() => setCurrentPage('dashboard')}\n            >\n              Dashboard\n            </Sidebar.Item>\n            <Sidebar.Item\n              href=\"/events\"\n              onPress={() => setCurrentPage('events')}\n            >\n              Events\n            </Sidebar.Item>\n            <Sidebar.Item\n              href=\"/attendees\"\n              onPress={() => setCurrentPage('attendees')}\n            >\n              Attendees\n            </Sidebar.Item>\n            <Sidebar.Item\n              href=\"/reports\"\n              onPress={() => setCurrentPage('reports')}\n            >\n              Reports\n            </Sidebar.Item>\n            <Sidebar.Separator />\n            <Sidebar.Item\n              href=\"/settings\"\n              onPress={() => setCurrentPage('settings')}\n            >\n              Settings\n            </Sidebar.Item>\n          </Sidebar.Nav>\n          <Sidebar.Footer>\n            <Sidebar.Item href=\"#help\" onPress={() => {}}>\n              Help & Support\n            </Sidebar.Item>\n          </Sidebar.Footer>\n        </AppLayout.Sidebar>\n\n        <AppLayout.Header>\n          <TopNavigation.Start>\n            <Sidebar.Toggle />\n          </TopNavigation.Start>\n          <TopNavigation.Middle>\n            <nav>\n              <Breadcrumbs>\n                <Breadcrumbs.Item href=\"#\">\n                  EventHub\n                </Breadcrumbs.Item>\n                <Breadcrumbs.Item href=\"#\">{getBreadcrumb()}</Breadcrumbs.Item>\n              </Breadcrumbs>\n            </nav>\n          </TopNavigation.Middle>\n          <TopNavigation.End>\n            <Menu label=\"Account\" onAction={(action) => {\n              if (action === 'signout') {\n                setSignOutOpen(true);\n              }\n            }}>\n              <Menu.Item id=\"profile\">Profile</Menu.Item>\n              <Menu.Item id=\"signout\">Sign out</Menu.Item>\n            </Menu>\n          </TopNavigation.End>\n        </AppLayout.Header>\n\n        <AppLayout.Main>\n          <Container>\n            <Inset space=\"square-regular\">\n              {currentPage === 'dashboard' && <DashboardPage />}\n              {currentPage === 'events' && <EventsPage />}\n              {currentPage === 'attendees' && <AttendeesPage />}\n              {currentPage === 'reports' && <ReportsPage />}\n              {currentPage === 'settings' && <SettingsPage />}\n            </Inset>\n          </Container>\n        </AppLayout.Main>\n      </AppLayout>\n\n      <Dialog\n        size=\"small\"\n        open={signOutOpen}\n        onOpenChange={setSignOutOpen}\n      >\n        {({ close }) => (\n          <>\n            <Dialog.Title>Sign out</Dialog.Title>\n            <Dialog.Content>\n              <Text>Are you sure you want to sign out?</Text>\n            </Dialog.Content>\n            <Dialog.Actions>\n              <Button variant=\"secondary\" slot=\"close\" onPress={close}>\n                Cancel\n              </Button>\n              <Button variant=\"primary\" onPress={close}>\n                Sign out\n              </Button>\n            </Dialog.Actions>\n          </>\n        )}\n      </Dialog>\n    </Sidebar.Provider>\n  );\n};\n\nconst DashboardPage = () => {\n  return (\n    <Stack space={6}>\n      <Headline level={1}>Dashboard Overview</Headline>\n      <SectionMessage variant=\"info\">\n        <SectionMessage.Content>\n          Welcome back! You have 3 events starting this week.\n        </SectionMessage.Content>\n      </SectionMessage>\n\n      <Inline space={4} alignY=\"top\">\n        <Card stretch>\n          <Inset space=\"square-regular\">\n            <Stack space={2}>\n              <Text size=\"sm\" variant=\"muted\">Total Events</Text>\n              <Text weight=\"bold\" size=\"lg\">24</Text>\n            </Stack>\n          </Inset>\n        </Card>\n        <Card stretch>\n          <Inset space=\"square-regular\">\n            <Stack space={2}>\n              <Text size=\"sm\" variant=\"muted\">Tickets Sold</Text>\n              <Text weight=\"bold\" size=\"lg\">1,849</Text>\n            </Stack>\n          </Inset>\n        </Card>\n        <Card stretch>\n          <Inset space=\"square-regular\">\n            <Stack space={2}>\n              <Text size=\"sm\" variant=\"muted\">Revenue</Text>\n              <Text weight=\"bold\" size=\"lg\">$45,230</Text>\n            </Stack>\n          </Inset>\n        </Card>\n        <Card stretch>\n          <Inset space=\"square-regular\">\n            <Stack space={2}>\n              <Text size=\"sm\" variant=\"muted\">Upcoming</Text>\n              <Text weight=\"bold\" size=\"lg\">8</Text>\n            </Stack>\n          </Inset>\n        </Card>\n      </Inline>\n\n      <Stack space={4}>\n        <Headline level={2}>Upcoming Events</Headline>\n        <Table aria-label=\"Upcoming Events\">\n          <Table.Header>\n            <Table.Column rowHeader>Event</Table.Column>\n            <Table.Column>Date</Table.Column>\n            <Table.Column>Venue</Table.Column>\n            <Table.Column>Tickets Sold</Table.Column>\n            <Table.Column>Status</Table.Column>\n          </Table.Header>\n          <Table.Body items={upcomingEventsData}>\n            {(item) => (\n              <Table.Row key={item.id}>\n                <Table.Cell>{item.event}</Table.Cell>\n                <Table.Cell>{item.date}</Table.Cell>\n                <Table.Cell>{item.venue}</Table.Cell>\n                <Table.Cell>{item.ticketsSold}</Table.Cell>\n                <Table.Cell>\n                  <Badge variant={item.statusVariant}>{item.status}</Badge>\n                </Table.Cell>\n              </Table.Row>\n            )}\n          </Table.Body>\n        </Table>\n      </Stack>\n    </Stack>\n  );\n};\n\nconst EventsPage = () => {\n  const [searchTerm, setSearchTerm] = useState('');\n  const [formData, setFormData] = useState({\n    name: '',\n    location: '',\n    capacity: '',\n  });\n\n  const filteredEvents = useMemo(() => {\n    return eventsData.filter((event) =>\n      event.name.toLowerCase().includes(searchTerm.toLowerCase()) ||\n      event.location.toLowerCase().includes(searchTerm.toLowerCase())\n    );\n  }, [searchTerm]);\n\n  const handleCreateEvent = () => {\n    setFormData({\n      name: '',\n      location: '',\n      capacity: '',\n    });\n  };\n\n  return (\n    <Stack space={4}>\n      <Headline level={1}>Events</Headline>\n      <Inline space={4} alignY=\"center\">\n        <SearchField\n          label=\"Search Events\"\n          placeholder=\"Search by name or location...\"\n          value={searchTerm}\n          onChange={setSearchTerm}\n        />\n        <Dialog.Trigger>\n          <Button variant=\"primary\">Create Event</Button>\n          <Dialog size=\"small\">\n            <Dialog.Title>Create Event</Dialog.Title>\n            <Dialog.Content>\n              <Stack space={3}>\n                <TextField\n                  label=\"Event Name\"\n                  required\n                  value={formData.name}\n                  onChange={(val) =>\n                    setFormData({ ...formData, name: val })\n                  }\n                />\n                <TextField\n                  label=\"Location\"\n                  value={formData.location}\n                  onChange={(val) =>\n                    setFormData({ ...formData, location: val })\n                  }\n                />\n                <NumberField\n                  label=\"Capacity\"\n                  value={formData.capacity ? Number(formData.capacity) : undefined}\n                  onChange={(val) =>\n                    setFormData({ ...formData, capacity: val?.toString() || '' })\n                  }\n                />\n              </Stack>\n            </Dialog.Content>\n            <Dialog.Actions>\n              <Button variant=\"secondary\" slot=\"close\">\n                Cancel\n              </Button>\n              <Button variant=\"primary\" onPress={handleCreateEvent}>\n                Create\n              </Button>\n            </Dialog.Actions>\n          </Dialog>\n        </Dialog.Trigger>\n      </Inline>\n\n      <Table aria-label=\"Events Table\">\n        <Table.Header>\n          <Table.Column rowHeader>Name</Table.Column>\n          <Table.Column>Date</Table.Column>\n          <Table.Column>Location</Table.Column>\n          <Table.Column>Capacity</Table.Column>\n          <Table.Column>Status</Table.Column>\n        </Table.Header>\n        <Table.Body items={filteredEvents}>\n          {(item) => (\n            <Table.Row key={item.id}>\n              <Table.Cell>{item.name}</Table.Cell>\n              <Table.Cell>{item.date}</Table.Cell>\n              <Table.Cell>{item.location}</Table.Cell>\n              <Table.Cell>{item.capacity}</Table.Cell>\n              <Table.Cell>\n                <Badge variant={item.statusVariant}>{item.status}</Badge>\n              </Table.Cell>\n            </Table.Row>\n          )}\n        </Table.Body>\n      </Table>\n    </Stack>\n  );\n};\n\nconst AttendeesPage = () => {\n  const [searchTerm, setSearchTerm] = useState('');\n\n  const filteredAttendees = useMemo(() => {\n    return attendeesData.filter((attendee) =>\n      attendee.name.toLowerCase().includes(searchTerm.toLowerCase()) ||\n      attendee.email.toLowerCase().includes(searchTerm.toLowerCase())\n    );\n  }, [searchTerm]);\n\n  return (\n    <Stack space={4}>\n      <Headline level={1}>Attendees</Headline>\n      <Inline space={4} alignY=\"center\">\n        <SearchField\n          label=\"Search Attendees\"\n          placeholder=\"Search by name or email...\"\n          value={searchTerm}\n          onChange={setSearchTerm}\n        />\n        <Text size=\"sm\" variant=\"muted\">\n          {filteredAttendees.length} attendees\n        </Text>\n      </Inline>\n\n      <Table aria-label=\"Attendees Table\">\n        <Table.Header>\n          <Table.Column rowHeader>Name</Table.Column>\n          <Table.Column>Email</Table.Column>\n          <Table.Column>Events Attended</Table.Column>\n          <Table.Column>Last Active</Table.Column>\n          <Table.Column>Status</Table.Column>\n        </Table.Header>\n        <Table.Body items={filteredAttendees}>\n          {(item) => (\n            <Table.Row key={item.id}>\n              <Table.Cell>{item.name}</Table.Cell>\n              <Table.Cell>{item.email}</Table.Cell>\n              <Table.Cell>{item.eventsAttended}</Table.Cell>\n              <Table.Cell>{item.lastActive}</Table.Cell>\n              <Table.Cell>\n                <Badge variant={item.statusVariant}>{item.status}</Badge>\n              </Table.Cell>\n            </Table.Row>\n          )}\n        </Table.Body>\n      </Table>\n    </Stack>\n  );\n};\n\nconst ReportsPage = () => {\n  const [selectedTab, setSelectedTab] = useState('revenue');\n\n  return (\n    <Stack space={4}>\n      <Headline level={1}>Reports</Headline>\n      <Tabs selectedKey={selectedTab} onSelectionChange={(key) => setSelectedTab(String(key))}>\n        <Tabs.List aria-label=\"Reports\">\n          <Tabs.Item id=\"revenue\">Revenue</Tabs.Item>\n          <Tabs.Item id=\"attendance\">Attendance</Tabs.Item>\n          <Tabs.Item id=\"overview\">Overview</Tabs.Item>\n        </Tabs.List>\n\n        <Tabs.TabPanel id=\"revenue\">\n          <Stack space={4}>\n            <Inline space={4} alignY=\"top\">\n              <Card stretch>\n                <Inset space=\"square-regular\">\n                  <Stack space={2}>\n                    <Text size=\"sm\" variant=\"muted\">Total Revenue</Text>\n                    <Text weight=\"bold\" size=\"lg\">$45,230</Text>\n                  </Stack>\n                </Inset>\n              </Card>\n              <Card stretch>\n                <Inset space=\"square-regular\">\n                  <Stack space={2}>\n                    <Text size=\"sm\" variant=\"muted\">This Month</Text>\n                    <Text weight=\"bold\" size=\"lg\">$8,420</Text>\n                  </Stack>\n                </Inset>\n              </Card>\n              <Card stretch>\n                <Inset space=\"square-regular\">\n                  <Stack space={2}>\n                    <Text size=\"sm\" variant=\"muted\">Avg per Event</Text>\n                    <Text weight=\"bold\" size=\"lg\">$1,885</Text>\n                  </Stack>\n                </Inset>\n              </Card>\n              <Card stretch>\n                <Inset space=\"square-regular\">\n                  <Stack space={2}>\n                    <Text size=\"sm\" variant=\"muted\">Refunds</Text>\n                    <Text weight=\"bold\" size=\"lg\">$1,230</Text>\n                  </Stack>\n                </Inset>\n              </Card>\n            </Inline>\n            <SectionMessage variant=\"success\">\n              <SectionMessage.Content>\n                Revenue is up 12% compared to last month.\n              </SectionMessage.Content>\n            </SectionMessage>\n          </Stack>\n        </Tabs.TabPanel>\n\n        <Tabs.TabPanel id=\"attendance\">\n          <Stack space={4}>\n            <Inline space={4} alignY=\"top\">\n              <Card stretch>\n                <Inset space=\"square-regular\">\n                  <Stack space={2}>\n                    <Text size=\"sm\" variant=\"muted\">Total Attendees</Text>\n                    <Text weight=\"bold\" size=\"lg\">3,200</Text>\n                  </Stack>\n                </Inset>\n              </Card>\n              <Card stretch>\n                <Inset space=\"square-regular\">\n                  <Stack space={2}>\n                    <Text size=\"sm\" variant=\"muted\">Repeat Visitors</Text>\n                    <Text weight=\"bold\" size=\"lg\">890</Text>\n                  </Stack>\n                </Inset>\n              </Card>\n              <Card stretch>\n                <Inset space=\"square-regular\">\n                  <Stack space={2}>\n                    <Text size=\"sm\" variant=\"muted\">Avg per Event</Text>\n                    <Text weight=\"bold\" size=\"lg\">178</Text>\n                  </Stack>\n                </Inset>\n              </Card>\n              <Card stretch>\n                <Inset space=\"square-regular\">\n                  <Stack space={2}>\n                    <Text size=\"sm\" variant=\"muted\">No-shows</Text>\n                    <Text weight=\"bold\" size=\"lg\">145</Text>\n                  </Stack>\n                </Inset>\n              </Card>\n            </Inline>\n\n            <Stack space={4}>\n              <Headline level={2}>Top Events by Attendance</Headline>\n              <Table aria-label=\"Top Events by Attendance\">\n                <Table.Header>\n                  <Table.Column rowHeader>Event</Table.Column>\n                  <Table.Column>Date</Table.Column>\n                  <Table.Column>Attendees</Table.Column>\n                  <Table.Column>Capacity</Table.Column>\n                  <Table.Column>Fill Rate</Table.Column>\n                </Table.Header>\n                <Table.Body items={topEventsByAttendance}>\n                  {(item) => (\n                    <Table.Row key={item.id}>\n                      <Table.Cell>{item.event}</Table.Cell>\n                      <Table.Cell>{item.date}</Table.Cell>\n                      <Table.Cell>{item.attendees}</Table.Cell>\n                      <Table.Cell>{item.capacity}</Table.Cell>\n                      <Table.Cell>{item.fillRate}%</Table.Cell>\n                    </Table.Row>\n                  )}\n                </Table.Body>\n              </Table>\n            </Stack>\n          </Stack>\n        </Tabs.TabPanel>\n\n        <Tabs.TabPanel id=\"overview\">\n          <Stack space={4}>\n            <Text>\n              This report provides a comprehensive overview of all event activities, attendance patterns, and revenue metrics across your entire event portfolio. Use this data to identify trends, optimize future events, and make informed business decisions.\n            </Text>\n            <Accordion>\n              <Accordion.Item id=\"q1\">\n                <Accordion.Header>Q1 Summary</Accordion.Header>\n                <Accordion.Content>\n                  In the first quarter, we hosted 8 events with an average attendance of 180 people per event. Total revenue reached $15,040 with a 98% ticket fulfillment rate. The most popular event was the Spring Networking Conference with 320 attendees.\n                </Accordion.Content>\n              </Accordion.Item>\n              <Accordion.Item id=\"q2\">\n                <Accordion.Header>Q2 Summary</Accordion.Header>\n                <Accordion.Content>\n                  Q2 showed strong growth with 12 events generating $18,920 in revenue. We introduced online streaming for 4 events, expanding our reach to international audiences. Average attendance increased to 210 people per event.\n                </Accordion.Content>\n              </Accordion.Item>\n              <Accordion.Item id=\"q3\">\n                <Accordion.Header>Q3 Summary</Accordion.Header>\n                <Accordion.Content>\n                  The third quarter was our most successful with 16 events and $45,230 total revenue. We implemented advanced ticketing features and saw a 25% increase in repeat attendees. The highlight was our flagship Summer Festival with 450 attendees.\n                </Accordion.Content>\n              </Accordion.Item>\n            </Accordion>\n          </Stack>\n        </Tabs.TabPanel>\n      </Tabs>\n    </Stack>\n  );\n};\n\nconst SettingsPage = () => {\n  const [selectedTab, setSelectedTab] = useState('general');\n  const [generalData, setGeneralData] = useState({\n    orgName: 'Acme Events Inc.',\n    email: 'contact@acmeevents.com',\n    currency: 'USD',\n    timezone: 'UTC',\n  });\n  const [notificationSettings, setNotificationSettings] = useState({\n    email: true,\n    sms: false,\n    digest: true,\n    marketing: false,\n  });\n  const [showSaveSuccess, setShowSaveSuccess] = useState(false);\n\n  const handleSaveGeneral = () => {\n    setShowSaveSuccess(true);\n    setTimeout(() => setShowSaveSuccess(false), 3000);\n  };\n\n  return (\n    <Stack space={4}>\n      <Headline level={1}>Settings</Headline>\n      <Tabs selectedKey={selectedTab} onSelectionChange={(key) => setSelectedTab(String(key))}>\n        <Tabs.List aria-label=\"Settings\">\n          <Tabs.Item id=\"general\">General</Tabs.Item>\n          <Tabs.Item id=\"notifications\">Notifications</Tabs.Item>\n        </Tabs.List>\n\n        <Tabs.TabPanel id=\"general\">\n          <Stack space={4}>\n            {showSaveSuccess && (\n              <SectionMessage variant=\"success\">\n                <SectionMessage.Content>\n                  Settings saved successfully.\n                </SectionMessage.Content>\n              </SectionMessage>\n            )}\n            <Stack space={3}>\n              <TextField\n                label=\"Organization Name\"\n                value={generalData.orgName}\n                onChange={(val) =>\n                  setGeneralData({ ...generalData, orgName: val })\n                }\n              />\n              <TextField\n                label=\"Contact Email\"\n                type=\"email\"\n                value={generalData.email}\n                onChange={(val) =>\n                  setGeneralData({ ...generalData, email: val })\n                }\n              />\n              <TextField\n                label=\"Default Currency\"\n                value={generalData.currency}\n                onChange={(val) =>\n                  setGeneralData({ ...generalData, currency: val })\n                }\n              />\n              <TextField\n                label=\"Default Timezone\"\n                value={generalData.timezone}\n                onChange={(val) =>\n                  setGeneralData({ ...generalData, timezone: val })\n                }\n              />\n            </Stack>\n            <Button variant=\"primary\" onPress={handleSaveGeneral}>\n              Save Changes\n            </Button>\n          </Stack>\n        </Tabs.TabPanel>\n\n        <Tabs.TabPanel id=\"notifications\">\n          <Stack space={4}>\n            <Stack space={3}>\n              <Inline space={3} alignY=\"center\">\n                <Switch\n                  selected={notificationSettings.email}\n                  onChange={() =>\n                    setNotificationSettings({\n                      ...notificationSettings,\n                      email: !notificationSettings.email,\n                    })\n                  }\n                />\n                <Stack space={0.5}>\n                  <Text weight=\"bold\">Email Notifications</Text>\n                  <Text size=\"sm\" variant=\"muted\">\n                    Receive email updates about your events\n                  </Text>\n                </Stack>\n              </Inline>\n              <Inline space={3} alignY=\"center\">\n                <Switch\n                  selected={notificationSettings.sms}\n                  onChange={() =>\n                    setNotificationSettings({\n                      ...notificationSettings,\n                      sms: !notificationSettings.sms,\n                    })\n                  }\n                />\n                <Stack space={0.5}>\n                  <Text weight=\"bold\">SMS Notifications</Text>\n                  <Text size=\"sm\" variant=\"muted\">\n                    Get text messages for important updates\n                  </Text>\n                </Stack>\n              </Inline>\n              <Inline space={3} alignY=\"center\">\n                <Switch\n                  selected={notificationSettings.digest}\n                  onChange={() =>\n                    setNotificationSettings({\n                      ...notificationSettings,\n                      digest: !notificationSettings.digest,\n                    })\n                  }\n                />\n                <Stack space={0.5}>\n                  <Text weight=\"bold\">Weekly Digest</Text>\n                  <Text size=\"sm\" variant=\"muted\">\n                    Get a weekly summary of your events\n                  </Text>\n                </Stack>\n              </Inline>\n              <Inline space={3} alignY=\"center\">\n                <Switch\n                  selected={notificationSettings.marketing}\n                  onChange={() =>\n                    setNotificationSettings({\n                      ...notificationSettings,\n                      marketing: !notificationSettings.marketing,\n                    })\n                  }\n                />\n                <Stack space={0.5}>\n                  <Text weight=\"bold\">Marketing Emails</Text>\n                  <Text size=\"sm\" variant=\"muted\">\n                    Receive special offers and promotional content\n                  </Text>\n                </Stack>\n              </Inline>\n            </Stack>\n            <Button variant=\"primary\" onPress={() => {\n              setShowSaveSuccess(true);\n              setTimeout(() => setShowSaveSuccess(false), 3000);\n            }}>\n              Save Preferences\n            </Button>\n          </Stack>\n        </Tabs.TabPanel>\n      </Tabs>\n    </Stack>\n  );\n};\n\n// Data fixtures\nconst upcomingEventsData = [\n  { id: 1, event: 'Tech Summit 2024', date: '2024-07-15', venue: 'Convention Center', ticketsSold: 450, status: 'On Sale', statusVariant: 'info' as const },\n  { id: 2, event: 'Jazz Night', date: '2024-07-20', venue: 'Concert Hall', ticketsSold: 280, status: 'On Sale', statusVariant: 'info' as const },\n  { id: 3, event: 'Startup Pitch Competition', date: '2024-07-22', venue: 'Innovation Hub', ticketsSold: 120, status: 'Draft', statusVariant: 'warning' as const },\n  { id: 4, event: 'Annual Gala', date: '2024-08-01', venue: 'Grand Hotel', ticketsSold: 500, status: 'Sold Out', statusVariant: 'success' as const },\n  { id: 5, event: 'Workshop Series', date: '2024-08-05', venue: 'Community Center', ticketsSold: 200, status: 'On Sale', statusVariant: 'info' as const },\n  { id: 6, event: 'Film Festival Opening', date: '2024-08-10', venue: 'Art Theater', ticketsSold: 350, status: 'On Sale', statusVariant: 'info' as const },\n];\n\nconst eventsData = [\n  { id: 1, name: 'Tech Summit 2024', date: '2024-07-15', location: 'Convention Center', capacity: 500, status: 'On Sale', statusVariant: 'info' as const },\n  { id: 2, name: 'Jazz Night', date: '2024-07-20', location: 'Concert Hall', capacity: 300, status: 'On Sale', statusVariant: 'info' as const },\n  { id: 3, name: 'Startup Pitch Competition', date: '2024-07-22', location: 'Innovation Hub', capacity: 150, status: 'Draft', statusVariant: 'warning' as const },\n  { id: 4, name: 'Annual Gala', date: '2024-08-01', location: 'Grand Hotel', capacity: 500, status: 'Sold Out', statusVariant: 'success' as const },\n  { id: 5, name: 'Workshop Series', date: '2024-08-05', location: 'Community Center', capacity: 200, status: 'On Sale', statusVariant: 'info' as const },\n  { id: 6, name: 'Film Festival Opening', date: '2024-08-10', location: 'Art Theater', capacity: 400, status: 'On Sale', statusVariant: 'info' as const },\n];\n\nconst attendeesData = [\n  { id: 1, name: 'Alice Johnson', email: 'alice@example.com', eventsAttended: 5, lastActive: '2024-07-10', status: 'Active', statusVariant: 'success' as const },\n  { id: 2, name: 'Bob Smith', email: 'bob@example.com', eventsAttended: 2, lastActive: '2024-06-15', status: 'Inactive', statusVariant: 'warning' as const },\n  { id: 3, name: 'Carol White', email: 'carol@example.com', eventsAttended: 8, lastActive: '2024-07-12', status: 'Active', statusVariant: 'success' as const },\n  { id: 4, name: 'David Brown', email: 'david@example.com', eventsAttended: 3, lastActive: '2024-07-08', status: 'Active', statusVariant: 'success' as const },\n  { id: 5, name: 'Emma Davis', email: 'emma@example.com', eventsAttended: 1, lastActive: '2024-05-20', status: 'Inactive', statusVariant: 'warning' as const },\n  { id: 6, name: 'Frank Miller', email: 'frank@example.com', eventsAttended: 6, lastActive: '2024-07-11', status: 'Active', statusVariant: 'success' as const },\n];\n\nconst topEventsByAttendance = [\n  { id: 1, event: 'Summer Festival', date: '2024-07-15', attendees: 450, capacity: 500, fillRate: 90 },\n  { id: 2, event: 'Tech Summit 2024', date: '2024-07-18', attendees: 380, capacity: 400, fillRate: 95 },\n  { id: 3, event: 'Jazz Night', date: '2024-07-20', attendees: 280, capacity: 300, fillRate: 93 },\n  { id: 4, event: 'Annual Gala', date: '2024-08-01', attendees: 420, capacity: 500, fillRate: 84 },\n];\n\nexport default TestApp;\n",
+  "assertions": {
+    "passed": [
+      {
+        "id": "a-import-marigold",
+        "description": "Imports from @marigold/components",
+        "severity": "required",
+        "passed": true,
+        "evidence": "import from \"@marigold/components\" found"
+      },
+      {
+        "id": "a-table",
+        "description": "Table component present",
+        "severity": "required",
+        "passed": true,
+        "evidence": "<Table> found"
+      },
+      {
+        "id": "a-table-header",
+        "description": "Table.Header sub-component used",
+        "severity": "required",
+        "passed": true,
+        "evidence": "<Table.Header> found"
+      },
+      {
+        "id": "a-table-body",
+        "description": "Table.Body sub-component used",
+        "severity": "required",
+        "passed": true,
+        "evidence": "<Table.Body> found"
+      },
+      {
+        "id": "a-badge",
+        "description": "Badge component for status indicators",
+        "severity": "required",
+        "passed": true,
+        "evidence": "<Badge> found"
+      },
+      {
+        "id": "a-search-field",
+        "description": "SearchField for filtering",
+        "severity": "required",
+        "passed": true,
+        "evidence": "<SearchField> found"
+      },
+      {
+        "id": "a-menu",
+        "description": "Menu for user account dropdown",
+        "severity": "required",
+        "passed": true,
+        "evidence": "<Menu> found"
+      },
+      {
+        "id": "a-dialog",
+        "description": "Dialog for create event / sign out",
+        "severity": "required",
+        "passed": true,
+        "evidence": "<Dialog> found"
+      },
+      {
+        "id": "a-tabs",
+        "description": "Tabs for reports/settings sections",
+        "severity": "required",
+        "passed": true,
+        "evidence": "<Tabs> found"
+      },
+      {
+        "id": "a-accordion",
+        "description": "Accordion for Q summaries",
+        "severity": "required",
+        "passed": true,
+        "evidence": "<Accordion> found"
+      },
+      {
+        "id": "a-card",
+        "description": "Card component for stat cards",
+        "severity": "required",
+        "passed": true,
+        "evidence": "<Card> found"
+      },
+      {
+        "id": "a-text-field",
+        "description": "TextField in forms",
+        "severity": "required",
+        "passed": true,
+        "evidence": "<TextField> found"
+      },
+      {
+        "id": "a-switch",
+        "description": "Switch for notification toggles",
+        "severity": "required",
+        "passed": true,
+        "evidence": "<Switch> found"
+      },
+      {
+        "id": "a-button",
+        "description": "Button component",
+        "severity": "required",
+        "passed": true,
+        "evidence": "<Button> found"
+      },
+      {
+        "id": "a-breadcrumbs",
+        "description": "Breadcrumbs for page context",
+        "severity": "required",
+        "passed": true,
+        "evidence": "<Breadcrumbs> found"
+      },
+      {
+        "id": "a-section-message",
+        "description": "SectionMessage for info/success alerts",
+        "severity": "required",
+        "passed": true,
+        "evidence": "<SectionMessage> found"
+      },
+      {
+        "id": "a-no-onclick-on-marigold",
+        "description": "No onClick on Marigold Button components",
+        "severity": "recommended",
+        "passed": true,
+        "evidence": "\"/<Button[^>]*onClick/\" correctly absent"
+      },
+      {
+        "id": "a-headline",
+        "description": "Headline component for page titles",
+        "severity": "required",
+        "passed": true,
+        "evidence": "<Headline> found"
+      },
+      {
+        "id": "a-dialog-trigger",
+        "description": "Dialog.Trigger for overlay pattern",
+        "severity": "recommended",
+        "passed": true,
+        "evidence": "<Dialog.Trigger> found"
+      },
+      {
+        "id": "a-number-field",
+        "description": "NumberField for capacity input",
+        "severity": "recommended",
+        "passed": true,
+        "evidence": "<NumberField> found"
+      },
+      {
+        "id": "a-app-layout",
+        "description": "AppLayout component for app shell structure",
+        "severity": "required",
+        "passed": true,
+        "evidence": "<AppLayout> found"
+      },
+      {
+        "id": "a-sidebar",
+        "description": "Sidebar component for navigation",
+        "severity": "required",
+        "passed": true,
+        "evidence": "matched: <Sidebar> found; <AppLayout.Sidebar> found"
+      }
+    ],
+    "failed": [
+      {
+        "id": "a-date-picker",
+        "description": "DatePicker in create event form",
+        "severity": "required",
+        "passed": false,
+        "evidence": "<DatePicker> not found"
+      },
+      {
+        "id": "a-select",
+        "description": "Select dropdown",
+        "severity": "required",
+        "passed": false,
+        "evidence": "<Select> not found"
+      },
+      {
+        "id": "a-form",
+        "description": "Form component",
+        "severity": "required",
+        "passed": false,
+        "evidence": "<Form> not found"
+      },
+      {
+        "id": "a-tooltip",
+        "description": "Tooltip on revenue card",
+        "severity": "required",
+        "passed": false,
+        "evidence": "<Tooltip> not found"
+      },
+      {
+        "id": "a-textarea",
+        "description": "TextArea for event description",
+        "severity": "recommended",
+        "passed": false,
+        "evidence": "<TextArea> not found"
+      }
+    ],
+    "passRate": 0.8148,
+    "requiredPassRate": 0.8261,
+    "weightedPassRate": 0.8229,
+    "total": 27
+  },
+  "validatePackageVersion": "0.0.1",
+  "playwrightVersion": null,
+  "resolvedModelId": "claude-haiku-4-5",
+  "claudeCliVersion": "2.1.185 (Claude Code)",
+  "sessionId": "ece3ef48-2b36-4991-a4c4-caf31be032b2"
+}

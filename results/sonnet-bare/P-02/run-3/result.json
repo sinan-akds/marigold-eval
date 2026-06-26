@@ -1,0 +1,459 @@
+{
+  "runId": "sonnet-bare-P-02-r3",
+  "promptId": "P-02",
+  "model": "sonnet",
+  "config": "bare",
+  "timestamp": "2026-06-22T19:41:12.479Z",
+  "quality": {
+    "overall": 42.75,
+    "categories": {
+      "A": {
+        "category": "A",
+        "label": "Design System API",
+        "score": 68.38,
+        "weight": 0.225,
+        "weightedScore": 15.39,
+        "errorCount": 1,
+        "warningCount": 3,
+        "issues": [
+          {
+            "type": "technical",
+            "severity": "error",
+            "source": "design-system-usage",
+            "component": "Heading",
+            "message": "<Heading> is not a Marigold component. It is not exported from @marigold/components.",
+            "suggestion": "<Heading> does not exist in @marigold/components. Search the Marigold docs for the correct component.",
+            "location": {
+              "file": "TestApp.tsx",
+              "line": 20,
+              "column": 15
+            },
+            "details": {
+              "hallucinated": true,
+              "importedFrom": "@marigold/components"
+            }
+          },
+          {
+            "type": "technical",
+            "severity": "warning",
+            "source": "design-system-usage",
+            "component": "Stack",
+            "message": "Inline style on <Stack> bypasses the design system (padding).",
+            "suggestion": "Use Marigold layout components (Stack, Columns, Inset, Container) and theme tokens instead of inline styles.",
+            "location": {
+              "file": "TestApp.tsx",
+              "line": 9,
+              "column": 38
+            },
+            "details": {
+              "cssProperties": [
+                "padding"
+              ]
+            }
+          },
+          {
+            "type": "technical",
+            "severity": "warning",
+            "source": "design-system-usage",
+            "component": "Card",
+            "message": "Inline style on <Card> bypasses the design system (maxWidth, width).",
+            "suggestion": "Use Marigold layout components (Stack, Columns, Inset, Container) and theme tokens instead of inline styles.",
+            "location": {
+              "file": "TestApp.tsx",
+              "line": 10,
+              "column": 19
+            },
+            "details": {
+              "cssProperties": [
+                "maxWidth",
+                "width"
+              ]
+            }
+          },
+          {
+            "type": "technical",
+            "severity": "warning",
+            "source": "design-system-usage",
+            "component": "img",
+            "message": "Inline style on <img> bypasses the design system (width, height, borderRadius, objectFit).",
+            "suggestion": "Use Marigold layout components (Stack, Columns, Inset, Container) and theme tokens instead of inline styles.",
+            "location": {
+              "file": "TestApp.tsx",
+              "line": 17,
+              "column": 15
+            },
+            "details": {
+              "cssProperties": [
+                "width",
+                "height",
+                "borderRadius",
+                "objectFit"
+              ]
+            }
+          }
+        ]
+      },
+      "B": {
+        "category": "B",
+        "label": "Token Compliance",
+        "score": 0,
+        "weight": 0.1,
+        "weightedScore": 0,
+        "errorCount": 0,
+        "warningCount": 0,
+        "issues": []
+      },
+      "C": {
+        "category": "C",
+        "label": "DOM / Structure",
+        "score": 34.52,
+        "weight": 0.225,
+        "weightedScore": 7.77,
+        "errorCount": 3,
+        "warningCount": 1,
+        "issues": [
+          {
+            "type": "technical",
+            "severity": "error",
+            "source": "compiler",
+            "component": "TypeScript",
+            "message": "TS2305: Module '\"@marigold/components\"' has no exported member 'Heading'.",
+            "suggestion": "Fix the TypeScript error reported by the compiler. The exact location is included in the issue location field.",
+            "location": {
+              "file": "TestApp.tsx",
+              "line": 2,
+              "column": 31
+            }
+          },
+          {
+            "type": "technical",
+            "severity": "error",
+            "source": "compiler",
+            "component": "TypeScript",
+            "message": "TS2322: Type '{ children: Element; space: 0; alignX: \"center\"; style: { padding: string; }; }' is not assignable to type 'IntrinsicAttributes & StackProps'.\n  Property 'style' does not exist on type 'IntrinsicAttributes & StackProps'.",
+            "suggestion": "Fix the TypeScript error reported by the compiler. The exact location is included in the issue location field.",
+            "location": {
+              "file": "TestApp.tsx",
+              "line": 9,
+              "column": 38
+            }
+          },
+          {
+            "type": "technical",
+            "severity": "error",
+            "source": "compiler",
+            "component": "TypeScript",
+            "message": "TS2322: Type '{ children: Element; p: 6; style: { maxWidth: number; width: string; }; }' is not assignable to type 'IntrinsicAttributes & CardProps'.\n  Property 'style' does not exist on type 'IntrinsicAttributes & CardProps'.",
+            "suggestion": "Fix the TypeScript error reported by the compiler. The exact location is included in the issue location field.",
+            "location": {
+              "file": "TestApp.tsx",
+              "line": 10,
+              "column": 19
+            }
+          },
+          {
+            "type": "technical",
+            "severity": "warning",
+            "source": "layout-usage",
+            "component": "Stack",
+            "message": "<Stack> wraps a single child. A flow layout earns its place only with two or more children; with one child it adds a wrapper that does nothing.",
+            "suggestion": "Render the child directly instead of wrapping it in <Stack>. For single-child spacing use Inset, Center, Breakout or Aspect.",
+            "location": {
+              "file": "TestApp.tsx",
+              "line": 9,
+              "column": 5
+            },
+            "details": {
+              "layout": "Stack",
+              "childCount": 1
+            }
+          }
+        ]
+      },
+      "D": {
+        "category": "D",
+        "label": "Spatial & A11y",
+        "score": 0,
+        "weight": 0.225,
+        "weightedScore": 0,
+        "errorCount": 0,
+        "warningCount": 0,
+        "issues": []
+      },
+      "E": {
+        "category": "E",
+        "label": "Functional Completeness",
+        "score": 87.1,
+        "weight": 0.225,
+        "weightedScore": 19.6,
+        "errorCount": 0,
+        "warningCount": 0,
+        "issues": []
+      }
+    },
+    "renderSuccess": false
+  },
+  "efficiency": {
+    "durationMs": 19760,
+    "costUsd": 0.07597380000000001,
+    "inputTokens": 4,
+    "outputTokens": 1138,
+    "cacheReadTokens": 61516,
+    "cacheCreationTokens": 6606,
+    "totalTokens": 1142,
+    "numTurns": 3
+  },
+  "report": {
+    "file": "TestApp.tsx",
+    "errors": [
+      {
+        "type": "technical",
+        "severity": "error",
+        "source": "compiler",
+        "component": "TypeScript",
+        "message": "TS2305: Module '\"@marigold/components\"' has no exported member 'Heading'.",
+        "suggestion": "Fix the TypeScript error reported by the compiler. The exact location is included in the issue location field.",
+        "location": {
+          "file": "TestApp.tsx",
+          "line": 2,
+          "column": 31
+        }
+      },
+      {
+        "type": "technical",
+        "severity": "error",
+        "source": "compiler",
+        "component": "TypeScript",
+        "message": "TS2322: Type '{ children: Element; space: 0; alignX: \"center\"; style: { padding: string; }; }' is not assignable to type 'IntrinsicAttributes & StackProps'.\n  Property 'style' does not exist on type 'IntrinsicAttributes & StackProps'.",
+        "suggestion": "Fix the TypeScript error reported by the compiler. The exact location is included in the issue location field.",
+        "location": {
+          "file": "TestApp.tsx",
+          "line": 9,
+          "column": 38
+        }
+      },
+      {
+        "type": "technical",
+        "severity": "error",
+        "source": "compiler",
+        "component": "TypeScript",
+        "message": "TS2322: Type '{ children: Element; p: 6; style: { maxWidth: number; width: string; }; }' is not assignable to type 'IntrinsicAttributes & CardProps'.\n  Property 'style' does not exist on type 'IntrinsicAttributes & CardProps'.",
+        "suggestion": "Fix the TypeScript error reported by the compiler. The exact location is included in the issue location field.",
+        "location": {
+          "file": "TestApp.tsx",
+          "line": 10,
+          "column": 19
+        }
+      },
+      {
+        "type": "technical",
+        "severity": "error",
+        "source": "design-system-usage",
+        "component": "Heading",
+        "message": "<Heading> is not a Marigold component. It is not exported from @marigold/components.",
+        "suggestion": "<Heading> does not exist in @marigold/components. Search the Marigold docs for the correct component.",
+        "location": {
+          "file": "TestApp.tsx",
+          "line": 20,
+          "column": 15
+        },
+        "details": {
+          "hallucinated": true,
+          "importedFrom": "@marigold/components"
+        }
+      }
+    ],
+    "warnings": [
+      {
+        "type": "technical",
+        "severity": "warning",
+        "source": "design-system-usage",
+        "component": "Stack",
+        "message": "Inline style on <Stack> bypasses the design system (padding).",
+        "suggestion": "Use Marigold layout components (Stack, Columns, Inset, Container) and theme tokens instead of inline styles.",
+        "location": {
+          "file": "TestApp.tsx",
+          "line": 9,
+          "column": 38
+        },
+        "details": {
+          "cssProperties": [
+            "padding"
+          ]
+        }
+      },
+      {
+        "type": "technical",
+        "severity": "warning",
+        "source": "design-system-usage",
+        "component": "Card",
+        "message": "Inline style on <Card> bypasses the design system (maxWidth, width).",
+        "suggestion": "Use Marigold layout components (Stack, Columns, Inset, Container) and theme tokens instead of inline styles.",
+        "location": {
+          "file": "TestApp.tsx",
+          "line": 10,
+          "column": 19
+        },
+        "details": {
+          "cssProperties": [
+            "maxWidth",
+            "width"
+          ]
+        }
+      },
+      {
+        "type": "technical",
+        "severity": "warning",
+        "source": "design-system-usage",
+        "component": "img",
+        "message": "Inline style on <img> bypasses the design system (width, height, borderRadius, objectFit).",
+        "suggestion": "Use Marigold layout components (Stack, Columns, Inset, Container) and theme tokens instead of inline styles.",
+        "location": {
+          "file": "TestApp.tsx",
+          "line": 17,
+          "column": 15
+        },
+        "details": {
+          "cssProperties": [
+            "width",
+            "height",
+            "borderRadius",
+            "objectFit"
+          ]
+        }
+      },
+      {
+        "type": "technical",
+        "severity": "warning",
+        "source": "layout-usage",
+        "component": "Stack",
+        "message": "<Stack> wraps a single child. A flow layout earns its place only with two or more children; with one child it adds a wrapper that does nothing.",
+        "suggestion": "Render the child directly instead of wrapping it in <Stack>. For single-child spacing use Inset, Center, Breakout or Aspect.",
+        "location": {
+          "file": "TestApp.tsx",
+          "line": 9,
+          "column": 5
+        },
+        "details": {
+          "layout": "Stack",
+          "childCount": 1
+        }
+      }
+    ],
+    "passed": [
+      "All Marigold props are valid",
+      "Component composition",
+      "Overlay accessible names",
+      "Compound component placement",
+      "Section headers",
+      "Collection item ids",
+      "Table usage",
+      "Component conventions",
+      "Theme variant compliance"
+    ],
+    "metadata": {
+      "renderTimeMs": 0,
+      "componentsFound": [],
+      "checksRun": [
+        "technical",
+        "spatial",
+        "a11y"
+      ],
+      "coverage": {
+        "staticValuesChecked": 10,
+        "dynamicValuesSkipped": 12,
+        "spreadPropsBypassed": 0
+      },
+      "widthUtilization": null
+    },
+    "markdown": "marigold-validate: TestApp.tsx — 4 error(s), 4 warning(s)\n\n[error/technical] <Heading>: <Heading> is not a Marigold component. It is not exported from @marigold/components. (TestApp.tsx:20:15)\n  → <Heading> does not exist in @marigold/components. Search the Marigold docs for the correct component.\n  data: {hallucinated=true, importedFrom=@marigold/components}\n[error/technical] <TypeScript>: TS2305: Module '\"@marigold/components\"' has no exported member 'Heading'. (TestApp.tsx:2:31)\n  → Fix the TypeScript error reported by the compiler. The exact location is included in the issue location field.\n[error/technical] <TypeScript>: TS2322: Type '{ children: Element; space: 0; alignX: \"center\"; style: { padding: string; }; }' is not assignable to type 'IntrinsicAttributes & StackProps'.\n  Property 'style' does not exist on type 'IntrinsicAttributes & StackProps'. (TestApp.tsx:9:38)\n  → Fix the TypeScript error reported by the compiler. The exact location is included in the issue location field.\n[error/technical] <TypeScript>: TS2322: Type '{ children: Element; p: 6; style: { maxWidth: number; width: string; }; }' is not assignable to type 'IntrinsicAttributes & CardProps'.\n  Property 'style' does not exist on type 'IntrinsicAttributes & CardProps'. (TestApp.tsx:10:19)\n  → Fix the TypeScript error reported by the compiler. The exact location is included in the issue location field.\n[warning/technical] <Card>: Inline style on <Card> bypasses the design system (maxWidth, width). (TestApp.tsx:10:19)\n  → Use Marigold layout components (Stack, Columns, Inset, Container) and theme tokens instead of inline styles.\n  data: {cssProperties=[\"maxWidth\",\"width\"]}\n[warning/technical] <img>: Inline style on <img> bypasses the design system (width, height, borderRadius, objectFit). (TestApp.tsx:17:15)\n  → Use Marigold layout components (Stack, Columns, Inset, Container) and theme tokens instead of inline styles.\n  data: {cssProperties=[\"width\",\"height\",\"borderRadius\",\"objectFit\"]}\n[warning/technical] <Stack>: Inline style on <Stack> bypasses the design system (padding). (TestApp.tsx:9:38)\n  → Use Marigold layout components (Stack, Columns, Inset, Container) and theme tokens instead of inline styles.\n  data: {cssProperties=[\"padding\"]}\n[warning/technical] <Stack>: <Stack> wraps a single child. A flow layout earns its place only with two or more children; with one child it adds a wrapper that does nothing. (TestApp.tsx:9:5)\n  → Render the child directly instead of wrapping it in <Stack>. For single-child spacing use Inset, Center, Breakout or Aspect.\n  data: {layout=Stack, childCount=1}\n\npassed: All Marigold props are valid, Component composition, Overlay accessible names, Compound component placement, Section headers, Collection item ids, Table usage, Component conventions, Theme variant compliance\n\nchecks run: technical, spatial, a11y"
+  },
+  "componentsFound": [],
+  "renderTimeMs": 0,
+  "sourceCode": "import { useState } from 'react';\nimport { Stack, Inline, Text, Heading, Badge, Button, Divider, Card } from '@marigold/components';\n\nconst TestApp = () => {\n  const [messageSent, setMessageSent] = useState(false);\n  const [editing, setEditing] = useState(false);\n\n  return (\n    <Stack space={0} alignX=\"center\" style={{ padding: '2rem' }}>\n      <Card p={6} style={{ maxWidth: 420, width: '100%' }}>\n        <Stack space={4}>\n          {/* Avatar + Name */}\n          <Inline space={4} alignY=\"center\">\n            <img\n              src=\"https://i.pravatar.cc/80?img=47\"\n              alt=\"Jane Doe\"\n              style={{ width: 80, height: 80, borderRadius: '50%', objectFit: 'cover' }}\n            />\n            <Stack space={1}>\n              <Heading level={2}>Jane Doe</Heading>\n              <Badge variant={messageSent ? 'positive' : editing ? 'warning' : 'positive'}>\n                Active\n              </Badge>\n            </Stack>\n          </Inline>\n\n          <Divider />\n\n          {/* Details */}\n          <Stack space={2}>\n            <Inline space={2}>\n              <Text weight=\"bold\">Role:</Text>\n              <Text>Senior Developer</Text>\n            </Inline>\n            <Inline space={2}>\n              <Text weight=\"bold\">Department:</Text>\n              <Text>Engineering</Text>\n            </Inline>\n            <Inline space={2}>\n              <Text weight=\"bold\">Email:</Text>\n              <Text>jane.doe@example.com</Text>\n            </Inline>\n            <Inline space={2}>\n              <Text weight=\"bold\">Location:</Text>\n              <Text>Freiburg, Germany</Text>\n            </Inline>\n          </Stack>\n\n          <Divider />\n\n          {/* Bio */}\n          <Text>\n            Jane is a passionate engineer with over 8 years of experience building scalable web\n            applications. She leads the frontend guild and enjoys mentoring junior developers in her\n            spare time.\n          </Text>\n\n          {/* Status feedback */}\n          {messageSent && (\n            <Badge variant=\"positive\">Message sent!</Badge>\n          )}\n          {editing && (\n            <Badge variant=\"warning\">Edit mode active</Badge>\n          )}\n\n          {/* Actions */}\n          <Inline space={3}>\n            <Button\n              variant=\"primary\"\n              onPress={() => {\n                setMessageSent(true);\n                setEditing(false);\n                setTimeout(() => setMessageSent(false), 2000);\n              }}\n            >\n              Send Message\n            </Button>\n            <Button\n              variant=\"secondary\"\n              onPress={() => {\n                setEditing(prev => !prev);\n                setMessageSent(false);\n              }}\n            >\n              Edit Profile\n            </Button>\n          </Inline>\n        </Stack>\n      </Card>\n    </Stack>\n  );\n};\n\nexport default TestApp;\n",
+  "assertions": {
+    "passed": [
+      {
+        "id": "a-import-marigold",
+        "description": "Imports from @marigold/components",
+        "severity": "required",
+        "passed": true,
+        "evidence": "import from \"@marigold/components\" found"
+      },
+      {
+        "id": "a-card",
+        "description": "Card component as container",
+        "severity": "required",
+        "passed": true,
+        "evidence": "<Card> found"
+      },
+      {
+        "id": "a-image",
+        "description": "Includes a profile image (img tag or image URL)",
+        "severity": "recommended",
+        "passed": true,
+        "evidence": "matched: pattern \"/<img/\" found; pattern \"/placeholder.*image|avatar|profile.*photo/i\" found"
+      },
+      {
+        "id": "a-badge",
+        "description": "Badge for status indicator",
+        "severity": "required",
+        "passed": true,
+        "evidence": "<Badge> found"
+      },
+      {
+        "id": "a-text",
+        "description": "Text component for details",
+        "severity": "required",
+        "passed": true,
+        "evidence": "<Text> found"
+      },
+      {
+        "id": "a-button",
+        "description": "Button component for actions",
+        "severity": "required",
+        "passed": true,
+        "evidence": "<Button> found"
+      },
+      {
+        "id": "a-layout",
+        "description": "Uses layout primitives (Stack, Columns, or Inline)",
+        "severity": "required",
+        "passed": true,
+        "evidence": "matched: <Stack> found; <Inline> found"
+      },
+      {
+        "id": "a-no-onclick-on-marigold",
+        "description": "No onClick on Marigold Button components",
+        "severity": "recommended",
+        "passed": true,
+        "evidence": "\"/<Button[^>]*onClick/\" correctly absent"
+      },
+      {
+        "id": "a-user-details",
+        "description": "Shows user details (role, department, email)",
+        "severity": "recommended",
+        "passed": true,
+        "evidence": "pattern \"/role|department|email|location/i\" found"
+      }
+    ],
+    "failed": [
+      {
+        "id": "a-headline",
+        "description": "Headline for user name",
+        "severity": "required",
+        "passed": false,
+        "evidence": "<Headline> not found"
+      }
+    ],
+    "passRate": 0.9,
+    "requiredPassRate": 0.8571,
+    "weightedPassRate": 0.871,
+    "total": 10
+  },
+  "validatePackageVersion": "0.0.1",
+  "playwrightVersion": null,
+  "resolvedModelId": "claude-sonnet-4-6",
+  "claudeCliVersion": "2.1.185 (Claude Code)",
+  "sessionId": "016f5ebc-fd7a-4a3c-a92f-f3448357c18d"
+}

@@ -1,0 +1,550 @@
+{
+  "runId": "sonnet-bare-P-04-r2",
+  "promptId": "P-04",
+  "model": "sonnet",
+  "config": "bare",
+  "timestamp": "2026-06-21T12:59:25.759Z",
+  "quality": {
+    "overall": 83.7,
+    "categories": {
+      "A": {
+        "category": "A",
+        "label": "Design System API",
+        "score": 65.36,
+        "weight": 0.225,
+        "weightedScore": 14.71,
+        "errorCount": 3,
+        "warningCount": 0,
+        "issues": [
+          {
+            "type": "technical",
+            "severity": "error",
+            "source": "prop-validator",
+            "component": "NumberField",
+            "message": "Prop \"isDisabled\" does not exist on <NumberField>.",
+            "suggestion": "Replace \"isDisabled\" with \"disabled\".",
+            "location": {
+              "file": "TestApp.tsx",
+              "line": 169,
+              "column": 19
+            },
+            "details": {
+              "used": "isDisabled",
+              "available": [
+                "variant",
+                "size",
+                "width",
+                "disabled",
+                "required",
+                "error",
+                "readOnly",
+                "hideStepper",
+                "placeholder",
+                "render",
+                "id",
+                "dir",
+                "lang",
+                "hidden",
+                "inert"
+              ]
+            }
+          },
+          {
+            "type": "technical",
+            "severity": "error",
+            "source": "prop-validator",
+            "component": "TextField",
+            "message": "Prop \"isRequired\" does not exist on <TextField>.",
+            "suggestion": "Replace \"isRequired\" with \"required\".",
+            "location": {
+              "file": "TestApp.tsx",
+              "line": 184,
+              "column": 11
+            },
+            "details": {
+              "used": "isRequired",
+              "available": [
+                "variant",
+                "size",
+                "width",
+                "disabled",
+                "required",
+                "error",
+                "readOnly",
+                "min",
+                "max",
+                "value",
+                "defaultValue",
+                "placeholder",
+                "render",
+                "id",
+                "dir"
+              ]
+            }
+          },
+          {
+            "type": "technical",
+            "severity": "error",
+            "source": "prop-validator",
+            "component": "TextField",
+            "message": "Prop \"isRequired\" does not exist on <TextField>.",
+            "suggestion": "Replace \"isRequired\" with \"required\".",
+            "location": {
+              "file": "TestApp.tsx",
+              "line": 190,
+              "column": 11
+            },
+            "details": {
+              "used": "isRequired",
+              "available": [
+                "variant",
+                "size",
+                "width",
+                "disabled",
+                "required",
+                "error",
+                "readOnly",
+                "min",
+                "max",
+                "value",
+                "defaultValue",
+                "placeholder",
+                "render",
+                "id",
+                "dir"
+              ]
+            }
+          }
+        ]
+      },
+      "B": {
+        "category": "B",
+        "label": "Token Compliance",
+        "score": 100,
+        "weight": 0.1,
+        "weightedScore": 10,
+        "errorCount": 0,
+        "warningCount": 0,
+        "issues": []
+      },
+      "C": {
+        "category": "C",
+        "label": "DOM / Structure",
+        "score": 100,
+        "weight": 0.225,
+        "weightedScore": 22.5,
+        "errorCount": 0,
+        "warningCount": 0,
+        "issues": []
+      },
+      "D": {
+        "category": "D",
+        "label": "Spatial & A11y",
+        "score": 71.72,
+        "weight": 0.225,
+        "weightedScore": 16.14,
+        "errorCount": 0,
+        "warningCount": 4,
+        "issues": [
+          {
+            "type": "spatial",
+            "severity": "warning",
+            "source": "responsive-checker",
+            "component": "page",
+            "message": "Content uses only 38% of the desktop width (1280px): it stays in a narrow, mobile-shaped band instead of adapting to the available space.",
+            "suggestion": "Let the layout grow with the viewport using Marigold responsive primitives — <Columns collapseAt=\"...\"> for multi-column areas, AppLayout for the shell, Stack/Inline for flow — instead of a fixed-width container. (Intentionally centred max-width reading columns are fine and may trip this; treat it as a relative signal.)",
+            "details": {
+              "widthUtilization": 0.378125,
+              "contentElements": 54,
+              "scope": "page"
+            }
+          },
+          {
+            "type": "a11y",
+            "severity": "warning",
+            "source": "aom-extractor",
+            "component": "html",
+            "message": "Document should have one main landmark (landmark-one-main)",
+            "suggestion": "Wrap your page content in `<AppLayout>` with `<AppLayout.Main>` to provide a `<main>` landmark. Import AppLayout from `@marigold/components`.",
+            "details": {
+              "ruleId": "landmark-one-main",
+              "impact": "moderate",
+              "target": [
+                "html"
+              ],
+              "html": "<html lang=\"en\" data-theme=\"rui\">",
+              "scope": "page"
+            }
+          },
+          {
+            "type": "a11y",
+            "severity": "warning",
+            "source": "aom-extractor",
+            "component": "page",
+            "message": "All page content should be contained by landmarks — 16 elements affected (region)",
+            "suggestion": "All page content must be inside a landmark region. Use `<AppLayout>` with `<AppLayout.Main>` for the main area, `<TopNavigation>` for the header (`<header>`), and `<Sidebar>` for side navigation (`<aside>`). Import from `@marigold/components`.",
+            "details": {
+              "ruleId": "region",
+              "impact": "moderate",
+              "affectedCount": 16,
+              "scope": "page"
+            }
+          },
+          {
+            "type": "a11y",
+            "severity": "warning",
+            "source": "keyboard-a11y",
+            "component": "input",
+            "message": "Component order inconsistency: Tab moved from <input> at (50, 520) to <input> at (0, 342).",
+            "suggestion": "Reorder components in JSX to match the visual layout, or use Marigold layout components (Stack, Columns) to control both visual and DOM order.",
+            "details": {
+              "from": {
+                "component": "input",
+                "x": 50,
+                "y": 520
+              },
+              "to": {
+                "component": "input",
+                "x": 0,
+                "y": 342
+              },
+              "scope": "page"
+            }
+          }
+        ]
+      },
+      "E": {
+        "category": "E",
+        "label": "Functional Completeness",
+        "score": 90.48,
+        "weight": 0.225,
+        "weightedScore": 20.36,
+        "errorCount": 0,
+        "warningCount": 0,
+        "issues": []
+      }
+    },
+    "renderSuccess": true
+  },
+  "efficiency": {
+    "durationMs": 132607,
+    "costUsd": 0.2754509,
+    "inputTokens": 4,
+    "outputTokens": 10094,
+    "cacheReadTokens": 65063,
+    "cacheCreationTokens": 17257,
+    "totalTokens": 10098,
+    "numTurns": 4
+  },
+  "report": {
+    "file": "TestApp.tsx",
+    "errors": [
+      {
+        "type": "technical",
+        "severity": "error",
+        "source": "prop-validator",
+        "component": "NumberField",
+        "message": "Prop \"isDisabled\" does not exist on <NumberField>.",
+        "suggestion": "Replace \"isDisabled\" with \"disabled\".",
+        "location": {
+          "file": "TestApp.tsx",
+          "line": 169,
+          "column": 19
+        },
+        "details": {
+          "used": "isDisabled",
+          "available": [
+            "variant",
+            "size",
+            "width",
+            "disabled",
+            "required",
+            "error",
+            "readOnly",
+            "hideStepper",
+            "placeholder",
+            "render",
+            "id",
+            "dir",
+            "lang",
+            "hidden",
+            "inert"
+          ]
+        }
+      },
+      {
+        "type": "technical",
+        "severity": "error",
+        "source": "prop-validator",
+        "component": "TextField",
+        "message": "Prop \"isRequired\" does not exist on <TextField>.",
+        "suggestion": "Replace \"isRequired\" with \"required\".",
+        "location": {
+          "file": "TestApp.tsx",
+          "line": 184,
+          "column": 11
+        },
+        "details": {
+          "used": "isRequired",
+          "available": [
+            "variant",
+            "size",
+            "width",
+            "disabled",
+            "required",
+            "error",
+            "readOnly",
+            "min",
+            "max",
+            "value",
+            "defaultValue",
+            "placeholder",
+            "render",
+            "id",
+            "dir"
+          ]
+        }
+      },
+      {
+        "type": "technical",
+        "severity": "error",
+        "source": "prop-validator",
+        "component": "TextField",
+        "message": "Prop \"isRequired\" does not exist on <TextField>.",
+        "suggestion": "Replace \"isRequired\" with \"required\".",
+        "location": {
+          "file": "TestApp.tsx",
+          "line": 190,
+          "column": 11
+        },
+        "details": {
+          "used": "isRequired",
+          "available": [
+            "variant",
+            "size",
+            "width",
+            "disabled",
+            "required",
+            "error",
+            "readOnly",
+            "min",
+            "max",
+            "value",
+            "defaultValue",
+            "placeholder",
+            "render",
+            "id",
+            "dir"
+          ]
+        }
+      }
+    ],
+    "warnings": [
+      {
+        "type": "spatial",
+        "severity": "warning",
+        "source": "responsive-checker",
+        "component": "page",
+        "message": "Content uses only 38% of the desktop width (1280px): it stays in a narrow, mobile-shaped band instead of adapting to the available space.",
+        "suggestion": "Let the layout grow with the viewport using Marigold responsive primitives — <Columns collapseAt=\"...\"> for multi-column areas, AppLayout for the shell, Stack/Inline for flow — instead of a fixed-width container. (Intentionally centred max-width reading columns are fine and may trip this; treat it as a relative signal.)",
+        "details": {
+          "widthUtilization": 0.378125,
+          "contentElements": 54,
+          "scope": "page"
+        }
+      },
+      {
+        "type": "a11y",
+        "severity": "warning",
+        "source": "aom-extractor",
+        "component": "html",
+        "message": "Document should have one main landmark (landmark-one-main)",
+        "suggestion": "Wrap your page content in `<AppLayout>` with `<AppLayout.Main>` to provide a `<main>` landmark. Import AppLayout from `@marigold/components`.",
+        "details": {
+          "ruleId": "landmark-one-main",
+          "impact": "moderate",
+          "target": [
+            "html"
+          ],
+          "html": "<html lang=\"en\" data-theme=\"rui\">",
+          "scope": "page"
+        }
+      },
+      {
+        "type": "a11y",
+        "severity": "warning",
+        "source": "aom-extractor",
+        "component": "page",
+        "message": "All page content should be contained by landmarks — 16 elements affected (region)",
+        "suggestion": "All page content must be inside a landmark region. Use `<AppLayout>` with `<AppLayout.Main>` for the main area, `<TopNavigation>` for the header (`<header>`), and `<Sidebar>` for side navigation (`<aside>`). Import from `@marigold/components`.",
+        "details": {
+          "ruleId": "region",
+          "impact": "moderate",
+          "affectedCount": 16,
+          "scope": "page"
+        }
+      },
+      {
+        "type": "a11y",
+        "severity": "warning",
+        "source": "keyboard-a11y",
+        "component": "input",
+        "message": "Component order inconsistency: Tab moved from <input> at (50, 520) to <input> at (0, 342).",
+        "suggestion": "Reorder components in JSX to match the visual layout, or use Marigold layout components (Stack, Columns) to control both visual and DOM order.",
+        "details": {
+          "from": {
+            "component": "input",
+            "x": 50,
+            "y": 520
+          },
+          "to": {
+            "component": "input",
+            "x": 0,
+            "y": 342
+          },
+          "scope": "page"
+        }
+      }
+    ],
+    "passed": [
+      "TypeScript compilation",
+      "Component composition",
+      "Overlay accessible names",
+      "Compound component placement",
+      "Section headers",
+      "Collection item ids",
+      "Design system usage",
+      "Layout usage",
+      "Table usage",
+      "Component conventions",
+      "Theme variant compliance",
+      "No overlapping components detected"
+    ],
+    "metadata": {
+      "renderTimeMs": 1446,
+      "componentsFound": [
+        "div",
+        "button",
+        "input"
+      ],
+      "checksRun": [
+        "technical",
+        "spatial",
+        "a11y"
+      ],
+      "coverage": {
+        "staticValuesChecked": 9,
+        "dynamicValuesSkipped": 21,
+        "spreadPropsBypassed": 0
+      },
+      "widthUtilization": 0.378125
+    },
+    "markdown": "marigold-validate: TestApp.tsx — 3 error(s), 4 warning(s)\n\n[error/technical] <NumberField>: Prop \"isDisabled\" does not exist on <NumberField>. (TestApp.tsx:169:19)\n  → Replace \"isDisabled\" with \"disabled\".\n  data: {used=isDisabled, available=[\"variant\",\"size\",\"width\",\"disabled\",\"required\",\"error\",\"readOnly\",\"hideStepper\", …]}\n[error/technical] <TextField>: Prop \"isRequired\" does not exist on <TextField>. (TestApp.tsx:184:11)\n  → Replace \"isRequired\" with \"required\".\n  data: {used=isRequired, available=[\"variant\",\"size\",\"width\",\"disabled\",\"required\",\"error\",\"readOnly\",\"min\", …]}\n[error/technical] <TextField>: Prop \"isRequired\" does not exist on <TextField>. (TestApp.tsx:190:11)\n  → Replace \"isRequired\" with \"required\".\n  data: {used=isRequired, available=[\"variant\",\"size\",\"width\",\"disabled\",\"required\",\"error\",\"readOnly\",\"min\", …]}\n[warning/spatial] <page>: Content uses only 38% of the desktop width (1280px): it stays in a narrow, mobile-shaped band instead of adapting to the available space.\n  → Let the layout grow with the viewport using Marigold responsive primitives — <Columns collapseAt=\"...\"> for multi-column areas, AppLayout for the shell, Stack/Inline for flow — instead of a fixed-width container. (Intentionally centred max-width reading columns are fine and may trip this; treat it as a relative signal.)\n  data: {widthUtilization=0.378125, contentElements=54, scope=page}\n[warning/a11y] <html>: Document should have one main landmark (landmark-one-main)\n  → Wrap your page content in `<AppLayout>` with `<AppLayout.Main>` to provide a `<main>` landmark. Import AppLayout from `@marigold/components`.\n  data: {ruleId=landmark-one-main, impact=moderate, target=[\"html\"], html=<html lang=\"en\" data-theme=\"rui\">, scope=page}\n[warning/a11y] <input>: Component order inconsistency: Tab moved from <input> at (50, 520) to <input> at (0, 342).\n  → Reorder components in JSX to match the visual layout, or use Marigold layout components (Stack, Columns) to control both visual and DOM order.\n  data: {from={\"component\":\"input\",\"x\":50,\"y\":520}, to={\"component\":\"input\",\"x\":0,\"y\":342}, scope=page}\n[warning/a11y] <page>: All page content should be contained by landmarks — 16 elements affected (region)\n  → All page content must be inside a landmark region. Use `<AppLayout>` with `<AppLayout.Main>` for the main area, `<TopNavigation>` for the header (`<header>`), and `<Sidebar>` for side navigation (`<aside>`). Import from `@marigold/components`.\n  data: {ruleId=region, impact=moderate, affectedCount=16, scope=page}\n\npassed: TypeScript compilation, Component composition, Overlay accessible names, Compound component placement, Section headers, Collection item ids, Design system usage, Layout usage, Table usage, Component conventions, Theme variant compliance, No overlapping components detected\n\nchecks run: technical, spatial, a11y"
+  },
+  "componentsFound": [
+    "div",
+    "button",
+    "input"
+  ],
+  "renderTimeMs": 1446,
+  "sourceCode": "import { useState } from 'react';\nimport {\n  Stack,\n  Inline,\n  Text,\n  Headline,\n  Button,\n  TextField,\n  NumberField,\n  Card,\n  Badge,\n  Divider,\n} from '@marigold/components';\n\ntype TicketId = 'earlyBird' | 'regular' | 'vip';\n\ninterface Ticket {\n  id: TicketId;\n  name: string;\n  price: number;\n  description: string;\n  soldOut: boolean;\n  maxQty: number;\n  note?: string;\n}\n\nconst TICKETS: Ticket[] = [\n  {\n    id: 'earlyBird',\n    name: 'Early Bird',\n    price: 49,\n    description: 'Limited availability — grab yours before they\\'re gone.',\n    soldOut: false,\n    maxQty: 12,\n    note: 'Only 12 left',\n  },\n  {\n    id: 'regular',\n    name: 'Regular',\n    price: 79,\n    description: 'Standard admission with full access to all stages.',\n    soldOut: false,\n    maxQty: 99,\n  },\n  {\n    id: 'vip',\n    name: 'VIP',\n    price: 149,\n    description: 'Premium experience with backstage access and lounge.',\n    soldOut: true,\n    maxQty: 0,\n  },\n];\n\nconst isValidEmail = (val: string) => /^[^\\s@]+@[^\\s@]+\\.[^\\s@]+$/.test(val);\n\nconst TestApp = () => {\n  const [quantities, setQuantities] = useState<Record<TicketId, number>>({\n    earlyBird: 0,\n    regular: 0,\n    vip: 0,\n  });\n\n  const [name, setName] = useState('');\n  const [email, setEmail] = useState('');\n  const [phone, setPhone] = useState('');\n  const [submitted, setSubmitted] = useState(false);\n  const [formError, setFormError] = useState('');\n\n  const totalTickets = Object.values(quantities).reduce((sum, q) => sum + q, 0);\n\n  const grandTotal = TICKETS.reduce(\n    (sum, t) => sum + quantities[t.id] * t.price,\n    0\n  );\n\n  const selectedTickets = TICKETS.filter(t => quantities[t.id] > 0);\n\n  const setQty = (id: TicketId, val: number) =>\n    setQuantities(prev => ({ ...prev, [id]: isNaN(val) ? 0 : val }));\n\n  const handlePurchase = () => {\n    setFormError('');\n\n    if (totalTickets === 0) {\n      setFormError('Please select at least one ticket before purchasing.');\n      return;\n    }\n    if (!name.trim()) {\n      setFormError('Full name is required.');\n      return;\n    }\n    if (!email.trim() || !isValidEmail(email.trim())) {\n      setFormError('A valid email address is required.');\n      return;\n    }\n\n    setSubmitted(true);\n  };\n\n  if (submitted) {\n    return (\n      <Stack space={4}>\n        <Headline level={2}>Order Confirmed!</Headline>\n        <Card>\n          <Stack space={3}>\n            <Text>\n              Thank you, {name}! Your order of {totalTickets} ticket\n              {totalTickets !== 1 ? 's' : ''} has been placed. A confirmation\n              email will be sent to {email}.\n            </Text>\n            <Divider />\n            {selectedTickets.map(ticket => (\n              <Inline key={ticket.id} space={4}>\n                <Text>\n                  {ticket.name} × {quantities[ticket.id]}\n                </Text>\n                <Text>${quantities[ticket.id] * ticket.price}</Text>\n              </Inline>\n            ))}\n            <Divider />\n            <Inline space={4}>\n              <Text weight=\"bold\">Total charged</Text>\n              <Text weight=\"bold\">${grandTotal}</Text>\n            </Inline>\n          </Stack>\n        </Card>\n      </Stack>\n    );\n  }\n\n  return (\n    <Stack space={8}>\n      {/* Event Details */}\n      <Stack space={2}>\n        <Headline level={1}>Summer Music Festival 2026</Headline>\n        <Text>July 15–17, 2026 · Stadtpark Freiburg</Text>\n        <Text>\n          Three days of live music featuring local and international artists.\n        </Text>\n      </Stack>\n\n      {/* Ticket Categories */}\n      <Stack space={4}>\n        <Headline level={2}>Select Tickets</Headline>\n        <Stack space={3}>\n          {TICKETS.map(ticket => (\n            <Card key={ticket.id}>\n              <Stack space={3}>\n                <Inline space={3}>\n                  <Stack space={1}>\n                    <Text weight=\"bold\">{ticket.name}</Text>\n                    <Text>${ticket.price}</Text>\n                  </Stack>\n                  {ticket.note && !ticket.soldOut && (\n                    <Badge variant=\"warning\">{ticket.note}</Badge>\n                  )}\n                  {ticket.soldOut && (\n                    <Badge variant=\"error\">Sold Out</Badge>\n                  )}\n                </Inline>\n                <Text>{ticket.description}</Text>\n                <NumberField\n                  label=\"Quantity\"\n                  value={quantities[ticket.id]}\n                  onChange={(val: number) => setQty(ticket.id, val)}\n                  minValue={0}\n                  maxValue={ticket.maxQty}\n                  isDisabled={ticket.soldOut}\n                />\n              </Stack>\n            </Card>\n          ))}\n        </Stack>\n      </Stack>\n\n      {/* Buyer Information */}\n      <Stack space={4}>\n        <Headline level={2}>Your Information</Headline>\n        <TextField\n          label=\"Full Name\"\n          value={name}\n          onChange={setName}\n          isRequired\n        />\n        <TextField\n          label=\"Email\"\n          value={email}\n          onChange={setEmail}\n          isRequired\n          type=\"email\"\n        />\n        <TextField\n          label=\"Phone Number\"\n          value={phone}\n          onChange={setPhone}\n        />\n      </Stack>\n\n      {/* Order Summary */}\n      <Stack space={4}>\n        <Headline level={2}>Order Summary</Headline>\n        <Card>\n          <Stack space={3}>\n            {selectedTickets.length > 0 ? (\n              selectedTickets.map(ticket => (\n                <Inline key={ticket.id} space={4}>\n                  <Text>\n                    {ticket.name} × {quantities[ticket.id]}\n                  </Text>\n                  <Text>${quantities[ticket.id] * ticket.price}</Text>\n                </Inline>\n              ))\n            ) : (\n              <Text>No tickets selected yet.</Text>\n            )}\n            <Divider />\n            <Inline space={4}>\n              <Text weight=\"bold\">Grand Total</Text>\n              <Text weight=\"bold\">${grandTotal}</Text>\n            </Inline>\n          </Stack>\n        </Card>\n      </Stack>\n\n      {/* Validation Error */}\n      {formError && (\n        <Card>\n          <Text>{formError}</Text>\n        </Card>\n      )}\n\n      <Button variant=\"primary\" onPress={handlePurchase}>\n        Purchase Tickets\n      </Button>\n    </Stack>\n  );\n};\n\nexport default TestApp;\n",
+  "assertions": {
+    "passed": [
+      {
+        "id": "a-import-marigold",
+        "description": "Imports from @marigold/components",
+        "severity": "required",
+        "passed": true,
+        "evidence": "import from \"@marigold/components\" found"
+      },
+      {
+        "id": "a-has-button",
+        "description": "Button component present",
+        "severity": "required",
+        "passed": true,
+        "evidence": "<Button> found"
+      },
+      {
+        "id": "a-has-form-input",
+        "description": "Uses at least one form input component",
+        "severity": "required",
+        "passed": true,
+        "evidence": "matched: <TextField> found; <NumberField> found"
+      },
+      {
+        "id": "a-has-layout-primitive",
+        "description": "Uses at least one layout component",
+        "severity": "required",
+        "passed": true,
+        "evidence": "matched: <Stack> found; <Card> found; <Inline> found"
+      },
+      {
+        "id": "a-price-indicator",
+        "description": "Shows pricing information",
+        "severity": "recommended",
+        "passed": true,
+        "evidence": "pattern \"/\\$|€|price|cost|total|amount/i\" found"
+      },
+      {
+        "id": "a-has-quantity-mechanism",
+        "description": "Has a mechanism for selecting ticket quantity",
+        "severity": "required",
+        "passed": true,
+        "evidence": "matched: <NumberField> found; pattern \"/quantity|qty|amount|count|tickets?\\s*:/i\" found"
+      },
+      {
+        "id": "a-has-feedback-mechanism",
+        "description": "Has user feedback mechanism",
+        "severity": "required",
+        "passed": true,
+        "evidence": "matched: pattern \"/error|success|confirm/i\" found"
+      },
+      {
+        "id": "a-no-onclick-on-marigold",
+        "description": "No onClick on Marigold Button components",
+        "severity": "recommended",
+        "passed": true,
+        "evidence": "\"/<Button[^>]*onClick/\" correctly absent"
+      },
+      {
+        "id": "a-has-headline",
+        "description": "Headline for event name",
+        "severity": "required",
+        "passed": true,
+        "evidence": "<Headline> found"
+      },
+      {
+        "id": "a-sold-out-state",
+        "description": "Sold-out state indicated",
+        "severity": "required",
+        "passed": true,
+        "evidence": "matched: pattern \"/sold.?out|unavailable|disabled/i\" found; <Badge> found"
+      },
+      {
+        "id": "a-card",
+        "description": "Ticket category cards",
+        "severity": "required",
+        "passed": true,
+        "evidence": "<Card> found"
+      }
+    ],
+    "failed": [
+      {
+        "id": "a-has-form",
+        "description": "Form component wrapping buyer info",
+        "severity": "required",
+        "passed": false,
+        "evidence": "<Form> not found"
+      }
+    ],
+    "passRate": 0.9167,
+    "requiredPassRate": 0.9,
+    "weightedPassRate": 0.9048,
+    "total": 12
+  },
+  "validatePackageVersion": "0.0.1",
+  "playwrightVersion": null,
+  "resolvedModelId": "claude-sonnet-4-6",
+  "claudeCliVersion": "2.1.185 (Claude Code)",
+  "sessionId": "0898e953-586b-48c2-a02a-902d10895329"
+}

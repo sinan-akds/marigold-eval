@@ -1,0 +1,600 @@
+{
+  "runId": "opus-bare-P-04-r2",
+  "promptId": "P-04",
+  "model": "opus",
+  "config": "bare",
+  "timestamp": "2026-06-25T20:24:57.787Z",
+  "quality": {
+    "overall": 46.46,
+    "categories": {
+      "A": {
+        "category": "A",
+        "label": "Design System API",
+        "score": 51.01,
+        "weight": 0.225,
+        "weightedScore": 11.48,
+        "errorCount": 6,
+        "warningCount": 0,
+        "issues": [
+          {
+            "type": "technical",
+            "severity": "error",
+            "source": "prop-validator",
+            "component": "NumberField",
+            "message": "Prop \"isDisabled\" does not exist on <NumberField>.",
+            "suggestion": "Replace \"isDisabled\" with \"disabled\".",
+            "location": {
+              "file": "TestApp.tsx",
+              "line": 153,
+              "column": 19
+            },
+            "details": {
+              "used": "isDisabled",
+              "available": [
+                "variant",
+                "size",
+                "width",
+                "disabled",
+                "required",
+                "error",
+                "readOnly",
+                "hideStepper",
+                "placeholder",
+                "render",
+                "id",
+                "dir",
+                "lang",
+                "hidden",
+                "inert"
+              ]
+            }
+          },
+          {
+            "type": "technical",
+            "severity": "error",
+            "source": "prop-validator",
+            "component": "TextField",
+            "message": "Prop \"isRequired\" does not exist on <TextField>.",
+            "suggestion": "Replace \"isRequired\" with \"required\".",
+            "location": {
+              "file": "TestApp.tsx",
+              "line": 169,
+              "column": 13
+            },
+            "details": {
+              "used": "isRequired",
+              "available": [
+                "variant",
+                "size",
+                "width",
+                "disabled",
+                "required",
+                "error",
+                "readOnly",
+                "min",
+                "max",
+                "value",
+                "defaultValue",
+                "placeholder",
+                "render",
+                "id",
+                "dir"
+              ]
+            }
+          },
+          {
+            "type": "technical",
+            "severity": "error",
+            "source": "prop-validator",
+            "component": "TextField",
+            "message": "Prop \"isInvalid\" does not exist on <TextField>.",
+            "suggestion": "Remove the prop. Available props: variant, size, width, disabled, required, error, readOnly, min, max, value, defaultValue, placeholder, render, id, dir, ….",
+            "location": {
+              "file": "TestApp.tsx",
+              "line": 172,
+              "column": 13
+            },
+            "details": {
+              "used": "isInvalid",
+              "available": [
+                "variant",
+                "size",
+                "width",
+                "disabled",
+                "required",
+                "error",
+                "readOnly",
+                "min",
+                "max",
+                "value",
+                "defaultValue",
+                "placeholder",
+                "render",
+                "id",
+                "dir"
+              ]
+            }
+          },
+          {
+            "type": "technical",
+            "severity": "error",
+            "source": "prop-validator",
+            "component": "TextField",
+            "message": "Prop \"isRequired\" does not exist on <TextField>.",
+            "suggestion": "Replace \"isRequired\" with \"required\".",
+            "location": {
+              "file": "TestApp.tsx",
+              "line": 178,
+              "column": 13
+            },
+            "details": {
+              "used": "isRequired",
+              "available": [
+                "variant",
+                "size",
+                "width",
+                "disabled",
+                "required",
+                "error",
+                "readOnly",
+                "min",
+                "max",
+                "value",
+                "defaultValue",
+                "placeholder",
+                "render",
+                "id",
+                "dir"
+              ]
+            }
+          },
+          {
+            "type": "technical",
+            "severity": "error",
+            "source": "prop-validator",
+            "component": "TextField",
+            "message": "Prop \"isInvalid\" does not exist on <TextField>.",
+            "suggestion": "Remove the prop. Available props: variant, size, width, disabled, required, error, readOnly, min, max, value, defaultValue, placeholder, render, id, dir, ….",
+            "location": {
+              "file": "TestApp.tsx",
+              "line": 181,
+              "column": 13
+            },
+            "details": {
+              "used": "isInvalid",
+              "available": [
+                "variant",
+                "size",
+                "width",
+                "disabled",
+                "required",
+                "error",
+                "readOnly",
+                "min",
+                "max",
+                "value",
+                "defaultValue",
+                "placeholder",
+                "render",
+                "id",
+                "dir"
+              ]
+            }
+          },
+          {
+            "type": "technical",
+            "severity": "error",
+            "source": "design-system-usage",
+            "component": "Message",
+            "message": "<Message> is not a Marigold component. It is not exported from @marigold/components.",
+            "suggestion": "<Message> does not exist in @marigold/components. Search the Marigold docs for the correct component.",
+            "location": {
+              "file": "TestApp.tsx",
+              "line": 221,
+              "column": 11
+            },
+            "details": {
+              "hallucinated": true,
+              "importedFrom": "@marigold/components"
+            }
+          }
+        ]
+      },
+      "B": {
+        "category": "B",
+        "label": "Token Compliance",
+        "score": 0,
+        "weight": 0.1,
+        "weightedScore": 0,
+        "errorCount": 0,
+        "warningCount": 0,
+        "issues": []
+      },
+      "C": {
+        "category": "C",
+        "label": "DOM / Structure",
+        "score": 65,
+        "weight": 0.225,
+        "weightedScore": 14.63,
+        "errorCount": 1,
+        "warningCount": 0,
+        "issues": [
+          {
+            "type": "technical",
+            "severity": "error",
+            "source": "compiler",
+            "component": "TypeScript",
+            "message": "TS2305: Module '\"@marigold/components\"' has no exported member 'Message'.",
+            "suggestion": "Fix the TypeScript error reported by the compiler. The exact location is included in the issue location field.",
+            "location": {
+              "file": "TestApp.tsx",
+              "line": 14,
+              "column": 3
+            }
+          }
+        ]
+      },
+      "D": {
+        "category": "D",
+        "label": "Spatial & A11y",
+        "score": 0,
+        "weight": 0.225,
+        "weightedScore": 0,
+        "errorCount": 0,
+        "warningCount": 0,
+        "issues": []
+      },
+      "E": {
+        "category": "E",
+        "label": "Functional Completeness",
+        "score": 90.48,
+        "weight": 0.225,
+        "weightedScore": 20.36,
+        "errorCount": 0,
+        "warningCount": 0,
+        "issues": []
+      }
+    },
+    "renderSuccess": false
+  },
+  "efficiency": {
+    "durationMs": 96979,
+    "costUsd": 0.341494,
+    "inputTokens": 730,
+    "outputTokens": 8188,
+    "cacheReadTokens": 52812,
+    "cacheCreationTokens": 10577,
+    "totalTokens": 8918,
+    "numTurns": 4
+  },
+  "report": {
+    "file": "TestApp.tsx",
+    "errors": [
+      {
+        "type": "technical",
+        "severity": "error",
+        "source": "compiler",
+        "component": "TypeScript",
+        "message": "TS2305: Module '\"@marigold/components\"' has no exported member 'Message'.",
+        "suggestion": "Fix the TypeScript error reported by the compiler. The exact location is included in the issue location field.",
+        "location": {
+          "file": "TestApp.tsx",
+          "line": 14,
+          "column": 3
+        }
+      },
+      {
+        "type": "technical",
+        "severity": "error",
+        "source": "prop-validator",
+        "component": "NumberField",
+        "message": "Prop \"isDisabled\" does not exist on <NumberField>.",
+        "suggestion": "Replace \"isDisabled\" with \"disabled\".",
+        "location": {
+          "file": "TestApp.tsx",
+          "line": 153,
+          "column": 19
+        },
+        "details": {
+          "used": "isDisabled",
+          "available": [
+            "variant",
+            "size",
+            "width",
+            "disabled",
+            "required",
+            "error",
+            "readOnly",
+            "hideStepper",
+            "placeholder",
+            "render",
+            "id",
+            "dir",
+            "lang",
+            "hidden",
+            "inert"
+          ]
+        }
+      },
+      {
+        "type": "technical",
+        "severity": "error",
+        "source": "prop-validator",
+        "component": "TextField",
+        "message": "Prop \"isRequired\" does not exist on <TextField>.",
+        "suggestion": "Replace \"isRequired\" with \"required\".",
+        "location": {
+          "file": "TestApp.tsx",
+          "line": 169,
+          "column": 13
+        },
+        "details": {
+          "used": "isRequired",
+          "available": [
+            "variant",
+            "size",
+            "width",
+            "disabled",
+            "required",
+            "error",
+            "readOnly",
+            "min",
+            "max",
+            "value",
+            "defaultValue",
+            "placeholder",
+            "render",
+            "id",
+            "dir"
+          ]
+        }
+      },
+      {
+        "type": "technical",
+        "severity": "error",
+        "source": "prop-validator",
+        "component": "TextField",
+        "message": "Prop \"isInvalid\" does not exist on <TextField>.",
+        "suggestion": "Remove the prop. Available props: variant, size, width, disabled, required, error, readOnly, min, max, value, defaultValue, placeholder, render, id, dir, ….",
+        "location": {
+          "file": "TestApp.tsx",
+          "line": 172,
+          "column": 13
+        },
+        "details": {
+          "used": "isInvalid",
+          "available": [
+            "variant",
+            "size",
+            "width",
+            "disabled",
+            "required",
+            "error",
+            "readOnly",
+            "min",
+            "max",
+            "value",
+            "defaultValue",
+            "placeholder",
+            "render",
+            "id",
+            "dir"
+          ]
+        }
+      },
+      {
+        "type": "technical",
+        "severity": "error",
+        "source": "prop-validator",
+        "component": "TextField",
+        "message": "Prop \"isRequired\" does not exist on <TextField>.",
+        "suggestion": "Replace \"isRequired\" with \"required\".",
+        "location": {
+          "file": "TestApp.tsx",
+          "line": 178,
+          "column": 13
+        },
+        "details": {
+          "used": "isRequired",
+          "available": [
+            "variant",
+            "size",
+            "width",
+            "disabled",
+            "required",
+            "error",
+            "readOnly",
+            "min",
+            "max",
+            "value",
+            "defaultValue",
+            "placeholder",
+            "render",
+            "id",
+            "dir"
+          ]
+        }
+      },
+      {
+        "type": "technical",
+        "severity": "error",
+        "source": "prop-validator",
+        "component": "TextField",
+        "message": "Prop \"isInvalid\" does not exist on <TextField>.",
+        "suggestion": "Remove the prop. Available props: variant, size, width, disabled, required, error, readOnly, min, max, value, defaultValue, placeholder, render, id, dir, ….",
+        "location": {
+          "file": "TestApp.tsx",
+          "line": 181,
+          "column": 13
+        },
+        "details": {
+          "used": "isInvalid",
+          "available": [
+            "variant",
+            "size",
+            "width",
+            "disabled",
+            "required",
+            "error",
+            "readOnly",
+            "min",
+            "max",
+            "value",
+            "defaultValue",
+            "placeholder",
+            "render",
+            "id",
+            "dir"
+          ]
+        }
+      },
+      {
+        "type": "technical",
+        "severity": "error",
+        "source": "design-system-usage",
+        "component": "Message",
+        "message": "<Message> is not a Marigold component. It is not exported from @marigold/components.",
+        "suggestion": "<Message> does not exist in @marigold/components. Search the Marigold docs for the correct component.",
+        "location": {
+          "file": "TestApp.tsx",
+          "line": 221,
+          "column": 11
+        },
+        "details": {
+          "hallucinated": true,
+          "importedFrom": "@marigold/components"
+        }
+      }
+    ],
+    "warnings": [],
+    "passed": [
+      "Component composition",
+      "Overlay accessible names",
+      "Compound component placement",
+      "Section headers",
+      "Collection item ids",
+      "Layout usage",
+      "Table usage",
+      "Component conventions",
+      "Theme variant compliance"
+    ],
+    "metadata": {
+      "renderTimeMs": 0,
+      "componentsFound": [],
+      "checksRun": [
+        "technical",
+        "spatial",
+        "a11y"
+      ],
+      "coverage": {
+        "staticValuesChecked": 15,
+        "dynamicValuesSkipped": 13,
+        "spreadPropsBypassed": 0
+      },
+      "widthUtilization": null
+    },
+    "markdown": "marigold-validate: TestApp.tsx — 7 error(s), 0 warning(s)\n\n[error/technical] <Message>: <Message> is not a Marigold component. It is not exported from @marigold/components. (TestApp.tsx:221:11)\n  → <Message> does not exist in @marigold/components. Search the Marigold docs for the correct component.\n  data: {hallucinated=true, importedFrom=@marigold/components}\n[error/technical] <NumberField>: Prop \"isDisabled\" does not exist on <NumberField>. (TestApp.tsx:153:19)\n  → Replace \"isDisabled\" with \"disabled\".\n  data: {used=isDisabled, available=[\"variant\",\"size\",\"width\",\"disabled\",\"required\",\"error\",\"readOnly\",\"hideStepper\", …]}\n[error/technical] <TextField>: Prop \"isRequired\" does not exist on <TextField>. (TestApp.tsx:169:13)\n  → Replace \"isRequired\" with \"required\".\n  data: {used=isRequired, available=[\"variant\",\"size\",\"width\",\"disabled\",\"required\",\"error\",\"readOnly\",\"min\", …]}\n[error/technical] <TextField>: Prop \"isInvalid\" does not exist on <TextField>. (TestApp.tsx:172:13)\n  → Remove the prop. Available props: variant, size, width, disabled, required, error, readOnly, min, max, value, defaultValue, placeholder, render, id, dir, ….\n  data: {used=isInvalid, available=[\"variant\",\"size\",\"width\",\"disabled\",\"required\",\"error\",\"readOnly\",\"min\", …]}\n[error/technical] <TextField>: Prop \"isRequired\" does not exist on <TextField>. (TestApp.tsx:178:13)\n  → Replace \"isRequired\" with \"required\".\n  data: {used=isRequired, available=[\"variant\",\"size\",\"width\",\"disabled\",\"required\",\"error\",\"readOnly\",\"min\", …]}\n[error/technical] <TextField>: Prop \"isInvalid\" does not exist on <TextField>. (TestApp.tsx:181:13)\n  → Remove the prop. Available props: variant, size, width, disabled, required, error, readOnly, min, max, value, defaultValue, placeholder, render, id, dir, ….\n  data: {used=isInvalid, available=[\"variant\",\"size\",\"width\",\"disabled\",\"required\",\"error\",\"readOnly\",\"min\", …]}\n[error/technical] <TypeScript>: TS2305: Module '\"@marigold/components\"' has no exported member 'Message'. (TestApp.tsx:14:3)\n  → Fix the TypeScript error reported by the compiler. The exact location is included in the issue location field.\n\npassed: Component composition, Overlay accessible names, Compound component placement, Section headers, Collection item ids, Layout usage, Table usage, Component conventions, Theme variant compliance\n\nchecks run: technical, spatial, a11y"
+  },
+  "componentsFound": [],
+  "renderTimeMs": 0,
+  "sourceCode": "import { useState } from 'react';\nimport {\n  Stack,\n  Inline,\n  Columns,\n  Headline,\n  Text,\n  Card,\n  Badge,\n  Button,\n  NumberField,\n  TextField,\n  Divider,\n  Message,\n} from '@marigold/components';\n\ntype CategoryId = 'early' | 'regular' | 'vip';\n\ninterface Category {\n  id: CategoryId;\n  name: string;\n  price: number;\n  description: string;\n  maxValue?: number;\n  badge?: string;\n  soldOut?: boolean;\n}\n\nconst CATEGORIES: Category[] = [\n  {\n    id: 'early',\n    name: 'Early Bird',\n    price: 49,\n    description: 'Discounted early access — grab them before they go.',\n    maxValue: 12,\n    badge: 'Only 12 left',\n  },\n  {\n    id: 'regular',\n    name: 'Regular',\n    price: 79,\n    description: 'Standard festival admission for all three days.',\n  },\n  {\n    id: 'vip',\n    name: 'VIP',\n    price: 149,\n    description: 'Premium viewing area and backstage access.',\n    soldOut: true,\n    badge: 'Sold Out',\n  },\n];\n\nconst EMAIL_REGEX = /^[^\\s@]+@[^\\s@]+\\.[^\\s@]+$/;\n\ntype Feedback = { variant: 'success' | 'warning'; title: string; text: string };\n\nconst TestApp = () => {\n  const [quantities, setQuantities] = useState<Record<CategoryId, number>>({\n    early: 0,\n    regular: 0,\n    vip: 0,\n  });\n  const [name, setName] = useState('');\n  const [email, setEmail] = useState('');\n  const [phone, setPhone] = useState('');\n  const [nameInvalid, setNameInvalid] = useState(false);\n  const [emailInvalid, setEmailInvalid] = useState(false);\n  const [feedback, setFeedback] = useState<Feedback | null>(null);\n\n  const setQuantity = (id: CategoryId, value: number) => {\n    setQuantities((prev) => ({ ...prev, [id]: Number.isNaN(value) ? 0 : value }));\n  };\n\n  const lineItems = CATEGORIES.filter((c) => quantities[c.id] > 0).map((c) => ({\n    ...c,\n    quantity: quantities[c.id],\n    subtotal: quantities[c.id] * c.price,\n  }));\n\n  const totalTickets = lineItems.reduce((sum, item) => sum + item.quantity, 0);\n  const grandTotal = lineItems.reduce((sum, item) => sum + item.subtotal, 0);\n\n  const handlePurchase = () => {\n    setFeedback(null);\n\n    const isNameInvalid = name.trim() === '';\n    const isEmailInvalid = !EMAIL_REGEX.test(email.trim());\n    setNameInvalid(isNameInvalid);\n    setEmailInvalid(isEmailInvalid);\n\n    if (totalTickets === 0) {\n      setFeedback({\n        variant: 'warning',\n        title: 'No tickets selected',\n        text: 'Please choose at least one ticket before purchasing.',\n      });\n      return;\n    }\n\n    if (isNameInvalid || isEmailInvalid) {\n      setFeedback({\n        variant: 'warning',\n        title: 'Missing buyer information',\n        text: 'Please provide your full name and a valid email address to continue.',\n      });\n      return;\n    }\n\n    setFeedback({\n      variant: 'success',\n      title: 'Order confirmed',\n      text: `Thank you, ${name.trim()}! Your order of ${totalTickets} ticket${\n        totalTickets === 1 ? '' : 's'\n      } for a total of $${grandTotal} has been confirmed. A confirmation has been sent to ${email.trim()}.`,\n    });\n  };\n\n  return (\n    <Stack space={8}>\n      {/* Event information */}\n      <Stack space={2}>\n        <Headline level=\"1\">Summer Music Festival 2026</Headline>\n        <Text weight=\"bold\">July 15–17, 2026 · Stadtpark Freiburg</Text>\n        <Text>Three days of live music featuring local and international artists.</Text>\n      </Stack>\n\n      <Divider />\n\n      {/* Ticket categories */}\n      <Stack space={4}>\n        <Headline level=\"2\">Tickets</Headline>\n        <Columns columns={[1, 1, 1]} space={4}>\n          {CATEGORIES.map((category) => (\n            <Card key={category.id}>\n              <Stack space={3}>\n                <Inline space={2} alignY=\"center\">\n                  <Headline level=\"3\">{category.name}</Headline>\n                  {category.badge ? (\n                    <Badge variant={category.soldOut ? 'error' : 'info'}>\n                      {category.badge}\n                    </Badge>\n                  ) : null}\n                </Inline>\n                <Text weight=\"bold\">${category.price}</Text>\n                <Text>{category.description}</Text>\n                <NumberField\n                  label=\"Quantity\"\n                  minValue={0}\n                  maxValue={category.maxValue}\n                  value={quantities[category.id]}\n                  onChange={(value) => setQuantity(category.id, value)}\n                  isDisabled={category.soldOut}\n                />\n              </Stack>\n            </Card>\n          ))}\n        </Columns>\n      </Stack>\n\n      <Divider />\n\n      {/* Buyer information */}\n      <Stack space={4}>\n        <Headline level=\"2\">Your details</Headline>\n        <Stack space={3}>\n          <TextField\n            label=\"Full Name\"\n            isRequired\n            value={name}\n            onChange={setName}\n            isInvalid={nameInvalid}\n            errorMessage=\"Please enter your full name.\"\n          />\n          <TextField\n            label=\"Email\"\n            type=\"email\"\n            isRequired\n            value={email}\n            onChange={setEmail}\n            isInvalid={emailInvalid}\n            errorMessage=\"Please enter a valid email address.\"\n          />\n          <TextField\n            label=\"Phone Number\"\n            description=\"Optional\"\n            value={phone}\n            onChange={setPhone}\n          />\n        </Stack>\n      </Stack>\n\n      <Divider />\n\n      {/* Order summary */}\n      <Stack space={4}>\n        <Headline level=\"2\">Order summary</Headline>\n        <Card>\n          <Stack space={3}>\n            {lineItems.length === 0 ? (\n              <Text>No tickets selected yet.</Text>\n            ) : (\n              lineItems.map((item) => (\n                <Inline key={item.id} space={3} alignY=\"center\">\n                  <Text>\n                    {item.name} × {item.quantity}\n                  </Text>\n                  <Text weight=\"bold\">${item.subtotal}</Text>\n                </Inline>\n              ))\n            )}\n            <Divider />\n            <Inline space={3} alignY=\"center\">\n              <Headline level=\"3\">Total</Headline>\n              <Headline level=\"3\">${grandTotal}</Headline>\n            </Inline>\n          </Stack>\n        </Card>\n\n        {feedback ? (\n          <Message variant={feedback.variant} messageTitle={feedback.title}>\n            {feedback.text}\n          </Message>\n        ) : null}\n\n        <Button variant=\"primary\" onPress={handlePurchase}>\n          Purchase Tickets\n        </Button>\n      </Stack>\n    </Stack>\n  );\n};\n\nexport default TestApp;\n",
+  "assertions": {
+    "passed": [
+      {
+        "id": "a-import-marigold",
+        "description": "Imports from @marigold/components",
+        "severity": "required",
+        "passed": true,
+        "evidence": "import from \"@marigold/components\" found"
+      },
+      {
+        "id": "a-has-button",
+        "description": "Button component present",
+        "severity": "required",
+        "passed": true,
+        "evidence": "<Button> found"
+      },
+      {
+        "id": "a-has-form-input",
+        "description": "Uses at least one form input component",
+        "severity": "required",
+        "passed": true,
+        "evidence": "matched: <TextField> found; <NumberField> found"
+      },
+      {
+        "id": "a-has-layout-primitive",
+        "description": "Uses at least one layout component",
+        "severity": "required",
+        "passed": true,
+        "evidence": "matched: <Stack> found; <Card> found; <Columns> found; <Inline> found"
+      },
+      {
+        "id": "a-price-indicator",
+        "description": "Shows pricing information",
+        "severity": "recommended",
+        "passed": true,
+        "evidence": "pattern \"/\\$|€|price|cost|total|amount/i\" found"
+      },
+      {
+        "id": "a-has-quantity-mechanism",
+        "description": "Has a mechanism for selecting ticket quantity",
+        "severity": "required",
+        "passed": true,
+        "evidence": "matched: <NumberField> found; pattern \"/quantity|qty|amount|count|tickets?\\s*:/i\" found"
+      },
+      {
+        "id": "a-has-feedback-mechanism",
+        "description": "Has user feedback mechanism",
+        "severity": "required",
+        "passed": true,
+        "evidence": "matched: pattern \"/error|success|confirm/i\" found"
+      },
+      {
+        "id": "a-no-onclick-on-marigold",
+        "description": "No onClick on Marigold Button components",
+        "severity": "recommended",
+        "passed": true,
+        "evidence": "\"/<Button[^>]*onClick/\" correctly absent"
+      },
+      {
+        "id": "a-has-headline",
+        "description": "Headline for event name",
+        "severity": "required",
+        "passed": true,
+        "evidence": "<Headline> found"
+      },
+      {
+        "id": "a-sold-out-state",
+        "description": "Sold-out state indicated",
+        "severity": "required",
+        "passed": true,
+        "evidence": "matched: pattern \"/sold.?out|unavailable|disabled/i\" found; <Badge> found"
+      },
+      {
+        "id": "a-card",
+        "description": "Ticket category cards",
+        "severity": "required",
+        "passed": true,
+        "evidence": "<Card> found"
+      }
+    ],
+    "failed": [
+      {
+        "id": "a-has-form",
+        "description": "Form component wrapping buyer info",
+        "severity": "required",
+        "passed": false,
+        "evidence": "<Form> not found"
+      }
+    ],
+    "passRate": 0.9167,
+    "requiredPassRate": 0.9,
+    "weightedPassRate": 0.9048,
+    "total": 12
+  },
+  "validatePackageVersion": "0.0.1",
+  "playwrightVersion": null,
+  "resolvedModelId": "claude-opus-4-8",
+  "claudeCliVersion": "2.1.185 (Claude Code)",
+  "sessionId": "f2bb6bb7-9ad3-435c-b017-ec938a216ba2"
+}

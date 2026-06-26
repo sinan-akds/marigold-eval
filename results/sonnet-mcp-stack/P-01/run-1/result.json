@@ -1,0 +1,319 @@
+{
+  "runId": "sonnet-mcp-stack-P-01-r1",
+  "promptId": "P-01",
+  "model": "sonnet",
+  "config": "mcp-stack",
+  "timestamp": "2026-06-22T22:20:11.648Z",
+  "quality": {
+    "overall": 93.64,
+    "categories": {
+      "A": {
+        "category": "A",
+        "label": "Design System API",
+        "score": 100,
+        "weight": 0.225,
+        "weightedScore": 22.5,
+        "errorCount": 0,
+        "warningCount": 0,
+        "issues": []
+      },
+      "B": {
+        "category": "B",
+        "label": "Token Compliance",
+        "score": 100,
+        "weight": 0.1,
+        "weightedScore": 10,
+        "errorCount": 0,
+        "warningCount": 0,
+        "issues": []
+      },
+      "C": {
+        "category": "C",
+        "label": "DOM / Structure",
+        "score": 100,
+        "weight": 0.225,
+        "weightedScore": 22.5,
+        "errorCount": 0,
+        "warningCount": 0,
+        "issues": []
+      },
+      "D": {
+        "category": "D",
+        "label": "Spatial & A11y",
+        "score": 71.72,
+        "weight": 0.225,
+        "weightedScore": 16.14,
+        "errorCount": 0,
+        "warningCount": 4,
+        "issues": [
+          {
+            "type": "a11y",
+            "severity": "warning",
+            "source": "aom-extractor",
+            "component": "html",
+            "message": "Document should have one main landmark (landmark-one-main)",
+            "suggestion": "Wrap your page content in `<AppLayout>` with `<AppLayout.Main>` to provide a `<main>` landmark. Import AppLayout from `@marigold/components`.",
+            "details": {
+              "ruleId": "landmark-one-main",
+              "impact": "moderate",
+              "target": [
+                "html"
+              ],
+              "html": "<html lang=\"en\" data-theme=\"rui\">",
+              "scope": "page"
+            }
+          },
+          {
+            "type": "a11y",
+            "severity": "warning",
+            "source": "aom-extractor",
+            "component": "html",
+            "message": "Page should contain a level-one heading (page-has-heading-one)",
+            "suggestion": "Add a `<Headline level={1}>` component for the page title — it renders an `<h1>`. Import Headline from `@marigold/components`.",
+            "details": {
+              "ruleId": "page-has-heading-one",
+              "impact": "moderate",
+              "target": [
+                "html"
+              ],
+              "html": "<html lang=\"en\" data-theme=\"rui\">",
+              "scope": "page"
+            }
+          },
+          {
+            "type": "a11y",
+            "severity": "warning",
+            "source": "aom-extractor",
+            "component": "page",
+            "message": "All page content should be contained by landmarks — 5 elements affected (region)",
+            "suggestion": "All page content must be inside a landmark region. Use `<AppLayout>` with `<AppLayout.Main>` for the main area, `<TopNavigation>` for the header (`<header>`), and `<Sidebar>` for side navigation (`<aside>`). Import from `@marigold/components`.",
+            "details": {
+              "ruleId": "region",
+              "impact": "moderate",
+              "affectedCount": 5,
+              "scope": "page"
+            }
+          },
+          {
+            "type": "a11y",
+            "severity": "warning",
+            "source": "keyboard-a11y",
+            "component": "input",
+            "message": "Interactive element <input> (input) is not reachable via Tab key.",
+            "suggestion": "Ensure the element is focusable. Marigold interactive components are focusable by default — check if a parent has tabindex=\"-1\" or focus is trapped.",
+            "details": {
+              "selector": "body:nth-child(2) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > form:nth-child(2) > div:nth-child(1) > div:nth-child(1) > div:nth-child(2) > input:nth-child(1)",
+              "role": "input",
+              "scope": "page"
+            }
+          }
+        ]
+      },
+      "E": {
+        "category": "E",
+        "label": "Functional Completeness",
+        "score": 100,
+        "weight": 0.225,
+        "weightedScore": 22.5,
+        "errorCount": 0,
+        "warningCount": 0,
+        "issues": []
+      }
+    },
+    "renderSuccess": true
+  },
+  "efficiency": {
+    "durationMs": 740081,
+    "costUsd": 2.610224999999999,
+    "inputTokens": 93,
+    "outputTokens": 28757,
+    "cacheReadTokens": 5569050,
+    "cacheCreationTokens": 83318,
+    "totalTokens": 28850,
+    "numTurns": 91
+  },
+  "report": {
+    "file": "TestApp.tsx",
+    "errors": [],
+    "warnings": [
+      {
+        "type": "a11y",
+        "severity": "warning",
+        "source": "aom-extractor",
+        "component": "html",
+        "message": "Document should have one main landmark (landmark-one-main)",
+        "suggestion": "Wrap your page content in `<AppLayout>` with `<AppLayout.Main>` to provide a `<main>` landmark. Import AppLayout from `@marigold/components`.",
+        "details": {
+          "ruleId": "landmark-one-main",
+          "impact": "moderate",
+          "target": [
+            "html"
+          ],
+          "html": "<html lang=\"en\" data-theme=\"rui\">",
+          "scope": "page"
+        }
+      },
+      {
+        "type": "a11y",
+        "severity": "warning",
+        "source": "aom-extractor",
+        "component": "html",
+        "message": "Page should contain a level-one heading (page-has-heading-one)",
+        "suggestion": "Add a `<Headline level={1}>` component for the page title — it renders an `<h1>`. Import Headline from `@marigold/components`.",
+        "details": {
+          "ruleId": "page-has-heading-one",
+          "impact": "moderate",
+          "target": [
+            "html"
+          ],
+          "html": "<html lang=\"en\" data-theme=\"rui\">",
+          "scope": "page"
+        }
+      },
+      {
+        "type": "a11y",
+        "severity": "warning",
+        "source": "aom-extractor",
+        "component": "page",
+        "message": "All page content should be contained by landmarks — 5 elements affected (region)",
+        "suggestion": "All page content must be inside a landmark region. Use `<AppLayout>` with `<AppLayout.Main>` for the main area, `<TopNavigation>` for the header (`<header>`), and `<Sidebar>` for side navigation (`<aside>`). Import from `@marigold/components`.",
+        "details": {
+          "ruleId": "region",
+          "impact": "moderate",
+          "affectedCount": 5,
+          "scope": "page"
+        }
+      },
+      {
+        "type": "a11y",
+        "severity": "warning",
+        "source": "keyboard-a11y",
+        "component": "input",
+        "message": "Interactive element <input> (input) is not reachable via Tab key.",
+        "suggestion": "Ensure the element is focusable. Marigold interactive components are focusable by default — check if a parent has tabindex=\"-1\" or focus is trapped.",
+        "details": {
+          "selector": "body:nth-child(2) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > form:nth-child(2) > div:nth-child(1) > div:nth-child(1) > div:nth-child(2) > input:nth-child(1)",
+          "role": "input",
+          "scope": "page"
+        }
+      }
+    ],
+    "passed": [
+      "TypeScript compilation",
+      "All Marigold props are valid",
+      "Component composition",
+      "Overlay accessible names",
+      "Compound component placement",
+      "Section headers",
+      "Collection item ids",
+      "Design system usage",
+      "Layout usage",
+      "Table usage",
+      "Component conventions",
+      "Theme variant compliance",
+      "No overlapping components detected",
+      "Responsive layout"
+    ],
+    "metadata": {
+      "renderTimeMs": 1406,
+      "componentsFound": [
+        "div",
+        "input",
+        "button",
+        "span",
+        "textarea"
+      ],
+      "checksRun": [
+        "technical",
+        "spatial",
+        "a11y"
+      ],
+      "coverage": {
+        "staticValuesChecked": 6,
+        "dynamicValuesSkipped": 3,
+        "spreadPropsBypassed": 0
+      },
+      "widthUtilization": null
+    },
+    "markdown": "marigold-validate: TestApp.tsx — 0 error(s), 4 warning(s)\n\n[warning/a11y] <html>: Document should have one main landmark (landmark-one-main)\n  → Wrap your page content in `<AppLayout>` with `<AppLayout.Main>` to provide a `<main>` landmark. Import AppLayout from `@marigold/components`.\n  data: {ruleId=landmark-one-main, impact=moderate, target=[\"html\"], html=<html lang=\"en\" data-theme=\"rui\">, scope=page}\n[warning/a11y] <html>: Page should contain a level-one heading (page-has-heading-one)\n  → Add a `<Headline level={1}>` component for the page title — it renders an `<h1>`. Import Headline from `@marigold/components`.\n  data: {ruleId=page-has-heading-one, impact=moderate, target=[\"html\"], html=<html lang=\"en\" data-theme=\"rui\">, scope=page}\n[warning/a11y] <input>: Interactive element <input> (input) is not reachable via Tab key.\n  → Ensure the element is focusable. Marigold interactive components are focusable by default — check if a parent has tabindex=\"-1\" or focus is trapped.\n  data: {selector=body:nth-child(2) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > ..., role=input, scope=page}\n[warning/a11y] <page>: All page content should be contained by landmarks — 5 elements affected (region)\n  → All page content must be inside a landmark region. Use `<AppLayout>` with `<AppLayout.Main>` for the main area, `<TopNavigation>` for the header (`<header>`), and `<Sidebar>` for side navigation (`<aside>`). Import from `@marigold/components`.\n  data: {ruleId=region, impact=moderate, affectedCount=5, scope=page}\n\npassed: TypeScript compilation, All Marigold props are valid, Component composition, Overlay accessible names, Compound component placement, Section headers, Collection item ids, Design system usage, Layout usage, Table usage, Component conventions, Theme variant compliance, No overlapping components detected, Responsive layout\n\nchecks run: technical, spatial, a11y"
+  },
+  "componentsFound": [
+    "div",
+    "input",
+    "button",
+    "span",
+    "textarea"
+  ],
+  "renderTimeMs": 1406,
+  "sourceCode": "import { useState } from 'react';\nimport {\n  Button,\n  Form,\n  Headline,\n  SectionMessage,\n  Select,\n  Stack,\n  TextArea,\n  TextField,\n} from '@marigold/components';\n\ntype FormValues = {\n  name: string;\n  email: string;\n  subject: string;\n  message: string;\n};\n\ntype FormErrors = Partial<Record<keyof FormValues, string>>;\n\nconst EMAIL_RE = /^[^\\s@]+@[^\\s@]+\\.[^\\s@]+$/;\n\nconst ContactForm = () => {\n  const [values, setValues] = useState<FormValues>({\n    name: '',\n    email: '',\n    subject: 'general',\n    message: '',\n  });\n  const [errors, setErrors] = useState<FormErrors>({});\n  const [submitted, setSubmitted] = useState(false);\n\n  const validate = (): FormErrors => {\n    const errs: FormErrors = {};\n    if (!values.name.trim()) {\n      errs.name = 'Name is required.';\n    }\n    if (!values.email.trim()) {\n      errs.email = 'Email address is required.';\n    } else if (!EMAIL_RE.test(values.email)) {\n      errs.email = 'Enter a valid email address (e.g. you@example.com).';\n    }\n    return errs;\n  };\n\n  const handleSubmit = (e: React.FormEvent) => {\n    e.preventDefault();\n    const errs = validate();\n    setErrors(errs);\n    if (Object.keys(errs).length === 0) {\n      setSubmitted(true);\n    }\n  };\n\n  const handleReset = () => {\n    setValues({ name: '', email: '', subject: 'general', message: '' });\n    setErrors({});\n    setSubmitted(false);\n  };\n\n  if (submitted) {\n    return (\n      <Stack space={4}>\n        <SectionMessage variant=\"success\">\n          <SectionMessage.Title>Message sent successfully!</SectionMessage.Title>\n          <SectionMessage.Content>\n            Thank you for reaching out. We'll get back to you as soon as possible.\n          </SectionMessage.Content>\n        </SectionMessage>\n        <Button variant=\"secondary\" onPress={handleReset}>\n          Send another message\n        </Button>\n      </Stack>\n    );\n  }\n\n  return (\n    <Stack space={6}>\n      <Headline level=\"2\">Contact Us</Headline>\n      <Form onSubmit={handleSubmit}>\n        <Stack space={4}>\n          <TextField\n            label=\"Name\"\n            name=\"name\"\n            value={values.name}\n            onChange={val => {\n              setValues(v => ({ ...v, name: val }));\n              if (errors.name) setErrors(e => ({ ...e, name: undefined }));\n            }}\n            error={!!errors.name}\n            errorMessage={errors.name}\n            required\n          />\n          <TextField\n            label=\"Email\"\n            name=\"email\"\n            type=\"email\"\n            value={values.email}\n            onChange={val => {\n              setValues(v => ({ ...v, email: val }));\n              if (errors.email) setErrors(e => ({ ...e, email: undefined }));\n            }}\n            error={!!errors.email}\n            errorMessage={errors.email}\n            required\n          />\n          <Select\n            label=\"Subject\"\n            name=\"subject\"\n            selectedKey={values.subject}\n            onSelectionChange={key =>\n              setValues(v => ({ ...v, subject: String(key) }))\n            }\n          >\n            <Select.Option id=\"general\">General</Select.Option>\n            <Select.Option id=\"support\">Support</Select.Option>\n            <Select.Option id=\"feedback\">Feedback</Select.Option>\n          </Select>\n          <TextArea\n            label=\"Message\"\n            name=\"message\"\n            value={values.message}\n            onChange={val => setValues(v => ({ ...v, message: val }))}\n            rows={5}\n          />\n          <Button variant=\"primary\" type=\"submit\">\n            Send Message\n          </Button>\n        </Stack>\n      </Form>\n    </Stack>\n  );\n};\n\nexport default ContactForm;\n",
+  "assertions": {
+    "passed": [
+      {
+        "id": "a-import-marigold",
+        "description": "Imports from @marigold/components",
+        "severity": "required",
+        "passed": true,
+        "evidence": "import from \"@marigold/components\" found"
+      },
+      {
+        "id": "a-name-field",
+        "description": "TextField with name label",
+        "severity": "required",
+        "passed": true,
+        "evidence": "<TextField> found"
+      },
+      {
+        "id": "a-email-field",
+        "description": "TextField for email input",
+        "severity": "required",
+        "passed": true,
+        "evidence": "matched: <TextField> found; <TextField> found"
+      },
+      {
+        "id": "a-select",
+        "description": "Select component for subject",
+        "severity": "required",
+        "passed": true,
+        "evidence": "<Select> found"
+      },
+      {
+        "id": "a-textarea",
+        "description": "TextArea component for message",
+        "severity": "required",
+        "passed": true,
+        "evidence": "<TextArea> found"
+      },
+      {
+        "id": "a-submit-button",
+        "description": "Submit button with type=submit",
+        "severity": "required",
+        "passed": true,
+        "evidence": "<Button> found"
+      },
+      {
+        "id": "a-form-wrapper",
+        "description": "Form component wrapping fields",
+        "severity": "required",
+        "passed": true,
+        "evidence": "<Form> found"
+      },
+      {
+        "id": "a-no-onclick-on-marigold",
+        "description": "No onClick on Marigold Button components",
+        "severity": "recommended",
+        "passed": true,
+        "evidence": "\"/<Button[^>]*onClick/\" correctly absent"
+      }
+    ],
+    "failed": [],
+    "passRate": 1,
+    "requiredPassRate": 1,
+    "weightedPassRate": 1,
+    "total": 8
+  },
+  "validatePackageVersion": "0.0.1",
+  "playwrightVersion": null,
+  "resolvedModelId": "claude-sonnet-4-6",
+  "claudeCliVersion": "2.1.185 (Claude Code)",
+  "sessionId": "1968d150-6715-48b7-9822-ebc26d458ebf"
+}

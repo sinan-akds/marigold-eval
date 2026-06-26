@@ -1,0 +1,377 @@
+{
+  "runId": "opus-mcp-stack-P-01-r1",
+  "promptId": "P-01",
+  "model": "opus",
+  "config": "mcp-stack",
+  "timestamp": "2026-06-25T22:32:11.975Z",
+  "quality": {
+    "overall": 89.14,
+    "categories": {
+      "A": {
+        "category": "A",
+        "label": "Design System API",
+        "score": 80,
+        "weight": 0.225,
+        "weightedScore": 18,
+        "errorCount": 1,
+        "warningCount": 0,
+        "issues": [
+          {
+            "type": "technical",
+            "severity": "error",
+            "source": "prop-validator",
+            "component": "Form",
+            "message": "Prop \"onChange\" does not exist on <Form>.",
+            "suggestion": "Remove the prop. Available props: unstyled, maxWidth, children, render, id, dir, lang, hidden, inert, translate, onClick, onClickCapture, onAuxClick, onAuxClickCapture, onContextMenu, ….",
+            "location": {
+              "file": "TestApp.tsx",
+              "line": 52,
+              "column": 39
+            },
+            "details": {
+              "used": "onChange",
+              "available": [
+                "unstyled",
+                "maxWidth",
+                "children",
+                "render",
+                "id",
+                "dir",
+                "lang",
+                "hidden",
+                "inert",
+                "translate",
+                "onClick",
+                "onClickCapture",
+                "onAuxClick",
+                "onAuxClickCapture",
+                "onContextMenu"
+              ]
+            }
+          }
+        ]
+      },
+      "B": {
+        "category": "B",
+        "label": "Token Compliance",
+        "score": 100,
+        "weight": 0.1,
+        "weightedScore": 10,
+        "errorCount": 0,
+        "warningCount": 0,
+        "issues": []
+      },
+      "C": {
+        "category": "C",
+        "label": "DOM / Structure",
+        "score": 100,
+        "weight": 0.225,
+        "weightedScore": 22.5,
+        "errorCount": 0,
+        "warningCount": 0,
+        "issues": []
+      },
+      "D": {
+        "category": "D",
+        "label": "Spatial & A11y",
+        "score": 71.72,
+        "weight": 0.225,
+        "weightedScore": 16.14,
+        "errorCount": 0,
+        "warningCount": 4,
+        "issues": [
+          {
+            "type": "spatial",
+            "severity": "warning",
+            "source": "responsive-checker",
+            "component": "page",
+            "message": "Content uses only 18% of the desktop width (1280px): it stays in a narrow, mobile-shaped band instead of adapting to the available space.",
+            "suggestion": "Let the layout grow with the viewport using Marigold responsive primitives — <Columns collapseAt=\"...\"> for multi-column areas, AppLayout for the shell, Stack/Inline for flow — instead of a fixed-width container. (Intentionally centred max-width reading columns are fine and may trip this; treat it as a relative signal.)",
+            "details": {
+              "widthUtilization": 0.18125,
+              "contentElements": 21,
+              "scope": "page"
+            }
+          },
+          {
+            "type": "a11y",
+            "severity": "warning",
+            "source": "aom-extractor",
+            "component": "html",
+            "message": "Document should have one main landmark (landmark-one-main)",
+            "suggestion": "Wrap your page content in `<AppLayout>` with `<AppLayout.Main>` to provide a `<main>` landmark. Import AppLayout from `@marigold/components`.",
+            "details": {
+              "ruleId": "landmark-one-main",
+              "impact": "moderate",
+              "target": [
+                "html"
+              ],
+              "html": "<html lang=\"en\" data-theme=\"rui\">",
+              "scope": "page"
+            }
+          },
+          {
+            "type": "a11y",
+            "severity": "warning",
+            "source": "aom-extractor",
+            "component": "page",
+            "message": "All page content should be contained by landmarks — 5 elements affected (region)",
+            "suggestion": "All page content must be inside a landmark region. Use `<AppLayout>` with `<AppLayout.Main>` for the main area, `<TopNavigation>` for the header (`<header>`), and `<Sidebar>` for side navigation (`<aside>`). Import from `@marigold/components`.",
+            "details": {
+              "ruleId": "region",
+              "impact": "moderate",
+              "affectedCount": 5,
+              "scope": "page"
+            }
+          },
+          {
+            "type": "a11y",
+            "severity": "warning",
+            "source": "keyboard-a11y",
+            "component": "input",
+            "message": "Interactive element <input> (input) is not reachable via Tab key.",
+            "suggestion": "Ensure the element is focusable. Marigold interactive components are focusable by default — check if a parent has tabindex=\"-1\" or focus is trapped.",
+            "details": {
+              "selector": "body:nth-child(2) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > form:nth-child(2) > div:nth-child(1) > div:nth-child(1) > div:nth-child(2) > input:nth-child(1)",
+              "role": "input",
+              "scope": "page"
+            }
+          }
+        ]
+      },
+      "E": {
+        "category": "E",
+        "label": "Functional Completeness",
+        "score": 100,
+        "weight": 0.225,
+        "weightedScore": 22.5,
+        "errorCount": 0,
+        "warningCount": 0,
+        "issues": []
+      }
+    },
+    "renderSuccess": true
+  },
+  "efficiency": {
+    "durationMs": 1244539,
+    "costUsd": 2.6962639999999998,
+    "inputTokens": 3513,
+    "outputTokens": 16736,
+    "cacheReadTokens": 2923496,
+    "cacheCreationTokens": 79001,
+    "totalTokens": 20249,
+    "numTurns": 58
+  },
+  "report": {
+    "file": "TestApp.tsx",
+    "errors": [
+      {
+        "type": "technical",
+        "severity": "error",
+        "source": "prop-validator",
+        "component": "Form",
+        "message": "Prop \"onChange\" does not exist on <Form>.",
+        "suggestion": "Remove the prop. Available props: unstyled, maxWidth, children, render, id, dir, lang, hidden, inert, translate, onClick, onClickCapture, onAuxClick, onAuxClickCapture, onContextMenu, ….",
+        "location": {
+          "file": "TestApp.tsx",
+          "line": 52,
+          "column": 39
+        },
+        "details": {
+          "used": "onChange",
+          "available": [
+            "unstyled",
+            "maxWidth",
+            "children",
+            "render",
+            "id",
+            "dir",
+            "lang",
+            "hidden",
+            "inert",
+            "translate",
+            "onClick",
+            "onClickCapture",
+            "onAuxClick",
+            "onAuxClickCapture",
+            "onContextMenu"
+          ]
+        }
+      }
+    ],
+    "warnings": [
+      {
+        "type": "spatial",
+        "severity": "warning",
+        "source": "responsive-checker",
+        "component": "page",
+        "message": "Content uses only 18% of the desktop width (1280px): it stays in a narrow, mobile-shaped band instead of adapting to the available space.",
+        "suggestion": "Let the layout grow with the viewport using Marigold responsive primitives — <Columns collapseAt=\"...\"> for multi-column areas, AppLayout for the shell, Stack/Inline for flow — instead of a fixed-width container. (Intentionally centred max-width reading columns are fine and may trip this; treat it as a relative signal.)",
+        "details": {
+          "widthUtilization": 0.18125,
+          "contentElements": 21,
+          "scope": "page"
+        }
+      },
+      {
+        "type": "a11y",
+        "severity": "warning",
+        "source": "aom-extractor",
+        "component": "html",
+        "message": "Document should have one main landmark (landmark-one-main)",
+        "suggestion": "Wrap your page content in `<AppLayout>` with `<AppLayout.Main>` to provide a `<main>` landmark. Import AppLayout from `@marigold/components`.",
+        "details": {
+          "ruleId": "landmark-one-main",
+          "impact": "moderate",
+          "target": [
+            "html"
+          ],
+          "html": "<html lang=\"en\" data-theme=\"rui\">",
+          "scope": "page"
+        }
+      },
+      {
+        "type": "a11y",
+        "severity": "warning",
+        "source": "aom-extractor",
+        "component": "page",
+        "message": "All page content should be contained by landmarks — 5 elements affected (region)",
+        "suggestion": "All page content must be inside a landmark region. Use `<AppLayout>` with `<AppLayout.Main>` for the main area, `<TopNavigation>` for the header (`<header>`), and `<Sidebar>` for side navigation (`<aside>`). Import from `@marigold/components`.",
+        "details": {
+          "ruleId": "region",
+          "impact": "moderate",
+          "affectedCount": 5,
+          "scope": "page"
+        }
+      },
+      {
+        "type": "a11y",
+        "severity": "warning",
+        "source": "keyboard-a11y",
+        "component": "input",
+        "message": "Interactive element <input> (input) is not reachable via Tab key.",
+        "suggestion": "Ensure the element is focusable. Marigold interactive components are focusable by default — check if a parent has tabindex=\"-1\" or focus is trapped.",
+        "details": {
+          "selector": "body:nth-child(2) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > form:nth-child(2) > div:nth-child(1) > div:nth-child(1) > div:nth-child(2) > input:nth-child(1)",
+          "role": "input",
+          "scope": "page"
+        }
+      }
+    ],
+    "passed": [
+      "TypeScript compilation",
+      "Component composition",
+      "Overlay accessible names",
+      "Compound component placement",
+      "Section headers",
+      "Collection item ids",
+      "Design system usage",
+      "Layout usage",
+      "Table usage",
+      "Component conventions",
+      "Theme variant compliance",
+      "No overlapping components detected"
+    ],
+    "metadata": {
+      "renderTimeMs": 1587,
+      "componentsFound": [
+        "div",
+        "input",
+        "button",
+        "span",
+        "textarea"
+      ],
+      "checksRun": [
+        "technical",
+        "spatial",
+        "a11y"
+      ],
+      "coverage": {
+        "staticValuesChecked": 9,
+        "dynamicValuesSkipped": 3,
+        "spreadPropsBypassed": 0
+      },
+      "widthUtilization": 0.18125
+    },
+    "markdown": "marigold-validate: TestApp.tsx — 1 error(s), 4 warning(s)\n\n[error/technical] <Form>: Prop \"onChange\" does not exist on <Form>. (TestApp.tsx:52:39)\n  → Remove the prop. Available props: unstyled, maxWidth, children, render, id, dir, lang, hidden, inert, translate, onClick, onClickCapture, onAuxClick, onAuxClickCapture, onContextMenu, ….\n  data: {used=onChange, available=[\"unstyled\",\"maxWidth\",\"children\",\"render\",\"id\",\"dir\",\"lang\",\"hidden\", …]}\n[warning/spatial] <page>: Content uses only 18% of the desktop width (1280px): it stays in a narrow, mobile-shaped band instead of adapting to the available space.\n  → Let the layout grow with the viewport using Marigold responsive primitives — <Columns collapseAt=\"...\"> for multi-column areas, AppLayout for the shell, Stack/Inline for flow — instead of a fixed-width container. (Intentionally centred max-width reading columns are fine and may trip this; treat it as a relative signal.)\n  data: {widthUtilization=0.18125, contentElements=21, scope=page}\n[warning/a11y] <html>: Document should have one main landmark (landmark-one-main)\n  → Wrap your page content in `<AppLayout>` with `<AppLayout.Main>` to provide a `<main>` landmark. Import AppLayout from `@marigold/components`.\n  data: {ruleId=landmark-one-main, impact=moderate, target=[\"html\"], html=<html lang=\"en\" data-theme=\"rui\">, scope=page}\n[warning/a11y] <input>: Interactive element <input> (input) is not reachable via Tab key.\n  → Ensure the element is focusable. Marigold interactive components are focusable by default — check if a parent has tabindex=\"-1\" or focus is trapped.\n  data: {selector=body:nth-child(2) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > ..., role=input, scope=page}\n[warning/a11y] <page>: All page content should be contained by landmarks — 5 elements affected (region)\n  → All page content must be inside a landmark region. Use `<AppLayout>` with `<AppLayout.Main>` for the main area, `<TopNavigation>` for the header (`<header>`), and `<Sidebar>` for side navigation (`<aside>`). Import from `@marigold/components`.\n  data: {ruleId=region, impact=moderate, affectedCount=5, scope=page}\n\npassed: TypeScript compilation, Component composition, Overlay accessible names, Compound component placement, Section headers, Collection item ids, Design system usage, Layout usage, Table usage, Component conventions, Theme variant compliance, No overlapping components detected\n\nchecks run: technical, spatial, a11y"
+  },
+  "componentsFound": [
+    "div",
+    "input",
+    "button",
+    "span",
+    "textarea"
+  ],
+  "renderTimeMs": 1587,
+  "sourceCode": "import { useState } from 'react';\nimport {\n  Button,\n  Form,\n  Headline,\n  Inset,\n  SectionMessage,\n  Select,\n  Stack,\n  TextArea,\n  TextField,\n} from '@marigold/components';\n\ninterface ContactSubmission {\n  name: string;\n  email: string;\n  subject: string;\n  message: string;\n}\n\nconst TestApp = () => {\n  const [submission, setSubmission] = useState<ContactSubmission | null>(null);\n\n  const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {\n    // Prevent the native (page-reloading) form submission. This handler only\n    // fires once all built-in field validations pass.\n    event.preventDefault();\n\n    const data = Object.fromEntries(\n      new FormData(event.currentTarget)\n    ) as unknown as ContactSubmission;\n\n    setSubmission(data);\n    event.currentTarget.reset();\n  };\n\n  return (\n    <Inset space={8}>\n      <Stack space={6}>\n        <Headline level={1}>Contact us</Headline>\n\n        {submission ? (\n          <SectionMessage variant=\"success\">\n            <SectionMessage.Title>Message sent</SectionMessage.Title>\n            <SectionMessage.Content>\n              Thanks, {submission.name}! We received your message and will reply\n              to {submission.email} soon.\n            </SectionMessage.Content>\n          </SectionMessage>\n        ) : null}\n\n        <Form onSubmit={handleSubmit} onChange={() => setSubmission(null)}>\n          <Stack space={4} alignX=\"left\">\n            <TextField\n              label=\"Name\"\n              name=\"name\"\n              required\n              width=\"full\"\n              errorMessage=\"Please enter your name.\"\n            />\n            <TextField\n              label=\"Email\"\n              name=\"email\"\n              type=\"email\"\n              required\n              width=\"full\"\n              errorMessage=\"Please enter a valid email address.\"\n            />\n            <Select\n              label=\"Subject\"\n              name=\"subject\"\n              required\n              placeholder=\"Choose a topic\"\n              width=\"full\"\n              errorMessage=\"Please choose a subject.\"\n            >\n              <Select.Option id=\"general\">General</Select.Option>\n              <Select.Option id=\"support\">Support</Select.Option>\n              <Select.Option id=\"feedback\">Feedback</Select.Option>\n            </Select>\n            <TextArea\n              label=\"Message\"\n              name=\"message\"\n              rows={6}\n              width=\"full\"\n            />\n            <Button variant=\"primary\" type=\"submit\">\n              Send message\n            </Button>\n          </Stack>\n        </Form>\n      </Stack>\n    </Inset>\n  );\n};\n\nexport default TestApp;\n",
+  "assertions": {
+    "passed": [
+      {
+        "id": "a-import-marigold",
+        "description": "Imports from @marigold/components",
+        "severity": "required",
+        "passed": true,
+        "evidence": "import from \"@marigold/components\" found"
+      },
+      {
+        "id": "a-name-field",
+        "description": "TextField with name label",
+        "severity": "required",
+        "passed": true,
+        "evidence": "<TextField> found"
+      },
+      {
+        "id": "a-email-field",
+        "description": "TextField for email input",
+        "severity": "required",
+        "passed": true,
+        "evidence": "matched: <TextField> found; <TextField> found"
+      },
+      {
+        "id": "a-select",
+        "description": "Select component for subject",
+        "severity": "required",
+        "passed": true,
+        "evidence": "<Select> found"
+      },
+      {
+        "id": "a-textarea",
+        "description": "TextArea component for message",
+        "severity": "required",
+        "passed": true,
+        "evidence": "<TextArea> found"
+      },
+      {
+        "id": "a-submit-button",
+        "description": "Submit button with type=submit",
+        "severity": "required",
+        "passed": true,
+        "evidence": "<Button> found"
+      },
+      {
+        "id": "a-form-wrapper",
+        "description": "Form component wrapping fields",
+        "severity": "required",
+        "passed": true,
+        "evidence": "<Form> found"
+      },
+      {
+        "id": "a-no-onclick-on-marigold",
+        "description": "No onClick on Marigold Button components",
+        "severity": "recommended",
+        "passed": true,
+        "evidence": "\"/<Button[^>]*onClick/\" correctly absent"
+      }
+    ],
+    "failed": [],
+    "passRate": 1,
+    "requiredPassRate": 1,
+    "weightedPassRate": 1,
+    "total": 8
+  },
+  "validatePackageVersion": "0.0.1",
+  "playwrightVersion": null,
+  "resolvedModelId": "claude-opus-4-8",
+  "claudeCliVersion": "2.1.185 (Claude Code)",
+  "sessionId": "4a0967ef-aea4-4a78-a20b-2d6aff839eb9"
+}

@@ -1,0 +1,253 @@
+{
+  "runId": "sonnet-full-stack-P-04-r2",
+  "promptId": "P-04",
+  "model": "sonnet",
+  "config": "full-stack",
+  "timestamp": "2026-06-23T11:18:58.374Z",
+  "quality": {
+    "overall": 96.82,
+    "categories": {
+      "A": {
+        "category": "A",
+        "label": "Design System API",
+        "score": 85.86,
+        "weight": 0.225,
+        "weightedScore": 19.32,
+        "errorCount": 0,
+        "warningCount": 1,
+        "issues": [
+          {
+            "type": "technical",
+            "severity": "warning",
+            "source": "design-system-usage",
+            "component": "main",
+            "message": "Raw <main> used instead of a Marigold component.",
+            "suggestion": "Raw <main> used instead of a Marigold layout component. Search the Marigold docs for layout alternatives.",
+            "location": {
+              "file": "TestApp.tsx",
+              "line": 96,
+              "column": 5
+            },
+            "details": {
+              "htmlElement": "main"
+            }
+          }
+        ]
+      },
+      "B": {
+        "category": "B",
+        "label": "Token Compliance",
+        "score": 100,
+        "weight": 0.1,
+        "weightedScore": 10,
+        "errorCount": 0,
+        "warningCount": 0,
+        "issues": []
+      },
+      "C": {
+        "category": "C",
+        "label": "DOM / Structure",
+        "score": 100,
+        "weight": 0.225,
+        "weightedScore": 22.5,
+        "errorCount": 0,
+        "warningCount": 0,
+        "issues": []
+      },
+      "D": {
+        "category": "D",
+        "label": "Spatial & A11y",
+        "score": 100,
+        "weight": 0.225,
+        "weightedScore": 22.5,
+        "errorCount": 0,
+        "warningCount": 0,
+        "issues": []
+      },
+      "E": {
+        "category": "E",
+        "label": "Functional Completeness",
+        "score": 100,
+        "weight": 0.225,
+        "weightedScore": 22.5,
+        "errorCount": 0,
+        "warningCount": 0,
+        "issues": []
+      }
+    },
+    "renderSuccess": true
+  },
+  "efficiency": {
+    "durationMs": 1029803,
+    "costUsd": 3.8672013999999986,
+    "inputTokens": 105,
+    "outputTokens": 50045,
+    "cacheReadTokens": 8070408,
+    "cacheCreationTokens": 113687,
+    "totalTokens": 50150,
+    "numTurns": 93
+  },
+  "report": {
+    "file": "TestApp.tsx",
+    "errors": [],
+    "warnings": [
+      {
+        "type": "technical",
+        "severity": "warning",
+        "source": "design-system-usage",
+        "component": "main",
+        "message": "Raw <main> used instead of a Marigold component.",
+        "suggestion": "Raw <main> used instead of a Marigold layout component. Search the Marigold docs for layout alternatives.",
+        "location": {
+          "file": "TestApp.tsx",
+          "line": 96,
+          "column": 5
+        },
+        "details": {
+          "htmlElement": "main"
+        }
+      }
+    ],
+    "passed": [
+      "TypeScript compilation",
+      "All Marigold props are valid",
+      "Component composition",
+      "Overlay accessible names",
+      "Compound component placement",
+      "Section headers",
+      "Collection item ids",
+      "Layout usage",
+      "Table usage",
+      "Component conventions",
+      "Theme variant compliance",
+      "No overlapping components detected",
+      "Responsive layout",
+      "Accessibility checks"
+    ],
+    "metadata": {
+      "renderTimeMs": 1592,
+      "componentsFound": [
+        "div",
+        "input",
+        "button"
+      ],
+      "checksRun": [
+        "technical",
+        "spatial",
+        "a11y"
+      ],
+      "coverage": {
+        "staticValuesChecked": 24,
+        "dynamicValuesSkipped": 18,
+        "spreadPropsBypassed": 0
+      },
+      "widthUtilization": 0.85234375
+    },
+    "markdown": "marigold-validate: TestApp.tsx — 0 error(s), 1 warning(s)\n\n[warning/technical] <main>: Raw <main> used instead of a Marigold component. (TestApp.tsx:96:5)\n  → Raw <main> used instead of a Marigold layout component. Search the Marigold docs for layout alternatives.\n  data: {htmlElement=main}\n\npassed: TypeScript compilation, All Marigold props are valid, Component composition, Overlay accessible names, Compound component placement, Section headers, Collection item ids, Layout usage, Table usage, Component conventions, Theme variant compliance, No overlapping components detected, Responsive layout, Accessibility checks\n\nchecks run: technical, spatial, a11y"
+  },
+  "componentsFound": [
+    "div",
+    "input",
+    "button"
+  ],
+  "renderTimeMs": 1592,
+  "sourceCode": "import { useState } from 'react';\nimport {\n  Badge,\n  Button,\n  Card,\n  Divider,\n  Form,\n  Headline,\n  Inline,\n  Inset,\n  NumberField,\n  SectionMessage,\n  Split,\n  Stack,\n  Text,\n  TextField,\n  Tiles,\n} from '@marigold/components';\n\ninterface Ticket {\n  id: string;\n  name: string;\n  price: number;\n  description: string;\n  maxQty: number;\n  available: boolean;\n  limitedText?: string;\n  soldOut?: boolean;\n}\n\nconst TICKETS: Ticket[] = [\n  {\n    id: 'early-bird',\n    name: 'Early Bird',\n    price: 49,\n    description: 'Limited early access tickets.',\n    maxQty: 12,\n    available: true,\n    limitedText: 'Only 12 left',\n  },\n  {\n    id: 'regular',\n    name: 'Regular',\n    price: 79,\n    description: 'Standard festival admission.',\n    maxQty: 99,\n    available: true,\n  },\n  {\n    id: 'vip',\n    name: 'VIP',\n    price: 149,\n    description: 'Premium experience with backstage access.',\n    maxQty: 0,\n    available: false,\n    soldOut: true,\n  },\n];\n\nconst isValidEmail = (value: string): boolean =>\n  /^[^\\s@]+@[^\\s@]+\\.[^\\s@]+$/.test(value);\n\nconst TestApp = () => {\n  const [quantities, setQuantities] = useState<Record<string, number>>({\n    'early-bird': 0,\n    regular: 0,\n    vip: 0,\n  });\n  const [name, setName] = useState('');\n  const [email, setEmail] = useState('');\n  const [phone, setPhone] = useState('');\n  const [attempted, setAttempted] = useState(false);\n  const [orderSuccess, setOrderSuccess] = useState(false);\n\n  const totalTickets = Object.values(quantities).reduce((a, b) => a + b, 0);\n  const grandTotal = TICKETS.reduce(\n    (sum, t) => sum + (quantities[t.id] ?? 0) * t.price,\n    0\n  );\n  const lineItems = TICKETS.filter(t => (quantities[t.id] ?? 0) > 0);\n\n  const nameError = attempted && !name.trim();\n  const emailError = attempted && !isValidEmail(email);\n  const noTicketsError = attempted && totalTickets === 0;\n  const hasErrors = nameError || emailError || noTicketsError;\n\n  const handleQtyChange = (id: string, val: number) => {\n    setOrderSuccess(false);\n    setQuantities(prev => ({\n      ...prev,\n      [id]: Number.isFinite(val) ? val : 0,\n    }));\n  };\n\n  return (\n    <main>\n    <Inset space={8}>\n      <Stack space={8}>\n        {/* Event header */}\n        <Card>\n          <Inset spaceX=\"padding-regular\" spaceY=\"padding-snug\">\n            <Stack space={2}>\n              <Headline level={1}>Summer Music Festival 2026</Headline>\n              <Inline space={4}>\n                <Text weight=\"bold\">July 15–17, 2026</Text>\n                <Text variant=\"muted\">Stadtpark Freiburg</Text>\n              </Inline>\n              <Text>\n                Three days of live music featuring local and international\n                artists.\n              </Text>\n            </Stack>\n          </Inset>\n        </Card>\n\n        {/* Ticket categories */}\n        <Stack space={4}>\n          <Headline level={2}>Select Tickets</Headline>\n          <Tiles tilesWidth=\"260px\" space={4} stretch equalHeight>\n            {TICKETS.map(ticket => (\n              <Card key={ticket.id}>\n                <Inset spaceX=\"padding-regular\" spaceY=\"padding-snug\">\n                  <Stack space={3}>\n                    <Inline space={2}>\n                      <Text weight=\"bold\" size=\"lg\">\n                        {ticket.name}\n                      </Text>\n                      {ticket.limitedText && (\n                        <Badge variant=\"warning\">{ticket.limitedText}</Badge>\n                      )}\n                      {ticket.soldOut && (\n                        <Badge variant=\"error\">Sold Out</Badge>\n                      )}\n                    </Inline>\n                    <Text weight=\"bold\" size=\"xl\">\n                      ${ticket.price}\n                    </Text>\n                    <Text variant=\"muted\">{ticket.description}</Text>\n                    <NumberField\n                      label=\"Quantity\"\n                      value={quantities[ticket.id]}\n                      onChange={val => handleQtyChange(ticket.id, val)}\n                      minValue={0}\n                      maxValue={ticket.available ? ticket.maxQty : 0}\n                      disabled={!ticket.available}\n                      hideStepper\n                    />\n                  </Stack>\n                </Inset>\n              </Card>\n            ))}\n          </Tiles>\n        </Stack>\n\n        <Divider />\n\n        {/* Buyer info, order summary and checkout */}\n        <Form\n          onSubmit={e => {\n            e.preventDefault();\n            setAttempted(true);\n            const valid =\n              totalTickets > 0 &&\n              name.trim() !== '' &&\n              isValidEmail(email);\n            setOrderSuccess(valid);\n          }}\n        >\n          <Stack space={6}>\n            {/* Buyer fields */}\n            <Stack space={4}>\n              <Headline level={2}>Buyer Information</Headline>\n              <TextField\n                label=\"Full Name\"\n                value={name}\n                onChange={val => {\n                  setOrderSuccess(false);\n                  setName(val);\n                }}\n                error={nameError}\n                errorMessage=\"Full Name is required.\"\n              />\n              <TextField\n                label=\"Email\"\n                type=\"email\"\n                value={email}\n                onChange={val => {\n                  setOrderSuccess(false);\n                  setEmail(val);\n                }}\n                error={emailError}\n                errorMessage=\"Please enter a valid email address.\"\n              />\n              <TextField\n                label=\"Phone Number\"\n                type=\"tel\"\n                value={phone}\n                onChange={setPhone}\n              />\n            </Stack>\n\n            <Divider />\n\n            {/* Order summary */}\n            <Stack space={3}>\n              <Headline level={3}>Order Summary</Headline>\n              {lineItems.length === 0 ? (\n                <Text variant=\"muted\">No tickets selected yet.</Text>\n              ) : (\n                <Stack space={2}>\n                  {lineItems.map(ticket => (\n                    <Inline key={ticket.id} space={2}>\n                      <Text>\n                        {ticket.name} &times; {quantities[ticket.id]}\n                      </Text>\n                      <Split />\n                      <Text weight=\"bold\">\n                        ${(quantities[ticket.id] ?? 0) * ticket.price}\n                      </Text>\n                    </Inline>\n                  ))}\n                  <Divider />\n                  <Inline space={2}>\n                    <Text weight=\"bold\">Grand Total</Text>\n                    <Split />\n                    <Text weight=\"bold\" size=\"xl\">\n                      ${grandTotal}\n                    </Text>\n                  </Inline>\n                </Stack>\n              )}\n            </Stack>\n\n            {/* Feedback */}\n            {orderSuccess && (\n              <SectionMessage variant=\"success\">\n                <SectionMessage.Title>Order Confirmed!</SectionMessage.Title>\n                <SectionMessage.Content>\n                  Thank you, {name}! Your {totalTickets} ticket\n                  {totalTickets !== 1 ? 's have' : ' has'} been reserved. A\n                  confirmation will be sent to {email}.\n                </SectionMessage.Content>\n              </SectionMessage>\n            )}\n            {attempted && hasErrors && (\n              <SectionMessage variant=\"error\">\n                <SectionMessage.Title>\n                  Unable to complete purchase\n                </SectionMessage.Title>\n                <SectionMessage.Content>\n                  <Stack space={1}>\n                    {noTicketsError && (\n                      <Text>Please select at least one ticket.</Text>\n                    )}\n                    {nameError && <Text>Full Name is required.</Text>}\n                    {emailError && (\n                      <Text>Please enter a valid email address.</Text>\n                    )}\n                  </Stack>\n                </SectionMessage.Content>\n              </SectionMessage>\n            )}\n\n            <Button type=\"submit\" variant=\"primary\" fullWidth>\n              Purchase Tickets\n            </Button>\n          </Stack>\n        </Form>\n      </Stack>\n    </Inset>\n    </main>\n  );\n};\n\nexport default TestApp;\n",
+  "assertions": {
+    "passed": [
+      {
+        "id": "a-import-marigold",
+        "description": "Imports from @marigold/components",
+        "severity": "required",
+        "passed": true,
+        "evidence": "import from \"@marigold/components\" found"
+      },
+      {
+        "id": "a-has-button",
+        "description": "Button component present",
+        "severity": "required",
+        "passed": true,
+        "evidence": "<Button> found"
+      },
+      {
+        "id": "a-has-form-input",
+        "description": "Uses at least one form input component",
+        "severity": "required",
+        "passed": true,
+        "evidence": "matched: <TextField> found; <NumberField> found"
+      },
+      {
+        "id": "a-has-layout-primitive",
+        "description": "Uses at least one layout component",
+        "severity": "required",
+        "passed": true,
+        "evidence": "matched: <Stack> found; <Card> found; <Inline> found"
+      },
+      {
+        "id": "a-price-indicator",
+        "description": "Shows pricing information",
+        "severity": "recommended",
+        "passed": true,
+        "evidence": "pattern \"/\\$|€|price|cost|total|amount/i\" found"
+      },
+      {
+        "id": "a-has-quantity-mechanism",
+        "description": "Has a mechanism for selecting ticket quantity",
+        "severity": "required",
+        "passed": true,
+        "evidence": "matched: <NumberField> found; pattern \"/quantity|qty|amount|count|tickets?\\s*:/i\" found"
+      },
+      {
+        "id": "a-has-feedback-mechanism",
+        "description": "Has user feedback mechanism",
+        "severity": "required",
+        "passed": true,
+        "evidence": "matched: <SectionMessage> found; pattern \"/error|success|confirm/i\" found"
+      },
+      {
+        "id": "a-no-onclick-on-marigold",
+        "description": "No onClick on Marigold Button components",
+        "severity": "recommended",
+        "passed": true,
+        "evidence": "\"/<Button[^>]*onClick/\" correctly absent"
+      },
+      {
+        "id": "a-has-headline",
+        "description": "Headline for event name",
+        "severity": "required",
+        "passed": true,
+        "evidence": "<Headline> found"
+      },
+      {
+        "id": "a-has-form",
+        "description": "Form component wrapping buyer info",
+        "severity": "required",
+        "passed": true,
+        "evidence": "<Form> found"
+      },
+      {
+        "id": "a-sold-out-state",
+        "description": "Sold-out state indicated",
+        "severity": "required",
+        "passed": true,
+        "evidence": "matched: pattern \"/sold.?out|unavailable|disabled/i\" found; <Badge> found"
+      },
+      {
+        "id": "a-card",
+        "description": "Ticket category cards",
+        "severity": "required",
+        "passed": true,
+        "evidence": "<Card> found"
+      }
+    ],
+    "failed": [],
+    "passRate": 1,
+    "requiredPassRate": 1,
+    "weightedPassRate": 1,
+    "total": 12
+  },
+  "validatePackageVersion": "0.0.1",
+  "playwrightVersion": null,
+  "resolvedModelId": "claude-sonnet-4-6",
+  "claudeCliVersion": "2.1.185 (Claude Code)",
+  "sessionId": "06429bfd-54b8-403e-aaac-b426dcef9d6b"
+}

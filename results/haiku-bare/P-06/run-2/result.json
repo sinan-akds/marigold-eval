@@ -1,0 +1,1969 @@
+{
+  "runId": "haiku-bare-P-06-r2",
+  "promptId": "P-06",
+  "model": "haiku",
+  "config": "bare",
+  "timestamp": "2026-06-21T09:08:45.359Z",
+  "quality": {
+    "overall": 10.7,
+    "categories": {
+      "A": {
+        "category": "A",
+        "label": "Design System API",
+        "score": 0,
+        "weight": 0.225,
+        "weightedScore": 0,
+        "errorCount": 28,
+        "warningCount": 3,
+        "issues": [
+          {
+            "type": "technical",
+            "severity": "error",
+            "source": "prop-validator",
+            "component": "TextField",
+            "message": "Marigold <TextField> onChange passes the value directly ((value: C) => void), not a DOM event.",
+            "suggestion": "Use onChange={(value) => ...} instead of onChange={(e) => ... e.target.value}.",
+            "location": {
+              "file": "TestApp.tsx",
+              "line": 229,
+              "column": 11
+            },
+            "details": {
+              "handler": "onChange",
+              "pattern": "event-target-access"
+            }
+          },
+          {
+            "type": "technical",
+            "severity": "error",
+            "source": "prop-validator",
+            "component": "Badge",
+            "message": "Prop \"onPress\" does not exist on <Badge>.",
+            "suggestion": "Remove the prop. Available props: children, variant, size.",
+            "location": {
+              "file": "TestApp.tsx",
+              "line": 264,
+              "column": 15
+            },
+            "details": {
+              "used": "onPress",
+              "available": [
+                "children",
+                "variant",
+                "size"
+              ]
+            }
+          },
+          {
+            "type": "technical",
+            "severity": "error",
+            "source": "prop-validator",
+            "component": "Dialog",
+            "message": "Prop \"isOpen\" does not exist on <Dialog>.",
+            "suggestion": "Replace \"isOpen\" with \"open\".",
+            "location": {
+              "file": "TestApp.tsx",
+              "line": 283,
+              "column": 9
+            },
+            "details": {
+              "used": "isOpen",
+              "available": [
+                "variant",
+                "size",
+                "closeButton",
+                "children",
+                "id",
+                "dir",
+                "lang",
+                "hidden",
+                "inert",
+                "translate",
+                "onClick",
+                "onClickCapture",
+                "onAuxClick",
+                "onAuxClickCapture",
+                "onContextMenu"
+              ]
+            }
+          },
+          {
+            "type": "technical",
+            "severity": "error",
+            "source": "prop-validator",
+            "component": "Dialog",
+            "message": "Prop \"title\" does not exist on <Dialog>.",
+            "suggestion": "Remove the prop. Available props: variant, size, closeButton, children, id, dir, lang, hidden, inert, translate, onClick, onClickCapture, onAuxClick, onAuxClickCapture, onContextMenu, ….",
+            "location": {
+              "file": "TestApp.tsx",
+              "line": 285,
+              "column": 9
+            },
+            "details": {
+              "used": "title",
+              "available": [
+                "variant",
+                "size",
+                "closeButton",
+                "children",
+                "id",
+                "dir",
+                "lang",
+                "hidden",
+                "inert",
+                "translate",
+                "onClick",
+                "onClickCapture",
+                "onAuxClick",
+                "onAuxClickCapture",
+                "onContextMenu"
+              ]
+            }
+          },
+          {
+            "type": "technical",
+            "severity": "error",
+            "source": "prop-validator",
+            "component": "Button",
+            "message": "Prop \"width\" does not exist on <Button>.",
+            "suggestion": "Remove the prop. Available props: variant, size, fullWidth, children, disabled, loading, render, id, dir, lang, hidden, inert, translate, onClick, onClickCapture, ….",
+            "location": {
+              "file": "TestApp.tsx",
+              "line": 423,
+              "column": 23
+            },
+            "details": {
+              "used": "width",
+              "available": [
+                "variant",
+                "size",
+                "fullWidth",
+                "children",
+                "disabled",
+                "loading",
+                "render",
+                "id",
+                "dir",
+                "lang",
+                "hidden",
+                "inert",
+                "translate",
+                "onClick",
+                "onClickCapture"
+              ]
+            }
+          },
+          {
+            "type": "technical",
+            "severity": "error",
+            "source": "design-system-usage",
+            "component": "VStack",
+            "message": "<VStack> is not a Marigold component. It is not exported from @marigold/components.",
+            "suggestion": "<VStack> does not exist in @marigold/components. Search the Marigold docs for the correct component.",
+            "location": {
+              "file": "TestApp.tsx",
+              "line": 217,
+              "column": 5
+            },
+            "details": {
+              "hallucinated": true,
+              "importedFrom": "@marigold/components"
+            }
+          },
+          {
+            "type": "technical",
+            "severity": "error",
+            "source": "design-system-usage",
+            "component": "VStack",
+            "message": "<VStack> is not a Marigold component. It is not exported from @marigold/components.",
+            "suggestion": "<VStack> does not exist in @marigold/components. Search the Marigold docs for the correct component.",
+            "location": {
+              "file": "TestApp.tsx",
+              "line": 219,
+              "column": 7
+            },
+            "details": {
+              "hallucinated": true,
+              "importedFrom": "@marigold/components"
+            }
+          },
+          {
+            "type": "technical",
+            "severity": "error",
+            "source": "design-system-usage",
+            "component": "Heading",
+            "message": "<Heading> is not a Marigold component. It is not exported from @marigold/components.",
+            "suggestion": "<Heading> does not exist in @marigold/components. Search the Marigold docs for the correct component.",
+            "location": {
+              "file": "TestApp.tsx",
+              "line": 220,
+              "column": 9
+            },
+            "details": {
+              "hallucinated": true,
+              "importedFrom": "@marigold/components"
+            }
+          },
+          {
+            "type": "technical",
+            "severity": "error",
+            "source": "design-system-usage",
+            "component": "HStack",
+            "message": "<HStack> is not a Marigold component. It is not exported from @marigold/components.",
+            "suggestion": "<HStack> does not exist in @marigold/components. Search the Marigold docs for the correct component.",
+            "location": {
+              "file": "TestApp.tsx",
+              "line": 225,
+              "column": 7
+            },
+            "details": {
+              "hallucinated": true,
+              "importedFrom": "@marigold/components"
+            }
+          },
+          {
+            "type": "technical",
+            "severity": "error",
+            "source": "design-system-usage",
+            "component": "SelectItem",
+            "message": "<SelectItem> is not a Marigold component. It is not exported from @marigold/components.",
+            "suggestion": "<SelectItem> does not exist in @marigold/components. Search the Marigold docs for the correct component.",
+            "location": {
+              "file": "TestApp.tsx",
+              "line": 244,
+              "column": 11
+            },
+            "details": {
+              "hallucinated": true,
+              "importedFrom": "@marigold/components"
+            }
+          },
+          {
+            "type": "technical",
+            "severity": "error",
+            "source": "design-system-usage",
+            "component": "SelectItem",
+            "message": "<SelectItem> is not a Marigold component. It is not exported from @marigold/components.",
+            "suggestion": "<SelectItem> does not exist in @marigold/components. Search the Marigold docs for the correct component.",
+            "location": {
+              "file": "TestApp.tsx",
+              "line": 245,
+              "column": 11
+            },
+            "details": {
+              "hallucinated": true,
+              "importedFrom": "@marigold/components"
+            }
+          },
+          {
+            "type": "technical",
+            "severity": "error",
+            "source": "design-system-usage",
+            "component": "SelectItem",
+            "message": "<SelectItem> is not a Marigold component. It is not exported from @marigold/components.",
+            "suggestion": "<SelectItem> does not exist in @marigold/components. Search the Marigold docs for the correct component.",
+            "location": {
+              "file": "TestApp.tsx",
+              "line": 246,
+              "column": 11
+            },
+            "details": {
+              "hallucinated": true,
+              "importedFrom": "@marigold/components"
+            }
+          },
+          {
+            "type": "technical",
+            "severity": "error",
+            "source": "design-system-usage",
+            "component": "SelectItem",
+            "message": "<SelectItem> is not a Marigold component. It is not exported from @marigold/components.",
+            "suggestion": "<SelectItem> does not exist in @marigold/components. Search the Marigold docs for the correct component.",
+            "location": {
+              "file": "TestApp.tsx",
+              "line": 247,
+              "column": 11
+            },
+            "details": {
+              "hallucinated": true,
+              "importedFrom": "@marigold/components"
+            }
+          },
+          {
+            "type": "technical",
+            "severity": "error",
+            "source": "design-system-usage",
+            "component": "HStack",
+            "message": "<HStack> is not a Marigold component. It is not exported from @marigold/components.",
+            "suggestion": "<HStack> does not exist in @marigold/components. Search the Marigold docs for the correct component.",
+            "location": {
+              "file": "TestApp.tsx",
+              "line": 260,
+              "column": 9
+            },
+            "details": {
+              "hallucinated": true,
+              "importedFrom": "@marigold/components"
+            }
+          },
+          {
+            "type": "technical",
+            "severity": "error",
+            "source": "design-system-usage",
+            "component": "VStack",
+            "message": "<VStack> is not a Marigold component. It is not exported from @marigold/components.",
+            "suggestion": "<VStack> does not exist in @marigold/components. Search the Marigold docs for the correct component.",
+            "location": {
+              "file": "TestApp.tsx",
+              "line": 287,
+              "column": 9
+            },
+            "details": {
+              "hallucinated": true,
+              "importedFrom": "@marigold/components"
+            }
+          },
+          {
+            "type": "technical",
+            "severity": "error",
+            "source": "design-system-usage",
+            "component": "VStack",
+            "message": "<VStack> is not a Marigold component. It is not exported from @marigold/components.",
+            "suggestion": "<VStack> does not exist in @marigold/components. Search the Marigold docs for the correct component.",
+            "location": {
+              "file": "TestApp.tsx",
+              "line": 289,
+              "column": 11
+            },
+            "details": {
+              "hallucinated": true,
+              "importedFrom": "@marigold/components"
+            }
+          },
+          {
+            "type": "technical",
+            "severity": "error",
+            "source": "design-system-usage",
+            "component": "VStack",
+            "message": "<VStack> is not a Marigold component. It is not exported from @marigold/components.",
+            "suggestion": "<VStack> does not exist in @marigold/components. Search the Marigold docs for the correct component.",
+            "location": {
+              "file": "TestApp.tsx",
+              "line": 309,
+              "column": 11
+            },
+            "details": {
+              "hallucinated": true,
+              "importedFrom": "@marigold/components"
+            }
+          },
+          {
+            "type": "technical",
+            "severity": "error",
+            "source": "design-system-usage",
+            "component": "VStack",
+            "message": "<VStack> is not a Marigold component. It is not exported from @marigold/components.",
+            "suggestion": "<VStack> does not exist in @marigold/components. Search the Marigold docs for the correct component.",
+            "location": {
+              "file": "TestApp.tsx",
+              "line": 323,
+              "column": 11
+            },
+            "details": {
+              "hallucinated": true,
+              "importedFrom": "@marigold/components"
+            }
+          },
+          {
+            "type": "technical",
+            "severity": "error",
+            "source": "design-system-usage",
+            "component": "VStack",
+            "message": "<VStack> is not a Marigold component. It is not exported from @marigold/components.",
+            "suggestion": "<VStack> does not exist in @marigold/components. Search the Marigold docs for the correct component.",
+            "location": {
+              "file": "TestApp.tsx",
+              "line": 343,
+              "column": 11
+            },
+            "details": {
+              "hallucinated": true,
+              "importedFrom": "@marigold/components"
+            }
+          },
+          {
+            "type": "technical",
+            "severity": "error",
+            "source": "design-system-usage",
+            "component": "HStack",
+            "message": "<HStack> is not a Marigold component. It is not exported from @marigold/components.",
+            "suggestion": "<HStack> does not exist in @marigold/components. Search the Marigold docs for the correct component.",
+            "location": {
+              "file": "TestApp.tsx",
+              "line": 353,
+              "column": 11
+            },
+            "details": {
+              "hallucinated": true,
+              "importedFrom": "@marigold/components"
+            }
+          },
+          {
+            "type": "technical",
+            "severity": "error",
+            "source": "design-system-usage",
+            "component": "VStack",
+            "message": "<VStack> is not a Marigold component. It is not exported from @marigold/components.",
+            "suggestion": "<VStack> does not exist in @marigold/components. Search the Marigold docs for the correct component.",
+            "location": {
+              "file": "TestApp.tsx",
+              "line": 375,
+              "column": 9
+            },
+            "details": {
+              "hallucinated": true,
+              "importedFrom": "@marigold/components"
+            }
+          },
+          {
+            "type": "technical",
+            "severity": "error",
+            "source": "design-system-usage",
+            "component": "Heading",
+            "message": "<Heading> is not a Marigold component. It is not exported from @marigold/components.",
+            "suggestion": "<Heading> does not exist in @marigold/components. Search the Marigold docs for the correct component.",
+            "location": {
+              "file": "TestApp.tsx",
+              "line": 382,
+              "column": 11
+            },
+            "details": {
+              "hallucinated": true,
+              "importedFrom": "@marigold/components"
+            }
+          },
+          {
+            "type": "technical",
+            "severity": "error",
+            "source": "design-system-usage",
+            "component": "GridList",
+            "message": "<GridList> is not a Marigold component. It is not exported from @marigold/components.",
+            "suggestion": "<GridList> does not exist in @marigold/components. Search the Marigold docs for the correct component.",
+            "location": {
+              "file": "TestApp.tsx",
+              "line": 387,
+              "column": 9
+            },
+            "details": {
+              "hallucinated": true,
+              "importedFrom": "@marigold/components"
+            }
+          },
+          {
+            "type": "technical",
+            "severity": "error",
+            "source": "design-system-usage",
+            "component": "GridListItem",
+            "message": "<GridListItem> is not a Marigold component. It is not exported from @marigold/components.",
+            "suggestion": "<GridListItem> does not exist in @marigold/components. Search the Marigold docs for the correct component.",
+            "location": {
+              "file": "TestApp.tsx",
+              "line": 394,
+              "column": 13
+            },
+            "details": {
+              "hallucinated": true,
+              "importedFrom": "@marigold/components"
+            }
+          },
+          {
+            "type": "technical",
+            "severity": "error",
+            "source": "design-system-usage",
+            "component": "CardBody",
+            "message": "<CardBody> is not a Marigold component. It is not exported from @marigold/components.",
+            "suggestion": "<CardBody> does not exist in @marigold/components. Search the Marigold docs for the correct component.",
+            "location": {
+              "file": "TestApp.tsx",
+              "line": 396,
+              "column": 17
+            },
+            "details": {
+              "hallucinated": true,
+              "importedFrom": "@marigold/components"
+            }
+          },
+          {
+            "type": "technical",
+            "severity": "error",
+            "source": "design-system-usage",
+            "component": "VStack",
+            "message": "<VStack> is not a Marigold component. It is not exported from @marigold/components.",
+            "suggestion": "<VStack> does not exist in @marigold/components. Search the Marigold docs for the correct component.",
+            "location": {
+              "file": "TestApp.tsx",
+              "line": 397,
+              "column": 19
+            },
+            "details": {
+              "hallucinated": true,
+              "importedFrom": "@marigold/components"
+            }
+          },
+          {
+            "type": "technical",
+            "severity": "error",
+            "source": "design-system-usage",
+            "component": "HStack",
+            "message": "<HStack> is not a Marigold component. It is not exported from @marigold/components.",
+            "suggestion": "<HStack> does not exist in @marigold/components. Search the Marigold docs for the correct component.",
+            "location": {
+              "file": "TestApp.tsx",
+              "line": 398,
+              "column": 21
+            },
+            "details": {
+              "hallucinated": true,
+              "importedFrom": "@marigold/components"
+            }
+          },
+          {
+            "type": "technical",
+            "severity": "error",
+            "source": "design-system-usage",
+            "component": "HStack",
+            "message": "<HStack> is not a Marigold component. It is not exported from @marigold/components.",
+            "suggestion": "<HStack> does not exist in @marigold/components. Search the Marigold docs for the correct component.",
+            "location": {
+              "file": "TestApp.tsx",
+              "line": 437,
+              "column": 9
+            },
+            "details": {
+              "hallucinated": true,
+              "importedFrom": "@marigold/components"
+            }
+          },
+          {
+            "type": "technical",
+            "severity": "warning",
+            "source": "design-system-usage",
+            "component": "TextField",
+            "message": "Inline style on <TextField> bypasses the design system (flex, minWidth).",
+            "suggestion": "Use Marigold layout components (Stack, Columns, Inset, Container) and theme tokens instead of inline styles.",
+            "location": {
+              "file": "TestApp.tsx",
+              "line": 233,
+              "column": 11
+            },
+            "details": {
+              "cssProperties": [
+                "flex",
+                "minWidth"
+              ]
+            }
+          },
+          {
+            "type": "technical",
+            "severity": "warning",
+            "source": "design-system-usage",
+            "component": "Select",
+            "message": "Inline style on <Select> bypasses the design system (minWidth).",
+            "suggestion": "Use Marigold layout components (Stack, Columns, Inset, Container) and theme tokens instead of inline styles.",
+            "location": {
+              "file": "TestApp.tsx",
+              "line": 242,
+              "column": 11
+            },
+            "details": {
+              "cssProperties": [
+                "minWidth"
+              ]
+            }
+          },
+          {
+            "type": "technical",
+            "severity": "warning",
+            "source": "design-system-usage",
+            "component": "VStack",
+            "message": "Inline style on <VStack> bypasses the design system (minHeight, width).",
+            "suggestion": "Use Marigold layout components (Stack, Columns, Inset, Container) and theme tokens instead of inline styles.",
+            "location": {
+              "file": "TestApp.tsx",
+              "line": 380,
+              "column": 11
+            },
+            "details": {
+              "cssProperties": [
+                "minHeight",
+                "width"
+              ]
+            }
+          }
+        ]
+      },
+      "B": {
+        "category": "B",
+        "label": "Token Compliance",
+        "score": 0,
+        "weight": 0.1,
+        "weightedScore": 0,
+        "errorCount": 0,
+        "warningCount": 0,
+        "issues": []
+      },
+      "C": {
+        "category": "C",
+        "label": "DOM / Structure",
+        "score": 0,
+        "weight": 0.225,
+        "weightedScore": 0,
+        "errorCount": 20,
+        "warningCount": 0,
+        "issues": [
+          {
+            "type": "technical",
+            "severity": "error",
+            "source": "compiler",
+            "component": "TypeScript",
+            "message": "TS2305: Module '\"@marigold/components\"' has no exported member 'Box'.",
+            "suggestion": "Fix the TypeScript error reported by the compiler. The exact location is included in the issue location field.",
+            "location": {
+              "file": "TestApp.tsx",
+              "line": 3,
+              "column": 3
+            }
+          },
+          {
+            "type": "technical",
+            "severity": "error",
+            "source": "compiler",
+            "component": "TypeScript",
+            "message": "TS2305: Module '\"@marigold/components\"' has no exported member 'CardBody'.",
+            "suggestion": "Fix the TypeScript error reported by the compiler. The exact location is included in the issue location field.",
+            "location": {
+              "file": "TestApp.tsx",
+              "line": 6,
+              "column": 3
+            }
+          },
+          {
+            "type": "technical",
+            "severity": "error",
+            "source": "compiler",
+            "component": "TypeScript",
+            "message": "TS2305: Module '\"@marigold/components\"' has no exported member 'Heading'.",
+            "suggestion": "Fix the TypeScript error reported by the compiler. The exact location is included in the issue location field.",
+            "location": {
+              "file": "TestApp.tsx",
+              "line": 8,
+              "column": 3
+            }
+          },
+          {
+            "type": "technical",
+            "severity": "error",
+            "source": "compiler",
+            "component": "TypeScript",
+            "message": "TS2724: '\"@marigold/components\"' has no exported member named 'HStack'. Did you mean 'Stack'?",
+            "suggestion": "Fix the TypeScript error reported by the compiler. The exact location is included in the issue location field.",
+            "location": {
+              "file": "TestApp.tsx",
+              "line": 9,
+              "column": 3
+            }
+          },
+          {
+            "type": "technical",
+            "severity": "error",
+            "source": "compiler",
+            "component": "TypeScript",
+            "message": "TS2724: '\"@marigold/components\"' has no exported member named 'VStack'. Did you mean 'Stack'?",
+            "suggestion": "Fix the TypeScript error reported by the compiler. The exact location is included in the issue location field.",
+            "location": {
+              "file": "TestApp.tsx",
+              "line": 10,
+              "column": 3
+            }
+          },
+          {
+            "type": "technical",
+            "severity": "error",
+            "source": "compiler",
+            "component": "TypeScript",
+            "message": "TS2724: '\"@marigold/components\"' has no exported member named 'SelectItem'. Did you mean 'SelectList'?",
+            "suggestion": "Fix the TypeScript error reported by the compiler. The exact location is included in the issue location field.",
+            "location": {
+              "file": "TestApp.tsx",
+              "line": 13,
+              "column": 3
+            }
+          },
+          {
+            "type": "technical",
+            "severity": "error",
+            "source": "compiler",
+            "component": "TypeScript",
+            "message": "TS2305: Module '\"@marigold/components\"' has no exported member 'PopoverTrigger'.",
+            "suggestion": "Fix the TypeScript error reported by the compiler. The exact location is included in the issue location field.",
+            "location": {
+              "file": "TestApp.tsx",
+              "line": 21,
+              "column": 3
+            }
+          },
+          {
+            "type": "technical",
+            "severity": "error",
+            "source": "compiler",
+            "component": "TypeScript",
+            "message": "TS2305: Module '\"@marigold/components\"' has no exported member 'PopoverContent'.",
+            "suggestion": "Fix the TypeScript error reported by the compiler. The exact location is included in the issue location field.",
+            "location": {
+              "file": "TestApp.tsx",
+              "line": 22,
+              "column": 3
+            }
+          },
+          {
+            "type": "technical",
+            "severity": "error",
+            "source": "compiler",
+            "component": "TypeScript",
+            "message": "TS2305: Module '\"@marigold/components\"' has no exported member 'GridList'.",
+            "suggestion": "Fix the TypeScript error reported by the compiler. The exact location is included in the issue location field.",
+            "location": {
+              "file": "TestApp.tsx",
+              "line": 23,
+              "column": 3
+            }
+          },
+          {
+            "type": "technical",
+            "severity": "error",
+            "source": "compiler",
+            "component": "TypeScript",
+            "message": "TS2305: Module '\"@marigold/components\"' has no exported member 'GridListItem'.",
+            "suggestion": "Fix the TypeScript error reported by the compiler. The exact location is included in the issue location field.",
+            "location": {
+              "file": "TestApp.tsx",
+              "line": 24,
+              "column": 3
+            }
+          },
+          {
+            "type": "technical",
+            "severity": "error",
+            "source": "compiler",
+            "component": "TypeScript",
+            "message": "TS2339: Property 'target' does not exist on type 'string'.",
+            "suggestion": "Fix the TypeScript error reported by the compiler. The exact location is included in the issue location field.",
+            "location": {
+              "file": "TestApp.tsx",
+              "line": 230,
+              "column": 30
+            }
+          },
+          {
+            "type": "technical",
+            "severity": "error",
+            "source": "compiler",
+            "component": "TypeScript",
+            "message": "TS2322: Type '{ placeholder: string; value: string; onChange: (e: string) => void; style: { flex: number; minWidth: string; }; }' is not assignable to type 'IntrinsicAttributes & TextFieldProps & RefAttributes<HTMLInputElement>'.\n  Property 'style' does not exist on type 'IntrinsicAttributes & TextFieldProps & RefAttributes<HTMLInputElement>'.",
+            "suggestion": "Fix the TypeScript error reported by the compiler. The exact location is included in the issue location field.",
+            "location": {
+              "file": "TestApp.tsx",
+              "line": 233,
+              "column": 11
+            }
+          },
+          {
+            "type": "technical",
+            "severity": "error",
+            "source": "compiler",
+            "component": "TypeScript",
+            "message": "TS2345: Argument of type 'Key | null' is not assignable to parameter of type 'SetStateAction<string>'.\n  Type 'null' is not assignable to type 'SetStateAction<string>'.",
+            "suggestion": "Fix the TypeScript error reported by the compiler. The exact location is included in the issue location field.",
+            "location": {
+              "file": "TestApp.tsx",
+              "line": 239,
+              "column": 23
+            }
+          },
+          {
+            "type": "technical",
+            "severity": "error",
+            "source": "compiler",
+            "component": "TypeScript",
+            "message": "TS2322: Type '{ children: Element[]; value: string; onChange: (value: Key | null) => void; style: { minWidth: string; }; }' is not assignable to type 'IntrinsicAttributes & SelectProps<object, \"single\"> & RefAttributes<HTMLButtonElement>'.\n  Property 'style' does not exist on type 'IntrinsicAttributes & SelectProps<object, \"single\"> & RefAttributes<HTMLButtonElement>'.",
+            "suggestion": "Fix the TypeScript error reported by the compiler. The exact location is included in the issue location field.",
+            "location": {
+              "file": "TestApp.tsx",
+              "line": 242,
+              "column": 11
+            }
+          },
+          {
+            "type": "technical",
+            "severity": "error",
+            "source": "compiler",
+            "component": "TypeScript",
+            "message": "TS2322: Type '{ children: string; key: string; checked: boolean; onChange: (checked: boolean) => void; }' is not assignable to type 'IntrinsicAttributes & CheckboxProps & RefAttributes<HTMLLabelElement>'.\n  Property 'children' does not exist on type 'IntrinsicAttributes & CheckboxProps & RefAttributes<HTMLLabelElement>'.",
+            "suggestion": "Fix the TypeScript error reported by the compiler. The exact location is included in the issue location field.",
+            "location": {
+              "file": "TestApp.tsx",
+              "line": 292,
+              "column": 16
+            }
+          },
+          {
+            "type": "technical",
+            "severity": "error",
+            "source": "compiler",
+            "component": "TypeScript",
+            "message": "TS2322: Type '{ children: string; key: string; checked: boolean; onChange: (checked: boolean) => void; }' is not assignable to type 'IntrinsicAttributes & CheckboxProps & RefAttributes<HTMLLabelElement>'.\n  Property 'children' does not exist on type 'IntrinsicAttributes & CheckboxProps & RefAttributes<HTMLLabelElement>'.",
+            "suggestion": "Fix the TypeScript error reported by the compiler. The exact location is included in the issue location field.",
+            "location": {
+              "file": "TestApp.tsx",
+              "line": 326,
+              "column": 16
+            }
+          },
+          {
+            "type": "technical",
+            "severity": "error",
+            "source": "compiler",
+            "component": "TypeScript",
+            "message": "TS2322: Type '{ children: string; checked: boolean; onChange: Dispatch<SetStateAction<boolean>>; }' is not assignable to type 'IntrinsicAttributes & CheckboxProps & RefAttributes<HTMLLabelElement>'.\n  Property 'children' does not exist on type 'IntrinsicAttributes & CheckboxProps & RefAttributes<HTMLLabelElement>'.",
+            "suggestion": "Fix the TypeScript error reported by the compiler. The exact location is included in the issue location field.",
+            "location": {
+              "file": "TestApp.tsx",
+              "line": 344,
+              "column": 14
+            }
+          },
+          {
+            "type": "technical",
+            "severity": "error",
+            "source": "composition-validator",
+            "component": "Select",
+            "message": "<Select> is used without any of its sub-components.",
+            "suggestion": "Use compound children: <Select.Option>, <Select.Section>.",
+            "location": {
+              "file": "TestApp.tsx",
+              "line": 236,
+              "column": 9
+            },
+            "details": {
+              "expected": [
+                "Option",
+                "Section"
+              ],
+              "found": []
+            }
+          },
+          {
+            "type": "technical",
+            "severity": "error",
+            "source": "composition-validator",
+            "component": "Dialog",
+            "message": "<Dialog> is used without any of its sub-components.",
+            "suggestion": "Use compound children: <Dialog.Title>, <Dialog.Content>, <Dialog.Actions>.",
+            "location": {
+              "file": "TestApp.tsx",
+              "line": 282,
+              "column": 7
+            },
+            "details": {
+              "expected": [
+                "Title",
+                "Content",
+                "Actions"
+              ],
+              "found": []
+            }
+          },
+          {
+            "type": "a11y",
+            "severity": "error",
+            "source": "accessible-name",
+            "component": "Dialog",
+            "message": "<Dialog> has no accessible name. A closed overlay is invisible to runtime a11y checks, so it must be labeled in the source.",
+            "suggestion": "Add a <Dialog.Title> child or an aria-label prop, e.g. <Dialog aria-label=\"…\"> or <Dialog.Title>…</Dialog.Title>.",
+            "location": {
+              "file": "TestApp.tsx",
+              "line": 282,
+              "column": 7
+            },
+            "details": {
+              "accessibleNameAttrs": [
+                "aria-label",
+                "aria-labelledby"
+              ],
+              "titleSubComponent": "Dialog.Title"
+            }
+          }
+        ]
+      },
+      "D": {
+        "category": "D",
+        "label": "Spatial & A11y",
+        "score": 0,
+        "weight": 0.225,
+        "weightedScore": 0,
+        "errorCount": 0,
+        "warningCount": 0,
+        "issues": []
+      },
+      "E": {
+        "category": "E",
+        "label": "Functional Completeness",
+        "score": 47.54,
+        "weight": 0.225,
+        "weightedScore": 10.7,
+        "errorCount": 0,
+        "warningCount": 0,
+        "issues": []
+      }
+    },
+    "renderSuccess": false
+  },
+  "efficiency": {
+    "durationMs": 28997,
+    "costUsd": 0.0662842,
+    "inputTokens": 20,
+    "outputTokens": 4609,
+    "cacheReadTokens": 59022,
+    "cacheCreationTokens": 18117,
+    "totalTokens": 4629,
+    "numTurns": 3
+  },
+  "report": {
+    "file": "TestApp.tsx",
+    "errors": [
+      {
+        "type": "technical",
+        "severity": "error",
+        "source": "compiler",
+        "component": "TypeScript",
+        "message": "TS2305: Module '\"@marigold/components\"' has no exported member 'Box'.",
+        "suggestion": "Fix the TypeScript error reported by the compiler. The exact location is included in the issue location field.",
+        "location": {
+          "file": "TestApp.tsx",
+          "line": 3,
+          "column": 3
+        }
+      },
+      {
+        "type": "technical",
+        "severity": "error",
+        "source": "compiler",
+        "component": "TypeScript",
+        "message": "TS2305: Module '\"@marigold/components\"' has no exported member 'CardBody'.",
+        "suggestion": "Fix the TypeScript error reported by the compiler. The exact location is included in the issue location field.",
+        "location": {
+          "file": "TestApp.tsx",
+          "line": 6,
+          "column": 3
+        }
+      },
+      {
+        "type": "technical",
+        "severity": "error",
+        "source": "compiler",
+        "component": "TypeScript",
+        "message": "TS2305: Module '\"@marigold/components\"' has no exported member 'Heading'.",
+        "suggestion": "Fix the TypeScript error reported by the compiler. The exact location is included in the issue location field.",
+        "location": {
+          "file": "TestApp.tsx",
+          "line": 8,
+          "column": 3
+        }
+      },
+      {
+        "type": "technical",
+        "severity": "error",
+        "source": "compiler",
+        "component": "TypeScript",
+        "message": "TS2724: '\"@marigold/components\"' has no exported member named 'HStack'. Did you mean 'Stack'?",
+        "suggestion": "Fix the TypeScript error reported by the compiler. The exact location is included in the issue location field.",
+        "location": {
+          "file": "TestApp.tsx",
+          "line": 9,
+          "column": 3
+        }
+      },
+      {
+        "type": "technical",
+        "severity": "error",
+        "source": "compiler",
+        "component": "TypeScript",
+        "message": "TS2724: '\"@marigold/components\"' has no exported member named 'VStack'. Did you mean 'Stack'?",
+        "suggestion": "Fix the TypeScript error reported by the compiler. The exact location is included in the issue location field.",
+        "location": {
+          "file": "TestApp.tsx",
+          "line": 10,
+          "column": 3
+        }
+      },
+      {
+        "type": "technical",
+        "severity": "error",
+        "source": "compiler",
+        "component": "TypeScript",
+        "message": "TS2724: '\"@marigold/components\"' has no exported member named 'SelectItem'. Did you mean 'SelectList'?",
+        "suggestion": "Fix the TypeScript error reported by the compiler. The exact location is included in the issue location field.",
+        "location": {
+          "file": "TestApp.tsx",
+          "line": 13,
+          "column": 3
+        }
+      },
+      {
+        "type": "technical",
+        "severity": "error",
+        "source": "compiler",
+        "component": "TypeScript",
+        "message": "TS2305: Module '\"@marigold/components\"' has no exported member 'PopoverTrigger'.",
+        "suggestion": "Fix the TypeScript error reported by the compiler. The exact location is included in the issue location field.",
+        "location": {
+          "file": "TestApp.tsx",
+          "line": 21,
+          "column": 3
+        }
+      },
+      {
+        "type": "technical",
+        "severity": "error",
+        "source": "compiler",
+        "component": "TypeScript",
+        "message": "TS2305: Module '\"@marigold/components\"' has no exported member 'PopoverContent'.",
+        "suggestion": "Fix the TypeScript error reported by the compiler. The exact location is included in the issue location field.",
+        "location": {
+          "file": "TestApp.tsx",
+          "line": 22,
+          "column": 3
+        }
+      },
+      {
+        "type": "technical",
+        "severity": "error",
+        "source": "compiler",
+        "component": "TypeScript",
+        "message": "TS2305: Module '\"@marigold/components\"' has no exported member 'GridList'.",
+        "suggestion": "Fix the TypeScript error reported by the compiler. The exact location is included in the issue location field.",
+        "location": {
+          "file": "TestApp.tsx",
+          "line": 23,
+          "column": 3
+        }
+      },
+      {
+        "type": "technical",
+        "severity": "error",
+        "source": "compiler",
+        "component": "TypeScript",
+        "message": "TS2305: Module '\"@marigold/components\"' has no exported member 'GridListItem'.",
+        "suggestion": "Fix the TypeScript error reported by the compiler. The exact location is included in the issue location field.",
+        "location": {
+          "file": "TestApp.tsx",
+          "line": 24,
+          "column": 3
+        }
+      },
+      {
+        "type": "technical",
+        "severity": "error",
+        "source": "compiler",
+        "component": "TypeScript",
+        "message": "TS2339: Property 'target' does not exist on type 'string'.",
+        "suggestion": "Fix the TypeScript error reported by the compiler. The exact location is included in the issue location field.",
+        "location": {
+          "file": "TestApp.tsx",
+          "line": 230,
+          "column": 30
+        }
+      },
+      {
+        "type": "technical",
+        "severity": "error",
+        "source": "compiler",
+        "component": "TypeScript",
+        "message": "TS2322: Type '{ placeholder: string; value: string; onChange: (e: string) => void; style: { flex: number; minWidth: string; }; }' is not assignable to type 'IntrinsicAttributes & TextFieldProps & RefAttributes<HTMLInputElement>'.\n  Property 'style' does not exist on type 'IntrinsicAttributes & TextFieldProps & RefAttributes<HTMLInputElement>'.",
+        "suggestion": "Fix the TypeScript error reported by the compiler. The exact location is included in the issue location field.",
+        "location": {
+          "file": "TestApp.tsx",
+          "line": 233,
+          "column": 11
+        }
+      },
+      {
+        "type": "technical",
+        "severity": "error",
+        "source": "compiler",
+        "component": "TypeScript",
+        "message": "TS2345: Argument of type 'Key | null' is not assignable to parameter of type 'SetStateAction<string>'.\n  Type 'null' is not assignable to type 'SetStateAction<string>'.",
+        "suggestion": "Fix the TypeScript error reported by the compiler. The exact location is included in the issue location field.",
+        "location": {
+          "file": "TestApp.tsx",
+          "line": 239,
+          "column": 23
+        }
+      },
+      {
+        "type": "technical",
+        "severity": "error",
+        "source": "compiler",
+        "component": "TypeScript",
+        "message": "TS2322: Type '{ children: Element[]; value: string; onChange: (value: Key | null) => void; style: { minWidth: string; }; }' is not assignable to type 'IntrinsicAttributes & SelectProps<object, \"single\"> & RefAttributes<HTMLButtonElement>'.\n  Property 'style' does not exist on type 'IntrinsicAttributes & SelectProps<object, \"single\"> & RefAttributes<HTMLButtonElement>'.",
+        "suggestion": "Fix the TypeScript error reported by the compiler. The exact location is included in the issue location field.",
+        "location": {
+          "file": "TestApp.tsx",
+          "line": 242,
+          "column": 11
+        }
+      },
+      {
+        "type": "technical",
+        "severity": "error",
+        "source": "compiler",
+        "component": "TypeScript",
+        "message": "TS2322: Type '{ children: string; key: string; checked: boolean; onChange: (checked: boolean) => void; }' is not assignable to type 'IntrinsicAttributes & CheckboxProps & RefAttributes<HTMLLabelElement>'.\n  Property 'children' does not exist on type 'IntrinsicAttributes & CheckboxProps & RefAttributes<HTMLLabelElement>'.",
+        "suggestion": "Fix the TypeScript error reported by the compiler. The exact location is included in the issue location field.",
+        "location": {
+          "file": "TestApp.tsx",
+          "line": 292,
+          "column": 16
+        }
+      },
+      {
+        "type": "technical",
+        "severity": "error",
+        "source": "compiler",
+        "component": "TypeScript",
+        "message": "TS2322: Type '{ children: string; key: string; checked: boolean; onChange: (checked: boolean) => void; }' is not assignable to type 'IntrinsicAttributes & CheckboxProps & RefAttributes<HTMLLabelElement>'.\n  Property 'children' does not exist on type 'IntrinsicAttributes & CheckboxProps & RefAttributes<HTMLLabelElement>'.",
+        "suggestion": "Fix the TypeScript error reported by the compiler. The exact location is included in the issue location field.",
+        "location": {
+          "file": "TestApp.tsx",
+          "line": 326,
+          "column": 16
+        }
+      },
+      {
+        "type": "technical",
+        "severity": "error",
+        "source": "compiler",
+        "component": "TypeScript",
+        "message": "TS2322: Type '{ children: string; checked: boolean; onChange: Dispatch<SetStateAction<boolean>>; }' is not assignable to type 'IntrinsicAttributes & CheckboxProps & RefAttributes<HTMLLabelElement>'.\n  Property 'children' does not exist on type 'IntrinsicAttributes & CheckboxProps & RefAttributes<HTMLLabelElement>'.",
+        "suggestion": "Fix the TypeScript error reported by the compiler. The exact location is included in the issue location field.",
+        "location": {
+          "file": "TestApp.tsx",
+          "line": 344,
+          "column": 14
+        }
+      },
+      {
+        "type": "technical",
+        "severity": "error",
+        "source": "prop-validator",
+        "component": "TextField",
+        "message": "Marigold <TextField> onChange passes the value directly ((value: C) => void), not a DOM event.",
+        "suggestion": "Use onChange={(value) => ...} instead of onChange={(e) => ... e.target.value}.",
+        "location": {
+          "file": "TestApp.tsx",
+          "line": 229,
+          "column": 11
+        },
+        "details": {
+          "handler": "onChange",
+          "pattern": "event-target-access"
+        }
+      },
+      {
+        "type": "technical",
+        "severity": "error",
+        "source": "prop-validator",
+        "component": "Badge",
+        "message": "Prop \"onPress\" does not exist on <Badge>.",
+        "suggestion": "Remove the prop. Available props: children, variant, size.",
+        "location": {
+          "file": "TestApp.tsx",
+          "line": 264,
+          "column": 15
+        },
+        "details": {
+          "used": "onPress",
+          "available": [
+            "children",
+            "variant",
+            "size"
+          ]
+        }
+      },
+      {
+        "type": "technical",
+        "severity": "error",
+        "source": "prop-validator",
+        "component": "Dialog",
+        "message": "Prop \"isOpen\" does not exist on <Dialog>.",
+        "suggestion": "Replace \"isOpen\" with \"open\".",
+        "location": {
+          "file": "TestApp.tsx",
+          "line": 283,
+          "column": 9
+        },
+        "details": {
+          "used": "isOpen",
+          "available": [
+            "variant",
+            "size",
+            "closeButton",
+            "children",
+            "id",
+            "dir",
+            "lang",
+            "hidden",
+            "inert",
+            "translate",
+            "onClick",
+            "onClickCapture",
+            "onAuxClick",
+            "onAuxClickCapture",
+            "onContextMenu"
+          ]
+        }
+      },
+      {
+        "type": "technical",
+        "severity": "error",
+        "source": "prop-validator",
+        "component": "Dialog",
+        "message": "Prop \"title\" does not exist on <Dialog>.",
+        "suggestion": "Remove the prop. Available props: variant, size, closeButton, children, id, dir, lang, hidden, inert, translate, onClick, onClickCapture, onAuxClick, onAuxClickCapture, onContextMenu, ….",
+        "location": {
+          "file": "TestApp.tsx",
+          "line": 285,
+          "column": 9
+        },
+        "details": {
+          "used": "title",
+          "available": [
+            "variant",
+            "size",
+            "closeButton",
+            "children",
+            "id",
+            "dir",
+            "lang",
+            "hidden",
+            "inert",
+            "translate",
+            "onClick",
+            "onClickCapture",
+            "onAuxClick",
+            "onAuxClickCapture",
+            "onContextMenu"
+          ]
+        }
+      },
+      {
+        "type": "technical",
+        "severity": "error",
+        "source": "prop-validator",
+        "component": "Button",
+        "message": "Prop \"width\" does not exist on <Button>.",
+        "suggestion": "Remove the prop. Available props: variant, size, fullWidth, children, disabled, loading, render, id, dir, lang, hidden, inert, translate, onClick, onClickCapture, ….",
+        "location": {
+          "file": "TestApp.tsx",
+          "line": 423,
+          "column": 23
+        },
+        "details": {
+          "used": "width",
+          "available": [
+            "variant",
+            "size",
+            "fullWidth",
+            "children",
+            "disabled",
+            "loading",
+            "render",
+            "id",
+            "dir",
+            "lang",
+            "hidden",
+            "inert",
+            "translate",
+            "onClick",
+            "onClickCapture"
+          ]
+        }
+      },
+      {
+        "type": "technical",
+        "severity": "error",
+        "source": "composition-validator",
+        "component": "Select",
+        "message": "<Select> is used without any of its sub-components.",
+        "suggestion": "Use compound children: <Select.Option>, <Select.Section>.",
+        "location": {
+          "file": "TestApp.tsx",
+          "line": 236,
+          "column": 9
+        },
+        "details": {
+          "expected": [
+            "Option",
+            "Section"
+          ],
+          "found": []
+        }
+      },
+      {
+        "type": "technical",
+        "severity": "error",
+        "source": "composition-validator",
+        "component": "Dialog",
+        "message": "<Dialog> is used without any of its sub-components.",
+        "suggestion": "Use compound children: <Dialog.Title>, <Dialog.Content>, <Dialog.Actions>.",
+        "location": {
+          "file": "TestApp.tsx",
+          "line": 282,
+          "column": 7
+        },
+        "details": {
+          "expected": [
+            "Title",
+            "Content",
+            "Actions"
+          ],
+          "found": []
+        }
+      },
+      {
+        "type": "a11y",
+        "severity": "error",
+        "source": "accessible-name",
+        "component": "Dialog",
+        "message": "<Dialog> has no accessible name. A closed overlay is invisible to runtime a11y checks, so it must be labeled in the source.",
+        "suggestion": "Add a <Dialog.Title> child or an aria-label prop, e.g. <Dialog aria-label=\"…\"> or <Dialog.Title>…</Dialog.Title>.",
+        "location": {
+          "file": "TestApp.tsx",
+          "line": 282,
+          "column": 7
+        },
+        "details": {
+          "accessibleNameAttrs": [
+            "aria-label",
+            "aria-labelledby"
+          ],
+          "titleSubComponent": "Dialog.Title"
+        }
+      },
+      {
+        "type": "technical",
+        "severity": "error",
+        "source": "design-system-usage",
+        "component": "VStack",
+        "message": "<VStack> is not a Marigold component. It is not exported from @marigold/components.",
+        "suggestion": "<VStack> does not exist in @marigold/components. Search the Marigold docs for the correct component.",
+        "location": {
+          "file": "TestApp.tsx",
+          "line": 217,
+          "column": 5
+        },
+        "details": {
+          "hallucinated": true,
+          "importedFrom": "@marigold/components"
+        }
+      },
+      {
+        "type": "technical",
+        "severity": "error",
+        "source": "design-system-usage",
+        "component": "VStack",
+        "message": "<VStack> is not a Marigold component. It is not exported from @marigold/components.",
+        "suggestion": "<VStack> does not exist in @marigold/components. Search the Marigold docs for the correct component.",
+        "location": {
+          "file": "TestApp.tsx",
+          "line": 219,
+          "column": 7
+        },
+        "details": {
+          "hallucinated": true,
+          "importedFrom": "@marigold/components"
+        }
+      },
+      {
+        "type": "technical",
+        "severity": "error",
+        "source": "design-system-usage",
+        "component": "Heading",
+        "message": "<Heading> is not a Marigold component. It is not exported from @marigold/components.",
+        "suggestion": "<Heading> does not exist in @marigold/components. Search the Marigold docs for the correct component.",
+        "location": {
+          "file": "TestApp.tsx",
+          "line": 220,
+          "column": 9
+        },
+        "details": {
+          "hallucinated": true,
+          "importedFrom": "@marigold/components"
+        }
+      },
+      {
+        "type": "technical",
+        "severity": "error",
+        "source": "design-system-usage",
+        "component": "HStack",
+        "message": "<HStack> is not a Marigold component. It is not exported from @marigold/components.",
+        "suggestion": "<HStack> does not exist in @marigold/components. Search the Marigold docs for the correct component.",
+        "location": {
+          "file": "TestApp.tsx",
+          "line": 225,
+          "column": 7
+        },
+        "details": {
+          "hallucinated": true,
+          "importedFrom": "@marigold/components"
+        }
+      },
+      {
+        "type": "technical",
+        "severity": "error",
+        "source": "design-system-usage",
+        "component": "SelectItem",
+        "message": "<SelectItem> is not a Marigold component. It is not exported from @marigold/components.",
+        "suggestion": "<SelectItem> does not exist in @marigold/components. Search the Marigold docs for the correct component.",
+        "location": {
+          "file": "TestApp.tsx",
+          "line": 244,
+          "column": 11
+        },
+        "details": {
+          "hallucinated": true,
+          "importedFrom": "@marigold/components"
+        }
+      },
+      {
+        "type": "technical",
+        "severity": "error",
+        "source": "design-system-usage",
+        "component": "SelectItem",
+        "message": "<SelectItem> is not a Marigold component. It is not exported from @marigold/components.",
+        "suggestion": "<SelectItem> does not exist in @marigold/components. Search the Marigold docs for the correct component.",
+        "location": {
+          "file": "TestApp.tsx",
+          "line": 245,
+          "column": 11
+        },
+        "details": {
+          "hallucinated": true,
+          "importedFrom": "@marigold/components"
+        }
+      },
+      {
+        "type": "technical",
+        "severity": "error",
+        "source": "design-system-usage",
+        "component": "SelectItem",
+        "message": "<SelectItem> is not a Marigold component. It is not exported from @marigold/components.",
+        "suggestion": "<SelectItem> does not exist in @marigold/components. Search the Marigold docs for the correct component.",
+        "location": {
+          "file": "TestApp.tsx",
+          "line": 246,
+          "column": 11
+        },
+        "details": {
+          "hallucinated": true,
+          "importedFrom": "@marigold/components"
+        }
+      },
+      {
+        "type": "technical",
+        "severity": "error",
+        "source": "design-system-usage",
+        "component": "SelectItem",
+        "message": "<SelectItem> is not a Marigold component. It is not exported from @marigold/components.",
+        "suggestion": "<SelectItem> does not exist in @marigold/components. Search the Marigold docs for the correct component.",
+        "location": {
+          "file": "TestApp.tsx",
+          "line": 247,
+          "column": 11
+        },
+        "details": {
+          "hallucinated": true,
+          "importedFrom": "@marigold/components"
+        }
+      },
+      {
+        "type": "technical",
+        "severity": "error",
+        "source": "design-system-usage",
+        "component": "HStack",
+        "message": "<HStack> is not a Marigold component. It is not exported from @marigold/components.",
+        "suggestion": "<HStack> does not exist in @marigold/components. Search the Marigold docs for the correct component.",
+        "location": {
+          "file": "TestApp.tsx",
+          "line": 260,
+          "column": 9
+        },
+        "details": {
+          "hallucinated": true,
+          "importedFrom": "@marigold/components"
+        }
+      },
+      {
+        "type": "technical",
+        "severity": "error",
+        "source": "design-system-usage",
+        "component": "VStack",
+        "message": "<VStack> is not a Marigold component. It is not exported from @marigold/components.",
+        "suggestion": "<VStack> does not exist in @marigold/components. Search the Marigold docs for the correct component.",
+        "location": {
+          "file": "TestApp.tsx",
+          "line": 287,
+          "column": 9
+        },
+        "details": {
+          "hallucinated": true,
+          "importedFrom": "@marigold/components"
+        }
+      },
+      {
+        "type": "technical",
+        "severity": "error",
+        "source": "design-system-usage",
+        "component": "VStack",
+        "message": "<VStack> is not a Marigold component. It is not exported from @marigold/components.",
+        "suggestion": "<VStack> does not exist in @marigold/components. Search the Marigold docs for the correct component.",
+        "location": {
+          "file": "TestApp.tsx",
+          "line": 289,
+          "column": 11
+        },
+        "details": {
+          "hallucinated": true,
+          "importedFrom": "@marigold/components"
+        }
+      },
+      {
+        "type": "technical",
+        "severity": "error",
+        "source": "design-system-usage",
+        "component": "VStack",
+        "message": "<VStack> is not a Marigold component. It is not exported from @marigold/components.",
+        "suggestion": "<VStack> does not exist in @marigold/components. Search the Marigold docs for the correct component.",
+        "location": {
+          "file": "TestApp.tsx",
+          "line": 309,
+          "column": 11
+        },
+        "details": {
+          "hallucinated": true,
+          "importedFrom": "@marigold/components"
+        }
+      },
+      {
+        "type": "technical",
+        "severity": "error",
+        "source": "design-system-usage",
+        "component": "VStack",
+        "message": "<VStack> is not a Marigold component. It is not exported from @marigold/components.",
+        "suggestion": "<VStack> does not exist in @marigold/components. Search the Marigold docs for the correct component.",
+        "location": {
+          "file": "TestApp.tsx",
+          "line": 323,
+          "column": 11
+        },
+        "details": {
+          "hallucinated": true,
+          "importedFrom": "@marigold/components"
+        }
+      },
+      {
+        "type": "technical",
+        "severity": "error",
+        "source": "design-system-usage",
+        "component": "VStack",
+        "message": "<VStack> is not a Marigold component. It is not exported from @marigold/components.",
+        "suggestion": "<VStack> does not exist in @marigold/components. Search the Marigold docs for the correct component.",
+        "location": {
+          "file": "TestApp.tsx",
+          "line": 343,
+          "column": 11
+        },
+        "details": {
+          "hallucinated": true,
+          "importedFrom": "@marigold/components"
+        }
+      },
+      {
+        "type": "technical",
+        "severity": "error",
+        "source": "design-system-usage",
+        "component": "HStack",
+        "message": "<HStack> is not a Marigold component. It is not exported from @marigold/components.",
+        "suggestion": "<HStack> does not exist in @marigold/components. Search the Marigold docs for the correct component.",
+        "location": {
+          "file": "TestApp.tsx",
+          "line": 353,
+          "column": 11
+        },
+        "details": {
+          "hallucinated": true,
+          "importedFrom": "@marigold/components"
+        }
+      },
+      {
+        "type": "technical",
+        "severity": "error",
+        "source": "design-system-usage",
+        "component": "VStack",
+        "message": "<VStack> is not a Marigold component. It is not exported from @marigold/components.",
+        "suggestion": "<VStack> does not exist in @marigold/components. Search the Marigold docs for the correct component.",
+        "location": {
+          "file": "TestApp.tsx",
+          "line": 375,
+          "column": 9
+        },
+        "details": {
+          "hallucinated": true,
+          "importedFrom": "@marigold/components"
+        }
+      },
+      {
+        "type": "technical",
+        "severity": "error",
+        "source": "design-system-usage",
+        "component": "Heading",
+        "message": "<Heading> is not a Marigold component. It is not exported from @marigold/components.",
+        "suggestion": "<Heading> does not exist in @marigold/components. Search the Marigold docs for the correct component.",
+        "location": {
+          "file": "TestApp.tsx",
+          "line": 382,
+          "column": 11
+        },
+        "details": {
+          "hallucinated": true,
+          "importedFrom": "@marigold/components"
+        }
+      },
+      {
+        "type": "technical",
+        "severity": "error",
+        "source": "design-system-usage",
+        "component": "GridList",
+        "message": "<GridList> is not a Marigold component. It is not exported from @marigold/components.",
+        "suggestion": "<GridList> does not exist in @marigold/components. Search the Marigold docs for the correct component.",
+        "location": {
+          "file": "TestApp.tsx",
+          "line": 387,
+          "column": 9
+        },
+        "details": {
+          "hallucinated": true,
+          "importedFrom": "@marigold/components"
+        }
+      },
+      {
+        "type": "technical",
+        "severity": "error",
+        "source": "design-system-usage",
+        "component": "GridListItem",
+        "message": "<GridListItem> is not a Marigold component. It is not exported from @marigold/components.",
+        "suggestion": "<GridListItem> does not exist in @marigold/components. Search the Marigold docs for the correct component.",
+        "location": {
+          "file": "TestApp.tsx",
+          "line": 394,
+          "column": 13
+        },
+        "details": {
+          "hallucinated": true,
+          "importedFrom": "@marigold/components"
+        }
+      },
+      {
+        "type": "technical",
+        "severity": "error",
+        "source": "design-system-usage",
+        "component": "CardBody",
+        "message": "<CardBody> is not a Marigold component. It is not exported from @marigold/components.",
+        "suggestion": "<CardBody> does not exist in @marigold/components. Search the Marigold docs for the correct component.",
+        "location": {
+          "file": "TestApp.tsx",
+          "line": 396,
+          "column": 17
+        },
+        "details": {
+          "hallucinated": true,
+          "importedFrom": "@marigold/components"
+        }
+      },
+      {
+        "type": "technical",
+        "severity": "error",
+        "source": "design-system-usage",
+        "component": "VStack",
+        "message": "<VStack> is not a Marigold component. It is not exported from @marigold/components.",
+        "suggestion": "<VStack> does not exist in @marigold/components. Search the Marigold docs for the correct component.",
+        "location": {
+          "file": "TestApp.tsx",
+          "line": 397,
+          "column": 19
+        },
+        "details": {
+          "hallucinated": true,
+          "importedFrom": "@marigold/components"
+        }
+      },
+      {
+        "type": "technical",
+        "severity": "error",
+        "source": "design-system-usage",
+        "component": "HStack",
+        "message": "<HStack> is not a Marigold component. It is not exported from @marigold/components.",
+        "suggestion": "<HStack> does not exist in @marigold/components. Search the Marigold docs for the correct component.",
+        "location": {
+          "file": "TestApp.tsx",
+          "line": 398,
+          "column": 21
+        },
+        "details": {
+          "hallucinated": true,
+          "importedFrom": "@marigold/components"
+        }
+      },
+      {
+        "type": "technical",
+        "severity": "error",
+        "source": "design-system-usage",
+        "component": "HStack",
+        "message": "<HStack> is not a Marigold component. It is not exported from @marigold/components.",
+        "suggestion": "<HStack> does not exist in @marigold/components. Search the Marigold docs for the correct component.",
+        "location": {
+          "file": "TestApp.tsx",
+          "line": 437,
+          "column": 9
+        },
+        "details": {
+          "hallucinated": true,
+          "importedFrom": "@marigold/components"
+        }
+      }
+    ],
+    "warnings": [
+      {
+        "type": "technical",
+        "severity": "warning",
+        "source": "design-system-usage",
+        "component": "TextField",
+        "message": "Inline style on <TextField> bypasses the design system (flex, minWidth).",
+        "suggestion": "Use Marigold layout components (Stack, Columns, Inset, Container) and theme tokens instead of inline styles.",
+        "location": {
+          "file": "TestApp.tsx",
+          "line": 233,
+          "column": 11
+        },
+        "details": {
+          "cssProperties": [
+            "flex",
+            "minWidth"
+          ]
+        }
+      },
+      {
+        "type": "technical",
+        "severity": "warning",
+        "source": "design-system-usage",
+        "component": "Select",
+        "message": "Inline style on <Select> bypasses the design system (minWidth).",
+        "suggestion": "Use Marigold layout components (Stack, Columns, Inset, Container) and theme tokens instead of inline styles.",
+        "location": {
+          "file": "TestApp.tsx",
+          "line": 242,
+          "column": 11
+        },
+        "details": {
+          "cssProperties": [
+            "minWidth"
+          ]
+        }
+      },
+      {
+        "type": "technical",
+        "severity": "warning",
+        "source": "design-system-usage",
+        "component": "VStack",
+        "message": "Inline style on <VStack> bypasses the design system (minHeight, width).",
+        "suggestion": "Use Marigold layout components (Stack, Columns, Inset, Container) and theme tokens instead of inline styles.",
+        "location": {
+          "file": "TestApp.tsx",
+          "line": 380,
+          "column": 11
+        },
+        "details": {
+          "cssProperties": [
+            "minHeight",
+            "width"
+          ]
+        }
+      }
+    ],
+    "passed": [
+      "Compound component placement",
+      "Section headers",
+      "Collection item ids",
+      "Layout usage",
+      "Table usage",
+      "Component conventions",
+      "Theme variant compliance"
+    ],
+    "metadata": {
+      "renderTimeMs": 0,
+      "componentsFound": [],
+      "checksRun": [
+        "technical",
+        "spatial",
+        "a11y"
+      ],
+      "coverage": {
+        "staticValuesChecked": 18,
+        "dynamicValuesSkipped": 0,
+        "spreadPropsBypassed": 0
+      },
+      "widthUtilization": null
+    },
+    "markdown": "marigold-validate: TestApp.tsx — 48 error(s), 3 warning(s)\n\n[error/technical] <Badge>: Prop \"onPress\" does not exist on <Badge>. (TestApp.tsx:264:15)\n  → Remove the prop. Available props: children, variant, size.\n  data: {used=onPress, available=[\"children\",\"variant\",\"size\"]}\n[error/technical] <Button>: Prop \"width\" does not exist on <Button>. (TestApp.tsx:423:23)\n  → Remove the prop. Available props: variant, size, fullWidth, children, disabled, loading, render, id, dir, lang, hidden, inert, translate, onClick, onClickCapture, ….\n  data: {used=width, available=[\"variant\",\"size\",\"fullWidth\",\"children\",\"disabled\",\"loading\",\"render\",\"id\", …]}\n[error/technical] <CardBody>: <CardBody> is not a Marigold component. It is not exported from @marigold/components. (TestApp.tsx:396:17)\n  → <CardBody> does not exist in @marigold/components. Search the Marigold docs for the correct component.\n  data: {hallucinated=true, importedFrom=@marigold/components}\n[error/technical] <Dialog>: Prop \"isOpen\" does not exist on <Dialog>. (TestApp.tsx:283:9)\n  → Replace \"isOpen\" with \"open\".\n  data: {used=isOpen, available=[\"variant\",\"size\",\"closeButton\",\"children\",\"id\",\"dir\",\"lang\",\"hidden\", …]}\n[error/technical] <Dialog>: Prop \"title\" does not exist on <Dialog>. (TestApp.tsx:285:9)\n  → Remove the prop. Available props: variant, size, closeButton, children, id, dir, lang, hidden, inert, translate, onClick, onClickCapture, onAuxClick, onAuxClickCapture, onContextMenu, ….\n  data: {used=title, available=[\"variant\",\"size\",\"closeButton\",\"children\",\"id\",\"dir\",\"lang\",\"hidden\", …]}\n[error/technical] <Dialog>: <Dialog> is used without any of its sub-components. (TestApp.tsx:282:7)\n  → Use compound children: <Dialog.Title>, <Dialog.Content>, <Dialog.Actions>.\n  data: {expected=[\"Title\",\"Content\",\"Actions\"], found=[]}\n[error/technical] <GridList>: <GridList> is not a Marigold component. It is not exported from @marigold/components. (TestApp.tsx:387:9)\n  → <GridList> does not exist in @marigold/components. Search the Marigold docs for the correct component.\n  data: {hallucinated=true, importedFrom=@marigold/components}\n[error/technical] <GridListItem>: <GridListItem> is not a Marigold component. It is not exported from @marigold/components. (TestApp.tsx:394:13)\n  → <GridListItem> does not exist in @marigold/components. Search the Marigold docs for the correct component.\n  data: {hallucinated=true, importedFrom=@marigold/components}\n[error/technical] <Heading>: <Heading> is not a Marigold component. It is not exported from @marigold/components. (TestApp.tsx:220:9)\n  → <Heading> does not exist in @marigold/components. Search the Marigold docs for the correct component.\n  data: {hallucinated=true, importedFrom=@marigold/components}\n[error/technical] <Heading>: <Heading> is not a Marigold component. It is not exported from @marigold/components. (TestApp.tsx:382:11)\n  → <Heading> does not exist in @marigold/components. Search the Marigold docs for the correct component.\n  data: {hallucinated=true, importedFrom=@marigold/components}\n[error/technical] <HStack>: <HStack> is not a Marigold component. It is not exported from @marigold/components. (TestApp.tsx:225:7)\n  → <HStack> does not exist in @marigold/components. Search the Marigold docs for the correct component.\n  data: {hallucinated=true, importedFrom=@marigold/components}\n[error/technical] <HStack>: <HStack> is not a Marigold component. It is not exported from @marigold/components. (TestApp.tsx:260:9)\n  → <HStack> does not exist in @marigold/components. Search the Marigold docs for the correct component.\n  data: {hallucinated=true, importedFrom=@marigold/components}\n[error/technical] <HStack>: <HStack> is not a Marigold component. It is not exported from @marigold/components. (TestApp.tsx:353:11)\n  → <HStack> does not exist in @marigold/components. Search the Marigold docs for the correct component.\n  data: {hallucinated=true, importedFrom=@marigold/components}\n[error/technical] <HStack>: <HStack> is not a Marigold component. It is not exported from @marigold/components. (TestApp.tsx:398:21)\n  → <HStack> does not exist in @marigold/components. Search the Marigold docs for the correct component.\n  data: {hallucinated=true, importedFrom=@marigold/components}\n[error/technical] <HStack>: <HStack> is not a Marigold component. It is not exported from @marigold/components. (TestApp.tsx:437:9)\n  → <HStack> does not exist in @marigold/components. Search the Marigold docs for the correct component.\n  data: {hallucinated=true, importedFrom=@marigold/components}\n[error/technical] <Select>: <Select> is used without any of its sub-components. (TestApp.tsx:236:9)\n  → Use compound children: <Select.Option>, <Select.Section>.\n  data: {expected=[\"Option\",\"Section\"], found=[]}\n[error/technical] <SelectItem>: <SelectItem> is not a Marigold component. It is not exported from @marigold/components. (TestApp.tsx:244:11)\n  → <SelectItem> does not exist in @marigold/components. Search the Marigold docs for the correct component.\n  data: {hallucinated=true, importedFrom=@marigold/components}\n[error/technical] <SelectItem>: <SelectItem> is not a Marigold component. It is not exported from @marigold/components. (TestApp.tsx:245:11)\n  → <SelectItem> does not exist in @marigold/components. Search the Marigold docs for the correct component.\n  data: {hallucinated=true, importedFrom=@marigold/components}\n[error/technical] <SelectItem>: <SelectItem> is not a Marigold component. It is not exported from @marigold/components. (TestApp.tsx:246:11)\n  → <SelectItem> does not exist in @marigold/components. Search the Marigold docs for the correct component.\n  data: {hallucinated=true, importedFrom=@marigold/components}\n[error/technical] <SelectItem>: <SelectItem> is not a Marigold component. It is not exported from @marigold/components. (TestApp.tsx:247:11)\n  → <SelectItem> does not exist in @marigold/components. Search the Marigold docs for the correct component.\n  data: {hallucinated=true, importedFrom=@marigold/components}\n[error/technical] <TextField>: Marigold <TextField> onChange passes the value directly ((value: C) => void), not a DOM event. (TestApp.tsx:229:11)\n  → Use onChange={(value) => ...} instead of onChange={(e) => ... e.target.value}.\n  data: {handler=onChange, pattern=event-target-access}\n[error/technical] <TypeScript>: TS2305: Module '\"@marigold/components\"' has no exported member 'Box'. (TestApp.tsx:3:3)\n  → Fix the TypeScript error reported by the compiler. The exact location is included in the issue location field.\n[error/technical] <TypeScript>: TS2305: Module '\"@marigold/components\"' has no exported member 'CardBody'. (TestApp.tsx:6:3)\n  → Fix the TypeScript error reported by the compiler. The exact location is included in the issue location field.\n[error/technical] <TypeScript>: TS2305: Module '\"@marigold/components\"' has no exported member 'Heading'. (TestApp.tsx:8:3)\n  → Fix the TypeScript error reported by the compiler. The exact location is included in the issue location field.\n[error/technical] <TypeScript>: TS2724: '\"@marigold/components\"' has no exported member named 'HStack'. Did you mean 'Stack'? (TestApp.tsx:9:3)\n  → Fix the TypeScript error reported by the compiler. The exact location is included in the issue location field.\n[error/technical] <TypeScript>: TS2724: '\"@marigold/components\"' has no exported member named 'VStack'. Did you mean 'Stack'? (TestApp.tsx:10:3)\n  → Fix the TypeScript error reported by the compiler. The exact location is included in the issue location field.\n[error/technical] <TypeScript>: TS2724: '\"@marigold/components\"' has no exported member named 'SelectItem'. Did you mean 'SelectList'? (TestApp.tsx:13:3)\n  → Fix the TypeScript error reported by the compiler. The exact location is included in the issue location field.\n[error/technical] <TypeScript>: TS2305: Module '\"@marigold/components\"' has no exported member 'PopoverTrigger'. (TestApp.tsx:21:3)\n  → Fix the TypeScript error reported by the compiler. The exact location is included in the issue location field.\n[error/technical] <TypeScript>: TS2305: Module '\"@marigold/components\"' has no exported member 'PopoverContent'. (TestApp.tsx:22:3)\n  → Fix the TypeScript error reported by the compiler. The exact location is included in the issue location field.\n[error/technical] <TypeScript>: TS2305: Module '\"@marigold/components\"' has no exported member 'GridList'. (TestApp.tsx:23:3)\n  → Fix the TypeScript error reported by the compiler. The exact location is included in the issue location field.\n[error/technical] <TypeScript>: TS2305: Module '\"@marigold/components\"' has no exported member 'GridListItem'. (TestApp.tsx:24:3)\n  → Fix the TypeScript error reported by the compiler. The exact location is included in the issue location field.\n[error/technical] <TypeScript>: TS2339: Property 'target' does not exist on type 'string'. (TestApp.tsx:230:30)\n  → Fix the TypeScript error reported by the compiler. The exact location is included in the issue location field.\n[error/technical] <TypeScript>: TS2322: Type '{ placeholder: string; value: string; onChange: (e: string) => void; style: { flex: number; minWidth: string; }; }' is not assignable to type 'IntrinsicAttributes & TextFieldProps & RefAttributes<HTMLInputElement>'.\n  Property 'style' does not exist on type 'IntrinsicAttributes & TextFieldProps & RefAttributes<HTMLInputElement>'. (TestApp.tsx:233:11)\n  → Fix the TypeScript error reported by the compiler. The exact location is included in the issue location field.\n[error/technical] <TypeScript>: TS2345: Argument of type 'Key | null' is not assignable to parameter of type 'SetStateAction<string>'.\n  Type 'null' is not assignable to type 'SetStateAction<string>'. (TestApp.tsx:239:23)\n  → Fix the TypeScript error reported by the compiler. The exact location is included in the issue location field.\n[error/technical] <TypeScript>: TS2322: Type '{ children: Element[]; value: string; onChange: (value: Key | null) => void; style: { minWidth: string; }; }' is not assignable to type 'IntrinsicAttributes & SelectProps<object, \"single\"> & RefAttributes<HTMLButtonElement>'.\n  Property 'style' does not exist on type 'IntrinsicAttributes & SelectProps<object, \"single\"> & RefAttributes<HTMLButtonElement>'. (TestApp.tsx:242:11)\n  → Fix the TypeScript error reported by the compiler. The exact location is included in the issue location field.\n[error/technical] <TypeScript>: TS2322: Type '{ children: string; key: string; checked: boolean; onChange: (checked: boolean) => void; }' is not assignable to type 'IntrinsicAttributes & CheckboxProps & RefAttributes<HTMLLabelElement>'.\n  Property 'children' does not exist on type 'IntrinsicAttributes & CheckboxProps & RefAttributes<HTMLLabelElement>'. (TestApp.tsx:292:16)\n  → Fix the TypeScript error reported by the compiler. The exact location is included in the issue location field.\n[error/technical] <TypeScript>: TS2322: Type '{ children: string; key: string; checked: boolean; onChange: (checked: boolean) => void; }' is not assignable to type 'IntrinsicAttributes & CheckboxProps & RefAttributes<HTMLLabelElement>'.\n  Property 'children' does not exist on type 'IntrinsicAttributes & CheckboxProps & RefAttributes<HTMLLabelElement>'. (TestApp.tsx:326:16)\n  → Fix the TypeScript error reported by the compiler. The exact location is included in the issue location field.\n[error/technical] <TypeScript>: TS2322: Type '{ children: string; checked: boolean; onChange: Dispatch<SetStateAction<boolean>>; }' is not assignable to type 'IntrinsicAttributes & CheckboxProps & RefAttributes<HTMLLabelElement>'.\n  Property 'children' does not exist on type 'IntrinsicAttributes & CheckboxProps & RefAttributes<HTMLLabelElement>'. (TestApp.tsx:344:14)\n  → Fix the TypeScript error reported by the compiler. The exact location is included in the issue location field.\n[error/technical] <VStack>: <VStack> is not a Marigold component. It is not exported from @marigold/components. (TestApp.tsx:217:5)\n  → <VStack> does not exist in @marigold/components. Search the Marigold docs for the correct component.\n  data: {hallucinated=true, importedFrom=@marigold/components}\n[error/technical] <VStack>: <VStack> is not a Marigold component. It is not exported from @marigold/components. (TestApp.tsx:219:7)\n  → <VStack> does not exist in @marigold/components. Search the Marigold docs for the correct component.\n  data: {hallucinated=true, importedFrom=@marigold/components}\n[error/technical] <VStack>: <VStack> is not a Marigold component. It is not exported from @marigold/components. (TestApp.tsx:287:9)\n  → <VStack> does not exist in @marigold/components. Search the Marigold docs for the correct component.\n  data: {hallucinated=true, importedFrom=@marigold/components}\n[error/technical] <VStack>: <VStack> is not a Marigold component. It is not exported from @marigold/components. (TestApp.tsx:289:11)\n  → <VStack> does not exist in @marigold/components. Search the Marigold docs for the correct component.\n  data: {hallucinated=true, importedFrom=@marigold/components}\n[error/technical] <VStack>: <VStack> is not a Marigold component. It is not exported from @marigold/components. (TestApp.tsx:309:11)\n  → <VStack> does not exist in @marigold/components. Search the Marigold docs for the correct component.\n  data: {hallucinated=true, importedFrom=@marigold/components}\n[error/technical] <VStack>: <VStack> is not a Marigold component. It is not exported from @marigold/components. (TestApp.tsx:323:11)\n  → <VStack> does not exist in @marigold/components. Search the Marigold docs for the correct component.\n  data: {hallucinated=true, importedFrom=@marigold/components}\n[error/technical] <VStack>: <VStack> is not a Marigold component. It is not exported from @marigold/components. (TestApp.tsx:343:11)\n  → <VStack> does not exist in @marigold/components. Search the Marigold docs for the correct component.\n  data: {hallucinated=true, importedFrom=@marigold/components}\n[error/technical] <VStack>: <VStack> is not a Marigold component. It is not exported from @marigold/components. (TestApp.tsx:375:9)\n  → <VStack> does not exist in @marigold/components. Search the Marigold docs for the correct component.\n  data: {hallucinated=true, importedFrom=@marigold/components}\n[error/technical] <VStack>: <VStack> is not a Marigold component. It is not exported from @marigold/components. (TestApp.tsx:397:19)\n  → <VStack> does not exist in @marigold/components. Search the Marigold docs for the correct component.\n  data: {hallucinated=true, importedFrom=@marigold/components}\n[warning/technical] <Select>: Inline style on <Select> bypasses the design system (minWidth). (TestApp.tsx:242:11)\n  → Use Marigold layout components (Stack, Columns, Inset, Container) and theme tokens instead of inline styles.\n  data: {cssProperties=[\"minWidth\"]}\n[warning/technical] <TextField>: Inline style on <TextField> bypasses the design system (flex, minWidth). (TestApp.tsx:233:11)\n  → Use Marigold layout components (Stack, Columns, Inset, Container) and theme tokens instead of inline styles.\n  data: {cssProperties=[\"flex\",\"minWidth\"]}\n[warning/technical] <VStack>: Inline style on <VStack> bypasses the design system (minHeight, width). (TestApp.tsx:380:11)\n  → Use Marigold layout components (Stack, Columns, Inset, Container) and theme tokens instead of inline styles.\n  data: {cssProperties=[\"minHeight\",\"width\"]}\n[error/a11y] <Dialog>: <Dialog> has no accessible name. A closed overlay is invisible to runtime a11y checks, so it must be labeled in the source. (TestApp.tsx:282:7)\n  → Add a <Dialog.Title> child or an aria-label prop, e.g. <Dialog aria-label=\"…\"> or <Dialog.Title>…</Dialog.Title>.\n  data: {accessibleNameAttrs=[\"aria-label\",\"aria-labelledby\"], titleSubComponent=Dialog.Title}\n\npassed: Compound component placement, Section headers, Collection item ids, Layout usage, Table usage, Component conventions, Theme variant compliance\n\nchecks run: technical, spatial, a11y"
+  },
+  "componentsFound": [],
+  "renderTimeMs": 0,
+  "sourceCode": "import { useState, useMemo } from 'react';\nimport {\n  Box,\n  Button,\n  Card,\n  CardBody,\n  Checkbox,\n  Heading,\n  HStack,\n  VStack,\n  TextField,\n  Select,\n  SelectItem,\n  Slider,\n  Text,\n  Badge,\n  Inline,\n  Stack,\n  Dialog,\n  Popover,\n  PopoverTrigger,\n  PopoverContent,\n  GridList,\n  GridListItem,\n} from '@marigold/components';\n\ninterface Product {\n  id: number;\n  name: string;\n  price: number;\n  category: string;\n  sizes: string[];\n  inStock: boolean;\n  description: string;\n  status: 'new' | 'sale' | null;\n}\n\nconst PRODUCTS: Product[] = [\n  {\n    id: 1,\n    name: 'Classic T-Shirt',\n    price: 24.99,\n    category: 'T-Shirts',\n    sizes: ['XS', 'S', 'M', 'L', 'XL'],\n    inStock: true,\n    description: 'Comfortable cotton t-shirt perfect for everyday wear.',\n    status: 'new',\n  },\n  {\n    id: 2,\n    name: 'Premium Hoodie',\n    price: 54.99,\n    category: 'Hoodies',\n    sizes: ['S', 'M', 'L', 'XL'],\n    inStock: true,\n    description: 'Warm and cozy hoodie made from soft fleece material.',\n    status: null,\n  },\n  {\n    id: 3,\n    name: 'Baseball Cap',\n    price: 19.99,\n    category: 'Accessories',\n    sizes: [],\n    inStock: false,\n    description: 'Classic baseball cap in multiple colors.',\n    status: null,\n  },\n  {\n    id: 4,\n    name: 'Branded Poster',\n    price: 14.99,\n    category: 'Posters',\n    sizes: [],\n    inStock: true,\n    description: 'High-quality poster to decorate your space.',\n    status: 'sale',\n  },\n  {\n    id: 5,\n    name: 'Sticker Pack',\n    price: 9.99,\n    category: 'Stickers',\n    sizes: [],\n    inStock: true,\n    description: 'Assorted stickers featuring our brand designs.',\n    status: null,\n  },\n  {\n    id: 6,\n    name: 'Long Sleeve Tee',\n    price: 29.99,\n    category: 'T-Shirts',\n    sizes: ['XS', 'S', 'M', 'L', 'XL'],\n    inStock: false,\n    description: 'Versatile long-sleeve shirt for layering or solo wear.',\n    status: null,\n  },\n  {\n    id: 7,\n    name: 'Zip Hoodie',\n    price: 64.99,\n    category: 'Hoodies',\n    sizes: ['S', 'M', 'L', 'XL'],\n    inStock: true,\n    description: 'Full-zip hoodie with kangaroo pocket.',\n    status: 'new',\n  },\n  {\n    id: 8,\n    name: 'Tote Bag',\n    price: 34.99,\n    category: 'Accessories',\n    sizes: [],\n    inStock: true,\n    description: 'Spacious canvas tote bag for shopping or everyday use.',\n    status: null,\n  },\n];\n\nconst TestApp = () => {\n  const [searchQuery, setSearchQuery] = useState('');\n  const [sortBy, setSortBy] = useState('newest');\n  const [selectedCategories, setSelectedCategories] = useState<string[]>([]);\n  const [priceRange, setPriceRange] = useState([0, 100]);\n  const [selectedSizes, setSelectedSizes] = useState<string[]>([]);\n  const [inStockOnly, setInStockOnly] = useState(false);\n  const [filterPanelOpen, setFilterPanelOpen] = useState(false);\n  const [currentPage, setCurrentPage] = useState(1);\n\n  const CATEGORIES = ['T-Shirts', 'Hoodies', 'Accessories', 'Posters', 'Stickers'];\n  const SIZES = ['XS', 'S', 'M', 'L', 'XL'];\n  const PRODUCTS_PER_PAGE = 8;\n\n  const filteredAndSorted = useMemo(() => {\n    let result = PRODUCTS.filter((product) => {\n      const matchesSearch = product.name\n        .toLowerCase()\n        .includes(searchQuery.toLowerCase());\n      const matchesCategory =\n        selectedCategories.length === 0 ||\n        selectedCategories.includes(product.category);\n      const matchesPrice =\n        product.price >= priceRange[0] && product.price <= priceRange[1];\n      const matchesSize =\n        selectedSizes.length === 0 ||\n        selectedSizes.some((size) => product.sizes.includes(size));\n      const matchesStock = !inStockOnly || product.inStock;\n\n      return (\n        matchesSearch &&\n        matchesCategory &&\n        matchesPrice &&\n        matchesSize &&\n        matchesStock\n      );\n    });\n\n    if (sortBy === 'newest') {\n      result = [...result].reverse();\n    } else if (sortBy === 'price-low') {\n      result = [...result].sort((a, b) => a.price - b.price);\n    } else if (sortBy === 'price-high') {\n      result = [...result].sort((a, b) => b.price - a.price);\n    } else if (sortBy === 'popular') {\n      result = [...result].reverse();\n    }\n\n    return result;\n  }, [searchQuery, sortBy, selectedCategories, priceRange, selectedSizes, inStockOnly]);\n\n  const totalPages = Math.ceil(filteredAndSorted.length / PRODUCTS_PER_PAGE);\n  const paginatedProducts = filteredAndSorted.slice(\n    (currentPage - 1) * PRODUCTS_PER_PAGE,\n    currentPage * PRODUCTS_PER_PAGE\n  );\n\n  const activeFilters = [\n    ...selectedCategories.map((c) => ({ type: 'category', value: c })),\n    ...(priceRange[0] > 0 || priceRange[1] < 100\n      ? [{ type: 'price', value: `$${priceRange[0]} - $${priceRange[1]}` }]\n      : []),\n    ...selectedSizes.map((s) => ({ type: 'size', value: s })),\n    ...(inStockOnly ? [{ type: 'stock', value: 'In stock only' }] : []),\n  ];\n\n  const removeFilter = (type: string, value: string) => {\n    if (type === 'category') {\n      setSelectedCategories((prev) => prev.filter((c) => c !== value));\n    } else if (type === 'price') {\n      setPriceRange([0, 100]);\n    } else if (type === 'size') {\n      setSelectedSizes((prev) => prev.filter((s) => s !== value));\n    } else if (type === 'stock') {\n      setInStockOnly(false);\n    }\n  };\n\n  const clearAllFilters = () => {\n    setSearchQuery('');\n    setSelectedCategories([]);\n    setPriceRange([0, 100]);\n    setSelectedSizes([]);\n    setInStockOnly(false);\n    setCurrentPage(1);\n  };\n\n  const resetFilters = () => {\n    setSelectedCategories([]);\n    setPriceRange([0, 100]);\n    setSelectedSizes([]);\n    setInStockOnly(false);\n    setCurrentPage(1);\n  };\n\n  return (\n    <VStack gap=\"xl\" p=\"xl\">\n      {/* Header */}\n      <VStack gap=\"sm\" alignItems=\"flex-start\" width=\"100%\">\n        <Heading level={1}>Merchandise Store</Heading>\n        <Text>Browse our collection of branded merchandise.</Text>\n      </VStack>\n\n      {/* Toolbar */}\n      <HStack gap=\"md\" width=\"100%\">\n        <TextField\n          placeholder=\"Search products...\"\n          value={searchQuery}\n          onChange={(e) => {\n            setSearchQuery(e.target.value);\n            setCurrentPage(1);\n          }}\n          style={{ flex: 1, minWidth: '200px' }}\n        />\n\n        <Select\n          value={sortBy}\n          onChange={(value) => {\n            setSortBy(value);\n            setCurrentPage(1);\n          }}\n          style={{ minWidth: '180px' }}\n        >\n          <SelectItem value=\"newest\">Newest</SelectItem>\n          <SelectItem value=\"price-low\">Price: Low to High</SelectItem>\n          <SelectItem value=\"price-high\">Price: High to Low</SelectItem>\n          <SelectItem value=\"popular\">Most Popular</SelectItem>\n        </Select>\n\n        <Button\n          onPress={() => setFilterPanelOpen(true)}\n          variant=\"secondary\"\n        >\n          Filters\n        </Button>\n      </HStack>\n\n      {/* Applied Filters */}\n      {activeFilters.length > 0 ? (\n        <HStack gap=\"sm\" width=\"100%\" wrap=\"wrap\">\n          {activeFilters.map((filter, idx) => (\n            <Badge\n              key={idx}\n              onPress={() => removeFilter(filter.type, filter.value)}\n            >\n              {filter.value} ✕\n            </Badge>\n          ))}\n          <Button\n            onPress={clearAllFilters}\n            variant=\"secondary\"\n            size=\"sm\"\n          >\n            Clear all\n          </Button>\n        </HStack>\n      ) : (\n        <Text color=\"muted\">No filters applied</Text>\n      )}\n\n      {/* Filter Panel */}\n      <Dialog\n        isOpen={filterPanelOpen}\n        onOpenChange={setFilterPanelOpen}\n        title=\"Filters\"\n      >\n        <VStack gap=\"md\" p=\"md\">\n          {/* Category */}\n          <VStack gap=\"sm\">\n            <Text weight=\"bold\">Category</Text>\n            {CATEGORIES.map((category) => (\n              <Checkbox\n                key={category}\n                checked={selectedCategories.includes(category)}\n                onChange={(checked) => {\n                  setSelectedCategories((prev) =>\n                    checked\n                      ? [...prev, category]\n                      : prev.filter((c) => c !== category)\n                  );\n                }}\n              >\n                {category}\n              </Checkbox>\n            ))}\n          </VStack>\n\n          {/* Price Range */}\n          <VStack gap=\"sm\">\n            <Text weight=\"bold\">\n              Price range: ${priceRange[0]} - ${priceRange[1]}\n            </Text>\n            <Slider\n              minValue={0}\n              maxValue={100}\n              step={1}\n              value={priceRange}\n              onChange={(value) => setPriceRange(Array.isArray(value) ? value : [value, 100])}\n            />\n          </VStack>\n\n          {/* Size */}\n          <VStack gap=\"sm\">\n            <Text weight=\"bold\">Size</Text>\n            {SIZES.map((size) => (\n              <Checkbox\n                key={size}\n                checked={selectedSizes.includes(size)}\n                onChange={(checked) => {\n                  setSelectedSizes((prev) =>\n                    checked\n                      ? [...prev, size]\n                      : prev.filter((s) => s !== size)\n                  );\n                }}\n              >\n                {size}\n              </Checkbox>\n            ))}\n          </VStack>\n\n          {/* Availability */}\n          <VStack gap=\"sm\">\n            <Checkbox\n              checked={inStockOnly}\n              onChange={setInStockOnly}\n            >\n              In stock only\n            </Checkbox>\n          </VStack>\n\n          {/* Buttons */}\n          <HStack gap=\"md\" justifyContent=\"space-between\">\n            <Button\n              onPress={resetFilters}\n              variant=\"secondary\"\n            >\n              Reset\n            </Button>\n            <Button\n              onPress={() => {\n                setFilterPanelOpen(false);\n                setCurrentPage(1);\n              }}\n              variant=\"primary\"\n            >\n              Apply Filters\n            </Button>\n          </HStack>\n        </VStack>\n      </Dialog>\n\n      {/* Product Grid or Empty State */}\n      {paginatedProducts.length === 0 ? (\n        <VStack\n          gap=\"md\"\n          alignItems=\"center\"\n          justifyContent=\"center\"\n          p=\"xl\"\n          style={{ minHeight: '300px', width: '100%' }}\n        >\n          <Heading level={2}>No products found</Heading>\n          <Text>Try adjusting your filters or search query.</Text>\n          <Button onPress={clearAllFilters}>Clear all filters</Button>\n        </VStack>\n      ) : (\n        <GridList\n          items={paginatedProducts}\n          columns={{ mobile: 1, tablet: 2, desktop: 4 }}\n          gap=\"md\"\n          width=\"100%\"\n        >\n          {(product) => (\n            <GridListItem key={product.id}>\n              <Card>\n                <CardBody p=\"md\">\n                  <VStack gap=\"sm\">\n                    <HStack justifyContent=\"space-between\" alignItems=\"flex-start\">\n                      <Text weight=\"bold\" size=\"lg\">\n                        {product.name}\n                      </Text>\n                      {!product.inStock && (\n                        <Badge variant=\"error\">Sold Out</Badge>\n                      )}\n                      {product.status === 'new' && (\n                        <Badge variant=\"info\">New</Badge>\n                      )}\n                      {product.status === 'sale' && (\n                        <Badge variant=\"warning\">Sale</Badge>\n                      )}\n                    </HStack>\n\n                    <Text color=\"muted\">${product.price.toFixed(2)}</Text>\n\n                    <Text size=\"sm\">{product.description}</Text>\n\n                    <Button\n                      onPress={() => {\n                        console.log(`Added ${product.name} to cart`);\n                      }}\n                      disabled={!product.inStock}\n                      variant=\"primary\"\n                      width=\"100%\"\n                    >\n                      {product.inStock ? 'Add to Cart' : 'Sold Out'}\n                    </Button>\n                  </VStack>\n                </CardBody>\n              </Card>\n            </GridListItem>\n          )}\n        </GridList>\n      )}\n\n      {/* Pagination */}\n      {filteredAndSorted.length > 0 && (\n        <HStack gap=\"md\" justifyContent=\"center\" width=\"100%\">\n          <Button\n            onPress={() => setCurrentPage((prev) => Math.max(1, prev - 1))}\n            disabled={currentPage === 1}\n            variant=\"secondary\"\n          >\n            Previous\n          </Button>\n\n          <Text weight=\"bold\">\n            Page {currentPage} of {totalPages}\n          </Text>\n\n          <Button\n            onPress={() => setCurrentPage((prev) => Math.min(totalPages, prev + 1))}\n            disabled={currentPage === totalPages}\n            variant=\"secondary\"\n          >\n            Next\n          </Button>\n        </HStack>\n      )}\n    </VStack>\n  );\n};\n\nexport default TestApp;\n",
+  "assertions": {
+    "passed": [
+      {
+        "id": "a-import-marigold",
+        "description": "Imports from @marigold/components",
+        "severity": "required",
+        "passed": true,
+        "evidence": "import from \"@marigold/components\" found"
+      },
+      {
+        "id": "a-checkbox",
+        "description": "Checkbox for filter options",
+        "severity": "required",
+        "passed": true,
+        "evidence": "matched: <Checkbox> found"
+      },
+      {
+        "id": "a-slider",
+        "description": "Slider for price range",
+        "severity": "required",
+        "passed": true,
+        "evidence": "<Slider> found"
+      },
+      {
+        "id": "a-card",
+        "description": "Card for product display",
+        "severity": "required",
+        "passed": true,
+        "evidence": "<Card> found"
+      },
+      {
+        "id": "a-badge",
+        "description": "Badge for product status",
+        "severity": "required",
+        "passed": true,
+        "evidence": "<Badge> found"
+      },
+      {
+        "id": "a-button",
+        "description": "Button for add to cart",
+        "severity": "required",
+        "passed": true,
+        "evidence": "<Button> found"
+      },
+      {
+        "id": "a-select",
+        "description": "Select for sort dropdown",
+        "severity": "required",
+        "passed": true,
+        "evidence": "<Select> found"
+      },
+      {
+        "id": "a-no-onclick-on-marigold",
+        "description": "No onClick on Marigold Button",
+        "severity": "recommended",
+        "passed": true,
+        "evidence": "\"/<Button[^>]*onClick/\" correctly absent"
+      }
+    ],
+    "failed": [
+      {
+        "id": "a-search",
+        "description": "SearchField for product search",
+        "severity": "required",
+        "passed": false,
+        "evidence": "<SearchField> not found"
+      },
+      {
+        "id": "a-drawer",
+        "description": "Drawer for filter panel",
+        "severity": "required",
+        "passed": false,
+        "evidence": "<Drawer> not found"
+      },
+      {
+        "id": "a-switch",
+        "description": "Switch for availability filter",
+        "severity": "required",
+        "passed": false,
+        "evidence": "<Switch> not found"
+      },
+      {
+        "id": "a-tag-group",
+        "description": "Tag.Group for applied filters",
+        "severity": "required",
+        "passed": false,
+        "evidence": "none matched: <Tag> not found; <TagGroup> not found"
+      },
+      {
+        "id": "a-pagination",
+        "description": "Pagination component",
+        "severity": "required",
+        "passed": false,
+        "evidence": "<Pagination> not found"
+      },
+      {
+        "id": "a-tiles",
+        "description": "Tiles layout for product grid",
+        "severity": "required",
+        "passed": false,
+        "evidence": "<Tiles> not found"
+      },
+      {
+        "id": "a-empty-state",
+        "description": "EmptyState when no products match",
+        "severity": "required",
+        "passed": false,
+        "evidence": "<EmptyState> not found"
+      },
+      {
+        "id": "a-headline",
+        "description": "Headline for page title",
+        "severity": "required",
+        "passed": false,
+        "evidence": "<Headline> not found"
+      }
+    ],
+    "passRate": 0.5,
+    "requiredPassRate": 0.4667,
+    "weightedPassRate": 0.4754,
+    "total": 16
+  },
+  "validatePackageVersion": "0.0.1",
+  "playwrightVersion": null,
+  "resolvedModelId": "claude-haiku-4-5",
+  "claudeCliVersion": "2.1.185 (Claude Code)",
+  "sessionId": "b679b9f6-6550-4773-9d91-c03d63cddfaa"
+}

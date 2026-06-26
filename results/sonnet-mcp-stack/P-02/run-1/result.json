@@ -1,0 +1,363 @@
+{
+  "runId": "sonnet-mcp-stack-P-02-r1",
+  "promptId": "P-02",
+  "model": "sonnet",
+  "config": "mcp-stack",
+  "timestamp": "2026-06-22T22:55:13.062Z",
+  "quality": {
+    "overall": 90.46,
+    "categories": {
+      "A": {
+        "category": "A",
+        "label": "Design System API",
+        "score": 85.86,
+        "weight": 0.225,
+        "weightedScore": 19.32,
+        "errorCount": 0,
+        "warningCount": 1,
+        "issues": [
+          {
+            "type": "technical",
+            "severity": "warning",
+            "source": "design-system-usage",
+            "component": "img",
+            "message": "Inline style on <img> bypasses the design system (width, height, borderRadius, objectFit, flexShrink).",
+            "suggestion": "Use Marigold layout components (Stack, Columns, Inset, Container) and theme tokens instead of inline styles.",
+            "location": {
+              "file": "TestApp.tsx",
+              "line": 25,
+              "column": 15
+            },
+            "details": {
+              "cssProperties": [
+                "width",
+                "height",
+                "borderRadius",
+                "objectFit",
+                "flexShrink"
+              ]
+            }
+          }
+        ]
+      },
+      "B": {
+        "category": "B",
+        "label": "Token Compliance",
+        "score": 100,
+        "weight": 0.1,
+        "weightedScore": 10,
+        "errorCount": 0,
+        "warningCount": 0,
+        "issues": []
+      },
+      "C": {
+        "category": "C",
+        "label": "DOM / Structure",
+        "score": 100,
+        "weight": 0.225,
+        "weightedScore": 22.5,
+        "errorCount": 0,
+        "warningCount": 0,
+        "issues": []
+      },
+      "D": {
+        "category": "D",
+        "label": "Spatial & A11y",
+        "score": 71.72,
+        "weight": 0.225,
+        "weightedScore": 16.14,
+        "errorCount": 0,
+        "warningCount": 4,
+        "issues": [
+          {
+            "type": "a11y",
+            "severity": "warning",
+            "source": "aom-extractor",
+            "component": "html",
+            "message": "Document should have one main landmark (landmark-one-main)",
+            "suggestion": "Wrap your page content in `<AppLayout>` with `<AppLayout.Main>` to provide a `<main>` landmark. Import AppLayout from `@marigold/components`.",
+            "details": {
+              "ruleId": "landmark-one-main",
+              "impact": "moderate",
+              "target": [
+                "html"
+              ],
+              "html": "<html lang=\"en\" data-theme=\"rui\">",
+              "scope": "page"
+            }
+          },
+          {
+            "type": "a11y",
+            "severity": "warning",
+            "source": "aom-extractor",
+            "component": "page",
+            "message": "All page content should be contained by landmarks — 3 elements affected (region)",
+            "suggestion": "All page content must be inside a landmark region. Use `<AppLayout>` with `<AppLayout.Main>` for the main area, `<TopNavigation>` for the header (`<header>`), and `<Sidebar>` for side navigation (`<aside>`). Import from `@marigold/components`.",
+            "details": {
+              "ruleId": "region",
+              "impact": "moderate",
+              "affectedCount": 3,
+              "scope": "page"
+            }
+          },
+          {
+            "type": "a11y",
+            "severity": "warning",
+            "source": "keyboard-a11y",
+            "component": "button",
+            "message": "Interactive element <button> (button) is not reachable via Tab key.",
+            "suggestion": "Ensure the element is focusable. Marigold interactive components are focusable by default — check if a parent has tabindex=\"-1\" or focus is trapped.",
+            "details": {
+              "selector": "body:nth-child(2) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div:nth-child(7) > button:nth-child(1)",
+              "role": "button",
+              "scope": "page"
+            }
+          },
+          {
+            "type": "a11y",
+            "severity": "warning",
+            "source": "keyboard-a11y",
+            "component": "body:nth-child(2) > div:nth-child(4) > div:nth-child(1) > section:nth-child(1) > div:nth-child(2) > div:nth-child(1) > div:nth-child(2) > div:nth-child(2) > input:nth-child(1)",
+            "message": "Keyboard trap detected — focus cycles through 4 elements without reaching the rest of the page (WCAG 2.1.2).",
+            "suggestion": "Ensure focus can leave this container via Tab, or provide an Escape key handler to close it.",
+            "details": {
+              "cycleLength": 4,
+              "totalFocusable": 6,
+              "escapable": false,
+              "scope": "page"
+            }
+          }
+        ]
+      },
+      "E": {
+        "category": "E",
+        "label": "Functional Completeness",
+        "score": 100,
+        "weight": 0.225,
+        "weightedScore": 22.5,
+        "errorCount": 0,
+        "warningCount": 0,
+        "issues": []
+      }
+    },
+    "renderSuccess": true
+  },
+  "efficiency": {
+    "durationMs": 375426,
+    "costUsd": 0.8340356999999999,
+    "inputTokens": 38,
+    "outputTokens": 11453,
+    "cacheReadTokens": 1355099,
+    "cacheCreationTokens": 42466,
+    "totalTokens": 11491,
+    "numTurns": 40
+  },
+  "report": {
+    "file": "TestApp.tsx",
+    "errors": [],
+    "warnings": [
+      {
+        "type": "technical",
+        "severity": "warning",
+        "source": "design-system-usage",
+        "component": "img",
+        "message": "Inline style on <img> bypasses the design system (width, height, borderRadius, objectFit, flexShrink).",
+        "suggestion": "Use Marigold layout components (Stack, Columns, Inset, Container) and theme tokens instead of inline styles.",
+        "location": {
+          "file": "TestApp.tsx",
+          "line": 25,
+          "column": 15
+        },
+        "details": {
+          "cssProperties": [
+            "width",
+            "height",
+            "borderRadius",
+            "objectFit",
+            "flexShrink"
+          ]
+        }
+      },
+      {
+        "type": "a11y",
+        "severity": "warning",
+        "source": "aom-extractor",
+        "component": "html",
+        "message": "Document should have one main landmark (landmark-one-main)",
+        "suggestion": "Wrap your page content in `<AppLayout>` with `<AppLayout.Main>` to provide a `<main>` landmark. Import AppLayout from `@marigold/components`.",
+        "details": {
+          "ruleId": "landmark-one-main",
+          "impact": "moderate",
+          "target": [
+            "html"
+          ],
+          "html": "<html lang=\"en\" data-theme=\"rui\">",
+          "scope": "page"
+        }
+      },
+      {
+        "type": "a11y",
+        "severity": "warning",
+        "source": "aom-extractor",
+        "component": "page",
+        "message": "All page content should be contained by landmarks — 3 elements affected (region)",
+        "suggestion": "All page content must be inside a landmark region. Use `<AppLayout>` with `<AppLayout.Main>` for the main area, `<TopNavigation>` for the header (`<header>`), and `<Sidebar>` for side navigation (`<aside>`). Import from `@marigold/components`.",
+        "details": {
+          "ruleId": "region",
+          "impact": "moderate",
+          "affectedCount": 3,
+          "scope": "page"
+        }
+      },
+      {
+        "type": "a11y",
+        "severity": "warning",
+        "source": "keyboard-a11y",
+        "component": "button",
+        "message": "Interactive element <button> (button) is not reachable via Tab key.",
+        "suggestion": "Ensure the element is focusable. Marigold interactive components are focusable by default — check if a parent has tabindex=\"-1\" or focus is trapped.",
+        "details": {
+          "selector": "body:nth-child(2) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div:nth-child(7) > button:nth-child(1)",
+          "role": "button",
+          "scope": "page"
+        }
+      },
+      {
+        "type": "a11y",
+        "severity": "warning",
+        "source": "keyboard-a11y",
+        "component": "body:nth-child(2) > div:nth-child(4) > div:nth-child(1) > section:nth-child(1) > div:nth-child(2) > div:nth-child(1) > div:nth-child(2) > div:nth-child(2) > input:nth-child(1)",
+        "message": "Keyboard trap detected — focus cycles through 4 elements without reaching the rest of the page (WCAG 2.1.2).",
+        "suggestion": "Ensure focus can leave this container via Tab, or provide an Escape key handler to close it.",
+        "details": {
+          "cycleLength": 4,
+          "totalFocusable": 6,
+          "escapable": false,
+          "scope": "page"
+        }
+      }
+    ],
+    "passed": [
+      "TypeScript compilation",
+      "All Marigold props are valid",
+      "Component composition",
+      "Overlay accessible names",
+      "Compound component placement",
+      "Section headers",
+      "Collection item ids",
+      "Layout usage",
+      "Table usage",
+      "Component conventions",
+      "Theme variant compliance",
+      "No overlapping components detected",
+      "Responsive layout"
+    ],
+    "metadata": {
+      "renderTimeMs": 1705,
+      "componentsFound": [
+        "button"
+      ],
+      "checksRun": [
+        "technical",
+        "spatial",
+        "a11y"
+      ],
+      "coverage": {
+        "staticValuesChecked": 19,
+        "dynamicValuesSkipped": 10,
+        "spreadPropsBypassed": 0
+      },
+      "widthUtilization": 0.68828125
+    },
+    "markdown": "marigold-validate: TestApp.tsx — 0 error(s), 5 warning(s)\n\n[warning/technical] <img>: Inline style on <img> bypasses the design system (width, height, borderRadius, objectFit, flexShrink). (TestApp.tsx:25:15)\n  → Use Marigold layout components (Stack, Columns, Inset, Container) and theme tokens instead of inline styles.\n  data: {cssProperties=[\"width\",\"height\",\"borderRadius\",\"objectFit\",\"flexShrink\"]}\n[warning/a11y] <body:nth-child(2) > div:nth-child(4) > div:nth-child(1) > section:nth-child(1) > div:nth-child(2) > div:nth-child(1) > div:nth-child(2) > div:nth-child(2) > input:nth-child(1)>: Keyboard trap detected — focus cycles through 4 elements without reaching the rest of the page (WCAG 2.1.2).\n  → Ensure focus can leave this container via Tab, or provide an Escape key handler to close it.\n  data: {cycleLength=4, totalFocusable=6, escapable=false, scope=page}\n[warning/a11y] <button>: Interactive element <button> (button) is not reachable via Tab key.\n  → Ensure the element is focusable. Marigold interactive components are focusable by default — check if a parent has tabindex=\"-1\" or focus is trapped.\n  data: {selector=body:nth-child(2) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > ..., role=button, scope=page}\n[warning/a11y] <html>: Document should have one main landmark (landmark-one-main)\n  → Wrap your page content in `<AppLayout>` with `<AppLayout.Main>` to provide a `<main>` landmark. Import AppLayout from `@marigold/components`.\n  data: {ruleId=landmark-one-main, impact=moderate, target=[\"html\"], html=<html lang=\"en\" data-theme=\"rui\">, scope=page}\n[warning/a11y] <page>: All page content should be contained by landmarks — 3 elements affected (region)\n  → All page content must be inside a landmark region. Use `<AppLayout>` with `<AppLayout.Main>` for the main area, `<TopNavigation>` for the header (`<header>`), and `<Sidebar>` for side navigation (`<aside>`). Import from `@marigold/components`.\n  data: {ruleId=region, impact=moderate, affectedCount=3, scope=page}\n\npassed: TypeScript compilation, All Marigold props are valid, Component composition, Overlay accessible names, Compound component placement, Section headers, Collection item ids, Layout usage, Table usage, Component conventions, Theme variant compliance, No overlapping components detected, Responsive layout\n\nchecks run: technical, spatial, a11y"
+  },
+  "componentsFound": [
+    "button"
+  ],
+  "renderTimeMs": 1705,
+  "sourceCode": "import {\n  Badge,\n  Button,\n  Card,\n  Center,\n  Dialog,\n  Divider,\n  Headline,\n  Inline,\n  Stack,\n  Text,\n  TextField,\n} from '@marigold/components';\n\nconst UserProfileCard = () => {\n  return (\n    <Center maxWidth=\"small\" space={8}>\n      <Card>\n        <Stack space=\"regular\">\n          {/* Avatar + Name + Status */}\n          <Inline space=\"regular\" alignY=\"center\">\n            <img\n              src=\"https://i.pravatar.cc/80?img=47\"\n              alt=\"Jane Doe\"\n              style={{\n                width: 80,\n                height: 80,\n                borderRadius: '50%',\n                objectFit: 'cover',\n                flexShrink: 0,\n              }}\n            />\n            <Stack space={1}>\n              <Headline size=\"level-3\">Jane Doe</Headline>\n              <Badge variant=\"success\">Active</Badge>\n            </Stack>\n          </Inline>\n\n          <Divider />\n\n          {/* Details */}\n          <Stack space={2}>\n            <Inline space={2}>\n              <Text weight=\"bold\">Role:</Text>\n              <Text>Senior Developer</Text>\n            </Inline>\n            <Inline space={2}>\n              <Text weight=\"bold\">Department:</Text>\n              <Text>Engineering</Text>\n            </Inline>\n            <Inline space={2}>\n              <Text weight=\"bold\">Email:</Text>\n              <Text>jane.doe@example.com</Text>\n            </Inline>\n            <Inline space={2}>\n              <Text weight=\"bold\">Location:</Text>\n              <Text>Freiburg, Germany</Text>\n            </Inline>\n          </Stack>\n\n          <Divider />\n\n          {/* Bio */}\n          <Text as=\"p\">\n            Jane is a passionate full-stack engineer with over eight years of experience\n            building scalable web applications. She champions clean code, mentors junior\n            developers, and leads the platform reliability initiative across the engineering\n            organization.\n          </Text>\n\n          <Divider />\n\n          {/* Actions */}\n          <Inline space={3}>\n            <Dialog.Trigger>\n              <Button variant=\"primary\">Send Message</Button>\n              <Dialog size=\"small\">\n                <Dialog.Title>Send Message</Dialog.Title>\n                <Dialog.Content>\n                  <Stack space={3}>\n                    <Text>Compose a message for Jane Doe.</Text>\n                    <TextField label=\"Subject\" />\n                    <TextField label=\"Message\" />\n                  </Stack>\n                </Dialog.Content>\n                <Dialog.Actions>\n                  <Button variant=\"secondary\" slot=\"close\">\n                    Cancel\n                  </Button>\n                  <Button variant=\"primary\">Send</Button>\n                </Dialog.Actions>\n              </Dialog>\n            </Dialog.Trigger>\n\n            <Dialog.Trigger>\n              <Button variant=\"secondary\">Edit Profile</Button>\n              <Dialog size=\"small\">\n                <Dialog.Title>Edit Profile</Dialog.Title>\n                <Dialog.Content>\n                  <Stack space={3}>\n                    <TextField label=\"Name\" defaultValue=\"Jane Doe\" />\n                    <TextField label=\"Role\" defaultValue=\"Senior Developer\" />\n                    <TextField\n                      label=\"Email\"\n                      defaultValue=\"jane.doe@example.com\"\n                      type=\"email\"\n                    />\n                    <TextField label=\"Location\" defaultValue=\"Freiburg, Germany\" />\n                  </Stack>\n                </Dialog.Content>\n                <Dialog.Actions>\n                  <Button variant=\"secondary\" slot=\"close\">\n                    Cancel\n                  </Button>\n                  <Button variant=\"primary\">Save</Button>\n                </Dialog.Actions>\n              </Dialog>\n            </Dialog.Trigger>\n          </Inline>\n        </Stack>\n      </Card>\n    </Center>\n  );\n};\n\nexport default UserProfileCard;\n",
+  "assertions": {
+    "passed": [
+      {
+        "id": "a-import-marigold",
+        "description": "Imports from @marigold/components",
+        "severity": "required",
+        "passed": true,
+        "evidence": "import from \"@marigold/components\" found"
+      },
+      {
+        "id": "a-card",
+        "description": "Card component as container",
+        "severity": "required",
+        "passed": true,
+        "evidence": "<Card> found"
+      },
+      {
+        "id": "a-image",
+        "description": "Includes a profile image (img tag or image URL)",
+        "severity": "recommended",
+        "passed": true,
+        "evidence": "matched: pattern \"/<img/\" found; pattern \"/placeholder.*image|avatar|profile.*photo/i\" found"
+      },
+      {
+        "id": "a-headline",
+        "description": "Headline for user name",
+        "severity": "required",
+        "passed": true,
+        "evidence": "<Headline> found"
+      },
+      {
+        "id": "a-badge",
+        "description": "Badge for status indicator",
+        "severity": "required",
+        "passed": true,
+        "evidence": "<Badge> found"
+      },
+      {
+        "id": "a-text",
+        "description": "Text component for details",
+        "severity": "required",
+        "passed": true,
+        "evidence": "<Text> found"
+      },
+      {
+        "id": "a-button",
+        "description": "Button component for actions",
+        "severity": "required",
+        "passed": true,
+        "evidence": "<Button> found"
+      },
+      {
+        "id": "a-layout",
+        "description": "Uses layout primitives (Stack, Columns, or Inline)",
+        "severity": "required",
+        "passed": true,
+        "evidence": "matched: <Stack> found; <Inline> found"
+      },
+      {
+        "id": "a-no-onclick-on-marigold",
+        "description": "No onClick on Marigold Button components",
+        "severity": "recommended",
+        "passed": true,
+        "evidence": "\"/<Button[^>]*onClick/\" correctly absent"
+      },
+      {
+        "id": "a-user-details",
+        "description": "Shows user details (role, department, email)",
+        "severity": "recommended",
+        "passed": true,
+        "evidence": "pattern \"/role|department|email|location/i\" found"
+      }
+    ],
+    "failed": [],
+    "passRate": 1,
+    "requiredPassRate": 1,
+    "weightedPassRate": 1,
+    "total": 10
+  },
+  "validatePackageVersion": "0.0.1",
+  "playwrightVersion": null,
+  "resolvedModelId": "claude-sonnet-4-6",
+  "claudeCliVersion": "2.1.185 (Claude Code)",
+  "sessionId": "3dc98da7-b5c3-4bad-8373-6d9bf065678c"
+}

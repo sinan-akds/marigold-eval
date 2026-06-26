@@ -1,0 +1,415 @@
+{
+  "runId": "opus-bare-P-03-r1",
+  "promptId": "P-03",
+  "model": "opus",
+  "config": "bare",
+  "timestamp": "2026-06-25T20:15:40.365Z",
+  "quality": {
+    "overall": 42.05,
+    "categories": {
+      "A": {
+        "category": "A",
+        "label": "Design System API",
+        "score": 71.72,
+        "weight": 0.225,
+        "weightedScore": 16.14,
+        "errorCount": 2,
+        "warningCount": 0,
+        "issues": [
+          {
+            "type": "technical",
+            "severity": "error",
+            "source": "design-system-usage",
+            "component": "Message",
+            "message": "<Message> is not a Marigold component. It is not exported from @marigold/components.",
+            "suggestion": "<Message> does not exist in @marigold/components. Search the Marigold docs for the correct component.",
+            "location": {
+              "file": "TestApp.tsx",
+              "line": 69,
+              "column": 13
+            },
+            "details": {
+              "hallucinated": true,
+              "importedFrom": "@marigold/components"
+            }
+          },
+          {
+            "type": "technical",
+            "severity": "error",
+            "source": "design-system-usage",
+            "component": "Column",
+            "message": "<Column> is not a Marigold component. It is not exported from @marigold/components.",
+            "suggestion": "Use <Table.Column> — compound sub-components use dot notation.",
+            "location": {
+              "file": "TestApp.tsx",
+              "line": 110,
+              "column": 15
+            },
+            "details": {
+              "hallucinated": true,
+              "importedFrom": "@marigold/components"
+            }
+          }
+        ]
+      },
+      "B": {
+        "category": "B",
+        "label": "Token Compliance",
+        "score": 0,
+        "weight": 0.1,
+        "weightedScore": 0,
+        "errorCount": 0,
+        "warningCount": 0,
+        "issues": []
+      },
+      "C": {
+        "category": "C",
+        "label": "DOM / Structure",
+        "score": 30,
+        "weight": 0.225,
+        "weightedScore": 6.75,
+        "errorCount": 4,
+        "warningCount": 0,
+        "issues": [
+          {
+            "type": "technical",
+            "severity": "error",
+            "source": "compiler",
+            "component": "TypeScript",
+            "message": "TS2724: '\"@marigold/components\"' has no exported member named 'Column'. Did you mean 'Columns'?",
+            "suggestion": "Fix the TypeScript error reported by the compiler. The exact location is included in the issue location field.",
+            "location": {
+              "file": "TestApp.tsx",
+              "line": 5,
+              "column": 3
+            }
+          },
+          {
+            "type": "technical",
+            "severity": "error",
+            "source": "compiler",
+            "component": "TypeScript",
+            "message": "TS2305: Module '\"@marigold/components\"' has no exported member 'Message'.",
+            "suggestion": "Fix the TypeScript error reported by the compiler. The exact location is included in the issue location field.",
+            "location": {
+              "file": "TestApp.tsx",
+              "line": 13,
+              "column": 3
+            }
+          },
+          {
+            "type": "technical",
+            "severity": "error",
+            "source": "compiler",
+            "component": "TypeScript",
+            "message": "TS2741: Property 'columns' is missing in type '{ children: Element[]; space: 6; collapseAt: string; }' but required in type 'ColumnsProps'.",
+            "suggestion": "Fix the TypeScript error reported by the compiler. The exact location is included in the issue location field.",
+            "location": {
+              "file": "TestApp.tsx",
+              "line": 108,
+              "column": 12
+            }
+          },
+          {
+            "type": "technical",
+            "severity": "error",
+            "source": "composition-validator",
+            "component": "Breadcrumbs",
+            "message": "<Breadcrumbs> is used without any of its sub-components.",
+            "suggestion": "Use compound children: <Breadcrumbs.Item>.",
+            "location": {
+              "file": "TestApp.tsx",
+              "line": 41,
+              "column": 9
+            },
+            "details": {
+              "expected": [
+                "Item"
+              ],
+              "found": []
+            }
+          }
+        ]
+      },
+      "D": {
+        "category": "D",
+        "label": "Spatial & A11y",
+        "score": 0,
+        "weight": 0.225,
+        "weightedScore": 0,
+        "errorCount": 0,
+        "warningCount": 0,
+        "issues": []
+      },
+      "E": {
+        "category": "E",
+        "label": "Functional Completeness",
+        "score": 85.19,
+        "weight": 0.225,
+        "weightedScore": 19.17,
+        "errorCount": 0,
+        "warningCount": 0,
+        "issues": []
+      }
+    },
+    "renderSuccess": false
+  },
+  "efficiency": {
+    "durationMs": 129733,
+    "costUsd": 0.4476715,
+    "inputTokens": 734,
+    "outputTokens": 10012,
+    "cacheReadTokens": 113881,
+    "cacheCreationTokens": 13581,
+    "totalTokens": 10746,
+    "numTurns": 7
+  },
+  "report": {
+    "file": "TestApp.tsx",
+    "errors": [
+      {
+        "type": "technical",
+        "severity": "error",
+        "source": "compiler",
+        "component": "TypeScript",
+        "message": "TS2724: '\"@marigold/components\"' has no exported member named 'Column'. Did you mean 'Columns'?",
+        "suggestion": "Fix the TypeScript error reported by the compiler. The exact location is included in the issue location field.",
+        "location": {
+          "file": "TestApp.tsx",
+          "line": 5,
+          "column": 3
+        }
+      },
+      {
+        "type": "technical",
+        "severity": "error",
+        "source": "compiler",
+        "component": "TypeScript",
+        "message": "TS2305: Module '\"@marigold/components\"' has no exported member 'Message'.",
+        "suggestion": "Fix the TypeScript error reported by the compiler. The exact location is included in the issue location field.",
+        "location": {
+          "file": "TestApp.tsx",
+          "line": 13,
+          "column": 3
+        }
+      },
+      {
+        "type": "technical",
+        "severity": "error",
+        "source": "compiler",
+        "component": "TypeScript",
+        "message": "TS2741: Property 'columns' is missing in type '{ children: Element[]; space: 6; collapseAt: string; }' but required in type 'ColumnsProps'.",
+        "suggestion": "Fix the TypeScript error reported by the compiler. The exact location is included in the issue location field.",
+        "location": {
+          "file": "TestApp.tsx",
+          "line": 108,
+          "column": 12
+        }
+      },
+      {
+        "type": "technical",
+        "severity": "error",
+        "source": "composition-validator",
+        "component": "Breadcrumbs",
+        "message": "<Breadcrumbs> is used without any of its sub-components.",
+        "suggestion": "Use compound children: <Breadcrumbs.Item>.",
+        "location": {
+          "file": "TestApp.tsx",
+          "line": 41,
+          "column": 9
+        },
+        "details": {
+          "expected": [
+            "Item"
+          ],
+          "found": []
+        }
+      },
+      {
+        "type": "technical",
+        "severity": "error",
+        "source": "design-system-usage",
+        "component": "Message",
+        "message": "<Message> is not a Marigold component. It is not exported from @marigold/components.",
+        "suggestion": "<Message> does not exist in @marigold/components. Search the Marigold docs for the correct component.",
+        "location": {
+          "file": "TestApp.tsx",
+          "line": 69,
+          "column": 13
+        },
+        "details": {
+          "hallucinated": true,
+          "importedFrom": "@marigold/components"
+        }
+      },
+      {
+        "type": "technical",
+        "severity": "error",
+        "source": "design-system-usage",
+        "component": "Column",
+        "message": "<Column> is not a Marigold component. It is not exported from @marigold/components.",
+        "suggestion": "Use <Table.Column> — compound sub-components use dot notation.",
+        "location": {
+          "file": "TestApp.tsx",
+          "line": 110,
+          "column": 15
+        },
+        "details": {
+          "hallucinated": true,
+          "importedFrom": "@marigold/components"
+        }
+      }
+    ],
+    "warnings": [],
+    "passed": [
+      "All Marigold props are valid",
+      "Overlay accessible names",
+      "Compound component placement",
+      "Section headers",
+      "Collection item ids",
+      "Layout usage",
+      "Table usage",
+      "Component conventions",
+      "Theme variant compliance"
+    ],
+    "metadata": {
+      "renderTimeMs": 0,
+      "componentsFound": [],
+      "checksRun": [
+        "technical",
+        "spatial",
+        "a11y"
+      ],
+      "coverage": {
+        "staticValuesChecked": 2,
+        "dynamicValuesSkipped": 12,
+        "spreadPropsBypassed": 0
+      },
+      "widthUtilization": null
+    },
+    "markdown": "marigold-validate: TestApp.tsx — 6 error(s), 0 warning(s)\n\n[error/technical] <Breadcrumbs>: <Breadcrumbs> is used without any of its sub-components. (TestApp.tsx:41:9)\n  → Use compound children: <Breadcrumbs.Item>.\n  data: {expected=[\"Item\"], found=[]}\n[error/technical] <Column>: <Column> is not a Marigold component. It is not exported from @marigold/components. (TestApp.tsx:110:15)\n  → Use <Table.Column> — compound sub-components use dot notation.\n  data: {hallucinated=true, importedFrom=@marigold/components}\n[error/technical] <Message>: <Message> is not a Marigold component. It is not exported from @marigold/components. (TestApp.tsx:69:13)\n  → <Message> does not exist in @marigold/components. Search the Marigold docs for the correct component.\n  data: {hallucinated=true, importedFrom=@marigold/components}\n[error/technical] <TypeScript>: TS2724: '\"@marigold/components\"' has no exported member named 'Column'. Did you mean 'Columns'? (TestApp.tsx:5:3)\n  → Fix the TypeScript error reported by the compiler. The exact location is included in the issue location field.\n[error/technical] <TypeScript>: TS2305: Module '\"@marigold/components\"' has no exported member 'Message'. (TestApp.tsx:13:3)\n  → Fix the TypeScript error reported by the compiler. The exact location is included in the issue location field.\n[error/technical] <TypeScript>: TS2741: Property 'columns' is missing in type '{ children: Element[]; space: 6; collapseAt: string; }' but required in type 'ColumnsProps'. (TestApp.tsx:108:12)\n  → Fix the TypeScript error reported by the compiler. The exact location is included in the issue location field.\n\npassed: All Marigold props are valid, Overlay accessible names, Compound component placement, Section headers, Collection item ids, Layout usage, Table usage, Component conventions, Theme variant compliance\n\nchecks run: technical, spatial, a11y"
+  },
+  "componentsFound": [],
+  "renderTimeMs": 0,
+  "sourceCode": "import {\n  Badge,\n  Breadcrumbs,\n  Card,\n  Column,\n  Columns,\n  Container,\n  Divider,\n  Headline,\n  Inline,\n  Link,\n  List,\n  Message,\n  Stack,\n  Text,\n} from '@marigold/components';\n\nconst relatedArticles = [\n  {\n    title: 'Designing Accessible Color Systems',\n    description:\n      'How to build a token-based color palette that meets contrast requirements out of the box.',\n  },\n  {\n    title: 'Keyboard Navigation in Practice',\n    description:\n      'A walkthrough of focus management patterns for menus, dialogs, and complex widgets.',\n  },\n  {\n    title: 'Testing for Accessibility',\n    description:\n      'Tools and workflows for catching accessibility regressions before they ship.',\n  },\n];\n\nconst TestApp = () => {\n  return (\n    <Container>\n      <Stack space={10}>\n        {/* Breadcrumb trail */}\n        <Breadcrumbs>\n          <Link href=\"#\">Blog</Link>\n          <Link href=\"#\">Frontend</Link>\n          <Link href=\"#\">Accessibility</Link>\n        </Breadcrumbs>\n\n        {/* Article */}\n        <Stack space={8}>\n          {/* Header */}\n          <Stack space={4}>\n            <Headline level={1}>Building Accessible Design Systems</Headline>\n            <Inline space={3} alignY=\"center\">\n              <Text>Sarah Chen</Text>\n              <Badge>Staff Engineer</Badge>\n              <Text>Published May 15, 2026</Text>\n            </Inline>\n            <Divider />\n          </Stack>\n\n          {/* Body */}\n          <Stack space={6}>\n            <Text>\n              Accessibility is not a feature you add at the end of a project; it\n              is a foundation you build on from the very first commit. A design\n              system that bakes in accessible defaults lets every team ship\n              inclusive experiences without reinventing the basics each time.\n            </Text>\n\n            <Message variant=\"info\" messageTitle=\"Part of a series\">\n              This article is part of our accessibility series. Check out the\n              full series for more.\n            </Message>\n\n            <Text>\n              The most effective systems treat accessibility as a shared\n              contract between design and engineering. When tokens, components,\n              and documentation all reinforce the same expectations, accessible\n              outcomes become the path of least resistance for everyone.\n            </Text>\n\n            <List>\n              <List.Item>Semantic HTML as the foundation</List.Item>\n              <List.Item>ARIA attributes for complex widgets</List.Item>\n              <List.Item>Keyboard navigation patterns</List.Item>\n              <List.Item>Color contrast and visual indicators</List.Item>\n            </List>\n\n            <Text>\n              Start small, measure often, and let your component library carry\n              the weight. Each accessible primitive you add compounds across\n              every product that depends on it.\n            </Text>\n          </Stack>\n\n          {/* Tags */}\n          <Divider />\n          <Inline space={2} alignY=\"center\">\n            <Badge>Accessibility</Badge>\n            <Badge>Design Systems</Badge>\n            <Badge>React</Badge>\n            <Badge>WCAG</Badge>\n          </Inline>\n        </Stack>\n\n        {/* Related articles */}\n        <Stack space={5}>\n          <Headline level={2}>Related Articles</Headline>\n          <Columns space={6} collapseAt=\"45rem\">\n            {relatedArticles.map((article) => (\n              <Column key={article.title}>\n                <Card>\n                  <Stack space={3}>\n                    <Headline level={3}>{article.title}</Headline>\n                    <Text>{article.description}</Text>\n                    <Link href=\"#\">Read more →</Link>\n                  </Stack>\n                </Card>\n              </Column>\n            ))}\n          </Columns>\n        </Stack>\n      </Stack>\n    </Container>\n  );\n};\n\nexport default TestApp;\n",
+  "assertions": {
+    "passed": [
+      {
+        "id": "a-import-marigold",
+        "description": "Imports from @marigold/components",
+        "severity": "required",
+        "passed": true,
+        "evidence": "import from \"@marigold/components\" found"
+      },
+      {
+        "id": "a-container",
+        "description": "Container for reading width",
+        "severity": "required",
+        "passed": true,
+        "evidence": "<Container> found"
+      },
+      {
+        "id": "a-headline",
+        "description": "Headline for article title",
+        "severity": "required",
+        "passed": true,
+        "evidence": "<Headline> found"
+      },
+      {
+        "id": "a-text",
+        "description": "Text component for paragraphs",
+        "severity": "required",
+        "passed": true,
+        "evidence": "<Text> found"
+      },
+      {
+        "id": "a-breadcrumbs",
+        "description": "Breadcrumbs navigation",
+        "severity": "required",
+        "passed": true,
+        "evidence": "<Breadcrumbs> found"
+      },
+      {
+        "id": "a-divider",
+        "description": "Divider between sections",
+        "severity": "required",
+        "passed": true,
+        "evidence": "<Divider> found"
+      },
+      {
+        "id": "a-list",
+        "description": "List component for article items",
+        "severity": "required",
+        "passed": true,
+        "evidence": "<List> found"
+      },
+      {
+        "id": "a-badge",
+        "description": "Badge for author role",
+        "severity": "required",
+        "passed": true,
+        "evidence": "<Badge> found"
+      },
+      {
+        "id": "a-link",
+        "description": "Link component (not anchor tag)",
+        "severity": "required",
+        "passed": true,
+        "evidence": "<Link> found"
+      },
+      {
+        "id": "a-card",
+        "description": "Card for related articles",
+        "severity": "required",
+        "passed": true,
+        "evidence": "<Card> found"
+      },
+      {
+        "id": "a-layout",
+        "description": "Uses layout primitives",
+        "severity": "required",
+        "passed": true,
+        "evidence": "matched: <Stack> found; <Columns> found; <Inline> found"
+      },
+      {
+        "id": "a-columns-responsive",
+        "description": "Columns for related articles (responsive)",
+        "severity": "recommended",
+        "passed": true,
+        "evidence": "<Columns> found"
+      },
+      {
+        "id": "a-no-raw-html",
+        "description": "No raw anchor/div/span elements",
+        "severity": "recommended",
+        "passed": true,
+        "evidence": "\"/^(a|div|span|p|h[1-6]|ul|ol|li|button|input|select|textarea|table)$/\" correctly absent"
+      }
+    ],
+    "failed": [
+      {
+        "id": "a-tag",
+        "description": "Tag component for article tags",
+        "severity": "required",
+        "passed": false,
+        "evidence": "none matched: <Tag> not found; <TagGroup> not found"
+      },
+      {
+        "id": "a-section-message",
+        "description": "SectionMessage for callout",
+        "severity": "required",
+        "passed": false,
+        "evidence": "<SectionMessage> not found"
+      }
+    ],
+    "passRate": 0.8667,
+    "requiredPassRate": 0.8462,
+    "weightedPassRate": 0.8519,
+    "total": 15
+  },
+  "validatePackageVersion": "0.0.1",
+  "playwrightVersion": null,
+  "resolvedModelId": "claude-opus-4-8",
+  "claudeCliVersion": "2.1.185 (Claude Code)",
+  "sessionId": "aac385de-4d51-421a-8ebc-760fc05d3c84"
+}

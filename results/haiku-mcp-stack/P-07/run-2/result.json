@@ -1,0 +1,531 @@
+{
+  "runId": "haiku-mcp-stack-P-07-r2",
+  "promptId": "P-07",
+  "model": "haiku",
+  "config": "mcp-stack",
+  "timestamp": "2026-06-22T07:14:40.187Z",
+  "quality": {
+    "overall": 46.88,
+    "categories": {
+      "A": {
+        "category": "A",
+        "label": "Design System API",
+        "score": 80,
+        "weight": 0.225,
+        "weightedScore": 18,
+        "errorCount": 0,
+        "warningCount": 2,
+        "issues": [
+          {
+            "type": "technical",
+            "severity": "warning",
+            "source": "design-system-usage",
+            "component": "div",
+            "message": "Raw <div> used instead of a Marigold component.",
+            "suggestion": "Raw <div> used instead of a Marigold layout component. Search the Marigold docs for layout alternatives.",
+            "location": {
+              "file": "TestApp.tsx",
+              "line": 573,
+              "column": 9
+            },
+            "details": {
+              "htmlElement": "div"
+            }
+          },
+          {
+            "type": "technical",
+            "severity": "warning",
+            "source": "design-system-usage",
+            "component": "div",
+            "message": "Inline style on <div> bypasses the design system (display).",
+            "suggestion": "Use Marigold layout components (Stack, Columns, Inset, Container) and theme tokens instead of inline styles.",
+            "location": {
+              "file": "TestApp.tsx",
+              "line": 573,
+              "column": 14
+            },
+            "details": {
+              "cssProperties": [
+                "display"
+              ]
+            }
+          }
+        ]
+      },
+      "B": {
+        "category": "B",
+        "label": "Token Compliance",
+        "score": 0,
+        "weight": 0.1,
+        "weightedScore": 0,
+        "errorCount": 0,
+        "warningCount": 0,
+        "issues": []
+      },
+      "C": {
+        "category": "C",
+        "label": "DOM / Structure",
+        "score": 34.52,
+        "weight": 0.225,
+        "weightedScore": 7.77,
+        "errorCount": 1,
+        "warningCount": 5,
+        "issues": [
+          {
+            "type": "technical",
+            "severity": "error",
+            "source": "compiler",
+            "component": "TypeScript",
+            "message": "TS2322: Type 'Dispatch<SetStateAction<string | number>>' is not assignable to type '(key: Key | null) => void'.\n  Types of parameters 'value' and 'key' are incompatible.\n    Type 'Key | null' is not assignable to type 'SetStateAction<string | number>'.\n      Type 'null' is not assignable to type 'SetStateAction<string | number>'.",
+            "suggestion": "Fix the TypeScript error reported by the compiler. The exact location is included in the issue location field.",
+            "location": {
+              "file": "TestApp.tsx",
+              "line": 332,
+              "column": 15
+            }
+          },
+          {
+            "type": "technical",
+            "severity": "warning",
+            "source": "layout-usage",
+            "component": "Inline",
+            "message": "<Inline> wraps a single child. A flow layout earns its place only with two or more children; with one child it adds a wrapper that does nothing.",
+            "suggestion": "Render the child directly instead of wrapping it in <Inline>. For single-child spacing use Inset, Center, Breakout or Aspect.",
+            "location": {
+              "file": "TestApp.tsx",
+              "line": 244,
+              "column": 7
+            },
+            "details": {
+              "layout": "Inline",
+              "childCount": 1
+            }
+          },
+          {
+            "type": "technical",
+            "severity": "warning",
+            "source": "layout-usage",
+            "component": "Stack",
+            "message": "<Stack> wraps a single child. A flow layout earns its place only with two or more children; with one child it adds a wrapper that does nothing.",
+            "suggestion": "Render the child directly instead of wrapping it in <Stack>. For single-child spacing use Inset, Center, Breakout or Aspect.",
+            "location": {
+              "file": "TestApp.tsx",
+              "line": 311,
+              "column": 9
+            },
+            "details": {
+              "layout": "Stack",
+              "childCount": 1
+            }
+          },
+          {
+            "type": "technical",
+            "severity": "warning",
+            "source": "layout-usage",
+            "component": "Stack",
+            "message": "<Stack> wraps a single child. A flow layout earns its place only with two or more children; with one child it adds a wrapper that does nothing.",
+            "suggestion": "Render the child directly instead of wrapping it in <Stack>. For single-child spacing use Inset, Center, Breakout or Aspect.",
+            "location": {
+              "file": "TestApp.tsx",
+              "line": 359,
+              "column": 11
+            },
+            "details": {
+              "layout": "Stack",
+              "childCount": 1
+            }
+          },
+          {
+            "type": "technical",
+            "severity": "warning",
+            "source": "layout-usage",
+            "component": "Stack",
+            "message": "<Stack> wraps a single child. A flow layout earns its place only with two or more children; with one child it adds a wrapper that does nothing.",
+            "suggestion": "Render the child directly instead of wrapping it in <Stack>. For single-child spacing use Inset, Center, Breakout or Aspect.",
+            "location": {
+              "file": "TestApp.tsx",
+              "line": 430,
+              "column": 11
+            },
+            "details": {
+              "layout": "Stack",
+              "childCount": 1
+            }
+          },
+          {
+            "type": "technical",
+            "severity": "warning",
+            "source": "layout-usage",
+            "component": "Stack",
+            "message": "<Stack> wraps a single child. A flow layout earns its place only with two or more children; with one child it adds a wrapper that does nothing.",
+            "suggestion": "Render the child directly instead of wrapping it in <Stack>. For single-child spacing use Inset, Center, Breakout or Aspect.",
+            "location": {
+              "file": "TestApp.tsx",
+              "line": 501,
+              "column": 11
+            },
+            "details": {
+              "layout": "Stack",
+              "childCount": 1
+            }
+          }
+        ]
+      },
+      "D": {
+        "category": "D",
+        "label": "Spatial & A11y",
+        "score": 0,
+        "weight": 0.225,
+        "weightedScore": 0,
+        "errorCount": 0,
+        "warningCount": 0,
+        "issues": []
+      },
+      "E": {
+        "category": "E",
+        "label": "Functional Completeness",
+        "score": 93.85,
+        "weight": 0.225,
+        "weightedScore": 21.12,
+        "errorCount": 0,
+        "warningCount": 0,
+        "issues": []
+      }
+    },
+    "renderSuccess": false
+  },
+  "efficiency": {
+    "durationMs": 235830,
+    "costUsd": 0.8687037000000002,
+    "inputTokens": 104,
+    "outputTokens": 17592,
+    "cacheReadTokens": 3702817,
+    "cacheCreationTokens": 200928,
+    "totalTokens": 17696,
+    "numTurns": 67
+  },
+  "report": {
+    "file": "TestApp.tsx",
+    "errors": [
+      {
+        "type": "technical",
+        "severity": "error",
+        "source": "compiler",
+        "component": "TypeScript",
+        "message": "TS2322: Type 'Dispatch<SetStateAction<string | number>>' is not assignable to type '(key: Key | null) => void'.\n  Types of parameters 'value' and 'key' are incompatible.\n    Type 'Key | null' is not assignable to type 'SetStateAction<string | number>'.\n      Type 'null' is not assignable to type 'SetStateAction<string | number>'.",
+        "suggestion": "Fix the TypeScript error reported by the compiler. The exact location is included in the issue location field.",
+        "location": {
+          "file": "TestApp.tsx",
+          "line": 332,
+          "column": 15
+        }
+      }
+    ],
+    "warnings": [
+      {
+        "type": "technical",
+        "severity": "warning",
+        "source": "design-system-usage",
+        "component": "div",
+        "message": "Raw <div> used instead of a Marigold component.",
+        "suggestion": "Raw <div> used instead of a Marigold layout component. Search the Marigold docs for layout alternatives.",
+        "location": {
+          "file": "TestApp.tsx",
+          "line": 573,
+          "column": 9
+        },
+        "details": {
+          "htmlElement": "div"
+        }
+      },
+      {
+        "type": "technical",
+        "severity": "warning",
+        "source": "design-system-usage",
+        "component": "div",
+        "message": "Inline style on <div> bypasses the design system (display).",
+        "suggestion": "Use Marigold layout components (Stack, Columns, Inset, Container) and theme tokens instead of inline styles.",
+        "location": {
+          "file": "TestApp.tsx",
+          "line": 573,
+          "column": 14
+        },
+        "details": {
+          "cssProperties": [
+            "display"
+          ]
+        }
+      },
+      {
+        "type": "technical",
+        "severity": "warning",
+        "source": "layout-usage",
+        "component": "Inline",
+        "message": "<Inline> wraps a single child. A flow layout earns its place only with two or more children; with one child it adds a wrapper that does nothing.",
+        "suggestion": "Render the child directly instead of wrapping it in <Inline>. For single-child spacing use Inset, Center, Breakout or Aspect.",
+        "location": {
+          "file": "TestApp.tsx",
+          "line": 244,
+          "column": 7
+        },
+        "details": {
+          "layout": "Inline",
+          "childCount": 1
+        }
+      },
+      {
+        "type": "technical",
+        "severity": "warning",
+        "source": "layout-usage",
+        "component": "Stack",
+        "message": "<Stack> wraps a single child. A flow layout earns its place only with two or more children; with one child it adds a wrapper that does nothing.",
+        "suggestion": "Render the child directly instead of wrapping it in <Stack>. For single-child spacing use Inset, Center, Breakout or Aspect.",
+        "location": {
+          "file": "TestApp.tsx",
+          "line": 311,
+          "column": 9
+        },
+        "details": {
+          "layout": "Stack",
+          "childCount": 1
+        }
+      },
+      {
+        "type": "technical",
+        "severity": "warning",
+        "source": "layout-usage",
+        "component": "Stack",
+        "message": "<Stack> wraps a single child. A flow layout earns its place only with two or more children; with one child it adds a wrapper that does nothing.",
+        "suggestion": "Render the child directly instead of wrapping it in <Stack>. For single-child spacing use Inset, Center, Breakout or Aspect.",
+        "location": {
+          "file": "TestApp.tsx",
+          "line": 359,
+          "column": 11
+        },
+        "details": {
+          "layout": "Stack",
+          "childCount": 1
+        }
+      },
+      {
+        "type": "technical",
+        "severity": "warning",
+        "source": "layout-usage",
+        "component": "Stack",
+        "message": "<Stack> wraps a single child. A flow layout earns its place only with two or more children; with one child it adds a wrapper that does nothing.",
+        "suggestion": "Render the child directly instead of wrapping it in <Stack>. For single-child spacing use Inset, Center, Breakout or Aspect.",
+        "location": {
+          "file": "TestApp.tsx",
+          "line": 430,
+          "column": 11
+        },
+        "details": {
+          "layout": "Stack",
+          "childCount": 1
+        }
+      },
+      {
+        "type": "technical",
+        "severity": "warning",
+        "source": "layout-usage",
+        "component": "Stack",
+        "message": "<Stack> wraps a single child. A flow layout earns its place only with two or more children; with one child it adds a wrapper that does nothing.",
+        "suggestion": "Render the child directly instead of wrapping it in <Stack>. For single-child spacing use Inset, Center, Breakout or Aspect.",
+        "location": {
+          "file": "TestApp.tsx",
+          "line": 501,
+          "column": 11
+        },
+        "details": {
+          "layout": "Stack",
+          "childCount": 1
+        }
+      }
+    ],
+    "passed": [
+      "All Marigold props are valid",
+      "Component composition",
+      "Overlay accessible names",
+      "Compound component placement",
+      "Section headers",
+      "Collection item ids",
+      "Table usage",
+      "Component conventions",
+      "Theme variant compliance"
+    ],
+    "metadata": {
+      "renderTimeMs": 0,
+      "componentsFound": [],
+      "checksRun": [
+        "technical",
+        "spatial",
+        "a11y"
+      ],
+      "coverage": {
+        "staticValuesChecked": 22,
+        "dynamicValuesSkipped": 22,
+        "spreadPropsBypassed": 0
+      },
+      "widthUtilization": null
+    },
+    "markdown": "marigold-validate: TestApp.tsx — 1 error(s), 7 warning(s)\n\n[error/technical] <TypeScript>: TS2322: Type 'Dispatch<SetStateAction<string | number>>' is not assignable to type '(key: Key | null) => void'.\n  Types of parameters 'value' and 'key' are incompatible.\n    Type 'Key | null' is not assignable to type 'SetStateAction<string | number>'.\n      Type 'null' is not assignable to type 'SetStateAction<string | number>'. (TestApp.tsx:332:15)\n  → Fix the TypeScript error reported by the compiler. The exact location is included in the issue location field.\n[warning/technical] <div>: Raw <div> used instead of a Marigold component. (TestApp.tsx:573:9)\n  → Raw <div> used instead of a Marigold layout component. Search the Marigold docs for layout alternatives.\n  data: {htmlElement=div}\n[warning/technical] <div>: Inline style on <div> bypasses the design system (display). (TestApp.tsx:573:14)\n  → Use Marigold layout components (Stack, Columns, Inset, Container) and theme tokens instead of inline styles.\n  data: {cssProperties=[\"display\"]}\n[warning/technical] <Inline>: <Inline> wraps a single child. A flow layout earns its place only with two or more children; with one child it adds a wrapper that does nothing. (TestApp.tsx:244:7)\n  → Render the child directly instead of wrapping it in <Inline>. For single-child spacing use Inset, Center, Breakout or Aspect.\n  data: {layout=Inline, childCount=1}\n[warning/technical] <Stack>: <Stack> wraps a single child. A flow layout earns its place only with two or more children; with one child it adds a wrapper that does nothing. (TestApp.tsx:311:9)\n  → Render the child directly instead of wrapping it in <Stack>. For single-child spacing use Inset, Center, Breakout or Aspect.\n  data: {layout=Stack, childCount=1}\n[warning/technical] <Stack>: <Stack> wraps a single child. A flow layout earns its place only with two or more children; with one child it adds a wrapper that does nothing. (TestApp.tsx:359:11)\n  → Render the child directly instead of wrapping it in <Stack>. For single-child spacing use Inset, Center, Breakout or Aspect.\n  data: {layout=Stack, childCount=1}\n[warning/technical] <Stack>: <Stack> wraps a single child. A flow layout earns its place only with two or more children; with one child it adds a wrapper that does nothing. (TestApp.tsx:430:11)\n  → Render the child directly instead of wrapping it in <Stack>. For single-child spacing use Inset, Center, Breakout or Aspect.\n  data: {layout=Stack, childCount=1}\n[warning/technical] <Stack>: <Stack> wraps a single child. A flow layout earns its place only with two or more children; with one child it adds a wrapper that does nothing. (TestApp.tsx:501:11)\n  → Render the child directly instead of wrapping it in <Stack>. For single-child spacing use Inset, Center, Breakout or Aspect.\n  data: {layout=Stack, childCount=1}\n\npassed: All Marigold props are valid, Component composition, Overlay accessible names, Compound component placement, Section headers, Collection item ids, Table usage, Component conventions, Theme variant compliance\n\nchecks run: technical, spatial, a11y"
+  },
+  "componentsFound": [],
+  "renderTimeMs": 0,
+  "sourceCode": "import { useState } from 'react';\nimport type { DateValue } from '@internationalized/date';\nimport { parseDate } from '@internationalized/date';\nimport {\n  Button,\n  Stack,\n  Inline,\n  Tabs,\n  Table,\n  TextField,\n  Autocomplete,\n  Select,\n  Dialog,\n  Form,\n  TextArea,\n  DatePicker,\n  Drawer,\n  Badge,\n  SectionMessage,\n  ActionMenu,\n  Text,\n  Headline,\n  Accordion,\n  DateFormat,\n} from '@marigold/components';\n\ninterface Booking {\n  id: string;\n  customer: string;\n  email: string;\n  venue: string;\n  date: DateValue;\n  timeSlot: string;\n  status: 'Confirmed' | 'Pending' | 'Cancelled';\n  notes: string;\n}\n\nconst VENUES = [\n  'Main Hall',\n  'Conference Room A',\n  'Conference Room B',\n  'Rooftop Terrace',\n  'Workshop Studio',\n];\n\nconst TIME_SLOTS = [\n  '09:00-12:00',\n  '12:00-15:00',\n  '15:00-18:00',\n  '18:00-21:00',\n];\n\nconst INITIAL_BOOKINGS: Booking[] = [\n  {\n    id: 'BK001',\n    customer: 'John Smith',\n    email: 'john@example.com',\n    venue: 'Main Hall',\n    date: parseDate('2026-06-25'),\n    timeSlot: '09:00-12:00',\n    status: 'Confirmed',\n    notes: 'Corporate event with 150 attendees',\n  },\n  {\n    id: 'BK002',\n    customer: 'Sarah Johnson',\n    email: 'sarah@example.com',\n    venue: 'Conference Room A',\n    date: parseDate('2026-06-22'),\n    timeSlot: '12:00-15:00',\n    status: 'Pending',\n    notes: 'Team meeting preparation',\n  },\n  {\n    id: 'BK003',\n    customer: 'Mike Chen',\n    email: 'mike@example.com',\n    venue: 'Rooftop Terrace',\n    date: parseDate('2026-06-28'),\n    timeSlot: '18:00-21:00',\n    status: 'Confirmed',\n    notes: 'Evening gala dinner',\n  },\n  {\n    id: 'BK004',\n    customer: 'Emma Davis',\n    email: 'emma@example.com',\n    venue: 'Workshop Studio',\n    date: parseDate('2026-06-22'),\n    timeSlot: '09:00-12:00',\n    status: 'Cancelled',\n    notes: 'Training session (rescheduled)',\n  },\n  {\n    id: 'BK005',\n    customer: 'Robert Wilson',\n    email: 'robert@example.com',\n    venue: 'Conference Room B',\n    date: parseDate('2026-06-26'),\n    timeSlot: '09:00-12:00',\n    status: 'Confirmed',\n    notes: 'Client presentation',\n  },\n  {\n    id: 'BK006',\n    customer: 'Lisa Anderson',\n    email: 'lisa@example.com',\n    venue: 'Main Hall',\n    date: parseDate('2026-06-30'),\n    timeSlot: '15:00-18:00',\n    status: 'Pending',\n    notes: 'Product launch event',\n  },\n];\n\nconst getStatusVariant = (\n  status: 'Confirmed' | 'Pending' | 'Cancelled'\n): 'success' | 'warning' | 'default' => {\n  switch (status) {\n    case 'Confirmed':\n      return 'success';\n    case 'Pending':\n      return 'warning';\n    case 'Cancelled':\n      return 'default';\n  }\n};\n\nconst isToday = (date: DateValue): boolean => {\n  const today = parseDate('2026-06-22');\n  return (\n    date.day === today.day &&\n    date.month === today.month &&\n    date.year === today.year\n  );\n};\n\nconst isThisWeek = (date: DateValue): boolean => {\n  const today = parseDate('2026-06-22');\n  const startOfWeek = parseDate('2026-06-22');\n  const endOfWeek = parseDate('2026-06-28');\n\n  const dateNum =\n    date.year * 10000 + date.month * 100 + date.day;\n  const startNum =\n    startOfWeek.year * 10000 + startOfWeek.month * 100 + startOfWeek.day;\n  const endNum =\n    endOfWeek.year * 10000 + endOfWeek.month * 100 + endOfWeek.day;\n\n  return dateNum >= startNum && dateNum <= endNum;\n};\n\nconst TestApp = () => {\n  const [bookings, setBookings] = useState<Booking[]>(INITIAL_BOOKINGS);\n  const [selectedTab, setSelectedTab] = useState<string | number>('all');\n  const [filterDate, setFilterDate] = useState<DateValue | null>(null);\n  const [filterVenue, setFilterVenue] = useState<string>('');\n  const [filterStatus, setFilterStatus] = useState<string | number>('all');\n  const [selectedBooking, setSelectedBooking] = useState<Booking | null>(null);\n  const [isDetailsPanelOpen, setIsDetailsPanelOpen] = useState(false);\n\n  const getFilteredBookings = (): Booking[] => {\n    let filtered = bookings;\n\n    if (selectedTab === 'today') {\n      filtered = filtered.filter(b => isToday(b.date));\n    } else if (selectedTab === 'week') {\n      filtered = filtered.filter(b => isThisWeek(b.date));\n    }\n\n    if (filterDate) {\n      filtered = filtered.filter(\n        b =>\n          b.date.day === filterDate.day &&\n          b.date.month === filterDate.month &&\n          b.date.year === filterDate.year\n      );\n    }\n\n    if (filterVenue) {\n      filtered = filtered.filter(b =>\n        b.venue.toLowerCase().includes(filterVenue.toLowerCase())\n      );\n    }\n\n    if (filterStatus !== 'all') {\n      filtered = filtered.filter(b => b.status === filterStatus);\n    }\n\n    return filtered;\n  };\n\n  const clearFilters = () => {\n    setFilterDate(null);\n    setFilterVenue('');\n    setFilterStatus('all');\n  };\n\n  const handleCreateBooking = (e: React.FormEvent<HTMLFormElement>) => {\n    e.preventDefault();\n    const formData = new FormData(e.currentTarget);\n\n    const newBooking: Booking = {\n      id: `BK${String(bookings.length + 1).padStart(3, '0')}`,\n      customer: formData.get('customerName') as string,\n      email: formData.get('customerEmail') as string,\n      venue: formData.get('venue') as string,\n      date: parseDate(formData.get('date') as string),\n      timeSlot: formData.get('timeSlot') as string,\n      status: 'Pending',\n      notes: formData.get('notes') as string,\n    };\n\n    setBookings([...bookings, newBooking]);\n  };\n\n  const handleCancelBooking = (id: string) => {\n    setBookings(\n      bookings.map(b =>\n        b.id === id ? { ...b, status: 'Cancelled' } : b\n      )\n    );\n  };\n\n  const handleDeleteBooking = (id: string) => {\n    setBookings(bookings.filter(b => b.id !== id));\n  };\n\n  const filteredBookings = getFilteredBookings();\n  const today = parseDate('2026-06-22');\n  const mainHallTodayCount = bookings.filter(\n    b =>\n      b.venue === 'Main Hall' &&\n      b.date.day === today.day &&\n      b.date.month === today.month &&\n      b.date.year === today.year &&\n      b.status !== 'Cancelled'\n  ).length;\n\n  const capacityWarning = mainHallTodayCount >= 2;\n\n  return (\n    <Stack space={5}>\n      <Inline space={2}>\n        <Headline level=\"1\">Booking Management</Headline>\n      </Inline>\n\n      {capacityWarning && (\n        <SectionMessage variant=\"warning\">\n          <SectionMessage.Title>Capacity Alert</SectionMessage.Title>\n          <SectionMessage.Content>\n            Main Hall has only {4 - mainHallTodayCount} slots remaining for today.\n          </SectionMessage.Content>\n        </SectionMessage>\n      )}\n\n      <Dialog.Trigger>\n        <Button variant=\"primary\">New Booking</Button>\n        <Dialog size=\"small\">\n          <Dialog.Title>Create New Booking</Dialog.Title>\n          <Dialog.Content>\n            <Form onSubmit={handleCreateBooking}>\n              <Stack space={3}>\n                <TextField\n                  label=\"Customer Name\"\n                  name=\"customerName\"\n                  required\n                />\n                <TextField\n                  label=\"Customer Email\"\n                  name=\"customerEmail\"\n                  type=\"email\"\n                  required\n                />\n                <Select label=\"Venue\" name=\"venue\" required>\n                  {VENUES.map(venue => (\n                    <Select.Option key={venue} id={venue}>\n                      {venue}\n                    </Select.Option>\n                  ))}\n                </Select>\n                <DatePicker label=\"Date\" name=\"date\" required />\n                <Select label=\"Time Slot\" name=\"timeSlot\" required>\n                  {TIME_SLOTS.map(slot => (\n                    <Select.Option key={slot} id={slot}>\n                      {slot}\n                    </Select.Option>\n                  ))}\n                </Select>\n                <TextArea\n                  label=\"Notes\"\n                  name=\"notes\"\n                  rows={4}\n                />\n                <Inline space={2}>\n                  <Button variant=\"primary\" type=\"submit\">\n                    Create Booking\n                  </Button>\n                  <Button variant=\"secondary\" slot=\"close\">\n                    Cancel\n                  </Button>\n                </Inline>\n              </Stack>\n            </Form>\n          </Dialog.Content>\n        </Dialog>\n      </Dialog.Trigger>\n\n      <Stack space={3}>\n        <Headline level=\"3\">Filters</Headline>\n        <Stack space={2}>\n          <Inline space={2}>\n            <DatePicker\n              label=\"Date\"\n              value={filterDate}\n              onChange={setFilterDate}\n            />\n            <Autocomplete\n              label=\"Venue\"\n              value={filterVenue}\n              onChange={setFilterVenue}\n            >\n              {VENUES.map(venue => (\n                <Autocomplete.Option key={venue} id={venue}>\n                  {venue}\n                </Autocomplete.Option>\n              ))}\n            </Autocomplete>\n            <Select\n              label=\"Status\"\n              value={filterStatus}\n              onSelectionChange={setFilterStatus}\n            >\n              <Select.Option id=\"all\">All</Select.Option>\n              <Select.Option id=\"Confirmed\">Confirmed</Select.Option>\n              <Select.Option id=\"Pending\">Pending</Select.Option>\n              <Select.Option id=\"Cancelled\">Cancelled</Select.Option>\n            </Select>\n            <Button\n              variant=\"secondary\"\n              onPress={clearFilters}\n            >\n              Clear Filters\n            </Button>\n          </Inline>\n        </Stack>\n      </Stack>\n\n      <Tabs\n        aria-label=\"Booking views\"\n      >\n        <Tabs.List aria-label=\"Views\">\n          <Tabs.Item id=\"all\">All Bookings</Tabs.Item>\n          <Tabs.Item id=\"today\">Today</Tabs.Item>\n          <Tabs.Item id=\"week\">This Week</Tabs.Item>\n        </Tabs.List>\n\n        <Tabs.TabPanel id=\"all\">\n          <Stack space={3}>\n            <Table aria-label=\"All bookings\">\n              <Table.Header>\n                <Table.Column rowHeader>Booking ID</Table.Column>\n                <Table.Column>Customer</Table.Column>\n                <Table.Column>Venue</Table.Column>\n                <Table.Column>Date</Table.Column>\n                <Table.Column>Time Slot</Table.Column>\n                <Table.Column>Status</Table.Column>\n                <Table.Column>Actions</Table.Column>\n              </Table.Header>\n              <Table.Body items={filteredBookings}>\n                {booking => (\n                  <Table.Row key={booking.id}>\n                    <Table.Cell>{booking.id}</Table.Cell>\n                    <Table.Cell>{booking.customer}</Table.Cell>\n                    <Table.Cell>{booking.venue}</Table.Cell>\n                    <Table.Cell>\n                      <DateFormat\n                        value={new Date(\n                          booking.date.year,\n                          booking.date.month - 1,\n                          booking.date.day\n                        )}\n                      />\n                    </Table.Cell>\n                    <Table.Cell>{booking.timeSlot}</Table.Cell>\n                    <Table.Cell>\n                      <Badge variant={getStatusVariant(booking.status)}>\n                        {booking.status}\n                      </Badge>\n                    </Table.Cell>\n                    <Table.Cell>\n                      <ActionMenu size=\"small\">\n                        <ActionMenu.Item\n                          id=\"view\"\n                          onAction={() => {\n                            setSelectedBooking(booking);\n                            setIsDetailsPanelOpen(true);\n                          }}\n                        >\n                          View Details\n                        </ActionMenu.Item>\n                        <ActionMenu.Item\n                          id=\"edit\"\n                          onAction={() => {\n                            setSelectedBooking(booking);\n                            setIsDetailsPanelOpen(true);\n                          }}\n                        >\n                          Edit\n                        </ActionMenu.Item>\n                        <ActionMenu.Item\n                          id=\"cancel\"\n                          variant=\"destructive\"\n                          onAction={() =>\n                            handleCancelBooking(booking.id)\n                          }\n                        >\n                          Cancel Booking\n                        </ActionMenu.Item>\n                      </ActionMenu>\n                    </Table.Cell>\n                  </Table.Row>\n                )}\n              </Table.Body>\n            </Table>\n          </Stack>\n        </Tabs.TabPanel>\n\n        <Tabs.TabPanel id=\"today\">\n          <Stack space={3}>\n            <Table aria-label=\"Today's bookings\">\n              <Table.Header>\n                <Table.Column rowHeader>Booking ID</Table.Column>\n                <Table.Column>Customer</Table.Column>\n                <Table.Column>Venue</Table.Column>\n                <Table.Column>Date</Table.Column>\n                <Table.Column>Time Slot</Table.Column>\n                <Table.Column>Status</Table.Column>\n                <Table.Column>Actions</Table.Column>\n              </Table.Header>\n              <Table.Body items={filteredBookings}>\n                {booking => (\n                  <Table.Row key={booking.id}>\n                    <Table.Cell>{booking.id}</Table.Cell>\n                    <Table.Cell>{booking.customer}</Table.Cell>\n                    <Table.Cell>{booking.venue}</Table.Cell>\n                    <Table.Cell>\n                      <DateFormat\n                        value={new Date(\n                          booking.date.year,\n                          booking.date.month - 1,\n                          booking.date.day\n                        )}\n                      />\n                    </Table.Cell>\n                    <Table.Cell>{booking.timeSlot}</Table.Cell>\n                    <Table.Cell>\n                      <Badge variant={getStatusVariant(booking.status)}>\n                        {booking.status}\n                      </Badge>\n                    </Table.Cell>\n                    <Table.Cell>\n                      <ActionMenu size=\"small\">\n                        <ActionMenu.Item\n                          id=\"view\"\n                          onAction={() => {\n                            setSelectedBooking(booking);\n                            setIsDetailsPanelOpen(true);\n                          }}\n                        >\n                          View Details\n                        </ActionMenu.Item>\n                        <ActionMenu.Item\n                          id=\"edit\"\n                          onAction={() => {\n                            setSelectedBooking(booking);\n                            setIsDetailsPanelOpen(true);\n                          }}\n                        >\n                          Edit\n                        </ActionMenu.Item>\n                        <ActionMenu.Item\n                          id=\"cancel\"\n                          variant=\"destructive\"\n                          onAction={() =>\n                            handleCancelBooking(booking.id)\n                          }\n                        >\n                          Cancel Booking\n                        </ActionMenu.Item>\n                      </ActionMenu>\n                    </Table.Cell>\n                  </Table.Row>\n                )}\n              </Table.Body>\n            </Table>\n          </Stack>\n        </Tabs.TabPanel>\n\n        <Tabs.TabPanel id=\"week\">\n          <Stack space={3}>\n            <Table aria-label=\"This week's bookings\">\n              <Table.Header>\n                <Table.Column rowHeader>Booking ID</Table.Column>\n                <Table.Column>Customer</Table.Column>\n                <Table.Column>Venue</Table.Column>\n                <Table.Column>Date</Table.Column>\n                <Table.Column>Time Slot</Table.Column>\n                <Table.Column>Status</Table.Column>\n                <Table.Column>Actions</Table.Column>\n              </Table.Header>\n              <Table.Body items={filteredBookings}>\n                {booking => (\n                  <Table.Row key={booking.id}>\n                    <Table.Cell>{booking.id}</Table.Cell>\n                    <Table.Cell>{booking.customer}</Table.Cell>\n                    <Table.Cell>{booking.venue}</Table.Cell>\n                    <Table.Cell>\n                      <DateFormat\n                        value={new Date(\n                          booking.date.year,\n                          booking.date.month - 1,\n                          booking.date.day\n                        )}\n                      />\n                    </Table.Cell>\n                    <Table.Cell>{booking.timeSlot}</Table.Cell>\n                    <Table.Cell>\n                      <Badge variant={getStatusVariant(booking.status)}>\n                        {booking.status}\n                      </Badge>\n                    </Table.Cell>\n                    <Table.Cell>\n                      <ActionMenu size=\"small\">\n                        <ActionMenu.Item\n                          id=\"view\"\n                          onAction={() => {\n                            setSelectedBooking(booking);\n                            setIsDetailsPanelOpen(true);\n                          }}\n                        >\n                          View Details\n                        </ActionMenu.Item>\n                        <ActionMenu.Item\n                          id=\"edit\"\n                          onAction={() => {\n                            setSelectedBooking(booking);\n                            setIsDetailsPanelOpen(true);\n                          }}\n                        >\n                          Edit\n                        </ActionMenu.Item>\n                        <ActionMenu.Item\n                          id=\"cancel\"\n                          variant=\"destructive\"\n                          onAction={() =>\n                            handleCancelBooking(booking.id)\n                          }\n                        >\n                          Cancel Booking\n                        </ActionMenu.Item>\n                      </ActionMenu>\n                    </Table.Cell>\n                  </Table.Row>\n                )}\n              </Table.Body>\n            </Table>\n          </Stack>\n        </Tabs.TabPanel>\n      </Tabs>\n\n      <Drawer.Trigger>\n        <div style={{ display: 'none' }} />\n        {selectedBooking && (\n          <Drawer closeButton>\n            <Drawer.Title>Booking Details</Drawer.Title>\n            <Drawer.Content>\n              <Stack space={4}>\n                <Stack space={2}>\n                  <Text weight=\"bold\">Booking ID: {selectedBooking.id}</Text>\n                  <Badge variant={getStatusVariant(selectedBooking.status)}>\n                    {selectedBooking.status}\n                  </Badge>\n                </Stack>\n\n                <Stack space={2}>\n                  <Headline level=\"3\">Customer Information</Headline>\n                  <Text>Name: {selectedBooking.customer}</Text>\n                  <Text>Email: {selectedBooking.email}</Text>\n                </Stack>\n\n                <Stack space={2}>\n                  <Headline level=\"3\">Booking Details</Headline>\n                  <Text>Venue: {selectedBooking.venue}</Text>\n                  <Text>\n                    Date: <DateFormat\n                      value={new Date(\n                        selectedBooking.date.year,\n                        selectedBooking.date.month - 1,\n                        selectedBooking.date.day\n                      )}\n                    />\n                  </Text>\n                  <Text>Time Slot: {selectedBooking.timeSlot}</Text>\n                </Stack>\n\n                <Stack space={2}>\n                  <Headline level=\"3\">Notes</Headline>\n                  <Text>{selectedBooking.notes || 'No notes'}</Text>\n                </Stack>\n\n                <Accordion>\n                  <Accordion.Item id=\"payment\">\n                    <Accordion.Header>Payment History</Accordion.Header>\n                    <Accordion.Content>\n                      <Stack space={2}>\n                        <Text>Invoice Date: 2026-06-20</Text>\n                        <Text>Amount: $2,500.00</Text>\n                        <Text>Status: Paid</Text>\n                      </Stack>\n                    </Accordion.Content>\n                  </Accordion.Item>\n\n                  <Accordion.Item id=\"communication\">\n                    <Accordion.Header>Communication Log</Accordion.Header>\n                    <Accordion.Content>\n                      <Stack space={2}>\n                        <Text>2026-06-22: Booking confirmation email sent</Text>\n                        <Text>2026-06-20: Inquiry from customer received</Text>\n                        <Text>2026-06-19: Availability confirmed</Text>\n                      </Stack>\n                    </Accordion.Content>\n                  </Accordion.Item>\n                </Accordion>\n\n                <Inline space={2}>\n                  <Button variant=\"secondary\" onPress={() => setIsDetailsPanelOpen(false)}>\n                    Close\n                  </Button>\n                  <Button\n                    variant=\"destructive\"\n                    onPress={() => {\n                      handleDeleteBooking(selectedBooking.id);\n                      setIsDetailsPanelOpen(false);\n                    }}\n                  >\n                    Delete Booking\n                  </Button>\n                </Inline>\n              </Stack>\n            </Drawer.Content>\n          </Drawer>\n        )}\n      </Drawer.Trigger>\n    </Stack>\n  );\n};\n\nexport default TestApp;\n",
+  "assertions": {
+    "passed": [
+      {
+        "id": "a-import-marigold",
+        "description": "Imports from @marigold/components",
+        "severity": "required",
+        "passed": true,
+        "evidence": "import from \"@marigold/components\" found"
+      },
+      {
+        "id": "a-table",
+        "description": "Table component for bookings",
+        "severity": "required",
+        "passed": true,
+        "evidence": "<Table> found"
+      },
+      {
+        "id": "a-table-header",
+        "description": "Table.Header sub-component",
+        "severity": "required",
+        "passed": true,
+        "evidence": "<Table.Header> found"
+      },
+      {
+        "id": "a-table-body",
+        "description": "Table.Body sub-component",
+        "severity": "required",
+        "passed": true,
+        "evidence": "<Table.Body> found"
+      },
+      {
+        "id": "a-date-picker",
+        "description": "DatePicker for date filtering",
+        "severity": "required",
+        "passed": true,
+        "evidence": "<DatePicker> found"
+      },
+      {
+        "id": "a-combobox",
+        "description": "ComboBox or SearchField for venue search",
+        "severity": "required",
+        "passed": true,
+        "evidence": "matched: <Autocomplete> found"
+      },
+      {
+        "id": "a-dialog",
+        "description": "Dialog for create booking form",
+        "severity": "required",
+        "passed": true,
+        "evidence": "<Dialog> found"
+      },
+      {
+        "id": "a-tabs",
+        "description": "Tabs for booking views",
+        "severity": "required",
+        "passed": true,
+        "evidence": "<Tabs> found"
+      },
+      {
+        "id": "a-badge",
+        "description": "Badge for booking status",
+        "severity": "required",
+        "passed": true,
+        "evidence": "<Badge> found"
+      },
+      {
+        "id": "a-button",
+        "description": "Button component",
+        "severity": "required",
+        "passed": true,
+        "evidence": "<Button> found"
+      },
+      {
+        "id": "a-select",
+        "description": "Select for status filter / form dropdowns",
+        "severity": "required",
+        "passed": true,
+        "evidence": "<Select> found"
+      },
+      {
+        "id": "a-text-field",
+        "description": "TextField in booking form",
+        "severity": "required",
+        "passed": true,
+        "evidence": "<TextField> found"
+      },
+      {
+        "id": "a-drawer",
+        "description": "Drawer for booking detail view",
+        "severity": "recommended",
+        "passed": true,
+        "evidence": "<Drawer> found"
+      },
+      {
+        "id": "a-accordion",
+        "description": "Accordion for detail sections",
+        "severity": "recommended",
+        "passed": true,
+        "evidence": "<Accordion> found"
+      },
+      {
+        "id": "a-section-message",
+        "description": "SectionMessage for capacity alerts",
+        "severity": "required",
+        "passed": true,
+        "evidence": "<SectionMessage> found"
+      },
+      {
+        "id": "a-headline",
+        "description": "Headline for page title",
+        "severity": "recommended",
+        "passed": true,
+        "evidence": "<Headline> found"
+      },
+      {
+        "id": "a-no-onclick-on-marigold",
+        "description": "No onClick on Marigold Button components",
+        "severity": "recommended",
+        "passed": true,
+        "evidence": "\"/<Button[^>]*onClick/\" correctly absent"
+      },
+      {
+        "id": "a-form",
+        "description": "Form component in create dialog",
+        "severity": "required",
+        "passed": true,
+        "evidence": "<Form> found"
+      },
+      {
+        "id": "a-textarea",
+        "description": "TextArea for booking notes",
+        "severity": "recommended",
+        "passed": true,
+        "evidence": "<TextArea> found"
+      }
+    ],
+    "failed": [
+      {
+        "id": "a-menu",
+        "description": "Menu for row actions",
+        "severity": "required",
+        "passed": false,
+        "evidence": "<Menu> not found"
+      }
+    ],
+    "passRate": 0.95,
+    "requiredPassRate": 0.9333,
+    "weightedPassRate": 0.9385,
+    "total": 20
+  },
+  "validatePackageVersion": "0.0.1",
+  "playwrightVersion": null,
+  "resolvedModelId": "claude-haiku-4-5",
+  "claudeCliVersion": "2.1.185 (Claude Code)",
+  "sessionId": "133d200c-1a04-42fe-9384-283399f7c680"
+}

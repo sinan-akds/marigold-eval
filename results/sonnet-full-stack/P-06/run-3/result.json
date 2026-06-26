@@ -1,0 +1,303 @@
+{
+  "runId": "sonnet-full-stack-P-06-r3",
+  "promptId": "P-06",
+  "model": "sonnet",
+  "config": "full-stack",
+  "timestamp": "2026-06-25T11:47:25.837Z",
+  "quality": {
+    "overall": 95.5,
+    "categories": {
+      "A": {
+        "category": "A",
+        "label": "Design System API",
+        "score": 100,
+        "weight": 0.225,
+        "weightedScore": 22.5,
+        "errorCount": 0,
+        "warningCount": 0,
+        "issues": []
+      },
+      "B": {
+        "category": "B",
+        "label": "Token Compliance",
+        "score": 100,
+        "weight": 0.1,
+        "weightedScore": 10,
+        "errorCount": 0,
+        "warningCount": 0,
+        "issues": []
+      },
+      "C": {
+        "category": "C",
+        "label": "DOM / Structure",
+        "score": 100,
+        "weight": 0.225,
+        "weightedScore": 22.5,
+        "errorCount": 0,
+        "warningCount": 0,
+        "issues": []
+      },
+      "D": {
+        "category": "D",
+        "label": "Spatial & A11y",
+        "score": 80,
+        "weight": 0.225,
+        "weightedScore": 18,
+        "errorCount": 0,
+        "warningCount": 2,
+        "issues": [
+          {
+            "type": "a11y",
+            "severity": "warning",
+            "source": "keyboard-a11y",
+            "component": "input",
+            "message": "Interactive element <input> (input) is not reachable via Tab key.",
+            "suggestion": "Ensure the element is focusable. Marigold interactive components are focusable by default — check if a parent has tabindex=\"-1\" or focus is trapped.",
+            "details": {
+              "selector": "body:nth-child(2) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > main:nth-child(1) > div:nth-child(1) > div:nth-child(2) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > input:nth-child(1)",
+              "role": "input",
+              "scope": "page"
+            }
+          },
+          {
+            "type": "a11y",
+            "severity": "warning",
+            "source": "keyboard-a11y",
+            "component": "button",
+            "message": "Interactive element <button> (button) is not reachable via Tab key.",
+            "suggestion": "Ensure the element is focusable. Marigold interactive components are focusable by default — check if a parent has tabindex=\"-1\" or focus is trapped.",
+            "details": {
+              "selector": "body:nth-child(2) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > main:nth-child(1) > div:nth-child(1) > div:nth-child(2) > div:nth-child(2) > div:nth-child(2) > button:nth-child(1)",
+              "role": "button",
+              "scope": "page"
+            }
+          }
+        ]
+      },
+      "E": {
+        "category": "E",
+        "label": "Functional Completeness",
+        "score": 100,
+        "weight": 0.225,
+        "weightedScore": 22.5,
+        "errorCount": 0,
+        "warningCount": 0,
+        "issues": []
+      }
+    },
+    "renderSuccess": true
+  },
+  "efficiency": {
+    "durationMs": 1664182,
+    "costUsd": 3.210339,
+    "inputTokens": 56,
+    "outputTokens": 88662,
+    "cacheReadTokens": 4125450,
+    "cacheCreationTokens": 104527,
+    "totalTokens": 88718,
+    "numTurns": 58
+  },
+  "report": {
+    "file": "TestApp.tsx",
+    "errors": [],
+    "warnings": [
+      {
+        "type": "a11y",
+        "severity": "warning",
+        "source": "keyboard-a11y",
+        "component": "input",
+        "message": "Interactive element <input> (input) is not reachable via Tab key.",
+        "suggestion": "Ensure the element is focusable. Marigold interactive components are focusable by default — check if a parent has tabindex=\"-1\" or focus is trapped.",
+        "details": {
+          "selector": "body:nth-child(2) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > main:nth-child(1) > div:nth-child(1) > div:nth-child(2) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > input:nth-child(1)",
+          "role": "input",
+          "scope": "page"
+        }
+      },
+      {
+        "type": "a11y",
+        "severity": "warning",
+        "source": "keyboard-a11y",
+        "component": "button",
+        "message": "Interactive element <button> (button) is not reachable via Tab key.",
+        "suggestion": "Ensure the element is focusable. Marigold interactive components are focusable by default — check if a parent has tabindex=\"-1\" or focus is trapped.",
+        "details": {
+          "selector": "body:nth-child(2) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > main:nth-child(1) > div:nth-child(1) > div:nth-child(2) > div:nth-child(2) > div:nth-child(2) > button:nth-child(1)",
+          "role": "button",
+          "scope": "page"
+        }
+      }
+    ],
+    "passed": [
+      "TypeScript compilation",
+      "All Marigold props are valid",
+      "Component composition",
+      "Overlay accessible names",
+      "Compound component placement",
+      "Section headers",
+      "Collection item ids",
+      "Design system usage",
+      "Layout usage",
+      "Table usage",
+      "Component conventions",
+      "Theme variant compliance",
+      "No overlapping components detected",
+      "Responsive layout"
+    ],
+    "metadata": {
+      "renderTimeMs": 2664,
+      "componentsFound": [
+        "div",
+        "input",
+        "button",
+        "span"
+      ],
+      "checksRun": [
+        "technical",
+        "spatial",
+        "a11y"
+      ],
+      "coverage": {
+        "staticValuesChecked": 12,
+        "dynamicValuesSkipped": 10,
+        "spreadPropsBypassed": 0
+      },
+      "widthUtilization": 1
+    },
+    "markdown": "marigold-validate: TestApp.tsx — 0 error(s), 2 warning(s)\n\n[warning/a11y] <button>: Interactive element <button> (button) is not reachable via Tab key.\n  → Ensure the element is focusable. Marigold interactive components are focusable by default — check if a parent has tabindex=\"-1\" or focus is trapped.\n  data: {selector=body:nth-child(2) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > ..., role=button, scope=page}\n[warning/a11y] <input>: Interactive element <input> (input) is not reachable via Tab key.\n  → Ensure the element is focusable. Marigold interactive components are focusable by default — check if a parent has tabindex=\"-1\" or focus is trapped.\n  data: {selector=body:nth-child(2) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > ..., role=input, scope=page}\n\npassed: TypeScript compilation, All Marigold props are valid, Component composition, Overlay accessible names, Compound component placement, Section headers, Collection item ids, Design system usage, Layout usage, Table usage, Component conventions, Theme variant compliance, No overlapping components detected, Responsive layout\n\nchecks run: technical, spatial, a11y"
+  },
+  "componentsFound": [
+    "div",
+    "input",
+    "button",
+    "span"
+  ],
+  "renderTimeMs": 2664,
+  "sourceCode": "import { useState, useMemo, useEffect } from 'react';\nimport {\n  AppLayout,\n  Badge,\n  Button,\n  Card,\n  Checkbox,\n  Columns,\n  Drawer,\n  EmptyState,\n  Headline,\n  Inline,\n  Pagination,\n  SearchField,\n  Select,\n  Slider,\n  Split,\n  Stack,\n  Switch,\n  Tag,\n  Text,\n  Tiles,\n} from '@marigold/components';\n\ntype Product = {\n  id: string;\n  name: string;\n  price: number;\n  status: 'New' | 'Sale' | 'Sold Out';\n  description: string;\n  category: string;\n  sizes: string[];\n  popularity: number;\n  createdAt: number;\n  soldOut: boolean;\n};\n\nconst ALL_PRODUCTS: Product[] = [\n  {\n    id: '1',\n    name: 'Classic Tee',\n    price: 24.99,\n    status: 'New',\n    description: 'A timeless crew-neck tee in soft, premium cotton.',\n    category: 'T-Shirts',\n    sizes: ['S', 'M', 'L', 'XL'],\n    popularity: 85,\n    createdAt: 7,\n    soldOut: false,\n  },\n  {\n    id: '2',\n    name: 'Logo Hoodie',\n    price: 49.99,\n    status: 'Sale',\n    description: 'Warm and cozy hoodie featuring an embroidered logo.',\n    category: 'Hoodies',\n    sizes: ['M', 'L', 'XL'],\n    popularity: 90,\n    createdAt: 6,\n    soldOut: false,\n  },\n  {\n    id: '3',\n    name: 'Snapback Cap',\n    price: 19.99,\n    status: 'New',\n    description: 'Adjustable snapback cap with embossed front logo patch.',\n    category: 'Accessories',\n    sizes: ['XS', 'S', 'M'],\n    popularity: 70,\n    createdAt: 5,\n    soldOut: false,\n  },\n  {\n    id: '4',\n    name: 'Tour Poster',\n    price: 14.99,\n    status: 'Sale',\n    description: 'High-quality art print from the 2024 world tour.',\n    category: 'Posters',\n    sizes: ['S', 'M'],\n    popularity: 60,\n    createdAt: 4,\n    soldOut: false,\n  },\n  {\n    id: '5',\n    name: 'Sticker Pack',\n    price: 9.99,\n    status: 'New',\n    description: 'Set of 12 premium vinyl stickers for any surface.',\n    category: 'Stickers',\n    sizes: ['XS'],\n    popularity: 75,\n    createdAt: 3,\n    soldOut: false,\n  },\n  {\n    id: '6',\n    name: 'Vintage Tee',\n    price: 29.99,\n    status: 'Sold Out',\n    description: 'Retro-style shirt with a beautifully faded logo print.',\n    category: 'T-Shirts',\n    sizes: ['S', 'M'],\n    popularity: 95,\n    createdAt: 2,\n    soldOut: true,\n  },\n  {\n    id: '7',\n    name: 'Zip Hoodie',\n    price: 59.99,\n    status: 'Sold Out',\n    description: 'Full-zip hoodie with kangaroo pocket and thumb holes.',\n    category: 'Hoodies',\n    sizes: ['L', 'XL'],\n    popularity: 80,\n    createdAt: 1,\n    soldOut: true,\n  },\n  {\n    id: '8',\n    name: 'Canvas Tote',\n    price: 17.99,\n    status: 'New',\n    description: 'Eco-friendly canvas tote bag with screen-printed logo.',\n    category: 'Accessories',\n    sizes: ['XS', 'S', 'M', 'L', 'XL'],\n    popularity: 65,\n    createdAt: 8,\n    soldOut: false,\n  },\n];\n\ntype FilterState = {\n  categories: string[];\n  maxPrice: number;\n  sizes: string[];\n  inStockOnly: boolean;\n};\n\nconst EMPTY_FILTERS: FilterState = {\n  categories: [],\n  maxPrice: 100,\n  sizes: [],\n  inStockOnly: false,\n};\n\nconst PAGE_SIZE = 3;\n\nfunction badgeVariant(status: Product['status']): 'info' | 'warning' | 'error' {\n  if (status === 'New') return 'info';\n  if (status === 'Sale') return 'warning';\n  return 'error';\n}\n\nexport default function TestApp() {\n  const [searchQuery, setSearchQuery] = useState('');\n  const [sortOrder, setSortOrder] = useState('newest');\n  const [filters, setFilters] = useState<FilterState>(EMPTY_FILTERS);\n  const [currentPage, setCurrentPage] = useState(1);\n\n  const filteredProducts = useMemo(() => {\n    const result = ALL_PRODUCTS.filter(p => {\n      if (\n        searchQuery &&\n        !p.name.toLowerCase().includes(searchQuery.toLowerCase())\n      )\n        return false;\n      if (\n        filters.categories.length > 0 &&\n        !filters.categories.includes(p.category)\n      )\n        return false;\n      if (p.price > filters.maxPrice) return false;\n      if (\n        filters.sizes.length > 0 &&\n        !p.sizes.some(s => filters.sizes.includes(s))\n      )\n        return false;\n      if (filters.inStockOnly && p.soldOut) return false;\n      return true;\n    });\n\n    return result.sort((a, b) => {\n      switch (sortOrder) {\n        case 'price-asc':\n          return a.price - b.price;\n        case 'price-desc':\n          return b.price - a.price;\n        case 'popular':\n          return b.popularity - a.popularity;\n        default:\n          return b.createdAt - a.createdAt;\n      }\n    });\n  }, [searchQuery, filters, sortOrder]);\n\n  useEffect(() => {\n    setCurrentPage(1);\n  }, [searchQuery, filters]);\n\n  const totalPages = Math.max(1, Math.ceil(filteredProducts.length / PAGE_SIZE));\n  const pagedProducts = filteredProducts.slice(\n    (currentPage - 1) * PAGE_SIZE,\n    currentPage * PAGE_SIZE\n  );\n\n  const activeFilterChips = useMemo(() => {\n    const chips: { id: string; label: string }[] = [];\n    filters.categories.forEach(cat =>\n      chips.push({ id: `cat-${cat}`, label: `Category: ${cat}` })\n    );\n    if (filters.maxPrice < 100) {\n      chips.push({ id: 'price', label: `Max price: $${filters.maxPrice}` });\n    }\n    filters.sizes.forEach(size =>\n      chips.push({ id: `size-${size}`, label: `Size: ${size}` })\n    );\n    if (filters.inStockOnly) {\n      chips.push({ id: 'stock', label: 'In stock only' });\n    }\n    return chips;\n  }, [filters]);\n\n  const handleRemoveChip = (keys: Set<string | number>) => {\n    setFilters(prev => {\n      let categories = [...prev.categories];\n      let sizes = [...prev.sizes];\n      let maxPrice = prev.maxPrice;\n      let inStockOnly = prev.inStockOnly;\n\n      for (const key of keys) {\n        const k = String(key);\n        if (k.startsWith('cat-')) {\n          categories = categories.filter(c => c !== k.slice(4));\n        } else if (k === 'price') {\n          maxPrice = 100;\n        } else if (k.startsWith('size-')) {\n          sizes = sizes.filter(s => s !== k.slice(5));\n        } else if (k === 'stock') {\n          inStockOnly = false;\n        }\n      }\n\n      return { categories, sizes, maxPrice, inStockOnly };\n    });\n  };\n\n  const handleClearAll = () => {\n    setFilters(EMPTY_FILTERS);\n    setSearchQuery('');\n  };\n\n  return (\n    <AppLayout>\n      <AppLayout.Main>\n    <Stack space={6}>\n      {/* Page Header */}\n      <Stack space={2}>\n        <Headline level=\"1\">Merchandise Store</Headline>\n        <Text>Browse our collection of branded merchandise.</Text>\n      </Stack>\n\n      {/* Toolbar */}\n      <Columns columns={[1, 'fit', 'fit']} space={4} collapseAt=\"30em\">\n        <SearchField\n          aria-label=\"Search products\"\n          placeholder=\"Search products...\"\n          value={searchQuery}\n          onChange={setSearchQuery}\n        />\n        <Select\n          aria-label=\"Sort by\"\n          selectedKey={sortOrder}\n          onSelectionChange={key => setSortOrder(String(key))}\n          width=\"fit\"\n        >\n          <Select.Option id=\"newest\">Newest</Select.Option>\n          <Select.Option id=\"price-asc\">Price: Low to High</Select.Option>\n          <Select.Option id=\"price-desc\">Price: High to Low</Select.Option>\n          <Select.Option id=\"popular\">Most Popular</Select.Option>\n        </Select>\n        <Drawer.Trigger>\n          <Button variant=\"secondary\" aria-label=\"Open filter panel\">Filters</Button>\n          <Drawer size=\"medium\">\n            <Drawer.Title>Filters</Drawer.Title>\n            <Drawer.Content>\n              <Stack space={6}>\n                <Checkbox.Group\n                  label=\"Category\"\n                  value={filters.categories}\n                  onChange={val =>\n                    setFilters(f => ({ ...f, categories: val }))\n                  }\n                >\n                  <Checkbox value=\"T-Shirts\" label=\"T-Shirts\" />\n                  <Checkbox value=\"Hoodies\" label=\"Hoodies\" />\n                  <Checkbox value=\"Accessories\" label=\"Accessories\" />\n                  <Checkbox value=\"Posters\" label=\"Posters\" />\n                  <Checkbox value=\"Stickers\" label=\"Stickers\" />\n                </Checkbox.Group>\n                <Slider\n                  label=\"Price range\"\n                  minValue={0}\n                  maxValue={100}\n                  value={filters.maxPrice}\n                  onChange={v =>\n                    setFilters(f => ({\n                      ...f,\n                      maxPrice: Array.isArray(v) ? v[0] : (v as number),\n                    }))\n                  }\n                  formatOptions={{ style: 'currency', currency: 'USD' }}\n                />\n                <Checkbox.Group\n                  label=\"Size\"\n                  value={filters.sizes}\n                  onChange={val => setFilters(f => ({ ...f, sizes: val }))}\n                >\n                  <Checkbox value=\"XS\" label=\"XS\" />\n                  <Checkbox value=\"S\" label=\"S\" />\n                  <Checkbox value=\"M\" label=\"M\" />\n                  <Checkbox value=\"L\" label=\"L\" />\n                  <Checkbox value=\"XL\" label=\"XL\" />\n                </Checkbox.Group>\n                <Switch\n                  label=\"In stock only\"\n                  selected={filters.inStockOnly}\n                  onChange={val =>\n                    setFilters(f => ({ ...f, inStockOnly: val }))\n                  }\n                />\n              </Stack>\n            </Drawer.Content>\n            <Drawer.Actions>\n              <Inline space={2}>\n                <Button\n                  variant=\"secondary\"\n                  onPress={() => setFilters(EMPTY_FILTERS)}\n                >\n                  Reset\n                </Button>\n                <Button slot=\"close\" variant=\"primary\">\n                  Apply Filters\n                </Button>\n              </Inline>\n            </Drawer.Actions>\n          </Drawer>\n        </Drawer.Trigger>\n      </Columns>\n\n      {/* Applied Filter Chips */}\n      <Tag.Group\n        label=\"Applied filters\"\n        onRemove={handleRemoveChip}\n        removeAll={activeFilterChips.length > 0}\n        emptyState={() => <Text>No filters applied</Text>}\n      >\n        {activeFilterChips.map(chip => (\n          <Tag key={chip.id} id={chip.id}>\n            {chip.label}\n          </Tag>\n        ))}\n      </Tag.Group>\n\n      {/* Product Grid or Empty State */}\n      {filteredProducts.length === 0 ? (\n        <EmptyState\n          title=\"No products found\"\n          description=\"Try adjusting your filters or search query.\"\n          action={\n            <Button variant=\"primary\" onPress={handleClearAll}>\n              Clear all filters\n            </Button>\n          }\n        />\n      ) : (\n        <Tiles tilesWidth=\"280px\" space={4} stretch equalHeight>\n          {pagedProducts.map(product => (\n            <Card key={product.id} p={4}>\n              <Stack space={3}>\n                <Inline alignY=\"center\">\n                  <Headline level=\"2\">{product.name}</Headline>\n                  <Split />\n                  <Badge variant={badgeVariant(product.status)}>\n                    {product.status}\n                  </Badge>\n                </Inline>\n                <Text weight=\"bold\">${product.price.toFixed(2)}</Text>\n                <Text>{product.description}</Text>\n                <Button\n                  variant=\"primary\"\n                  disabled={product.soldOut}\n                  onPress={() => {}}\n                >\n                  Add to Cart\n                </Button>\n              </Stack>\n            </Card>\n          ))}\n        </Tiles>\n      )}\n\n      {/* Pagination */}\n      {filteredProducts.length > 0 && (\n        <Inline space={4} alignY=\"center\">\n          <Text>Page {currentPage} of {totalPages}</Text>\n          <Pagination\n            totalItems={filteredProducts.length}\n            pageSize={PAGE_SIZE}\n            page={currentPage}\n            onChange={setCurrentPage}\n          />\n        </Inline>\n      )}\n    </Stack>\n      </AppLayout.Main>\n    </AppLayout>\n  );\n}\n",
+  "assertions": {
+    "passed": [
+      {
+        "id": "a-import-marigold",
+        "description": "Imports from @marigold/components",
+        "severity": "required",
+        "passed": true,
+        "evidence": "import from \"@marigold/components\" found"
+      },
+      {
+        "id": "a-search",
+        "description": "SearchField for product search",
+        "severity": "required",
+        "passed": true,
+        "evidence": "<SearchField> found"
+      },
+      {
+        "id": "a-drawer",
+        "description": "Drawer for filter panel",
+        "severity": "required",
+        "passed": true,
+        "evidence": "<Drawer> found"
+      },
+      {
+        "id": "a-checkbox",
+        "description": "Checkbox for filter options",
+        "severity": "required",
+        "passed": true,
+        "evidence": "matched: <Checkbox> found"
+      },
+      {
+        "id": "a-slider",
+        "description": "Slider for price range",
+        "severity": "required",
+        "passed": true,
+        "evidence": "<Slider> found"
+      },
+      {
+        "id": "a-switch",
+        "description": "Switch for availability filter",
+        "severity": "required",
+        "passed": true,
+        "evidence": "<Switch> found"
+      },
+      {
+        "id": "a-tag-group",
+        "description": "Tag.Group for applied filters",
+        "severity": "required",
+        "passed": true,
+        "evidence": "matched: <Tag> found"
+      },
+      {
+        "id": "a-card",
+        "description": "Card for product display",
+        "severity": "required",
+        "passed": true,
+        "evidence": "<Card> found"
+      },
+      {
+        "id": "a-badge",
+        "description": "Badge for product status",
+        "severity": "required",
+        "passed": true,
+        "evidence": "<Badge> found"
+      },
+      {
+        "id": "a-button",
+        "description": "Button for add to cart",
+        "severity": "required",
+        "passed": true,
+        "evidence": "<Button> found"
+      },
+      {
+        "id": "a-pagination",
+        "description": "Pagination component",
+        "severity": "required",
+        "passed": true,
+        "evidence": "<Pagination> found"
+      },
+      {
+        "id": "a-tiles",
+        "description": "Tiles layout for product grid",
+        "severity": "required",
+        "passed": true,
+        "evidence": "<Tiles> found"
+      },
+      {
+        "id": "a-empty-state",
+        "description": "EmptyState when no products match",
+        "severity": "required",
+        "passed": true,
+        "evidence": "<EmptyState> found"
+      },
+      {
+        "id": "a-headline",
+        "description": "Headline for page title",
+        "severity": "required",
+        "passed": true,
+        "evidence": "<Headline> found"
+      },
+      {
+        "id": "a-select",
+        "description": "Select for sort dropdown",
+        "severity": "required",
+        "passed": true,
+        "evidence": "<Select> found"
+      },
+      {
+        "id": "a-no-onclick-on-marigold",
+        "description": "No onClick on Marigold Button",
+        "severity": "recommended",
+        "passed": true,
+        "evidence": "\"/<Button[^>]*onClick/\" correctly absent"
+      }
+    ],
+    "failed": [],
+    "passRate": 1,
+    "requiredPassRate": 1,
+    "weightedPassRate": 1,
+    "total": 16
+  },
+  "validatePackageVersion": "0.0.1",
+  "playwrightVersion": null,
+  "resolvedModelId": "claude-sonnet-4-6",
+  "claudeCliVersion": "2.1.185 (Claude Code)",
+  "sessionId": "3256bbd4-2be2-4425-bc40-bb58defc8782"
+}

@@ -1,0 +1,1552 @@
+{
+  "runId": "sonnet-bare-P-07-r1",
+  "promptId": "P-07",
+  "model": "sonnet",
+  "config": "bare",
+  "timestamp": "2026-06-21T13:14:21.549Z",
+  "quality": {
+    "overall": 18.84,
+    "categories": {
+      "A": {
+        "category": "A",
+        "label": "Design System API",
+        "score": 8.35,
+        "weight": 0.225,
+        "weightedScore": 1.88,
+        "errorCount": 20,
+        "warningCount": 2,
+        "issues": [
+          {
+            "type": "technical",
+            "severity": "error",
+            "source": "prop-validator",
+            "component": "Dialog",
+            "message": "Prop \"title\" does not exist on <Dialog>.",
+            "suggestion": "Remove the prop. Available props: variant, size, closeButton, children, id, dir, lang, hidden, inert, translate, onClick, onClickCapture, onAuxClick, onAuxClickCapture, onContextMenu, ….",
+            "location": {
+              "file": "TestApp.tsx",
+              "line": 236,
+              "column": 21
+            },
+            "details": {
+              "used": "title",
+              "available": [
+                "variant",
+                "size",
+                "closeButton",
+                "children",
+                "id",
+                "dir",
+                "lang",
+                "hidden",
+                "inert",
+                "translate",
+                "onClick",
+                "onClickCapture",
+                "onAuxClick",
+                "onAuxClickCapture",
+                "onContextMenu"
+              ]
+            }
+          },
+          {
+            "type": "technical",
+            "severity": "error",
+            "source": "prop-validator",
+            "component": "Inline",
+            "message": "Prop \"alignY\" value \"end\" is not a known variant for <Inline>.",
+            "suggestion": "Known values: bottom, top, input, center.",
+            "location": {
+              "file": "TestApp.tsx",
+              "line": 290,
+              "column": 29
+            },
+            "details": {
+              "used": "end",
+              "known": [
+                "bottom",
+                "top",
+                "input",
+                "center"
+              ]
+            }
+          },
+          {
+            "type": "technical",
+            "severity": "error",
+            "source": "design-system-usage",
+            "component": "Box",
+            "message": "<Box> is not a Marigold component. It is not exported from @marigold/components.",
+            "suggestion": "<Box> does not exist in @marigold/components. Search the Marigold docs for the correct component.",
+            "location": {
+              "file": "TestApp.tsx",
+              "line": 229,
+              "column": 5
+            },
+            "details": {
+              "hallucinated": true,
+              "importedFrom": "@marigold/components"
+            }
+          },
+          {
+            "type": "technical",
+            "severity": "error",
+            "source": "design-system-usage",
+            "component": "Heading",
+            "message": "<Heading> is not a Marigold component. It is not exported from @marigold/components.",
+            "suggestion": "<Heading> does not exist in @marigold/components. Search the Marigold docs for the correct component.",
+            "location": {
+              "file": "TestApp.tsx",
+              "line": 233,
+              "column": 11
+            },
+            "details": {
+              "hallucinated": true,
+              "importedFrom": "@marigold/components"
+            }
+          },
+          {
+            "type": "technical",
+            "severity": "error",
+            "source": "design-system-usage",
+            "component": "DialogTrigger",
+            "message": "<DialogTrigger> is not a Marigold component. It is not exported from @marigold/components.",
+            "suggestion": "Use <Dialog.Trigger> — compound sub-components use dot notation.",
+            "location": {
+              "file": "TestApp.tsx",
+              "line": 234,
+              "column": 11
+            },
+            "details": {
+              "hallucinated": true,
+              "importedFrom": "@marigold/components"
+            }
+          },
+          {
+            "type": "technical",
+            "severity": "error",
+            "source": "design-system-usage",
+            "component": "Textarea",
+            "message": "<Textarea> is not a Marigold component. It is not exported from @marigold/components.",
+            "suggestion": "<Textarea> does not exist in @marigold/components. Search the Marigold docs for the correct component.",
+            "location": {
+              "file": "TestApp.tsx",
+              "line": 272,
+              "column": 17
+            },
+            "details": {
+              "hallucinated": true,
+              "importedFrom": "@marigold/components"
+            }
+          },
+          {
+            "type": "technical",
+            "severity": "error",
+            "source": "design-system-usage",
+            "component": "Box",
+            "message": "<Box> is not a Marigold component. It is not exported from @marigold/components.",
+            "suggestion": "<Box> does not exist in @marigold/components. Search the Marigold docs for the correct component.",
+            "location": {
+              "file": "TestApp.tsx",
+              "line": 289,
+              "column": 9
+            },
+            "details": {
+              "hallucinated": true,
+              "importedFrom": "@marigold/components"
+            }
+          },
+          {
+            "type": "technical",
+            "severity": "error",
+            "source": "design-system-usage",
+            "component": "Combobox",
+            "message": "<Combobox> is not a Marigold component. It is not exported from @marigold/components.",
+            "suggestion": "<Combobox> does not exist in @marigold/components. Search the Marigold docs for the correct component.",
+            "location": {
+              "file": "TestApp.tsx",
+              "line": 295,
+              "column": 13
+            },
+            "details": {
+              "hallucinated": true,
+              "importedFrom": "@marigold/components"
+            }
+          },
+          {
+            "type": "technical",
+            "severity": "error",
+            "source": "design-system-usage",
+            "component": "Alert",
+            "message": "<Alert> is not a Marigold component. It is not exported from @marigold/components.",
+            "suggestion": "<Alert> does not exist in @marigold/components. Search the Marigold docs for the correct component.",
+            "location": {
+              "file": "TestApp.tsx",
+              "line": 321,
+              "column": 11
+            },
+            "details": {
+              "hallucinated": true,
+              "importedFrom": "@marigold/components"
+            }
+          },
+          {
+            "type": "technical",
+            "severity": "error",
+            "source": "design-system-usage",
+            "component": "Tabs.Tab",
+            "message": "<Tabs.Tab> is not a valid sub-component of <Tabs>.",
+            "suggestion": "Check the Marigold docs for valid Tabs sub-components.",
+            "location": {
+              "file": "TestApp.tsx",
+              "line": 329,
+              "column": 13
+            },
+            "details": {
+              "hallucinated": true,
+              "parent": "Tabs",
+              "subComponent": "Tab"
+            }
+          },
+          {
+            "type": "technical",
+            "severity": "error",
+            "source": "design-system-usage",
+            "component": "Tabs.Tab",
+            "message": "<Tabs.Tab> is not a valid sub-component of <Tabs>.",
+            "suggestion": "Check the Marigold docs for valid Tabs sub-components.",
+            "location": {
+              "file": "TestApp.tsx",
+              "line": 330,
+              "column": 13
+            },
+            "details": {
+              "hallucinated": true,
+              "parent": "Tabs",
+              "subComponent": "Tab"
+            }
+          },
+          {
+            "type": "technical",
+            "severity": "error",
+            "source": "design-system-usage",
+            "component": "Tabs.Tab",
+            "message": "<Tabs.Tab> is not a valid sub-component of <Tabs>.",
+            "suggestion": "Check the Marigold docs for valid Tabs sub-components.",
+            "location": {
+              "file": "TestApp.tsx",
+              "line": 331,
+              "column": 13
+            },
+            "details": {
+              "hallucinated": true,
+              "parent": "Tabs",
+              "subComponent": "Tab"
+            }
+          },
+          {
+            "type": "technical",
+            "severity": "error",
+            "source": "design-system-usage",
+            "component": "MenuTrigger",
+            "message": "<MenuTrigger> is not a Marigold component. It is not exported from @marigold/components.",
+            "suggestion": "<MenuTrigger> does not exist in @marigold/components. Search the Marigold docs for the correct component.",
+            "location": {
+              "file": "TestApp.tsx",
+              "line": 358,
+              "column": 19
+            },
+            "details": {
+              "hallucinated": true,
+              "importedFrom": "@marigold/components"
+            }
+          },
+          {
+            "type": "technical",
+            "severity": "error",
+            "source": "design-system-usage",
+            "component": "Box",
+            "message": "<Box> is not a Marigold component. It is not exported from @marigold/components.",
+            "suggestion": "<Box> does not exist in @marigold/components. Search the Marigold docs for the correct component.",
+            "location": {
+              "file": "TestApp.tsx",
+              "line": 373,
+              "column": 11
+            },
+            "details": {
+              "hallucinated": true,
+              "importedFrom": "@marigold/components"
+            }
+          },
+          {
+            "type": "technical",
+            "severity": "error",
+            "source": "design-system-usage",
+            "component": "Box",
+            "message": "<Box> is not a Marigold component. It is not exported from @marigold/components.",
+            "suggestion": "<Box> does not exist in @marigold/components. Search the Marigold docs for the correct component.",
+            "location": {
+              "file": "TestApp.tsx",
+              "line": 381,
+              "column": 9
+            },
+            "details": {
+              "hallucinated": true,
+              "importedFrom": "@marigold/components"
+            }
+          },
+          {
+            "type": "technical",
+            "severity": "error",
+            "source": "design-system-usage",
+            "component": "Heading",
+            "message": "<Heading> is not a Marigold component. It is not exported from @marigold/components.",
+            "suggestion": "<Heading> does not exist in @marigold/components. Search the Marigold docs for the correct component.",
+            "location": {
+              "file": "TestApp.tsx",
+              "line": 398,
+              "column": 15
+            },
+            "details": {
+              "hallucinated": true,
+              "importedFrom": "@marigold/components"
+            }
+          },
+          {
+            "type": "technical",
+            "severity": "error",
+            "source": "design-system-usage",
+            "component": "Box",
+            "message": "<Box> is not a Marigold component. It is not exported from @marigold/components.",
+            "suggestion": "<Box> does not exist in @marigold/components. Search the Marigold docs for the correct component.",
+            "location": {
+              "file": "TestApp.tsx",
+              "line": 399,
+              "column": 15
+            },
+            "details": {
+              "hallucinated": true,
+              "importedFrom": "@marigold/components"
+            }
+          },
+          {
+            "type": "technical",
+            "severity": "error",
+            "source": "design-system-usage",
+            "component": "Heading",
+            "message": "<Heading> is not a Marigold component. It is not exported from @marigold/components.",
+            "suggestion": "<Heading> does not exist in @marigold/components. Search the Marigold docs for the correct component.",
+            "location": {
+              "file": "TestApp.tsx",
+              "line": 415,
+              "column": 15
+            },
+            "details": {
+              "hallucinated": true,
+              "importedFrom": "@marigold/components"
+            }
+          },
+          {
+            "type": "technical",
+            "severity": "error",
+            "source": "design-system-usage",
+            "component": "Heading",
+            "message": "<Heading> is not a Marigold component. It is not exported from @marigold/components.",
+            "suggestion": "<Heading> does not exist in @marigold/components. Search the Marigold docs for the correct component.",
+            "location": {
+              "file": "TestApp.tsx",
+              "line": 424,
+              "column": 15
+            },
+            "details": {
+              "hallucinated": true,
+              "importedFrom": "@marigold/components"
+            }
+          },
+          {
+            "type": "technical",
+            "severity": "error",
+            "source": "design-system-usage",
+            "component": "Heading",
+            "message": "<Heading> is not a Marigold component. It is not exported from @marigold/components.",
+            "suggestion": "<Heading> does not exist in @marigold/components. Search the Marigold docs for the correct component.",
+            "location": {
+              "file": "TestApp.tsx",
+              "line": 434,
+              "column": 15
+            },
+            "details": {
+              "hallucinated": true,
+              "importedFrom": "@marigold/components"
+            }
+          },
+          {
+            "type": "technical",
+            "severity": "warning",
+            "source": "design-system-usage",
+            "component": "Box",
+            "message": "Inline style on <Box> bypasses the design system (position, top, right, width, height).",
+            "suggestion": "Use Marigold layout components (Stack, Columns, Inset, Container) and theme tokens instead of inline styles.",
+            "location": {
+              "file": "TestApp.tsx",
+              "line": 382,
+              "column": 11
+            },
+            "details": {
+              "cssProperties": [
+                "position",
+                "top",
+                "right",
+                "width",
+                "height"
+              ]
+            }
+          },
+          {
+            "type": "technical",
+            "severity": "warning",
+            "source": "design-system-usage",
+            "component": "Box",
+            "message": "Inline style on <Box> bypasses the design system (marginLeft).",
+            "suggestion": "Use Marigold layout components (Stack, Columns, Inset, Container) and theme tokens instead of inline styles.",
+            "location": {
+              "file": "TestApp.tsx",
+              "line": 399,
+              "column": 20
+            },
+            "details": {
+              "cssProperties": [
+                "marginLeft"
+              ]
+            }
+          }
+        ]
+      },
+      "B": {
+        "category": "B",
+        "label": "Token Compliance",
+        "score": 0,
+        "weight": 0.1,
+        "weightedScore": 0,
+        "errorCount": 0,
+        "warningCount": 0,
+        "issues": []
+      },
+      "C": {
+        "category": "C",
+        "label": "DOM / Structure",
+        "score": 0,
+        "weight": 0.225,
+        "weightedScore": 0,
+        "errorCount": 16,
+        "warningCount": 1,
+        "issues": [
+          {
+            "type": "technical",
+            "severity": "error",
+            "source": "compiler",
+            "component": "TypeScript",
+            "message": "TS2305: Module '\"@marigold/components\"' has no exported member 'Box'.",
+            "suggestion": "Fix the TypeScript error reported by the compiler. The exact location is included in the issue location field.",
+            "location": {
+              "file": "TestApp.tsx",
+              "line": 5,
+              "column": 3
+            }
+          },
+          {
+            "type": "technical",
+            "severity": "error",
+            "source": "compiler",
+            "component": "TypeScript",
+            "message": "TS2305: Module '\"@marigold/components\"' has no exported member 'Heading'.",
+            "suggestion": "Fix the TypeScript error reported by the compiler. The exact location is included in the issue location field.",
+            "location": {
+              "file": "TestApp.tsx",
+              "line": 7,
+              "column": 3
+            }
+          },
+          {
+            "type": "technical",
+            "severity": "error",
+            "source": "compiler",
+            "component": "TypeScript",
+            "message": "TS2305: Module '\"@marigold/components\"' has no exported member 'DialogTrigger'.",
+            "suggestion": "Fix the TypeScript error reported by the compiler. The exact location is included in the issue location field.",
+            "location": {
+              "file": "TestApp.tsx",
+              "line": 14,
+              "column": 3
+            }
+          },
+          {
+            "type": "technical",
+            "severity": "error",
+            "source": "compiler",
+            "component": "TypeScript",
+            "message": "TS2305: Module '\"@marigold/components\"' has no exported member 'MenuTrigger'.",
+            "suggestion": "Fix the TypeScript error reported by the compiler. The exact location is included in the issue location field.",
+            "location": {
+              "file": "TestApp.tsx",
+              "line": 15,
+              "column": 3
+            }
+          },
+          {
+            "type": "technical",
+            "severity": "error",
+            "source": "compiler",
+            "component": "TypeScript",
+            "message": "TS2724: '\"@marigold/components\"' has no exported member named 'Combobox'. Did you mean 'ComboBox'?",
+            "suggestion": "Fix the TypeScript error reported by the compiler. The exact location is included in the issue location field.",
+            "location": {
+              "file": "TestApp.tsx",
+              "line": 18,
+              "column": 3
+            }
+          },
+          {
+            "type": "technical",
+            "severity": "error",
+            "source": "compiler",
+            "component": "TypeScript",
+            "message": "TS2724: '\"@marigold/components\"' has no exported member named 'Textarea'. Did you mean 'TextArea'?",
+            "suggestion": "Fix the TypeScript error reported by the compiler. The exact location is included in the issue location field.",
+            "location": {
+              "file": "TestApp.tsx",
+              "line": 19,
+              "column": 3
+            }
+          },
+          {
+            "type": "technical",
+            "severity": "error",
+            "source": "compiler",
+            "component": "TypeScript",
+            "message": "TS2305: Module '\"@marigold/components\"' has no exported member 'Alert'.",
+            "suggestion": "Fix the TypeScript error reported by the compiler. The exact location is included in the issue location field.",
+            "location": {
+              "file": "TestApp.tsx",
+              "line": 20,
+              "column": 3
+            }
+          },
+          {
+            "type": "technical",
+            "severity": "error",
+            "source": "compiler",
+            "component": "TypeScript",
+            "message": "TS2339: Property 'Tab' does not exist on type '{ ({ disabled, variant, size, ...rest }: TabsProps): Element; List: (props: TabListProps) => Element; TabPanel: (props: TabPanelProps) => Element; Item: (props: TabProps) => Element; }'.",
+            "suggestion": "Fix the TypeScript error reported by the compiler. The exact location is included in the issue location field.",
+            "location": {
+              "file": "TestApp.tsx",
+              "line": 329,
+              "column": 19
+            }
+          },
+          {
+            "type": "technical",
+            "severity": "error",
+            "source": "compiler",
+            "component": "TypeScript",
+            "message": "TS2339: Property 'Tab' does not exist on type '{ ({ disabled, variant, size, ...rest }: TabsProps): Element; List: (props: TabListProps) => Element; TabPanel: (props: TabPanelProps) => Element; Item: (props: TabProps) => Element; }'.",
+            "suggestion": "Fix the TypeScript error reported by the compiler. The exact location is included in the issue location field.",
+            "location": {
+              "file": "TestApp.tsx",
+              "line": 329,
+              "column": 51
+            }
+          },
+          {
+            "type": "technical",
+            "severity": "error",
+            "source": "compiler",
+            "component": "TypeScript",
+            "message": "TS2339: Property 'Tab' does not exist on type '{ ({ disabled, variant, size, ...rest }: TabsProps): Element; List: (props: TabListProps) => Element; TabPanel: (props: TabPanelProps) => Element; Item: (props: TabProps) => Element; }'.",
+            "suggestion": "Fix the TypeScript error reported by the compiler. The exact location is included in the issue location field.",
+            "location": {
+              "file": "TestApp.tsx",
+              "line": 330,
+              "column": 19
+            }
+          },
+          {
+            "type": "technical",
+            "severity": "error",
+            "source": "compiler",
+            "component": "TypeScript",
+            "message": "TS2339: Property 'Tab' does not exist on type '{ ({ disabled, variant, size, ...rest }: TabsProps): Element; List: (props: TabListProps) => Element; TabPanel: (props: TabPanelProps) => Element; Item: (props: TabProps) => Element; }'.",
+            "suggestion": "Fix the TypeScript error reported by the compiler. The exact location is included in the issue location field.",
+            "location": {
+              "file": "TestApp.tsx",
+              "line": 330,
+              "column": 46
+            }
+          },
+          {
+            "type": "technical",
+            "severity": "error",
+            "source": "compiler",
+            "component": "TypeScript",
+            "message": "TS2339: Property 'Tab' does not exist on type '{ ({ disabled, variant, size, ...rest }: TabsProps): Element; List: (props: TabListProps) => Element; TabPanel: (props: TabPanelProps) => Element; Item: (props: TabProps) => Element; }'.",
+            "suggestion": "Fix the TypeScript error reported by the compiler. The exact location is included in the issue location field.",
+            "location": {
+              "file": "TestApp.tsx",
+              "line": 331,
+              "column": 19
+            }
+          },
+          {
+            "type": "technical",
+            "severity": "error",
+            "source": "compiler",
+            "component": "TypeScript",
+            "message": "TS2339: Property 'Tab' does not exist on type '{ ({ disabled, variant, size, ...rest }: TabsProps): Element; List: (props: TabListProps) => Element; TabPanel: (props: TabPanelProps) => Element; Item: (props: TabProps) => Element; }'.",
+            "suggestion": "Fix the TypeScript error reported by the compiler. The exact location is included in the issue location field.",
+            "location": {
+              "file": "TestApp.tsx",
+              "line": 331,
+              "column": 49
+            }
+          },
+          {
+            "type": "technical",
+            "severity": "error",
+            "source": "compiler",
+            "component": "TypeScript",
+            "message": "TS2345: Argument of type 'Key' is not assignable to parameter of type 'string | number'.\n  Type 'bigint' is not assignable to type 'string | number'.",
+            "suggestion": "Fix the TypeScript error reported by the compiler. The exact location is included in the issue location field.",
+            "location": {
+              "file": "TestApp.tsx",
+              "line": 360,
+              "column": 61
+            }
+          },
+          {
+            "type": "technical",
+            "severity": "error",
+            "source": "composition-validator",
+            "component": "Dialog",
+            "message": "<Dialog> is used without any of its sub-components.",
+            "suggestion": "Use compound children: <Dialog.Title>, <Dialog.Content>, <Dialog.Actions>.",
+            "location": {
+              "file": "TestApp.tsx",
+              "line": 236,
+              "column": 13
+            },
+            "details": {
+              "expected": [
+                "Title",
+                "Content",
+                "Actions"
+              ],
+              "found": []
+            }
+          },
+          {
+            "type": "a11y",
+            "severity": "error",
+            "source": "accessible-name",
+            "component": "Dialog",
+            "message": "<Dialog> has no accessible name. A closed overlay is invisible to runtime a11y checks, so it must be labeled in the source.",
+            "suggestion": "Add a <Dialog.Title> child or an aria-label prop, e.g. <Dialog aria-label=\"…\"> or <Dialog.Title>…</Dialog.Title>.",
+            "location": {
+              "file": "TestApp.tsx",
+              "line": 236,
+              "column": 13
+            },
+            "details": {
+              "accessibleNameAttrs": [
+                "aria-label",
+                "aria-labelledby"
+              ],
+              "titleSubComponent": "Dialog.Title"
+            }
+          },
+          {
+            "type": "technical",
+            "severity": "warning",
+            "source": "table-usage",
+            "component": "Table",
+            "message": "<Table> has no column marked rowHeader. Exactly one Table.Column should set rowHeader so screen readers can announce each row by it.",
+            "suggestion": "Add rowHeader to the column that identifies each row, e.g. <Table.Column rowHeader>Name</Table.Column>.",
+            "location": {
+              "file": "TestApp.tsx",
+              "line": 336,
+              "column": 9
+            },
+            "details": {
+              "missingRowHeader": true,
+              "columnCount": 7
+            }
+          }
+        ]
+      },
+      "D": {
+        "category": "D",
+        "label": "Spatial & A11y",
+        "score": 0,
+        "weight": 0.225,
+        "weightedScore": 0,
+        "errorCount": 0,
+        "warningCount": 0,
+        "issues": []
+      },
+      "E": {
+        "category": "E",
+        "label": "Functional Completeness",
+        "score": 75.38,
+        "weight": 0.225,
+        "weightedScore": 16.96,
+        "errorCount": 0,
+        "warningCount": 0,
+        "issues": []
+      }
+    },
+    "renderSuccess": false
+  },
+  "efficiency": {
+    "durationMs": 429662,
+    "costUsd": 0.7638214999999999,
+    "inputTokens": 6,
+    "outputTokens": 32137,
+    "cacheReadTokens": 139355,
+    "cacheCreationTokens": 39801,
+    "totalTokens": 32143,
+    "numTurns": 5
+  },
+  "report": {
+    "file": "TestApp.tsx",
+    "errors": [
+      {
+        "type": "technical",
+        "severity": "error",
+        "source": "compiler",
+        "component": "TypeScript",
+        "message": "TS2305: Module '\"@marigold/components\"' has no exported member 'Box'.",
+        "suggestion": "Fix the TypeScript error reported by the compiler. The exact location is included in the issue location field.",
+        "location": {
+          "file": "TestApp.tsx",
+          "line": 5,
+          "column": 3
+        }
+      },
+      {
+        "type": "technical",
+        "severity": "error",
+        "source": "compiler",
+        "component": "TypeScript",
+        "message": "TS2305: Module '\"@marigold/components\"' has no exported member 'Heading'.",
+        "suggestion": "Fix the TypeScript error reported by the compiler. The exact location is included in the issue location field.",
+        "location": {
+          "file": "TestApp.tsx",
+          "line": 7,
+          "column": 3
+        }
+      },
+      {
+        "type": "technical",
+        "severity": "error",
+        "source": "compiler",
+        "component": "TypeScript",
+        "message": "TS2305: Module '\"@marigold/components\"' has no exported member 'DialogTrigger'.",
+        "suggestion": "Fix the TypeScript error reported by the compiler. The exact location is included in the issue location field.",
+        "location": {
+          "file": "TestApp.tsx",
+          "line": 14,
+          "column": 3
+        }
+      },
+      {
+        "type": "technical",
+        "severity": "error",
+        "source": "compiler",
+        "component": "TypeScript",
+        "message": "TS2305: Module '\"@marigold/components\"' has no exported member 'MenuTrigger'.",
+        "suggestion": "Fix the TypeScript error reported by the compiler. The exact location is included in the issue location field.",
+        "location": {
+          "file": "TestApp.tsx",
+          "line": 15,
+          "column": 3
+        }
+      },
+      {
+        "type": "technical",
+        "severity": "error",
+        "source": "compiler",
+        "component": "TypeScript",
+        "message": "TS2724: '\"@marigold/components\"' has no exported member named 'Combobox'. Did you mean 'ComboBox'?",
+        "suggestion": "Fix the TypeScript error reported by the compiler. The exact location is included in the issue location field.",
+        "location": {
+          "file": "TestApp.tsx",
+          "line": 18,
+          "column": 3
+        }
+      },
+      {
+        "type": "technical",
+        "severity": "error",
+        "source": "compiler",
+        "component": "TypeScript",
+        "message": "TS2724: '\"@marigold/components\"' has no exported member named 'Textarea'. Did you mean 'TextArea'?",
+        "suggestion": "Fix the TypeScript error reported by the compiler. The exact location is included in the issue location field.",
+        "location": {
+          "file": "TestApp.tsx",
+          "line": 19,
+          "column": 3
+        }
+      },
+      {
+        "type": "technical",
+        "severity": "error",
+        "source": "compiler",
+        "component": "TypeScript",
+        "message": "TS2305: Module '\"@marigold/components\"' has no exported member 'Alert'.",
+        "suggestion": "Fix the TypeScript error reported by the compiler. The exact location is included in the issue location field.",
+        "location": {
+          "file": "TestApp.tsx",
+          "line": 20,
+          "column": 3
+        }
+      },
+      {
+        "type": "technical",
+        "severity": "error",
+        "source": "compiler",
+        "component": "TypeScript",
+        "message": "TS2339: Property 'Tab' does not exist on type '{ ({ disabled, variant, size, ...rest }: TabsProps): Element; List: (props: TabListProps) => Element; TabPanel: (props: TabPanelProps) => Element; Item: (props: TabProps) => Element; }'.",
+        "suggestion": "Fix the TypeScript error reported by the compiler. The exact location is included in the issue location field.",
+        "location": {
+          "file": "TestApp.tsx",
+          "line": 329,
+          "column": 19
+        }
+      },
+      {
+        "type": "technical",
+        "severity": "error",
+        "source": "compiler",
+        "component": "TypeScript",
+        "message": "TS2339: Property 'Tab' does not exist on type '{ ({ disabled, variant, size, ...rest }: TabsProps): Element; List: (props: TabListProps) => Element; TabPanel: (props: TabPanelProps) => Element; Item: (props: TabProps) => Element; }'.",
+        "suggestion": "Fix the TypeScript error reported by the compiler. The exact location is included in the issue location field.",
+        "location": {
+          "file": "TestApp.tsx",
+          "line": 329,
+          "column": 51
+        }
+      },
+      {
+        "type": "technical",
+        "severity": "error",
+        "source": "compiler",
+        "component": "TypeScript",
+        "message": "TS2339: Property 'Tab' does not exist on type '{ ({ disabled, variant, size, ...rest }: TabsProps): Element; List: (props: TabListProps) => Element; TabPanel: (props: TabPanelProps) => Element; Item: (props: TabProps) => Element; }'.",
+        "suggestion": "Fix the TypeScript error reported by the compiler. The exact location is included in the issue location field.",
+        "location": {
+          "file": "TestApp.tsx",
+          "line": 330,
+          "column": 19
+        }
+      },
+      {
+        "type": "technical",
+        "severity": "error",
+        "source": "compiler",
+        "component": "TypeScript",
+        "message": "TS2339: Property 'Tab' does not exist on type '{ ({ disabled, variant, size, ...rest }: TabsProps): Element; List: (props: TabListProps) => Element; TabPanel: (props: TabPanelProps) => Element; Item: (props: TabProps) => Element; }'.",
+        "suggestion": "Fix the TypeScript error reported by the compiler. The exact location is included in the issue location field.",
+        "location": {
+          "file": "TestApp.tsx",
+          "line": 330,
+          "column": 46
+        }
+      },
+      {
+        "type": "technical",
+        "severity": "error",
+        "source": "compiler",
+        "component": "TypeScript",
+        "message": "TS2339: Property 'Tab' does not exist on type '{ ({ disabled, variant, size, ...rest }: TabsProps): Element; List: (props: TabListProps) => Element; TabPanel: (props: TabPanelProps) => Element; Item: (props: TabProps) => Element; }'.",
+        "suggestion": "Fix the TypeScript error reported by the compiler. The exact location is included in the issue location field.",
+        "location": {
+          "file": "TestApp.tsx",
+          "line": 331,
+          "column": 19
+        }
+      },
+      {
+        "type": "technical",
+        "severity": "error",
+        "source": "compiler",
+        "component": "TypeScript",
+        "message": "TS2339: Property 'Tab' does not exist on type '{ ({ disabled, variant, size, ...rest }: TabsProps): Element; List: (props: TabListProps) => Element; TabPanel: (props: TabPanelProps) => Element; Item: (props: TabProps) => Element; }'.",
+        "suggestion": "Fix the TypeScript error reported by the compiler. The exact location is included in the issue location field.",
+        "location": {
+          "file": "TestApp.tsx",
+          "line": 331,
+          "column": 49
+        }
+      },
+      {
+        "type": "technical",
+        "severity": "error",
+        "source": "compiler",
+        "component": "TypeScript",
+        "message": "TS2345: Argument of type 'Key' is not assignable to parameter of type 'string | number'.\n  Type 'bigint' is not assignable to type 'string | number'.",
+        "suggestion": "Fix the TypeScript error reported by the compiler. The exact location is included in the issue location field.",
+        "location": {
+          "file": "TestApp.tsx",
+          "line": 360,
+          "column": 61
+        }
+      },
+      {
+        "type": "technical",
+        "severity": "error",
+        "source": "prop-validator",
+        "component": "Dialog",
+        "message": "Prop \"title\" does not exist on <Dialog>.",
+        "suggestion": "Remove the prop. Available props: variant, size, closeButton, children, id, dir, lang, hidden, inert, translate, onClick, onClickCapture, onAuxClick, onAuxClickCapture, onContextMenu, ….",
+        "location": {
+          "file": "TestApp.tsx",
+          "line": 236,
+          "column": 21
+        },
+        "details": {
+          "used": "title",
+          "available": [
+            "variant",
+            "size",
+            "closeButton",
+            "children",
+            "id",
+            "dir",
+            "lang",
+            "hidden",
+            "inert",
+            "translate",
+            "onClick",
+            "onClickCapture",
+            "onAuxClick",
+            "onAuxClickCapture",
+            "onContextMenu"
+          ]
+        }
+      },
+      {
+        "type": "technical",
+        "severity": "error",
+        "source": "prop-validator",
+        "component": "Inline",
+        "message": "Prop \"alignY\" value \"end\" is not a known variant for <Inline>.",
+        "suggestion": "Known values: bottom, top, input, center.",
+        "location": {
+          "file": "TestApp.tsx",
+          "line": 290,
+          "column": 29
+        },
+        "details": {
+          "used": "end",
+          "known": [
+            "bottom",
+            "top",
+            "input",
+            "center"
+          ]
+        }
+      },
+      {
+        "type": "technical",
+        "severity": "error",
+        "source": "composition-validator",
+        "component": "Dialog",
+        "message": "<Dialog> is used without any of its sub-components.",
+        "suggestion": "Use compound children: <Dialog.Title>, <Dialog.Content>, <Dialog.Actions>.",
+        "location": {
+          "file": "TestApp.tsx",
+          "line": 236,
+          "column": 13
+        },
+        "details": {
+          "expected": [
+            "Title",
+            "Content",
+            "Actions"
+          ],
+          "found": []
+        }
+      },
+      {
+        "type": "a11y",
+        "severity": "error",
+        "source": "accessible-name",
+        "component": "Dialog",
+        "message": "<Dialog> has no accessible name. A closed overlay is invisible to runtime a11y checks, so it must be labeled in the source.",
+        "suggestion": "Add a <Dialog.Title> child or an aria-label prop, e.g. <Dialog aria-label=\"…\"> or <Dialog.Title>…</Dialog.Title>.",
+        "location": {
+          "file": "TestApp.tsx",
+          "line": 236,
+          "column": 13
+        },
+        "details": {
+          "accessibleNameAttrs": [
+            "aria-label",
+            "aria-labelledby"
+          ],
+          "titleSubComponent": "Dialog.Title"
+        }
+      },
+      {
+        "type": "technical",
+        "severity": "error",
+        "source": "design-system-usage",
+        "component": "Box",
+        "message": "<Box> is not a Marigold component. It is not exported from @marigold/components.",
+        "suggestion": "<Box> does not exist in @marigold/components. Search the Marigold docs for the correct component.",
+        "location": {
+          "file": "TestApp.tsx",
+          "line": 229,
+          "column": 5
+        },
+        "details": {
+          "hallucinated": true,
+          "importedFrom": "@marigold/components"
+        }
+      },
+      {
+        "type": "technical",
+        "severity": "error",
+        "source": "design-system-usage",
+        "component": "Heading",
+        "message": "<Heading> is not a Marigold component. It is not exported from @marigold/components.",
+        "suggestion": "<Heading> does not exist in @marigold/components. Search the Marigold docs for the correct component.",
+        "location": {
+          "file": "TestApp.tsx",
+          "line": 233,
+          "column": 11
+        },
+        "details": {
+          "hallucinated": true,
+          "importedFrom": "@marigold/components"
+        }
+      },
+      {
+        "type": "technical",
+        "severity": "error",
+        "source": "design-system-usage",
+        "component": "DialogTrigger",
+        "message": "<DialogTrigger> is not a Marigold component. It is not exported from @marigold/components.",
+        "suggestion": "Use <Dialog.Trigger> — compound sub-components use dot notation.",
+        "location": {
+          "file": "TestApp.tsx",
+          "line": 234,
+          "column": 11
+        },
+        "details": {
+          "hallucinated": true,
+          "importedFrom": "@marigold/components"
+        }
+      },
+      {
+        "type": "technical",
+        "severity": "error",
+        "source": "design-system-usage",
+        "component": "Textarea",
+        "message": "<Textarea> is not a Marigold component. It is not exported from @marigold/components.",
+        "suggestion": "<Textarea> does not exist in @marigold/components. Search the Marigold docs for the correct component.",
+        "location": {
+          "file": "TestApp.tsx",
+          "line": 272,
+          "column": 17
+        },
+        "details": {
+          "hallucinated": true,
+          "importedFrom": "@marigold/components"
+        }
+      },
+      {
+        "type": "technical",
+        "severity": "error",
+        "source": "design-system-usage",
+        "component": "Box",
+        "message": "<Box> is not a Marigold component. It is not exported from @marigold/components.",
+        "suggestion": "<Box> does not exist in @marigold/components. Search the Marigold docs for the correct component.",
+        "location": {
+          "file": "TestApp.tsx",
+          "line": 289,
+          "column": 9
+        },
+        "details": {
+          "hallucinated": true,
+          "importedFrom": "@marigold/components"
+        }
+      },
+      {
+        "type": "technical",
+        "severity": "error",
+        "source": "design-system-usage",
+        "component": "Combobox",
+        "message": "<Combobox> is not a Marigold component. It is not exported from @marigold/components.",
+        "suggestion": "<Combobox> does not exist in @marigold/components. Search the Marigold docs for the correct component.",
+        "location": {
+          "file": "TestApp.tsx",
+          "line": 295,
+          "column": 13
+        },
+        "details": {
+          "hallucinated": true,
+          "importedFrom": "@marigold/components"
+        }
+      },
+      {
+        "type": "technical",
+        "severity": "error",
+        "source": "design-system-usage",
+        "component": "Alert",
+        "message": "<Alert> is not a Marigold component. It is not exported from @marigold/components.",
+        "suggestion": "<Alert> does not exist in @marigold/components. Search the Marigold docs for the correct component.",
+        "location": {
+          "file": "TestApp.tsx",
+          "line": 321,
+          "column": 11
+        },
+        "details": {
+          "hallucinated": true,
+          "importedFrom": "@marigold/components"
+        }
+      },
+      {
+        "type": "technical",
+        "severity": "error",
+        "source": "design-system-usage",
+        "component": "Tabs.Tab",
+        "message": "<Tabs.Tab> is not a valid sub-component of <Tabs>.",
+        "suggestion": "Check the Marigold docs for valid Tabs sub-components.",
+        "location": {
+          "file": "TestApp.tsx",
+          "line": 329,
+          "column": 13
+        },
+        "details": {
+          "hallucinated": true,
+          "parent": "Tabs",
+          "subComponent": "Tab"
+        }
+      },
+      {
+        "type": "technical",
+        "severity": "error",
+        "source": "design-system-usage",
+        "component": "Tabs.Tab",
+        "message": "<Tabs.Tab> is not a valid sub-component of <Tabs>.",
+        "suggestion": "Check the Marigold docs for valid Tabs sub-components.",
+        "location": {
+          "file": "TestApp.tsx",
+          "line": 330,
+          "column": 13
+        },
+        "details": {
+          "hallucinated": true,
+          "parent": "Tabs",
+          "subComponent": "Tab"
+        }
+      },
+      {
+        "type": "technical",
+        "severity": "error",
+        "source": "design-system-usage",
+        "component": "Tabs.Tab",
+        "message": "<Tabs.Tab> is not a valid sub-component of <Tabs>.",
+        "suggestion": "Check the Marigold docs for valid Tabs sub-components.",
+        "location": {
+          "file": "TestApp.tsx",
+          "line": 331,
+          "column": 13
+        },
+        "details": {
+          "hallucinated": true,
+          "parent": "Tabs",
+          "subComponent": "Tab"
+        }
+      },
+      {
+        "type": "technical",
+        "severity": "error",
+        "source": "design-system-usage",
+        "component": "MenuTrigger",
+        "message": "<MenuTrigger> is not a Marigold component. It is not exported from @marigold/components.",
+        "suggestion": "<MenuTrigger> does not exist in @marigold/components. Search the Marigold docs for the correct component.",
+        "location": {
+          "file": "TestApp.tsx",
+          "line": 358,
+          "column": 19
+        },
+        "details": {
+          "hallucinated": true,
+          "importedFrom": "@marigold/components"
+        }
+      },
+      {
+        "type": "technical",
+        "severity": "error",
+        "source": "design-system-usage",
+        "component": "Box",
+        "message": "<Box> is not a Marigold component. It is not exported from @marigold/components.",
+        "suggestion": "<Box> does not exist in @marigold/components. Search the Marigold docs for the correct component.",
+        "location": {
+          "file": "TestApp.tsx",
+          "line": 373,
+          "column": 11
+        },
+        "details": {
+          "hallucinated": true,
+          "importedFrom": "@marigold/components"
+        }
+      },
+      {
+        "type": "technical",
+        "severity": "error",
+        "source": "design-system-usage",
+        "component": "Box",
+        "message": "<Box> is not a Marigold component. It is not exported from @marigold/components.",
+        "suggestion": "<Box> does not exist in @marigold/components. Search the Marigold docs for the correct component.",
+        "location": {
+          "file": "TestApp.tsx",
+          "line": 381,
+          "column": 9
+        },
+        "details": {
+          "hallucinated": true,
+          "importedFrom": "@marigold/components"
+        }
+      },
+      {
+        "type": "technical",
+        "severity": "error",
+        "source": "design-system-usage",
+        "component": "Heading",
+        "message": "<Heading> is not a Marigold component. It is not exported from @marigold/components.",
+        "suggestion": "<Heading> does not exist in @marigold/components. Search the Marigold docs for the correct component.",
+        "location": {
+          "file": "TestApp.tsx",
+          "line": 398,
+          "column": 15
+        },
+        "details": {
+          "hallucinated": true,
+          "importedFrom": "@marigold/components"
+        }
+      },
+      {
+        "type": "technical",
+        "severity": "error",
+        "source": "design-system-usage",
+        "component": "Box",
+        "message": "<Box> is not a Marigold component. It is not exported from @marigold/components.",
+        "suggestion": "<Box> does not exist in @marigold/components. Search the Marigold docs for the correct component.",
+        "location": {
+          "file": "TestApp.tsx",
+          "line": 399,
+          "column": 15
+        },
+        "details": {
+          "hallucinated": true,
+          "importedFrom": "@marigold/components"
+        }
+      },
+      {
+        "type": "technical",
+        "severity": "error",
+        "source": "design-system-usage",
+        "component": "Heading",
+        "message": "<Heading> is not a Marigold component. It is not exported from @marigold/components.",
+        "suggestion": "<Heading> does not exist in @marigold/components. Search the Marigold docs for the correct component.",
+        "location": {
+          "file": "TestApp.tsx",
+          "line": 415,
+          "column": 15
+        },
+        "details": {
+          "hallucinated": true,
+          "importedFrom": "@marigold/components"
+        }
+      },
+      {
+        "type": "technical",
+        "severity": "error",
+        "source": "design-system-usage",
+        "component": "Heading",
+        "message": "<Heading> is not a Marigold component. It is not exported from @marigold/components.",
+        "suggestion": "<Heading> does not exist in @marigold/components. Search the Marigold docs for the correct component.",
+        "location": {
+          "file": "TestApp.tsx",
+          "line": 424,
+          "column": 15
+        },
+        "details": {
+          "hallucinated": true,
+          "importedFrom": "@marigold/components"
+        }
+      },
+      {
+        "type": "technical",
+        "severity": "error",
+        "source": "design-system-usage",
+        "component": "Heading",
+        "message": "<Heading> is not a Marigold component. It is not exported from @marigold/components.",
+        "suggestion": "<Heading> does not exist in @marigold/components. Search the Marigold docs for the correct component.",
+        "location": {
+          "file": "TestApp.tsx",
+          "line": 434,
+          "column": 15
+        },
+        "details": {
+          "hallucinated": true,
+          "importedFrom": "@marigold/components"
+        }
+      }
+    ],
+    "warnings": [
+      {
+        "type": "technical",
+        "severity": "warning",
+        "source": "design-system-usage",
+        "component": "Box",
+        "message": "Inline style on <Box> bypasses the design system (position, top, right, width, height).",
+        "suggestion": "Use Marigold layout components (Stack, Columns, Inset, Container) and theme tokens instead of inline styles.",
+        "location": {
+          "file": "TestApp.tsx",
+          "line": 382,
+          "column": 11
+        },
+        "details": {
+          "cssProperties": [
+            "position",
+            "top",
+            "right",
+            "width",
+            "height"
+          ]
+        }
+      },
+      {
+        "type": "technical",
+        "severity": "warning",
+        "source": "design-system-usage",
+        "component": "Box",
+        "message": "Inline style on <Box> bypasses the design system (marginLeft).",
+        "suggestion": "Use Marigold layout components (Stack, Columns, Inset, Container) and theme tokens instead of inline styles.",
+        "location": {
+          "file": "TestApp.tsx",
+          "line": 399,
+          "column": 20
+        },
+        "details": {
+          "cssProperties": [
+            "marginLeft"
+          ]
+        }
+      },
+      {
+        "type": "technical",
+        "severity": "warning",
+        "source": "table-usage",
+        "component": "Table",
+        "message": "<Table> has no column marked rowHeader. Exactly one Table.Column should set rowHeader so screen readers can announce each row by it.",
+        "suggestion": "Add rowHeader to the column that identifies each row, e.g. <Table.Column rowHeader>Name</Table.Column>.",
+        "location": {
+          "file": "TestApp.tsx",
+          "line": 336,
+          "column": 9
+        },
+        "details": {
+          "missingRowHeader": true,
+          "columnCount": 7
+        }
+      }
+    ],
+    "passed": [
+      "Compound component placement",
+      "Section headers",
+      "Collection item ids",
+      "Layout usage",
+      "Component conventions",
+      "Theme variant compliance"
+    ],
+    "metadata": {
+      "renderTimeMs": 0,
+      "componentsFound": [],
+      "checksRun": [
+        "technical",
+        "spatial",
+        "a11y"
+      ],
+      "coverage": {
+        "staticValuesChecked": 11,
+        "dynamicValuesSkipped": 15,
+        "spreadPropsBypassed": 0
+      },
+      "widthUtilization": null
+    },
+    "markdown": "marigold-validate: TestApp.tsx — 36 error(s), 3 warning(s)\n\n[error/technical] <Alert>: <Alert> is not a Marigold component. It is not exported from @marigold/components. (TestApp.tsx:321:11)\n  → <Alert> does not exist in @marigold/components. Search the Marigold docs for the correct component.\n  data: {hallucinated=true, importedFrom=@marigold/components}\n[error/technical] <Box>: <Box> is not a Marigold component. It is not exported from @marigold/components. (TestApp.tsx:229:5)\n  → <Box> does not exist in @marigold/components. Search the Marigold docs for the correct component.\n  data: {hallucinated=true, importedFrom=@marigold/components}\n[error/technical] <Box>: <Box> is not a Marigold component. It is not exported from @marigold/components. (TestApp.tsx:289:9)\n  → <Box> does not exist in @marigold/components. Search the Marigold docs for the correct component.\n  data: {hallucinated=true, importedFrom=@marigold/components}\n[error/technical] <Box>: <Box> is not a Marigold component. It is not exported from @marigold/components. (TestApp.tsx:373:11)\n  → <Box> does not exist in @marigold/components. Search the Marigold docs for the correct component.\n  data: {hallucinated=true, importedFrom=@marigold/components}\n[error/technical] <Box>: <Box> is not a Marigold component. It is not exported from @marigold/components. (TestApp.tsx:381:9)\n  → <Box> does not exist in @marigold/components. Search the Marigold docs for the correct component.\n  data: {hallucinated=true, importedFrom=@marigold/components}\n[error/technical] <Box>: <Box> is not a Marigold component. It is not exported from @marigold/components. (TestApp.tsx:399:15)\n  → <Box> does not exist in @marigold/components. Search the Marigold docs for the correct component.\n  data: {hallucinated=true, importedFrom=@marigold/components}\n[error/technical] <Combobox>: <Combobox> is not a Marigold component. It is not exported from @marigold/components. (TestApp.tsx:295:13)\n  → <Combobox> does not exist in @marigold/components. Search the Marigold docs for the correct component.\n  data: {hallucinated=true, importedFrom=@marigold/components}\n[error/technical] <Dialog>: Prop \"title\" does not exist on <Dialog>. (TestApp.tsx:236:21)\n  → Remove the prop. Available props: variant, size, closeButton, children, id, dir, lang, hidden, inert, translate, onClick, onClickCapture, onAuxClick, onAuxClickCapture, onContextMenu, ….\n  data: {used=title, available=[\"variant\",\"size\",\"closeButton\",\"children\",\"id\",\"dir\",\"lang\",\"hidden\", …]}\n[error/technical] <Dialog>: <Dialog> is used without any of its sub-components. (TestApp.tsx:236:13)\n  → Use compound children: <Dialog.Title>, <Dialog.Content>, <Dialog.Actions>.\n  data: {expected=[\"Title\",\"Content\",\"Actions\"], found=[]}\n[error/technical] <DialogTrigger>: <DialogTrigger> is not a Marigold component. It is not exported from @marigold/components. (TestApp.tsx:234:11)\n  → Use <Dialog.Trigger> — compound sub-components use dot notation.\n  data: {hallucinated=true, importedFrom=@marigold/components}\n[error/technical] <Heading>: <Heading> is not a Marigold component. It is not exported from @marigold/components. (TestApp.tsx:233:11)\n  → <Heading> does not exist in @marigold/components. Search the Marigold docs for the correct component.\n  data: {hallucinated=true, importedFrom=@marigold/components}\n[error/technical] <Heading>: <Heading> is not a Marigold component. It is not exported from @marigold/components. (TestApp.tsx:398:15)\n  → <Heading> does not exist in @marigold/components. Search the Marigold docs for the correct component.\n  data: {hallucinated=true, importedFrom=@marigold/components}\n[error/technical] <Heading>: <Heading> is not a Marigold component. It is not exported from @marigold/components. (TestApp.tsx:415:15)\n  → <Heading> does not exist in @marigold/components. Search the Marigold docs for the correct component.\n  data: {hallucinated=true, importedFrom=@marigold/components}\n[error/technical] <Heading>: <Heading> is not a Marigold component. It is not exported from @marigold/components. (TestApp.tsx:424:15)\n  → <Heading> does not exist in @marigold/components. Search the Marigold docs for the correct component.\n  data: {hallucinated=true, importedFrom=@marigold/components}\n[error/technical] <Heading>: <Heading> is not a Marigold component. It is not exported from @marigold/components. (TestApp.tsx:434:15)\n  → <Heading> does not exist in @marigold/components. Search the Marigold docs for the correct component.\n  data: {hallucinated=true, importedFrom=@marigold/components}\n[error/technical] <Inline>: Prop \"alignY\" value \"end\" is not a known variant for <Inline>. (TestApp.tsx:290:29)\n  → Known values: bottom, top, input, center.\n  data: {used=end, known=[\"bottom\",\"top\",\"input\",\"center\"]}\n[error/technical] <MenuTrigger>: <MenuTrigger> is not a Marigold component. It is not exported from @marigold/components. (TestApp.tsx:358:19)\n  → <MenuTrigger> does not exist in @marigold/components. Search the Marigold docs for the correct component.\n  data: {hallucinated=true, importedFrom=@marigold/components}\n[error/technical] <Tabs.Tab>: <Tabs.Tab> is not a valid sub-component of <Tabs>. (TestApp.tsx:329:13)\n  → Check the Marigold docs for valid Tabs sub-components.\n  data: {hallucinated=true, parent=Tabs, subComponent=Tab}\n[error/technical] <Tabs.Tab>: <Tabs.Tab> is not a valid sub-component of <Tabs>. (TestApp.tsx:330:13)\n  → Check the Marigold docs for valid Tabs sub-components.\n  data: {hallucinated=true, parent=Tabs, subComponent=Tab}\n[error/technical] <Tabs.Tab>: <Tabs.Tab> is not a valid sub-component of <Tabs>. (TestApp.tsx:331:13)\n  → Check the Marigold docs for valid Tabs sub-components.\n  data: {hallucinated=true, parent=Tabs, subComponent=Tab}\n[error/technical] <Textarea>: <Textarea> is not a Marigold component. It is not exported from @marigold/components. (TestApp.tsx:272:17)\n  → <Textarea> does not exist in @marigold/components. Search the Marigold docs for the correct component.\n  data: {hallucinated=true, importedFrom=@marigold/components}\n[error/technical] <TypeScript>: TS2305: Module '\"@marigold/components\"' has no exported member 'Box'. (TestApp.tsx:5:3)\n  → Fix the TypeScript error reported by the compiler. The exact location is included in the issue location field.\n[error/technical] <TypeScript>: TS2305: Module '\"@marigold/components\"' has no exported member 'Heading'. (TestApp.tsx:7:3)\n  → Fix the TypeScript error reported by the compiler. The exact location is included in the issue location field.\n[error/technical] <TypeScript>: TS2305: Module '\"@marigold/components\"' has no exported member 'DialogTrigger'. (TestApp.tsx:14:3)\n  → Fix the TypeScript error reported by the compiler. The exact location is included in the issue location field.\n[error/technical] <TypeScript>: TS2305: Module '\"@marigold/components\"' has no exported member 'MenuTrigger'. (TestApp.tsx:15:3)\n  → Fix the TypeScript error reported by the compiler. The exact location is included in the issue location field.\n[error/technical] <TypeScript>: TS2724: '\"@marigold/components\"' has no exported member named 'Combobox'. Did you mean 'ComboBox'? (TestApp.tsx:18:3)\n  → Fix the TypeScript error reported by the compiler. The exact location is included in the issue location field.\n[error/technical] <TypeScript>: TS2724: '\"@marigold/components\"' has no exported member named 'Textarea'. Did you mean 'TextArea'? (TestApp.tsx:19:3)\n  → Fix the TypeScript error reported by the compiler. The exact location is included in the issue location field.\n[error/technical] <TypeScript>: TS2305: Module '\"@marigold/components\"' has no exported member 'Alert'. (TestApp.tsx:20:3)\n  → Fix the TypeScript error reported by the compiler. The exact location is included in the issue location field.\n[error/technical] <TypeScript>: TS2339: Property 'Tab' does not exist on type '{ ({ disabled, variant, size, ...rest }: TabsProps): Element; List: (props: TabListProps) => Element; TabPanel: (props: TabPanelProps) => Element; Item: (props: TabProps) => Element; }'. (TestApp.tsx:329:19)\n  → Fix the TypeScript error reported by the compiler. The exact location is included in the issue location field.\n[error/technical] <TypeScript>: TS2339: Property 'Tab' does not exist on type '{ ({ disabled, variant, size, ...rest }: TabsProps): Element; List: (props: TabListProps) => Element; TabPanel: (props: TabPanelProps) => Element; Item: (props: TabProps) => Element; }'. (TestApp.tsx:329:51)\n  → Fix the TypeScript error reported by the compiler. The exact location is included in the issue location field.\n[error/technical] <TypeScript>: TS2339: Property 'Tab' does not exist on type '{ ({ disabled, variant, size, ...rest }: TabsProps): Element; List: (props: TabListProps) => Element; TabPanel: (props: TabPanelProps) => Element; Item: (props: TabProps) => Element; }'. (TestApp.tsx:330:19)\n  → Fix the TypeScript error reported by the compiler. The exact location is included in the issue location field.\n[error/technical] <TypeScript>: TS2339: Property 'Tab' does not exist on type '{ ({ disabled, variant, size, ...rest }: TabsProps): Element; List: (props: TabListProps) => Element; TabPanel: (props: TabPanelProps) => Element; Item: (props: TabProps) => Element; }'. (TestApp.tsx:330:46)\n  → Fix the TypeScript error reported by the compiler. The exact location is included in the issue location field.\n[error/technical] <TypeScript>: TS2339: Property 'Tab' does not exist on type '{ ({ disabled, variant, size, ...rest }: TabsProps): Element; List: (props: TabListProps) => Element; TabPanel: (props: TabPanelProps) => Element; Item: (props: TabProps) => Element; }'. (TestApp.tsx:331:19)\n  → Fix the TypeScript error reported by the compiler. The exact location is included in the issue location field.\n[error/technical] <TypeScript>: TS2339: Property 'Tab' does not exist on type '{ ({ disabled, variant, size, ...rest }: TabsProps): Element; List: (props: TabListProps) => Element; TabPanel: (props: TabPanelProps) => Element; Item: (props: TabProps) => Element; }'. (TestApp.tsx:331:49)\n  → Fix the TypeScript error reported by the compiler. The exact location is included in the issue location field.\n[error/technical] <TypeScript>: TS2345: Argument of type 'Key' is not assignable to parameter of type 'string | number'.\n  Type 'bigint' is not assignable to type 'string | number'. (TestApp.tsx:360:61)\n  → Fix the TypeScript error reported by the compiler. The exact location is included in the issue location field.\n[warning/technical] <Box>: Inline style on <Box> bypasses the design system (position, top, right, width, height). (TestApp.tsx:382:11)\n  → Use Marigold layout components (Stack, Columns, Inset, Container) and theme tokens instead of inline styles.\n  data: {cssProperties=[\"position\",\"top\",\"right\",\"width\",\"height\"]}\n[warning/technical] <Box>: Inline style on <Box> bypasses the design system (marginLeft). (TestApp.tsx:399:20)\n  → Use Marigold layout components (Stack, Columns, Inset, Container) and theme tokens instead of inline styles.\n  data: {cssProperties=[\"marginLeft\"]}\n[warning/technical] <Table>: <Table> has no column marked rowHeader. Exactly one Table.Column should set rowHeader so screen readers can announce each row by it. (TestApp.tsx:336:9)\n  → Add rowHeader to the column that identifies each row, e.g. <Table.Column rowHeader>Name</Table.Column>.\n  data: {missingRowHeader=true, columnCount=7}\n[error/a11y] <Dialog>: <Dialog> has no accessible name. A closed overlay is invisible to runtime a11y checks, so it must be labeled in the source. (TestApp.tsx:236:13)\n  → Add a <Dialog.Title> child or an aria-label prop, e.g. <Dialog aria-label=\"…\"> or <Dialog.Title>…</Dialog.Title>.\n  data: {accessibleNameAttrs=[\"aria-label\",\"aria-labelledby\"], titleSubComponent=Dialog.Title}\n\npassed: Compound component placement, Section headers, Collection item ids, Layout usage, Component conventions, Theme variant compliance\n\nchecks run: technical, spatial, a11y"
+  },
+  "componentsFound": [],
+  "renderTimeMs": 0,
+  "sourceCode": "import React, { useState, useMemo } from 'react';\nimport {\n  Stack,\n  Inline,\n  Box,\n  Text,\n  Heading,\n  Button,\n  TextField,\n  Select,\n  DatePicker,\n  Table,\n  Dialog,\n  DialogTrigger,\n  MenuTrigger,\n  Menu,\n  Badge,\n  Combobox,\n  Textarea,\n  Alert,\n  Divider,\n  Tabs,\n} from '@marigold/components';\n\ninterface Booking {\n  id: string;\n  customer: string;\n  email: string;\n  venue: string;\n  date: string;\n  timeSlot: string;\n  status: 'confirmed' | 'pending' | 'cancelled';\n  notes: string;\n}\n\nconst TODAY = '2026-06-21';\nconst WEEK_END = '2026-06-27';\n\nconst VENUES = [\n  'Main Hall',\n  'Conference Room A',\n  'Conference Room B',\n  'Rooftop Terrace',\n  'Workshop Studio',\n];\n\nconst TIME_SLOTS = [\n  '09:00-12:00',\n  '12:00-15:00',\n  '15:00-18:00',\n  '18:00-21:00',\n];\n\nconst INITIAL_BOOKINGS: Booking[] = [\n  {\n    id: 'BK-001',\n    customer: 'Alice Johnson',\n    email: 'alice@example.com',\n    venue: 'Main Hall',\n    date: '2026-06-21',\n    timeSlot: '09:00-12:00',\n    status: 'confirmed',\n    notes: 'Anniversary celebration',\n  },\n  {\n    id: 'BK-002',\n    customer: 'Bob Smith',\n    email: 'bob@example.com',\n    venue: 'Conference Room A',\n    date: '2026-06-21',\n    timeSlot: '12:00-15:00',\n    status: 'pending',\n    notes: 'Team meeting',\n  },\n  {\n    id: 'BK-003',\n    customer: 'Carol White',\n    email: 'carol@example.com',\n    venue: 'Rooftop Terrace',\n    date: '2026-06-22',\n    timeSlot: '18:00-21:00',\n    status: 'confirmed',\n    notes: 'Birthday party',\n  },\n  {\n    id: 'BK-004',\n    customer: 'David Brown',\n    email: 'david@example.com',\n    venue: 'Workshop Studio',\n    date: '2026-06-23',\n    timeSlot: '09:00-12:00',\n    status: 'cancelled',\n    notes: 'Cancelled by customer',\n  },\n  {\n    id: 'BK-005',\n    customer: 'Eve Martinez',\n    email: 'eve@example.com',\n    venue: 'Conference Room B',\n    date: '2026-06-24',\n    timeSlot: '15:00-18:00',\n    status: 'pending',\n    notes: 'Product launch event',\n  },\n  {\n    id: 'BK-006',\n    customer: 'Frank Lee',\n    email: 'frank@example.com',\n    venue: 'Main Hall',\n    date: '2026-06-21',\n    timeSlot: '15:00-18:00',\n    status: 'confirmed',\n    notes: 'Corporate team event',\n  },\n  {\n    id: 'BK-007',\n    customer: 'Grace Kim',\n    email: 'grace@example.com',\n    venue: 'Conference Room A',\n    date: '2026-06-25',\n    timeSlot: '12:00-15:00',\n    status: 'confirmed',\n    notes: 'Training session',\n  },\n  {\n    id: 'BK-008',\n    customer: 'Henry Chen',\n    email: 'henry@example.com',\n    venue: 'Rooftop Terrace',\n    date: '2026-06-27',\n    timeSlot: '18:00-21:00',\n    status: 'pending',\n    notes: '',\n  },\n];\n\nfunction statusVariant(status: string): 'success' | 'warning' | 'neutral' | 'info' | 'error' {\n  if (status === 'confirmed') return 'success';\n  if (status === 'pending') return 'warning';\n  return 'neutral';\n}\n\nfunction StatusBadge({ status }: { status: string }) {\n  const label = status.charAt(0).toUpperCase() + status.slice(1);\n  return <Badge variant={statusVariant(status)}>{label}</Badge>;\n}\n\nfunction dateToString(val: { year: number; month: number; day: number }): string {\n  return `${val.year}-${String(val.month).padStart(2, '0')}-${String(val.day).padStart(2, '0')}`;\n}\n\nconst TestApp = () => {\n  const [bookings, setBookings] = useState<Booking[]>(INITIAL_BOOKINGS);\n  const [activeTab, setActiveTab] = useState<string>('all');\n  const [dateFilter, setDateFilter] = useState<string>('');\n  const [venueFilter, setVenueFilter] = useState<string>('');\n  const [statusFilter, setStatusFilter] = useState<string>('all');\n\n  const [selectedBooking, setSelectedBooking] = useState<Booking | null>(null);\n  const [paymentExpanded, setPaymentExpanded] = useState(false);\n  const [commExpanded, setCommExpanded] = useState(false);\n\n  const [dialogOpen, setDialogOpen] = useState(false);\n  const [newCustomerName, setNewCustomerName] = useState('');\n  const [newEmail, setNewEmail] = useState('');\n  const [newVenue, setNewVenue] = useState('');\n  const [newDate, setNewDate] = useState('');\n  const [newTimeSlot, setNewTimeSlot] = useState('');\n  const [newNotes, setNewNotes] = useState('');\n\n  const clearFilters = () => {\n    setDateFilter('');\n    setVenueFilter('');\n    setStatusFilter('all');\n  };\n\n  const filteredBookings = useMemo(() => {\n    return bookings.filter(b => {\n      if (activeTab === 'today' && b.date !== TODAY) return false;\n      if (activeTab === 'week' && (b.date < TODAY || b.date > WEEK_END)) return false;\n      if (dateFilter && b.date !== dateFilter) return false;\n      if (venueFilter && !b.venue.toLowerCase().includes(venueFilter.toLowerCase())) return false;\n      if (statusFilter !== 'all' && b.status !== statusFilter) return false;\n      return true;\n    });\n  }, [bookings, activeTab, dateFilter, venueFilter, statusFilter]);\n\n  const handleMenuAction = (action: string | number, booking: Booking) => {\n    if (action === 'view') {\n      setSelectedBooking(booking);\n      setPaymentExpanded(false);\n      setCommExpanded(false);\n    } else if (action === 'cancel') {\n      setBookings(prev =>\n        prev.map(b => b.id === booking.id ? { ...b, status: 'cancelled' as const } : b)\n      );\n    }\n  };\n\n  const handleCreateBooking = () => {\n    if (!newCustomerName.trim()) return;\n    const newBooking: Booking = {\n      id: `BK-${String(bookings.length + 1).padStart(3, '0')}`,\n      customer: newCustomerName.trim(),\n      email: newEmail.trim(),\n      venue: newVenue || 'Main Hall',\n      date: newDate || TODAY,\n      timeSlot: newTimeSlot || '09:00-12:00',\n      status: 'pending',\n      notes: newNotes.trim(),\n    };\n    setBookings(prev => [...prev, newBooking]);\n    setDialogOpen(false);\n    setNewCustomerName('');\n    setNewEmail('');\n    setNewVenue('');\n    setNewDate('');\n    setNewTimeSlot('');\n    setNewNotes('');\n  };\n\n  const mainHallToday = bookings.filter(\n    b => b.venue === 'Main Hall' && b.date === TODAY && b.status !== 'cancelled'\n  ).length;\n  const remainingSlots = Math.max(0, 4 - mainHallToday);\n  const showCapacityAlert = remainingSlots <= 2;\n\n  return (\n    <Box padding={6}>\n      <Stack space={6}>\n        {/* Page Header */}\n        <Inline space={4} alignY=\"center\">\n          <Heading level={1}>Booking Management</Heading>\n          <DialogTrigger isOpen={dialogOpen} onOpenChange={setDialogOpen}>\n            <Button variant=\"primary\">+ New Booking</Button>\n            <Dialog title=\"New Booking\">\n              <Stack space={4}>\n                <TextField\n                  label=\"Customer Name\"\n                  value={newCustomerName}\n                  onChange={setNewCustomerName}\n                  required\n                />\n                <TextField\n                  label=\"Customer Email\"\n                  type=\"email\"\n                  value={newEmail}\n                  onChange={setNewEmail}\n                />\n                <Select\n                  label=\"Venue\"\n                  selectedKey={newVenue}\n                  onSelectionChange={k => setNewVenue(String(k))}\n                >\n                  {VENUES.map(v => (\n                    <Select.Option key={v} id={v}>{v}</Select.Option>\n                  ))}\n                </Select>\n                <DatePicker\n                  label=\"Date\"\n                  onChange={val => setNewDate(val ? dateToString(val) : '')}\n                />\n                <Select\n                  label=\"Time Slot\"\n                  selectedKey={newTimeSlot}\n                  onSelectionChange={k => setNewTimeSlot(String(k))}\n                >\n                  {TIME_SLOTS.map(ts => (\n                    <Select.Option key={ts} id={ts}>{ts}</Select.Option>\n                  ))}\n                </Select>\n                <Textarea\n                  label=\"Notes\"\n                  value={newNotes}\n                  onChange={setNewNotes}\n                />\n                <Inline space={2}>\n                  <Button variant=\"primary\" onPress={handleCreateBooking}>\n                    Create Booking\n                  </Button>\n                  <Button onPress={() => setDialogOpen(false)}>Cancel</Button>\n                </Inline>\n              </Stack>\n            </Dialog>\n          </DialogTrigger>\n        </Inline>\n\n        {/* Filter Bar */}\n        <Box>\n          <Inline space={3} alignY=\"end\">\n            <DatePicker\n              label=\"Filter by Date\"\n              onChange={val => setDateFilter(val ? dateToString(val) : '')}\n            />\n            <Combobox\n              label=\"Venue\"\n              inputValue={venueFilter}\n              onInputChange={setVenueFilter}\n              onSelectionChange={k => setVenueFilter(k != null ? String(k) : '')}\n            >\n              {VENUES.map(v => (\n                <Combobox.Option key={v} id={v}>{v}</Combobox.Option>\n              ))}\n            </Combobox>\n            <Select\n              label=\"Status\"\n              selectedKey={statusFilter}\n              onSelectionChange={k => setStatusFilter(String(k))}\n            >\n              <Select.Option id=\"all\">All</Select.Option>\n              <Select.Option id=\"confirmed\">Confirmed</Select.Option>\n              <Select.Option id=\"pending\">Pending</Select.Option>\n              <Select.Option id=\"cancelled\">Cancelled</Select.Option>\n            </Select>\n            <Button onPress={clearFilters}>Clear Filters</Button>\n          </Inline>\n        </Box>\n\n        {/* Capacity Alert */}\n        {showCapacityAlert && (\n          <Alert variant=\"warning\">\n            Main Hall has only {remainingSlots} slot{remainingSlots !== 1 ? 's' : ''} remaining for today.\n          </Alert>\n        )}\n\n        {/* Tabs */}\n        <Tabs selectedKey={activeTab} onSelectionChange={k => setActiveTab(String(k))}>\n          <Tabs.List>\n            <Tabs.Tab id=\"all\">All Bookings</Tabs.Tab>\n            <Tabs.Tab id=\"today\">Today</Tabs.Tab>\n            <Tabs.Tab id=\"week\">This Week</Tabs.Tab>\n          </Tabs.List>\n        </Tabs>\n\n        {/* Table */}\n        <Table aria-label=\"Booking management table\">\n          <Table.Header>\n            <Table.Column>Booking ID</Table.Column>\n            <Table.Column>Customer</Table.Column>\n            <Table.Column>Venue</Table.Column>\n            <Table.Column>Date</Table.Column>\n            <Table.Column>Time Slot</Table.Column>\n            <Table.Column>Status</Table.Column>\n            <Table.Column>Actions</Table.Column>\n          </Table.Header>\n          <Table.Body>\n            {filteredBookings.map(booking => (\n              <Table.Row key={booking.id}>\n                <Table.Cell>{booking.id}</Table.Cell>\n                <Table.Cell>{booking.customer}</Table.Cell>\n                <Table.Cell>{booking.venue}</Table.Cell>\n                <Table.Cell>{booking.date}</Table.Cell>\n                <Table.Cell>{booking.timeSlot}</Table.Cell>\n                <Table.Cell>\n                  <StatusBadge status={booking.status} />\n                </Table.Cell>\n                <Table.Cell>\n                  <MenuTrigger>\n                    <Button variant=\"ghost\" aria-label=\"Actions\">•••</Button>\n                    <Menu onAction={key => handleMenuAction(key, booking)}>\n                      <Menu.Item id=\"view\">View Details</Menu.Item>\n                      <Menu.Item id=\"edit\">Edit</Menu.Item>\n                      <Menu.Item id=\"cancel\">Cancel Booking</Menu.Item>\n                    </Menu>\n                  </MenuTrigger>\n                </Table.Cell>\n              </Table.Row>\n            ))}\n          </Table.Body>\n        </Table>\n\n        {filteredBookings.length === 0 && (\n          <Box padding={4}>\n            <Text>No bookings match the current filters.</Text>\n          </Box>\n        )}\n      </Stack>\n\n      {/* Detail Panel */}\n      {selectedBooking && (\n        <Box\n          style={{\n            position: 'fixed',\n            top: 0,\n            right: 0,\n            width: '380px',\n            height: '100vh',\n            backgroundColor: '#ffffff',\n            boxShadow: '-4px 0 20px rgba(0,0,0,0.12)',\n            overflowY: 'auto',\n            zIndex: 1000,\n            padding: '24px',\n          }}\n        >\n          <Stack space={4}>\n            {/* Panel Header */}\n            <Inline alignY=\"center\">\n              <Heading level={2}>Booking Details</Heading>\n              <Box style={{ marginLeft: 'auto' }}>\n                <Button variant=\"ghost\" onPress={() => setSelectedBooking(null)}>\n                  ✕ Close\n                </Button>\n              </Box>\n            </Inline>\n\n            <Inline space={2} alignY=\"center\">\n              <Text>{selectedBooking.id}</Text>\n              <StatusBadge status={selectedBooking.status} />\n            </Inline>\n\n            <Divider />\n\n            {/* Customer Info */}\n            <Stack space={2}>\n              <Heading level={3}>Customer Information</Heading>\n              <Text>Name: {selectedBooking.customer}</Text>\n              <Text>Email: {selectedBooking.email}</Text>\n            </Stack>\n\n            <Divider />\n\n            {/* Venue & Schedule */}\n            <Stack space={2}>\n              <Heading level={3}>Venue &amp; Schedule</Heading>\n              <Text>Venue: {selectedBooking.venue}</Text>\n              <Text>Date: {selectedBooking.date}</Text>\n              <Text>Time: {selectedBooking.timeSlot}</Text>\n            </Stack>\n\n            <Divider />\n\n            {/* Notes */}\n            <Stack space={2}>\n              <Heading level={3}>Notes</Heading>\n              <Text>{selectedBooking.notes || 'No notes provided.'}</Text>\n            </Stack>\n\n            <Divider />\n\n            {/* Payment History — Collapsible */}\n            <Stack space={2}>\n              <Button\n                variant=\"ghost\"\n                onPress={() => setPaymentExpanded(v => !v)}\n              >\n                Payment History {paymentExpanded ? '▲' : '▼'}\n              </Button>\n              {paymentExpanded && (\n                <Stack space={2}>\n                  <Text>Invoice #INV-001 — $500.00 — Paid</Text>\n                  <Text>Invoice #INV-002 — $150.00 — Pending</Text>\n                  <Text>Deposit received: $200.00</Text>\n                </Stack>\n              )}\n            </Stack>\n\n            <Divider />\n\n            {/* Communication Log — Collapsible */}\n            <Stack space={2}>\n              <Button\n                variant=\"ghost\"\n                onPress={() => setCommExpanded(v => !v)}\n              >\n                Communication Log {commExpanded ? '▲' : '▼'}\n              </Button>\n              {commExpanded && (\n                <Stack space={2}>\n                  <Text>2026-06-20 — Booking confirmation email sent</Text>\n                  <Text>2026-06-19 — Customer inquiry via contact form</Text>\n                  <Text>2026-06-18 — Initial quote sent</Text>\n                </Stack>\n              )}\n            </Stack>\n          </Stack>\n        </Box>\n      )}\n    </Box>\n  );\n};\n\nexport default TestApp;\n",
+  "assertions": {
+    "passed": [
+      {
+        "id": "a-import-marigold",
+        "description": "Imports from @marigold/components",
+        "severity": "required",
+        "passed": true,
+        "evidence": "import from \"@marigold/components\" found"
+      },
+      {
+        "id": "a-table",
+        "description": "Table component for bookings",
+        "severity": "required",
+        "passed": true,
+        "evidence": "<Table> found"
+      },
+      {
+        "id": "a-table-header",
+        "description": "Table.Header sub-component",
+        "severity": "required",
+        "passed": true,
+        "evidence": "<Table.Header> found"
+      },
+      {
+        "id": "a-table-body",
+        "description": "Table.Body sub-component",
+        "severity": "required",
+        "passed": true,
+        "evidence": "<Table.Body> found"
+      },
+      {
+        "id": "a-date-picker",
+        "description": "DatePicker for date filtering",
+        "severity": "required",
+        "passed": true,
+        "evidence": "<DatePicker> found"
+      },
+      {
+        "id": "a-dialog",
+        "description": "Dialog for create booking form",
+        "severity": "required",
+        "passed": true,
+        "evidence": "<Dialog> found"
+      },
+      {
+        "id": "a-tabs",
+        "description": "Tabs for booking views",
+        "severity": "required",
+        "passed": true,
+        "evidence": "<Tabs> found"
+      },
+      {
+        "id": "a-menu",
+        "description": "Menu for row actions",
+        "severity": "required",
+        "passed": true,
+        "evidence": "<Menu> found"
+      },
+      {
+        "id": "a-badge",
+        "description": "Badge for booking status",
+        "severity": "required",
+        "passed": true,
+        "evidence": "<Badge> found"
+      },
+      {
+        "id": "a-button",
+        "description": "Button component",
+        "severity": "required",
+        "passed": true,
+        "evidence": "<Button> found"
+      },
+      {
+        "id": "a-select",
+        "description": "Select for status filter / form dropdowns",
+        "severity": "required",
+        "passed": true,
+        "evidence": "<Select> found"
+      },
+      {
+        "id": "a-text-field",
+        "description": "TextField in booking form",
+        "severity": "required",
+        "passed": true,
+        "evidence": "<TextField> found"
+      },
+      {
+        "id": "a-no-onclick-on-marigold",
+        "description": "No onClick on Marigold Button components",
+        "severity": "recommended",
+        "passed": true,
+        "evidence": "\"/<Button[^>]*onClick/\" correctly absent"
+      }
+    ],
+    "failed": [
+      {
+        "id": "a-combobox",
+        "description": "ComboBox or SearchField for venue search",
+        "severity": "required",
+        "passed": false,
+        "evidence": "none matched: <ComboBox> not found; <Autocomplete> not found; <SearchField> not found"
+      },
+      {
+        "id": "a-drawer",
+        "description": "Drawer for booking detail view",
+        "severity": "recommended",
+        "passed": false,
+        "evidence": "<Drawer> not found"
+      },
+      {
+        "id": "a-accordion",
+        "description": "Accordion for detail sections",
+        "severity": "recommended",
+        "passed": false,
+        "evidence": "<Accordion> not found"
+      },
+      {
+        "id": "a-section-message",
+        "description": "SectionMessage for capacity alerts",
+        "severity": "required",
+        "passed": false,
+        "evidence": "<SectionMessage> not found"
+      },
+      {
+        "id": "a-headline",
+        "description": "Headline for page title",
+        "severity": "recommended",
+        "passed": false,
+        "evidence": "<Headline> not found"
+      },
+      {
+        "id": "a-form",
+        "description": "Form component in create dialog",
+        "severity": "required",
+        "passed": false,
+        "evidence": "<Form> not found"
+      },
+      {
+        "id": "a-textarea",
+        "description": "TextArea for booking notes",
+        "severity": "recommended",
+        "passed": false,
+        "evidence": "<TextArea> not found"
+      }
+    ],
+    "passRate": 0.65,
+    "requiredPassRate": 0.8,
+    "weightedPassRate": 0.7538,
+    "total": 20
+  },
+  "validatePackageVersion": "0.0.1",
+  "playwrightVersion": null,
+  "resolvedModelId": "claude-sonnet-4-6",
+  "claudeCliVersion": "2.1.185 (Claude Code)",
+  "sessionId": "38139e07-073a-46b2-843d-c92fbdf3d314"
+}

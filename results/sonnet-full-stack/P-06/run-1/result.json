@@ -1,0 +1,372 @@
+{
+  "runId": "sonnet-full-stack-P-06-r1",
+  "promptId": "P-06",
+  "model": "sonnet",
+  "config": "full-stack",
+  "timestamp": "2026-06-25T10:36:58.870Z",
+  "quality": {
+    "overall": 82.19,
+    "categories": {
+      "A": {
+        "category": "A",
+        "label": "Design System API",
+        "score": 100,
+        "weight": 0.225,
+        "weightedScore": 22.5,
+        "errorCount": 0,
+        "warningCount": 0,
+        "issues": []
+      },
+      "B": {
+        "category": "B",
+        "label": "Token Compliance",
+        "score": 100,
+        "weight": 0.1,
+        "weightedScore": 10,
+        "errorCount": 0,
+        "warningCount": 0,
+        "issues": []
+      },
+      "C": {
+        "category": "C",
+        "label": "DOM / Structure",
+        "score": 65,
+        "weight": 0.225,
+        "weightedScore": 14.63,
+        "errorCount": 1,
+        "warningCount": 0,
+        "issues": [
+          {
+            "type": "technical",
+            "severity": "error",
+            "source": "required-ancestor",
+            "component": "AppLayout.Main",
+            "message": "<AppLayout.Main> is used without a <AppLayout> container anywhere in the file. Compound parts must be rendered inside their root component.",
+            "suggestion": "Wrap the <AppLayout.Main> usage in a <AppLayout>…</AppLayout>.",
+            "location": {
+              "file": "TestApp.tsx",
+              "line": 242,
+              "column": 5
+            },
+            "details": {
+              "subComponent": "AppLayout.Main",
+              "requiredRoot": "AppLayout"
+            }
+          }
+        ]
+      },
+      "D": {
+        "category": "D",
+        "label": "Spatial & A11y",
+        "score": 75.51,
+        "weight": 0.225,
+        "weightedScore": 16.99,
+        "errorCount": 0,
+        "warningCount": 3,
+        "issues": [
+          {
+            "type": "spatial",
+            "severity": "warning",
+            "source": "overflow-detector",
+            "component": "body:nth-child(2) > div:nth-child(1) > div:nth-child(1) > main:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div:nth-child(2) > div:nth-child(1)",
+            "message": "Flex container children are wrapping to 3 rows (3 children, container 1248px wide, content 2512px wide).",
+            "suggestion": "Consider using <Columns collapseAt=\"...\"> for responsive multi-column layout, or <Stack> for vertical arrangement.",
+            "details": {
+              "containerSelector": "body:nth-child(2) > div:nth-child(1) > div:nth-child(1) > main:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div:nth-child(2) > div:nth-child(1)",
+              "rowCount": 3,
+              "childCount": 3,
+              "containerWidth": 1248,
+              "totalChildrenWidth": 2512,
+              "isAutoFitGrid": false,
+              "hasZeroWidthChild": false,
+              "scope": "page"
+            }
+          },
+          {
+            "type": "a11y",
+            "severity": "warning",
+            "source": "keyboard-a11y",
+            "component": "input",
+            "message": "Interactive element <input> (input) is not reachable via Tab key.",
+            "suggestion": "Ensure the element is focusable. Marigold interactive components are focusable by default — check if a parent has tabindex=\"-1\" or focus is trapped.",
+            "details": {
+              "selector": "body:nth-child(2) > div:nth-child(1) > div:nth-child(1) > main:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div:nth-child(2) > div:nth-child(1) > div:nth-child(1) > div:nth-child(2) > input:nth-child(1)",
+              "role": "input",
+              "scope": "page"
+            }
+          },
+          {
+            "type": "a11y",
+            "severity": "warning",
+            "source": "keyboard-a11y",
+            "component": "button",
+            "message": "Interactive element <button> (button) is not reachable via Tab key.",
+            "suggestion": "Ensure the element is focusable. Marigold interactive components are focusable by default — check if a parent has tabindex=\"-1\" or focus is trapped.",
+            "details": {
+              "selector": "body:nth-child(2) > div:nth-child(1) > div:nth-child(1) > main:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div:nth-child(2) > div:nth-child(1) > button:nth-child(3)",
+              "role": "button",
+              "scope": "page"
+            }
+          }
+        ]
+      },
+      "E": {
+        "category": "E",
+        "label": "Functional Completeness",
+        "score": 80.33,
+        "weight": 0.225,
+        "weightedScore": 18.07,
+        "errorCount": 0,
+        "warningCount": 0,
+        "issues": []
+      }
+    },
+    "renderSuccess": true
+  },
+  "efficiency": {
+    "durationMs": 2057211,
+    "costUsd": 5.09043905,
+    "inputTokens": 102,
+    "outputTokens": 95807,
+    "cacheReadTokens": 7853405,
+    "cacheCreationTokens": 183488,
+    "totalTokens": 95909,
+    "numTurns": 104
+  },
+  "report": {
+    "file": "TestApp.tsx",
+    "errors": [
+      {
+        "type": "technical",
+        "severity": "error",
+        "source": "required-ancestor",
+        "component": "AppLayout.Main",
+        "message": "<AppLayout.Main> is used without a <AppLayout> container anywhere in the file. Compound parts must be rendered inside their root component.",
+        "suggestion": "Wrap the <AppLayout.Main> usage in a <AppLayout>…</AppLayout>.",
+        "location": {
+          "file": "TestApp.tsx",
+          "line": 242,
+          "column": 5
+        },
+        "details": {
+          "subComponent": "AppLayout.Main",
+          "requiredRoot": "AppLayout"
+        }
+      }
+    ],
+    "warnings": [
+      {
+        "type": "spatial",
+        "severity": "warning",
+        "source": "overflow-detector",
+        "component": "body:nth-child(2) > div:nth-child(1) > div:nth-child(1) > main:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div:nth-child(2) > div:nth-child(1)",
+        "message": "Flex container children are wrapping to 3 rows (3 children, container 1248px wide, content 2512px wide).",
+        "suggestion": "Consider using <Columns collapseAt=\"...\"> for responsive multi-column layout, or <Stack> for vertical arrangement.",
+        "details": {
+          "containerSelector": "body:nth-child(2) > div:nth-child(1) > div:nth-child(1) > main:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div:nth-child(2) > div:nth-child(1)",
+          "rowCount": 3,
+          "childCount": 3,
+          "containerWidth": 1248,
+          "totalChildrenWidth": 2512,
+          "isAutoFitGrid": false,
+          "hasZeroWidthChild": false,
+          "scope": "page"
+        }
+      },
+      {
+        "type": "a11y",
+        "severity": "warning",
+        "source": "keyboard-a11y",
+        "component": "input",
+        "message": "Interactive element <input> (input) is not reachable via Tab key.",
+        "suggestion": "Ensure the element is focusable. Marigold interactive components are focusable by default — check if a parent has tabindex=\"-1\" or focus is trapped.",
+        "details": {
+          "selector": "body:nth-child(2) > div:nth-child(1) > div:nth-child(1) > main:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div:nth-child(2) > div:nth-child(1) > div:nth-child(1) > div:nth-child(2) > input:nth-child(1)",
+          "role": "input",
+          "scope": "page"
+        }
+      },
+      {
+        "type": "a11y",
+        "severity": "warning",
+        "source": "keyboard-a11y",
+        "component": "button",
+        "message": "Interactive element <button> (button) is not reachable via Tab key.",
+        "suggestion": "Ensure the element is focusable. Marigold interactive components are focusable by default — check if a parent has tabindex=\"-1\" or focus is trapped.",
+        "details": {
+          "selector": "body:nth-child(2) > div:nth-child(1) > div:nth-child(1) > main:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div:nth-child(2) > div:nth-child(1) > button:nth-child(3)",
+          "role": "button",
+          "scope": "page"
+        }
+      }
+    ],
+    "passed": [
+      "TypeScript compilation",
+      "All Marigold props are valid",
+      "Component composition",
+      "Overlay accessible names",
+      "Section headers",
+      "Collection item ids",
+      "Design system usage",
+      "Layout usage",
+      "Table usage",
+      "Component conventions",
+      "Theme variant compliance",
+      "Responsive layout"
+    ],
+    "metadata": {
+      "renderTimeMs": 1937,
+      "componentsFound": [
+        "div",
+        "input",
+        "button"
+      ],
+      "checksRun": [
+        "technical",
+        "spatial",
+        "a11y"
+      ],
+      "coverage": {
+        "staticValuesChecked": 14,
+        "dynamicValuesSkipped": 17,
+        "spreadPropsBypassed": 0
+      },
+      "widthUtilization": 0.96171875
+    },
+    "markdown": "marigold-validate: TestApp.tsx — 1 error(s), 3 warning(s)\n\n[error/technical] <AppLayout.Main>: <AppLayout.Main> is used without a <AppLayout> container anywhere in the file. Compound parts must be rendered inside their root component. (TestApp.tsx:242:5)\n  → Wrap the <AppLayout.Main> usage in a <AppLayout>…</AppLayout>.\n  data: {subComponent=AppLayout.Main, requiredRoot=AppLayout}\n[warning/spatial] <body:nth-child(2) > div:nth-child(1) > div:nth-child(1) > main:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div:nth-child(2) > div:nth-child(1)>: Flex container children are wrapping to 3 rows (3 children, container 1248px wide, content 2512px wide).\n  → Consider using <Columns collapseAt=\"...\"> for responsive multi-column layout, or <Stack> for vertical arrangement.\n  data: {containerSelector=body:nth-child(2) > div:nth-child(1) > div:nth-child(1) > main:nth-child(1) >..., rowCount=3, childCount=3, containerWidth=1248, totalChildrenWidth=2512, isAutoFitGrid=false, hasZeroWidthChild=false, scope=page}\n[warning/a11y] <button>: Interactive element <button> (button) is not reachable via Tab key.\n  → Ensure the element is focusable. Marigold interactive components are focusable by default — check if a parent has tabindex=\"-1\" or focus is trapped.\n  data: {selector=body:nth-child(2) > div:nth-child(1) > div:nth-child(1) > main:nth-child(1) >..., role=button, scope=page}\n[warning/a11y] <input>: Interactive element <input> (input) is not reachable via Tab key.\n  → Ensure the element is focusable. Marigold interactive components are focusable by default — check if a parent has tabindex=\"-1\" or focus is trapped.\n  data: {selector=body:nth-child(2) > div:nth-child(1) > div:nth-child(1) > main:nth-child(1) >..., role=input, scope=page}\n\npassed: TypeScript compilation, All Marigold props are valid, Component composition, Overlay accessible names, Section headers, Collection item ids, Design system usage, Layout usage, Table usage, Component conventions, Theme variant compliance, Responsive layout\n\nchecks run: technical, spatial, a11y"
+  },
+  "componentsFound": [
+    "div",
+    "input",
+    "button"
+  ],
+  "renderTimeMs": 1937,
+  "sourceCode": "import { useMemo, useState } from 'react';\nimport {\n  AppLayout,\n  Badge,\n  Button,\n  Card,\n  Checkbox,\n  Drawer,\n  EmptyState,\n  Headline,\n  Inline,\n  Inset,\n  Slider,\n  Split,\n  Stack,\n  Switch,\n  Tag,\n  Text,\n  TextField,\n  Tiles,\n} from '@marigold/components';\n\ntype Product = {\n  id: string;\n  name: string;\n  price: number;\n  category: string;\n  status: 'New' | 'Sale' | 'Sold Out';\n  description: string;\n  sizes: string[];\n  inStock: boolean;\n};\n\nconst PRODUCTS: Product[] = [\n  {\n    id: '1',\n    name: 'Classic Logo Tee',\n    price: 29.99,\n    category: 'T-Shirts',\n    status: 'New',\n    description: 'Soft cotton tee with an embroidered signature logo.',\n    sizes: ['S', 'M', 'L', 'XL'],\n    inStock: true,\n  },\n  {\n    id: '2',\n    name: 'Vintage Hoodie',\n    price: 59.99,\n    category: 'Hoodies',\n    status: 'Sale',\n    description: 'Cozy fleece hoodie in a warm vintage wash finish.',\n    sizes: ['M', 'L', 'XL'],\n    inStock: true,\n  },\n  {\n    id: '3',\n    name: 'Logo Cap',\n    price: 24.99,\n    category: 'Accessories',\n    status: 'New',\n    description: 'Structured baseball cap with embroidered front logo.',\n    sizes: ['XS', 'S', 'M'],\n    inStock: true,\n  },\n  {\n    id: '4',\n    name: 'City Skyline Poster',\n    price: 14.99,\n    category: 'Posters',\n    status: 'Sold Out',\n    description: 'High-resolution print of the iconic city skyline artwork.',\n    sizes: [],\n    inStock: false,\n  },\n  {\n    id: '5',\n    name: 'Sticker Pack',\n    price: 9.99,\n    category: 'Stickers',\n    status: 'Sale',\n    description: 'Set of 10 durable waterproof vinyl stickers.',\n    sizes: [],\n    inStock: true,\n  },\n  {\n    id: '6',\n    name: 'Premium Zip Hoodie',\n    price: 79.99,\n    category: 'Hoodies',\n    status: 'New',\n    description: 'Premium full-zip hoodie with a woven logo patch.',\n    sizes: ['S', 'M', 'L'],\n    inStock: true,\n  },\n  {\n    id: '7',\n    name: 'Graphic Tee',\n    price: 34.99,\n    category: 'T-Shirts',\n    status: 'Sold Out',\n    description: 'Bold graphic print on heavyweight 100% cotton fabric.',\n    sizes: ['XS', 'S', 'M', 'L', 'XL'],\n    inStock: false,\n  },\n  {\n    id: '8',\n    name: 'Enamel Pin Set',\n    price: 19.99,\n    category: 'Accessories',\n    status: 'New',\n    description: 'Collection of 4 hand-crafted collectible enamel pins.',\n    sizes: [],\n    inStock: true,\n  },\n];\n\nconst CATEGORIES = ['T-Shirts', 'Hoodies', 'Accessories', 'Posters', 'Stickers'];\nconst SIZES = ['XS', 'S', 'M', 'L', 'XL'];\nconst PAGE_SIZE = 3;\n\nconst BADGE_VARIANT: Record<string, 'info' | 'warning' | 'error'> = {\n  New: 'info',\n  Sale: 'warning',\n  'Sold Out': 'error',\n};\n\nconst SORT_OPTIONS = [\n  { id: 'newest', label: 'Newest' },\n  { id: 'price-asc', label: 'Price: Low to High' },\n  { id: 'price-desc', label: 'Price: High to Low' },\n  { id: 'popular', label: 'Most Popular' },\n];\n\nexport default function TestApp() {\n  const [search, setSearch] = useState('');\n  const [sortBy, setSortBy] = useState('newest');\n  const [filterCategories, setFilterCategories] = useState<string[]>([]);\n  const [filterPriceMax, setFilterPriceMax] = useState(100);\n  const [filterSizes, setFilterSizes] = useState<string[]>([]);\n  const [filterInStock, setFilterInStock] = useState(false);\n  const [currentPage, setCurrentPage] = useState(1);\n\n  const filtered = useMemo(() => {\n    let result = [...PRODUCTS];\n\n    if (search.trim()) {\n      const q = search.toLowerCase();\n      result = result.filter(p => p.name.toLowerCase().includes(q));\n    }\n\n    if (filterCategories.length > 0) {\n      result = result.filter(p => filterCategories.includes(p.category));\n    }\n\n    if (filterPriceMax < 100) {\n      result = result.filter(p => p.price <= filterPriceMax);\n    }\n\n    if (filterSizes.length > 0) {\n      result = result.filter(p => filterSizes.some(s => p.sizes.includes(s)));\n    }\n\n    if (filterInStock) {\n      result = result.filter(p => p.inStock);\n    }\n\n    switch (sortBy) {\n      case 'price-asc':\n        result.sort((a, b) => a.price - b.price);\n        break;\n      case 'price-desc':\n        result.sort((a, b) => b.price - a.price);\n        break;\n      case 'popular':\n        result.sort((a, b) => b.price - a.price);\n        break;\n      default:\n        result.sort((a, b) => parseInt(b.id) - parseInt(a.id));\n    }\n\n    return result;\n  }, [search, filterCategories, filterPriceMax, filterSizes, filterInStock, sortBy]);\n\n  const totalPages = Math.max(1, Math.ceil(filtered.length / PAGE_SIZE));\n  const safePage = Math.min(currentPage, totalPages);\n  const pageProducts = filtered.slice((safePage - 1) * PAGE_SIZE, safePage * PAGE_SIZE);\n\n  const activeChips = useMemo(() => {\n    const chips: { id: string; label: string }[] = [];\n    filterCategories.forEach(cat =>\n      chips.push({ id: `category:${cat}`, label: `Category: ${cat}` })\n    );\n    if (filterPriceMax < 100) {\n      chips.push({ id: 'price', label: `Price: up to $${filterPriceMax}` });\n    }\n    filterSizes.forEach(size =>\n      chips.push({ id: `size:${size}`, label: `Size: ${size}` })\n    );\n    if (filterInStock) {\n      chips.push({ id: 'instock', label: 'In stock only' });\n    }\n    return chips;\n  }, [filterCategories, filterPriceMax, filterSizes, filterInStock]);\n\n  const handleRemoveChip = (keys: Set<string>) => {\n    const arr = Array.from(keys);\n    const cats = arr\n      .filter(k => k.startsWith('category:'))\n      .map(k => k.slice('category:'.length));\n    if (cats.length > 0) {\n      setFilterCategories(prev => prev.filter(c => !cats.includes(c)));\n    }\n    if (arr.includes('price')) setFilterPriceMax(100);\n    const sizes = arr\n      .filter(k => k.startsWith('size:'))\n      .map(k => k.slice('size:'.length));\n    if (sizes.length > 0) {\n      setFilterSizes(prev => prev.filter(s => !sizes.includes(s)));\n    }\n    if (arr.includes('instock')) setFilterInStock(false);\n    setCurrentPage(1);\n  };\n\n  const clearAllFilters = () => {\n    setSearch('');\n    setFilterCategories([]);\n    setFilterPriceMax(100);\n    setFilterSizes([]);\n    setFilterInStock(false);\n    setCurrentPage(1);\n  };\n\n  const resetFilters = () => {\n    setFilterCategories([]);\n    setFilterPriceMax(100);\n    setFilterSizes([]);\n    setFilterInStock(false);\n    setCurrentPage(1);\n  };\n\n  return (\n    <AppLayout.Main>\n      <Inset space={4}>\n        <Stack space={6}>\n          {/* Page header */}\n          <Stack space={2}>\n            <Headline level={1}>Merchandise Store</Headline>\n            <Text>Browse our collection of branded merchandise.</Text>\n          </Stack>\n\n          {/* Toolbar */}\n          <Stack space={4}>\n            <Inline alignY=\"center\" space={4}>\n              <TextField\n                label=\"Search\"\n                aria-label=\"Search products\"\n                placeholder=\"Search products…\"\n                value={search}\n                onChange={(val: string) => {\n                  setSearch(val);\n                  setCurrentPage(1);\n                }}\n              />\n              <Split />\n              <Drawer.Trigger>\n                <Button variant=\"secondary\">Filters</Button>\n                <Drawer size=\"medium\">\n                  <Drawer.Title>Filters</Drawer.Title>\n                  <Drawer.Content>\n                    <Stack space={6}>\n                      <Checkbox.Group\n                        label=\"Category\"\n                        value={filterCategories}\n                        onChange={setFilterCategories}\n                      >\n                        {CATEGORIES.map(cat => (\n                          <Checkbox key={cat} value={cat} label={cat} />\n                        ))}\n                      </Checkbox.Group>\n                      <Slider\n                        label=\"Price range\"\n                        value={filterPriceMax}\n                        onChange={val =>\n                          setFilterPriceMax(Array.isArray(val) ? val[0] : val)\n                        }\n                        minValue={0}\n                        maxValue={100}\n                        step={5}\n                        formatOptions={{ style: 'currency', currency: 'USD' }}\n                      />\n                      <Checkbox.Group\n                        label=\"Size\"\n                        value={filterSizes}\n                        onChange={setFilterSizes}\n                      >\n                        {SIZES.map(size => (\n                          <Checkbox key={size} value={size} label={size} />\n                        ))}\n                      </Checkbox.Group>\n                      <Switch\n                        label=\"In stock only\"\n                        selected={filterInStock}\n                        onChange={setFilterInStock}\n                      />\n                    </Stack>\n                  </Drawer.Content>\n                  <Drawer.Actions>\n                    <Button slot=\"close\" onPress={resetFilters}>\n                      Reset\n                    </Button>\n                    <Button\n                      slot=\"close\"\n                      variant=\"primary\"\n                      onPress={() => setCurrentPage(1)}\n                    >\n                      Apply Filters\n                    </Button>\n                  </Drawer.Actions>\n                </Drawer>\n              </Drawer.Trigger>\n            </Inline>\n\n            {/* Sort controls — individual Buttons, each independently Tab-reachable */}\n            <Inline space={2} alignY=\"center\">\n              <Text>Sort:</Text>\n              {SORT_OPTIONS.map(opt => (\n                <Button\n                  key={opt.id}\n                  variant={sortBy === opt.id ? 'primary' : 'secondary'}\n                  onPress={() => {\n                    setSortBy(opt.id);\n                    setCurrentPage(1);\n                  }}\n                >\n                  {opt.label}\n                </Button>\n              ))}\n            </Inline>\n          </Stack>\n\n          {/* Applied filter chips */}\n          {activeChips.length > 0 ? (\n            <Inline alignY=\"center\" space={4}>\n              <Tag.Group\n                label=\"Active filters\"\n                onRemove={handleRemoveChip as any}\n              >\n                {activeChips.map(chip => (\n                  <Tag key={chip.id} id={chip.id}>\n                    {chip.label}\n                  </Tag>\n                ))}\n              </Tag.Group>\n              <Button variant=\"secondary\" onPress={clearAllFilters}>\n                Clear all\n              </Button>\n            </Inline>\n          ) : (\n            <Text fontSize=\"sm\" color=\"muted-foreground\" fontStyle=\"italic\">\n              No filters applied\n            </Text>\n          )}\n\n          {/* Product grid or empty state */}\n          {pageProducts.length === 0 ? (\n            <EmptyState\n              title=\"No products found\"\n              description=\"Try adjusting your filters or search query.\"\n              action={\n                <Button variant=\"primary\" onPress={clearAllFilters}>\n                  Clear all filters\n                </Button>\n              }\n            />\n          ) : (\n            <Tiles tilesWidth=\"280px\" space={4} stretch equalHeight>\n              {pageProducts.map(product => (\n                <Card key={product.id} p={4}>\n                  <Stack space={3}>\n                    <Badge variant={BADGE_VARIANT[product.status]}>\n                      {product.status}\n                    </Badge>\n                    <Headline level={2}>{product.name}</Headline>\n                    <Text weight=\"bold\">${product.price.toFixed(2)}</Text>\n                    <Text>{product.description}</Text>\n                    <Button\n                      variant={product.inStock ? 'primary' : 'secondary'}\n                      aria-disabled={!product.inStock || undefined}\n                      onPress={() => {\n                        if (!product.inStock) return;\n                      }}\n                    >\n                      {product.inStock ? 'Add to Cart' : 'Sold Out'}\n                    </Button>\n                  </Stack>\n                </Card>\n              ))}\n            </Tiles>\n          )}\n\n          {/* Pagination — custom Previous/Next with aria-disabled to keep buttons Tab-reachable */}\n          {filtered.length > 0 && (\n            <Inline alignY=\"center\" space={4}>\n              <Text>\n                Page {safePage} of {totalPages}\n              </Text>\n              <Split />\n              <Inline space={2}>\n                <Button\n                  variant=\"secondary\"\n                  aria-disabled={safePage <= 1 || undefined}\n                  onPress={() => {\n                    if (safePage > 1) setCurrentPage(safePage - 1);\n                  }}\n                >\n                  Previous\n                </Button>\n                <Button\n                  variant=\"secondary\"\n                  aria-disabled={safePage >= totalPages || undefined}\n                  onPress={() => {\n                    if (safePage < totalPages) setCurrentPage(safePage + 1);\n                  }}\n                >\n                  Next\n                </Button>\n              </Inline>\n            </Inline>\n          )}\n        </Stack>\n      </Inset>\n    </AppLayout.Main>\n  );\n}\n",
+  "assertions": {
+    "passed": [
+      {
+        "id": "a-import-marigold",
+        "description": "Imports from @marigold/components",
+        "severity": "required",
+        "passed": true,
+        "evidence": "import from \"@marigold/components\" found"
+      },
+      {
+        "id": "a-drawer",
+        "description": "Drawer for filter panel",
+        "severity": "required",
+        "passed": true,
+        "evidence": "<Drawer> found"
+      },
+      {
+        "id": "a-checkbox",
+        "description": "Checkbox for filter options",
+        "severity": "required",
+        "passed": true,
+        "evidence": "matched: <Checkbox> found"
+      },
+      {
+        "id": "a-slider",
+        "description": "Slider for price range",
+        "severity": "required",
+        "passed": true,
+        "evidence": "<Slider> found"
+      },
+      {
+        "id": "a-switch",
+        "description": "Switch for availability filter",
+        "severity": "required",
+        "passed": true,
+        "evidence": "<Switch> found"
+      },
+      {
+        "id": "a-tag-group",
+        "description": "Tag.Group for applied filters",
+        "severity": "required",
+        "passed": true,
+        "evidence": "matched: <Tag> found"
+      },
+      {
+        "id": "a-card",
+        "description": "Card for product display",
+        "severity": "required",
+        "passed": true,
+        "evidence": "<Card> found"
+      },
+      {
+        "id": "a-badge",
+        "description": "Badge for product status",
+        "severity": "required",
+        "passed": true,
+        "evidence": "<Badge> found"
+      },
+      {
+        "id": "a-button",
+        "description": "Button for add to cart",
+        "severity": "required",
+        "passed": true,
+        "evidence": "<Button> found"
+      },
+      {
+        "id": "a-tiles",
+        "description": "Tiles layout for product grid",
+        "severity": "required",
+        "passed": true,
+        "evidence": "<Tiles> found"
+      },
+      {
+        "id": "a-empty-state",
+        "description": "EmptyState when no products match",
+        "severity": "required",
+        "passed": true,
+        "evidence": "<EmptyState> found"
+      },
+      {
+        "id": "a-headline",
+        "description": "Headline for page title",
+        "severity": "required",
+        "passed": true,
+        "evidence": "<Headline> found"
+      },
+      {
+        "id": "a-no-onclick-on-marigold",
+        "description": "No onClick on Marigold Button",
+        "severity": "recommended",
+        "passed": true,
+        "evidence": "\"/<Button[^>]*onClick/\" correctly absent"
+      }
+    ],
+    "failed": [
+      {
+        "id": "a-search",
+        "description": "SearchField for product search",
+        "severity": "required",
+        "passed": false,
+        "evidence": "<SearchField> not found"
+      },
+      {
+        "id": "a-pagination",
+        "description": "Pagination component",
+        "severity": "required",
+        "passed": false,
+        "evidence": "<Pagination> not found"
+      },
+      {
+        "id": "a-select",
+        "description": "Select for sort dropdown",
+        "severity": "required",
+        "passed": false,
+        "evidence": "<Select> not found"
+      }
+    ],
+    "passRate": 0.8125,
+    "requiredPassRate": 0.8,
+    "weightedPassRate": 0.8033,
+    "total": 16
+  },
+  "validatePackageVersion": "0.0.1",
+  "playwrightVersion": null,
+  "resolvedModelId": "claude-sonnet-4-6",
+  "claudeCliVersion": "2.1.185 (Claude Code)",
+  "sessionId": "135ee95a-c2d6-4e1b-a9b7-d06dd700892c"
+}

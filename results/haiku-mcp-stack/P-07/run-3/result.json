@@ -1,0 +1,1179 @@
+{
+  "runId": "haiku-mcp-stack-P-07-r3",
+  "promptId": "P-07",
+  "model": "haiku",
+  "config": "mcp-stack",
+  "timestamp": "2026-06-22T14:50:36.650Z",
+  "quality": {
+    "overall": 36.76,
+    "categories": {
+      "A": {
+        "category": "A",
+        "label": "Design System API",
+        "score": 65.36,
+        "weight": 0.225,
+        "weightedScore": 14.71,
+        "errorCount": 0,
+        "warningCount": 6,
+        "issues": [
+          {
+            "type": "technical",
+            "severity": "warning",
+            "source": "design-system-usage",
+            "component": "strong",
+            "message": "Raw <strong> used instead of a Marigold component.",
+            "suggestion": "Replace <strong> with the appropriate Marigold component. Search the Marigold docs for alternatives.",
+            "location": {
+              "file": "TestApp.tsx",
+              "line": 410,
+              "column": 21
+            },
+            "details": {
+              "htmlElement": "strong"
+            }
+          },
+          {
+            "type": "technical",
+            "severity": "warning",
+            "source": "design-system-usage",
+            "component": "strong",
+            "message": "Raw <strong> used instead of a Marigold component.",
+            "suggestion": "Replace <strong> with the appropriate Marigold component. Search the Marigold docs for alternatives.",
+            "location": {
+              "file": "TestApp.tsx",
+              "line": 419,
+              "column": 21
+            },
+            "details": {
+              "htmlElement": "strong"
+            }
+          },
+          {
+            "type": "technical",
+            "severity": "warning",
+            "source": "design-system-usage",
+            "component": "strong",
+            "message": "Raw <strong> used instead of a Marigold component.",
+            "suggestion": "Replace <strong> with the appropriate Marigold component. Search the Marigold docs for alternatives.",
+            "location": {
+              "file": "TestApp.tsx",
+              "line": 422,
+              "column": 21
+            },
+            "details": {
+              "htmlElement": "strong"
+            }
+          },
+          {
+            "type": "technical",
+            "severity": "warning",
+            "source": "design-system-usage",
+            "component": "strong",
+            "message": "Raw <strong> used instead of a Marigold component.",
+            "suggestion": "Replace <strong> with the appropriate Marigold component. Search the Marigold docs for alternatives.",
+            "location": {
+              "file": "TestApp.tsx",
+              "line": 431,
+              "column": 21
+            },
+            "details": {
+              "htmlElement": "strong"
+            }
+          },
+          {
+            "type": "technical",
+            "severity": "warning",
+            "source": "design-system-usage",
+            "component": "strong",
+            "message": "Raw <strong> used instead of a Marigold component.",
+            "suggestion": "Replace <strong> with the appropriate Marigold component. Search the Marigold docs for alternatives.",
+            "location": {
+              "file": "TestApp.tsx",
+              "line": 434,
+              "column": 21
+            },
+            "details": {
+              "htmlElement": "strong"
+            }
+          },
+          {
+            "type": "technical",
+            "severity": "warning",
+            "source": "design-system-usage",
+            "component": "strong",
+            "message": "Raw <strong> used instead of a Marigold component.",
+            "suggestion": "Replace <strong> with the appropriate Marigold component. Search the Marigold docs for alternatives.",
+            "location": {
+              "file": "TestApp.tsx",
+              "line": 437,
+              "column": 21
+            },
+            "details": {
+              "htmlElement": "strong"
+            }
+          }
+        ]
+      },
+      "B": {
+        "category": "B",
+        "label": "Token Compliance",
+        "score": 0,
+        "weight": 0.1,
+        "weightedScore": 0,
+        "errorCount": 0,
+        "warningCount": 1,
+        "issues": [
+          {
+            "type": "style",
+            "severity": "warning",
+            "source": "token-compliance",
+            "component": "thead",
+            "message": "Computed background-color value \"oklab(0.999994 0.0000455678 0.0000200868 / 0.9)\" on <thead> (“Booking IDCustomerVenueDateTime SlotStat”) does not map to a known design token.",
+            "suggestion": "If this is intentional, ignore the warning. Otherwise, use a Marigold variant or a theme-rui token instead of a hard-coded value.",
+            "details": {
+              "property": "background-color",
+              "value": "oklab(0.999994 0.0000455678 0.0000200868 / 0.9)",
+              "selector": "body:nth-child(2) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div:nth-child(6) > table:nth-child(3) > thead:nth-child(1)",
+              "fingerprint": "Booking IDCustomerVenueDateTime SlotStat",
+              "scope": "page"
+            }
+          }
+        ]
+      },
+      "C": {
+        "category": "C",
+        "label": "DOM / Structure",
+        "score": 4.15,
+        "weight": 0.225,
+        "weightedScore": 0.93,
+        "errorCount": 6,
+        "warningCount": 3,
+        "issues": [
+          {
+            "type": "technical",
+            "severity": "error",
+            "source": "composition-validator",
+            "component": "Autocomplete",
+            "message": "<Autocomplete> is used without any of its sub-components.",
+            "suggestion": "Use compound children: <Autocomplete.Option>, <Autocomplete.Section>.",
+            "location": {
+              "file": "TestApp.tsx",
+              "line": 244,
+              "column": 11
+            },
+            "details": {
+              "expected": [
+                "Option",
+                "Section"
+              ],
+              "found": []
+            }
+          },
+          {
+            "type": "technical",
+            "severity": "error",
+            "source": "composition-validator",
+            "component": "Dialog",
+            "message": "<Dialog> is used without any of its sub-components.",
+            "suggestion": "Use compound children: <Dialog.Title>, <Dialog.Content>, <Dialog.Actions>.",
+            "location": {
+              "file": "TestApp.tsx",
+              "line": 325,
+              "column": 7
+            },
+            "details": {
+              "expected": [
+                "Title",
+                "Content",
+                "Actions"
+              ],
+              "found": []
+            }
+          },
+          {
+            "type": "a11y",
+            "severity": "error",
+            "source": "accessible-name",
+            "component": "Dialog",
+            "message": "<Dialog> has no accessible name. A closed overlay is invisible to runtime a11y checks, so it must be labeled in the source.",
+            "suggestion": "Add a <Dialog.Title> child or an aria-label prop, e.g. <Dialog aria-label=\"…\"> or <Dialog.Title>…</Dialog.Title>.",
+            "location": {
+              "file": "TestApp.tsx",
+              "line": 325,
+              "column": 7
+            },
+            "details": {
+              "accessibleNameAttrs": [
+                "aria-label",
+                "aria-labelledby"
+              ],
+              "titleSubComponent": "Dialog.Title"
+            }
+          },
+          {
+            "type": "technical",
+            "severity": "error",
+            "source": "runtime",
+            "component": "Runtime",
+            "message": "Render error: There was an error during concurrent rendering but React was able to recover by instead synchronously rendering the entire root.",
+            "suggestion": "A React error was thrown while rendering. Inspect required props and component imports."
+          },
+          {
+            "type": "technical",
+            "severity": "error",
+            "source": "runtime",
+            "component": "Runtime",
+            "message": "Render error: There was an error during concurrent rendering but React was able to recover by instead synchronously rendering the entire root.",
+            "suggestion": "A React error was thrown while rendering. Inspect required props and component imports."
+          },
+          {
+            "type": "technical",
+            "severity": "error",
+            "source": "runtime",
+            "component": "Runtime",
+            "message": "Render error: There was an error during concurrent rendering but React was able to recover by instead synchronously rendering the entire root.",
+            "suggestion": "A React error was thrown while rendering. Inspect required props and component imports."
+          },
+          {
+            "type": "technical",
+            "severity": "warning",
+            "source": "layout-usage",
+            "component": "Inline",
+            "message": "<Inline> wraps a single child. A flow layout earns its place only with two or more children; with one child it adds a wrapper that does nothing.",
+            "suggestion": "Render the child directly instead of wrapping it in <Inline>. For single-child spacing use Inset, Center, Breakout or Aspect.",
+            "location": {
+              "file": "TestApp.tsx",
+              "line": 230,
+              "column": 7
+            },
+            "details": {
+              "layout": "Inline",
+              "childCount": 1
+            }
+          },
+          {
+            "type": "technical",
+            "severity": "warning",
+            "source": "layout-usage",
+            "component": "Stack",
+            "message": "<Stack> wraps a single child. A flow layout earns its place only with two or more children; with one child it adds a wrapper that does nothing.",
+            "suggestion": "Render the child directly instead of wrapping it in <Stack>. For single-child spacing use Inset, Center, Breakout or Aspect.",
+            "location": {
+              "file": "TestApp.tsx",
+              "line": 408,
+              "column": 17
+            },
+            "details": {
+              "layout": "Stack",
+              "childCount": 1
+            }
+          },
+          {
+            "type": "technical",
+            "severity": "warning",
+            "source": "table-usage",
+            "component": "Table",
+            "message": "<Table> has no column marked rowHeader. Exactly one Table.Column should set rowHeader so screen readers can announce each row by it.",
+            "suggestion": "Add rowHeader to the column that identifies each row, e.g. <Table.Column rowHeader>Name</Table.Column>.",
+            "location": {
+              "file": "TestApp.tsx",
+              "line": 274,
+              "column": 7
+            },
+            "details": {
+              "missingRowHeader": true,
+              "columnCount": 7
+            }
+          }
+        ]
+      },
+      "D": {
+        "category": "D",
+        "label": "Spatial & A11y",
+        "score": 0,
+        "weight": 0.225,
+        "weightedScore": 0,
+        "errorCount": 0,
+        "warningCount": 13,
+        "issues": [
+          {
+            "type": "spatial",
+            "severity": "warning",
+            "source": "overflow-detector",
+            "component": "body:nth-child(2) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div:nth-child(3) > div:nth-child(2)",
+            "message": "Flex container children are wrapping to 6 rows (7 children, container 1280px wide, content 4006px wide).",
+            "suggestion": "Consider using <Columns collapseAt=\"...\"> for responsive multi-column layout, or <Stack> for vertical arrangement.",
+            "details": {
+              "containerSelector": "body:nth-child(2) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div:nth-child(3) > div:nth-child(2)",
+              "rowCount": 6,
+              "childCount": 7,
+              "containerWidth": 1280,
+              "totalChildrenWidth": 4006,
+              "isAutoFitGrid": false,
+              "hasZeroWidthChild": false,
+              "scope": "page"
+            }
+          },
+          {
+            "type": "spatial",
+            "severity": "warning",
+            "source": "responsive-checker",
+            "component": "table",
+            "message": "Content overflows viewport at reflow (320px) (320px): scroll width 525px exceeds viewport by 205px. Widest element: <table> (“Booking IDCustomerVenueDateTime SlotStat”) extends to 525px.",
+            "suggestion": "Tabular content needs a 2D layout and is exempt from reflow, but it should not widen the whole page. Wrap the table in <Scrollable> so it scrolls horizontally on its own.",
+            "details": {
+              "breakpoint": "reflow (320px)",
+              "scrollWidth": 525,
+              "viewportWidth": 320,
+              "culprit": "table",
+              "culpritSelector": "body:nth-child(2) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div:nth-child(6) > table:nth-child(3)",
+              "tabular": true,
+              "scope": "page"
+            }
+          },
+          {
+            "type": "spatial",
+            "severity": "warning",
+            "source": "responsive-checker",
+            "component": "table",
+            "message": "Content overflows viewport at mobile (375px): scroll width 525px exceeds viewport by 150px. Widest element: <table> (“Booking IDCustomerVenueDateTime SlotStat”) extends to 525px.",
+            "suggestion": "Tabular content needs a 2D layout and is exempt from reflow, but it should not widen the whole page. Wrap the table in <Scrollable> so it scrolls horizontally on its own.",
+            "details": {
+              "breakpoint": "mobile",
+              "scrollWidth": 525,
+              "viewportWidth": 375,
+              "culprit": "table",
+              "culpritSelector": "body:nth-child(2) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div:nth-child(6) > table:nth-child(3)",
+              "tabular": true,
+              "scope": "page"
+            }
+          },
+          {
+            "type": "a11y",
+            "severity": "warning",
+            "source": "responsive-checker",
+            "component": "select",
+            "message": "Touch target too small at mobile (375px): select elements are 104x21px (minimum 24x24px per WCAG 2.5.8).",
+            "suggestion": "Increase the clickable area. Marigold interactive components have built-in minimum sizes — check if custom styling reduces the target.",
+            "details": {
+              "breakpoint": "mobile",
+              "tag": "select",
+              "count": 1,
+              "minWidth": 104,
+              "minHeight": 21,
+              "scope": "page"
+            }
+          },
+          {
+            "type": "a11y",
+            "severity": "warning",
+            "source": "aom-extractor",
+            "component": "#react-aria7072307875-_r_1n_-tab-all",
+            "message": "ARIA attributes must conform to valid values (aria-valid-attr-value)",
+            "suggestion": "https://dequeuniversity.com/rules/axe/4.11/aria-valid-attr-value?application=playwright",
+            "details": {
+              "ruleId": "aria-valid-attr-value",
+              "impact": "critical",
+              "target": [
+                "#react-aria7072307875-_r_1n_-tab-all"
+              ],
+              "html": "<div class=\"cursor-pointer relat...\" data-rac=\"\" tabindex=\"0\" data-collection=\"react-aria7072307875...\" data-key=\"all\" data-react-aria-pres...=\"true\" id=\"react-aria7072307875...\" aria-selected=\"true\" ",
+              "scope": "page"
+            }
+          },
+          {
+            "type": "a11y",
+            "severity": "warning",
+            "source": "aom-extractor",
+            "component": "html",
+            "message": "Document should have one main landmark (landmark-one-main)",
+            "suggestion": "Wrap your page content in `<AppLayout>` with `<AppLayout.Main>` to provide a `<main>` landmark. Import AppLayout from `@marigold/components`.",
+            "details": {
+              "ruleId": "landmark-one-main",
+              "impact": "moderate",
+              "target": [
+                "html"
+              ],
+              "html": "<html lang=\"en\" data-theme=\"rui\">",
+              "scope": "page"
+            }
+          },
+          {
+            "type": "a11y",
+            "severity": "warning",
+            "source": "aom-extractor",
+            "component": "html",
+            "message": "Page should contain a level-one heading (page-has-heading-one)",
+            "suggestion": "Add a `<Headline level={1}>` component for the page title — it renders an `<h1>`. Import Headline from `@marigold/components`.",
+            "details": {
+              "ruleId": "page-has-heading-one",
+              "impact": "moderate",
+              "target": [
+                "html"
+              ],
+              "html": "<html lang=\"en\" data-theme=\"rui\">",
+              "scope": "page"
+            }
+          },
+          {
+            "type": "a11y",
+            "severity": "warning",
+            "source": "aom-extractor",
+            "component": "page",
+            "message": "All page content should be contained by landmarks — 45 elements affected (region)",
+            "suggestion": "All page content must be inside a landmark region. Use `<AppLayout>` with `<AppLayout.Main>` for the main area, `<TopNavigation>` for the header (`<header>`), and `<Sidebar>` for side navigation (`<aside>`). Import from `@marigold/components`.",
+            "details": {
+              "ruleId": "region",
+              "impact": "moderate",
+              "affectedCount": 45,
+              "scope": "page"
+            }
+          },
+          {
+            "type": "a11y",
+            "severity": "warning",
+            "source": "keyboard-a11y",
+            "component": "button",
+            "message": "Interactive element <button> (button) is not reachable via Tab key.",
+            "suggestion": "Ensure the element is focusable. Marigold interactive components are focusable by default — check if a parent has tabindex=\"-1\" or focus is trapped.",
+            "details": {
+              "selector": "body:nth-child(2) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div:nth-child(2) > button:nth-child(1)",
+              "role": "button",
+              "scope": "page"
+            }
+          },
+          {
+            "type": "a11y",
+            "severity": "warning",
+            "source": "keyboard-a11y",
+            "component": "span",
+            "message": "Interactive element <span> (spinbutton) is not reachable via Tab key.",
+            "suggestion": "Ensure the element is focusable. Marigold interactive components are focusable by default — check if a parent has tabindex=\"-1\" or focus is trapped.",
+            "details": {
+              "selector": "body:nth-child(2) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div:nth-child(3) > div:nth-child(2) > div:nth-child(1) > div:nth-child(2) > div:nth-child(1) > span:nth-child(1)",
+              "role": "spinbutton",
+              "scope": "page"
+            }
+          },
+          {
+            "type": "a11y",
+            "severity": "warning",
+            "source": "keyboard-a11y",
+            "component": "input",
+            "message": "Interactive element <input> (combobox) is not reachable via Tab key.",
+            "suggestion": "Ensure the element is focusable. Marigold interactive components are focusable by default — check if a parent has tabindex=\"-1\" or focus is trapped.",
+            "details": {
+              "selector": "body:nth-child(2) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div:nth-child(3) > div:nth-child(2) > div:nth-child(4) > div:nth-child(2) > input:nth-child(1)",
+              "role": "combobox",
+              "scope": "page"
+            }
+          },
+          {
+            "type": "a11y",
+            "severity": "warning",
+            "source": "keyboard-a11y",
+            "component": "div",
+            "message": "Interactive element <div> (tab) is not reachable via Tab key.",
+            "suggestion": "Ensure the element is focusable. Marigold interactive components are focusable by default — check if a parent has tabindex=\"-1\" or focus is trapped.",
+            "details": {
+              "selector": "body:nth-child(2) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div:nth-child(5) > div:nth-child(1) > div:nth-child(3)",
+              "role": "tab",
+              "scope": "page"
+            }
+          },
+          {
+            "type": "a11y",
+            "severity": "warning",
+            "source": "keyboard-a11y",
+            "component": "tr",
+            "message": "Element <tr> has no visible focus indicator when focused (WCAG 2.4.7).",
+            "suggestion": "Marigold components provide built-in focus rings via the theme. For custom elements, add an outline or box-shadow on :focus-visible.",
+            "details": {
+              "selector": "body:nth-child(2) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div:nth-child(6) > table:nth-child(3) > tbody:nth-child(2) > tr:nth-child(1)",
+              "role": "row",
+              "scope": "page"
+            }
+          }
+        ]
+      },
+      "E": {
+        "category": "E",
+        "label": "Functional Completeness",
+        "score": 93.85,
+        "weight": 0.225,
+        "weightedScore": 21.12,
+        "errorCount": 0,
+        "warningCount": 0,
+        "issues": []
+      }
+    },
+    "renderSuccess": false
+  },
+  "efficiency": {
+    "durationMs": 455340,
+    "costUsd": 1.0031864,
+    "inputTokens": 317,
+    "outputTokens": 27022,
+    "cacheReadTokens": 5476644,
+    "cacheCreationTokens": 155708,
+    "totalTokens": 27339,
+    "numTurns": 93
+  },
+  "report": {
+    "file": "TestApp.tsx",
+    "errors": [
+      {
+        "type": "technical",
+        "severity": "error",
+        "source": "composition-validator",
+        "component": "Autocomplete",
+        "message": "<Autocomplete> is used without any of its sub-components.",
+        "suggestion": "Use compound children: <Autocomplete.Option>, <Autocomplete.Section>.",
+        "location": {
+          "file": "TestApp.tsx",
+          "line": 244,
+          "column": 11
+        },
+        "details": {
+          "expected": [
+            "Option",
+            "Section"
+          ],
+          "found": []
+        }
+      },
+      {
+        "type": "technical",
+        "severity": "error",
+        "source": "composition-validator",
+        "component": "Dialog",
+        "message": "<Dialog> is used without any of its sub-components.",
+        "suggestion": "Use compound children: <Dialog.Title>, <Dialog.Content>, <Dialog.Actions>.",
+        "location": {
+          "file": "TestApp.tsx",
+          "line": 325,
+          "column": 7
+        },
+        "details": {
+          "expected": [
+            "Title",
+            "Content",
+            "Actions"
+          ],
+          "found": []
+        }
+      },
+      {
+        "type": "a11y",
+        "severity": "error",
+        "source": "accessible-name",
+        "component": "Dialog",
+        "message": "<Dialog> has no accessible name. A closed overlay is invisible to runtime a11y checks, so it must be labeled in the source.",
+        "suggestion": "Add a <Dialog.Title> child or an aria-label prop, e.g. <Dialog aria-label=\"…\"> or <Dialog.Title>…</Dialog.Title>.",
+        "location": {
+          "file": "TestApp.tsx",
+          "line": 325,
+          "column": 7
+        },
+        "details": {
+          "accessibleNameAttrs": [
+            "aria-label",
+            "aria-labelledby"
+          ],
+          "titleSubComponent": "Dialog.Title"
+        }
+      },
+      {
+        "type": "technical",
+        "severity": "error",
+        "source": "runtime",
+        "component": "Runtime",
+        "message": "Render error: There was an error during concurrent rendering but React was able to recover by instead synchronously rendering the entire root.",
+        "suggestion": "A React error was thrown while rendering. Inspect required props and component imports."
+      },
+      {
+        "type": "technical",
+        "severity": "error",
+        "source": "runtime",
+        "component": "Runtime",
+        "message": "Render error: There was an error during concurrent rendering but React was able to recover by instead synchronously rendering the entire root.",
+        "suggestion": "A React error was thrown while rendering. Inspect required props and component imports."
+      },
+      {
+        "type": "technical",
+        "severity": "error",
+        "source": "runtime",
+        "component": "Runtime",
+        "message": "Render error: There was an error during concurrent rendering but React was able to recover by instead synchronously rendering the entire root.",
+        "suggestion": "A React error was thrown while rendering. Inspect required props and component imports."
+      }
+    ],
+    "warnings": [
+      {
+        "type": "technical",
+        "severity": "warning",
+        "source": "design-system-usage",
+        "component": "strong",
+        "message": "Raw <strong> used instead of a Marigold component.",
+        "suggestion": "Replace <strong> with the appropriate Marigold component. Search the Marigold docs for alternatives.",
+        "location": {
+          "file": "TestApp.tsx",
+          "line": 410,
+          "column": 21
+        },
+        "details": {
+          "htmlElement": "strong"
+        }
+      },
+      {
+        "type": "technical",
+        "severity": "warning",
+        "source": "design-system-usage",
+        "component": "strong",
+        "message": "Raw <strong> used instead of a Marigold component.",
+        "suggestion": "Replace <strong> with the appropriate Marigold component. Search the Marigold docs for alternatives.",
+        "location": {
+          "file": "TestApp.tsx",
+          "line": 419,
+          "column": 21
+        },
+        "details": {
+          "htmlElement": "strong"
+        }
+      },
+      {
+        "type": "technical",
+        "severity": "warning",
+        "source": "design-system-usage",
+        "component": "strong",
+        "message": "Raw <strong> used instead of a Marigold component.",
+        "suggestion": "Replace <strong> with the appropriate Marigold component. Search the Marigold docs for alternatives.",
+        "location": {
+          "file": "TestApp.tsx",
+          "line": 422,
+          "column": 21
+        },
+        "details": {
+          "htmlElement": "strong"
+        }
+      },
+      {
+        "type": "technical",
+        "severity": "warning",
+        "source": "design-system-usage",
+        "component": "strong",
+        "message": "Raw <strong> used instead of a Marigold component.",
+        "suggestion": "Replace <strong> with the appropriate Marigold component. Search the Marigold docs for alternatives.",
+        "location": {
+          "file": "TestApp.tsx",
+          "line": 431,
+          "column": 21
+        },
+        "details": {
+          "htmlElement": "strong"
+        }
+      },
+      {
+        "type": "technical",
+        "severity": "warning",
+        "source": "design-system-usage",
+        "component": "strong",
+        "message": "Raw <strong> used instead of a Marigold component.",
+        "suggestion": "Replace <strong> with the appropriate Marigold component. Search the Marigold docs for alternatives.",
+        "location": {
+          "file": "TestApp.tsx",
+          "line": 434,
+          "column": 21
+        },
+        "details": {
+          "htmlElement": "strong"
+        }
+      },
+      {
+        "type": "technical",
+        "severity": "warning",
+        "source": "design-system-usage",
+        "component": "strong",
+        "message": "Raw <strong> used instead of a Marigold component.",
+        "suggestion": "Replace <strong> with the appropriate Marigold component. Search the Marigold docs for alternatives.",
+        "location": {
+          "file": "TestApp.tsx",
+          "line": 437,
+          "column": 21
+        },
+        "details": {
+          "htmlElement": "strong"
+        }
+      },
+      {
+        "type": "technical",
+        "severity": "warning",
+        "source": "layout-usage",
+        "component": "Inline",
+        "message": "<Inline> wraps a single child. A flow layout earns its place only with two or more children; with one child it adds a wrapper that does nothing.",
+        "suggestion": "Render the child directly instead of wrapping it in <Inline>. For single-child spacing use Inset, Center, Breakout or Aspect.",
+        "location": {
+          "file": "TestApp.tsx",
+          "line": 230,
+          "column": 7
+        },
+        "details": {
+          "layout": "Inline",
+          "childCount": 1
+        }
+      },
+      {
+        "type": "technical",
+        "severity": "warning",
+        "source": "layout-usage",
+        "component": "Stack",
+        "message": "<Stack> wraps a single child. A flow layout earns its place only with two or more children; with one child it adds a wrapper that does nothing.",
+        "suggestion": "Render the child directly instead of wrapping it in <Stack>. For single-child spacing use Inset, Center, Breakout or Aspect.",
+        "location": {
+          "file": "TestApp.tsx",
+          "line": 408,
+          "column": 17
+        },
+        "details": {
+          "layout": "Stack",
+          "childCount": 1
+        }
+      },
+      {
+        "type": "technical",
+        "severity": "warning",
+        "source": "table-usage",
+        "component": "Table",
+        "message": "<Table> has no column marked rowHeader. Exactly one Table.Column should set rowHeader so screen readers can announce each row by it.",
+        "suggestion": "Add rowHeader to the column that identifies each row, e.g. <Table.Column rowHeader>Name</Table.Column>.",
+        "location": {
+          "file": "TestApp.tsx",
+          "line": 274,
+          "column": 7
+        },
+        "details": {
+          "missingRowHeader": true,
+          "columnCount": 7
+        }
+      },
+      {
+        "type": "spatial",
+        "severity": "warning",
+        "source": "overflow-detector",
+        "component": "body:nth-child(2) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div:nth-child(3) > div:nth-child(2)",
+        "message": "Flex container children are wrapping to 6 rows (7 children, container 1280px wide, content 4006px wide).",
+        "suggestion": "Consider using <Columns collapseAt=\"...\"> for responsive multi-column layout, or <Stack> for vertical arrangement.",
+        "details": {
+          "containerSelector": "body:nth-child(2) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div:nth-child(3) > div:nth-child(2)",
+          "rowCount": 6,
+          "childCount": 7,
+          "containerWidth": 1280,
+          "totalChildrenWidth": 4006,
+          "isAutoFitGrid": false,
+          "hasZeroWidthChild": false,
+          "scope": "page"
+        }
+      },
+      {
+        "type": "style",
+        "severity": "warning",
+        "source": "token-compliance",
+        "component": "thead",
+        "message": "Computed background-color value \"oklab(0.999994 0.0000455678 0.0000200868 / 0.9)\" on <thead> (“Booking IDCustomerVenueDateTime SlotStat”) does not map to a known design token.",
+        "suggestion": "If this is intentional, ignore the warning. Otherwise, use a Marigold variant or a theme-rui token instead of a hard-coded value.",
+        "details": {
+          "property": "background-color",
+          "value": "oklab(0.999994 0.0000455678 0.0000200868 / 0.9)",
+          "selector": "body:nth-child(2) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div:nth-child(6) > table:nth-child(3) > thead:nth-child(1)",
+          "fingerprint": "Booking IDCustomerVenueDateTime SlotStat",
+          "scope": "page"
+        }
+      },
+      {
+        "type": "spatial",
+        "severity": "warning",
+        "source": "responsive-checker",
+        "component": "table",
+        "message": "Content overflows viewport at reflow (320px) (320px): scroll width 525px exceeds viewport by 205px. Widest element: <table> (“Booking IDCustomerVenueDateTime SlotStat”) extends to 525px.",
+        "suggestion": "Tabular content needs a 2D layout and is exempt from reflow, but it should not widen the whole page. Wrap the table in <Scrollable> so it scrolls horizontally on its own.",
+        "details": {
+          "breakpoint": "reflow (320px)",
+          "scrollWidth": 525,
+          "viewportWidth": 320,
+          "culprit": "table",
+          "culpritSelector": "body:nth-child(2) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div:nth-child(6) > table:nth-child(3)",
+          "tabular": true,
+          "scope": "page"
+        }
+      },
+      {
+        "type": "spatial",
+        "severity": "warning",
+        "source": "responsive-checker",
+        "component": "table",
+        "message": "Content overflows viewport at mobile (375px): scroll width 525px exceeds viewport by 150px. Widest element: <table> (“Booking IDCustomerVenueDateTime SlotStat”) extends to 525px.",
+        "suggestion": "Tabular content needs a 2D layout and is exempt from reflow, but it should not widen the whole page. Wrap the table in <Scrollable> so it scrolls horizontally on its own.",
+        "details": {
+          "breakpoint": "mobile",
+          "scrollWidth": 525,
+          "viewportWidth": 375,
+          "culprit": "table",
+          "culpritSelector": "body:nth-child(2) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div:nth-child(6) > table:nth-child(3)",
+          "tabular": true,
+          "scope": "page"
+        }
+      },
+      {
+        "type": "a11y",
+        "severity": "warning",
+        "source": "responsive-checker",
+        "component": "select",
+        "message": "Touch target too small at mobile (375px): select elements are 104x21px (minimum 24x24px per WCAG 2.5.8).",
+        "suggestion": "Increase the clickable area. Marigold interactive components have built-in minimum sizes — check if custom styling reduces the target.",
+        "details": {
+          "breakpoint": "mobile",
+          "tag": "select",
+          "count": 1,
+          "minWidth": 104,
+          "minHeight": 21,
+          "scope": "page"
+        }
+      },
+      {
+        "type": "a11y",
+        "severity": "warning",
+        "source": "aom-extractor",
+        "component": "#react-aria7072307875-_r_1n_-tab-all",
+        "message": "ARIA attributes must conform to valid values (aria-valid-attr-value)",
+        "suggestion": "https://dequeuniversity.com/rules/axe/4.11/aria-valid-attr-value?application=playwright",
+        "details": {
+          "ruleId": "aria-valid-attr-value",
+          "impact": "critical",
+          "target": [
+            "#react-aria7072307875-_r_1n_-tab-all"
+          ],
+          "html": "<div class=\"cursor-pointer relat...\" data-rac=\"\" tabindex=\"0\" data-collection=\"react-aria7072307875...\" data-key=\"all\" data-react-aria-pres...=\"true\" id=\"react-aria7072307875...\" aria-selected=\"true\" ",
+          "scope": "page"
+        }
+      },
+      {
+        "type": "a11y",
+        "severity": "warning",
+        "source": "aom-extractor",
+        "component": "html",
+        "message": "Document should have one main landmark (landmark-one-main)",
+        "suggestion": "Wrap your page content in `<AppLayout>` with `<AppLayout.Main>` to provide a `<main>` landmark. Import AppLayout from `@marigold/components`.",
+        "details": {
+          "ruleId": "landmark-one-main",
+          "impact": "moderate",
+          "target": [
+            "html"
+          ],
+          "html": "<html lang=\"en\" data-theme=\"rui\">",
+          "scope": "page"
+        }
+      },
+      {
+        "type": "a11y",
+        "severity": "warning",
+        "source": "aom-extractor",
+        "component": "html",
+        "message": "Page should contain a level-one heading (page-has-heading-one)",
+        "suggestion": "Add a `<Headline level={1}>` component for the page title — it renders an `<h1>`. Import Headline from `@marigold/components`.",
+        "details": {
+          "ruleId": "page-has-heading-one",
+          "impact": "moderate",
+          "target": [
+            "html"
+          ],
+          "html": "<html lang=\"en\" data-theme=\"rui\">",
+          "scope": "page"
+        }
+      },
+      {
+        "type": "a11y",
+        "severity": "warning",
+        "source": "aom-extractor",
+        "component": "page",
+        "message": "All page content should be contained by landmarks — 45 elements affected (region)",
+        "suggestion": "All page content must be inside a landmark region. Use `<AppLayout>` with `<AppLayout.Main>` for the main area, `<TopNavigation>` for the header (`<header>`), and `<Sidebar>` for side navigation (`<aside>`). Import from `@marigold/components`.",
+        "details": {
+          "ruleId": "region",
+          "impact": "moderate",
+          "affectedCount": 45,
+          "scope": "page"
+        }
+      },
+      {
+        "type": "a11y",
+        "severity": "warning",
+        "source": "keyboard-a11y",
+        "component": "button",
+        "message": "Interactive element <button> (button) is not reachable via Tab key.",
+        "suggestion": "Ensure the element is focusable. Marigold interactive components are focusable by default — check if a parent has tabindex=\"-1\" or focus is trapped.",
+        "details": {
+          "selector": "body:nth-child(2) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div:nth-child(2) > button:nth-child(1)",
+          "role": "button",
+          "scope": "page"
+        }
+      },
+      {
+        "type": "a11y",
+        "severity": "warning",
+        "source": "keyboard-a11y",
+        "component": "span",
+        "message": "Interactive element <span> (spinbutton) is not reachable via Tab key.",
+        "suggestion": "Ensure the element is focusable. Marigold interactive components are focusable by default — check if a parent has tabindex=\"-1\" or focus is trapped.",
+        "details": {
+          "selector": "body:nth-child(2) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div:nth-child(3) > div:nth-child(2) > div:nth-child(1) > div:nth-child(2) > div:nth-child(1) > span:nth-child(1)",
+          "role": "spinbutton",
+          "scope": "page"
+        }
+      },
+      {
+        "type": "a11y",
+        "severity": "warning",
+        "source": "keyboard-a11y",
+        "component": "input",
+        "message": "Interactive element <input> (combobox) is not reachable via Tab key.",
+        "suggestion": "Ensure the element is focusable. Marigold interactive components are focusable by default — check if a parent has tabindex=\"-1\" or focus is trapped.",
+        "details": {
+          "selector": "body:nth-child(2) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div:nth-child(3) > div:nth-child(2) > div:nth-child(4) > div:nth-child(2) > input:nth-child(1)",
+          "role": "combobox",
+          "scope": "page"
+        }
+      },
+      {
+        "type": "a11y",
+        "severity": "warning",
+        "source": "keyboard-a11y",
+        "component": "div",
+        "message": "Interactive element <div> (tab) is not reachable via Tab key.",
+        "suggestion": "Ensure the element is focusable. Marigold interactive components are focusable by default — check if a parent has tabindex=\"-1\" or focus is trapped.",
+        "details": {
+          "selector": "body:nth-child(2) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div:nth-child(5) > div:nth-child(1) > div:nth-child(3)",
+          "role": "tab",
+          "scope": "page"
+        }
+      },
+      {
+        "type": "a11y",
+        "severity": "warning",
+        "source": "keyboard-a11y",
+        "component": "tr",
+        "message": "Element <tr> has no visible focus indicator when focused (WCAG 2.4.7).",
+        "suggestion": "Marigold components provide built-in focus rings via the theme. For custom elements, add an outline or box-shadow on :focus-visible.",
+        "details": {
+          "selector": "body:nth-child(2) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div:nth-child(6) > table:nth-child(3) > tbody:nth-child(2) > tr:nth-child(1)",
+          "role": "row",
+          "scope": "page"
+        }
+      }
+    ],
+    "passed": [
+      "TypeScript compilation",
+      "All Marigold props are valid",
+      "Compound component placement",
+      "Section headers",
+      "Collection item ids",
+      "Component conventions",
+      "Theme variant compliance"
+    ],
+    "metadata": {
+      "renderTimeMs": 1425,
+      "componentsFound": [
+        "button",
+        "div",
+        "span",
+        "input",
+        "table",
+        "thead",
+        "th",
+        "tbody",
+        "tr",
+        "td"
+      ],
+      "checksRun": [
+        "technical",
+        "spatial",
+        "a11y"
+      ],
+      "coverage": {
+        "staticValuesChecked": 25,
+        "dynamicValuesSkipped": 1,
+        "spreadPropsBypassed": 0
+      },
+      "widthUtilization": 1
+    },
+    "markdown": "marigold-validate: TestApp.tsx — 6 error(s), 23 warning(s)\n\n[error/technical] <Autocomplete>: <Autocomplete> is used without any of its sub-components. (TestApp.tsx:244:11)\n  → Use compound children: <Autocomplete.Option>, <Autocomplete.Section>.\n  data: {expected=[\"Option\",\"Section\"], found=[]}\n[error/technical] <Dialog>: <Dialog> is used without any of its sub-components. (TestApp.tsx:325:7)\n  → Use compound children: <Dialog.Title>, <Dialog.Content>, <Dialog.Actions>.\n  data: {expected=[\"Title\",\"Content\",\"Actions\"], found=[]}\n[error/technical] <Runtime>: Render error: There was an error during concurrent rendering but React was able to recover by instead synchronously rendering the entire root.\n  → A React error was thrown while rendering. Inspect required props and component imports.\n[error/technical] <Runtime>: Render error: There was an error during concurrent rendering but React was able to recover by instead synchronously rendering the entire root.\n  → A React error was thrown while rendering. Inspect required props and component imports.\n[error/technical] <Runtime>: Render error: There was an error during concurrent rendering but React was able to recover by instead synchronously rendering the entire root.\n  → A React error was thrown while rendering. Inspect required props and component imports.\n[warning/technical] <Inline>: <Inline> wraps a single child. A flow layout earns its place only with two or more children; with one child it adds a wrapper that does nothing. (TestApp.tsx:230:7)\n  → Render the child directly instead of wrapping it in <Inline>. For single-child spacing use Inset, Center, Breakout or Aspect.\n  data: {layout=Inline, childCount=1}\n[warning/technical] <Stack>: <Stack> wraps a single child. A flow layout earns its place only with two or more children; with one child it adds a wrapper that does nothing. (TestApp.tsx:408:17)\n  → Render the child directly instead of wrapping it in <Stack>. For single-child spacing use Inset, Center, Breakout or Aspect.\n  data: {layout=Stack, childCount=1}\n[warning/technical] <strong>: Raw <strong> used instead of a Marigold component. (TestApp.tsx:410:21)\n  → Replace <strong> with the appropriate Marigold component. Search the Marigold docs for alternatives.\n  data: {htmlElement=strong}\n[warning/technical] <strong>: Raw <strong> used instead of a Marigold component. (TestApp.tsx:419:21)\n  → Replace <strong> with the appropriate Marigold component. Search the Marigold docs for alternatives.\n  data: {htmlElement=strong}\n[warning/technical] <strong>: Raw <strong> used instead of a Marigold component. (TestApp.tsx:422:21)\n  → Replace <strong> with the appropriate Marigold component. Search the Marigold docs for alternatives.\n  data: {htmlElement=strong}\n[warning/technical] <strong>: Raw <strong> used instead of a Marigold component. (TestApp.tsx:431:21)\n  → Replace <strong> with the appropriate Marigold component. Search the Marigold docs for alternatives.\n  data: {htmlElement=strong}\n[warning/technical] <strong>: Raw <strong> used instead of a Marigold component. (TestApp.tsx:434:21)\n  → Replace <strong> with the appropriate Marigold component. Search the Marigold docs for alternatives.\n  data: {htmlElement=strong}\n[warning/technical] <strong>: Raw <strong> used instead of a Marigold component. (TestApp.tsx:437:21)\n  → Replace <strong> with the appropriate Marigold component. Search the Marigold docs for alternatives.\n  data: {htmlElement=strong}\n[warning/technical] <Table>: <Table> has no column marked rowHeader. Exactly one Table.Column should set rowHeader so screen readers can announce each row by it. (TestApp.tsx:274:7)\n  → Add rowHeader to the column that identifies each row, e.g. <Table.Column rowHeader>Name</Table.Column>.\n  data: {missingRowHeader=true, columnCount=7}\n[warning/spatial] <body:nth-child(2) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div:nth-child(3) > div:nth-child(2)>: Flex container children are wrapping to 6 rows (7 children, container 1280px wide, content 4006px wide).\n  → Consider using <Columns collapseAt=\"...\"> for responsive multi-column layout, or <Stack> for vertical arrangement.\n  data: {containerSelector=body:nth-child(2) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > ..., rowCount=6, childCount=7, containerWidth=1280, totalChildrenWidth=4006, isAutoFitGrid=false, hasZeroWidthChild=false, scope=page}\n[warning/spatial] <table>: Content overflows viewport at reflow (320px) (320px): scroll width 525px exceeds viewport by 205px. Widest element: <table> (“Booking IDCustomerVenueDateTime SlotStat”) extends to 525px.\n  → Tabular content needs a 2D layout and is exempt from reflow, but it should not widen the whole page. Wrap the table in <Scrollable> so it scrolls horizontally on its own.\n  data: {breakpoint=reflow (320px), scrollWidth=525, viewportWidth=320, culprit=table, culpritSelector=body:nth-child(2) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > ..., tabular=true, scope=page}\n[warning/spatial] <table>: Content overflows viewport at mobile (375px): scroll width 525px exceeds viewport by 150px. Widest element: <table> (“Booking IDCustomerVenueDateTime SlotStat”) extends to 525px.\n  → Tabular content needs a 2D layout and is exempt from reflow, but it should not widen the whole page. Wrap the table in <Scrollable> so it scrolls horizontally on its own.\n  data: {breakpoint=mobile, scrollWidth=525, viewportWidth=375, culprit=table, culpritSelector=body:nth-child(2) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > ..., tabular=true, scope=page}\n[warning/style] <thead>: Computed background-color value \"oklab(0.999994 0.0000455678 0.0000200868 / 0.9)\" on <thead> (“Booking IDCustomerVenueDateTime SlotStat”) does not map to a known design token.\n  → If this is intentional, ignore the warning. Otherwise, use a Marigold variant or a theme-rui token instead of a hard-coded value.\n  data: {property=background-color, value=oklab(0.999994 0.0000455678 0.0000200868 / 0.9), selector=body:nth-child(2) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > ..., fingerprint=Booking IDCustomerVenueDateTime SlotStat, scope=page}\n[error/a11y] <Dialog>: <Dialog> has no accessible name. A closed overlay is invisible to runtime a11y checks, so it must be labeled in the source. (TestApp.tsx:325:7)\n  → Add a <Dialog.Title> child or an aria-label prop, e.g. <Dialog aria-label=\"…\"> or <Dialog.Title>…</Dialog.Title>.\n  data: {accessibleNameAttrs=[\"aria-label\",\"aria-labelledby\"], titleSubComponent=Dialog.Title}\n[warning/a11y] <#react-aria7072307875-_r_1n_-tab-all>: ARIA attributes must conform to valid values (aria-valid-attr-value)\n  → https://dequeuniversity.com/rules/axe/4.11/aria-valid-attr-value?application=playwright\n  data: {ruleId=aria-valid-attr-value, impact=critical, target=[\"#react-aria7072307875-_r_1n_-tab-all\"], html=<div class=\"cursor-pointer relat...\" data-rac=\"\" tabindex=\"0\" data-collection..., scope=page}\n[warning/a11y] <button>: Interactive element <button> (button) is not reachable via Tab key.\n  → Ensure the element is focusable. Marigold interactive components are focusable by default — check if a parent has tabindex=\"-1\" or focus is trapped.\n  data: {selector=body:nth-child(2) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > ..., role=button, scope=page}\n[warning/a11y] <div>: Interactive element <div> (tab) is not reachable via Tab key.\n  → Ensure the element is focusable. Marigold interactive components are focusable by default — check if a parent has tabindex=\"-1\" or focus is trapped.\n  data: {selector=body:nth-child(2) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > ..., role=tab, scope=page}\n[warning/a11y] <html>: Document should have one main landmark (landmark-one-main)\n  → Wrap your page content in `<AppLayout>` with `<AppLayout.Main>` to provide a `<main>` landmark. Import AppLayout from `@marigold/components`.\n  data: {ruleId=landmark-one-main, impact=moderate, target=[\"html\"], html=<html lang=\"en\" data-theme=\"rui\">, scope=page}\n[warning/a11y] <html>: Page should contain a level-one heading (page-has-heading-one)\n  → Add a `<Headline level={1}>` component for the page title — it renders an `<h1>`. Import Headline from `@marigold/components`.\n  data: {ruleId=page-has-heading-one, impact=moderate, target=[\"html\"], html=<html lang=\"en\" data-theme=\"rui\">, scope=page}\n[warning/a11y] <input>: Interactive element <input> (combobox) is not reachable via Tab key.\n  → Ensure the element is focusable. Marigold interactive components are focusable by default — check if a parent has tabindex=\"-1\" or focus is trapped.\n  data: {selector=body:nth-child(2) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > ..., role=combobox, scope=page}\n[warning/a11y] <page>: All page content should be contained by landmarks — 45 elements affected (region)\n  → All page content must be inside a landmark region. Use `<AppLayout>` with `<AppLayout.Main>` for the main area, `<TopNavigation>` for the header (`<header>`), and `<Sidebar>` for side navigation (`<aside>`). Import from `@marigold/components`.\n  data: {ruleId=region, impact=moderate, affectedCount=45, scope=page}\n[warning/a11y] <select>: Touch target too small at mobile (375px): select elements are 104x21px (minimum 24x24px per WCAG 2.5.8).\n  → Increase the clickable area. Marigold interactive components have built-in minimum sizes — check if custom styling reduces the target.\n  data: {breakpoint=mobile, tag=select, count=1, minWidth=104, minHeight=21, scope=page}\n[warning/a11y] <span>: Interactive element <span> (spinbutton) is not reachable via Tab key.\n  → Ensure the element is focusable. Marigold interactive components are focusable by default — check if a parent has tabindex=\"-1\" or focus is trapped.\n  data: {selector=body:nth-child(2) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > ..., role=spinbutton, scope=page}\n[warning/a11y] <tr>: Element <tr> has no visible focus indicator when focused (WCAG 2.4.7).\n  → Marigold components provide built-in focus rings via the theme. For custom elements, add an outline or box-shadow on :focus-visible.\n  data: {selector=body:nth-child(2) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > ..., role=row, scope=page}\n\npassed: TypeScript compilation, All Marigold props are valid, Compound component placement, Section headers, Collection item ids, Component conventions, Theme variant compliance\n\nchecks run: technical, spatial, a11y"
+  },
+  "componentsFound": [
+    "button",
+    "div",
+    "span",
+    "input",
+    "table",
+    "thead",
+    "th",
+    "tbody",
+    "tr",
+    "td"
+  ],
+  "renderTimeMs": 1425,
+  "sourceCode": "'use client';\n\nimport { useState } from 'react';\nimport type { DateValue } from '@internationalized/date';\nimport {\n  Stack,\n  Inline,\n  TextField,\n  Select,\n  Button,\n  Table,\n  Tabs,\n  Dialog,\n  Drawer,\n  Menu,\n  SectionMessage,\n  TextArea,\n  DatePicker,\n  Autocomplete,\n  Badge,\n  Text,\n  Headline,\n  Accordion,\n  Card,\n} from '@marigold/components';\n\ninterface Booking {\n  id: string;\n  customer: string;\n  email: string;\n  venue: string;\n  date: string;\n  timeSlot: string;\n  status: 'Confirmed' | 'Pending' | 'Cancelled';\n  notes: string;\n}\n\nconst VENUES = ['Main Hall', 'Conference Room A', 'Conference Room B', 'Rooftop Terrace', 'Workshop Studio'];\n\nconst SAMPLE_BOOKINGS: Booking[] = [\n  {\n    id: 'BK001',\n    customer: 'John Smith',\n    email: 'john@example.com',\n    venue: 'Main Hall',\n    date: '2024-12-22',\n    timeSlot: '09:00-12:00',\n    status: 'Confirmed',\n    notes: 'Corporate event, 150 guests',\n  },\n  {\n    id: 'BK002',\n    customer: 'Sarah Johnson',\n    email: 'sarah@example.com',\n    venue: 'Conference Room A',\n    date: '2024-12-22',\n    timeSlot: '14:00-17:00',\n    status: 'Pending',\n    notes: 'Team meeting, refreshments required',\n  },\n  {\n    id: 'BK003',\n    customer: 'Michael Brown',\n    email: 'michael@example.com',\n    venue: 'Rooftop Terrace',\n    date: '2024-12-21',\n    timeSlot: '18:00-21:00',\n    status: 'Confirmed',\n    notes: 'Wedding reception',\n  },\n  {\n    id: 'BK004',\n    customer: 'Emily Davis',\n    email: 'emily@example.com',\n    venue: 'Workshop Studio',\n    date: '2024-12-22',\n    timeSlot: '10:00-13:00',\n    status: 'Cancelled',\n    notes: 'Rescheduled to January',\n  },\n  {\n    id: 'BK005',\n    customer: 'David Wilson',\n    email: 'david@example.com',\n    venue: 'Conference Room B',\n    date: '2024-12-22',\n    timeSlot: '13:00-16:00',\n    status: 'Confirmed',\n    notes: 'Training session',\n  },\n  {\n    id: 'BK006',\n    customer: 'Lisa Anderson',\n    email: 'lisa@example.com',\n    venue: 'Main Hall',\n    date: '2024-12-23',\n    timeSlot: '15:00-18:00',\n    status: 'Pending',\n    notes: 'Product launch event',\n  },\n];\n\nconst getStatusColor = (status: string) => {\n  switch (status) {\n    case 'Confirmed':\n      return 'success';\n    case 'Pending':\n      return 'warning';\n    case 'Cancelled':\n      return 'neutral';\n    default:\n      return 'neutral';\n  }\n};\n\nconst TestApp = () => {\n  const [bookings, setBookings] = useState<Booking[]>(SAMPLE_BOOKINGS);\n  const [filterDate, setFilterDate] = useState<DateValue | undefined>();\n  const [filterVenue, setFilterVenue] = useState<string>('');\n  const [filterStatus, setFilterStatus] = useState<string>('All');\n  const [tabView, setTabView] = useState<string>('all');\n  const [isCreateDialogOpen, setIsCreateDialogOpen] = useState(false);\n  const [selectedBookingId, setSelectedBookingId] = useState<string | null>(null);\n  const [isDetailsPanelOpen, setIsDetailsPanelOpen] = useState(false);\n  const [newBooking, setNewBooking] = useState({\n    customerName: '',\n    customerEmail: '',\n    venue: '',\n    date: undefined as DateValue | undefined,\n    timeSlot: '',\n    notes: '',\n  });\n\n  const today = '2024-12-22';\n  const getDateRange = (type: string) => {\n    if (type === 'today') return [today, today];\n    if (type === 'week') {\n      const endDate = new Date('2024-12-22');\n      endDate.setDate(endDate.getDate() + 7);\n      return [today, endDate.toISOString().split('T')[0]];\n    }\n    return [null, null];\n  };\n\n  const filteredBookings = bookings.filter((booking) => {\n    const dateRange = getDateRange(tabView);\n    let dateMatch = true;\n    if (tabView === 'today' || tabView === 'week') {\n      const [start, end] = dateRange;\n      dateMatch = booking.date >= start! && booking.date <= end!;\n    }\n\n    const venueMatch = !filterVenue || booking.venue === filterVenue;\n    const statusMatch = filterStatus === 'All' || booking.status === filterStatus;\n    const customDateMatch = !filterDate || booking.date === `${filterDate.year}-${String(filterDate.month).padStart(2, '0')}-${String(filterDate.day).padStart(2, '0')}`;\n\n    return dateMatch && venueMatch && statusMatch && customDateMatch;\n  });\n\n  const selectedBooking = bookings.find((b) => b.id === selectedBookingId);\n\n  const handleCreateBooking = () => {\n    if (newBooking.customerName && newBooking.venue && newBooking.date && newBooking.timeSlot) {\n      const dateStr = `${newBooking.date.year}-${String(newBooking.date.month).padStart(2, '0')}-${String(newBooking.date.day).padStart(2, '0')}`;\n      const booking: Booking = {\n        id: `BK${String(bookings.length + 1).padStart(3, '0')}`,\n        customer: newBooking.customerName,\n        email: newBooking.customerEmail,\n        venue: newBooking.venue,\n        date: dateStr,\n        timeSlot: newBooking.timeSlot,\n        status: 'Pending',\n        notes: newBooking.notes,\n      };\n      setBookings([...bookings, booking]);\n      setNewBooking({ customerName: '', customerEmail: '', venue: '', date: undefined, timeSlot: '', notes: '' });\n      setIsCreateDialogOpen(false);\n    }\n  };\n\n  const handleCancelBooking = () => {\n    if (selectedBookingId) {\n      setBookings(\n        bookings.map((b) =>\n          b.id === selectedBookingId ? { ...b, status: 'Cancelled' } : b,\n        ),\n      );\n      setIsDetailsPanelOpen(false);\n      setSelectedBookingId(null);\n    }\n  };\n\n  const clearFilters = () => {\n    setFilterDate(undefined);\n    setFilterVenue('');\n    setFilterStatus('All');\n    setTabView('all');\n  };\n\n  const venueCapacity: { [key: string]: number } = {\n    'Main Hall': 2,\n    'Conference Room A': 5,\n    'Conference Room B': 3,\n    'Rooftop Terrace': 1,\n    'Workshop Studio': 4,\n  };\n\n  const getNearlyFullVenue = () => {\n    for (const [venue, remaining] of Object.entries(venueCapacity)) {\n      if (remaining <= 2) {\n        return { venue, remaining };\n      }\n    }\n    return null;\n  };\n\n  const nearlyFull = getNearlyFullVenue();\n\n  return (\n    <Stack space=\"related\">\n      {nearlyFull && (\n        <SectionMessage variant=\"warning\">\n          <SectionMessage.Title>Capacity Alert</SectionMessage.Title>\n          <SectionMessage.Content>\n            {nearlyFull.venue} has only {nearlyFull.remaining} slots remaining for today.\n          </SectionMessage.Content>\n        </SectionMessage>\n      )}\n\n      <Inline space=\"related\" alignY=\"center\">\n        <Button onPress={() => setIsCreateDialogOpen(true)} variant=\"primary\">\n          New Booking\n        </Button>\n      </Inline>\n\n      <Stack space=\"related\">\n        <Headline level=\"2\">Filter Bookings</Headline>\n        <Inline space=\"related\">\n          <DatePicker\n            label=\"Date\"\n            value={filterDate}\n            onChange={(date) => setFilterDate(date ?? undefined)}\n          />\n          <Autocomplete\n            label=\"Venue\"\n            value={filterVenue}\n            onSelectionChange={(key) => setFilterVenue(key as string)}\n            items={VENUES.map((v) => ({ key: v, label: v }))}\n          />\n          <Select\n            label=\"Status\"\n            value={filterStatus}\n            onSelectionChange={(key) => setFilterStatus(key as string)}\n          >\n            <Select.Option id=\"All\">All</Select.Option>\n            <Select.Option id=\"Confirmed\">Confirmed</Select.Option>\n            <Select.Option id=\"Pending\">Pending</Select.Option>\n            <Select.Option id=\"Cancelled\">Cancelled</Select.Option>\n          </Select>\n          <Button onPress={clearFilters} variant=\"secondary\">\n            Clear Filters\n          </Button>\n        </Inline>\n      </Stack>\n\n      <Tabs selectedKey={tabView} onSelectionChange={(key) => setTabView(key as string)}>\n        <Tabs.List>\n          <Tabs.Item id=\"all\">All Bookings</Tabs.Item>\n          <Tabs.Item id=\"today\">Today</Tabs.Item>\n          <Tabs.Item id=\"week\">This Week</Tabs.Item>\n        </Tabs.List>\n      </Tabs>\n\n      <Table>\n        <Table.Header>\n          <Table.Column>Booking ID</Table.Column>\n          <Table.Column>Customer</Table.Column>\n          <Table.Column>Venue</Table.Column>\n          <Table.Column>Date</Table.Column>\n          <Table.Column>Time Slot</Table.Column>\n          <Table.Column>Status</Table.Column>\n          <Table.Column>Actions</Table.Column>\n        </Table.Header>\n        <Table.Body>\n          {filteredBookings.map((booking) => (\n            <Table.Row key={booking.id}>\n              <Table.Cell>{booking.id}</Table.Cell>\n              <Table.Cell>{booking.customer}</Table.Cell>\n              <Table.Cell>{booking.venue}</Table.Cell>\n              <Table.Cell>{booking.date}</Table.Cell>\n              <Table.Cell>{booking.timeSlot}</Table.Cell>\n              <Table.Cell>\n                <Badge variant={getStatusColor(booking.status)}>\n                  {booking.status}\n                </Badge>\n              </Table.Cell>\n              <Table.Cell>\n                <Menu\n                  label=\"...\"\n                  onAction={(action) => {\n                    if (action === 'details') {\n                      setSelectedBookingId(booking.id);\n                      setIsDetailsPanelOpen(true);\n                    } else if (action === 'cancel') {\n                      setBookings(\n                        bookings.map((b) =>\n                          b.id === booking.id ? { ...b, status: 'Cancelled' } : b,\n                        ),\n                      );\n                    }\n                  }}\n                >\n                  <Menu.Item id=\"details\">View Details</Menu.Item>\n                  <Menu.Item id=\"edit\">Edit</Menu.Item>\n                  <Menu.Item id=\"cancel\" variant=\"destructive\">\n                    Cancel Booking\n                  </Menu.Item>\n                </Menu>\n              </Table.Cell>\n            </Table.Row>\n          ))}\n        </Table.Body>\n      </Table>\n\n      <Dialog open={isCreateDialogOpen} onOpenChange={setIsCreateDialogOpen}>\n        <Stack space=\"related\">\n          <Headline>Create New Booking</Headline>\n          <Stack space=\"related\">\n            <TextField\n              label=\"Customer Name *\"\n              required\n              value={newBooking.customerName}\n              onChange={(value) =>\n                setNewBooking({ ...newBooking, customerName: value })\n              }\n            />\n            <TextField\n              label=\"Customer Email\"\n              type=\"email\"\n              value={newBooking.customerEmail}\n              onChange={(value) =>\n                setNewBooking({ ...newBooking, customerEmail: value })\n              }\n            />\n            <Select\n              label=\"Venue *\"\n              required\n              value={newBooking.venue}\n              onSelectionChange={(key) =>\n                setNewBooking({ ...newBooking, venue: key as string })\n              }\n            >\n              {VENUES.map((v) => (\n                <Select.Option key={v} id={v}>\n                  {v}\n                </Select.Option>\n              ))}\n            </Select>\n            <DatePicker\n              label=\"Date *\"\n              value={newBooking.date}\n              onChange={(date) =>\n                setNewBooking({\n                  ...newBooking,\n                  date: date ?? undefined,\n                })\n              }\n            />\n            <Select\n              label=\"Time Slot *\"\n              required\n              value={newBooking.timeSlot}\n              onSelectionChange={(key) =>\n                setNewBooking({ ...newBooking, timeSlot: key as string })\n              }\n            >\n              <Select.Option id=\"09:00-12:00\">09:00-12:00</Select.Option>\n              <Select.Option id=\"12:00-15:00\">12:00-15:00</Select.Option>\n              <Select.Option id=\"15:00-18:00\">15:00-18:00</Select.Option>\n              <Select.Option id=\"18:00-21:00\">18:00-21:00</Select.Option>\n            </Select>\n            <TextArea\n              label=\"Notes\"\n              value={newBooking.notes}\n              onChange={(value) => setNewBooking({ ...newBooking, notes: value })}\n            />\n            <Inline space=\"related\">\n              <Button\n                onPress={() => setIsCreateDialogOpen(false)}\n                variant=\"secondary\"\n              >\n                Cancel\n              </Button>\n              <Button onPress={handleCreateBooking} variant=\"primary\">\n                Create Booking\n              </Button>\n            </Inline>\n          </Stack>\n        </Stack>\n      </Dialog>\n\n      {isDetailsPanelOpen && selectedBooking && (\n        <Drawer>\n          <Drawer.Title>{`Booking Details: ${selectedBooking.id}`}</Drawer.Title>\n          <Drawer.Content>\n            <Stack space=\"related\">\n              <Card>\n                <Stack space=\"tight\">\n                  <Text>\n                    <strong>Status:</strong> {selectedBooking.status}\n                  </Text>\n                </Stack>\n              </Card>\n\n              <Card>\n                <Headline level=\"4\">Customer Information</Headline>\n                <Stack space=\"tight\">\n                  <Text>\n                    <strong>Name:</strong> {selectedBooking.customer}\n                  </Text>\n                  <Text>\n                    <strong>Email:</strong> {selectedBooking.email}\n                  </Text>\n                </Stack>\n              </Card>\n\n              <Card>\n                <Headline level=\"4\">Booking Details</Headline>\n                <Stack space=\"tight\">\n                  <Text>\n                    <strong>Venue:</strong> {selectedBooking.venue}\n                  </Text>\n                  <Text>\n                    <strong>Date:</strong> {selectedBooking.date}\n                  </Text>\n                  <Text>\n                    <strong>Time Slot:</strong> {selectedBooking.timeSlot}\n                  </Text>\n                </Stack>\n              </Card>\n\n              {selectedBooking.notes && (\n                <Card>\n                  <Headline level=\"4\">Notes</Headline>\n                  <Text>{selectedBooking.notes}</Text>\n                </Card>\n              )}\n\n              <Accordion>\n                <Accordion.Item>\n                  <Accordion.Header>Payment History</Accordion.Header>\n                  <Accordion.Content>\n                    <Text>No payments recorded yet</Text>\n                  </Accordion.Content>\n                </Accordion.Item>\n                <Accordion.Item>\n                  <Accordion.Header>Communication Log</Accordion.Header>\n                  <Accordion.Content>\n                    <Text>Booking confirmation sent on 2024-12-20</Text>\n                  </Accordion.Content>\n                </Accordion.Item>\n              </Accordion>\n            </Stack>\n          </Drawer.Content>\n          <Drawer.Actions>\n            <Button\n              onPress={() => setIsDetailsPanelOpen(false)}\n              variant=\"secondary\"\n              slot=\"close\"\n            >\n              Close\n            </Button>\n            {selectedBooking.status !== 'Cancelled' && (\n              <Button onPress={handleCancelBooking} variant=\"negative\" slot=\"close\">\n                Cancel Booking\n              </Button>\n            )}\n          </Drawer.Actions>\n        </Drawer>\n      )}\n    </Stack>\n  );\n};\n\nexport default TestApp;\n",
+  "assertions": {
+    "passed": [
+      {
+        "id": "a-import-marigold",
+        "description": "Imports from @marigold/components",
+        "severity": "required",
+        "passed": true,
+        "evidence": "import from \"@marigold/components\" found"
+      },
+      {
+        "id": "a-table",
+        "description": "Table component for bookings",
+        "severity": "required",
+        "passed": true,
+        "evidence": "<Table> found"
+      },
+      {
+        "id": "a-table-header",
+        "description": "Table.Header sub-component",
+        "severity": "required",
+        "passed": true,
+        "evidence": "<Table.Header> found"
+      },
+      {
+        "id": "a-table-body",
+        "description": "Table.Body sub-component",
+        "severity": "required",
+        "passed": true,
+        "evidence": "<Table.Body> found"
+      },
+      {
+        "id": "a-date-picker",
+        "description": "DatePicker for date filtering",
+        "severity": "required",
+        "passed": true,
+        "evidence": "<DatePicker> found"
+      },
+      {
+        "id": "a-combobox",
+        "description": "ComboBox or SearchField for venue search",
+        "severity": "required",
+        "passed": true,
+        "evidence": "matched: <Autocomplete> found"
+      },
+      {
+        "id": "a-dialog",
+        "description": "Dialog for create booking form",
+        "severity": "required",
+        "passed": true,
+        "evidence": "<Dialog> found"
+      },
+      {
+        "id": "a-tabs",
+        "description": "Tabs for booking views",
+        "severity": "required",
+        "passed": true,
+        "evidence": "<Tabs> found"
+      },
+      {
+        "id": "a-menu",
+        "description": "Menu for row actions",
+        "severity": "required",
+        "passed": true,
+        "evidence": "<Menu> found"
+      },
+      {
+        "id": "a-badge",
+        "description": "Badge for booking status",
+        "severity": "required",
+        "passed": true,
+        "evidence": "<Badge> found"
+      },
+      {
+        "id": "a-button",
+        "description": "Button component",
+        "severity": "required",
+        "passed": true,
+        "evidence": "<Button> found"
+      },
+      {
+        "id": "a-select",
+        "description": "Select for status filter / form dropdowns",
+        "severity": "required",
+        "passed": true,
+        "evidence": "<Select> found"
+      },
+      {
+        "id": "a-text-field",
+        "description": "TextField in booking form",
+        "severity": "required",
+        "passed": true,
+        "evidence": "<TextField> found"
+      },
+      {
+        "id": "a-drawer",
+        "description": "Drawer for booking detail view",
+        "severity": "recommended",
+        "passed": true,
+        "evidence": "<Drawer> found"
+      },
+      {
+        "id": "a-accordion",
+        "description": "Accordion for detail sections",
+        "severity": "recommended",
+        "passed": true,
+        "evidence": "<Accordion> found"
+      },
+      {
+        "id": "a-section-message",
+        "description": "SectionMessage for capacity alerts",
+        "severity": "required",
+        "passed": true,
+        "evidence": "<SectionMessage> found"
+      },
+      {
+        "id": "a-headline",
+        "description": "Headline for page title",
+        "severity": "recommended",
+        "passed": true,
+        "evidence": "<Headline> found"
+      },
+      {
+        "id": "a-no-onclick-on-marigold",
+        "description": "No onClick on Marigold Button components",
+        "severity": "recommended",
+        "passed": true,
+        "evidence": "\"/<Button[^>]*onClick/\" correctly absent"
+      },
+      {
+        "id": "a-textarea",
+        "description": "TextArea for booking notes",
+        "severity": "recommended",
+        "passed": true,
+        "evidence": "<TextArea> found"
+      }
+    ],
+    "failed": [
+      {
+        "id": "a-form",
+        "description": "Form component in create dialog",
+        "severity": "required",
+        "passed": false,
+        "evidence": "<Form> not found"
+      }
+    ],
+    "passRate": 0.95,
+    "requiredPassRate": 0.9333,
+    "weightedPassRate": 0.9385,
+    "total": 20
+  },
+  "validatePackageVersion": "0.0.1",
+  "playwrightVersion": null,
+  "resolvedModelId": "claude-haiku-4-5",
+  "claudeCliVersion": "2.1.185 (Claude Code)",
+  "sessionId": "182800de-8c8f-44bc-b5a2-3fe28f288726"
+}

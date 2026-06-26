@@ -1,0 +1,586 @@
+{
+  "runId": "sonnet-mcp-stack-P-09-r1",
+  "promptId": "P-09",
+  "model": "sonnet",
+  "config": "mcp-stack",
+  "timestamp": "2026-06-23T08:31:38.124Z",
+  "quality": {
+    "overall": 47.16,
+    "categories": {
+      "A": {
+        "category": "A",
+        "label": "Design System API",
+        "score": 62.58,
+        "weight": 0.225,
+        "weightedScore": 14.08,
+        "errorCount": 2,
+        "warningCount": 3,
+        "issues": [
+          {
+            "type": "technical",
+            "severity": "error",
+            "source": "prop-validator",
+            "component": "FileField",
+            "message": "Prop \"onChange\" does not exist on <FileField>.",
+            "suggestion": "Remove the prop. Available props: variant, size, width, disabled, accept, multiple, name, render, dir, lang, hidden, inert, translate, onClick, onClickCapture, ….",
+            "location": {
+              "file": "TestApp.tsx",
+              "line": 254,
+              "column": 15
+            },
+            "details": {
+              "used": "onChange",
+              "available": [
+                "variant",
+                "size",
+                "width",
+                "disabled",
+                "accept",
+                "multiple",
+                "name",
+                "render",
+                "dir",
+                "lang",
+                "hidden",
+                "inert",
+                "translate",
+                "onClick",
+                "onClickCapture"
+              ]
+            }
+          },
+          {
+            "type": "technical",
+            "severity": "error",
+            "source": "prop-validator",
+            "component": "Checkbox",
+            "message": "Prop \"errorMessage\" does not exist on <Checkbox>.",
+            "suggestion": "Remove the prop. Available props: variant, size, checked, defaultChecked, disabled, required, readOnly, indeterminate, error, label, description, render, id, dir, lang, ….",
+            "location": {
+              "file": "TestApp.tsx",
+              "line": 471,
+              "column": 15
+            },
+            "details": {
+              "used": "errorMessage",
+              "available": [
+                "variant",
+                "size",
+                "checked",
+                "defaultChecked",
+                "disabled",
+                "required",
+                "readOnly",
+                "indeterminate",
+                "error",
+                "label",
+                "description",
+                "render",
+                "id",
+                "dir",
+                "lang"
+              ]
+            }
+          },
+          {
+            "type": "technical",
+            "severity": "warning",
+            "source": "design-system-usage",
+            "component": "img",
+            "message": "Inline style on <img> bypasses the design system (width, height, objectFit, borderRadius).",
+            "suggestion": "Use Marigold layout components (Stack, Columns, Inset, Container) and theme tokens instead of inline styles.",
+            "location": {
+              "file": "TestApp.tsx",
+              "line": 270,
+              "column": 17
+            },
+            "details": {
+              "cssProperties": [
+                "width",
+                "height",
+                "objectFit",
+                "borderRadius"
+              ]
+            }
+          },
+          {
+            "type": "technical",
+            "severity": "warning",
+            "source": "design-system-usage",
+            "component": "div",
+            "message": "Raw <div> used instead of a Marigold component.",
+            "suggestion": "Raw <div> used instead of a Marigold layout component. Search the Marigold docs for layout alternatives.",
+            "location": {
+              "file": "TestApp.tsx",
+              "line": 501,
+              "column": 5
+            },
+            "details": {
+              "htmlElement": "div"
+            }
+          },
+          {
+            "type": "technical",
+            "severity": "warning",
+            "source": "design-system-usage",
+            "component": "div",
+            "message": "Inline style on <div> bypasses the design system (maxWidth, margin, padding).",
+            "suggestion": "Use Marigold layout components (Stack, Columns, Inset, Container) and theme tokens instead of inline styles.",
+            "location": {
+              "file": "TestApp.tsx",
+              "line": 501,
+              "column": 10
+            },
+            "details": {
+              "cssProperties": [
+                "maxWidth",
+                "margin",
+                "padding"
+              ]
+            }
+          }
+        ]
+      },
+      "B": {
+        "category": "B",
+        "label": "Token Compliance",
+        "score": 0,
+        "weight": 0.1,
+        "weightedScore": 0,
+        "errorCount": 0,
+        "warningCount": 0,
+        "issues": []
+      },
+      "C": {
+        "category": "C",
+        "label": "DOM / Structure",
+        "score": 57.13,
+        "weight": 0.225,
+        "weightedScore": 12.85,
+        "errorCount": 1,
+        "warningCount": 1,
+        "issues": [
+          {
+            "type": "technical",
+            "severity": "error",
+            "source": "compiler",
+            "component": "TypeScript",
+            "message": "TS2305: Module '\"@internationalized/date\"' has no exported member 'TimeValue'.",
+            "suggestion": "Fix the TypeScript error reported by the compiler. The exact location is included in the issue location field.",
+            "location": {
+              "file": "TestApp.tsx",
+              "line": 2,
+              "column": 26
+            }
+          },
+          {
+            "type": "technical",
+            "severity": "warning",
+            "source": "layout-usage",
+            "component": "Stack",
+            "message": "<Stack> wraps a single child. A flow layout earns its place only with two or more children; with one child it adds a wrapper that does nothing.",
+            "suggestion": "Render the child directly instead of wrapping it in <Stack>. For single-child spacing use Inset, Center, Breakout or Aspect.",
+            "location": {
+              "file": "TestApp.tsx",
+              "line": 191,
+              "column": 13
+            },
+            "details": {
+              "layout": "Stack",
+              "childCount": 1
+            }
+          }
+        ]
+      },
+      "D": {
+        "category": "D",
+        "label": "Spatial & A11y",
+        "score": 0,
+        "weight": 0.225,
+        "weightedScore": 0,
+        "errorCount": 0,
+        "warningCount": 0,
+        "issues": []
+      },
+      "E": {
+        "category": "E",
+        "label": "Functional Completeness",
+        "score": 89.87,
+        "weight": 0.225,
+        "weightedScore": 20.22,
+        "errorCount": 0,
+        "warningCount": 0,
+        "issues": []
+      }
+    },
+    "renderSuccess": false
+  },
+  "efficiency": {
+    "durationMs": 1189873,
+    "costUsd": 2.1949889999999996,
+    "inputTokens": 45,
+    "outputTokens": 49581,
+    "cacheReadTokens": 3038020,
+    "cacheCreationTokens": 89737,
+    "totalTokens": 49626,
+    "numTurns": 51
+  },
+  "report": {
+    "file": "TestApp.tsx",
+    "errors": [
+      {
+        "type": "technical",
+        "severity": "error",
+        "source": "compiler",
+        "component": "TypeScript",
+        "message": "TS2305: Module '\"@internationalized/date\"' has no exported member 'TimeValue'.",
+        "suggestion": "Fix the TypeScript error reported by the compiler. The exact location is included in the issue location field.",
+        "location": {
+          "file": "TestApp.tsx",
+          "line": 2,
+          "column": 26
+        }
+      },
+      {
+        "type": "technical",
+        "severity": "error",
+        "source": "prop-validator",
+        "component": "FileField",
+        "message": "Prop \"onChange\" does not exist on <FileField>.",
+        "suggestion": "Remove the prop. Available props: variant, size, width, disabled, accept, multiple, name, render, dir, lang, hidden, inert, translate, onClick, onClickCapture, ….",
+        "location": {
+          "file": "TestApp.tsx",
+          "line": 254,
+          "column": 15
+        },
+        "details": {
+          "used": "onChange",
+          "available": [
+            "variant",
+            "size",
+            "width",
+            "disabled",
+            "accept",
+            "multiple",
+            "name",
+            "render",
+            "dir",
+            "lang",
+            "hidden",
+            "inert",
+            "translate",
+            "onClick",
+            "onClickCapture"
+          ]
+        }
+      },
+      {
+        "type": "technical",
+        "severity": "error",
+        "source": "prop-validator",
+        "component": "Checkbox",
+        "message": "Prop \"errorMessage\" does not exist on <Checkbox>.",
+        "suggestion": "Remove the prop. Available props: variant, size, checked, defaultChecked, disabled, required, readOnly, indeterminate, error, label, description, render, id, dir, lang, ….",
+        "location": {
+          "file": "TestApp.tsx",
+          "line": 471,
+          "column": 15
+        },
+        "details": {
+          "used": "errorMessage",
+          "available": [
+            "variant",
+            "size",
+            "checked",
+            "defaultChecked",
+            "disabled",
+            "required",
+            "readOnly",
+            "indeterminate",
+            "error",
+            "label",
+            "description",
+            "render",
+            "id",
+            "dir",
+            "lang"
+          ]
+        }
+      }
+    ],
+    "warnings": [
+      {
+        "type": "technical",
+        "severity": "warning",
+        "source": "design-system-usage",
+        "component": "img",
+        "message": "Inline style on <img> bypasses the design system (width, height, objectFit, borderRadius).",
+        "suggestion": "Use Marigold layout components (Stack, Columns, Inset, Container) and theme tokens instead of inline styles.",
+        "location": {
+          "file": "TestApp.tsx",
+          "line": 270,
+          "column": 17
+        },
+        "details": {
+          "cssProperties": [
+            "width",
+            "height",
+            "objectFit",
+            "borderRadius"
+          ]
+        }
+      },
+      {
+        "type": "technical",
+        "severity": "warning",
+        "source": "design-system-usage",
+        "component": "div",
+        "message": "Raw <div> used instead of a Marigold component.",
+        "suggestion": "Raw <div> used instead of a Marigold layout component. Search the Marigold docs for layout alternatives.",
+        "location": {
+          "file": "TestApp.tsx",
+          "line": 501,
+          "column": 5
+        },
+        "details": {
+          "htmlElement": "div"
+        }
+      },
+      {
+        "type": "technical",
+        "severity": "warning",
+        "source": "design-system-usage",
+        "component": "div",
+        "message": "Inline style on <div> bypasses the design system (maxWidth, margin, padding).",
+        "suggestion": "Use Marigold layout components (Stack, Columns, Inset, Container) and theme tokens instead of inline styles.",
+        "location": {
+          "file": "TestApp.tsx",
+          "line": 501,
+          "column": 10
+        },
+        "details": {
+          "cssProperties": [
+            "maxWidth",
+            "margin",
+            "padding"
+          ]
+        }
+      },
+      {
+        "type": "technical",
+        "severity": "warning",
+        "source": "layout-usage",
+        "component": "Stack",
+        "message": "<Stack> wraps a single child. A flow layout earns its place only with two or more children; with one child it adds a wrapper that does nothing.",
+        "suggestion": "Render the child directly instead of wrapping it in <Stack>. For single-child spacing use Inset, Center, Breakout or Aspect.",
+        "location": {
+          "file": "TestApp.tsx",
+          "line": 191,
+          "column": 13
+        },
+        "details": {
+          "layout": "Stack",
+          "childCount": 1
+        }
+      }
+    ],
+    "passed": [
+      "Component composition",
+      "Overlay accessible names",
+      "Compound component placement",
+      "Section headers",
+      "Collection item ids",
+      "Table usage",
+      "Component conventions",
+      "Theme variant compliance"
+    ],
+    "metadata": {
+      "renderTimeMs": 0,
+      "componentsFound": [],
+      "checksRun": [
+        "technical",
+        "spatial",
+        "a11y"
+      ],
+      "coverage": {
+        "staticValuesChecked": 27,
+        "dynamicValuesSkipped": 34,
+        "spreadPropsBypassed": 0
+      },
+      "widthUtilization": null
+    },
+    "markdown": "marigold-validate: TestApp.tsx — 3 error(s), 4 warning(s)\n\n[error/technical] <Checkbox>: Prop \"errorMessage\" does not exist on <Checkbox>. (TestApp.tsx:471:15)\n  → Remove the prop. Available props: variant, size, checked, defaultChecked, disabled, required, readOnly, indeterminate, error, label, description, render, id, dir, lang, ….\n  data: {used=errorMessage, available=[\"variant\",\"size\",\"checked\",\"defaultChecked\",\"disabled\",\"required\",\"readOnly\",\"indeterminate\", …]}\n[error/technical] <FileField>: Prop \"onChange\" does not exist on <FileField>. (TestApp.tsx:254:15)\n  → Remove the prop. Available props: variant, size, width, disabled, accept, multiple, name, render, dir, lang, hidden, inert, translate, onClick, onClickCapture, ….\n  data: {used=onChange, available=[\"variant\",\"size\",\"width\",\"disabled\",\"accept\",\"multiple\",\"name\",\"render\", …]}\n[error/technical] <TypeScript>: TS2305: Module '\"@internationalized/date\"' has no exported member 'TimeValue'. (TestApp.tsx:2:26)\n  → Fix the TypeScript error reported by the compiler. The exact location is included in the issue location field.\n[warning/technical] <div>: Raw <div> used instead of a Marigold component. (TestApp.tsx:501:5)\n  → Raw <div> used instead of a Marigold layout component. Search the Marigold docs for layout alternatives.\n  data: {htmlElement=div}\n[warning/technical] <div>: Inline style on <div> bypasses the design system (maxWidth, margin, padding). (TestApp.tsx:501:10)\n  → Use Marigold layout components (Stack, Columns, Inset, Container) and theme tokens instead of inline styles.\n  data: {cssProperties=[\"maxWidth\",\"margin\",\"padding\"]}\n[warning/technical] <img>: Inline style on <img> bypasses the design system (width, height, objectFit, borderRadius). (TestApp.tsx:270:17)\n  → Use Marigold layout components (Stack, Columns, Inset, Container) and theme tokens instead of inline styles.\n  data: {cssProperties=[\"width\",\"height\",\"objectFit\",\"borderRadius\"]}\n[warning/technical] <Stack>: <Stack> wraps a single child. A flow layout earns its place only with two or more children; with one child it adds a wrapper that does nothing. (TestApp.tsx:191:13)\n  → Render the child directly instead of wrapping it in <Stack>. For single-child spacing use Inset, Center, Breakout or Aspect.\n  data: {layout=Stack, childCount=1}\n\npassed: Component composition, Overlay accessible names, Compound component placement, Section headers, Collection item ids, Table usage, Component conventions, Theme variant compliance\n\nchecks run: technical, spatial, a11y"
+  },
+  "componentsFound": [],
+  "renderTimeMs": 0,
+  "sourceCode": "import { useState } from 'react';\nimport type { DateValue, TimeValue } from '@internationalized/date';\nimport {\n  Accordion,\n  Button,\n  Card,\n  Checkbox,\n  ComboBox,\n  DatePicker,\n  FileField,\n  Headline,\n  Inline,\n  Loader,\n  NumberField,\n  Radio,\n  SectionMessage,\n  Select,\n  Split,\n  Stack,\n  Switch,\n  TagField,\n  Text,\n  TextArea,\n  TextField,\n  TimeField,\n  ToastProvider,\n  useToast,\n} from '@marigold/components';\n\ninterface FormData {\n  fullName: string;\n  email: string;\n  phone: string;\n  company: string;\n  jobTitle: string;\n  profilePhoto: File | null;\n  profilePhotoPreview: string | null;\n  eventDate: DateValue | null;\n  preferredTimeSlot: TimeValue | null;\n  sessionTrack: string;\n  dietaryRequirements: string;\n  numberOfGuests: number;\n  specialRequests: string;\n  tshirtSize: string;\n  topicsOfInterest: string[];\n  communicationPreferences: string[];\n  hasAccessibilityNeeds: boolean;\n  accessibilityDetails: string;\n  termsAccepted: boolean;\n}\n\nconst INITIAL_FORM: FormData = {\n  fullName: '',\n  email: '',\n  phone: '',\n  company: '',\n  jobTitle: '',\n  profilePhoto: null,\n  profilePhotoPreview: null,\n  eventDate: null,\n  preferredTimeSlot: null,\n  sessionTrack: '',\n  dietaryRequirements: '',\n  numberOfGuests: 0,\n  specialRequests: '',\n  tshirtSize: '',\n  topicsOfInterest: [],\n  communicationPreferences: [],\n  hasAccessibilityNeeds: false,\n  accessibilityDetails: '',\n  termsAccepted: false,\n};\n\nconst STEP_TITLES = [\n  'Personal Information',\n  'Event Details',\n  'Preferences',\n  'Review & Confirm',\n];\n\nconst EMAIL_RE = /^[^\\s@]+@[^\\s@]+\\.[^\\s@]+$/;\n\nconst formatDate = (d: DateValue | null) =>\n  d ? `${d.year}-${String(d.month).padStart(2, '0')}-${String(d.day).padStart(2, '0')}` : '—';\n\nconst formatTime = (t: TimeValue | null) =>\n  t ? `${String(t.hour).padStart(2, '0')}:${String(t.minute).padStart(2, '0')}` : '—';\n\nconst RegistrationForm = () => {\n  const { addToast } = useToast();\n  const [step, setStep] = useState(1);\n  const [form, setForm] = useState<FormData>(INITIAL_FORM);\n  const [errors, setErrors] = useState<Record<string, string>>({});\n  const [isSubmitting, setIsSubmitting] = useState(false);\n  const [isSubmitted, setIsSubmitted] = useState(false);\n  const [confirmationNumber] = useState(\n    () => 'EVT-' + Math.random().toString(36).substring(2, 10).toUpperCase()\n  );\n\n  const update = <K extends keyof FormData>(key: K, value: FormData[K]) => {\n    setForm(prev => ({ ...prev, [key]: value }));\n    setErrors(prev => {\n      const k = key as string;\n      if (!prev[k]) return prev;\n      const next = { ...prev };\n      delete next[k];\n      return next;\n    });\n  };\n\n  const validate = (): boolean => {\n    const errs: Record<string, string> = {};\n    if (step === 1) {\n      if (!form.fullName.trim()) errs.fullName = 'Full name is required.';\n      if (!form.email.trim()) errs.email = 'Email is required.';\n      else if (!EMAIL_RE.test(form.email)) errs.email = 'Please enter a valid email address.';\n    }\n    if (step === 2 && !form.eventDate) errs.eventDate = 'Event date is required.';\n    if (step === 4 && !form.termsAccepted) errs.termsAccepted = 'You must agree to the terms and conditions.';\n    setErrors(errs);\n    return Object.keys(errs).length === 0;\n  };\n\n  const handleNext = () => {\n    if (!validate()) return;\n    if (step < 4) {\n      setStep(s => s + 1);\n    } else {\n      setIsSubmitting(true);\n      setTimeout(() => {\n        setIsSubmitting(false);\n        setIsSubmitted(true);\n        addToast({ title: 'Registration submitted successfully', variant: 'success' });\n      }, 1200);\n    }\n  };\n\n  const handleBack = () => {\n    setErrors({});\n    setStep(s => s - 1);\n  };\n\n  const handleReset = () => {\n    setForm(INITIAL_FORM);\n    setStep(1);\n    setErrors({});\n    setIsSubmitted(false);\n  };\n\n  if (isSubmitting) {\n    return (\n      <Card>\n        <Stack space={6} alignX=\"center\">\n          <Loader />\n          <Text>Processing your registration…</Text>\n        </Stack>\n      </Card>\n    );\n  }\n\n  if (isSubmitted) {\n    return (\n      <Stack space={6}>\n        <SectionMessage variant=\"success\">\n          <SectionMessage.Title>Registration confirmed!</SectionMessage.Title>\n          <SectionMessage.Content>\n            Your registration has been successfully submitted.\n          </SectionMessage.Content>\n        </SectionMessage>\n        <Card>\n          <Stack space={4}>\n            <Headline level={3}>Registration Summary</Headline>\n            <Stack space={2}>\n              <Inline space={2}>\n                <Text weight=\"bold\">Name:</Text>\n                <Text>{form.fullName}</Text>\n              </Inline>\n              <Inline space={2}>\n                <Text weight=\"bold\">Email:</Text>\n                <Text>{form.email}</Text>\n              </Inline>\n              <Inline space={2}>\n                <Text weight=\"bold\">Event Date:</Text>\n                <Text>{formatDate(form.eventDate)}</Text>\n              </Inline>\n              <Inline space={2}>\n                <Text weight=\"bold\">Confirmation Number:</Text>\n                <Text>{confirmationNumber}</Text>\n              </Inline>\n            </Stack>\n            <Stack alignX=\"left\">\n              <Button variant=\"primary\" onPress={handleReset}>\n                Register Another\n              </Button>\n            </Stack>\n          </Stack>\n        </Card>\n      </Stack>\n    );\n  }\n\n  return (\n    <Card>\n      <Stack space={6}>\n        <Headline level={3}>\n          Step {step} of 4 — {STEP_TITLES[step - 1]}\n        </Headline>\n\n        {step === 1 && (\n          <Stack space={4}>\n            <TextField\n              label=\"Full Name\"\n              value={form.fullName}\n              onChange={val => update('fullName', val)}\n              required\n              error={!!errors.fullName}\n              errorMessage={errors.fullName}\n            />\n            <TextField\n              label=\"Email\"\n              type=\"email\"\n              value={form.email}\n              onChange={val => update('email', val)}\n              required\n              error={!!errors.email}\n              errorMessage={errors.email}\n            />\n            <TextField\n              label=\"Phone Number\"\n              type=\"tel\"\n              value={form.phone}\n              onChange={val => update('phone', val)}\n            />\n            <TextField\n              label=\"Company / Organization\"\n              value={form.company}\n              onChange={val => update('company', val)}\n            />\n            <ComboBox\n              label=\"Job Title\"\n              value={form.jobTitle}\n              onChange={val => update('jobTitle', val ?? '')}\n            >\n              <ComboBox.Option id=\"developer\">Developer</ComboBox.Option>\n              <ComboBox.Option id=\"designer\">Designer</ComboBox.Option>\n              <ComboBox.Option id=\"pm\">Product Manager</ComboBox.Option>\n              <ComboBox.Option id=\"em\">Engineering Manager</ComboBox.Option>\n              <ComboBox.Option id=\"cto\">CTO</ComboBox.Option>\n              <ComboBox.Option id=\"other\">Other</ComboBox.Option>\n            </ComboBox>\n            <FileField\n              label=\"Profile Photo\"\n              accept={['image/*']}\n              onChange={(files: any) => {\n                const file: File | undefined =\n                  Array.isArray(files) ? files[0] : files?.[0];\n                if (file) {\n                  setForm(prev => ({\n                    ...prev,\n                    profilePhoto: file,\n                    profilePhotoPreview: URL.createObjectURL(file),\n                  }));\n                }\n              }}\n            />\n            {form.profilePhotoPreview && (\n              <img\n                src={form.profilePhotoPreview}\n                alt=\"Profile photo preview\"\n                style={{ width: 80, height: 80, objectFit: 'cover', borderRadius: '50%' }}\n              />\n            )}\n            <SectionMessage variant=\"info\">\n              <SectionMessage.Content>\n                Your information will only be used for this event.\n              </SectionMessage.Content>\n            </SectionMessage>\n          </Stack>\n        )}\n\n        {step === 2 && (\n          <Stack space={4}>\n            <DatePicker\n              label=\"Event Date\"\n              value={form.eventDate}\n              onChange={val => update('eventDate', val)}\n              required\n              error={!!errors.eventDate}\n              errorMessage={errors.eventDate}\n            />\n            <TimeField\n              label=\"Preferred Time Slot\"\n              value={form.preferredTimeSlot}\n              onChange={val => update('preferredTimeSlot', val)}\n            />\n            <Radio.Group\n              label=\"Session Track\"\n              value={form.sessionTrack}\n              onChange={val => update('sessionTrack', val)}\n            >\n              <Radio value=\"technical\">Technical</Radio>\n              <Radio value=\"design\">Design</Radio>\n              <Radio value=\"business\">Business</Radio>\n              <Radio value=\"workshop\">Workshop</Radio>\n            </Radio.Group>\n            <ComboBox\n              label=\"Dietary Requirements\"\n              value={form.dietaryRequirements}\n              onChange={val => update('dietaryRequirements', val ?? '')}\n            >\n              <ComboBox.Option id=\"none\">None</ComboBox.Option>\n              <ComboBox.Option id=\"vegetarian\">Vegetarian</ComboBox.Option>\n              <ComboBox.Option id=\"vegan\">Vegan</ComboBox.Option>\n              <ComboBox.Option id=\"gluten-free\">Gluten-Free</ComboBox.Option>\n              <ComboBox.Option id=\"kosher\">Kosher</ComboBox.Option>\n              <ComboBox.Option id=\"halal\">Halal</ComboBox.Option>\n            </ComboBox>\n            <NumberField\n              label=\"Number of Guests\"\n              value={form.numberOfGuests}\n              onChange={val => update('numberOfGuests', val)}\n              minValue={0}\n              maxValue={5}\n            />\n            <TextArea\n              label=\"Special Requests\"\n              value={form.specialRequests}\n              onChange={val => update('specialRequests', val)}\n              rows={3}\n            />\n          </Stack>\n        )}\n\n        {step === 3 && (\n          <Stack space={4}>\n            <Select\n              label=\"T-Shirt Size\"\n              selectedKey={form.tshirtSize || null}\n              onSelectionChange={key => update('tshirtSize', (key ?? '') as string)}\n            >\n              <Select.Option id=\"xs\">XS</Select.Option>\n              <Select.Option id=\"s\">S</Select.Option>\n              <Select.Option id=\"m\">M</Select.Option>\n              <Select.Option id=\"l\">L</Select.Option>\n              <Select.Option id=\"xl\">XL</Select.Option>\n              <Select.Option id=\"xxl\">XXL</Select.Option>\n            </Select>\n            <TagField\n              label=\"Topics of Interest\"\n              value={form.topicsOfInterest as any}\n              onChange={keys => update('topicsOfInterest', [...(keys as Iterable<string>)])}\n            >\n              <TagField.Option id=\"ai-ml\">AI/ML</TagField.Option>\n              <TagField.Option id=\"web-dev\">Web Development</TagField.Option>\n              <TagField.Option id=\"cloud\">Cloud</TagField.Option>\n              <TagField.Option id=\"security\">Security</TagField.Option>\n              <TagField.Option id=\"devops\">DevOps</TagField.Option>\n              <TagField.Option id=\"mobile\">Mobile</TagField.Option>\n              <TagField.Option id=\"data-science\">Data Science</TagField.Option>\n            </TagField>\n            <Checkbox.Group\n              label=\"Communication Preferences\"\n              value={form.communicationPreferences}\n              onChange={vals => update('communicationPreferences', vals)}\n            >\n              <Checkbox value=\"email-updates\" label=\"Email updates about the event\" />\n              <Checkbox value=\"sms-reminders\" label=\"SMS reminders\" />\n              <Checkbox value=\"post-event-survey\" label=\"Post-event survey\" />\n              <Checkbox value=\"newsletter\" label=\"Newsletter subscription\" />\n            </Checkbox.Group>\n            <Switch\n              label=\"I have accessibility requirements\"\n              selected={form.hasAccessibilityNeeds}\n              onChange={(val: boolean) => update('hasAccessibilityNeeds', val)}\n            />\n            {form.hasAccessibilityNeeds && (\n              <TextArea\n                label=\"Accessibility Requirements Details\"\n                value={form.accessibilityDetails}\n                onChange={val => update('accessibilityDetails', val)}\n                rows={3}\n              />\n            )}\n          </Stack>\n        )}\n\n        {step === 4 && (\n          <Stack space={6}>\n            <Accordion>\n              <Accordion.Item id=\"personal\">\n                <Accordion.Header>Personal Information</Accordion.Header>\n                <Accordion.Content>\n                  <Stack space={2}>\n                    <Inline space={2}>\n                      <Text weight=\"bold\">Name:</Text>\n                      <Text>{form.fullName || '—'}</Text>\n                    </Inline>\n                    <Inline space={2}>\n                      <Text weight=\"bold\">Email:</Text>\n                      <Text>{form.email || '—'}</Text>\n                    </Inline>\n                    <Inline space={2}>\n                      <Text weight=\"bold\">Phone:</Text>\n                      <Text>{form.phone || '—'}</Text>\n                    </Inline>\n                    <Inline space={2}>\n                      <Text weight=\"bold\">Company:</Text>\n                      <Text>{form.company || '—'}</Text>\n                    </Inline>\n                    <Inline space={2}>\n                      <Text weight=\"bold\">Job Title:</Text>\n                      <Text>{form.jobTitle || '—'}</Text>\n                    </Inline>\n                  </Stack>\n                </Accordion.Content>\n              </Accordion.Item>\n              <Accordion.Item id=\"event\">\n                <Accordion.Header>Event Details</Accordion.Header>\n                <Accordion.Content>\n                  <Stack space={2}>\n                    <Inline space={2}>\n                      <Text weight=\"bold\">Date:</Text>\n                      <Text>{formatDate(form.eventDate)}</Text>\n                    </Inline>\n                    <Inline space={2}>\n                      <Text weight=\"bold\">Time:</Text>\n                      <Text>{formatTime(form.preferredTimeSlot)}</Text>\n                    </Inline>\n                    <Inline space={2}>\n                      <Text weight=\"bold\">Track:</Text>\n                      <Text>{form.sessionTrack || '—'}</Text>\n                    </Inline>\n                    <Inline space={2}>\n                      <Text weight=\"bold\">Dietary:</Text>\n                      <Text>{form.dietaryRequirements || '—'}</Text>\n                    </Inline>\n                    <Inline space={2}>\n                      <Text weight=\"bold\">Guests:</Text>\n                      <Text>{String(form.numberOfGuests)}</Text>\n                    </Inline>\n                  </Stack>\n                </Accordion.Content>\n              </Accordion.Item>\n              <Accordion.Item id=\"preferences\">\n                <Accordion.Header>Preferences</Accordion.Header>\n                <Accordion.Content>\n                  <Stack space={2}>\n                    <Inline space={2}>\n                      <Text weight=\"bold\">T-Shirt Size:</Text>\n                      <Text>{form.tshirtSize ? form.tshirtSize.toUpperCase() : '—'}</Text>\n                    </Inline>\n                    <Inline space={2}>\n                      <Text weight=\"bold\">Topics:</Text>\n                      <Text>{form.topicsOfInterest.length ? form.topicsOfInterest.join(', ') : '—'}</Text>\n                    </Inline>\n                    <Inline space={2}>\n                      <Text weight=\"bold\">Communication:</Text>\n                      <Text>{form.communicationPreferences.length ? form.communicationPreferences.join(', ') : '—'}</Text>\n                    </Inline>\n                  </Stack>\n                </Accordion.Content>\n              </Accordion.Item>\n            </Accordion>\n\n            <Checkbox\n              label=\"I agree to the terms and conditions\"\n              checked={form.termsAccepted}\n              onChange={(val: boolean) => update('termsAccepted', val)}\n              required\n              error={!!errors.termsAccepted}\n              errorMessage={errors.termsAccepted}\n            />\n          </Stack>\n        )}\n\n        <Inline space={4}>\n          <Button\n            variant=\"secondary\"\n            onPress={handleBack}\n            disabled={step === 1}\n          >\n            Back\n          </Button>\n          <Split />\n          <Button\n            variant=\"primary\"\n            onPress={handleNext}\n            disabled={step === 4 && !form.termsAccepted}\n          >\n            {step === 4 ? 'Submit Registration' : 'Next'}\n          </Button>\n        </Inline>\n      </Stack>\n    </Card>\n  );\n};\n\nconst TestApp = () => (\n  <>\n    <ToastProvider position=\"bottom-right\" />\n    <div style={{ maxWidth: 640, margin: '0 auto', padding: '32px 16px' }}>\n      <Stack space={6}>\n        <Headline level={2}>Event Registration</Headline>\n        <RegistrationForm />\n      </Stack>\n    </div>\n  </>\n);\n\nexport default TestApp;\n",
+  "assertions": {
+    "passed": [
+      {
+        "id": "a-import-marigold",
+        "description": "Imports from @marigold/components",
+        "severity": "required",
+        "passed": true,
+        "evidence": "import from \"@marigold/components\" found"
+      },
+      {
+        "id": "a-text-field",
+        "description": "TextField for text inputs",
+        "severity": "required",
+        "passed": true,
+        "evidence": "<TextField> found"
+      },
+      {
+        "id": "a-datepicker",
+        "description": "DatePicker for event date",
+        "severity": "required",
+        "passed": true,
+        "evidence": "<DatePicker> found"
+      },
+      {
+        "id": "a-timefield",
+        "description": "TimeField for time slot",
+        "severity": "required",
+        "passed": true,
+        "evidence": "<TimeField> found"
+      },
+      {
+        "id": "a-radio",
+        "description": "Radio/RadioGroup for session track",
+        "severity": "required",
+        "passed": true,
+        "evidence": "matched: <Radio> found"
+      },
+      {
+        "id": "a-combobox",
+        "description": "ComboBox for dietary requirements",
+        "severity": "required",
+        "passed": true,
+        "evidence": "<ComboBox> found"
+      },
+      {
+        "id": "a-numberfield",
+        "description": "NumberField for guests",
+        "severity": "required",
+        "passed": true,
+        "evidence": "<NumberField> found"
+      },
+      {
+        "id": "a-select",
+        "description": "Select for t-shirt size",
+        "severity": "required",
+        "passed": true,
+        "evidence": "<Select> found"
+      },
+      {
+        "id": "a-tagfield",
+        "description": "TagField for topics of interest",
+        "severity": "required",
+        "passed": true,
+        "evidence": "<TagField> found"
+      },
+      {
+        "id": "a-checkbox",
+        "description": "Checkbox for communication preferences",
+        "severity": "required",
+        "passed": true,
+        "evidence": "matched: <Checkbox> found"
+      },
+      {
+        "id": "a-switch",
+        "description": "Switch for accessibility needs",
+        "severity": "required",
+        "passed": true,
+        "evidence": "<Switch> found"
+      },
+      {
+        "id": "a-textarea",
+        "description": "TextArea for special requests",
+        "severity": "required",
+        "passed": true,
+        "evidence": "<TextArea> found"
+      },
+      {
+        "id": "a-filefield",
+        "description": "FileField for profile photo",
+        "severity": "required",
+        "passed": true,
+        "evidence": "<FileField> found"
+      },
+      {
+        "id": "a-accordion",
+        "description": "Accordion for review sections",
+        "severity": "required",
+        "passed": true,
+        "evidence": "<Accordion> found"
+      },
+      {
+        "id": "a-button",
+        "description": "Button for navigation/submit",
+        "severity": "required",
+        "passed": true,
+        "evidence": "<Button> found"
+      },
+      {
+        "id": "a-card",
+        "description": "Card as form container",
+        "severity": "required",
+        "passed": true,
+        "evidence": "<Card> found"
+      },
+      {
+        "id": "a-section-message",
+        "description": "SectionMessage for info/success",
+        "severity": "required",
+        "passed": true,
+        "evidence": "<SectionMessage> found"
+      },
+      {
+        "id": "a-loader",
+        "description": "Loader for submission",
+        "severity": "recommended",
+        "passed": true,
+        "evidence": "<Loader> found"
+      },
+      {
+        "id": "a-step-state",
+        "description": "Multi-step state management (useState)",
+        "severity": "recommended",
+        "passed": true,
+        "evidence": "pattern \"/useState/\" found"
+      },
+      {
+        "id": "a-toast",
+        "description": "Toast notification after submission",
+        "severity": "recommended",
+        "passed": true,
+        "evidence": "matched: pattern \"/useToast/\" found"
+      }
+    ],
+    "failed": [
+      {
+        "id": "a-form",
+        "description": "Form component",
+        "severity": "required",
+        "passed": false,
+        "evidence": "<Form> not found"
+      },
+      {
+        "id": "a-autocomplete",
+        "description": "Autocomplete for job title",
+        "severity": "required",
+        "passed": false,
+        "evidence": "<Autocomplete> not found"
+      }
+    ],
+    "passRate": 0.9091,
+    "requiredPassRate": 0.8947,
+    "weightedPassRate": 0.8987,
+    "total": 22
+  },
+  "validatePackageVersion": "0.0.1",
+  "playwrightVersion": null,
+  "resolvedModelId": "claude-sonnet-4-6",
+  "claudeCliVersion": "2.1.185 (Claude Code)",
+  "sessionId": "9fe3c910-961c-4736-8b14-0dc4a5cf7af1"
+}

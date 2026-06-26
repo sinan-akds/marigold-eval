@@ -1,0 +1,317 @@
+{
+  "runId": "sonnet-full-stack-P-05-r3",
+  "promptId": "P-05",
+  "model": "sonnet",
+  "config": "full-stack",
+  "timestamp": "2026-06-25T09:36:07.017Z",
+  "quality": {
+    "overall": 89.88,
+    "categories": {
+      "A": {
+        "category": "A",
+        "label": "Design System API",
+        "score": 100,
+        "weight": 0.225,
+        "weightedScore": 22.5,
+        "errorCount": 0,
+        "warningCount": 0,
+        "issues": []
+      },
+      "B": {
+        "category": "B",
+        "label": "Token Compliance",
+        "score": 100,
+        "weight": 0.1,
+        "weightedScore": 10,
+        "errorCount": 0,
+        "warningCount": 0,
+        "issues": []
+      },
+      "C": {
+        "category": "C",
+        "label": "DOM / Structure",
+        "score": 100,
+        "weight": 0.225,
+        "weightedScore": 22.5,
+        "errorCount": 0,
+        "warningCount": 0,
+        "issues": []
+      },
+      "D": {
+        "category": "D",
+        "label": "Spatial & A11y",
+        "score": 75.51,
+        "weight": 0.225,
+        "weightedScore": 16.99,
+        "errorCount": 0,
+        "warningCount": 3,
+        "issues": [
+          {
+            "type": "a11y",
+            "severity": "warning",
+            "source": "responsive-checker",
+            "component": "input",
+            "message": "Touch target too small at mobile (375px): input elements are 13x13px (16 instances) (minimum 24x24px per WCAG 2.5.8).",
+            "suggestion": "Increase the clickable area. Marigold interactive components have built-in minimum sizes — check if custom styling reduces the target.",
+            "details": {
+              "breakpoint": "mobile",
+              "tag": "input",
+              "count": 16,
+              "minWidth": 13,
+              "minHeight": 13,
+              "scope": "page"
+            }
+          },
+          {
+            "type": "spatial",
+            "severity": "warning",
+            "source": "responsive-checker",
+            "component": "page",
+            "message": "Content uses only 24% of the desktop width (1280px): it stays in a narrow, mobile-shaped band instead of adapting to the available space.",
+            "suggestion": "Let the layout grow with the viewport using Marigold responsive primitives — <Columns collapseAt=\"...\"> for multi-column areas, AppLayout for the shell, Stack/Inline for flow — instead of a fixed-width container. (Intentionally centred max-width reading columns are fine and may trip this; treat it as a relative signal.)",
+            "details": {
+              "widthUtilization": 0.23515625,
+              "contentElements": 86,
+              "scope": "page"
+            }
+          },
+          {
+            "type": "a11y",
+            "severity": "warning",
+            "source": "aom-extractor",
+            "component": ".border-b.last\\:border-b-0.border-border:nth-child(1) > div:nth-child(1) > h3",
+            "message": "Heading levels should only increase by one (heading-order)",
+            "suggestion": "Use `<Headline level={N}>` with sequential levels (1, 2, 3…). Do not skip heading levels. Import Headline from `@marigold/components`.",
+            "details": {
+              "ruleId": "heading-order",
+              "impact": "moderate",
+              "target": [
+                ".border-b.last\\:border-b-0.border-border:nth-child(1) > div:nth-child(1) > h3"
+              ],
+              "html": "<h3 class=\"react-aria-Heading\">",
+              "scope": "page"
+            }
+          }
+        ]
+      },
+      "E": {
+        "category": "E",
+        "label": "Functional Completeness",
+        "score": 79.49,
+        "weight": 0.225,
+        "weightedScore": 17.89,
+        "errorCount": 0,
+        "warningCount": 0,
+        "issues": []
+      }
+    },
+    "renderSuccess": true
+  },
+  "efficiency": {
+    "durationMs": 536486,
+    "costUsd": 1.6164626999999998,
+    "inputTokens": 41,
+    "outputTokens": 28434,
+    "cacheReadTokens": 2223399,
+    "cacheCreationTokens": 84975,
+    "totalTokens": 28475,
+    "numTurns": 44
+  },
+  "report": {
+    "file": "TestApp.tsx",
+    "errors": [],
+    "warnings": [
+      {
+        "type": "a11y",
+        "severity": "warning",
+        "source": "responsive-checker",
+        "component": "input",
+        "message": "Touch target too small at mobile (375px): input elements are 13x13px (16 instances) (minimum 24x24px per WCAG 2.5.8).",
+        "suggestion": "Increase the clickable area. Marigold interactive components have built-in minimum sizes — check if custom styling reduces the target.",
+        "details": {
+          "breakpoint": "mobile",
+          "tag": "input",
+          "count": 16,
+          "minWidth": 13,
+          "minHeight": 13,
+          "scope": "page"
+        }
+      },
+      {
+        "type": "spatial",
+        "severity": "warning",
+        "source": "responsive-checker",
+        "component": "page",
+        "message": "Content uses only 24% of the desktop width (1280px): it stays in a narrow, mobile-shaped band instead of adapting to the available space.",
+        "suggestion": "Let the layout grow with the viewport using Marigold responsive primitives — <Columns collapseAt=\"...\"> for multi-column areas, AppLayout for the shell, Stack/Inline for flow — instead of a fixed-width container. (Intentionally centred max-width reading columns are fine and may trip this; treat it as a relative signal.)",
+        "details": {
+          "widthUtilization": 0.23515625,
+          "contentElements": 86,
+          "scope": "page"
+        }
+      },
+      {
+        "type": "a11y",
+        "severity": "warning",
+        "source": "aom-extractor",
+        "component": ".border-b.last\\:border-b-0.border-border:nth-child(1) > div:nth-child(1) > h3",
+        "message": "Heading levels should only increase by one (heading-order)",
+        "suggestion": "Use `<Headline level={N}>` with sequential levels (1, 2, 3…). Do not skip heading levels. Import Headline from `@marigold/components`.",
+        "details": {
+          "ruleId": "heading-order",
+          "impact": "moderate",
+          "target": [
+            ".border-b.last\\:border-b-0.border-border:nth-child(1) > div:nth-child(1) > h3"
+          ],
+          "html": "<h3 class=\"react-aria-Heading\">",
+          "scope": "page"
+        }
+      }
+    ],
+    "passed": [
+      "TypeScript compilation",
+      "All Marigold props are valid",
+      "Component composition",
+      "Overlay accessible names",
+      "Compound component placement",
+      "Section headers",
+      "Collection item ids",
+      "Design system usage",
+      "Layout usage",
+      "Table usage",
+      "Component conventions",
+      "Theme variant compliance",
+      "No overlapping components detected"
+    ],
+    "metadata": {
+      "renderTimeMs": 1679,
+      "componentsFound": [
+        "div",
+        "button",
+        "input",
+        "textarea",
+        "label"
+      ],
+      "checksRun": [
+        "technical",
+        "spatial",
+        "a11y"
+      ],
+      "coverage": {
+        "staticValuesChecked": 4,
+        "dynamicValuesSkipped": 8,
+        "spreadPropsBypassed": 0
+      },
+      "widthUtilization": 0.23515625
+    },
+    "markdown": "marigold-validate: TestApp.tsx — 0 error(s), 3 warning(s)\n\n[warning/spatial] <page>: Content uses only 24% of the desktop width (1280px): it stays in a narrow, mobile-shaped band instead of adapting to the available space.\n  → Let the layout grow with the viewport using Marigold responsive primitives — <Columns collapseAt=\"...\"> for multi-column areas, AppLayout for the shell, Stack/Inline for flow — instead of a fixed-width container. (Intentionally centred max-width reading columns are fine and may trip this; treat it as a relative signal.)\n  data: {widthUtilization=0.23515625, contentElements=86, scope=page}\n[warning/a11y] <.border-b.last\\:border-b-0.border-border:nth-child(1) > div:nth-child(1) > h3>: Heading levels should only increase by one (heading-order)\n  → Use `<Headline level={N}>` with sequential levels (1, 2, 3…). Do not skip heading levels. Import Headline from `@marigold/components`.\n  data: {ruleId=heading-order, impact=moderate, target=[\".border-b.last\\\\:border-b-0.border-border:nth-child(1) > div:nth-child(1) > h3\"], html=<h3 class=\"react-aria-Heading\">, scope=page}\n[warning/a11y] <input>: Touch target too small at mobile (375px): input elements are 13x13px (16 instances) (minimum 24x24px per WCAG 2.5.8).\n  → Increase the clickable area. Marigold interactive components have built-in minimum sizes — check if custom styling reduces the target.\n  data: {breakpoint=mobile, tag=input, count=16, minWidth=13, minHeight=13, scope=page}\n\npassed: TypeScript compilation, All Marigold props are valid, Component composition, Overlay accessible names, Compound component placement, Section headers, Collection item ids, Design system usage, Layout usage, Table usage, Component conventions, Theme variant compliance, No overlapping components detected\n\nchecks run: technical, spatial, a11y"
+  },
+  "componentsFound": [
+    "div",
+    "button",
+    "input",
+    "textarea",
+    "label"
+  ],
+  "renderTimeMs": 1679,
+  "sourceCode": "import { useState } from 'react';\nimport {\n  Accordion,\n  AppLayout,\n  Button,\n  Checkbox,\n  Headline,\n  Radio,\n  SectionMessage,\n  Stack,\n  Switch,\n  Text,\n  TextArea,\n  TextField,\n} from '@marigold/components';\n\nconst SettingsPage = () => {\n  const [displayName, setDisplayName] = useState('');\n  const [email, setEmail] = useState('');\n  const [bio, setBio] = useState('');\n  const [profileSaved, setProfileSaved] = useState(false);\n\n  const [theme, setTheme] = useState('system');\n  const [language, setLanguage] = useState('english');\n  const [compactMode, setCompactMode] = useState(false);\n\n  const [notifTypes, setNotifTypes] = useState<string[]>([]);\n  const [notifSound, setNotifSound] = useState('default');\n  const [notifSaved, setNotifSaved] = useState(false);\n\n  const [visibility, setVisibility] = useState('public');\n  const [showOnline, setShowOnline] = useState(true);\n  const [allowSearch, setAllowSearch] = useState(false);\n  const [privacySaved, setPrivacySaved] = useState(false);\n\n  const saveProfile = () => {\n    setProfileSaved(true);\n    setTimeout(() => setProfileSaved(false), 3000);\n  };\n\n  const saveNotifications = () => {\n    setNotifSaved(true);\n    setTimeout(() => setNotifSaved(false), 3000);\n  };\n\n  const savePrivacy = () => {\n    setPrivacySaved(true);\n    setTimeout(() => setPrivacySaved(false), 3000);\n  };\n\n  return (\n    <AppLayout>\n      <AppLayout.Main>\n        <Stack space={6}>\n          <Headline level={1}>Settings</Headline>\n          <Accordion\n            allowsMultipleExpanded\n            defaultExpandedKeys={[\n              'profile',\n              'appearance',\n              'notifications',\n              'privacy',\n            ]}\n          >\n            <Accordion.Item id=\"profile\">\n              <Accordion.Header>Profile</Accordion.Header>\n              <Accordion.Content>\n                <Stack space={4}>\n                  {profileSaved && (\n                    <SectionMessage>\n                      <SectionMessage.Title>Profile saved</SectionMessage.Title>\n                      <SectionMessage.Content>\n                        Your profile has been updated successfully.\n                      </SectionMessage.Content>\n                    </SectionMessage>\n                  )}\n                  <TextField\n                    label=\"Display Name\"\n                    required\n                    value={displayName}\n                    onChange={setDisplayName}\n                  />\n                  <TextField\n                    label=\"Email Address\"\n                    type=\"email\"\n                    value={email}\n                    onChange={setEmail}\n                  />\n                  <TextArea\n                    label=\"Bio\"\n                    rows={4}\n                    value={bio}\n                    onChange={setBio}\n                  />\n                  <Button variant=\"primary\" onPress={saveProfile}>\n                    Save Profile\n                  </Button>\n                </Stack>\n              </Accordion.Content>\n            </Accordion.Item>\n\n            <Accordion.Item id=\"appearance\">\n              <Accordion.Header>Appearance</Accordion.Header>\n              <Accordion.Content>\n                <Stack space={4}>\n                  <Radio.Group label=\"Theme\" value={theme} onChange={setTheme}>\n                    <Radio value=\"light\">Light</Radio>\n                    <Radio value=\"dark\">Dark</Radio>\n                    <Radio value=\"system\">System Default</Radio>\n                  </Radio.Group>\n                  <Radio.Group\n                    label=\"Language\"\n                    value={language}\n                    onChange={setLanguage}\n                  >\n                    <Radio value=\"english\">English</Radio>\n                    <Radio value=\"german\">German</Radio>\n                    <Radio value=\"french\">French</Radio>\n                  </Radio.Group>\n                  <Stack space={1}>\n                    <Switch\n                      label=\"Compact Mode\"\n                      selected={compactMode}\n                      onChange={setCompactMode}\n                    />\n                    <Text>\n                      Reduce spacing and font size for denser layouts\n                    </Text>\n                  </Stack>\n                </Stack>\n              </Accordion.Content>\n            </Accordion.Item>\n\n            <Accordion.Item id=\"notifications\">\n              <Accordion.Header>Notifications</Accordion.Header>\n              <Accordion.Content>\n                <Stack space={4}>\n                  {notifSaved && (\n                    <SectionMessage>\n                      <SectionMessage.Title>\n                        Notification preferences saved\n                      </SectionMessage.Title>\n                      <SectionMessage.Content>\n                        Your notification settings have been updated.\n                      </SectionMessage.Content>\n                    </SectionMessage>\n                  )}\n                  <Checkbox.Group\n                    label=\"Notification Types\"\n                    value={notifTypes}\n                    onChange={val => setNotifTypes(val)}\n                  >\n                    <Checkbox\n                      value=\"email-messages\"\n                      label=\"Email notifications for new messages\"\n                    />\n                    <Checkbox\n                      value=\"push-mentions\"\n                      label=\"Push notifications for mentions\"\n                    />\n                    <Checkbox\n                      value=\"weekly-digest\"\n                      label=\"Weekly activity digest\"\n                    />\n                    <Checkbox\n                      value=\"marketing\"\n                      label=\"Marketing and promotional emails\"\n                    />\n                  </Checkbox.Group>\n                  <Radio.Group\n                    label=\"Notification Sound\"\n                    value={notifSound}\n                    onChange={setNotifSound}\n                  >\n                    <Radio value=\"default\">Default</Radio>\n                    <Radio value=\"chime\">Chime</Radio>\n                    <Radio value=\"none\">None</Radio>\n                  </Radio.Group>\n                  <Button variant=\"primary\" onPress={saveNotifications}>\n                    Save Notification Preferences\n                  </Button>\n                </Stack>\n              </Accordion.Content>\n            </Accordion.Item>\n\n            <Accordion.Item id=\"privacy\">\n              <Accordion.Header>Privacy</Accordion.Header>\n              <Accordion.Content>\n                <Stack space={4}>\n                  {privacySaved && (\n                    <SectionMessage>\n                      <SectionMessage.Title>\n                        Privacy settings saved\n                      </SectionMessage.Title>\n                      <SectionMessage.Content>\n                        Your privacy settings have been updated.\n                      </SectionMessage.Content>\n                    </SectionMessage>\n                  )}\n                  <Radio.Group\n                    label=\"Profile Visibility\"\n                    value={visibility}\n                    onChange={setVisibility}\n                  >\n                    <Radio value=\"public\">Public</Radio>\n                    <Radio value=\"team-only\">Team Only</Radio>\n                    <Radio value=\"private\">Private</Radio>\n                  </Radio.Group>\n                  <Switch\n                    label=\"Show Online Status\"\n                    selected={showOnline}\n                    onChange={setShowOnline}\n                  />\n                  <Stack space={1}>\n                    <Switch\n                      label=\"Allow Search Engines\"\n                      selected={allowSearch}\n                      onChange={setAllowSearch}\n                      disabled={visibility !== 'public'}\n                    />\n                    <Text>\n                      Let search engines index your public profile\n                    </Text>\n                  </Stack>\n                  <Button variant=\"primary\" onPress={savePrivacy}>\n                    Save Privacy Settings\n                  </Button>\n                </Stack>\n              </Accordion.Content>\n            </Accordion.Item>\n          </Accordion>\n        </Stack>\n      </AppLayout.Main>\n    </AppLayout>\n  );\n};\n\nexport default SettingsPage;\n",
+  "assertions": {
+    "passed": [
+      {
+        "id": "a-import-marigold",
+        "description": "Imports from @marigold/components",
+        "severity": "required",
+        "passed": true,
+        "evidence": "import from \"@marigold/components\" found"
+      },
+      {
+        "id": "a-accordion",
+        "description": "Accordion for settings sections",
+        "severity": "required",
+        "passed": true,
+        "evidence": "<Accordion> found"
+      },
+      {
+        "id": "a-switch",
+        "description": "Switch for toggle settings",
+        "severity": "required",
+        "passed": true,
+        "evidence": "<Switch> found"
+      },
+      {
+        "id": "a-checkbox",
+        "description": "Checkbox or CheckboxGroup for multi-select",
+        "severity": "required",
+        "passed": true,
+        "evidence": "matched: <Checkbox> found"
+      },
+      {
+        "id": "a-radio-group",
+        "description": "RadioGroup for exclusive choices",
+        "severity": "required",
+        "passed": true,
+        "evidence": "matched: <Radio> found"
+      },
+      {
+        "id": "a-text-field",
+        "description": "TextField for text inputs",
+        "severity": "required",
+        "passed": true,
+        "evidence": "<TextField> found"
+      },
+      {
+        "id": "a-textarea",
+        "description": "TextArea for bio/multi-line input",
+        "severity": "recommended",
+        "passed": true,
+        "evidence": "<TextArea> found"
+      },
+      {
+        "id": "a-button",
+        "description": "Button for save actions",
+        "severity": "required",
+        "passed": true,
+        "evidence": "<Button> found"
+      },
+      {
+        "id": "a-no-onclick-on-marigold",
+        "description": "No onClick on Marigold Button components",
+        "severity": "recommended",
+        "passed": true,
+        "evidence": "\"/<Button[^>]*onClick/\" correctly absent"
+      },
+      {
+        "id": "a-headline",
+        "description": "Headline for page title",
+        "severity": "recommended",
+        "passed": true,
+        "evidence": "<Headline> found"
+      }
+    ],
+    "failed": [
+      {
+        "id": "a-select",
+        "description": "Select dropdown",
+        "severity": "required",
+        "passed": false,
+        "evidence": "<Select> not found"
+      },
+      {
+        "id": "a-form",
+        "description": "Form component wrapping inputs",
+        "severity": "required",
+        "passed": false,
+        "evidence": "<Form> not found"
+      }
+    ],
+    "passRate": 0.8333,
+    "requiredPassRate": 0.7778,
+    "weightedPassRate": 0.7949,
+    "total": 12
+  },
+  "validatePackageVersion": "0.0.1",
+  "playwrightVersion": null,
+  "resolvedModelId": "claude-sonnet-4-6",
+  "claudeCliVersion": "2.1.185 (Claude Code)",
+  "sessionId": "a1db528f-c93e-4e23-9b46-d1f6c3ab8db5"
+}

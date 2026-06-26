@@ -1,0 +1,419 @@
+{
+  "runId": "sonnet-bare-P-03-r1",
+  "promptId": "P-03",
+  "model": "sonnet",
+  "config": "bare",
+  "timestamp": "2026-06-21T12:55:02.569Z",
+  "quality": {
+    "overall": 40.21,
+    "categories": {
+      "A": {
+        "category": "A",
+        "label": "Design System API",
+        "score": 60,
+        "weight": 0.225,
+        "weightedScore": 13.5,
+        "errorCount": 4,
+        "warningCount": 0,
+        "issues": [
+          {
+            "type": "technical",
+            "severity": "error",
+            "source": "prop-validator",
+            "component": "Tiles",
+            "message": "Prop \"columns\" does not exist on <Tiles>.",
+            "suggestion": "Remove the prop. Available props: space, children, tilesWidth, stretch, equalHeight, role, aria-live, id, aria-label, aria-labelledby, aria-describedby, aria-details.",
+            "location": {
+              "file": "TestApp.tsx",
+              "line": 111,
+              "column": 16
+            },
+            "details": {
+              "used": "columns",
+              "available": [
+                "space",
+                "children",
+                "tilesWidth",
+                "stretch",
+                "equalHeight",
+                "role",
+                "aria-live",
+                "id",
+                "aria-label",
+                "aria-labelledby",
+                "aria-describedby",
+                "aria-details"
+              ]
+            }
+          },
+          {
+            "type": "technical",
+            "severity": "error",
+            "source": "design-system-usage",
+            "component": "Heading",
+            "message": "<Heading> is not a Marigold component. It is not exported from @marigold/components.",
+            "suggestion": "<Heading> does not exist in @marigold/components. Search the Marigold docs for the correct component.",
+            "location": {
+              "file": "TestApp.tsx",
+              "line": 29,
+              "column": 7
+            },
+            "details": {
+              "hallucinated": true,
+              "importedFrom": "@marigold/components"
+            }
+          },
+          {
+            "type": "technical",
+            "severity": "error",
+            "source": "design-system-usage",
+            "component": "Heading",
+            "message": "<Heading> is not a Marigold component. It is not exported from @marigold/components.",
+            "suggestion": "<Heading> does not exist in @marigold/components. Search the Marigold docs for the correct component.",
+            "location": {
+              "file": "TestApp.tsx",
+              "line": 52,
+              "column": 11
+            },
+            "details": {
+              "hallucinated": true,
+              "importedFrom": "@marigold/components"
+            }
+          },
+          {
+            "type": "technical",
+            "severity": "error",
+            "source": "design-system-usage",
+            "component": "Heading",
+            "message": "<Heading> is not a Marigold component. It is not exported from @marigold/components.",
+            "suggestion": "<Heading> does not exist in @marigold/components. Search the Marigold docs for the correct component.",
+            "location": {
+              "file": "TestApp.tsx",
+              "line": 110,
+              "column": 9
+            },
+            "details": {
+              "hallucinated": true,
+              "importedFrom": "@marigold/components"
+            }
+          }
+        ]
+      },
+      "B": {
+        "category": "B",
+        "label": "Token Compliance",
+        "score": 0,
+        "weight": 0.1,
+        "weightedScore": 0,
+        "errorCount": 0,
+        "warningCount": 0,
+        "issues": []
+      },
+      "C": {
+        "category": "C",
+        "label": "DOM / Structure",
+        "score": 65,
+        "weight": 0.225,
+        "weightedScore": 14.63,
+        "errorCount": 1,
+        "warningCount": 0,
+        "issues": [
+          {
+            "type": "technical",
+            "severity": "error",
+            "source": "compiler",
+            "component": "TypeScript",
+            "message": "TS2305: Module '\"@marigold/components\"' has no exported member 'Heading'.",
+            "suggestion": "Fix the TypeScript error reported by the compiler. The exact location is included in the issue location field.",
+            "location": {
+              "file": "TestApp.tsx",
+              "line": 6,
+              "column": 3
+            }
+          }
+        ]
+      },
+      "D": {
+        "category": "D",
+        "label": "Spatial & A11y",
+        "score": 0,
+        "weight": 0.225,
+        "weightedScore": 0,
+        "errorCount": 0,
+        "warningCount": 0,
+        "issues": []
+      },
+      "E": {
+        "category": "E",
+        "label": "Functional Completeness",
+        "score": 53.7,
+        "weight": 0.225,
+        "weightedScore": 12.08,
+        "errorCount": 0,
+        "warningCount": 0,
+        "issues": []
+      }
+    },
+    "renderSuccess": false
+  },
+  "efficiency": {
+    "durationMs": 63874,
+    "costUsd": 0.1589163,
+    "inputTokens": 5,
+    "outputTokens": 4225,
+    "cacheReadTokens": 90171,
+    "cacheCreationTokens": 11254,
+    "totalTokens": 4230,
+    "numTurns": 4
+  },
+  "report": {
+    "file": "TestApp.tsx",
+    "errors": [
+      {
+        "type": "technical",
+        "severity": "error",
+        "source": "compiler",
+        "component": "TypeScript",
+        "message": "TS2305: Module '\"@marigold/components\"' has no exported member 'Heading'.",
+        "suggestion": "Fix the TypeScript error reported by the compiler. The exact location is included in the issue location field.",
+        "location": {
+          "file": "TestApp.tsx",
+          "line": 6,
+          "column": 3
+        }
+      },
+      {
+        "type": "technical",
+        "severity": "error",
+        "source": "prop-validator",
+        "component": "Tiles",
+        "message": "Prop \"columns\" does not exist on <Tiles>.",
+        "suggestion": "Remove the prop. Available props: space, children, tilesWidth, stretch, equalHeight, role, aria-live, id, aria-label, aria-labelledby, aria-describedby, aria-details.",
+        "location": {
+          "file": "TestApp.tsx",
+          "line": 111,
+          "column": 16
+        },
+        "details": {
+          "used": "columns",
+          "available": [
+            "space",
+            "children",
+            "tilesWidth",
+            "stretch",
+            "equalHeight",
+            "role",
+            "aria-live",
+            "id",
+            "aria-label",
+            "aria-labelledby",
+            "aria-describedby",
+            "aria-details"
+          ]
+        }
+      },
+      {
+        "type": "technical",
+        "severity": "error",
+        "source": "design-system-usage",
+        "component": "Heading",
+        "message": "<Heading> is not a Marigold component. It is not exported from @marigold/components.",
+        "suggestion": "<Heading> does not exist in @marigold/components. Search the Marigold docs for the correct component.",
+        "location": {
+          "file": "TestApp.tsx",
+          "line": 29,
+          "column": 7
+        },
+        "details": {
+          "hallucinated": true,
+          "importedFrom": "@marigold/components"
+        }
+      },
+      {
+        "type": "technical",
+        "severity": "error",
+        "source": "design-system-usage",
+        "component": "Heading",
+        "message": "<Heading> is not a Marigold component. It is not exported from @marigold/components.",
+        "suggestion": "<Heading> does not exist in @marigold/components. Search the Marigold docs for the correct component.",
+        "location": {
+          "file": "TestApp.tsx",
+          "line": 52,
+          "column": 11
+        },
+        "details": {
+          "hallucinated": true,
+          "importedFrom": "@marigold/components"
+        }
+      },
+      {
+        "type": "technical",
+        "severity": "error",
+        "source": "design-system-usage",
+        "component": "Heading",
+        "message": "<Heading> is not a Marigold component. It is not exported from @marigold/components.",
+        "suggestion": "<Heading> does not exist in @marigold/components. Search the Marigold docs for the correct component.",
+        "location": {
+          "file": "TestApp.tsx",
+          "line": 110,
+          "column": 9
+        },
+        "details": {
+          "hallucinated": true,
+          "importedFrom": "@marigold/components"
+        }
+      }
+    ],
+    "warnings": [],
+    "passed": [
+      "Component composition",
+      "Overlay accessible names",
+      "Compound component placement",
+      "Section headers",
+      "Collection item ids",
+      "Layout usage",
+      "Table usage",
+      "Component conventions",
+      "Theme variant compliance"
+    ],
+    "metadata": {
+      "renderTimeMs": 0,
+      "componentsFound": [],
+      "checksRun": [
+        "technical",
+        "spatial",
+        "a11y"
+      ],
+      "coverage": {
+        "staticValuesChecked": 3,
+        "dynamicValuesSkipped": 12,
+        "spreadPropsBypassed": 0
+      },
+      "widthUtilization": null
+    },
+    "markdown": "marigold-validate: TestApp.tsx — 5 error(s), 0 warning(s)\n\n[error/technical] <Heading>: <Heading> is not a Marigold component. It is not exported from @marigold/components. (TestApp.tsx:29:7)\n  → <Heading> does not exist in @marigold/components. Search the Marigold docs for the correct component.\n  data: {hallucinated=true, importedFrom=@marigold/components}\n[error/technical] <Heading>: <Heading> is not a Marigold component. It is not exported from @marigold/components. (TestApp.tsx:52:11)\n  → <Heading> does not exist in @marigold/components. Search the Marigold docs for the correct component.\n  data: {hallucinated=true, importedFrom=@marigold/components}\n[error/technical] <Heading>: <Heading> is not a Marigold component. It is not exported from @marigold/components. (TestApp.tsx:110:9)\n  → <Heading> does not exist in @marigold/components. Search the Marigold docs for the correct component.\n  data: {hallucinated=true, importedFrom=@marigold/components}\n[error/technical] <Tiles>: Prop \"columns\" does not exist on <Tiles>. (TestApp.tsx:111:16)\n  → Remove the prop. Available props: space, children, tilesWidth, stretch, equalHeight, role, aria-live, id, aria-label, aria-labelledby, aria-describedby, aria-details.\n  data: {used=columns, available=[\"space\",\"children\",\"tilesWidth\",\"stretch\",\"equalHeight\",\"role\",\"aria-live\",\"id\", …]}\n[error/technical] <TypeScript>: TS2305: Module '\"@marigold/components\"' has no exported member 'Heading'. (TestApp.tsx:6:3)\n  → Fix the TypeScript error reported by the compiler. The exact location is included in the issue location field.\n\npassed: Component composition, Overlay accessible names, Compound component placement, Section headers, Collection item ids, Layout usage, Table usage, Component conventions, Theme variant compliance\n\nchecks run: technical, spatial, a11y"
+  },
+  "componentsFound": [],
+  "renderTimeMs": 0,
+  "sourceCode": "import React from 'react';\nimport {\n  Stack,\n  Inline,\n  Text,\n  Heading,\n  Badge,\n  Divider,\n  Card,\n  Link,\n  Tiles,\n} from '@marigold/components';\n\nconst InfoCallout = ({ children }: { children: React.ReactNode }) => (\n  <Card>\n    <Text>{children}</Text>\n  </Card>\n);\n\nconst RelatedCard = ({\n  title,\n  description,\n}: {\n  title: string;\n  description: string;\n}) => (\n  <Card>\n    <Stack space={3}>\n      <Heading level={3}>{title}</Heading>\n      <Text>{description}</Text>\n      <Link href=\"#\">Read more →</Link>\n    </Stack>\n  </Card>\n);\n\nconst TestApp = () => {\n  return (\n    <Stack space={8}>\n      {/* Breadcrumb */}\n      <Inline space={2} alignY=\"center\">\n        <Link href=\"#\">Blog</Link>\n        <Text>&gt;</Text>\n        <Link href=\"#\">Frontend</Link>\n        <Text>&gt;</Text>\n        <Text>Accessibility</Text>\n      </Inline>\n\n      {/* Article */}\n      <Stack space={6}>\n        {/* Header */}\n        <Stack space={4}>\n          <Heading level={1}>Building Accessible Design Systems</Heading>\n          <Inline space={4} alignY=\"center\">\n            <Text weight=\"bold\">Sarah Chen</Text>\n            <Badge>Staff Engineer</Badge>\n            <Text>Published May 15, 2026</Text>\n          </Inline>\n          <Divider />\n        </Stack>\n\n        {/* Body */}\n        <Stack space={5}>\n          <Text>\n            Accessibility is not an afterthought — it is a core design principle\n            that shapes how we build interfaces from the ground up. When design\n            systems treat accessibility as a first-class concern, every team that\n            consumes them inherits those guarantees automatically.\n          </Text>\n\n          <InfoCallout>\n            This article is part of our accessibility series. Check out the full\n            series for more.\n          </InfoCallout>\n\n          <Text>\n            Creating truly inclusive experiences requires collaboration between\n            designers, engineers, and accessibility specialists. A shared design\n            system provides a single source of truth for accessible patterns,\n            making it easier to ship features that work for everyone.\n          </Text>\n\n          <Stack space={2}>\n            <Text>- Semantic HTML as the foundation</Text>\n            <Text>- ARIA attributes for complex widgets</Text>\n            <Text>- Keyboard navigation patterns</Text>\n            <Text>- Color contrast and visual indicators</Text>\n          </Stack>\n\n          <Text>\n            Adopting these practices consistently across your component library\n            will reduce audit failures, improve user satisfaction, and\n            future-proof your system as standards continue to evolve.\n          </Text>\n        </Stack>\n\n        {/* Tags */}\n        <Stack space={3}>\n          <Divider />\n          <Inline space={2}>\n            <Badge>Accessibility</Badge>\n            <Badge>Design Systems</Badge>\n            <Badge>React</Badge>\n            <Badge>WCAG</Badge>\n          </Inline>\n        </Stack>\n      </Stack>\n\n      {/* Related Articles */}\n      <Stack space={4}>\n        <Heading level={2}>Related Articles</Heading>\n        <Tiles columns={[1, 3]} space={4}>\n          <RelatedCard\n            title=\"ARIA Live Regions Explained\"\n            description=\"Learn how to announce dynamic content changes to screen reader users without disrupting their flow.\"\n          />\n          <RelatedCard\n            title=\"Keyboard Traps and Focus Management\"\n            description=\"Discover patterns for managing focus in modals, drawers, and other overlay components.\"\n          />\n          <RelatedCard\n            title=\"Color Contrast in Practice\"\n            description=\"A practical guide to meeting WCAG contrast ratios while keeping your brand palette intact.\"\n          />\n        </Tiles>\n      </Stack>\n    </Stack>\n  );\n};\n\nexport default TestApp;\n",
+  "assertions": {
+    "passed": [
+      {
+        "id": "a-import-marigold",
+        "description": "Imports from @marigold/components",
+        "severity": "required",
+        "passed": true,
+        "evidence": "import from \"@marigold/components\" found"
+      },
+      {
+        "id": "a-text",
+        "description": "Text component for paragraphs",
+        "severity": "required",
+        "passed": true,
+        "evidence": "<Text> found"
+      },
+      {
+        "id": "a-divider",
+        "description": "Divider between sections",
+        "severity": "required",
+        "passed": true,
+        "evidence": "<Divider> found"
+      },
+      {
+        "id": "a-badge",
+        "description": "Badge for author role",
+        "severity": "required",
+        "passed": true,
+        "evidence": "<Badge> found"
+      },
+      {
+        "id": "a-link",
+        "description": "Link component (not anchor tag)",
+        "severity": "required",
+        "passed": true,
+        "evidence": "<Link> found"
+      },
+      {
+        "id": "a-card",
+        "description": "Card for related articles",
+        "severity": "required",
+        "passed": true,
+        "evidence": "<Card> found"
+      },
+      {
+        "id": "a-layout",
+        "description": "Uses layout primitives",
+        "severity": "required",
+        "passed": true,
+        "evidence": "matched: <Stack> found; <Inline> found"
+      },
+      {
+        "id": "a-no-raw-html",
+        "description": "No raw anchor/div/span elements",
+        "severity": "recommended",
+        "passed": true,
+        "evidence": "\"/^(a|div|span|p|h[1-6]|ul|ol|li|button|input|select|textarea|table)$/\" correctly absent"
+      }
+    ],
+    "failed": [
+      {
+        "id": "a-container",
+        "description": "Container for reading width",
+        "severity": "required",
+        "passed": false,
+        "evidence": "<Container> not found"
+      },
+      {
+        "id": "a-headline",
+        "description": "Headline for article title",
+        "severity": "required",
+        "passed": false,
+        "evidence": "<Headline> not found"
+      },
+      {
+        "id": "a-breadcrumbs",
+        "description": "Breadcrumbs navigation",
+        "severity": "required",
+        "passed": false,
+        "evidence": "<Breadcrumbs> not found"
+      },
+      {
+        "id": "a-list",
+        "description": "List component for article items",
+        "severity": "required",
+        "passed": false,
+        "evidence": "<List> not found"
+      },
+      {
+        "id": "a-tag",
+        "description": "Tag component for article tags",
+        "severity": "required",
+        "passed": false,
+        "evidence": "none matched: <Tag> not found; <TagGroup> not found"
+      },
+      {
+        "id": "a-section-message",
+        "description": "SectionMessage for callout",
+        "severity": "required",
+        "passed": false,
+        "evidence": "<SectionMessage> not found"
+      },
+      {
+        "id": "a-columns-responsive",
+        "description": "Columns for related articles (responsive)",
+        "severity": "recommended",
+        "passed": false,
+        "evidence": "<Columns> not found"
+      }
+    ],
+    "passRate": 0.5333,
+    "requiredPassRate": 0.5385,
+    "weightedPassRate": 0.537,
+    "total": 15
+  },
+  "validatePackageVersion": "0.0.1",
+  "playwrightVersion": null,
+  "resolvedModelId": "claude-sonnet-4-6",
+  "claudeCliVersion": "2.1.185 (Claude Code)",
+  "sessionId": "6cd65773-5400-450d-9210-6bfb238a0f05"
+}

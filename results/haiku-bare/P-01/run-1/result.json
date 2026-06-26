@@ -1,0 +1,1148 @@
+{
+  "runId": "haiku-bare-P-01-r1",
+  "promptId": "P-01",
+  "model": "haiku",
+  "config": "bare",
+  "timestamp": "2026-06-21T09:02:10.219Z",
+  "quality": {
+    "overall": 26.97,
+    "categories": {
+      "A": {
+        "category": "A",
+        "label": "Design System API",
+        "score": 33.67,
+        "weight": 0.225,
+        "weightedScore": 7.58,
+        "errorCount": 3,
+        "warningCount": 16,
+        "issues": [
+          {
+            "type": "technical",
+            "severity": "error",
+            "source": "prop-validator",
+            "component": "Stack",
+            "message": "Prop \"gap\" does not exist on <Stack>.",
+            "suggestion": "Remove the prop. Available props: space, children, stretch, alignX, alignY, asList, role, aria-live, id, aria-label, aria-labelledby, aria-describedby, aria-details.",
+            "location": {
+              "file": "TestApp.tsx",
+              "line": 107,
+              "column": 16
+            },
+            "details": {
+              "used": "gap",
+              "available": [
+                "space",
+                "children",
+                "stretch",
+                "alignX",
+                "alignY",
+                "asList",
+                "role",
+                "aria-live",
+                "id",
+                "aria-label",
+                "aria-labelledby",
+                "aria-describedby",
+                "aria-details"
+              ]
+            }
+          },
+          {
+            "type": "technical",
+            "severity": "error",
+            "source": "prop-validator",
+            "component": "Stack",
+            "message": "Prop \"direction\" does not exist on <Stack>.",
+            "suggestion": "Remove the prop. Available props: space, children, stretch, alignX, alignY, asList, role, aria-live, id, aria-label, aria-labelledby, aria-describedby, aria-details.",
+            "location": {
+              "file": "TestApp.tsx",
+              "line": 107,
+              "column": 25
+            },
+            "details": {
+              "used": "direction",
+              "available": [
+                "space",
+                "children",
+                "stretch",
+                "alignX",
+                "alignY",
+                "asList",
+                "role",
+                "aria-live",
+                "id",
+                "aria-label",
+                "aria-labelledby",
+                "aria-describedby",
+                "aria-details"
+              ]
+            }
+          },
+          {
+            "type": "technical",
+            "severity": "error",
+            "source": "design-system-usage",
+            "component": "Heading",
+            "message": "<Heading> is not a Marigold component. It is not exported from @marigold/components.",
+            "suggestion": "<Heading> does not exist in @marigold/components. Search the Marigold docs for the correct component.",
+            "location": {
+              "file": "TestApp.tsx",
+              "line": 87,
+              "column": 7
+            },
+            "details": {
+              "hallucinated": true,
+              "importedFrom": "@marigold/components"
+            }
+          },
+          {
+            "type": "technical",
+            "severity": "warning",
+            "source": "design-system-usage",
+            "component": "div",
+            "message": "Raw <div> used instead of a Marigold component.",
+            "suggestion": "Raw <div> used instead of a Marigold layout component. Search the Marigold docs for layout alternatives.",
+            "location": {
+              "file": "TestApp.tsx",
+              "line": 80,
+              "column": 5
+            },
+            "details": {
+              "htmlElement": "div"
+            }
+          },
+          {
+            "type": "technical",
+            "severity": "warning",
+            "source": "design-system-usage",
+            "component": "div",
+            "message": "Inline style on <div> bypasses the design system (padding, maxWidth, margin).",
+            "suggestion": "Use Marigold layout components (Stack, Columns, Inset, Container) and theme tokens instead of inline styles.",
+            "location": {
+              "file": "TestApp.tsx",
+              "line": 81,
+              "column": 7
+            },
+            "details": {
+              "cssProperties": [
+                "padding",
+                "maxWidth",
+                "margin"
+              ]
+            }
+          },
+          {
+            "type": "technical",
+            "severity": "warning",
+            "source": "design-system-usage",
+            "component": "Heading",
+            "message": "Inline style on <Heading> bypasses the design system (marginBottom).",
+            "suggestion": "Use Marigold layout components (Stack, Columns, Inset, Container) and theme tokens instead of inline styles.",
+            "location": {
+              "file": "TestApp.tsx",
+              "line": 87,
+              "column": 26
+            },
+            "details": {
+              "cssProperties": [
+                "marginBottom"
+              ]
+            }
+          },
+          {
+            "type": "technical",
+            "severity": "warning",
+            "source": "design-system-usage",
+            "component": "div",
+            "message": "Raw <div> used instead of a Marigold component.",
+            "suggestion": "Raw <div> used instead of a Marigold layout component. Search the Marigold docs for layout alternatives.",
+            "location": {
+              "file": "TestApp.tsx",
+              "line": 92,
+              "column": 9
+            },
+            "details": {
+              "htmlElement": "div"
+            }
+          },
+          {
+            "type": "technical",
+            "severity": "warning",
+            "source": "design-system-usage",
+            "component": "div",
+            "message": "Inline style on <div> bypasses the design system (padding, marginBottom, backgroundColor, border, borderRadius).",
+            "suggestion": "Use Marigold layout components (Stack, Columns, Inset, Container) and theme tokens instead of inline styles.",
+            "location": {
+              "file": "TestApp.tsx",
+              "line": 93,
+              "column": 11
+            },
+            "details": {
+              "cssProperties": [
+                "padding",
+                "marginBottom",
+                "backgroundColor",
+                "border",
+                "borderRadius"
+              ]
+            }
+          },
+          {
+            "type": "technical",
+            "severity": "warning",
+            "source": "design-system-usage",
+            "component": "div",
+            "message": "Raw <div> used instead of a Marigold component.",
+            "suggestion": "Raw <div> used instead of a Marigold layout component. Search the Marigold docs for layout alternatives.",
+            "location": {
+              "file": "TestApp.tsx",
+              "line": 108,
+              "column": 11
+            },
+            "details": {
+              "htmlElement": "div"
+            }
+          },
+          {
+            "type": "technical",
+            "severity": "warning",
+            "source": "design-system-usage",
+            "component": "Text",
+            "message": "Inline style on <Text> bypasses the design system (color, fontSize, marginTop).",
+            "suggestion": "Use Marigold layout components (Stack, Columns, Inset, Container) and theme tokens instead of inline styles.",
+            "location": {
+              "file": "TestApp.tsx",
+              "line": 119,
+              "column": 17
+            },
+            "details": {
+              "cssProperties": [
+                "color",
+                "fontSize",
+                "marginTop"
+              ]
+            }
+          },
+          {
+            "type": "technical",
+            "severity": "warning",
+            "source": "design-system-usage",
+            "component": "div",
+            "message": "Raw <div> used instead of a Marigold component.",
+            "suggestion": "Raw <div> used instead of a Marigold layout component. Search the Marigold docs for layout alternatives.",
+            "location": {
+              "file": "TestApp.tsx",
+              "line": 130,
+              "column": 11
+            },
+            "details": {
+              "htmlElement": "div"
+            }
+          },
+          {
+            "type": "technical",
+            "severity": "warning",
+            "source": "design-system-usage",
+            "component": "Text",
+            "message": "Inline style on <Text> bypasses the design system (color, fontSize, marginTop).",
+            "suggestion": "Use Marigold layout components (Stack, Columns, Inset, Container) and theme tokens instead of inline styles.",
+            "location": {
+              "file": "TestApp.tsx",
+              "line": 142,
+              "column": 17
+            },
+            "details": {
+              "cssProperties": [
+                "color",
+                "fontSize",
+                "marginTop"
+              ]
+            }
+          },
+          {
+            "type": "technical",
+            "severity": "warning",
+            "source": "design-system-usage",
+            "component": "div",
+            "message": "Raw <div> used instead of a Marigold component.",
+            "suggestion": "Raw <div> used instead of a Marigold layout component. Search the Marigold docs for layout alternatives.",
+            "location": {
+              "file": "TestApp.tsx",
+              "line": 153,
+              "column": 11
+            },
+            "details": {
+              "htmlElement": "div"
+            }
+          },
+          {
+            "type": "technical",
+            "severity": "warning",
+            "source": "design-system-usage",
+            "component": "option",
+            "message": "Raw <option> used instead of a Marigold component.",
+            "suggestion": "Replace <option> with the appropriate Marigold component. Search the Marigold docs for alternatives.",
+            "location": {
+              "file": "TestApp.tsx",
+              "line": 161,
+              "column": 15
+            },
+            "details": {
+              "htmlElement": "option"
+            }
+          },
+          {
+            "type": "technical",
+            "severity": "warning",
+            "source": "design-system-usage",
+            "component": "option",
+            "message": "Raw <option> used instead of a Marigold component.",
+            "suggestion": "Replace <option> with the appropriate Marigold component. Search the Marigold docs for alternatives.",
+            "location": {
+              "file": "TestApp.tsx",
+              "line": 162,
+              "column": 15
+            },
+            "details": {
+              "htmlElement": "option"
+            }
+          },
+          {
+            "type": "technical",
+            "severity": "warning",
+            "source": "design-system-usage",
+            "component": "option",
+            "message": "Raw <option> used instead of a Marigold component.",
+            "suggestion": "Replace <option> with the appropriate Marigold component. Search the Marigold docs for alternatives.",
+            "location": {
+              "file": "TestApp.tsx",
+              "line": 163,
+              "column": 15
+            },
+            "details": {
+              "htmlElement": "option"
+            }
+          },
+          {
+            "type": "technical",
+            "severity": "warning",
+            "source": "design-system-usage",
+            "component": "option",
+            "message": "Raw <option> used instead of a Marigold component.",
+            "suggestion": "Replace <option> with the appropriate Marigold component. Search the Marigold docs for alternatives.",
+            "location": {
+              "file": "TestApp.tsx",
+              "line": 164,
+              "column": 15
+            },
+            "details": {
+              "htmlElement": "option"
+            }
+          },
+          {
+            "type": "technical",
+            "severity": "warning",
+            "source": "design-system-usage",
+            "component": "Text",
+            "message": "Inline style on <Text> bypasses the design system (color, fontSize, marginTop).",
+            "suggestion": "Use Marigold layout components (Stack, Columns, Inset, Container) and theme tokens instead of inline styles.",
+            "location": {
+              "file": "TestApp.tsx",
+              "line": 168,
+              "column": 17
+            },
+            "details": {
+              "cssProperties": [
+                "color",
+                "fontSize",
+                "marginTop"
+              ]
+            }
+          },
+          {
+            "type": "technical",
+            "severity": "warning",
+            "source": "design-system-usage",
+            "component": "div",
+            "message": "Raw <div> used instead of a Marigold component.",
+            "suggestion": "Raw <div> used instead of a Marigold layout component. Search the Marigold docs for layout alternatives.",
+            "location": {
+              "file": "TestApp.tsx",
+              "line": 179,
+              "column": 11
+            },
+            "details": {
+              "htmlElement": "div"
+            }
+          }
+        ]
+      },
+      "B": {
+        "category": "B",
+        "label": "Token Compliance",
+        "score": 0,
+        "weight": 0.1,
+        "weightedScore": 0,
+        "errorCount": 0,
+        "warningCount": 0,
+        "issues": []
+      },
+      "C": {
+        "category": "C",
+        "label": "DOM / Structure",
+        "score": 0,
+        "weight": 0.225,
+        "weightedScore": 0,
+        "errorCount": 9,
+        "warningCount": 0,
+        "issues": [
+          {
+            "type": "technical",
+            "severity": "error",
+            "source": "compiler",
+            "component": "TypeScript",
+            "message": "TS2305: Module '\"@marigold/components\"' has no exported member 'Heading'.",
+            "suggestion": "Fix the TypeScript error reported by the compiler. The exact location is included in the issue location field.",
+            "location": {
+              "file": "TestApp.tsx",
+              "line": 8,
+              "column": 3
+            }
+          },
+          {
+            "type": "technical",
+            "severity": "error",
+            "source": "compiler",
+            "component": "TypeScript",
+            "message": "TS2322: Type '(e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => void' is not assignable to type '(value: string) => void'.\n  Types of parameters 'e' and 'value' are incompatible.\n    Type 'string' is not assignable to type 'ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement, Element>'.",
+            "suggestion": "Fix the TypeScript error reported by the compiler. The exact location is included in the issue location field.",
+            "location": {
+              "file": "TestApp.tsx",
+              "line": 113,
+              "column": 15
+            }
+          },
+          {
+            "type": "technical",
+            "severity": "error",
+            "source": "compiler",
+            "component": "TypeScript",
+            "message": "TS2322: Type '{ children: string; style: { color: string; fontSize: string; marginTop: string; }; }' is not assignable to type 'IntrinsicAttributes & TextProps'.\n  Property 'style' does not exist on type 'IntrinsicAttributes & TextProps'.",
+            "suggestion": "Fix the TypeScript error reported by the compiler. The exact location is included in the issue location field.",
+            "location": {
+              "file": "TestApp.tsx",
+              "line": 119,
+              "column": 17
+            }
+          },
+          {
+            "type": "technical",
+            "severity": "error",
+            "source": "compiler",
+            "component": "TypeScript",
+            "message": "TS2322: Type '(e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => void' is not assignable to type '(value: string) => void'.\n  Types of parameters 'e' and 'value' are incompatible.\n    Type 'string' is not assignable to type 'ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement, Element>'.",
+            "suggestion": "Fix the TypeScript error reported by the compiler. The exact location is included in the issue location field.",
+            "location": {
+              "file": "TestApp.tsx",
+              "line": 136,
+              "column": 15
+            }
+          },
+          {
+            "type": "technical",
+            "severity": "error",
+            "source": "compiler",
+            "component": "TypeScript",
+            "message": "TS2322: Type '{ children: string; style: { color: string; fontSize: string; marginTop: string; }; }' is not assignable to type 'IntrinsicAttributes & TextProps'.\n  Property 'style' does not exist on type 'IntrinsicAttributes & TextProps'.",
+            "suggestion": "Fix the TypeScript error reported by the compiler. The exact location is included in the issue location field.",
+            "location": {
+              "file": "TestApp.tsx",
+              "line": 142,
+              "column": 17
+            }
+          },
+          {
+            "type": "technical",
+            "severity": "error",
+            "source": "compiler",
+            "component": "TypeScript",
+            "message": "TS2322: Type '(e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => void' is not assignable to type '(value: Key | null) => void'.\n  Types of parameters 'e' and 'value' are incompatible.\n    Type 'Key | null' is not assignable to type 'ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement, Element>'.\n      Type 'null' is not assignable to type 'ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement, Element>'.",
+            "suggestion": "Fix the TypeScript error reported by the compiler. The exact location is included in the issue location field.",
+            "location": {
+              "file": "TestApp.tsx",
+              "line": 158,
+              "column": 15
+            }
+          },
+          {
+            "type": "technical",
+            "severity": "error",
+            "source": "compiler",
+            "component": "TypeScript",
+            "message": "TS2322: Type '{ children: string; style: { color: string; fontSize: string; marginTop: string; }; }' is not assignable to type 'IntrinsicAttributes & TextProps'.\n  Property 'style' does not exist on type 'IntrinsicAttributes & TextProps'.",
+            "suggestion": "Fix the TypeScript error reported by the compiler. The exact location is included in the issue location field.",
+            "location": {
+              "file": "TestApp.tsx",
+              "line": 168,
+              "column": 17
+            }
+          },
+          {
+            "type": "technical",
+            "severity": "error",
+            "source": "compiler",
+            "component": "TypeScript",
+            "message": "TS2322: Type '(e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => void' is not assignable to type '(value: string) => void'.\n  Types of parameters 'e' and 'value' are incompatible.\n    Type 'string' is not assignable to type 'ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement, Element>'.",
+            "suggestion": "Fix the TypeScript error reported by the compiler. The exact location is included in the issue location field.",
+            "location": {
+              "file": "TestApp.tsx",
+              "line": 184,
+              "column": 15
+            }
+          },
+          {
+            "type": "technical",
+            "severity": "error",
+            "source": "composition-validator",
+            "component": "Select",
+            "message": "<Select> is used without any of its sub-components.",
+            "suggestion": "Use compound children: <Select.Option>, <Select.Section>.",
+            "location": {
+              "file": "TestApp.tsx",
+              "line": 154,
+              "column": 13
+            },
+            "details": {
+              "expected": [
+                "Option",
+                "Section"
+              ],
+              "found": []
+            }
+          }
+        ]
+      },
+      "D": {
+        "category": "D",
+        "label": "Spatial & A11y",
+        "score": 0,
+        "weight": 0.225,
+        "weightedScore": 0,
+        "errorCount": 0,
+        "warningCount": 0,
+        "issues": []
+      },
+      "E": {
+        "category": "E",
+        "label": "Functional Completeness",
+        "score": 86.21,
+        "weight": 0.225,
+        "weightedScore": 19.4,
+        "errorCount": 0,
+        "warningCount": 0,
+        "issues": []
+      }
+    },
+    "renderSuccess": false
+  },
+  "efficiency": {
+    "durationMs": 16419,
+    "costUsd": 0.050009,
+    "inputTokens": 26,
+    "outputTokens": 2173,
+    "cacheReadTokens": 82890,
+    "cacheCreationTokens": 15047,
+    "totalTokens": 2199,
+    "numTurns": 4
+  },
+  "report": {
+    "file": "TestApp.tsx",
+    "errors": [
+      {
+        "type": "technical",
+        "severity": "error",
+        "source": "compiler",
+        "component": "TypeScript",
+        "message": "TS2305: Module '\"@marigold/components\"' has no exported member 'Heading'.",
+        "suggestion": "Fix the TypeScript error reported by the compiler. The exact location is included in the issue location field.",
+        "location": {
+          "file": "TestApp.tsx",
+          "line": 8,
+          "column": 3
+        }
+      },
+      {
+        "type": "technical",
+        "severity": "error",
+        "source": "compiler",
+        "component": "TypeScript",
+        "message": "TS2322: Type '(e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => void' is not assignable to type '(value: string) => void'.\n  Types of parameters 'e' and 'value' are incompatible.\n    Type 'string' is not assignable to type 'ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement, Element>'.",
+        "suggestion": "Fix the TypeScript error reported by the compiler. The exact location is included in the issue location field.",
+        "location": {
+          "file": "TestApp.tsx",
+          "line": 113,
+          "column": 15
+        }
+      },
+      {
+        "type": "technical",
+        "severity": "error",
+        "source": "compiler",
+        "component": "TypeScript",
+        "message": "TS2322: Type '{ children: string; style: { color: string; fontSize: string; marginTop: string; }; }' is not assignable to type 'IntrinsicAttributes & TextProps'.\n  Property 'style' does not exist on type 'IntrinsicAttributes & TextProps'.",
+        "suggestion": "Fix the TypeScript error reported by the compiler. The exact location is included in the issue location field.",
+        "location": {
+          "file": "TestApp.tsx",
+          "line": 119,
+          "column": 17
+        }
+      },
+      {
+        "type": "technical",
+        "severity": "error",
+        "source": "compiler",
+        "component": "TypeScript",
+        "message": "TS2322: Type '(e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => void' is not assignable to type '(value: string) => void'.\n  Types of parameters 'e' and 'value' are incompatible.\n    Type 'string' is not assignable to type 'ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement, Element>'.",
+        "suggestion": "Fix the TypeScript error reported by the compiler. The exact location is included in the issue location field.",
+        "location": {
+          "file": "TestApp.tsx",
+          "line": 136,
+          "column": 15
+        }
+      },
+      {
+        "type": "technical",
+        "severity": "error",
+        "source": "compiler",
+        "component": "TypeScript",
+        "message": "TS2322: Type '{ children: string; style: { color: string; fontSize: string; marginTop: string; }; }' is not assignable to type 'IntrinsicAttributes & TextProps'.\n  Property 'style' does not exist on type 'IntrinsicAttributes & TextProps'.",
+        "suggestion": "Fix the TypeScript error reported by the compiler. The exact location is included in the issue location field.",
+        "location": {
+          "file": "TestApp.tsx",
+          "line": 142,
+          "column": 17
+        }
+      },
+      {
+        "type": "technical",
+        "severity": "error",
+        "source": "compiler",
+        "component": "TypeScript",
+        "message": "TS2322: Type '(e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => void' is not assignable to type '(value: Key | null) => void'.\n  Types of parameters 'e' and 'value' are incompatible.\n    Type 'Key | null' is not assignable to type 'ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement, Element>'.\n      Type 'null' is not assignable to type 'ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement, Element>'.",
+        "suggestion": "Fix the TypeScript error reported by the compiler. The exact location is included in the issue location field.",
+        "location": {
+          "file": "TestApp.tsx",
+          "line": 158,
+          "column": 15
+        }
+      },
+      {
+        "type": "technical",
+        "severity": "error",
+        "source": "compiler",
+        "component": "TypeScript",
+        "message": "TS2322: Type '{ children: string; style: { color: string; fontSize: string; marginTop: string; }; }' is not assignable to type 'IntrinsicAttributes & TextProps'.\n  Property 'style' does not exist on type 'IntrinsicAttributes & TextProps'.",
+        "suggestion": "Fix the TypeScript error reported by the compiler. The exact location is included in the issue location field.",
+        "location": {
+          "file": "TestApp.tsx",
+          "line": 168,
+          "column": 17
+        }
+      },
+      {
+        "type": "technical",
+        "severity": "error",
+        "source": "compiler",
+        "component": "TypeScript",
+        "message": "TS2322: Type '(e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => void' is not assignable to type '(value: string) => void'.\n  Types of parameters 'e' and 'value' are incompatible.\n    Type 'string' is not assignable to type 'ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement, Element>'.",
+        "suggestion": "Fix the TypeScript error reported by the compiler. The exact location is included in the issue location field.",
+        "location": {
+          "file": "TestApp.tsx",
+          "line": 184,
+          "column": 15
+        }
+      },
+      {
+        "type": "technical",
+        "severity": "error",
+        "source": "prop-validator",
+        "component": "Stack",
+        "message": "Prop \"gap\" does not exist on <Stack>.",
+        "suggestion": "Remove the prop. Available props: space, children, stretch, alignX, alignY, asList, role, aria-live, id, aria-label, aria-labelledby, aria-describedby, aria-details.",
+        "location": {
+          "file": "TestApp.tsx",
+          "line": 107,
+          "column": 16
+        },
+        "details": {
+          "used": "gap",
+          "available": [
+            "space",
+            "children",
+            "stretch",
+            "alignX",
+            "alignY",
+            "asList",
+            "role",
+            "aria-live",
+            "id",
+            "aria-label",
+            "aria-labelledby",
+            "aria-describedby",
+            "aria-details"
+          ]
+        }
+      },
+      {
+        "type": "technical",
+        "severity": "error",
+        "source": "prop-validator",
+        "component": "Stack",
+        "message": "Prop \"direction\" does not exist on <Stack>.",
+        "suggestion": "Remove the prop. Available props: space, children, stretch, alignX, alignY, asList, role, aria-live, id, aria-label, aria-labelledby, aria-describedby, aria-details.",
+        "location": {
+          "file": "TestApp.tsx",
+          "line": 107,
+          "column": 25
+        },
+        "details": {
+          "used": "direction",
+          "available": [
+            "space",
+            "children",
+            "stretch",
+            "alignX",
+            "alignY",
+            "asList",
+            "role",
+            "aria-live",
+            "id",
+            "aria-label",
+            "aria-labelledby",
+            "aria-describedby",
+            "aria-details"
+          ]
+        }
+      },
+      {
+        "type": "technical",
+        "severity": "error",
+        "source": "composition-validator",
+        "component": "Select",
+        "message": "<Select> is used without any of its sub-components.",
+        "suggestion": "Use compound children: <Select.Option>, <Select.Section>.",
+        "location": {
+          "file": "TestApp.tsx",
+          "line": 154,
+          "column": 13
+        },
+        "details": {
+          "expected": [
+            "Option",
+            "Section"
+          ],
+          "found": []
+        }
+      },
+      {
+        "type": "technical",
+        "severity": "error",
+        "source": "design-system-usage",
+        "component": "Heading",
+        "message": "<Heading> is not a Marigold component. It is not exported from @marigold/components.",
+        "suggestion": "<Heading> does not exist in @marigold/components. Search the Marigold docs for the correct component.",
+        "location": {
+          "file": "TestApp.tsx",
+          "line": 87,
+          "column": 7
+        },
+        "details": {
+          "hallucinated": true,
+          "importedFrom": "@marigold/components"
+        }
+      }
+    ],
+    "warnings": [
+      {
+        "type": "technical",
+        "severity": "warning",
+        "source": "design-system-usage",
+        "component": "div",
+        "message": "Raw <div> used instead of a Marigold component.",
+        "suggestion": "Raw <div> used instead of a Marigold layout component. Search the Marigold docs for layout alternatives.",
+        "location": {
+          "file": "TestApp.tsx",
+          "line": 80,
+          "column": 5
+        },
+        "details": {
+          "htmlElement": "div"
+        }
+      },
+      {
+        "type": "technical",
+        "severity": "warning",
+        "source": "design-system-usage",
+        "component": "div",
+        "message": "Inline style on <div> bypasses the design system (padding, maxWidth, margin).",
+        "suggestion": "Use Marigold layout components (Stack, Columns, Inset, Container) and theme tokens instead of inline styles.",
+        "location": {
+          "file": "TestApp.tsx",
+          "line": 81,
+          "column": 7
+        },
+        "details": {
+          "cssProperties": [
+            "padding",
+            "maxWidth",
+            "margin"
+          ]
+        }
+      },
+      {
+        "type": "technical",
+        "severity": "warning",
+        "source": "design-system-usage",
+        "component": "Heading",
+        "message": "Inline style on <Heading> bypasses the design system (marginBottom).",
+        "suggestion": "Use Marigold layout components (Stack, Columns, Inset, Container) and theme tokens instead of inline styles.",
+        "location": {
+          "file": "TestApp.tsx",
+          "line": 87,
+          "column": 26
+        },
+        "details": {
+          "cssProperties": [
+            "marginBottom"
+          ]
+        }
+      },
+      {
+        "type": "technical",
+        "severity": "warning",
+        "source": "design-system-usage",
+        "component": "div",
+        "message": "Raw <div> used instead of a Marigold component.",
+        "suggestion": "Raw <div> used instead of a Marigold layout component. Search the Marigold docs for layout alternatives.",
+        "location": {
+          "file": "TestApp.tsx",
+          "line": 92,
+          "column": 9
+        },
+        "details": {
+          "htmlElement": "div"
+        }
+      },
+      {
+        "type": "technical",
+        "severity": "warning",
+        "source": "design-system-usage",
+        "component": "div",
+        "message": "Inline style on <div> bypasses the design system (padding, marginBottom, backgroundColor, border, borderRadius).",
+        "suggestion": "Use Marigold layout components (Stack, Columns, Inset, Container) and theme tokens instead of inline styles.",
+        "location": {
+          "file": "TestApp.tsx",
+          "line": 93,
+          "column": 11
+        },
+        "details": {
+          "cssProperties": [
+            "padding",
+            "marginBottom",
+            "backgroundColor",
+            "border",
+            "borderRadius"
+          ]
+        }
+      },
+      {
+        "type": "technical",
+        "severity": "warning",
+        "source": "design-system-usage",
+        "component": "div",
+        "message": "Raw <div> used instead of a Marigold component.",
+        "suggestion": "Raw <div> used instead of a Marigold layout component. Search the Marigold docs for layout alternatives.",
+        "location": {
+          "file": "TestApp.tsx",
+          "line": 108,
+          "column": 11
+        },
+        "details": {
+          "htmlElement": "div"
+        }
+      },
+      {
+        "type": "technical",
+        "severity": "warning",
+        "source": "design-system-usage",
+        "component": "Text",
+        "message": "Inline style on <Text> bypasses the design system (color, fontSize, marginTop).",
+        "suggestion": "Use Marigold layout components (Stack, Columns, Inset, Container) and theme tokens instead of inline styles.",
+        "location": {
+          "file": "TestApp.tsx",
+          "line": 119,
+          "column": 17
+        },
+        "details": {
+          "cssProperties": [
+            "color",
+            "fontSize",
+            "marginTop"
+          ]
+        }
+      },
+      {
+        "type": "technical",
+        "severity": "warning",
+        "source": "design-system-usage",
+        "component": "div",
+        "message": "Raw <div> used instead of a Marigold component.",
+        "suggestion": "Raw <div> used instead of a Marigold layout component. Search the Marigold docs for layout alternatives.",
+        "location": {
+          "file": "TestApp.tsx",
+          "line": 130,
+          "column": 11
+        },
+        "details": {
+          "htmlElement": "div"
+        }
+      },
+      {
+        "type": "technical",
+        "severity": "warning",
+        "source": "design-system-usage",
+        "component": "Text",
+        "message": "Inline style on <Text> bypasses the design system (color, fontSize, marginTop).",
+        "suggestion": "Use Marigold layout components (Stack, Columns, Inset, Container) and theme tokens instead of inline styles.",
+        "location": {
+          "file": "TestApp.tsx",
+          "line": 142,
+          "column": 17
+        },
+        "details": {
+          "cssProperties": [
+            "color",
+            "fontSize",
+            "marginTop"
+          ]
+        }
+      },
+      {
+        "type": "technical",
+        "severity": "warning",
+        "source": "design-system-usage",
+        "component": "div",
+        "message": "Raw <div> used instead of a Marigold component.",
+        "suggestion": "Raw <div> used instead of a Marigold layout component. Search the Marigold docs for layout alternatives.",
+        "location": {
+          "file": "TestApp.tsx",
+          "line": 153,
+          "column": 11
+        },
+        "details": {
+          "htmlElement": "div"
+        }
+      },
+      {
+        "type": "technical",
+        "severity": "warning",
+        "source": "design-system-usage",
+        "component": "option",
+        "message": "Raw <option> used instead of a Marigold component.",
+        "suggestion": "Replace <option> with the appropriate Marigold component. Search the Marigold docs for alternatives.",
+        "location": {
+          "file": "TestApp.tsx",
+          "line": 161,
+          "column": 15
+        },
+        "details": {
+          "htmlElement": "option"
+        }
+      },
+      {
+        "type": "technical",
+        "severity": "warning",
+        "source": "design-system-usage",
+        "component": "option",
+        "message": "Raw <option> used instead of a Marigold component.",
+        "suggestion": "Replace <option> with the appropriate Marigold component. Search the Marigold docs for alternatives.",
+        "location": {
+          "file": "TestApp.tsx",
+          "line": 162,
+          "column": 15
+        },
+        "details": {
+          "htmlElement": "option"
+        }
+      },
+      {
+        "type": "technical",
+        "severity": "warning",
+        "source": "design-system-usage",
+        "component": "option",
+        "message": "Raw <option> used instead of a Marigold component.",
+        "suggestion": "Replace <option> with the appropriate Marigold component. Search the Marigold docs for alternatives.",
+        "location": {
+          "file": "TestApp.tsx",
+          "line": 163,
+          "column": 15
+        },
+        "details": {
+          "htmlElement": "option"
+        }
+      },
+      {
+        "type": "technical",
+        "severity": "warning",
+        "source": "design-system-usage",
+        "component": "option",
+        "message": "Raw <option> used instead of a Marigold component.",
+        "suggestion": "Replace <option> with the appropriate Marigold component. Search the Marigold docs for alternatives.",
+        "location": {
+          "file": "TestApp.tsx",
+          "line": 164,
+          "column": 15
+        },
+        "details": {
+          "htmlElement": "option"
+        }
+      },
+      {
+        "type": "technical",
+        "severity": "warning",
+        "source": "design-system-usage",
+        "component": "Text",
+        "message": "Inline style on <Text> bypasses the design system (color, fontSize, marginTop).",
+        "suggestion": "Use Marigold layout components (Stack, Columns, Inset, Container) and theme tokens instead of inline styles.",
+        "location": {
+          "file": "TestApp.tsx",
+          "line": 168,
+          "column": 17
+        },
+        "details": {
+          "cssProperties": [
+            "color",
+            "fontSize",
+            "marginTop"
+          ]
+        }
+      },
+      {
+        "type": "technical",
+        "severity": "warning",
+        "source": "design-system-usage",
+        "component": "div",
+        "message": "Raw <div> used instead of a Marigold component.",
+        "suggestion": "Raw <div> used instead of a Marigold layout component. Search the Marigold docs for layout alternatives.",
+        "location": {
+          "file": "TestApp.tsx",
+          "line": 179,
+          "column": 11
+        },
+        "details": {
+          "htmlElement": "div"
+        }
+      }
+    ],
+    "passed": [
+      "Overlay accessible names",
+      "Compound component placement",
+      "Section headers",
+      "Collection item ids",
+      "Layout usage",
+      "Table usage",
+      "Component conventions",
+      "Theme variant compliance"
+    ],
+    "metadata": {
+      "renderTimeMs": 0,
+      "componentsFound": [],
+      "checksRun": [
+        "technical",
+        "spatial",
+        "a11y"
+      ],
+      "coverage": {
+        "staticValuesChecked": 3,
+        "dynamicValuesSkipped": 0,
+        "spreadPropsBypassed": 0
+      },
+      "widthUtilization": null
+    },
+    "markdown": "marigold-validate: TestApp.tsx — 12 error(s), 16 warning(s)\n\n[error/technical] <Heading>: <Heading> is not a Marigold component. It is not exported from @marigold/components. (TestApp.tsx:87:7)\n  → <Heading> does not exist in @marigold/components. Search the Marigold docs for the correct component.\n  data: {hallucinated=true, importedFrom=@marigold/components}\n[error/technical] <Select>: <Select> is used without any of its sub-components. (TestApp.tsx:154:13)\n  → Use compound children: <Select.Option>, <Select.Section>.\n  data: {expected=[\"Option\",\"Section\"], found=[]}\n[error/technical] <Stack>: Prop \"gap\" does not exist on <Stack>. (TestApp.tsx:107:16)\n  → Remove the prop. Available props: space, children, stretch, alignX, alignY, asList, role, aria-live, id, aria-label, aria-labelledby, aria-describedby, aria-details.\n  data: {used=gap, available=[\"space\",\"children\",\"stretch\",\"alignX\",\"alignY\",\"asList\",\"role\",\"aria-live\", …]}\n[error/technical] <Stack>: Prop \"direction\" does not exist on <Stack>. (TestApp.tsx:107:25)\n  → Remove the prop. Available props: space, children, stretch, alignX, alignY, asList, role, aria-live, id, aria-label, aria-labelledby, aria-describedby, aria-details.\n  data: {used=direction, available=[\"space\",\"children\",\"stretch\",\"alignX\",\"alignY\",\"asList\",\"role\",\"aria-live\", …]}\n[error/technical] <TypeScript>: TS2305: Module '\"@marigold/components\"' has no exported member 'Heading'. (TestApp.tsx:8:3)\n  → Fix the TypeScript error reported by the compiler. The exact location is included in the issue location field.\n[error/technical] <TypeScript>: TS2322: Type '(e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => void' is not assignable to type '(value: string) => void'.\n  Types of parameters 'e' and 'value' are incompatible.\n    Type 'string' is not assignable to type 'ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement, Element>'. (TestApp.tsx:113:15)\n  → Fix the TypeScript error reported by the compiler. The exact location is included in the issue location field.\n[error/technical] <TypeScript>: TS2322: Type '{ children: string; style: { color: string; fontSize: string; marginTop: string; }; }' is not assignable to type 'IntrinsicAttributes & TextProps'.\n  Property 'style' does not exist on type 'IntrinsicAttributes & TextProps'. (TestApp.tsx:119:17)\n  → Fix the TypeScript error reported by the compiler. The exact location is included in the issue location field.\n[error/technical] <TypeScript>: TS2322: Type '(e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => void' is not assignable to type '(value: string) => void'.\n  Types of parameters 'e' and 'value' are incompatible.\n    Type 'string' is not assignable to type 'ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement, Element>'. (TestApp.tsx:136:15)\n  → Fix the TypeScript error reported by the compiler. The exact location is included in the issue location field.\n[error/technical] <TypeScript>: TS2322: Type '{ children: string; style: { color: string; fontSize: string; marginTop: string; }; }' is not assignable to type 'IntrinsicAttributes & TextProps'.\n  Property 'style' does not exist on type 'IntrinsicAttributes & TextProps'. (TestApp.tsx:142:17)\n  → Fix the TypeScript error reported by the compiler. The exact location is included in the issue location field.\n[error/technical] <TypeScript>: TS2322: Type '(e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => void' is not assignable to type '(value: Key | null) => void'.\n  Types of parameters 'e' and 'value' are incompatible.\n    Type 'Key | null' is not assignable to type 'ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement, Element>'.\n      Type 'null' is not assignable to type 'ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement, Element>'. (TestApp.tsx:158:15)\n  → Fix the TypeScript error reported by the compiler. The exact location is included in the issue location field.\n[error/technical] <TypeScript>: TS2322: Type '{ children: string; style: { color: string; fontSize: string; marginTop: string; }; }' is not assignable to type 'IntrinsicAttributes & TextProps'.\n  Property 'style' does not exist on type 'IntrinsicAttributes & TextProps'. (TestApp.tsx:168:17)\n  → Fix the TypeScript error reported by the compiler. The exact location is included in the issue location field.\n[error/technical] <TypeScript>: TS2322: Type '(e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => void' is not assignable to type '(value: string) => void'.\n  Types of parameters 'e' and 'value' are incompatible.\n    Type 'string' is not assignable to type 'ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement, Element>'. (TestApp.tsx:184:15)\n  → Fix the TypeScript error reported by the compiler. The exact location is included in the issue location field.\n[warning/technical] <div>: Raw <div> used instead of a Marigold component. (TestApp.tsx:80:5)\n  → Raw <div> used instead of a Marigold layout component. Search the Marigold docs for layout alternatives.\n  data: {htmlElement=div}\n[warning/technical] <div>: Inline style on <div> bypasses the design system (padding, maxWidth, margin). (TestApp.tsx:81:7)\n  → Use Marigold layout components (Stack, Columns, Inset, Container) and theme tokens instead of inline styles.\n  data: {cssProperties=[\"padding\",\"maxWidth\",\"margin\"]}\n[warning/technical] <div>: Raw <div> used instead of a Marigold component. (TestApp.tsx:92:9)\n  → Raw <div> used instead of a Marigold layout component. Search the Marigold docs for layout alternatives.\n  data: {htmlElement=div}\n[warning/technical] <div>: Inline style on <div> bypasses the design system (padding, marginBottom, backgroundColor, border, borderRadius). (TestApp.tsx:93:11)\n  → Use Marigold layout components (Stack, Columns, Inset, Container) and theme tokens instead of inline styles.\n  data: {cssProperties=[\"padding\",\"marginBottom\",\"backgroundColor\",\"border\",\"borderRadius\"]}\n[warning/technical] <div>: Raw <div> used instead of a Marigold component. (TestApp.tsx:108:11)\n  → Raw <div> used instead of a Marigold layout component. Search the Marigold docs for layout alternatives.\n  data: {htmlElement=div}\n[warning/technical] <div>: Raw <div> used instead of a Marigold component. (TestApp.tsx:130:11)\n  → Raw <div> used instead of a Marigold layout component. Search the Marigold docs for layout alternatives.\n  data: {htmlElement=div}\n[warning/technical] <div>: Raw <div> used instead of a Marigold component. (TestApp.tsx:153:11)\n  → Raw <div> used instead of a Marigold layout component. Search the Marigold docs for layout alternatives.\n  data: {htmlElement=div}\n[warning/technical] <div>: Raw <div> used instead of a Marigold component. (TestApp.tsx:179:11)\n  → Raw <div> used instead of a Marigold layout component. Search the Marigold docs for layout alternatives.\n  data: {htmlElement=div}\n[warning/technical] <Heading>: Inline style on <Heading> bypasses the design system (marginBottom). (TestApp.tsx:87:26)\n  → Use Marigold layout components (Stack, Columns, Inset, Container) and theme tokens instead of inline styles.\n  data: {cssProperties=[\"marginBottom\"]}\n[warning/technical] <option>: Raw <option> used instead of a Marigold component. (TestApp.tsx:161:15)\n  → Replace <option> with the appropriate Marigold component. Search the Marigold docs for alternatives.\n  data: {htmlElement=option}\n[warning/technical] <option>: Raw <option> used instead of a Marigold component. (TestApp.tsx:162:15)\n  → Replace <option> with the appropriate Marigold component. Search the Marigold docs for alternatives.\n  data: {htmlElement=option}\n[warning/technical] <option>: Raw <option> used instead of a Marigold component. (TestApp.tsx:163:15)\n  → Replace <option> with the appropriate Marigold component. Search the Marigold docs for alternatives.\n  data: {htmlElement=option}\n[warning/technical] <option>: Raw <option> used instead of a Marigold component. (TestApp.tsx:164:15)\n  → Replace <option> with the appropriate Marigold component. Search the Marigold docs for alternatives.\n  data: {htmlElement=option}\n[warning/technical] <Text>: Inline style on <Text> bypasses the design system (color, fontSize, marginTop). (TestApp.tsx:119:17)\n  → Use Marigold layout components (Stack, Columns, Inset, Container) and theme tokens instead of inline styles.\n  data: {cssProperties=[\"color\",\"fontSize\",\"marginTop\"]}\n[warning/technical] <Text>: Inline style on <Text> bypasses the design system (color, fontSize, marginTop). (TestApp.tsx:142:17)\n  → Use Marigold layout components (Stack, Columns, Inset, Container) and theme tokens instead of inline styles.\n  data: {cssProperties=[\"color\",\"fontSize\",\"marginTop\"]}\n[warning/technical] <Text>: Inline style on <Text> bypasses the design system (color, fontSize, marginTop). (TestApp.tsx:168:17)\n  → Use Marigold layout components (Stack, Columns, Inset, Container) and theme tokens instead of inline styles.\n  data: {cssProperties=[\"color\",\"fontSize\",\"marginTop\"]}\n\npassed: Overlay accessible names, Compound component placement, Section headers, Collection item ids, Layout usage, Table usage, Component conventions, Theme variant compliance\n\nchecks run: technical, spatial, a11y"
+  },
+  "componentsFound": [],
+  "renderTimeMs": 0,
+  "sourceCode": "import { useState } from 'react';\nimport {\n  TextField,\n  TextArea,\n  Select,\n  Button,\n  Stack,\n  Heading,\n  Text,\n} from '@marigold/components';\n\nconst TestApp = () => {\n  const [formData, setFormData] = useState({\n    name: '',\n    email: '',\n    subject: '',\n    message: '',\n  });\n\n  const [errors, setErrors] = useState<Record<string, string>>({});\n  const [submitted, setSubmitted] = useState(false);\n\n  const validateEmail = (email: string): boolean => {\n    const emailRegex = /^[^\\s@]+@[^\\s@]+\\.[^\\s@]+$/;\n    return emailRegex.test(email);\n  };\n\n  const handleChange = (\n    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>\n  ) => {\n    const { name, value } = e.target;\n    setFormData((prev) => ({\n      ...prev,\n      [name]: value,\n    }));\n    if (errors[name]) {\n      setErrors((prev) => ({\n        ...prev,\n        [name]: '',\n      }));\n    }\n  };\n\n  const handleSubmit = (e: React.FormEvent) => {\n    e.preventDefault();\n    const newErrors: Record<string, string> = {};\n\n    if (!formData.name.trim()) {\n      newErrors.name = 'Name is required';\n    }\n\n    if (!formData.email.trim()) {\n      newErrors.email = 'Email is required';\n    } else if (!validateEmail(formData.email)) {\n      newErrors.email = 'Please enter a valid email address';\n    }\n\n    if (!formData.subject.trim()) {\n      newErrors.subject = 'Please select a subject';\n    }\n\n    if (Object.keys(newErrors).length > 0) {\n      setErrors(newErrors);\n      return;\n    }\n\n    setSubmitted(true);\n    setFormData({\n      name: '',\n      email: '',\n      subject: '',\n      message: '',\n    });\n    setErrors({});\n\n    setTimeout(() => setSubmitted(false), 5000);\n  };\n\n  return (\n    <div\n      style={{\n        padding: '2rem',\n        maxWidth: '600px',\n        margin: '0 auto',\n      }}\n    >\n      <Heading level={1} style={{ marginBottom: '1rem' }}>\n        Contact Us\n      </Heading>\n\n      {submitted && (\n        <div\n          style={{\n            padding: '1rem',\n            marginBottom: '1.5rem',\n            backgroundColor: '#e6f7e6',\n            border: '1px solid #4caf50',\n            borderRadius: '4px',\n            color: '#2e7d32',\n          }}\n        >\n          <Text>Thank you! Your message has been sent successfully.</Text>\n        </div>\n      )}\n\n      <form onSubmit={handleSubmit}>\n        <Stack gap=\"md\" direction=\"column\">\n          <div>\n            <TextField\n              label=\"Name\"\n              name=\"name\"\n              value={formData.name}\n              onChange={handleChange}\n              placeholder=\"Your full name\"\n              required\n            />\n            {errors.name && (\n              <Text\n                style={{\n                  color: '#d32f2f',\n                  fontSize: '0.875rem',\n                  marginTop: '0.25rem',\n                }}\n              >\n                {errors.name}\n              </Text>\n            )}\n          </div>\n\n          <div>\n            <TextField\n              label=\"Email\"\n              name=\"email\"\n              type=\"email\"\n              value={formData.email}\n              onChange={handleChange}\n              placeholder=\"your.email@example.com\"\n              required\n            />\n            {errors.email && (\n              <Text\n                style={{\n                  color: '#d32f2f',\n                  fontSize: '0.875rem',\n                  marginTop: '0.25rem',\n                }}\n              >\n                {errors.email}\n              </Text>\n            )}\n          </div>\n\n          <div>\n            <Select\n              label=\"Subject\"\n              name=\"subject\"\n              value={formData.subject}\n              onChange={handleChange}\n              required\n            >\n              <option value=\"\">-- Please select --</option>\n              <option value=\"General\">General</option>\n              <option value=\"Support\">Support</option>\n              <option value=\"Feedback\">Feedback</option>\n            </Select>\n            {errors.subject && (\n              <Text\n                style={{\n                  color: '#d32f2f',\n                  fontSize: '0.875rem',\n                  marginTop: '0.25rem',\n                }}\n              >\n                {errors.subject}\n              </Text>\n            )}\n          </div>\n\n          <div>\n            <TextArea\n              label=\"Message\"\n              name=\"message\"\n              value={formData.message}\n              onChange={handleChange}\n              placeholder=\"Your message here...\"\n            />\n          </div>\n\n          <Button type=\"submit\" variant=\"primary\">\n            Send Message\n          </Button>\n        </Stack>\n      </form>\n    </div>\n  );\n};\n\nexport default TestApp;\n",
+  "assertions": {
+    "passed": [
+      {
+        "id": "a-import-marigold",
+        "description": "Imports from @marigold/components",
+        "severity": "required",
+        "passed": true,
+        "evidence": "import from \"@marigold/components\" found"
+      },
+      {
+        "id": "a-name-field",
+        "description": "TextField with name label",
+        "severity": "required",
+        "passed": true,
+        "evidence": "<TextField> found"
+      },
+      {
+        "id": "a-email-field",
+        "description": "TextField for email input",
+        "severity": "required",
+        "passed": true,
+        "evidence": "matched: <TextField> found; <TextField> found"
+      },
+      {
+        "id": "a-select",
+        "description": "Select component for subject",
+        "severity": "required",
+        "passed": true,
+        "evidence": "<Select> found"
+      },
+      {
+        "id": "a-textarea",
+        "description": "TextArea component for message",
+        "severity": "required",
+        "passed": true,
+        "evidence": "<TextArea> found"
+      },
+      {
+        "id": "a-submit-button",
+        "description": "Submit button with type=submit",
+        "severity": "required",
+        "passed": true,
+        "evidence": "<Button> found"
+      },
+      {
+        "id": "a-no-onclick-on-marigold",
+        "description": "No onClick on Marigold Button components",
+        "severity": "recommended",
+        "passed": true,
+        "evidence": "\"/<Button[^>]*onClick/\" correctly absent"
+      }
+    ],
+    "failed": [
+      {
+        "id": "a-form-wrapper",
+        "description": "Form component wrapping fields",
+        "severity": "required",
+        "passed": false,
+        "evidence": "<Form> not found"
+      }
+    ],
+    "passRate": 0.875,
+    "requiredPassRate": 0.8571,
+    "weightedPassRate": 0.8621,
+    "total": 8
+  },
+  "validatePackageVersion": "0.0.1",
+  "playwrightVersion": null,
+  "resolvedModelId": "claude-haiku-4-5",
+  "claudeCliVersion": "2.1.185 (Claude Code)",
+  "sessionId": "8c2881c9-42b5-43f5-805a-e8cf68a421f2"
+}

@@ -1,0 +1,1325 @@
+{
+  "runId": "sonnet-bare-P-07-r2",
+  "promptId": "P-07",
+  "model": "sonnet",
+  "config": "bare",
+  "timestamp": "2026-06-21T13:21:41.249Z",
+  "quality": {
+    "overall": 26.27,
+    "categories": {
+      "A": {
+        "category": "A",
+        "label": "Design System API",
+        "score": 33.67,
+        "weight": 0.225,
+        "weightedScore": 7.58,
+        "errorCount": 11,
+        "warningCount": 0,
+        "issues": [
+          {
+            "type": "technical",
+            "severity": "error",
+            "source": "prop-validator",
+            "component": "Inline",
+            "message": "Prop \"alignY\" value \"end\" is not a known variant for <Inline>.",
+            "suggestion": "Known values: bottom, top, input, center.",
+            "location": {
+              "file": "TestApp.tsx",
+              "line": 300,
+              "column": 25
+            },
+            "details": {
+              "used": "end",
+              "known": [
+                "bottom",
+                "top",
+                "input",
+                "center"
+              ]
+            }
+          },
+          {
+            "type": "technical",
+            "severity": "error",
+            "source": "prop-validator",
+            "component": "ComboBox",
+            "message": "Prop \"inputValue\" does not exist on <ComboBox>.",
+            "suggestion": "Remove the prop. Available props: variant, size, width, disabled, required, readOnly, error, defaultValue, value, onChange, children, placeholder, emptyState, loading, render, ….",
+            "location": {
+              "file": "TestApp.tsx",
+              "line": 304,
+              "column": 11
+            },
+            "details": {
+              "used": "inputValue",
+              "available": [
+                "variant",
+                "size",
+                "width",
+                "disabled",
+                "required",
+                "readOnly",
+                "error",
+                "defaultValue",
+                "value",
+                "onChange",
+                "children",
+                "placeholder",
+                "emptyState",
+                "loading",
+                "render"
+              ]
+            }
+          },
+          {
+            "type": "technical",
+            "severity": "error",
+            "source": "prop-validator",
+            "component": "ComboBox",
+            "message": "Prop \"onInputChange\" does not exist on <ComboBox>.",
+            "suggestion": "Remove the prop. Available props: variant, size, width, disabled, required, readOnly, error, defaultValue, value, onChange, children, placeholder, emptyState, loading, render, ….",
+            "location": {
+              "file": "TestApp.tsx",
+              "line": 305,
+              "column": 11
+            },
+            "details": {
+              "used": "onInputChange",
+              "available": [
+                "variant",
+                "size",
+                "width",
+                "disabled",
+                "required",
+                "readOnly",
+                "error",
+                "defaultValue",
+                "value",
+                "onChange",
+                "children",
+                "placeholder",
+                "emptyState",
+                "loading",
+                "render"
+              ]
+            }
+          },
+          {
+            "type": "technical",
+            "severity": "error",
+            "source": "prop-validator",
+            "component": "Dialog",
+            "message": "Prop \"onClose\" does not exist on <Dialog>.",
+            "suggestion": "Remove the prop. Available props: variant, size, closeButton, children, id, dir, lang, hidden, inert, translate, onClick, onClickCapture, onAuxClick, onAuxClickCapture, onContextMenu, ….",
+            "location": {
+              "file": "TestApp.tsx",
+              "line": 361,
+              "column": 37
+            },
+            "details": {
+              "used": "onClose",
+              "available": [
+                "variant",
+                "size",
+                "closeButton",
+                "children",
+                "id",
+                "dir",
+                "lang",
+                "hidden",
+                "inert",
+                "translate",
+                "onClick",
+                "onClickCapture",
+                "onAuxClick",
+                "onAuxClickCapture",
+                "onContextMenu"
+              ]
+            }
+          },
+          {
+            "type": "technical",
+            "severity": "error",
+            "source": "prop-validator",
+            "component": "Dialog",
+            "message": "Prop \"onClose\" does not exist on <Dialog>.",
+            "suggestion": "Remove the prop. Available props: variant, size, closeButton, children, id, dir, lang, hidden, inert, translate, onClick, onClickCapture, onAuxClick, onAuxClickCapture, onContextMenu, ….",
+            "location": {
+              "file": "TestApp.tsx",
+              "line": 413,
+              "column": 29
+            },
+            "details": {
+              "used": "onClose",
+              "available": [
+                "variant",
+                "size",
+                "closeButton",
+                "children",
+                "id",
+                "dir",
+                "lang",
+                "hidden",
+                "inert",
+                "translate",
+                "onClick",
+                "onClickCapture",
+                "onAuxClick",
+                "onAuxClickCapture",
+                "onContextMenu"
+              ]
+            }
+          },
+          {
+            "type": "technical",
+            "severity": "error",
+            "source": "design-system-usage",
+            "component": "Menu.Trigger",
+            "message": "<Menu.Trigger> is not a valid sub-component of <Menu>.",
+            "suggestion": "Check the Marigold docs for valid Menu sub-components.",
+            "location": {
+              "file": "TestApp.tsx",
+              "line": 275,
+              "column": 19
+            },
+            "details": {
+              "hallucinated": true,
+              "parent": "Menu",
+              "subComponent": "Trigger"
+            }
+          },
+          {
+            "type": "technical",
+            "severity": "error",
+            "source": "design-system-usage",
+            "component": "Message",
+            "message": "<Message> is not a Marigold component. It is not exported from @marigold/components.",
+            "suggestion": "<Message> does not exist in @marigold/components. Search the Marigold docs for the correct component.",
+            "location": {
+              "file": "TestApp.tsx",
+              "line": 331,
+              "column": 9
+            },
+            "details": {
+              "hallucinated": true,
+              "importedFrom": "@marigold/components"
+            }
+          },
+          {
+            "type": "technical",
+            "severity": "error",
+            "source": "design-system-usage",
+            "component": "Tabs.Tab",
+            "message": "<Tabs.Tab> is not a valid sub-component of <Tabs>.",
+            "suggestion": "Check the Marigold docs for valid Tabs sub-components.",
+            "location": {
+              "file": "TestApp.tsx",
+              "line": 351,
+              "column": 11
+            },
+            "details": {
+              "hallucinated": true,
+              "parent": "Tabs",
+              "subComponent": "Tab"
+            }
+          },
+          {
+            "type": "technical",
+            "severity": "error",
+            "source": "design-system-usage",
+            "component": "Tabs.Tab",
+            "message": "<Tabs.Tab> is not a valid sub-component of <Tabs>.",
+            "suggestion": "Check the Marigold docs for valid Tabs sub-components.",
+            "location": {
+              "file": "TestApp.tsx",
+              "line": 352,
+              "column": 11
+            },
+            "details": {
+              "hallucinated": true,
+              "parent": "Tabs",
+              "subComponent": "Tab"
+            }
+          },
+          {
+            "type": "technical",
+            "severity": "error",
+            "source": "design-system-usage",
+            "component": "Tabs.Tab",
+            "message": "<Tabs.Tab> is not a valid sub-component of <Tabs>.",
+            "suggestion": "Check the Marigold docs for valid Tabs sub-components.",
+            "location": {
+              "file": "TestApp.tsx",
+              "line": 353,
+              "column": 11
+            },
+            "details": {
+              "hallucinated": true,
+              "parent": "Tabs",
+              "subComponent": "Tab"
+            }
+          },
+          {
+            "type": "technical",
+            "severity": "error",
+            "source": "design-system-usage",
+            "component": "Textarea",
+            "message": "<Textarea> is not a Marigold component. It is not exported from @marigold/components.",
+            "suggestion": "<Textarea> does not exist in @marigold/components. Search the Marigold docs for the correct component.",
+            "location": {
+              "file": "TestApp.tsx",
+              "line": 399,
+              "column": 11
+            },
+            "details": {
+              "hallucinated": true,
+              "importedFrom": "@marigold/components"
+            }
+          }
+        ]
+      },
+      "B": {
+        "category": "B",
+        "label": "Token Compliance",
+        "score": 0,
+        "weight": 0.1,
+        "weightedScore": 0,
+        "errorCount": 0,
+        "warningCount": 0,
+        "issues": []
+      },
+      "C": {
+        "category": "C",
+        "label": "DOM / Structure",
+        "score": 0,
+        "weight": 0.225,
+        "weightedScore": 0,
+        "errorCount": 16,
+        "warningCount": 2,
+        "issues": [
+          {
+            "type": "technical",
+            "severity": "error",
+            "source": "compiler",
+            "component": "TypeScript",
+            "message": "TS2724: '\"@marigold/components\"' has no exported member named 'Textarea'. Did you mean 'TextArea'?",
+            "suggestion": "Fix the TypeScript error reported by the compiler. The exact location is included in the issue location field.",
+            "location": {
+              "file": "TestApp.tsx",
+              "line": 16,
+              "column": 3
+            }
+          },
+          {
+            "type": "technical",
+            "severity": "error",
+            "source": "compiler",
+            "component": "TypeScript",
+            "message": "TS2305: Module '\"@marigold/components\"' has no exported member 'Message'.",
+            "suggestion": "Fix the TypeScript error reported by the compiler. The exact location is included in the issue location field.",
+            "location": {
+              "file": "TestApp.tsx",
+              "line": 20,
+              "column": 3
+            }
+          },
+          {
+            "type": "technical",
+            "severity": "error",
+            "source": "compiler",
+            "component": "TypeScript",
+            "message": "TS2339: Property 'Trigger' does not exist on type '{ ({ children, label, variant, size, disabled, open, placement, \"aria-label\": ariaLabel, ...props }: MenuProps): Element; Item: ({ children, variant, size, ...props }: MenuItemProps) => Element; Section: ({ children, title, ...props }: MenuSectionProps) => Element; }'.",
+            "suggestion": "Fix the TypeScript error reported by the compiler. The exact location is included in the issue location field.",
+            "location": {
+              "file": "TestApp.tsx",
+              "line": 275,
+              "column": 25
+            }
+          },
+          {
+            "type": "technical",
+            "severity": "error",
+            "source": "compiler",
+            "component": "TypeScript",
+            "message": "TS2339: Property 'Trigger' does not exist on type '{ ({ children, label, variant, size, disabled, open, placement, \"aria-label\": ariaLabel, ...props }: MenuProps): Element; Item: ({ children, variant, size, ...props }: MenuItemProps) => Element; Section: ({ children, title, ...props }: MenuSectionProps) => Element; }'.",
+            "suggestion": "Fix the TypeScript error reported by the compiler. The exact location is included in the issue location field.",
+            "location": {
+              "file": "TestApp.tsx",
+              "line": 279,
+              "column": 26
+            }
+          },
+          {
+            "type": "technical",
+            "severity": "error",
+            "source": "compiler",
+            "component": "TypeScript",
+            "message": "TS2322: Type 'Dispatch<SetStateAction<CalendarDate | null>>' is not assignable to type '(value: DateValue | null) => void'.\n  Types of parameters 'value' and 'value' are incompatible.\n    Type 'DateValue | null' is not assignable to type 'SetStateAction<CalendarDate | null>'.\n      Type 'CalendarDateTime' is not assignable to type 'SetStateAction<CalendarDate | null>'.\n        Type 'CalendarDateTime' is not assignable to type 'CalendarDate'.\n          Property '#private' in type 'CalendarDateTime' refers to a different member that cannot be accessed from within type 'CalendarDate'.",
+            "suggestion": "Fix the TypeScript error reported by the compiler. The exact location is included in the issue location field.",
+            "location": {
+              "file": "TestApp.tsx",
+              "line": 301,
+              "column": 53
+            }
+          },
+          {
+            "type": "technical",
+            "severity": "error",
+            "source": "compiler",
+            "component": "TypeScript",
+            "message": "TS2339: Property 'Tab' does not exist on type '{ ({ disabled, variant, size, ...rest }: TabsProps): Element; List: (props: TabListProps) => Element; TabPanel: (props: TabPanelProps) => Element; Item: (props: TabProps) => Element; }'.",
+            "suggestion": "Fix the TypeScript error reported by the compiler. The exact location is included in the issue location field.",
+            "location": {
+              "file": "TestApp.tsx",
+              "line": 351,
+              "column": 17
+            }
+          },
+          {
+            "type": "technical",
+            "severity": "error",
+            "source": "compiler",
+            "component": "TypeScript",
+            "message": "TS2339: Property 'Tab' does not exist on type '{ ({ disabled, variant, size, ...rest }: TabsProps): Element; List: (props: TabListProps) => Element; TabPanel: (props: TabPanelProps) => Element; Item: (props: TabProps) => Element; }'.",
+            "suggestion": "Fix the TypeScript error reported by the compiler. The exact location is included in the issue location field.",
+            "location": {
+              "file": "TestApp.tsx",
+              "line": 351,
+              "column": 49
+            }
+          },
+          {
+            "type": "technical",
+            "severity": "error",
+            "source": "compiler",
+            "component": "TypeScript",
+            "message": "TS2339: Property 'Tab' does not exist on type '{ ({ disabled, variant, size, ...rest }: TabsProps): Element; List: (props: TabListProps) => Element; TabPanel: (props: TabPanelProps) => Element; Item: (props: TabProps) => Element; }'.",
+            "suggestion": "Fix the TypeScript error reported by the compiler. The exact location is included in the issue location field.",
+            "location": {
+              "file": "TestApp.tsx",
+              "line": 352,
+              "column": 17
+            }
+          },
+          {
+            "type": "technical",
+            "severity": "error",
+            "source": "compiler",
+            "component": "TypeScript",
+            "message": "TS2339: Property 'Tab' does not exist on type '{ ({ disabled, variant, size, ...rest }: TabsProps): Element; List: (props: TabListProps) => Element; TabPanel: (props: TabPanelProps) => Element; Item: (props: TabProps) => Element; }'.",
+            "suggestion": "Fix the TypeScript error reported by the compiler. The exact location is included in the issue location field.",
+            "location": {
+              "file": "TestApp.tsx",
+              "line": 352,
+              "column": 44
+            }
+          },
+          {
+            "type": "technical",
+            "severity": "error",
+            "source": "compiler",
+            "component": "TypeScript",
+            "message": "TS2339: Property 'Tab' does not exist on type '{ ({ disabled, variant, size, ...rest }: TabsProps): Element; List: (props: TabListProps) => Element; TabPanel: (props: TabPanelProps) => Element; Item: (props: TabProps) => Element; }'.",
+            "suggestion": "Fix the TypeScript error reported by the compiler. The exact location is included in the issue location field.",
+            "location": {
+              "file": "TestApp.tsx",
+              "line": 353,
+              "column": 17
+            }
+          },
+          {
+            "type": "technical",
+            "severity": "error",
+            "source": "compiler",
+            "component": "TypeScript",
+            "message": "TS2339: Property 'Tab' does not exist on type '{ ({ disabled, variant, size, ...rest }: TabsProps): Element; List: (props: TabListProps) => Element; TabPanel: (props: TabPanelProps) => Element; Item: (props: TabProps) => Element; }'.",
+            "suggestion": "Fix the TypeScript error reported by the compiler. The exact location is included in the issue location field.",
+            "location": {
+              "file": "TestApp.tsx",
+              "line": 353,
+              "column": 47
+            }
+          },
+          {
+            "type": "technical",
+            "severity": "error",
+            "source": "compiler",
+            "component": "TypeScript",
+            "message": "TS2322: Type 'Dispatch<SetStateAction<CalendarDate | null>>' is not assignable to type '(value: DateValue | null) => void'.\n  Types of parameters 'value' and 'value' are incompatible.\n    Type 'DateValue | null' is not assignable to type 'SetStateAction<CalendarDate | null>'.\n      Type 'CalendarDateTime' is not assignable to type 'SetStateAction<CalendarDate | null>'.\n        Type 'CalendarDateTime' is not assignable to type 'CalendarDate'.\n          Property '#private' in type 'CalendarDateTime' refers to a different member that cannot be accessed from within type 'CalendarDate'.",
+            "suggestion": "Fix the TypeScript error reported by the compiler. The exact location is included in the issue location field.",
+            "location": {
+              "file": "TestApp.tsx",
+              "line": 387,
+              "column": 53
+            }
+          },
+          {
+            "type": "technical",
+            "severity": "error",
+            "source": "composition-validator",
+            "component": "Dialog",
+            "message": "<Dialog> is used without any of its sub-components.",
+            "suggestion": "Use compound children: <Dialog.Title>, <Dialog.Content>, <Dialog.Actions>.",
+            "location": {
+              "file": "TestApp.tsx",
+              "line": 361,
+              "column": 7
+            },
+            "details": {
+              "expected": [
+                "Title",
+                "Content",
+                "Actions"
+              ],
+              "found": []
+            }
+          },
+          {
+            "type": "technical",
+            "severity": "error",
+            "source": "composition-validator",
+            "component": "Dialog",
+            "message": "<Dialog> is used without any of its sub-components.",
+            "suggestion": "Use compound children: <Dialog.Title>, <Dialog.Content>, <Dialog.Actions>.",
+            "location": {
+              "file": "TestApp.tsx",
+              "line": 413,
+              "column": 9
+            },
+            "details": {
+              "expected": [
+                "Title",
+                "Content",
+                "Actions"
+              ],
+              "found": []
+            }
+          },
+          {
+            "type": "a11y",
+            "severity": "error",
+            "source": "accessible-name",
+            "component": "Dialog",
+            "message": "<Dialog> has no accessible name. A closed overlay is invisible to runtime a11y checks, so it must be labeled in the source.",
+            "suggestion": "Add a <Dialog.Title> child or an aria-label prop, e.g. <Dialog aria-label=\"…\"> or <Dialog.Title>…</Dialog.Title>.",
+            "location": {
+              "file": "TestApp.tsx",
+              "line": 361,
+              "column": 7
+            },
+            "details": {
+              "accessibleNameAttrs": [
+                "aria-label",
+                "aria-labelledby"
+              ],
+              "titleSubComponent": "Dialog.Title"
+            }
+          },
+          {
+            "type": "a11y",
+            "severity": "error",
+            "source": "accessible-name",
+            "component": "Dialog",
+            "message": "<Dialog> has no accessible name. A closed overlay is invisible to runtime a11y checks, so it must be labeled in the source.",
+            "suggestion": "Add a <Dialog.Title> child or an aria-label prop, e.g. <Dialog aria-label=\"…\"> or <Dialog.Title>…</Dialog.Title>.",
+            "location": {
+              "file": "TestApp.tsx",
+              "line": 413,
+              "column": 9
+            },
+            "details": {
+              "accessibleNameAttrs": [
+                "aria-label",
+                "aria-labelledby"
+              ],
+              "titleSubComponent": "Dialog.Title"
+            }
+          },
+          {
+            "type": "technical",
+            "severity": "warning",
+            "source": "table-usage",
+            "component": "Table",
+            "message": "<Table> has no column marked rowHeader. Exactly one Table.Column should set rowHeader so screen readers can announce each row by it.",
+            "suggestion": "Add rowHeader to the column that identifies each row, e.g. <Table.Column rowHeader>Name</Table.Column>.",
+            "location": {
+              "file": "TestApp.tsx",
+              "line": 252,
+              "column": 7
+            },
+            "details": {
+              "missingRowHeader": true,
+              "columnCount": 7
+            }
+          },
+          {
+            "type": "technical",
+            "severity": "warning",
+            "source": "component-conventions",
+            "component": "StatusBadge",
+            "message": "The component <StatusBadge> takes props but its props parameter is untyped. Define a typed props interface so the component's contract is explicit and checkable.",
+            "suggestion": "Add a props type, e.g. type StatusBadgeProps = { … }; const StatusBadge = (props: StatusBadgeProps) => …",
+            "location": {
+              "file": "TestApp.tsx",
+              "line": 136,
+              "column": 7
+            },
+            "details": {
+              "untypedProps": true
+            }
+          }
+        ]
+      },
+      "D": {
+        "category": "D",
+        "label": "Spatial & A11y",
+        "score": 0,
+        "weight": 0.225,
+        "weightedScore": 0,
+        "errorCount": 0,
+        "warningCount": 0,
+        "issues": []
+      },
+      "E": {
+        "category": "E",
+        "label": "Functional Completeness",
+        "score": 83.08,
+        "weight": 0.225,
+        "weightedScore": 18.69,
+        "errorCount": 0,
+        "warningCount": 0,
+        "issues": []
+      }
+    },
+    "renderSuccess": false
+  },
+  "efficiency": {
+    "durationMs": 466591,
+    "costUsd": 0.7936526,
+    "inputTokens": 5,
+    "outputTokens": 34089,
+    "cacheReadTokens": 108982,
+    "cacheCreationTokens": 41412,
+    "totalTokens": 34094,
+    "numTurns": 5
+  },
+  "report": {
+    "file": "TestApp.tsx",
+    "errors": [
+      {
+        "type": "technical",
+        "severity": "error",
+        "source": "compiler",
+        "component": "TypeScript",
+        "message": "TS2724: '\"@marigold/components\"' has no exported member named 'Textarea'. Did you mean 'TextArea'?",
+        "suggestion": "Fix the TypeScript error reported by the compiler. The exact location is included in the issue location field.",
+        "location": {
+          "file": "TestApp.tsx",
+          "line": 16,
+          "column": 3
+        }
+      },
+      {
+        "type": "technical",
+        "severity": "error",
+        "source": "compiler",
+        "component": "TypeScript",
+        "message": "TS2305: Module '\"@marigold/components\"' has no exported member 'Message'.",
+        "suggestion": "Fix the TypeScript error reported by the compiler. The exact location is included in the issue location field.",
+        "location": {
+          "file": "TestApp.tsx",
+          "line": 20,
+          "column": 3
+        }
+      },
+      {
+        "type": "technical",
+        "severity": "error",
+        "source": "compiler",
+        "component": "TypeScript",
+        "message": "TS2339: Property 'Trigger' does not exist on type '{ ({ children, label, variant, size, disabled, open, placement, \"aria-label\": ariaLabel, ...props }: MenuProps): Element; Item: ({ children, variant, size, ...props }: MenuItemProps) => Element; Section: ({ children, title, ...props }: MenuSectionProps) => Element; }'.",
+        "suggestion": "Fix the TypeScript error reported by the compiler. The exact location is included in the issue location field.",
+        "location": {
+          "file": "TestApp.tsx",
+          "line": 275,
+          "column": 25
+        }
+      },
+      {
+        "type": "technical",
+        "severity": "error",
+        "source": "compiler",
+        "component": "TypeScript",
+        "message": "TS2339: Property 'Trigger' does not exist on type '{ ({ children, label, variant, size, disabled, open, placement, \"aria-label\": ariaLabel, ...props }: MenuProps): Element; Item: ({ children, variant, size, ...props }: MenuItemProps) => Element; Section: ({ children, title, ...props }: MenuSectionProps) => Element; }'.",
+        "suggestion": "Fix the TypeScript error reported by the compiler. The exact location is included in the issue location field.",
+        "location": {
+          "file": "TestApp.tsx",
+          "line": 279,
+          "column": 26
+        }
+      },
+      {
+        "type": "technical",
+        "severity": "error",
+        "source": "compiler",
+        "component": "TypeScript",
+        "message": "TS2322: Type 'Dispatch<SetStateAction<CalendarDate | null>>' is not assignable to type '(value: DateValue | null) => void'.\n  Types of parameters 'value' and 'value' are incompatible.\n    Type 'DateValue | null' is not assignable to type 'SetStateAction<CalendarDate | null>'.\n      Type 'CalendarDateTime' is not assignable to type 'SetStateAction<CalendarDate | null>'.\n        Type 'CalendarDateTime' is not assignable to type 'CalendarDate'.\n          Property '#private' in type 'CalendarDateTime' refers to a different member that cannot be accessed from within type 'CalendarDate'.",
+        "suggestion": "Fix the TypeScript error reported by the compiler. The exact location is included in the issue location field.",
+        "location": {
+          "file": "TestApp.tsx",
+          "line": 301,
+          "column": 53
+        }
+      },
+      {
+        "type": "technical",
+        "severity": "error",
+        "source": "compiler",
+        "component": "TypeScript",
+        "message": "TS2339: Property 'Tab' does not exist on type '{ ({ disabled, variant, size, ...rest }: TabsProps): Element; List: (props: TabListProps) => Element; TabPanel: (props: TabPanelProps) => Element; Item: (props: TabProps) => Element; }'.",
+        "suggestion": "Fix the TypeScript error reported by the compiler. The exact location is included in the issue location field.",
+        "location": {
+          "file": "TestApp.tsx",
+          "line": 351,
+          "column": 17
+        }
+      },
+      {
+        "type": "technical",
+        "severity": "error",
+        "source": "compiler",
+        "component": "TypeScript",
+        "message": "TS2339: Property 'Tab' does not exist on type '{ ({ disabled, variant, size, ...rest }: TabsProps): Element; List: (props: TabListProps) => Element; TabPanel: (props: TabPanelProps) => Element; Item: (props: TabProps) => Element; }'.",
+        "suggestion": "Fix the TypeScript error reported by the compiler. The exact location is included in the issue location field.",
+        "location": {
+          "file": "TestApp.tsx",
+          "line": 351,
+          "column": 49
+        }
+      },
+      {
+        "type": "technical",
+        "severity": "error",
+        "source": "compiler",
+        "component": "TypeScript",
+        "message": "TS2339: Property 'Tab' does not exist on type '{ ({ disabled, variant, size, ...rest }: TabsProps): Element; List: (props: TabListProps) => Element; TabPanel: (props: TabPanelProps) => Element; Item: (props: TabProps) => Element; }'.",
+        "suggestion": "Fix the TypeScript error reported by the compiler. The exact location is included in the issue location field.",
+        "location": {
+          "file": "TestApp.tsx",
+          "line": 352,
+          "column": 17
+        }
+      },
+      {
+        "type": "technical",
+        "severity": "error",
+        "source": "compiler",
+        "component": "TypeScript",
+        "message": "TS2339: Property 'Tab' does not exist on type '{ ({ disabled, variant, size, ...rest }: TabsProps): Element; List: (props: TabListProps) => Element; TabPanel: (props: TabPanelProps) => Element; Item: (props: TabProps) => Element; }'.",
+        "suggestion": "Fix the TypeScript error reported by the compiler. The exact location is included in the issue location field.",
+        "location": {
+          "file": "TestApp.tsx",
+          "line": 352,
+          "column": 44
+        }
+      },
+      {
+        "type": "technical",
+        "severity": "error",
+        "source": "compiler",
+        "component": "TypeScript",
+        "message": "TS2339: Property 'Tab' does not exist on type '{ ({ disabled, variant, size, ...rest }: TabsProps): Element; List: (props: TabListProps) => Element; TabPanel: (props: TabPanelProps) => Element; Item: (props: TabProps) => Element; }'.",
+        "suggestion": "Fix the TypeScript error reported by the compiler. The exact location is included in the issue location field.",
+        "location": {
+          "file": "TestApp.tsx",
+          "line": 353,
+          "column": 17
+        }
+      },
+      {
+        "type": "technical",
+        "severity": "error",
+        "source": "compiler",
+        "component": "TypeScript",
+        "message": "TS2339: Property 'Tab' does not exist on type '{ ({ disabled, variant, size, ...rest }: TabsProps): Element; List: (props: TabListProps) => Element; TabPanel: (props: TabPanelProps) => Element; Item: (props: TabProps) => Element; }'.",
+        "suggestion": "Fix the TypeScript error reported by the compiler. The exact location is included in the issue location field.",
+        "location": {
+          "file": "TestApp.tsx",
+          "line": 353,
+          "column": 47
+        }
+      },
+      {
+        "type": "technical",
+        "severity": "error",
+        "source": "compiler",
+        "component": "TypeScript",
+        "message": "TS2322: Type 'Dispatch<SetStateAction<CalendarDate | null>>' is not assignable to type '(value: DateValue | null) => void'.\n  Types of parameters 'value' and 'value' are incompatible.\n    Type 'DateValue | null' is not assignable to type 'SetStateAction<CalendarDate | null>'.\n      Type 'CalendarDateTime' is not assignable to type 'SetStateAction<CalendarDate | null>'.\n        Type 'CalendarDateTime' is not assignable to type 'CalendarDate'.\n          Property '#private' in type 'CalendarDateTime' refers to a different member that cannot be accessed from within type 'CalendarDate'.",
+        "suggestion": "Fix the TypeScript error reported by the compiler. The exact location is included in the issue location field.",
+        "location": {
+          "file": "TestApp.tsx",
+          "line": 387,
+          "column": 53
+        }
+      },
+      {
+        "type": "technical",
+        "severity": "error",
+        "source": "prop-validator",
+        "component": "Inline",
+        "message": "Prop \"alignY\" value \"end\" is not a known variant for <Inline>.",
+        "suggestion": "Known values: bottom, top, input, center.",
+        "location": {
+          "file": "TestApp.tsx",
+          "line": 300,
+          "column": 25
+        },
+        "details": {
+          "used": "end",
+          "known": [
+            "bottom",
+            "top",
+            "input",
+            "center"
+          ]
+        }
+      },
+      {
+        "type": "technical",
+        "severity": "error",
+        "source": "prop-validator",
+        "component": "ComboBox",
+        "message": "Prop \"inputValue\" does not exist on <ComboBox>.",
+        "suggestion": "Remove the prop. Available props: variant, size, width, disabled, required, readOnly, error, defaultValue, value, onChange, children, placeholder, emptyState, loading, render, ….",
+        "location": {
+          "file": "TestApp.tsx",
+          "line": 304,
+          "column": 11
+        },
+        "details": {
+          "used": "inputValue",
+          "available": [
+            "variant",
+            "size",
+            "width",
+            "disabled",
+            "required",
+            "readOnly",
+            "error",
+            "defaultValue",
+            "value",
+            "onChange",
+            "children",
+            "placeholder",
+            "emptyState",
+            "loading",
+            "render"
+          ]
+        }
+      },
+      {
+        "type": "technical",
+        "severity": "error",
+        "source": "prop-validator",
+        "component": "ComboBox",
+        "message": "Prop \"onInputChange\" does not exist on <ComboBox>.",
+        "suggestion": "Remove the prop. Available props: variant, size, width, disabled, required, readOnly, error, defaultValue, value, onChange, children, placeholder, emptyState, loading, render, ….",
+        "location": {
+          "file": "TestApp.tsx",
+          "line": 305,
+          "column": 11
+        },
+        "details": {
+          "used": "onInputChange",
+          "available": [
+            "variant",
+            "size",
+            "width",
+            "disabled",
+            "required",
+            "readOnly",
+            "error",
+            "defaultValue",
+            "value",
+            "onChange",
+            "children",
+            "placeholder",
+            "emptyState",
+            "loading",
+            "render"
+          ]
+        }
+      },
+      {
+        "type": "technical",
+        "severity": "error",
+        "source": "prop-validator",
+        "component": "Dialog",
+        "message": "Prop \"onClose\" does not exist on <Dialog>.",
+        "suggestion": "Remove the prop. Available props: variant, size, closeButton, children, id, dir, lang, hidden, inert, translate, onClick, onClickCapture, onAuxClick, onAuxClickCapture, onContextMenu, ….",
+        "location": {
+          "file": "TestApp.tsx",
+          "line": 361,
+          "column": 37
+        },
+        "details": {
+          "used": "onClose",
+          "available": [
+            "variant",
+            "size",
+            "closeButton",
+            "children",
+            "id",
+            "dir",
+            "lang",
+            "hidden",
+            "inert",
+            "translate",
+            "onClick",
+            "onClickCapture",
+            "onAuxClick",
+            "onAuxClickCapture",
+            "onContextMenu"
+          ]
+        }
+      },
+      {
+        "type": "technical",
+        "severity": "error",
+        "source": "prop-validator",
+        "component": "Dialog",
+        "message": "Prop \"onClose\" does not exist on <Dialog>.",
+        "suggestion": "Remove the prop. Available props: variant, size, closeButton, children, id, dir, lang, hidden, inert, translate, onClick, onClickCapture, onAuxClick, onAuxClickCapture, onContextMenu, ….",
+        "location": {
+          "file": "TestApp.tsx",
+          "line": 413,
+          "column": 29
+        },
+        "details": {
+          "used": "onClose",
+          "available": [
+            "variant",
+            "size",
+            "closeButton",
+            "children",
+            "id",
+            "dir",
+            "lang",
+            "hidden",
+            "inert",
+            "translate",
+            "onClick",
+            "onClickCapture",
+            "onAuxClick",
+            "onAuxClickCapture",
+            "onContextMenu"
+          ]
+        }
+      },
+      {
+        "type": "technical",
+        "severity": "error",
+        "source": "composition-validator",
+        "component": "Dialog",
+        "message": "<Dialog> is used without any of its sub-components.",
+        "suggestion": "Use compound children: <Dialog.Title>, <Dialog.Content>, <Dialog.Actions>.",
+        "location": {
+          "file": "TestApp.tsx",
+          "line": 361,
+          "column": 7
+        },
+        "details": {
+          "expected": [
+            "Title",
+            "Content",
+            "Actions"
+          ],
+          "found": []
+        }
+      },
+      {
+        "type": "technical",
+        "severity": "error",
+        "source": "composition-validator",
+        "component": "Dialog",
+        "message": "<Dialog> is used without any of its sub-components.",
+        "suggestion": "Use compound children: <Dialog.Title>, <Dialog.Content>, <Dialog.Actions>.",
+        "location": {
+          "file": "TestApp.tsx",
+          "line": 413,
+          "column": 9
+        },
+        "details": {
+          "expected": [
+            "Title",
+            "Content",
+            "Actions"
+          ],
+          "found": []
+        }
+      },
+      {
+        "type": "a11y",
+        "severity": "error",
+        "source": "accessible-name",
+        "component": "Dialog",
+        "message": "<Dialog> has no accessible name. A closed overlay is invisible to runtime a11y checks, so it must be labeled in the source.",
+        "suggestion": "Add a <Dialog.Title> child or an aria-label prop, e.g. <Dialog aria-label=\"…\"> or <Dialog.Title>…</Dialog.Title>.",
+        "location": {
+          "file": "TestApp.tsx",
+          "line": 361,
+          "column": 7
+        },
+        "details": {
+          "accessibleNameAttrs": [
+            "aria-label",
+            "aria-labelledby"
+          ],
+          "titleSubComponent": "Dialog.Title"
+        }
+      },
+      {
+        "type": "a11y",
+        "severity": "error",
+        "source": "accessible-name",
+        "component": "Dialog",
+        "message": "<Dialog> has no accessible name. A closed overlay is invisible to runtime a11y checks, so it must be labeled in the source.",
+        "suggestion": "Add a <Dialog.Title> child or an aria-label prop, e.g. <Dialog aria-label=\"…\"> or <Dialog.Title>…</Dialog.Title>.",
+        "location": {
+          "file": "TestApp.tsx",
+          "line": 413,
+          "column": 9
+        },
+        "details": {
+          "accessibleNameAttrs": [
+            "aria-label",
+            "aria-labelledby"
+          ],
+          "titleSubComponent": "Dialog.Title"
+        }
+      },
+      {
+        "type": "technical",
+        "severity": "error",
+        "source": "design-system-usage",
+        "component": "Menu.Trigger",
+        "message": "<Menu.Trigger> is not a valid sub-component of <Menu>.",
+        "suggestion": "Check the Marigold docs for valid Menu sub-components.",
+        "location": {
+          "file": "TestApp.tsx",
+          "line": 275,
+          "column": 19
+        },
+        "details": {
+          "hallucinated": true,
+          "parent": "Menu",
+          "subComponent": "Trigger"
+        }
+      },
+      {
+        "type": "technical",
+        "severity": "error",
+        "source": "design-system-usage",
+        "component": "Message",
+        "message": "<Message> is not a Marigold component. It is not exported from @marigold/components.",
+        "suggestion": "<Message> does not exist in @marigold/components. Search the Marigold docs for the correct component.",
+        "location": {
+          "file": "TestApp.tsx",
+          "line": 331,
+          "column": 9
+        },
+        "details": {
+          "hallucinated": true,
+          "importedFrom": "@marigold/components"
+        }
+      },
+      {
+        "type": "technical",
+        "severity": "error",
+        "source": "design-system-usage",
+        "component": "Tabs.Tab",
+        "message": "<Tabs.Tab> is not a valid sub-component of <Tabs>.",
+        "suggestion": "Check the Marigold docs for valid Tabs sub-components.",
+        "location": {
+          "file": "TestApp.tsx",
+          "line": 351,
+          "column": 11
+        },
+        "details": {
+          "hallucinated": true,
+          "parent": "Tabs",
+          "subComponent": "Tab"
+        }
+      },
+      {
+        "type": "technical",
+        "severity": "error",
+        "source": "design-system-usage",
+        "component": "Tabs.Tab",
+        "message": "<Tabs.Tab> is not a valid sub-component of <Tabs>.",
+        "suggestion": "Check the Marigold docs for valid Tabs sub-components.",
+        "location": {
+          "file": "TestApp.tsx",
+          "line": 352,
+          "column": 11
+        },
+        "details": {
+          "hallucinated": true,
+          "parent": "Tabs",
+          "subComponent": "Tab"
+        }
+      },
+      {
+        "type": "technical",
+        "severity": "error",
+        "source": "design-system-usage",
+        "component": "Tabs.Tab",
+        "message": "<Tabs.Tab> is not a valid sub-component of <Tabs>.",
+        "suggestion": "Check the Marigold docs for valid Tabs sub-components.",
+        "location": {
+          "file": "TestApp.tsx",
+          "line": 353,
+          "column": 11
+        },
+        "details": {
+          "hallucinated": true,
+          "parent": "Tabs",
+          "subComponent": "Tab"
+        }
+      },
+      {
+        "type": "technical",
+        "severity": "error",
+        "source": "design-system-usage",
+        "component": "Textarea",
+        "message": "<Textarea> is not a Marigold component. It is not exported from @marigold/components.",
+        "suggestion": "<Textarea> does not exist in @marigold/components. Search the Marigold docs for the correct component.",
+        "location": {
+          "file": "TestApp.tsx",
+          "line": 399,
+          "column": 11
+        },
+        "details": {
+          "hallucinated": true,
+          "importedFrom": "@marigold/components"
+        }
+      }
+    ],
+    "warnings": [
+      {
+        "type": "technical",
+        "severity": "warning",
+        "source": "table-usage",
+        "component": "Table",
+        "message": "<Table> has no column marked rowHeader. Exactly one Table.Column should set rowHeader so screen readers can announce each row by it.",
+        "suggestion": "Add rowHeader to the column that identifies each row, e.g. <Table.Column rowHeader>Name</Table.Column>.",
+        "location": {
+          "file": "TestApp.tsx",
+          "line": 252,
+          "column": 7
+        },
+        "details": {
+          "missingRowHeader": true,
+          "columnCount": 7
+        }
+      },
+      {
+        "type": "technical",
+        "severity": "warning",
+        "source": "component-conventions",
+        "component": "StatusBadge",
+        "message": "The component <StatusBadge> takes props but its props parameter is untyped. Define a typed props interface so the component's contract is explicit and checkable.",
+        "suggestion": "Add a props type, e.g. type StatusBadgeProps = { … }; const StatusBadge = (props: StatusBadgeProps) => …",
+        "location": {
+          "file": "TestApp.tsx",
+          "line": 136,
+          "column": 7
+        },
+        "details": {
+          "untypedProps": true
+        }
+      }
+    ],
+    "passed": [
+      "Compound component placement",
+      "Section headers",
+      "Collection item ids",
+      "Layout usage",
+      "Theme variant compliance"
+    ],
+    "metadata": {
+      "renderTimeMs": 0,
+      "componentsFound": [],
+      "checksRun": [
+        "technical",
+        "spatial",
+        "a11y"
+      ],
+      "coverage": {
+        "staticValuesChecked": 12,
+        "dynamicValuesSkipped": 23,
+        "spreadPropsBypassed": 0
+      },
+      "widthUtilization": null
+    },
+    "markdown": "marigold-validate: TestApp.tsx — 27 error(s), 2 warning(s)\n\n[error/technical] <ComboBox>: Prop \"inputValue\" does not exist on <ComboBox>. (TestApp.tsx:304:11)\n  → Remove the prop. Available props: variant, size, width, disabled, required, readOnly, error, defaultValue, value, onChange, children, placeholder, emptyState, loading, render, ….\n  data: {used=inputValue, available=[\"variant\",\"size\",\"width\",\"disabled\",\"required\",\"readOnly\",\"error\",\"defaultValue\", …]}\n[error/technical] <ComboBox>: Prop \"onInputChange\" does not exist on <ComboBox>. (TestApp.tsx:305:11)\n  → Remove the prop. Available props: variant, size, width, disabled, required, readOnly, error, defaultValue, value, onChange, children, placeholder, emptyState, loading, render, ….\n  data: {used=onInputChange, available=[\"variant\",\"size\",\"width\",\"disabled\",\"required\",\"readOnly\",\"error\",\"defaultValue\", …]}\n[error/technical] <Dialog>: Prop \"onClose\" does not exist on <Dialog>. (TestApp.tsx:361:37)\n  → Remove the prop. Available props: variant, size, closeButton, children, id, dir, lang, hidden, inert, translate, onClick, onClickCapture, onAuxClick, onAuxClickCapture, onContextMenu, ….\n  data: {used=onClose, available=[\"variant\",\"size\",\"closeButton\",\"children\",\"id\",\"dir\",\"lang\",\"hidden\", …]}\n[error/technical] <Dialog>: Prop \"onClose\" does not exist on <Dialog>. (TestApp.tsx:413:29)\n  → Remove the prop. Available props: variant, size, closeButton, children, id, dir, lang, hidden, inert, translate, onClick, onClickCapture, onAuxClick, onAuxClickCapture, onContextMenu, ….\n  data: {used=onClose, available=[\"variant\",\"size\",\"closeButton\",\"children\",\"id\",\"dir\",\"lang\",\"hidden\", …]}\n[error/technical] <Dialog>: <Dialog> is used without any of its sub-components. (TestApp.tsx:361:7)\n  → Use compound children: <Dialog.Title>, <Dialog.Content>, <Dialog.Actions>.\n  data: {expected=[\"Title\",\"Content\",\"Actions\"], found=[]}\n[error/technical] <Dialog>: <Dialog> is used without any of its sub-components. (TestApp.tsx:413:9)\n  → Use compound children: <Dialog.Title>, <Dialog.Content>, <Dialog.Actions>.\n  data: {expected=[\"Title\",\"Content\",\"Actions\"], found=[]}\n[error/technical] <Inline>: Prop \"alignY\" value \"end\" is not a known variant for <Inline>. (TestApp.tsx:300:25)\n  → Known values: bottom, top, input, center.\n  data: {used=end, known=[\"bottom\",\"top\",\"input\",\"center\"]}\n[error/technical] <Menu.Trigger>: <Menu.Trigger> is not a valid sub-component of <Menu>. (TestApp.tsx:275:19)\n  → Check the Marigold docs for valid Menu sub-components.\n  data: {hallucinated=true, parent=Menu, subComponent=Trigger}\n[error/technical] <Message>: <Message> is not a Marigold component. It is not exported from @marigold/components. (TestApp.tsx:331:9)\n  → <Message> does not exist in @marigold/components. Search the Marigold docs for the correct component.\n  data: {hallucinated=true, importedFrom=@marigold/components}\n[error/technical] <Tabs.Tab>: <Tabs.Tab> is not a valid sub-component of <Tabs>. (TestApp.tsx:351:11)\n  → Check the Marigold docs for valid Tabs sub-components.\n  data: {hallucinated=true, parent=Tabs, subComponent=Tab}\n[error/technical] <Tabs.Tab>: <Tabs.Tab> is not a valid sub-component of <Tabs>. (TestApp.tsx:352:11)\n  → Check the Marigold docs for valid Tabs sub-components.\n  data: {hallucinated=true, parent=Tabs, subComponent=Tab}\n[error/technical] <Tabs.Tab>: <Tabs.Tab> is not a valid sub-component of <Tabs>. (TestApp.tsx:353:11)\n  → Check the Marigold docs for valid Tabs sub-components.\n  data: {hallucinated=true, parent=Tabs, subComponent=Tab}\n[error/technical] <Textarea>: <Textarea> is not a Marigold component. It is not exported from @marigold/components. (TestApp.tsx:399:11)\n  → <Textarea> does not exist in @marigold/components. Search the Marigold docs for the correct component.\n  data: {hallucinated=true, importedFrom=@marigold/components}\n[error/technical] <TypeScript>: TS2724: '\"@marigold/components\"' has no exported member named 'Textarea'. Did you mean 'TextArea'? (TestApp.tsx:16:3)\n  → Fix the TypeScript error reported by the compiler. The exact location is included in the issue location field.\n[error/technical] <TypeScript>: TS2305: Module '\"@marigold/components\"' has no exported member 'Message'. (TestApp.tsx:20:3)\n  → Fix the TypeScript error reported by the compiler. The exact location is included in the issue location field.\n[error/technical] <TypeScript>: TS2339: Property 'Trigger' does not exist on type '{ ({ children, label, variant, size, disabled, open, placement, \"aria-label\": ariaLabel, ...props }: MenuProps): Element; Item: ({ children, variant, size, ...props }: MenuItemProps) => Element; Section: ({ children, title, ...props }: MenuSectionProps) => Element; }'. (TestApp.tsx:275:25)\n  → Fix the TypeScript error reported by the compiler. The exact location is included in the issue location field.\n[error/technical] <TypeScript>: TS2339: Property 'Trigger' does not exist on type '{ ({ children, label, variant, size, disabled, open, placement, \"aria-label\": ariaLabel, ...props }: MenuProps): Element; Item: ({ children, variant, size, ...props }: MenuItemProps) => Element; Section: ({ children, title, ...props }: MenuSectionProps) => Element; }'. (TestApp.tsx:279:26)\n  → Fix the TypeScript error reported by the compiler. The exact location is included in the issue location field.\n[error/technical] <TypeScript>: TS2322: Type 'Dispatch<SetStateAction<CalendarDate | null>>' is not assignable to type '(value: DateValue | null) => void'.\n  Types of parameters 'value' and 'value' are incompatible.\n    Type 'DateValue | null' is not assignable to type 'SetStateAction<CalendarDate | null>'.\n      Type 'CalendarDateTime' is not assignable to type 'SetStateAction<CalendarDate | null>'.\n        Type 'CalendarDateTime' is not assignable to type 'CalendarDate'.\n          Property '#private' in type 'CalendarDateTime' refers to a different member that cannot be accessed from within type 'CalendarDate'. (TestApp.tsx:301:53)\n  → Fix the TypeScript error reported by the compiler. The exact location is included in the issue location field.\n[error/technical] <TypeScript>: TS2339: Property 'Tab' does not exist on type '{ ({ disabled, variant, size, ...rest }: TabsProps): Element; List: (props: TabListProps) => Element; TabPanel: (props: TabPanelProps) => Element; Item: (props: TabProps) => Element; }'. (TestApp.tsx:351:17)\n  → Fix the TypeScript error reported by the compiler. The exact location is included in the issue location field.\n[error/technical] <TypeScript>: TS2339: Property 'Tab' does not exist on type '{ ({ disabled, variant, size, ...rest }: TabsProps): Element; List: (props: TabListProps) => Element; TabPanel: (props: TabPanelProps) => Element; Item: (props: TabProps) => Element; }'. (TestApp.tsx:351:49)\n  → Fix the TypeScript error reported by the compiler. The exact location is included in the issue location field.\n[error/technical] <TypeScript>: TS2339: Property 'Tab' does not exist on type '{ ({ disabled, variant, size, ...rest }: TabsProps): Element; List: (props: TabListProps) => Element; TabPanel: (props: TabPanelProps) => Element; Item: (props: TabProps) => Element; }'. (TestApp.tsx:352:17)\n  → Fix the TypeScript error reported by the compiler. The exact location is included in the issue location field.\n[error/technical] <TypeScript>: TS2339: Property 'Tab' does not exist on type '{ ({ disabled, variant, size, ...rest }: TabsProps): Element; List: (props: TabListProps) => Element; TabPanel: (props: TabPanelProps) => Element; Item: (props: TabProps) => Element; }'. (TestApp.tsx:352:44)\n  → Fix the TypeScript error reported by the compiler. The exact location is included in the issue location field.\n[error/technical] <TypeScript>: TS2339: Property 'Tab' does not exist on type '{ ({ disabled, variant, size, ...rest }: TabsProps): Element; List: (props: TabListProps) => Element; TabPanel: (props: TabPanelProps) => Element; Item: (props: TabProps) => Element; }'. (TestApp.tsx:353:17)\n  → Fix the TypeScript error reported by the compiler. The exact location is included in the issue location field.\n[error/technical] <TypeScript>: TS2339: Property 'Tab' does not exist on type '{ ({ disabled, variant, size, ...rest }: TabsProps): Element; List: (props: TabListProps) => Element; TabPanel: (props: TabPanelProps) => Element; Item: (props: TabProps) => Element; }'. (TestApp.tsx:353:47)\n  → Fix the TypeScript error reported by the compiler. The exact location is included in the issue location field.\n[error/technical] <TypeScript>: TS2322: Type 'Dispatch<SetStateAction<CalendarDate | null>>' is not assignable to type '(value: DateValue | null) => void'.\n  Types of parameters 'value' and 'value' are incompatible.\n    Type 'DateValue | null' is not assignable to type 'SetStateAction<CalendarDate | null>'.\n      Type 'CalendarDateTime' is not assignable to type 'SetStateAction<CalendarDate | null>'.\n        Type 'CalendarDateTime' is not assignable to type 'CalendarDate'.\n          Property '#private' in type 'CalendarDateTime' refers to a different member that cannot be accessed from within type 'CalendarDate'. (TestApp.tsx:387:53)\n  → Fix the TypeScript error reported by the compiler. The exact location is included in the issue location field.\n[warning/technical] <StatusBadge>: The component <StatusBadge> takes props but its props parameter is untyped. Define a typed props interface so the component's contract is explicit and checkable. (TestApp.tsx:136:7)\n  → Add a props type, e.g. type StatusBadgeProps = { … }; const StatusBadge = (props: StatusBadgeProps) => …\n  data: {untypedProps=true}\n[warning/technical] <Table>: <Table> has no column marked rowHeader. Exactly one Table.Column should set rowHeader so screen readers can announce each row by it. (TestApp.tsx:252:7)\n  → Add rowHeader to the column that identifies each row, e.g. <Table.Column rowHeader>Name</Table.Column>.\n  data: {missingRowHeader=true, columnCount=7}\n[error/a11y] <Dialog>: <Dialog> has no accessible name. A closed overlay is invisible to runtime a11y checks, so it must be labeled in the source. (TestApp.tsx:361:7)\n  → Add a <Dialog.Title> child or an aria-label prop, e.g. <Dialog aria-label=\"…\"> or <Dialog.Title>…</Dialog.Title>.\n  data: {accessibleNameAttrs=[\"aria-label\",\"aria-labelledby\"], titleSubComponent=Dialog.Title}\n[error/a11y] <Dialog>: <Dialog> has no accessible name. A closed overlay is invisible to runtime a11y checks, so it must be labeled in the source. (TestApp.tsx:413:9)\n  → Add a <Dialog.Title> child or an aria-label prop, e.g. <Dialog aria-label=\"…\"> or <Dialog.Title>…</Dialog.Title>.\n  data: {accessibleNameAttrs=[\"aria-label\",\"aria-labelledby\"], titleSubComponent=Dialog.Title}\n\npassed: Compound component placement, Section headers, Collection item ids, Layout usage, Theme variant compliance\n\nchecks run: technical, spatial, a11y"
+  },
+  "componentsFound": [],
+  "renderTimeMs": 0,
+  "sourceCode": "import React, { useState, useMemo } from 'react';\nimport { CalendarDate } from '@internationalized/date';\nimport {\n  Stack,\n  Inline,\n  Text,\n  Headline,\n  Button,\n  TextField,\n  Select,\n  DatePicker,\n  Table,\n  Dialog,\n  Tabs,\n  ComboBox,\n  Textarea,\n  Badge,\n  Card,\n  Divider,\n  Message,\n  Menu,\n} from '@marigold/components';\n\ntype BookingStatus = 'Confirmed' | 'Pending' | 'Cancelled';\n\ninterface Booking {\n  id: string;\n  customer: string;\n  email: string;\n  venue: string;\n  date: string;\n  timeSlot: string;\n  status: BookingStatus;\n  notes: string;\n}\n\nconst VENUES = [\n  'Main Hall',\n  'Conference Room A',\n  'Conference Room B',\n  'Rooftop Terrace',\n  'Workshop Studio',\n];\n\nconst TIME_SLOTS = ['09:00-12:00', '12:00-15:00', '15:00-18:00', '18:00-21:00'];\n\nconst TODAY = '2026-06-21';\nconst WEEK_DATES = [\n  '2026-06-21',\n  '2026-06-22',\n  '2026-06-23',\n  '2026-06-24',\n  '2026-06-25',\n  '2026-06-26',\n  '2026-06-27',\n];\nconst MAIN_HALL_CAPACITY = 5;\n\nconst INITIAL_BOOKINGS: Booking[] = [\n  {\n    id: 'BK001',\n    customer: 'Alice Johnson',\n    email: 'alice@example.com',\n    venue: 'Main Hall',\n    date: '2026-06-21',\n    timeSlot: '09:00-12:00',\n    status: 'Confirmed',\n    notes: 'Setup for annual conference',\n  },\n  {\n    id: 'BK002',\n    customer: 'Bob Smith',\n    email: 'bob@example.com',\n    venue: 'Conference Room A',\n    date: '2026-06-21',\n    timeSlot: '12:00-15:00',\n    status: 'Pending',\n    notes: 'Weekly team meeting',\n  },\n  {\n    id: 'BK003',\n    customer: 'Carol White',\n    email: 'carol@example.com',\n    venue: 'Rooftop Terrace',\n    date: '2026-06-22',\n    timeSlot: '15:00-18:00',\n    status: 'Confirmed',\n    notes: 'Birthday celebration',\n  },\n  {\n    id: 'BK004',\n    customer: 'David Brown',\n    email: 'david@example.com',\n    venue: 'Workshop Studio',\n    date: '2026-06-23',\n    timeSlot: '09:00-12:00',\n    status: 'Cancelled',\n    notes: 'Art workshop – cancelled by client',\n  },\n  {\n    id: 'BK005',\n    customer: 'Eve Davis',\n    email: 'eve@example.com',\n    venue: 'Main Hall',\n    date: '2026-06-21',\n    timeSlot: '15:00-18:00',\n    status: 'Pending',\n    notes: 'Product launch event',\n  },\n  {\n    id: 'BK006',\n    customer: 'Frank Wilson',\n    email: 'frank@example.com',\n    venue: 'Conference Room B',\n    date: '2026-06-27',\n    timeSlot: '12:00-15:00',\n    status: 'Confirmed',\n    notes: 'Quarterly board meeting',\n  },\n  {\n    id: 'BK007',\n    customer: 'Grace Lee',\n    email: 'grace@example.com',\n    venue: 'Main Hall',\n    date: '2026-06-21',\n    timeSlot: '18:00-21:00',\n    status: 'Confirmed',\n    notes: 'Networking event for local startups',\n  },\n];\n\nfunction calendarDateToString(d: CalendarDate): string {\n  return `${d.year}-${String(d.month).padStart(2, '0')}-${String(d.day).padStart(2, '0')}`;\n}\n\nconst StatusBadge: React.FC<{ status: BookingStatus }> = ({ status }) => {\n  const variant =\n    status === 'Confirmed' ? 'success' : status === 'Pending' ? 'warning' : 'neutral';\n  return <Badge variant={variant}>{status}</Badge>;\n};\n\nconst TestApp: React.FC = () => {\n  const [bookings, setBookings] = useState<Booking[]>(INITIAL_BOOKINGS);\n\n  // Filter state\n  const [dateFilter, setDateFilter] = useState<CalendarDate | null>(null);\n  const [venueSearch, setVenueSearch] = useState('');\n  const [statusFilter, setStatusFilter] = useState<string>('all');\n\n  // Tab state\n  const [activeTab, setActiveTab] = useState<string>('all');\n\n  // Dialog states\n  const [newBookingOpen, setNewBookingOpen] = useState(false);\n  const [selectedBooking, setSelectedBooking] = useState<Booking | null>(null);\n\n  // Detail panel collapsible sections\n  const [paymentExpanded, setPaymentExpanded] = useState(false);\n  const [commLogExpanded, setCommLogExpanded] = useState(false);\n\n  // New booking form\n  const [formCustomer, setFormCustomer] = useState('');\n  const [formEmail, setFormEmail] = useState('');\n  const [formVenue, setFormVenue] = useState('');\n  const [formDate, setFormDate] = useState<CalendarDate | null>(null);\n  const [formTimeSlot, setFormTimeSlot] = useState('');\n  const [formNotes, setFormNotes] = useState('');\n\n  // Capacity alert\n  const mainHallTodayCount = useMemo(\n    () =>\n      bookings.filter(\n        b => b.venue === 'Main Hall' && b.date === TODAY && b.status !== 'Cancelled'\n      ).length,\n    [bookings]\n  );\n  const mainHallRemaining = MAIN_HALL_CAPACITY - mainHallTodayCount;\n  const showCapacityAlert = mainHallRemaining <= 2 && mainHallRemaining >= 0;\n\n  // Filtered bookings\n  const filteredBookings = useMemo(() => {\n    let result = [...bookings];\n\n    if (activeTab === 'today') {\n      result = result.filter(b => b.date === TODAY);\n    } else if (activeTab === 'week') {\n      result = result.filter(b => WEEK_DATES.includes(b.date));\n    }\n\n    if (dateFilter) {\n      const dateStr = calendarDateToString(dateFilter);\n      result = result.filter(b => b.date === dateStr);\n    }\n\n    if (venueSearch) {\n      result = result.filter(b =>\n        b.venue.toLowerCase().includes(venueSearch.toLowerCase())\n      );\n    }\n\n    if (statusFilter !== 'all') {\n      result = result.filter(b => b.status.toLowerCase() === statusFilter);\n    }\n\n    return result;\n  }, [bookings, activeTab, dateFilter, venueSearch, statusFilter]);\n\n  const clearFilters = () => {\n    setDateFilter(null);\n    setVenueSearch('');\n    setStatusFilter('all');\n  };\n\n  const handleCreateBooking = () => {\n    if (!formCustomer.trim()) return;\n    const newBooking: Booking = {\n      id: `BK${String(bookings.length + 1).padStart(3, '0')}`,\n      customer: formCustomer,\n      email: formEmail,\n      venue: formVenue || VENUES[0],\n      date: formDate ? calendarDateToString(formDate) : TODAY,\n      timeSlot: formTimeSlot || TIME_SLOTS[0],\n      status: 'Pending',\n      notes: formNotes,\n    };\n    setBookings(prev => [...prev, newBooking]);\n    setNewBookingOpen(false);\n    setFormCustomer('');\n    setFormEmail('');\n    setFormVenue('');\n    setFormDate(null);\n    setFormTimeSlot('');\n    setFormNotes('');\n  };\n\n  const handleRowAction = (action: string, booking: Booking) => {\n    if (action === 'view') {\n      setPaymentExpanded(false);\n      setCommLogExpanded(false);\n      setSelectedBooking(booking);\n    } else if (action === 'cancel') {\n      setBookings(prev =>\n        prev.map(b =>\n          b.id === booking.id ? { ...b, status: 'Cancelled' as BookingStatus } : b\n        )\n      );\n    }\n  };\n\n  const renderTable = () => (\n    <Stack space={3}>\n      <Table aria-label=\"Bookings table\">\n        <Table.Header>\n          <Table.Column key=\"id\">Booking ID</Table.Column>\n          <Table.Column key=\"customer\">Customer</Table.Column>\n          <Table.Column key=\"venue\">Venue</Table.Column>\n          <Table.Column key=\"date\">Date</Table.Column>\n          <Table.Column key=\"timeSlot\">Time Slot</Table.Column>\n          <Table.Column key=\"status\">Status</Table.Column>\n          <Table.Column key=\"actions\">Actions</Table.Column>\n        </Table.Header>\n        <Table.Body>\n          {filteredBookings.map(booking => (\n            <Table.Row key={booking.id}>\n              <Table.Cell>{booking.id}</Table.Cell>\n              <Table.Cell>{booking.customer}</Table.Cell>\n              <Table.Cell>{booking.venue}</Table.Cell>\n              <Table.Cell>{booking.date}</Table.Cell>\n              <Table.Cell>{booking.timeSlot}</Table.Cell>\n              <Table.Cell>\n                <StatusBadge status={booking.status} />\n              </Table.Cell>\n              <Table.Cell>\n                <Menu onAction={key => handleRowAction(String(key), booking)}>\n                  <Menu.Trigger>\n                    <Button variant=\"ghost\" size=\"small\">\n                      •••\n                    </Button>\n                  </Menu.Trigger>\n                  <Menu.Item id=\"view\">View Details</Menu.Item>\n                  <Menu.Item id=\"edit\">Edit</Menu.Item>\n                  <Menu.Item id=\"cancel\">Cancel Booking</Menu.Item>\n                </Menu>\n              </Table.Cell>\n            </Table.Row>\n          ))}\n        </Table.Body>\n      </Table>\n      {filteredBookings.length === 0 && (\n        <Text>No bookings match the current filters.</Text>\n      )}\n    </Stack>\n  );\n\n  return (\n    <Stack space={6}>\n      <Headline level={1}>Booking Management</Headline>\n\n      {/* Filter bar */}\n      <Inline space={3} alignY=\"end\">\n        <DatePicker label=\"Date\" value={dateFilter} onChange={setDateFilter} />\n        <ComboBox\n          label=\"Search Venue\"\n          inputValue={venueSearch}\n          onInputChange={setVenueSearch}\n          onSelectionChange={key => key && setVenueSearch(String(key))}\n        >\n          {VENUES.map(v => (\n            <ComboBox.Option key={v} id={v}>\n              {v}\n            </ComboBox.Option>\n          ))}\n        </ComboBox>\n        <Select\n          label=\"Status\"\n          selectedKey={statusFilter}\n          onSelectionChange={k => setStatusFilter(String(k))}\n        >\n          <Select.Option id=\"all\">All</Select.Option>\n          <Select.Option id=\"confirmed\">Confirmed</Select.Option>\n          <Select.Option id=\"pending\">Pending</Select.Option>\n          <Select.Option id=\"cancelled\">Cancelled</Select.Option>\n        </Select>\n        <Button variant=\"ghost\" onPress={clearFilters}>\n          Clear Filters\n        </Button>\n      </Inline>\n\n      {/* Capacity alert */}\n      {showCapacityAlert && (\n        <Message variant=\"warning\">\n          Main Hall has only {mainHallRemaining} slot\n          {mainHallRemaining === 1 ? '' : 's'} remaining for today.\n        </Message>\n      )}\n\n      {/* New Booking button */}\n      <Inline space={3} alignY=\"center\">\n        <Headline level={2}>Bookings</Headline>\n        <Button variant=\"primary\" onPress={() => setNewBookingOpen(true)}>\n          New Booking\n        </Button>\n      </Inline>\n\n      {/* Tabs */}\n      <Tabs\n        selectedKey={activeTab}\n        onSelectionChange={k => setActiveTab(String(k))}\n      >\n        <Tabs.List>\n          <Tabs.Tab id=\"all\">All Bookings</Tabs.Tab>\n          <Tabs.Tab id=\"today\">Today</Tabs.Tab>\n          <Tabs.Tab id=\"week\">This Week</Tabs.Tab>\n        </Tabs.List>\n        <Tabs.TabPanel id=\"all\">{renderTable()}</Tabs.TabPanel>\n        <Tabs.TabPanel id=\"today\">{renderTable()}</Tabs.TabPanel>\n        <Tabs.TabPanel id=\"week\">{renderTable()}</Tabs.TabPanel>\n      </Tabs>\n\n      {/* New Booking Dialog */}\n      <Dialog open={newBookingOpen} onClose={() => setNewBookingOpen(false)}>\n        <Stack space={4}>\n          <Headline level={2}>New Booking</Headline>\n          <TextField\n            label=\"Customer Name\"\n            value={formCustomer}\n            onChange={setFormCustomer}\n            required\n          />\n          <TextField\n            label=\"Customer Email\"\n            type=\"email\"\n            value={formEmail}\n            onChange={setFormEmail}\n          />\n          <Select\n            label=\"Venue\"\n            selectedKey={formVenue}\n            onSelectionChange={k => setFormVenue(String(k))}\n          >\n            {VENUES.map(v => (\n              <Select.Option key={v} id={v}>\n                {v}\n              </Select.Option>\n            ))}\n          </Select>\n          <DatePicker label=\"Date\" value={formDate} onChange={setFormDate} />\n          <Select\n            label=\"Time Slot\"\n            selectedKey={formTimeSlot}\n            onSelectionChange={k => setFormTimeSlot(String(k))}\n          >\n            {TIME_SLOTS.map(s => (\n              <Select.Option key={s} id={s}>\n                {s}\n              </Select.Option>\n            ))}\n          </Select>\n          <Textarea label=\"Notes\" value={formNotes} onChange={setFormNotes} />\n          <Inline space={2}>\n            <Button variant=\"primary\" onPress={handleCreateBooking}>\n              Create Booking\n            </Button>\n            <Button variant=\"ghost\" onPress={() => setNewBookingOpen(false)}>\n              Cancel\n            </Button>\n          </Inline>\n        </Stack>\n      </Dialog>\n\n      {/* Detail Panel Dialog */}\n      {selectedBooking && (\n        <Dialog open={true} onClose={() => setSelectedBooking(null)}>\n          <Stack space={4}>\n            <Inline space={3} alignY=\"center\">\n              <Headline level={2}>{selectedBooking.id}</Headline>\n              <StatusBadge status={selectedBooking.status} />\n            </Inline>\n\n            <Divider />\n\n            <Stack space={2}>\n              <Headline level={3}>Customer Information</Headline>\n              <Text>Name: {selectedBooking.customer}</Text>\n              <Text>Email: {selectedBooking.email}</Text>\n            </Stack>\n\n            <Stack space={2}>\n              <Headline level={3}>Venue & Date</Headline>\n              <Text>Venue: {selectedBooking.venue}</Text>\n              <Text>Date: {selectedBooking.date}</Text>\n              <Text>Time Slot: {selectedBooking.timeSlot}</Text>\n            </Stack>\n\n            <Stack space={2}>\n              <Headline level={3}>Notes</Headline>\n              <Text>{selectedBooking.notes || 'No notes provided.'}</Text>\n            </Stack>\n\n            <Divider />\n\n            {/* Payment History collapsible */}\n            <Stack space={2}>\n              <Button\n                variant=\"ghost\"\n                onPress={() => setPaymentExpanded(e => !e)}\n              >\n                Payment History {paymentExpanded ? '▲' : '▼'}\n              </Button>\n              {paymentExpanded && (\n                <Card>\n                  <Stack space={2}>\n                    <Text>2026-06-15 — €500.00 — Paid</Text>\n                    <Text>2026-06-18 — €200.00 — Paid</Text>\n                  </Stack>\n                </Card>\n              )}\n            </Stack>\n\n            {/* Communication Log collapsible */}\n            <Stack space={2}>\n              <Button\n                variant=\"ghost\"\n                onPress={() => setCommLogExpanded(e => !e)}\n              >\n                Communication Log {commLogExpanded ? '▲' : '▼'}\n              </Button>\n              {commLogExpanded && (\n                <Card>\n                  <Stack space={2}>\n                    <Text>2026-06-10 — Booking confirmation sent via email</Text>\n                    <Text>2026-06-14 — Reminder email sent 7 days before event</Text>\n                  </Stack>\n                </Card>\n              )}\n            </Stack>\n\n            <Button onPress={() => setSelectedBooking(null)}>Close</Button>\n          </Stack>\n        </Dialog>\n      )}\n    </Stack>\n  );\n};\n\nexport default TestApp;\n",
+  "assertions": {
+    "passed": [
+      {
+        "id": "a-import-marigold",
+        "description": "Imports from @marigold/components",
+        "severity": "required",
+        "passed": true,
+        "evidence": "import from \"@marigold/components\" found"
+      },
+      {
+        "id": "a-table",
+        "description": "Table component for bookings",
+        "severity": "required",
+        "passed": true,
+        "evidence": "<Table> found"
+      },
+      {
+        "id": "a-table-header",
+        "description": "Table.Header sub-component",
+        "severity": "required",
+        "passed": true,
+        "evidence": "<Table.Header> found"
+      },
+      {
+        "id": "a-table-body",
+        "description": "Table.Body sub-component",
+        "severity": "required",
+        "passed": true,
+        "evidence": "<Table.Body> found"
+      },
+      {
+        "id": "a-date-picker",
+        "description": "DatePicker for date filtering",
+        "severity": "required",
+        "passed": true,
+        "evidence": "<DatePicker> found"
+      },
+      {
+        "id": "a-combobox",
+        "description": "ComboBox or SearchField for venue search",
+        "severity": "required",
+        "passed": true,
+        "evidence": "matched: <ComboBox> found"
+      },
+      {
+        "id": "a-dialog",
+        "description": "Dialog for create booking form",
+        "severity": "required",
+        "passed": true,
+        "evidence": "<Dialog> found"
+      },
+      {
+        "id": "a-tabs",
+        "description": "Tabs for booking views",
+        "severity": "required",
+        "passed": true,
+        "evidence": "<Tabs> found"
+      },
+      {
+        "id": "a-menu",
+        "description": "Menu for row actions",
+        "severity": "required",
+        "passed": true,
+        "evidence": "<Menu> found"
+      },
+      {
+        "id": "a-badge",
+        "description": "Badge for booking status",
+        "severity": "required",
+        "passed": true,
+        "evidence": "<Badge> found"
+      },
+      {
+        "id": "a-button",
+        "description": "Button component",
+        "severity": "required",
+        "passed": true,
+        "evidence": "<Button> found"
+      },
+      {
+        "id": "a-select",
+        "description": "Select for status filter / form dropdowns",
+        "severity": "required",
+        "passed": true,
+        "evidence": "<Select> found"
+      },
+      {
+        "id": "a-text-field",
+        "description": "TextField in booking form",
+        "severity": "required",
+        "passed": true,
+        "evidence": "<TextField> found"
+      },
+      {
+        "id": "a-headline",
+        "description": "Headline for page title",
+        "severity": "recommended",
+        "passed": true,
+        "evidence": "<Headline> found"
+      },
+      {
+        "id": "a-no-onclick-on-marigold",
+        "description": "No onClick on Marigold Button components",
+        "severity": "recommended",
+        "passed": true,
+        "evidence": "\"/<Button[^>]*onClick/\" correctly absent"
+      }
+    ],
+    "failed": [
+      {
+        "id": "a-drawer",
+        "description": "Drawer for booking detail view",
+        "severity": "recommended",
+        "passed": false,
+        "evidence": "<Drawer> not found"
+      },
+      {
+        "id": "a-accordion",
+        "description": "Accordion for detail sections",
+        "severity": "recommended",
+        "passed": false,
+        "evidence": "<Accordion> not found"
+      },
+      {
+        "id": "a-section-message",
+        "description": "SectionMessage for capacity alerts",
+        "severity": "required",
+        "passed": false,
+        "evidence": "<SectionMessage> not found"
+      },
+      {
+        "id": "a-form",
+        "description": "Form component in create dialog",
+        "severity": "required",
+        "passed": false,
+        "evidence": "<Form> not found"
+      },
+      {
+        "id": "a-textarea",
+        "description": "TextArea for booking notes",
+        "severity": "recommended",
+        "passed": false,
+        "evidence": "<TextArea> not found"
+      }
+    ],
+    "passRate": 0.75,
+    "requiredPassRate": 0.8667,
+    "weightedPassRate": 0.8308,
+    "total": 20
+  },
+  "validatePackageVersion": "0.0.1",
+  "playwrightVersion": null,
+  "resolvedModelId": "claude-sonnet-4-6",
+  "claudeCliVersion": "2.1.185 (Claude Code)",
+  "sessionId": "cb538ead-687f-45ec-96fc-9a159a866285"
+}

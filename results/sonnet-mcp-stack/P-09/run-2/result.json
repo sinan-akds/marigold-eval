@@ -1,0 +1,415 @@
+{
+  "runId": "sonnet-mcp-stack-P-09-r2",
+  "promptId": "P-09",
+  "model": "sonnet",
+  "config": "mcp-stack",
+  "timestamp": "2026-06-23T08:51:45.859Z",
+  "quality": {
+    "overall": 52.98,
+    "categories": {
+      "A": {
+        "category": "A",
+        "label": "Design System API",
+        "score": 75.51,
+        "weight": 0.225,
+        "weightedScore": 16.99,
+        "errorCount": 1,
+        "warningCount": 1,
+        "issues": [
+          {
+            "type": "technical",
+            "severity": "error",
+            "source": "prop-validator",
+            "component": "FileField",
+            "message": "Prop \"onChange\" does not exist on <FileField>.",
+            "suggestion": "Remove the prop. Available props: variant, size, width, disabled, accept, multiple, name, render, dir, lang, hidden, inert, translate, onClick, onClickCapture, ….",
+            "location": {
+              "file": "TestApp.tsx",
+              "line": 277,
+              "column": 9
+            },
+            "details": {
+              "used": "onChange",
+              "available": [
+                "variant",
+                "size",
+                "width",
+                "disabled",
+                "accept",
+                "multiple",
+                "name",
+                "render",
+                "dir",
+                "lang",
+                "hidden",
+                "inert",
+                "translate",
+                "onClick",
+                "onClickCapture"
+              ]
+            }
+          },
+          {
+            "type": "technical",
+            "severity": "warning",
+            "source": "design-system-usage",
+            "component": "img",
+            "message": "Inline style on <img> bypasses the design system (width, height, objectFit, borderRadius).",
+            "suggestion": "Use Marigold layout components (Stack, Columns, Inset, Container) and theme tokens instead of inline styles.",
+            "location": {
+              "file": "TestApp.tsx",
+              "line": 293,
+              "column": 11
+            },
+            "details": {
+              "cssProperties": [
+                "width",
+                "height",
+                "objectFit",
+                "borderRadius"
+              ]
+            }
+          }
+        ]
+      },
+      "B": {
+        "category": "B",
+        "label": "Token Compliance",
+        "score": 0,
+        "weight": 0.1,
+        "weightedScore": 0,
+        "errorCount": 0,
+        "warningCount": 0,
+        "issues": []
+      },
+      "C": {
+        "category": "C",
+        "label": "DOM / Structure",
+        "score": 65,
+        "weight": 0.225,
+        "weightedScore": 14.63,
+        "errorCount": 1,
+        "warningCount": 0,
+        "issues": [
+          {
+            "type": "technical",
+            "severity": "error",
+            "source": "compiler",
+            "component": "TypeScript",
+            "message": "TS2305: Module '\"@internationalized/date\"' has no exported member 'TimeValue'.",
+            "suggestion": "Fix the TypeScript error reported by the compiler. The exact location is included in the issue location field.",
+            "location": {
+              "file": "TestApp.tsx",
+              "line": 2,
+              "column": 26
+            }
+          }
+        ]
+      },
+      "D": {
+        "category": "D",
+        "label": "Spatial & A11y",
+        "score": 0,
+        "weight": 0.225,
+        "weightedScore": 0,
+        "errorCount": 0,
+        "warningCount": 0,
+        "issues": []
+      },
+      "E": {
+        "category": "E",
+        "label": "Functional Completeness",
+        "score": 94.94,
+        "weight": 0.225,
+        "weightedScore": 21.36,
+        "errorCount": 0,
+        "warningCount": 0,
+        "issues": []
+      }
+    },
+    "renderSuccess": false
+  },
+  "efficiency": {
+    "durationMs": 1778073,
+    "costUsd": 6.085007500000001,
+    "inputTokens": 146,
+    "outputTokens": 84349,
+    "cacheReadTokens": 13434385,
+    "cacheCreationTokens": 128910,
+    "totalTokens": 84495,
+    "numTurns": 142
+  },
+  "report": {
+    "file": "TestApp.tsx",
+    "errors": [
+      {
+        "type": "technical",
+        "severity": "error",
+        "source": "compiler",
+        "component": "TypeScript",
+        "message": "TS2305: Module '\"@internationalized/date\"' has no exported member 'TimeValue'.",
+        "suggestion": "Fix the TypeScript error reported by the compiler. The exact location is included in the issue location field.",
+        "location": {
+          "file": "TestApp.tsx",
+          "line": 2,
+          "column": 26
+        }
+      },
+      {
+        "type": "technical",
+        "severity": "error",
+        "source": "prop-validator",
+        "component": "FileField",
+        "message": "Prop \"onChange\" does not exist on <FileField>.",
+        "suggestion": "Remove the prop. Available props: variant, size, width, disabled, accept, multiple, name, render, dir, lang, hidden, inert, translate, onClick, onClickCapture, ….",
+        "location": {
+          "file": "TestApp.tsx",
+          "line": 277,
+          "column": 9
+        },
+        "details": {
+          "used": "onChange",
+          "available": [
+            "variant",
+            "size",
+            "width",
+            "disabled",
+            "accept",
+            "multiple",
+            "name",
+            "render",
+            "dir",
+            "lang",
+            "hidden",
+            "inert",
+            "translate",
+            "onClick",
+            "onClickCapture"
+          ]
+        }
+      }
+    ],
+    "warnings": [
+      {
+        "type": "technical",
+        "severity": "warning",
+        "source": "design-system-usage",
+        "component": "img",
+        "message": "Inline style on <img> bypasses the design system (width, height, objectFit, borderRadius).",
+        "suggestion": "Use Marigold layout components (Stack, Columns, Inset, Container) and theme tokens instead of inline styles.",
+        "location": {
+          "file": "TestApp.tsx",
+          "line": 293,
+          "column": 11
+        },
+        "details": {
+          "cssProperties": [
+            "width",
+            "height",
+            "objectFit",
+            "borderRadius"
+          ]
+        }
+      }
+    ],
+    "passed": [
+      "Component composition",
+      "Overlay accessible names",
+      "Compound component placement",
+      "Section headers",
+      "Collection item ids",
+      "Layout usage",
+      "Table usage",
+      "Component conventions",
+      "Theme variant compliance"
+    ],
+    "metadata": {
+      "renderTimeMs": 0,
+      "componentsFound": [],
+      "checksRun": [
+        "technical",
+        "spatial",
+        "a11y"
+      ],
+      "coverage": {
+        "staticValuesChecked": 32,
+        "dynamicValuesSkipped": 30,
+        "spreadPropsBypassed": 0
+      },
+      "widthUtilization": null
+    },
+    "markdown": "marigold-validate: TestApp.tsx — 2 error(s), 1 warning(s)\n\n[error/technical] <FileField>: Prop \"onChange\" does not exist on <FileField>. (TestApp.tsx:277:9)\n  → Remove the prop. Available props: variant, size, width, disabled, accept, multiple, name, render, dir, lang, hidden, inert, translate, onClick, onClickCapture, ….\n  data: {used=onChange, available=[\"variant\",\"size\",\"width\",\"disabled\",\"accept\",\"multiple\",\"name\",\"render\", …]}\n[error/technical] <TypeScript>: TS2305: Module '\"@internationalized/date\"' has no exported member 'TimeValue'. (TestApp.tsx:2:26)\n  → Fix the TypeScript error reported by the compiler. The exact location is included in the issue location field.\n[warning/technical] <img>: Inline style on <img> bypasses the design system (width, height, objectFit, borderRadius). (TestApp.tsx:293:11)\n  → Use Marigold layout components (Stack, Columns, Inset, Container) and theme tokens instead of inline styles.\n  data: {cssProperties=[\"width\",\"height\",\"objectFit\",\"borderRadius\"]}\n\npassed: Component composition, Overlay accessible names, Compound component placement, Section headers, Collection item ids, Layout usage, Table usage, Component conventions, Theme variant compliance\n\nchecks run: technical, spatial, a11y"
+  },
+  "componentsFound": [],
+  "renderTimeMs": 0,
+  "sourceCode": "import { useState } from 'react';\nimport type { DateValue, TimeValue } from '@internationalized/date';\nimport {\n  Stack,\n  Inline,\n  Card,\n  Headline,\n  Text,\n  SectionMessage,\n  Loader,\n  Badge,\n  Button,\n  TextField,\n  TextArea,\n  Select,\n  ComboBox,\n  Autocomplete,\n  DatePicker,\n  TimeField,\n  Radio,\n  NumberField,\n  FileField,\n  TagField,\n  Checkbox,\n  Switch,\n  Accordion,\n  ToastProvider,\n  useToast,\n  Divider,\n  Inset,\n} from '@marigold/components';\n\nconst STEP_TITLES = [\n  'Personal Information',\n  'Event Details',\n  'Preferences',\n  'Review & Confirm',\n];\n\ninterface FormData {\n  fullName: string;\n  email: string;\n  phone: string;\n  company: string;\n  jobTitle: string;\n  profilePhoto: File | null;\n  eventDate: DateValue | null;\n  timeSlot: TimeValue | null;\n  sessionTrack: string;\n  dietaryRequirements: string;\n  numberOfGuests: number;\n  specialRequests: string;\n  tshirtSize: string;\n  topicsOfInterest: (string | number)[];\n  communicationPrefs: string[];\n  hasAccessibilityNeeds: boolean;\n  accessibilityDetails: string;\n}\n\nconst initialFormData: FormData = {\n  fullName: '',\n  email: '',\n  phone: '',\n  company: '',\n  jobTitle: '',\n  profilePhoto: null,\n  eventDate: null,\n  timeSlot: null,\n  sessionTrack: '',\n  dietaryRequirements: '',\n  numberOfGuests: 0,\n  specialRequests: '',\n  tshirtSize: '',\n  topicsOfInterest: [],\n  communicationPrefs: [],\n  hasAccessibilityNeeds: false,\n  accessibilityDetails: '',\n};\n\nfunction isValidEmail(email: string) {\n  return /^[^\\s@]+@[^\\s@]+\\.[^\\s@]+$/.test(email);\n}\n\nfunction generateConfirmationNumber() {\n  const chars = 'ABCDEFGHJKLMNPQRSTUVWXYZ23456789';\n  let result = 'EVT-';\n  for (let i = 0; i < 8; i++) {\n    result += chars[Math.floor(Math.random() * chars.length)];\n  }\n  return result;\n}\n\nfunction formatDate(date: DateValue | null) {\n  if (!date) return 'Not specified';\n  return `${String(date.day).padStart(2, '0')}/${String(date.month).padStart(2, '0')}/${date.year}`;\n}\n\nfunction formatTime(time: TimeValue | null) {\n  if (!time) return 'Not specified';\n  return `${String(time.hour).padStart(2, '0')}:${String(time.minute).padStart(2, '0')}`;\n}\n\nfunction RegistrationForm() {\n  const { addToast } = useToast();\n  const [step, setStep] = useState(1);\n  const [formData, setFormData] = useState<FormData>(initialFormData);\n  const [errors, setErrors] = useState<Record<string, string>>({});\n  const [termsAccepted, setTermsAccepted] = useState(false);\n  const [isSubmitting, setIsSubmitting] = useState(false);\n  const [isSuccess, setIsSuccess] = useState(false);\n  const [confirmationNumber, setConfirmationNumber] = useState('');\n  const [photoPreview, setPhotoPreview] = useState<string | null>(null);\n  const [accordionKeys, setAccordionKeys] = useState<Set<string | number>>(\n    new Set(['personal', 'eventDetails', 'preferences'])\n  );\n\n  const updateField = <K extends keyof FormData>(key: K, value: FormData[K]) => {\n    setFormData(prev => ({ ...prev, [key]: value }));\n    setErrors(prev => {\n      if (!prev[key]) return prev;\n      const next = { ...prev };\n      delete next[key];\n      return next;\n    });\n  };\n\n  const validateStep = (s: number): boolean => {\n    const newErrors: Record<string, string> = {};\n    if (s === 1) {\n      if (!formData.fullName.trim()) newErrors.fullName = 'Full name is required.';\n      if (!formData.email.trim()) {\n        newErrors.email = 'Email is required.';\n      } else if (!isValidEmail(formData.email)) {\n        newErrors.email = 'Please enter a valid email address.';\n      }\n    }\n    if (s === 2) {\n      if (!formData.eventDate) newErrors.eventDate = 'Event date is required.';\n    }\n    setErrors(newErrors);\n    return Object.keys(newErrors).length === 0;\n  };\n\n  const handleNext = () => {\n    if (validateStep(step)) setStep(s => s + 1);\n  };\n\n  const handleBack = () => {\n    setStep(s => s - 1);\n  };\n\n  const handleSubmit = () => {\n    if (!termsAccepted) return;\n    const confNum = generateConfirmationNumber();\n    setConfirmationNumber(confNum);\n    setIsSubmitting(true);\n    setTimeout(() => {\n      setIsSubmitting(false);\n      setIsSuccess(true);\n      addToast({ title: 'Registration submitted successfully', variant: 'success' });\n    }, 1200);\n  };\n\n  const handleReset = () => {\n    setStep(1);\n    setFormData(initialFormData);\n    setErrors({});\n    setTermsAccepted(false);\n    setIsSubmitting(false);\n    setIsSuccess(false);\n    setConfirmationNumber('');\n    setPhotoPreview(null);\n    setAccordionKeys(new Set(['personal', 'eventDetails', 'preferences']));\n  };\n\n  if (isSubmitting) {\n    return (\n      <Card>\n        <Inset space={10}>\n          <Stack space={4} alignX=\"center\">\n            <Loader />\n            <Text>Processing your registration…</Text>\n          </Stack>\n        </Inset>\n      </Card>\n    );\n  }\n\n  if (isSuccess) {\n    return (\n      <Card>\n        <Inset space={6}>\n          <Stack space={6}>\n            <SectionMessage variant=\"success\">\n              <SectionMessage.Title>Registration confirmed!</SectionMessage.Title>\n              <SectionMessage.Content>\n                Your registration has been successfully submitted.\n              </SectionMessage.Content>\n            </SectionMessage>\n            <Card>\n              <Inset space={4}>\n                <Stack space={3}>\n                  <Inline space={2}>\n                    <Text weight=\"bold\">Name:</Text>\n                    <Text>{formData.fullName}</Text>\n                  </Inline>\n                  <Inline space={2}>\n                    <Text weight=\"bold\">Email:</Text>\n                    <Text>{formData.email}</Text>\n                  </Inline>\n                  <Inline space={2}>\n                    <Text weight=\"bold\">Event Date:</Text>\n                    <Text>{formatDate(formData.eventDate)}</Text>\n                  </Inline>\n                  <Inline space={2}>\n                    <Text weight=\"bold\">Confirmation #:</Text>\n                    <Badge>{confirmationNumber}</Badge>\n                  </Inline>\n                </Stack>\n              </Inset>\n            </Card>\n            <Button variant=\"primary\" onPress={handleReset}>\n              Register Another\n            </Button>\n          </Stack>\n        </Inset>\n      </Card>\n    );\n  }\n\n  const renderStep1 = () => (\n    <Stack space={4}>\n      <TextField\n        label=\"Full Name\"\n        required\n        value={formData.fullName}\n        onChange={v => updateField('fullName', v)}\n        error={!!errors.fullName}\n        errorMessage={errors.fullName}\n      />\n      <TextField\n        label=\"Email\"\n        type=\"email\"\n        required\n        value={formData.email}\n        onChange={v => updateField('email', v)}\n        error={!!errors.email}\n        errorMessage={errors.email}\n      />\n      <TextField\n        label=\"Phone Number\"\n        type=\"tel\"\n        value={formData.phone}\n        onChange={v => updateField('phone', v)}\n      />\n      <TextField\n        label=\"Company / Organization\"\n        value={formData.company}\n        onChange={v => updateField('company', v)}\n      />\n      <Autocomplete\n        label=\"Job Title\"\n        value={formData.jobTitle}\n        onChange={v => updateField('jobTitle', v ?? '')}\n        menuTrigger=\"focus\"\n      >\n        <Autocomplete.Option id=\"Developer\">Developer</Autocomplete.Option>\n        <Autocomplete.Option id=\"Designer\">Designer</Autocomplete.Option>\n        <Autocomplete.Option id=\"Product Manager\">Product Manager</Autocomplete.Option>\n        <Autocomplete.Option id=\"Engineering Manager\">Engineering Manager</Autocomplete.Option>\n        <Autocomplete.Option id=\"CTO\">CTO</Autocomplete.Option>\n        <Autocomplete.Option id=\"Other\">Other</Autocomplete.Option>\n      </Autocomplete>\n      <FileField\n        label=\"Profile Photo\"\n        accept={['image/*']}\n        onChange={(files: any) => {\n          const list: FileList | null = files;\n          if (list && list.length > 0) {\n            const file = list[0];\n            updateField('profilePhoto', file);\n            setPhotoPreview(URL.createObjectURL(file));\n          } else {\n            updateField('profilePhoto', null);\n            setPhotoPreview(null);\n          }\n        }}\n      />\n      {photoPreview && (\n        <img\n          src={photoPreview}\n          alt=\"Profile photo preview\"\n          style={{ width: 80, height: 80, objectFit: 'cover', borderRadius: 4 }}\n        />\n      )}\n      <SectionMessage variant=\"info\">\n        <SectionMessage.Title>Privacy Notice</SectionMessage.Title>\n        <SectionMessage.Content>\n          Your information will only be used for this event.\n        </SectionMessage.Content>\n      </SectionMessage>\n    </Stack>\n  );\n\n  const renderStep2 = () => (\n    <Stack space={4}>\n      <DatePicker\n        label=\"Event Date\"\n        required\n        value={formData.eventDate}\n        onChange={v => updateField('eventDate', v)}\n        error={!!errors.eventDate}\n        errorMessage={errors.eventDate}\n      />\n      <TimeField\n        label=\"Preferred Time Slot\"\n        value={formData.timeSlot ?? undefined}\n        onChange={(v: TimeValue) => updateField('timeSlot', v)}\n      />\n      <Radio.Group\n        label=\"Session Track\"\n        value={formData.sessionTrack}\n        onChange={v => updateField('sessionTrack', v)}\n      >\n        <Radio value=\"Technical\">Technical</Radio>\n        <Radio value=\"Design\">Design</Radio>\n        <Radio value=\"Business\">Business</Radio>\n        <Radio value=\"Workshop\">Workshop</Radio>\n      </Radio.Group>\n      <ComboBox\n        label=\"Dietary Requirements\"\n        value={formData.dietaryRequirements}\n        onChange={v => updateField('dietaryRequirements', v ?? '')}\n        allowsCustomValue\n        menuTrigger=\"focus\"\n      >\n        <ComboBox.Option id=\"None\">None</ComboBox.Option>\n        <ComboBox.Option id=\"Vegetarian\">Vegetarian</ComboBox.Option>\n        <ComboBox.Option id=\"Vegan\">Vegan</ComboBox.Option>\n        <ComboBox.Option id=\"Gluten-Free\">Gluten-Free</ComboBox.Option>\n        <ComboBox.Option id=\"Kosher\">Kosher</ComboBox.Option>\n        <ComboBox.Option id=\"Halal\">Halal</ComboBox.Option>\n      </ComboBox>\n      <NumberField\n        label=\"Number of Guests\"\n        value={formData.numberOfGuests}\n        onChange={v => updateField('numberOfGuests', v)}\n        minValue={0}\n        maxValue={5}\n        width=\"1/3\"\n      />\n      <TextArea\n        label=\"Special Requests\"\n        value={formData.specialRequests}\n        onChange={v => updateField('specialRequests', v)}\n        rows={3}\n      />\n    </Stack>\n  );\n\n  const renderStep3 = () => (\n    <Stack space={4}>\n      <Select\n        label=\"T-Shirt Size\"\n        selectedKey={formData.tshirtSize || null}\n        onSelectionChange={k => updateField('tshirtSize', k as string)}\n      >\n        <Select.Option id=\"XS\">XS</Select.Option>\n        <Select.Option id=\"S\">S</Select.Option>\n        <Select.Option id=\"M\">M</Select.Option>\n        <Select.Option id=\"L\">L</Select.Option>\n        <Select.Option id=\"XL\">XL</Select.Option>\n        <Select.Option id=\"XXL\">XXL</Select.Option>\n      </Select>\n      <TagField\n        label=\"Topics of Interest\"\n        value={formData.topicsOfInterest}\n        onChange={keys => updateField('topicsOfInterest', keys)}\n      >\n        <TagField.Option id=\"AI/ML\">AI/ML</TagField.Option>\n        <TagField.Option id=\"Web Development\">Web Development</TagField.Option>\n        <TagField.Option id=\"Cloud\">Cloud</TagField.Option>\n        <TagField.Option id=\"Security\">Security</TagField.Option>\n        <TagField.Option id=\"DevOps\">DevOps</TagField.Option>\n        <TagField.Option id=\"Mobile\">Mobile</TagField.Option>\n        <TagField.Option id=\"Data Science\">Data Science</TagField.Option>\n      </TagField>\n      <Checkbox.Group\n        label=\"Communication Preferences\"\n        value={formData.communicationPrefs}\n        onChange={v => updateField('communicationPrefs', v)}\n      >\n        <Checkbox value=\"email-updates\" label=\"Email updates about the event\" />\n        <Checkbox value=\"sms-reminders\" label=\"SMS reminders\" />\n        <Checkbox value=\"post-event-survey\" label=\"Post-event survey\" />\n        <Checkbox value=\"newsletter\" label=\"Newsletter subscription\" />\n      </Checkbox.Group>\n      <Switch\n        label=\"I have accessibility requirements\"\n        selected={formData.hasAccessibilityNeeds}\n        onChange={(v: boolean) => updateField('hasAccessibilityNeeds', v)}\n      />\n      {formData.hasAccessibilityNeeds && (\n        <TextArea\n          label=\"Accessibility Details\"\n          value={formData.accessibilityDetails}\n          onChange={v => updateField('accessibilityDetails', v)}\n          rows={3}\n        />\n      )}\n    </Stack>\n  );\n\n  const renderStep4 = () => (\n    <Stack space={4}>\n      <Accordion\n        expandedKeys={accordionKeys}\n        onExpandedChange={setAccordionKeys}\n        allowsMultipleExpanded\n      >\n        <Accordion.Item id=\"personal\">\n          <Accordion.Header>Personal Information</Accordion.Header>\n          <Accordion.Content>\n            <Stack space={2}>\n              <Inline space={2}>\n                <Text weight=\"bold\">Name:</Text>\n                <Text>{formData.fullName || '—'}</Text>\n              </Inline>\n              <Inline space={2}>\n                <Text weight=\"bold\">Email:</Text>\n                <Text>{formData.email || '—'}</Text>\n              </Inline>\n              <Inline space={2}>\n                <Text weight=\"bold\">Phone:</Text>\n                <Text>{formData.phone || '—'}</Text>\n              </Inline>\n              <Inline space={2}>\n                <Text weight=\"bold\">Company:</Text>\n                <Text>{formData.company || '—'}</Text>\n              </Inline>\n              <Inline space={2}>\n                <Text weight=\"bold\">Job Title:</Text>\n                <Text>{formData.jobTitle || '—'}</Text>\n              </Inline>\n            </Stack>\n          </Accordion.Content>\n        </Accordion.Item>\n        <Accordion.Item id=\"eventDetails\">\n          <Accordion.Header>Event Details</Accordion.Header>\n          <Accordion.Content>\n            <Stack space={2}>\n              <Inline space={2}>\n                <Text weight=\"bold\">Date:</Text>\n                <Text>{formatDate(formData.eventDate)}</Text>\n              </Inline>\n              <Inline space={2}>\n                <Text weight=\"bold\">Time Slot:</Text>\n                <Text>{formatTime(formData.timeSlot)}</Text>\n              </Inline>\n              <Inline space={2}>\n                <Text weight=\"bold\">Session Track:</Text>\n                <Text>{formData.sessionTrack || '—'}</Text>\n              </Inline>\n              <Inline space={2}>\n                <Text weight=\"bold\">Dietary Requirements:</Text>\n                <Text>{formData.dietaryRequirements || '—'}</Text>\n              </Inline>\n              <Inline space={2}>\n                <Text weight=\"bold\">Number of Guests:</Text>\n                <Text>{formData.numberOfGuests}</Text>\n              </Inline>\n            </Stack>\n          </Accordion.Content>\n        </Accordion.Item>\n        <Accordion.Item id=\"preferences\">\n          <Accordion.Header>Preferences</Accordion.Header>\n          <Accordion.Content>\n            <Stack space={2}>\n              <Inline space={2}>\n                <Text weight=\"bold\">T-Shirt Size:</Text>\n                <Text>{formData.tshirtSize || '—'}</Text>\n              </Inline>\n              <Inline space={2}>\n                <Text weight=\"bold\">Topics:</Text>\n                <Text>{formData.topicsOfInterest.length > 0 ? formData.topicsOfInterest.join(', ') : '—'}</Text>\n              </Inline>\n              <Inline space={2}>\n                <Text weight=\"bold\">Communication:</Text>\n                <Text>{formData.communicationPrefs.length > 0 ? formData.communicationPrefs.join(', ') : '—'}</Text>\n              </Inline>\n            </Stack>\n          </Accordion.Content>\n        </Accordion.Item>\n      </Accordion>\n      <Divider />\n      <Checkbox\n        value=\"terms\"\n        checked={termsAccepted}\n        onChange={() => setTermsAccepted(v => !v)}\n        label=\"I agree to the terms and conditions\"\n        required\n      />\n    </Stack>\n  );\n\n  return (\n    <Card>\n      <Inset space={6}>\n        <Stack space={6}>\n          <Stack space={1}>\n            <Text variant=\"muted\">Step {step} of 4</Text>\n            <Headline level={2}>{STEP_TITLES[step - 1]}</Headline>\n          </Stack>\n          <Divider />\n          {step === 1 && renderStep1()}\n          {step === 2 && renderStep2()}\n          {step === 3 && renderStep3()}\n          {step === 4 && renderStep4()}\n          <Divider />\n          <Inline alignX=\"between\">\n            <Button\n              variant=\"secondary\"\n              onPress={handleBack}\n              disabled={step === 1}\n            >\n              Back\n            </Button>\n            {step < 4 ? (\n              <Button variant=\"primary\" onPress={handleNext}>\n                Next\n              </Button>\n            ) : (\n              <Button\n                variant=\"primary\"\n                onPress={handleSubmit}\n                disabled={!termsAccepted}\n              >\n                Submit Registration\n              </Button>\n            )}\n          </Inline>\n        </Stack>\n      </Inset>\n    </Card>\n  );\n}\n\nconst TestApp = () => (\n  <>\n    <ToastProvider position=\"bottom-right\" />\n    <RegistrationForm />\n  </>\n);\n\nexport default TestApp;\n",
+  "assertions": {
+    "passed": [
+      {
+        "id": "a-import-marigold",
+        "description": "Imports from @marigold/components",
+        "severity": "required",
+        "passed": true,
+        "evidence": "import from \"@marigold/components\" found"
+      },
+      {
+        "id": "a-text-field",
+        "description": "TextField for text inputs",
+        "severity": "required",
+        "passed": true,
+        "evidence": "<TextField> found"
+      },
+      {
+        "id": "a-datepicker",
+        "description": "DatePicker for event date",
+        "severity": "required",
+        "passed": true,
+        "evidence": "<DatePicker> found"
+      },
+      {
+        "id": "a-timefield",
+        "description": "TimeField for time slot",
+        "severity": "required",
+        "passed": true,
+        "evidence": "<TimeField> found"
+      },
+      {
+        "id": "a-radio",
+        "description": "Radio/RadioGroup for session track",
+        "severity": "required",
+        "passed": true,
+        "evidence": "matched: <Radio> found"
+      },
+      {
+        "id": "a-combobox",
+        "description": "ComboBox for dietary requirements",
+        "severity": "required",
+        "passed": true,
+        "evidence": "<ComboBox> found"
+      },
+      {
+        "id": "a-numberfield",
+        "description": "NumberField for guests",
+        "severity": "required",
+        "passed": true,
+        "evidence": "<NumberField> found"
+      },
+      {
+        "id": "a-select",
+        "description": "Select for t-shirt size",
+        "severity": "required",
+        "passed": true,
+        "evidence": "<Select> found"
+      },
+      {
+        "id": "a-tagfield",
+        "description": "TagField for topics of interest",
+        "severity": "required",
+        "passed": true,
+        "evidence": "<TagField> found"
+      },
+      {
+        "id": "a-checkbox",
+        "description": "Checkbox for communication preferences",
+        "severity": "required",
+        "passed": true,
+        "evidence": "matched: <Checkbox> found"
+      },
+      {
+        "id": "a-switch",
+        "description": "Switch for accessibility needs",
+        "severity": "required",
+        "passed": true,
+        "evidence": "<Switch> found"
+      },
+      {
+        "id": "a-textarea",
+        "description": "TextArea for special requests",
+        "severity": "required",
+        "passed": true,
+        "evidence": "<TextArea> found"
+      },
+      {
+        "id": "a-autocomplete",
+        "description": "Autocomplete for job title",
+        "severity": "required",
+        "passed": true,
+        "evidence": "<Autocomplete> found"
+      },
+      {
+        "id": "a-filefield",
+        "description": "FileField for profile photo",
+        "severity": "required",
+        "passed": true,
+        "evidence": "<FileField> found"
+      },
+      {
+        "id": "a-accordion",
+        "description": "Accordion for review sections",
+        "severity": "required",
+        "passed": true,
+        "evidence": "<Accordion> found"
+      },
+      {
+        "id": "a-button",
+        "description": "Button for navigation/submit",
+        "severity": "required",
+        "passed": true,
+        "evidence": "<Button> found"
+      },
+      {
+        "id": "a-card",
+        "description": "Card as form container",
+        "severity": "required",
+        "passed": true,
+        "evidence": "<Card> found"
+      },
+      {
+        "id": "a-section-message",
+        "description": "SectionMessage for info/success",
+        "severity": "required",
+        "passed": true,
+        "evidence": "<SectionMessage> found"
+      },
+      {
+        "id": "a-loader",
+        "description": "Loader for submission",
+        "severity": "recommended",
+        "passed": true,
+        "evidence": "<Loader> found"
+      },
+      {
+        "id": "a-step-state",
+        "description": "Multi-step state management (useState)",
+        "severity": "recommended",
+        "passed": true,
+        "evidence": "pattern \"/useState/\" found"
+      },
+      {
+        "id": "a-toast",
+        "description": "Toast notification after submission",
+        "severity": "recommended",
+        "passed": true,
+        "evidence": "matched: pattern \"/useToast/\" found"
+      }
+    ],
+    "failed": [
+      {
+        "id": "a-form",
+        "description": "Form component",
+        "severity": "required",
+        "passed": false,
+        "evidence": "<Form> not found"
+      }
+    ],
+    "passRate": 0.9545,
+    "requiredPassRate": 0.9474,
+    "weightedPassRate": 0.9494,
+    "total": 22
+  },
+  "validatePackageVersion": "0.0.1",
+  "playwrightVersion": null,
+  "resolvedModelId": "claude-sonnet-4-6",
+  "claudeCliVersion": "2.1.185 (Claude Code)",
+  "sessionId": "b36cfff2-ea7c-43cd-9a7e-0a6e5955189d"
+}

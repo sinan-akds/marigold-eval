@@ -1,0 +1,817 @@
+{
+  "runId": "haiku-mcp-stack-P-06-r1",
+  "promptId": "P-06",
+  "model": "haiku",
+  "config": "mcp-stack",
+  "timestamp": "2026-06-22T07:02:09.208Z",
+  "quality": {
+    "overall": 33.28,
+    "categories": {
+      "A": {
+        "category": "A",
+        "label": "Design System API",
+        "score": 60,
+        "weight": 0.225,
+        "weightedScore": 13.5,
+        "errorCount": 4,
+        "warningCount": 0,
+        "issues": [
+          {
+            "type": "technical",
+            "severity": "error",
+            "source": "prop-validator",
+            "component": "Stack",
+            "message": "Prop \"p\" does not exist on <Stack>.",
+            "suggestion": "Remove the prop. Available props: space, children, stretch, alignX, alignY, asList, role, aria-live, id, aria-label, aria-labelledby, aria-describedby, aria-details.",
+            "location": {
+              "file": "TestApp.tsx",
+              "line": 288,
+              "column": 22
+            },
+            "details": {
+              "used": "p",
+              "available": [
+                "space",
+                "children",
+                "stretch",
+                "alignX",
+                "alignY",
+                "asList",
+                "role",
+                "aria-live",
+                "id",
+                "aria-label",
+                "aria-labelledby",
+                "aria-describedby",
+                "aria-details"
+              ]
+            }
+          },
+          {
+            "type": "technical",
+            "severity": "error",
+            "source": "prop-validator",
+            "component": "SearchField",
+            "message": "Prop \"width\" value \"200px\" is not a known variant for <SearchField>.",
+            "suggestion": "Known values: auto, 0, 2, 0.5, 1, 1.5, 2.5, 3, 3.5, 4, 5, 6, 7, 8, 9, 10, 11, 12, 14, 16, 20, 24, 28, 32, 36, 40, 44, 48, 52, 56, 60, 64, 72, 80, 96, 1/2, 1/3, 2/3, 1/4, 2/4, 3/4, 1/5, 2/5, 3/5, 1/6, 2/6, 3/6, 4/6, 5/6, 1/12, 2/12, 3/12, 4/12, 5/12, 6/12, 7/12, 8/12, 9/12, 10/12, 11/12, full, fit, min, max, screen, svh, lvh, dvh, px, container.",
+            "location": {
+              "file": "TestApp.tsx",
+              "line": 305,
+              "column": 11
+            },
+            "details": {
+              "used": "200px",
+              "known": [
+                "auto",
+                "0",
+                "2",
+                "0.5",
+                "1",
+                "1.5",
+                "2.5",
+                "3",
+                "3.5",
+                "4",
+                "5",
+                "6",
+                "7",
+                "8",
+                "9",
+                "10",
+                "11",
+                "12",
+                "14",
+                "16",
+                "20",
+                "24",
+                "28",
+                "32",
+                "36",
+                "40",
+                "44",
+                "48",
+                "52",
+                "56",
+                "60",
+                "64",
+                "72",
+                "80",
+                "96",
+                "1/2",
+                "1/3",
+                "2/3",
+                "1/4",
+                "2/4",
+                "3/4",
+                "1/5",
+                "2/5",
+                "3/5",
+                "1/6",
+                "2/6",
+                "3/6",
+                "4/6",
+                "5/6",
+                "1/12",
+                "2/12",
+                "3/12",
+                "4/12",
+                "5/12",
+                "6/12",
+                "7/12",
+                "8/12",
+                "9/12",
+                "10/12",
+                "11/12",
+                "full",
+                "fit",
+                "min",
+                "max",
+                "screen",
+                "svh",
+                "lvh",
+                "dvh",
+                "px",
+                "container"
+              ]
+            }
+          },
+          {
+            "type": "technical",
+            "severity": "error",
+            "source": "prop-validator",
+            "component": "Switch",
+            "message": "Prop \"isSelected\" does not exist on <Switch>.",
+            "suggestion": "Replace \"isSelected\" with \"selected\".",
+            "location": {
+              "file": "TestApp.tsx",
+              "line": 385,
+              "column": 21
+            },
+            "details": {
+              "used": "isSelected",
+              "available": [
+                "variant",
+                "size",
+                "label",
+                "width",
+                "disabled",
+                "readOnly",
+                "selected",
+                "render",
+                "id",
+                "dir",
+                "lang",
+                "hidden",
+                "inert",
+                "translate",
+                "onClick"
+              ]
+            }
+          },
+          {
+            "type": "technical",
+            "severity": "error",
+            "source": "prop-validator",
+            "component": "Button",
+            "message": "Prop \"width\" does not exist on <Button>.",
+            "suggestion": "Remove the prop. Available props: variant, size, fullWidth, children, disabled, loading, render, id, dir, lang, hidden, inert, translate, onClick, onClickCapture, ….",
+            "location": {
+              "file": "TestApp.tsx",
+              "line": 477,
+              "column": 21
+            },
+            "details": {
+              "used": "width",
+              "available": [
+                "variant",
+                "size",
+                "fullWidth",
+                "children",
+                "disabled",
+                "loading",
+                "render",
+                "id",
+                "dir",
+                "lang",
+                "hidden",
+                "inert",
+                "translate",
+                "onClick",
+                "onClickCapture"
+              ]
+            }
+          }
+        ]
+      },
+      "B": {
+        "category": "B",
+        "label": "Token Compliance",
+        "score": 0,
+        "weight": 0.1,
+        "weightedScore": 0,
+        "errorCount": 0,
+        "warningCount": 0,
+        "issues": []
+      },
+      "C": {
+        "category": "C",
+        "label": "DOM / Structure",
+        "score": 1.01,
+        "weight": 0.225,
+        "weightedScore": 0.23,
+        "errorCount": 8,
+        "warningCount": 0,
+        "issues": [
+          {
+            "type": "technical",
+            "severity": "error",
+            "source": "compiler",
+            "component": "TypeScript",
+            "message": "TS2345: Argument of type '{ id: string; label: string; type: string; }' is not assignable to parameter of type 'never'.",
+            "suggestion": "Fix the TypeScript error reported by the compiler. The exact location is included in the issue location field.",
+            "location": {
+              "file": "TestApp.tsx",
+              "line": 194,
+              "column": 18
+            }
+          },
+          {
+            "type": "technical",
+            "severity": "error",
+            "source": "compiler",
+            "component": "TypeScript",
+            "message": "TS2345: Argument of type '{ id: string; label: string; type: string; }' is not assignable to parameter of type 'never'.",
+            "suggestion": "Fix the TypeScript error reported by the compiler. The exact location is included in the issue location field.",
+            "location": {
+              "file": "TestApp.tsx",
+              "line": 198,
+              "column": 18
+            }
+          },
+          {
+            "type": "technical",
+            "severity": "error",
+            "source": "compiler",
+            "component": "TypeScript",
+            "message": "TS2345: Argument of type '{ id: string; label: string; type: string; }' is not assignable to parameter of type 'never'.",
+            "suggestion": "Fix the TypeScript error reported by the compiler. The exact location is included in the issue location field.",
+            "location": {
+              "file": "TestApp.tsx",
+              "line": 202,
+              "column": 18
+            }
+          },
+          {
+            "type": "technical",
+            "severity": "error",
+            "source": "compiler",
+            "component": "TypeScript",
+            "message": "TS2345: Argument of type '{ id: string; label: string; type: string; }' is not assignable to parameter of type 'never'.",
+            "suggestion": "Fix the TypeScript error reported by the compiler. The exact location is included in the issue location field.",
+            "location": {
+              "file": "TestApp.tsx",
+              "line": 210,
+              "column": 18
+            }
+          },
+          {
+            "type": "technical",
+            "severity": "error",
+            "source": "compiler",
+            "component": "TypeScript",
+            "message": "TS2345: Argument of type '{ id: string; label: string; type: string; }' is not assignable to parameter of type 'never'.",
+            "suggestion": "Fix the TypeScript error reported by the compiler. The exact location is included in the issue location field.",
+            "location": {
+              "file": "TestApp.tsx",
+              "line": 214,
+              "column": 18
+            }
+          },
+          {
+            "type": "technical",
+            "severity": "error",
+            "source": "compiler",
+            "component": "TypeScript",
+            "message": "TS2339: Property 'id' does not exist on type 'never'.",
+            "suggestion": "Fix the TypeScript error reported by the compiler. The exact location is included in the issue location field.",
+            "location": {
+              "file": "TestApp.tsx",
+              "line": 415,
+              "column": 30
+            }
+          },
+          {
+            "type": "technical",
+            "severity": "error",
+            "source": "compiler",
+            "component": "TypeScript",
+            "message": "TS2339: Property 'id' does not exist on type 'never'.",
+            "suggestion": "Fix the TypeScript error reported by the compiler. The exact location is included in the issue location field.",
+            "location": {
+              "file": "TestApp.tsx",
+              "line": 415,
+              "column": 43
+            }
+          },
+          {
+            "type": "technical",
+            "severity": "error",
+            "source": "compiler",
+            "component": "TypeScript",
+            "message": "TS2339: Property 'label' does not exist on type 'never'.",
+            "suggestion": "Fix the TypeScript error reported by the compiler. The exact location is included in the issue location field.",
+            "location": {
+              "file": "TestApp.tsx",
+              "line": 416,
+              "column": 23
+            }
+          }
+        ]
+      },
+      "D": {
+        "category": "D",
+        "label": "Spatial & A11y",
+        "score": 0,
+        "weight": 0.225,
+        "weightedScore": 0,
+        "errorCount": 0,
+        "warningCount": 0,
+        "issues": []
+      },
+      "E": {
+        "category": "E",
+        "label": "Functional Completeness",
+        "score": 86.89,
+        "weight": 0.225,
+        "weightedScore": 19.55,
+        "errorCount": 0,
+        "warningCount": 0,
+        "issues": []
+      }
+    },
+    "renderSuccess": false
+  },
+  "efficiency": {
+    "durationMs": 182092,
+    "costUsd": 0.7638534000000002,
+    "inputTokens": 122,
+    "outputTokens": 14194,
+    "cacheReadTokens": 2850334,
+    "cacheCreationTokens": 203325,
+    "totalTokens": 14316,
+    "numTurns": 58
+  },
+  "report": {
+    "file": "TestApp.tsx",
+    "errors": [
+      {
+        "type": "technical",
+        "severity": "error",
+        "source": "compiler",
+        "component": "TypeScript",
+        "message": "TS2345: Argument of type '{ id: string; label: string; type: string; }' is not assignable to parameter of type 'never'.",
+        "suggestion": "Fix the TypeScript error reported by the compiler. The exact location is included in the issue location field.",
+        "location": {
+          "file": "TestApp.tsx",
+          "line": 194,
+          "column": 18
+        }
+      },
+      {
+        "type": "technical",
+        "severity": "error",
+        "source": "compiler",
+        "component": "TypeScript",
+        "message": "TS2345: Argument of type '{ id: string; label: string; type: string; }' is not assignable to parameter of type 'never'.",
+        "suggestion": "Fix the TypeScript error reported by the compiler. The exact location is included in the issue location field.",
+        "location": {
+          "file": "TestApp.tsx",
+          "line": 198,
+          "column": 18
+        }
+      },
+      {
+        "type": "technical",
+        "severity": "error",
+        "source": "compiler",
+        "component": "TypeScript",
+        "message": "TS2345: Argument of type '{ id: string; label: string; type: string; }' is not assignable to parameter of type 'never'.",
+        "suggestion": "Fix the TypeScript error reported by the compiler. The exact location is included in the issue location field.",
+        "location": {
+          "file": "TestApp.tsx",
+          "line": 202,
+          "column": 18
+        }
+      },
+      {
+        "type": "technical",
+        "severity": "error",
+        "source": "compiler",
+        "component": "TypeScript",
+        "message": "TS2345: Argument of type '{ id: string; label: string; type: string; }' is not assignable to parameter of type 'never'.",
+        "suggestion": "Fix the TypeScript error reported by the compiler. The exact location is included in the issue location field.",
+        "location": {
+          "file": "TestApp.tsx",
+          "line": 210,
+          "column": 18
+        }
+      },
+      {
+        "type": "technical",
+        "severity": "error",
+        "source": "compiler",
+        "component": "TypeScript",
+        "message": "TS2345: Argument of type '{ id: string; label: string; type: string; }' is not assignable to parameter of type 'never'.",
+        "suggestion": "Fix the TypeScript error reported by the compiler. The exact location is included in the issue location field.",
+        "location": {
+          "file": "TestApp.tsx",
+          "line": 214,
+          "column": 18
+        }
+      },
+      {
+        "type": "technical",
+        "severity": "error",
+        "source": "compiler",
+        "component": "TypeScript",
+        "message": "TS2339: Property 'id' does not exist on type 'never'.",
+        "suggestion": "Fix the TypeScript error reported by the compiler. The exact location is included in the issue location field.",
+        "location": {
+          "file": "TestApp.tsx",
+          "line": 415,
+          "column": 30
+        }
+      },
+      {
+        "type": "technical",
+        "severity": "error",
+        "source": "compiler",
+        "component": "TypeScript",
+        "message": "TS2339: Property 'id' does not exist on type 'never'.",
+        "suggestion": "Fix the TypeScript error reported by the compiler. The exact location is included in the issue location field.",
+        "location": {
+          "file": "TestApp.tsx",
+          "line": 415,
+          "column": 43
+        }
+      },
+      {
+        "type": "technical",
+        "severity": "error",
+        "source": "compiler",
+        "component": "TypeScript",
+        "message": "TS2339: Property 'label' does not exist on type 'never'.",
+        "suggestion": "Fix the TypeScript error reported by the compiler. The exact location is included in the issue location field.",
+        "location": {
+          "file": "TestApp.tsx",
+          "line": 416,
+          "column": 23
+        }
+      },
+      {
+        "type": "technical",
+        "severity": "error",
+        "source": "prop-validator",
+        "component": "Stack",
+        "message": "Prop \"p\" does not exist on <Stack>.",
+        "suggestion": "Remove the prop. Available props: space, children, stretch, alignX, alignY, asList, role, aria-live, id, aria-label, aria-labelledby, aria-describedby, aria-details.",
+        "location": {
+          "file": "TestApp.tsx",
+          "line": 288,
+          "column": 22
+        },
+        "details": {
+          "used": "p",
+          "available": [
+            "space",
+            "children",
+            "stretch",
+            "alignX",
+            "alignY",
+            "asList",
+            "role",
+            "aria-live",
+            "id",
+            "aria-label",
+            "aria-labelledby",
+            "aria-describedby",
+            "aria-details"
+          ]
+        }
+      },
+      {
+        "type": "technical",
+        "severity": "error",
+        "source": "prop-validator",
+        "component": "SearchField",
+        "message": "Prop \"width\" value \"200px\" is not a known variant for <SearchField>.",
+        "suggestion": "Known values: auto, 0, 2, 0.5, 1, 1.5, 2.5, 3, 3.5, 4, 5, 6, 7, 8, 9, 10, 11, 12, 14, 16, 20, 24, 28, 32, 36, 40, 44, 48, 52, 56, 60, 64, 72, 80, 96, 1/2, 1/3, 2/3, 1/4, 2/4, 3/4, 1/5, 2/5, 3/5, 1/6, 2/6, 3/6, 4/6, 5/6, 1/12, 2/12, 3/12, 4/12, 5/12, 6/12, 7/12, 8/12, 9/12, 10/12, 11/12, full, fit, min, max, screen, svh, lvh, dvh, px, container.",
+        "location": {
+          "file": "TestApp.tsx",
+          "line": 305,
+          "column": 11
+        },
+        "details": {
+          "used": "200px",
+          "known": [
+            "auto",
+            "0",
+            "2",
+            "0.5",
+            "1",
+            "1.5",
+            "2.5",
+            "3",
+            "3.5",
+            "4",
+            "5",
+            "6",
+            "7",
+            "8",
+            "9",
+            "10",
+            "11",
+            "12",
+            "14",
+            "16",
+            "20",
+            "24",
+            "28",
+            "32",
+            "36",
+            "40",
+            "44",
+            "48",
+            "52",
+            "56",
+            "60",
+            "64",
+            "72",
+            "80",
+            "96",
+            "1/2",
+            "1/3",
+            "2/3",
+            "1/4",
+            "2/4",
+            "3/4",
+            "1/5",
+            "2/5",
+            "3/5",
+            "1/6",
+            "2/6",
+            "3/6",
+            "4/6",
+            "5/6",
+            "1/12",
+            "2/12",
+            "3/12",
+            "4/12",
+            "5/12",
+            "6/12",
+            "7/12",
+            "8/12",
+            "9/12",
+            "10/12",
+            "11/12",
+            "full",
+            "fit",
+            "min",
+            "max",
+            "screen",
+            "svh",
+            "lvh",
+            "dvh",
+            "px",
+            "container"
+          ]
+        }
+      },
+      {
+        "type": "technical",
+        "severity": "error",
+        "source": "prop-validator",
+        "component": "Switch",
+        "message": "Prop \"isSelected\" does not exist on <Switch>.",
+        "suggestion": "Replace \"isSelected\" with \"selected\".",
+        "location": {
+          "file": "TestApp.tsx",
+          "line": 385,
+          "column": 21
+        },
+        "details": {
+          "used": "isSelected",
+          "available": [
+            "variant",
+            "size",
+            "label",
+            "width",
+            "disabled",
+            "readOnly",
+            "selected",
+            "render",
+            "id",
+            "dir",
+            "lang",
+            "hidden",
+            "inert",
+            "translate",
+            "onClick"
+          ]
+        }
+      },
+      {
+        "type": "technical",
+        "severity": "error",
+        "source": "prop-validator",
+        "component": "Button",
+        "message": "Prop \"width\" does not exist on <Button>.",
+        "suggestion": "Remove the prop. Available props: variant, size, fullWidth, children, disabled, loading, render, id, dir, lang, hidden, inert, translate, onClick, onClickCapture, ….",
+        "location": {
+          "file": "TestApp.tsx",
+          "line": 477,
+          "column": 21
+        },
+        "details": {
+          "used": "width",
+          "available": [
+            "variant",
+            "size",
+            "fullWidth",
+            "children",
+            "disabled",
+            "loading",
+            "render",
+            "id",
+            "dir",
+            "lang",
+            "hidden",
+            "inert",
+            "translate",
+            "onClick",
+            "onClickCapture"
+          ]
+        }
+      }
+    ],
+    "warnings": [],
+    "passed": [
+      "Component composition",
+      "Overlay accessible names",
+      "Compound component placement",
+      "Section headers",
+      "Collection item ids",
+      "Design system usage",
+      "Layout usage",
+      "Table usage",
+      "Component conventions",
+      "Theme variant compliance"
+    ],
+    "metadata": {
+      "renderTimeMs": 0,
+      "componentsFound": [],
+      "checksRun": [
+        "technical",
+        "spatial",
+        "a11y"
+      ],
+      "coverage": {
+        "staticValuesChecked": 23,
+        "dynamicValuesSkipped": 18,
+        "spreadPropsBypassed": 0
+      },
+      "widthUtilization": null
+    },
+    "markdown": "marigold-validate: TestApp.tsx — 12 error(s), 0 warning(s)\n\n[error/technical] <Button>: Prop \"width\" does not exist on <Button>. (TestApp.tsx:477:21)\n  → Remove the prop. Available props: variant, size, fullWidth, children, disabled, loading, render, id, dir, lang, hidden, inert, translate, onClick, onClickCapture, ….\n  data: {used=width, available=[\"variant\",\"size\",\"fullWidth\",\"children\",\"disabled\",\"loading\",\"render\",\"id\", …]}\n[error/technical] <SearchField>: Prop \"width\" value \"200px\" is not a known variant for <SearchField>. (TestApp.tsx:305:11)\n  → Known values: auto, 0, 2, 0.5, 1, 1.5, 2.5, 3, 3.5, 4, 5, 6, 7, 8, 9, 10, 11, 12, 14, 16, 20, 24, 28, 32, 36, 40, 44, 48, 52, 56, 60, 64, 72, 80, 96, 1/2, 1/3, 2/3, 1/4, 2/4, 3/4, 1/5, 2/5, 3/5, 1/6, 2/6, 3/6, 4/6, 5/6, 1/12, 2/12, 3/12, 4/12, 5/12, 6/12, 7/12, 8/12, 9/12, 10/12, 11/12, full, fit, min, max, screen, svh, lvh, dvh, px, container.\n  data: {used=200px, known=[\"auto\",\"0\",\"2\",\"0.5\",\"1\",\"1.5\",\"2.5\",\"3\", …]}\n[error/technical] <Stack>: Prop \"p\" does not exist on <Stack>. (TestApp.tsx:288:22)\n  → Remove the prop. Available props: space, children, stretch, alignX, alignY, asList, role, aria-live, id, aria-label, aria-labelledby, aria-describedby, aria-details.\n  data: {used=p, available=[\"space\",\"children\",\"stretch\",\"alignX\",\"alignY\",\"asList\",\"role\",\"aria-live\", …]}\n[error/technical] <Switch>: Prop \"isSelected\" does not exist on <Switch>. (TestApp.tsx:385:21)\n  → Replace \"isSelected\" with \"selected\".\n  data: {used=isSelected, available=[\"variant\",\"size\",\"label\",\"width\",\"disabled\",\"readOnly\",\"selected\",\"render\", …]}\n[error/technical] <TypeScript>: TS2345: Argument of type '{ id: string; label: string; type: string; }' is not assignable to parameter of type 'never'. (TestApp.tsx:194:18)\n  → Fix the TypeScript error reported by the compiler. The exact location is included in the issue location field.\n[error/technical] <TypeScript>: TS2345: Argument of type '{ id: string; label: string; type: string; }' is not assignable to parameter of type 'never'. (TestApp.tsx:198:18)\n  → Fix the TypeScript error reported by the compiler. The exact location is included in the issue location field.\n[error/technical] <TypeScript>: TS2345: Argument of type '{ id: string; label: string; type: string; }' is not assignable to parameter of type 'never'. (TestApp.tsx:202:18)\n  → Fix the TypeScript error reported by the compiler. The exact location is included in the issue location field.\n[error/technical] <TypeScript>: TS2345: Argument of type '{ id: string; label: string; type: string; }' is not assignable to parameter of type 'never'. (TestApp.tsx:210:18)\n  → Fix the TypeScript error reported by the compiler. The exact location is included in the issue location field.\n[error/technical] <TypeScript>: TS2345: Argument of type '{ id: string; label: string; type: string; }' is not assignable to parameter of type 'never'. (TestApp.tsx:214:18)\n  → Fix the TypeScript error reported by the compiler. The exact location is included in the issue location field.\n[error/technical] <TypeScript>: TS2339: Property 'id' does not exist on type 'never'. (TestApp.tsx:415:30)\n  → Fix the TypeScript error reported by the compiler. The exact location is included in the issue location field.\n[error/technical] <TypeScript>: TS2339: Property 'id' does not exist on type 'never'. (TestApp.tsx:415:43)\n  → Fix the TypeScript error reported by the compiler. The exact location is included in the issue location field.\n[error/technical] <TypeScript>: TS2339: Property 'label' does not exist on type 'never'. (TestApp.tsx:416:23)\n  → Fix the TypeScript error reported by the compiler. The exact location is included in the issue location field.\n\npassed: Component composition, Overlay accessible names, Compound component placement, Section headers, Collection item ids, Design system usage, Layout usage, Table usage, Component conventions, Theme variant compliance\n\nchecks run: technical, spatial, a11y"
+  },
+  "componentsFound": [],
+  "renderTimeMs": 0,
+  "sourceCode": "import { useState, useMemo } from 'react';\nimport {\n  Button,\n  Card,\n  Checkbox,\n  Drawer,\n  Headline,\n  Inline,\n  Pagination,\n  SearchField,\n  Select,\n  Slider,\n  Stack,\n  Switch,\n  Tag,\n  Text,\n  Tiles,\n} from '@marigold/components';\n\ninterface Product {\n  id: number;\n  name: string;\n  price: number;\n  status: 'New' | 'Sale' | 'Sold Out' | undefined;\n  description: string;\n  soldOut: boolean;\n  category: 'T-Shirts' | 'Hoodies' | 'Accessories' | 'Posters' | 'Stickers';\n  size?: 'XS' | 'S' | 'M' | 'L' | 'XL';\n  inStock: boolean;\n}\n\nconst products: Product[] = [\n  {\n    id: 1,\n    name: 'Classic Logo T-Shirt',\n    price: 24.99,\n    status: 'New',\n    description: 'High-quality cotton t-shirt with our signature logo.',\n    soldOut: false,\n    category: 'T-Shirts',\n    size: 'M',\n    inStock: true,\n  },\n  {\n    id: 2,\n    name: 'Premium Hoodie',\n    price: 59.99,\n    status: 'Sale',\n    description: 'Warm and comfortable hoodie perfect for any season.',\n    soldOut: false,\n    category: 'Hoodies',\n    size: 'L',\n    inStock: true,\n  },\n  {\n    id: 3,\n    name: 'Branded Cap',\n    price: 19.99,\n    status: undefined,\n    description: 'Adjustable baseball cap with embroidered logo.',\n    soldOut: false,\n    category: 'Accessories',\n    inStock: true,\n  },\n  {\n    id: 4,\n    name: 'Vintage Poster',\n    price: 14.99,\n    status: undefined,\n    description: 'Limited edition vintage-style poster for your room.',\n    soldOut: true,\n    category: 'Posters',\n    inStock: false,\n  },\n  {\n    id: 5,\n    name: 'Sticker Pack',\n    price: 4.99,\n    status: 'New',\n    description: 'Set of 10 unique weatherproof stickers.',\n    soldOut: false,\n    category: 'Stickers',\n    inStock: true,\n  },\n  {\n    id: 6,\n    name: 'Winter Beanie',\n    price: 22.99,\n    status: undefined,\n    description: 'Cozy knit beanie for cold weather days.',\n    soldOut: true,\n    category: 'Accessories',\n    inStock: false,\n  },\n  {\n    id: 7,\n    name: 'Retro Graphic Tee',\n    price: 29.99,\n    status: 'Sale',\n    description: 'Retro-inspired design on premium cotton blend.',\n    soldOut: false,\n    category: 'T-Shirts',\n    size: 'S',\n    inStock: true,\n  },\n  {\n    id: 8,\n    name: 'Oversized Hoodie',\n    price: 64.99,\n    status: undefined,\n    description: 'Relaxed fit oversized hoodie for ultimate comfort.',\n    soldOut: false,\n    category: 'Hoodies',\n    size: 'XL',\n    inStock: true,\n  },\n];\n\ninterface Filters {\n  searchQuery: string;\n  sortBy: string;\n  categories: Set<string>;\n  priceRange: [number, number];\n  sizes: Set<string>;\n  inStockOnly: boolean;\n}\n\nconst TestApp = () => {\n  const [filters, setFilters] = useState<Filters>({\n    searchQuery: '',\n    sortBy: 'newest',\n    categories: new Set(),\n    priceRange: [0, 100],\n    sizes: new Set(),\n    inStockOnly: false,\n  });\n\n  const [currentPage, setCurrentPage] = useState(1);\n  const [tempFilters, setTempFilters] = useState<Filters>(filters);\n\n  const itemsPerPage = 8;\n\n  const filteredProducts = useMemo(() => {\n    let result = products.filter(product => {\n      const matchesSearch =\n        product.name.toLowerCase().includes(filters.searchQuery.toLowerCase()) ||\n        product.description.toLowerCase().includes(filters.searchQuery.toLowerCase());\n\n      const matchesCategory =\n        filters.categories.size === 0 || filters.categories.has(product.category);\n\n      const matchesPrice =\n        product.price >= filters.priceRange[0] && product.price <= filters.priceRange[1];\n\n      const matchesSize =\n        filters.sizes.size === 0 ||\n        (product.size && filters.sizes.has(product.size));\n\n      const matchesStock = !filters.inStockOnly || product.inStock;\n\n      return matchesSearch && matchesCategory && matchesPrice && matchesSize && matchesStock;\n    });\n\n    if (filters.sortBy === 'price-low-high') {\n      result.sort((a, b) => a.price - b.price);\n    } else if (filters.sortBy === 'price-high-low') {\n      result.sort((a, b) => b.price - a.price);\n    } else if (filters.sortBy === 'most-popular') {\n      result.sort(() => Math.random() - 0.5);\n    }\n\n    return result;\n  }, [filters]);\n\n  const paginatedProducts = useMemo(() => {\n    const startIdx = (currentPage - 1) * itemsPerPage;\n    return filteredProducts.slice(startIdx, startIdx + itemsPerPage);\n  }, [filteredProducts, currentPage]);\n\n  const totalPages = Math.ceil(filteredProducts.length / itemsPerPage);\n\n  const hasActiveFilters =\n    filters.searchQuery ||\n    filters.categories.size > 0 ||\n    filters.priceRange[0] !== 0 ||\n    filters.priceRange[1] !== 100 ||\n    filters.sizes.size > 0 ||\n    filters.inStockOnly;\n\n  const getAppliedFiltersChips = () => {\n    const chips = [];\n\n    if (filters.searchQuery) {\n      chips.push({ id: `search-${filters.searchQuery}`, label: `Search: ${filters.searchQuery}`, type: 'search' });\n    }\n\n    filters.categories.forEach(cat => {\n      chips.push({ id: `cat-${cat}`, label: `Category: ${cat}`, type: 'category' });\n    });\n\n    if (filters.priceRange[0] !== 0 || filters.priceRange[1] !== 100) {\n      chips.push({\n        id: 'price',\n        label: `Price: $${filters.priceRange[0]} - $${filters.priceRange[1]}`,\n        type: 'price',\n      });\n    }\n\n    filters.sizes.forEach(size => {\n      chips.push({ id: `size-${size}`, label: `Size: ${size}`, type: 'size' });\n    });\n\n    if (filters.inStockOnly) {\n      chips.push({ id: 'stock', label: 'In stock only', type: 'stock' });\n    }\n\n    return chips;\n  };\n\n  const removeChip = (chipId: string) => {\n    const [type, value] = chipId.split('-');\n\n    if (type === 'search') {\n      setFilters(f => ({ ...f, searchQuery: '' }));\n      setCurrentPage(1);\n    } else if (type === 'cat') {\n      setFilters(f => {\n        const newCats = new Set(f.categories);\n        newCats.delete(value);\n        return { ...f, categories: newCats };\n      });\n      setCurrentPage(1);\n    } else if (type === 'price') {\n      setFilters(f => ({ ...f, priceRange: [0, 100] }));\n      setCurrentPage(1);\n    } else if (type === 'size') {\n      setFilters(f => {\n        const newSizes = new Set(f.sizes);\n        newSizes.delete(value);\n        return { ...f, sizes: newSizes };\n      });\n      setCurrentPage(1);\n    } else if (type === 'stock') {\n      setFilters(f => ({ ...f, inStockOnly: false }));\n      setCurrentPage(1);\n    }\n  };\n\n  const clearAllFilters = () => {\n    setFilters({\n      searchQuery: '',\n      sortBy: 'newest',\n      categories: new Set(),\n      priceRange: [0, 100],\n      sizes: new Set(),\n      inStockOnly: false,\n    });\n    setTempFilters({\n      searchQuery: '',\n      sortBy: 'newest',\n      categories: new Set(),\n      priceRange: [0, 100],\n      sizes: new Set(),\n      inStockOnly: false,\n    });\n    setCurrentPage(1);\n  };\n\n  const applyFilters = () => {\n    setFilters(tempFilters);\n    setCurrentPage(1);\n  };\n\n  const resetFilterPanel = () => {\n    setTempFilters({\n      searchQuery: filters.searchQuery,\n      sortBy: filters.sortBy,\n      categories: new Set(filters.categories),\n      priceRange: [...filters.priceRange] as [number, number],\n      sizes: new Set(filters.sizes),\n      inStockOnly: filters.inStockOnly,\n    });\n  };\n\n  const appliedChips = getAppliedFiltersChips();\n\n  return (\n    <Stack space={6} p={6}>\n      {/* Header */}\n      <Stack space={2}>\n        <Headline level={1}>Merchandise Store</Headline>\n        <Text>Browse our collection of branded merchandise.</Text>\n      </Stack>\n\n      {/* Toolbar */}\n      <Inline space={4} alignY=\"input\" noWrap>\n        <SearchField\n          label=\"\"\n          value={filters.searchQuery}\n          onChange={(value: string) => {\n            setFilters(f => ({ ...f, searchQuery: value }));\n            setCurrentPage(1);\n          }}\n          placeholder=\"Search products...\"\n          width=\"200px\"\n        />\n        <Select\n          label=\"\"\n          selectedKey={filters.sortBy}\n          onSelectionChange={(key: any) => {\n            setFilters(f => ({ ...f, sortBy: key }));\n          }}\n          width=\"fit\"\n        >\n          <Select.Option id=\"newest\">Newest</Select.Option>\n          <Select.Option id=\"price-low-high\">Price: Low to High</Select.Option>\n          <Select.Option id=\"price-high-low\">Price: High to Low</Select.Option>\n          <Select.Option id=\"most-popular\">Most Popular</Select.Option>\n        </Select>\n        <Drawer.Trigger>\n          <Button variant=\"secondary\">Filters</Button>\n          <Drawer>\n            <Drawer.Title>Filters</Drawer.Title>\n            <Drawer.Content>\n              <Stack space={6}>\n                {/* Category */}\n                <Stack space={2}>\n                  <Text weight=\"bold\">Category</Text>\n                  <Checkbox.Group\n                    value={Array.from(tempFilters.categories)}\n                    onChange={(keys: any) => {\n                      setTempFilters(f => ({ ...f, categories: new Set(keys) }));\n                    }}\n                  >\n                    <Checkbox value=\"T-Shirts\" label=\"T-Shirts\" />\n                    <Checkbox value=\"Hoodies\" label=\"Hoodies\" />\n                    <Checkbox value=\"Accessories\" label=\"Accessories\" />\n                    <Checkbox value=\"Posters\" label=\"Posters\" />\n                    <Checkbox value=\"Stickers\" label=\"Stickers\" />\n                  </Checkbox.Group>\n                </Stack>\n\n                {/* Price Range */}\n                <Stack space={2}>\n                  <Text weight=\"bold\">Price Range</Text>\n                  <Slider\n                    label=\"\"\n                    minValue={0}\n                    maxValue={100}\n                    step={5}\n                    value={tempFilters.priceRange}\n                    onChange={(value: any) => {\n                      setTempFilters(f => ({ ...f, priceRange: value }));\n                    }}\n                    formatOptions={{ style: 'currency', currency: 'USD' }}\n                    thumbLabels={['min', 'max']}\n                  />\n                </Stack>\n\n                {/* Size */}\n                <Stack space={2}>\n                  <Text weight=\"bold\">Size</Text>\n                  <Checkbox.Group\n                    value={Array.from(tempFilters.sizes)}\n                    onChange={(keys: any) => {\n                      setTempFilters(f => ({ ...f, sizes: new Set(keys) }));\n                    }}\n                  >\n                    <Checkbox value=\"XS\" label=\"XS\" />\n                    <Checkbox value=\"S\" label=\"S\" />\n                    <Checkbox value=\"M\" label=\"M\" />\n                    <Checkbox value=\"L\" label=\"L\" />\n                    <Checkbox value=\"XL\" label=\"XL\" />\n                  </Checkbox.Group>\n                </Stack>\n\n                {/* Availability */}\n                <Stack space={2}>\n                  <Text weight=\"bold\">Availability</Text>\n                  <Switch\n                    label=\"In stock only\"\n                    onChange={(checked: boolean) => {\n                      setTempFilters(f => ({ ...f, inStockOnly: checked }));\n                    }}\n                    isSelected={tempFilters.inStockOnly}\n                  />\n                </Stack>\n              </Stack>\n            </Drawer.Content>\n            <Drawer.Actions>\n              <Button\n                variant=\"secondary\"\n                onPress={resetFilterPanel}\n              >\n                Reset\n              </Button>\n              <Button variant=\"primary\" onPress={applyFilters} slot=\"close\">\n                Apply Filters\n              </Button>\n            </Drawer.Actions>\n          </Drawer>\n        </Drawer.Trigger>\n      </Inline>\n\n      {/* Applied Filters */}\n      {appliedChips.length > 0 ? (\n        <Stack space={3}>\n          <Tag.Group\n            onRemove={(keys: any) => {\n              keys.forEach((key: string) => removeChip(key));\n            }}\n            removeAll\n          >\n            {appliedChips.map(chip => (\n              <Tag key={chip.id} id={chip.id}>\n                {chip.label}\n              </Tag>\n            ))}\n          </Tag.Group>\n          <Button variant=\"secondary\" size=\"small\" onPress={clearAllFilters}>\n            Clear all filters\n          </Button>\n        </Stack>\n      ) : (\n        <Text color=\"muted-foreground\" fontStyle=\"italic\">\n          No filters applied\n        </Text>\n      )}\n\n      {/* Product Grid or Empty State */}\n      {filteredProducts.length === 0 ? (\n        <Stack space={4} alignX=\"center\" alignY=\"center\" stretch>\n          <Headline level={2}>No products found</Headline>\n          <Text>Try adjusting your filters or search query.</Text>\n          <Button variant=\"primary\" onPress={clearAllFilters}>\n            Clear all filters\n          </Button>\n        </Stack>\n      ) : (\n        <>\n          <Tiles tilesWidth=\"400px\" space={4} equalHeight>\n            {paginatedProducts.map(product => (\n              <Card key={product.id} p={4}>\n                <Stack space={3}>\n                  {/* Status Badge */}\n                  {product.status && (\n                    <Text\n                      fontSize=\"xs\"\n                      weight=\"bold\"\n                      color={\n                        product.status === 'New'\n                          ? 'success'\n                          : product.status === 'Sale'\n                            ? 'warning'\n                            : 'destructive'\n                      }\n                    >\n                      {product.status}\n                    </Text>\n                  )}\n\n                  {/* Product Name */}\n                  <Headline level={4}>{product.name}</Headline>\n\n                  {/* Price */}\n                  <Text weight=\"bold\" fontSize=\"lg\">\n                    ${product.price.toFixed(2)}\n                  </Text>\n\n                  {/* Description */}\n                  <Text fontSize=\"sm\">{product.description}</Text>\n\n                  {/* Add to Cart Button */}\n                  <Button\n                    variant={product.soldOut ? 'secondary' : 'primary'}\n                    disabled={product.soldOut}\n                    width=\"100%\"\n                  >\n                    {product.soldOut ? 'Sold Out' : 'Add to Cart'}\n                  </Button>\n                </Stack>\n              </Card>\n            ))}\n          </Tiles>\n\n          {/* Pagination */}\n          {totalPages > 0 && (\n            <Stack space={3} alignX=\"center\">\n              <Text fontSize=\"sm\">\n                Page {currentPage} of {totalPages}\n              </Text>\n              <Pagination\n                totalItems={filteredProducts.length}\n                pageSize={itemsPerPage}\n                page={currentPage}\n                onChange={(page: number) => {\n                  setCurrentPage(page);\n                  window.scrollTo({ top: 0, behavior: 'smooth' });\n                }}\n              />\n            </Stack>\n          )}\n        </>\n      )}\n    </Stack>\n  );\n};\n\nexport default TestApp;\n",
+  "assertions": {
+    "passed": [
+      {
+        "id": "a-import-marigold",
+        "description": "Imports from @marigold/components",
+        "severity": "required",
+        "passed": true,
+        "evidence": "import from \"@marigold/components\" found"
+      },
+      {
+        "id": "a-search",
+        "description": "SearchField for product search",
+        "severity": "required",
+        "passed": true,
+        "evidence": "<SearchField> found"
+      },
+      {
+        "id": "a-drawer",
+        "description": "Drawer for filter panel",
+        "severity": "required",
+        "passed": true,
+        "evidence": "<Drawer> found"
+      },
+      {
+        "id": "a-checkbox",
+        "description": "Checkbox for filter options",
+        "severity": "required",
+        "passed": true,
+        "evidence": "matched: <Checkbox> found"
+      },
+      {
+        "id": "a-slider",
+        "description": "Slider for price range",
+        "severity": "required",
+        "passed": true,
+        "evidence": "<Slider> found"
+      },
+      {
+        "id": "a-switch",
+        "description": "Switch for availability filter",
+        "severity": "required",
+        "passed": true,
+        "evidence": "<Switch> found"
+      },
+      {
+        "id": "a-tag-group",
+        "description": "Tag.Group for applied filters",
+        "severity": "required",
+        "passed": true,
+        "evidence": "matched: <Tag> found"
+      },
+      {
+        "id": "a-card",
+        "description": "Card for product display",
+        "severity": "required",
+        "passed": true,
+        "evidence": "<Card> found"
+      },
+      {
+        "id": "a-button",
+        "description": "Button for add to cart",
+        "severity": "required",
+        "passed": true,
+        "evidence": "<Button> found"
+      },
+      {
+        "id": "a-pagination",
+        "description": "Pagination component",
+        "severity": "required",
+        "passed": true,
+        "evidence": "<Pagination> found"
+      },
+      {
+        "id": "a-tiles",
+        "description": "Tiles layout for product grid",
+        "severity": "required",
+        "passed": true,
+        "evidence": "<Tiles> found"
+      },
+      {
+        "id": "a-headline",
+        "description": "Headline for page title",
+        "severity": "required",
+        "passed": true,
+        "evidence": "<Headline> found"
+      },
+      {
+        "id": "a-select",
+        "description": "Select for sort dropdown",
+        "severity": "required",
+        "passed": true,
+        "evidence": "<Select> found"
+      },
+      {
+        "id": "a-no-onclick-on-marigold",
+        "description": "No onClick on Marigold Button",
+        "severity": "recommended",
+        "passed": true,
+        "evidence": "\"/<Button[^>]*onClick/\" correctly absent"
+      }
+    ],
+    "failed": [
+      {
+        "id": "a-badge",
+        "description": "Badge for product status",
+        "severity": "required",
+        "passed": false,
+        "evidence": "<Badge> not found"
+      },
+      {
+        "id": "a-empty-state",
+        "description": "EmptyState when no products match",
+        "severity": "required",
+        "passed": false,
+        "evidence": "<EmptyState> not found"
+      }
+    ],
+    "passRate": 0.875,
+    "requiredPassRate": 0.8667,
+    "weightedPassRate": 0.8689,
+    "total": 16
+  },
+  "validatePackageVersion": "0.0.1",
+  "playwrightVersion": null,
+  "resolvedModelId": "claude-haiku-4-5",
+  "claudeCliVersion": "2.1.185 (Claude Code)",
+  "sessionId": "c6775439-041d-4c2a-9ee2-e3011dabc1ab"
+}
