@@ -68,9 +68,9 @@ pnpm test
 
 ### What is reproducible
 
-- bare and mcp-stack only need Claude Code and the public Marigold documentation, so they reproduce directly.
-- full-stack also needs the marigold validate CLI. That tool belongs to an internal Reservix repository and is not included here, so full-stack cannot be run again without it.
-- Every run still has its result.json and its source.tsx under results/, so the outcomes can be read directly. Raw agent transcripts are not published.
+- bare and mcp-stack need Claude Code and the public Marigold documentation.
+- full-stack additionally needs the marigold validate CLI. Marigold and the CLI are open source, so the tool is publicly available. It is not bundled here, you install it from the Marigold project.
+- Every run also has its result.json and its source.tsx under results/, so the outcomes can be read directly. Raw agent transcripts are not published.
 
 ## Context
 
