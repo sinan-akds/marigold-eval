@@ -38,12 +38,12 @@ ENV MARIGOLD_THEME_PATH=/opt/theme-rui
 # Provide a `marigold` command on PATH so the agent can run
 # `marigold validate src/TestApp.tsx` exactly as the system prompt instructs.
 # Without it the agent gets "command not found" and has to discover the raw
-# node invocation itself. An optional leading `validate` subcommand is dropped,
-# then the deployed validate CLI (the same tool the scoring uses) is invoked.
+# node invocation itself. Points at the @marigold/cli binary — the single
+# source of truth that the scoring also uses, so agent feedback and measurement
+# apply the same checks and severities (a11y findings are warnings).
 RUN printf '%s\n' \
       '#!/usr/bin/env bash' \
-      'if [ "$1" = "validate" ]; then shift; fi' \
-      'exec node /opt/marigold/validate/dist/bin/marigold-validate.mjs "$@"' \
+      'exec node /opt/marigold/cli/dist/bin/marigold.mjs "$@"' \
       > /usr/local/bin/marigold \
  && chmod +x /usr/local/bin/marigold
 
