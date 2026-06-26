@@ -495,19 +495,12 @@ def plot_render_by_prompt(df: pd.DataFrame, out_dir: str):
 # Runner
 # ──────────────────────────────────────────────────────────────
 
-# Slimmed thesis set. Dropped as unclear/redundant: 02 (distribution), 07 (cost
-# scatter), 14 (completeness scatter), 15 (error-free rate), 17 (width).
-# Significance is one CSV table (pairwise Wilcoxon, prompt-level, MCP->Full
-# primary, Holm-corrected, rank-biserial); render rate is descriptive only.
-# Convergence (08/09/11/12) is one before/after bar in
-# generate-convergence-plots.py.
+# Die Figuren erzeugt jetzt make_thesis_plots.py (kuratiertes Set, einheitlicher
+# Stil: Legende unter der Abbildung, knappe Titel, keine Balken-Zahlen). Dieses
+# Modul liefert nur noch die Wilcoxon-Signifikanz-CSV (kein Plot, sondern eine
+# Tabelle fuer den Thesis-Text): pairwise Wilcoxon, prompt-level, MCP->Full
+# primaer, Holm-korrigiert, rank-biserial.
 ALL_PLOTS = [
-    ("00 Score Overview (internal)", plot_score_overview, False),
-    ("01 Issue Sources by Model", plot_errors_by_category, False),
-    ("03 Complexity Scaling", plot_complexity_scaling, False),
-    ("04 Render Success", plot_render_success, True),
-    ("05 Assertion Heatmap", plot_assertion_heatmap, False),
-    ("19 Render by Prompt", plot_render_by_prompt, False),
     ("Pairwise stats (CSV only)", plot_pairwise_stats, False),
 ]
 

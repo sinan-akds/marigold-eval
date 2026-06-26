@@ -29,6 +29,56 @@ export const installShutdownHandler = () => {
 const buildRunDir = (combo: Combination): string =>
   path.join(RESULTS_DIR, `${combo.model}-${combo.config}`, combo.evalId, `run-${combo.run}`);
 
+/**
+ * Rekursiv die Session-Transkript-Datei `<sessionId>.jsonl` unter
+ * `<configDir>/projects/**` finden.
+ */
+const findSessionJsonl = (root: string, sessionId: string): string | null => {
+  if (!fs.existsSync(root)) return null;
+  const stack = [root];
+  while (stack.length) {
+    const dir = stack.pop()!;
+    let entries: fs.Dirent[];
+    try {
+      entries = fs.readdirSync(dir, { withFileTypes: true });
+    } catch {
+      continue;
+    }
+    for (const e of entries) {
+      const full = path.join(dir, e.name);
+      if (e.isDirectory()) stack.push(full);
+      else if (e.name === `${sessionId}.jsonl`) return full;
+    }
+  }
+  return null;
+};
+
+/**
+ * Das Session-Transkript aus dem (direkt danach geloeschten) CLAUDE_CONFIG_DIR
+ * in den run-Dir kopieren. Bei Container-Laeufen liegt das Config-Dir in einem
+ * ephemeren /tmp und wird nach jedem Lauf entfernt; ohne diese Kopie geht das
+ * Transkript verloren und die Konvergenz-Auswertung (Fehler je validate-Aufruf)
+ * hat keine Datengrundlage. Kopiert nach `<runDir>/session.jsonl`.
+ */
+const persistSessionTranscript = (
+  configDir: string | undefined,
+  sessionId: string | null,
+  runDir: string,
+  tag: string,
+): void => {
+  if (!configDir || !sessionId) return;
+  const src = findSessionJsonl(path.join(configDir, 'projects'), sessionId);
+  if (!src) {
+    log(`${tag} ⚠ kein Session-Transkript fuer ${sessionId} gefunden (Konvergenz fehlt fuer diesen Lauf)\n`);
+    return;
+  }
+  try {
+    fs.copyFileSync(src, path.join(runDir, 'session.jsonl'));
+  } catch (e) {
+    log(`${tag} ⚠ Session-Transkript konnte nicht gesichert werden: ${e}\n`);
+  }
+};
+
 type ReproMeta = {
   resolvedModelId?: string;
   claudeCliVersion?: string | null;
@@ -147,6 +197,8 @@ const runSingle = async (
       fs.writeFileSync(path.join(runDir, 'source.tsx'), src);
     } catch { /* ok */ }
 
+    persistSessionTranscript(configDir, sessionId, runDir, tag);
+
     const toolUsage = extractToolUsage(sessionId, wtPath);
     if (toolUsage) {
       fs.writeFileSync(path.join(runDir, 'tool-usage.json'), JSON.stringify(toolUsage, null, 2) + '\n');
@@ -251,6 +303,9 @@ const runSingle = async (
       }
     }
 
+    // A timed-out run that still produced a scorable file counts as completed
+    // (take the result as-is, no retry). Only genuine failures keep the error.
+    const scoredTimeout = err instanceof ClaudeTimeoutError && score !== null;
     const bmRun: BenchmarkRun = {
       evalId: combo.evalId,
       model: combo.model,
@@ -260,7 +315,7 @@ const runSingle = async (
       score,
       assertionPassRate,
       sessionId: null,
-      error: msg,
+      ...(scoredTimeout ? {} : { error: msg }),
       resolvedModelId,
       ...(claudeCliVersion != null ? { claudeCliVersion } : {}),
       ...(timeoutEfficiency ? { efficiency: timeoutEfficiency } : {}),
@@ -272,7 +327,7 @@ const runSingle = async (
     };
     addRun(bm, bmRun);
 
-    return { id: combo.id, score, assertionPassRate, error: msg };
+    return { id: combo.id, score, assertionPassRate, ...(scoredTimeout ? {} : { error: msg }) };
   } finally {
     const port = DEV_SERVER_PORT_BASE + workerIndex;
     killDevServerOnPort(port);

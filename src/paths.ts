@@ -13,7 +13,7 @@ export const RESULTS_DIR = path.join(ROOT, 'results');
 export const WORKTREE_BASE = process.env.WORKTREE_BASE || ROOT;
 export const DEV_SERVER_PORT_BASE = 5173;
 
-export const DEFAULT_CLAUDE_TIMEOUT_MS = 2_400_000;
+export const DEFAULT_CLAUDE_TIMEOUT_MS = 3_600_000;
 export const DEFAULT_SCORE_TIMEOUT_MS = 300_000;
 export const KILL_GRACE_MS = 5_000;
 export const MAX_STDERR_SLICE = 2_000;

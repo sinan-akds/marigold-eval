@@ -35,6 +35,18 @@ COPY theme-rui/  /opt/theme-rui/
 ENV MARIGOLD_VALIDATE_PKG=/opt/marigold/validate
 ENV MARIGOLD_THEME_PATH=/opt/theme-rui
 
+# Provide a `marigold` command on PATH so the agent can run
+# `marigold validate src/TestApp.tsx` exactly as the system prompt instructs.
+# Without it the agent gets "command not found" and has to discover the raw
+# node invocation itself. An optional leading `validate` subcommand is dropped,
+# then the deployed validate CLI (the same tool the scoring uses) is invoked.
+RUN printf '%s\n' \
+      '#!/usr/bin/env bash' \
+      'if [ "$1" = "validate" ]; then shift; fi' \
+      'exec node /opt/marigold/validate/dist/bin/marigold-validate.mjs "$@"' \
+      > /usr/local/bin/marigold \
+ && chmod +x /usr/local/bin/marigold
+
 # Chromium + OS deps matching the bundled playwright (1.58.2), installed to the
 # shared path and made world-readable for the node user.
 RUN cd /opt/marigold/cli \

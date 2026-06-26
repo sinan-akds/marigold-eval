@@ -8,14 +8,25 @@
 #   docker/run-until-complete.sh [TARGET] [MAX_ATTEMPTS]
 #   TARGET        expected run count (default 180)
 #   MAX_ATTEMPTS  give up after this many container launches (default 40)
+#
+# Optional FILTER env var restricts BOTH the eval (--filter passthrough) and the
+# progress count to combos whose id contains the substring, e.g. a model-only
+# top-up:  FILTER=sonnet docker/run-until-complete.sh 90
 set -uo pipefail
 
 EVAL_ROOT="$(cd "$(dirname "$0")/.." && pwd)"
 TARGET="${1:-180}"
 MAX_ATTEMPTS="${2:-40}"
+FILTER="${FILTER:-}"
 
-count() {  # valid runs currently in benchmark.json
-  python3 -c "import json;print(len(json.load(open('$EVAL_ROOT/benchmark.json')).get('runs',[])))" 2>/dev/null || echo 0
+count() {  # valid (non-error) runs in benchmark.json, restricted to FILTER if set
+  python3 -c "
+import json
+f='$FILTER'
+runs=json.load(open('$EVAL_ROOT/benchmark.json')).get('runs',[])
+cid=lambda r: f\"{r['model']}-{r['config']}-{r['evalId']}-r{r['runNumber']}\"
+print(len([r for r in runs if (not r.get('error')) and (f in cid(r))]))
+" 2>/dev/null || echo 0
 }
 
 reap() {  # kill host-orphaned eval browsers (NOT the developer's own sessions)
@@ -28,8 +39,12 @@ attempt=0
 while [ "$(count)" -lt "$TARGET" ] && [ "$attempt" -lt "$MAX_ATTEMPTS" ]; do
   attempt=$((attempt + 1))
   have=$(count)
-  echo "── attempt $attempt/$MAX_ATTEMPTS — $have/$TARGET runs done ──"
-  "$EVAL_ROOT/docker/run.sh" || echo "  (container exited non-zero, likely OOM — relaunching)"
+  echo "── attempt $attempt/$MAX_ATTEMPTS — $have/$TARGET runs done${FILTER:+ (filter: $FILTER)} ──"
+  if [ -n "$FILTER" ]; then
+    "$EVAL_ROOT/docker/run.sh" --filter "$FILTER" || echo "  (container exited non-zero, likely OOM — relaunching)"
+  else
+    "$EVAL_ROOT/docker/run.sh" || echo "  (container exited non-zero, likely OOM — relaunching)"
+  fi
   reap
   sleep 3   # let the kernel reclaim before the next container
 done

@@ -50,6 +50,7 @@ type ValidateDetail = {
   warningCount: number;
   bySource: Record<string, { errors: number; warnings: number }>;
   issueMessages: string[];
+  ok: boolean;
 };
 
 type SessionMessage = {
@@ -120,6 +121,7 @@ type ParsedValidateResult = {
   warnings: number;
   bySource: Record<string, { errors: number; warnings: number }>;
   issueMessages: string[];
+  ok: boolean;
 };
 
 const ISSUE_LINE_RE = /^\[(error|warning)\/([\w-]+)\]\s*<([^>]+)>:\s*(.+)/;
@@ -165,7 +167,15 @@ const parseValidateResult = (resultText: string): ParsedValidateResult => {
     warnings = issueMessages.filter(m => m.startsWith('[warning/')).length;
   }
 
-  return { errors, warnings, bySource, issueMessages };
+  // Echter validate-Lauf nur, wenn die Ausgabe die Werkzeug-Signatur traegt.
+  // Fehlinvokationen (command not found, npm error, Exit 127, leer) erkennt
+  // man am Fehlen dieser Signatur und werden ausgeschlossen.
+  const ok = /marigold-validate:/.test(resultText)
+    || /\d+\s+error\(s\),\s*\d+\s+warning\(s\)/.test(resultText)
+    || resultText.includes('— ok')
+    || issueMessages.length > 0;
+
+  return { errors, warnings, bySource, issueMessages, ok };
 };
 
 const extractFromSession = (sessionFile: string): {
@@ -244,6 +254,7 @@ const extractFromSession = (sessionFile: string): {
           warningCount: parsed.warnings,
           bySource: parsed.bySource,
           issueMessages: parsed.issueMessages,
+          ok: parsed.ok,
         });
       }
     }
@@ -299,22 +310,20 @@ const main = () => {
 
         const runId = `${model}-${configPart}-${promptDir}-r${runNumber}`;
         const promptStart = getEvalPromptStart(promptDir);
-        const sessionDir = findSessionDir(runId);
 
-        if (!sessionDir) {
-          allIterations.push({
-            runId, model, config: configPart, promptId: promptDir, runNumber,
-            sessionFile: null, totalTurns: 0, toolCalls: [], validateCalls: 0,
-            mcpCalls: 0, mcpToolBreakdown: {}, editCalls: 0, readCalls: 0,
-            writeCalls: 0, bashCalls: 0, totalToolCalls: 0, validateCallDetails: [],
-            hasSessionData: false,
-          });
-          missing++;
-          droppedRunIds.push(runId);
-          continue;
+        // Primaer das vom Runner in den run-Dir gesicherte Transkript nutzen
+        // (Container-Laeufe persistieren es dort, da ihr CLAUDE_CONFIG_DIR in
+        // /tmp liegt und nach dem Lauf geloescht wird). Fallback: die
+        // maschinenlokale ~/.claude-Session (Nicht-Container-Laeufe).
+        const localSession = path.join(promptPath, runDir, 'session.jsonl');
+        let sessionFile: string | null = null;
+        if (fs.existsSync(localSession) && fs.statSync(localSession).size > 1000) {
+          sessionFile = localSession;
+        } else {
+          const sessionDir = findSessionDir(runId);
+          if (sessionDir) sessionFile = findBestSessionFile(sessionDir, promptStart);
         }
 
-        const sessionFile = findBestSessionFile(sessionDir, promptStart);
         if (!sessionFile) {
           allIterations.push({
             runId, model, config: configPart, promptId: promptDir, runNumber,
