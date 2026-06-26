@@ -72,9 +72,9 @@ pnpm test
 - full-stack also needs the marigold validate CLI. That tool belongs to an internal Reservix repository and is not included here, so full-stack cannot be run again without it.
 - Every run still has its result.json and its source.tsx under results/, so the outcomes can be read directly. Raw agent transcripts are not published.
 
-## Citation
+## Context
 
-Please cite the thesis by Sinan Akdesir, University of Freiburg, 2026.
+This pipeline was built for a bachelor's thesis by Sinan Akdesir at the University of Freiburg.
 
 ## License
 
