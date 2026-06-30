@@ -11,42 +11,36 @@ import {
   TextField,
 } from '@marigold/components';
 
-interface FormErrors {
-  name?: string;
-  email?: string;
-}
-
-const isValidEmail = (value: string) =>
-  /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value);
+const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
 const ContactForm = () => {
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
-  const [subject, setSubject] = useState<string>('general');
+  const [subject, setSubject] = useState<string>('');
   const [message, setMessage] = useState('');
-  const [errors, setErrors] = useState<FormErrors>({});
+  const [errors, setErrors] = useState<Record<string, string>>({});
   const [submitted, setSubmitted] = useState(false);
 
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-
-    const newErrors: FormErrors = {};
-
-    if (!name.trim()) {
-      newErrors.name = 'Name is required.';
-    }
-
+  const validate = (): Record<string, string> => {
+    const e: Record<string, string> = {};
+    if (!name.trim()) e.name = 'Name is required.';
     if (!email.trim()) {
-      newErrors.email = 'Email address is required.';
-    } else if (!isValidEmail(email)) {
-      newErrors.email = 'Please enter a valid email address.';
+      e.email = 'Email is required.';
+    } else if (!EMAIL_RE.test(email)) {
+      e.email = 'Please enter a valid email address.';
     }
+    if (!message.trim()) e.message = 'Message is required.';
+    return e;
+  };
 
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    const newErrors = validate();
     if (Object.keys(newErrors).length > 0) {
       setErrors(newErrors);
       return;
     }
-
+    setErrors({});
     setSubmitted(true);
   };
 
@@ -71,31 +65,25 @@ const ContactForm = () => {
           <Stack space={4}>
             <TextField
               label="Name"
-              name="name"
               value={name}
-              onChange={val => {
-                setName(val);
-                if (errors.name) setErrors(prev => ({ ...prev, name: undefined }));
-              }}
+              onChange={setName}
+              required
               error={!!errors.name}
               errorMessage={errors.name}
             />
             <TextField
               label="Email"
-              name="email"
               type="email"
               value={email}
-              onChange={val => {
-                setEmail(val);
-                if (errors.email) setErrors(prev => ({ ...prev, email: undefined }));
-              }}
+              onChange={setEmail}
+              required
               error={!!errors.email}
               errorMessage={errors.email}
             />
             <Select
               label="Subject"
-              name="subject"
-              selectedKey={subject}
+              placeholder="Select a subject"
+              selectedKey={subject || null}
               onSelectionChange={key => setSubject(key as string)}
             >
               <Select.Option id="general">General</Select.Option>
@@ -104,10 +92,11 @@ const ContactForm = () => {
             </Select>
             <TextArea
               label="Message"
-              name="message"
               value={message}
               onChange={setMessage}
               rows={5}
+              error={!!errors.message}
+              errorMessage={errors.message}
             />
             <Button variant="primary" type="submit">
               Send Message

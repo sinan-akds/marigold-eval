@@ -1,15 +1,20 @@
 import { useState } from 'react';
+import type { DateValue, Time, ZonedDateTime, CalendarDateTime } from '@internationalized/date';
+
+type TimeValue = Time | ZonedDateTime | CalendarDateTime;
+
 import {
   Accordion,
+  Autocomplete,
   Button,
   Card,
   Checkbox,
   ComboBox,
   DatePicker,
-  Divider,
   FileField,
   Headline,
   Inline,
+  Inset,
   Loader,
   NumberField,
   Radio,
@@ -26,32 +31,31 @@ import {
   ToastProvider,
   useToast,
 } from '@marigold/components';
-import type { DateValue } from '@internationalized/date';
 
-type FormState = {
+interface FormState {
   fullName: string;
   email: string;
-  phoneNumber: string;
+  phone: string;
   company: string;
   jobTitle: string;
   eventDate: DateValue | null;
-  preferredTimeSlot: any;
+  preferredTimeSlot: TimeValue | null;
   sessionTrack: string;
   dietaryRequirements: string;
   numberOfGuests: number;
   specialRequests: string;
   tshirtSize: string;
-  topicsOfInterest: string[];
+  topicsOfInterest: (string | number)[];
   communicationPreferences: string[];
   hasAccessibilityNeeds: boolean;
   accessibilityDetails: string;
-  termsAccepted: boolean;
-};
+  agreeToTerms: boolean;
+}
 
-const INITIAL_STATE: FormState = {
+const BLANK: FormState = {
   fullName: '',
   email: '',
-  phoneNumber: '',
+  phone: '',
   company: '',
   jobTitle: '',
   eventDate: null,
@@ -65,7 +69,7 @@ const INITIAL_STATE: FormState = {
   communicationPreferences: [],
   hasAccessibilityNeeds: false,
   accessibilityDetails: '',
-  termsAccepted: false,
+  agreeToTerms: false,
 };
 
 const STEP_TITLES = [
@@ -75,470 +79,399 @@ const STEP_TITLES = [
   'Review & Confirm',
 ];
 
-const JOB_TITLE_SUGGESTIONS = [
-  'Developer',
-  'Designer',
-  'Product Manager',
-  'Engineering Manager',
-  'CTO',
-  'Other',
-];
+const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
-const DIETARY_OPTIONS = [
-  'None',
-  'Vegetarian',
-  'Vegan',
-  'Gluten-Free',
-  'Kosher',
-  'Halal',
-];
+const COMM_LABELS: Record<string, string> = {
+  email: 'Email updates',
+  sms: 'SMS reminders',
+  survey: 'Post-event survey',
+  newsletter: 'Newsletter',
+};
 
-const SESSION_TRACKS = ['Technical', 'Design', 'Business', 'Workshop'];
-const TSHIRT_SIZES = ['XS', 'S', 'M', 'L', 'XL', 'XXL'];
+function makeConfirmationNumber() {
+  return 'EVT-' + Math.random().toString(36).substring(2, 8).toUpperCase();
+}
 
-const TOPICS = [
-  { id: 'ai-ml', name: 'AI/ML' },
-  { id: 'web-dev', name: 'Web Development' },
-  { id: 'cloud', name: 'Cloud' },
-  { id: 'security', name: 'Security' },
-  { id: 'devops', name: 'DevOps' },
-  { id: 'mobile', name: 'Mobile' },
-  { id: 'data-science', name: 'Data Science' },
-];
+function formatDate(d: DateValue | null) {
+  if (!d) return '—';
+  return `${d.month}/${d.day}/${d.year}`;
+}
 
-const COMM_PREFS = [
-  { id: 'email-updates', label: 'Email updates about the event' },
-  { id: 'sms-reminders', label: 'SMS reminders' },
-  { id: 'post-event-survey', label: 'Post-event survey' },
-  { id: 'newsletter', label: 'Newsletter subscription' },
-];
+function ReviewRow({ label, value }: { label: string; value: string }) {
+  return (
+    <Inline space={2}>
+      <Text weight="bold">{label}</Text>
+      <Text>{value || '—'}</Text>
+    </Inline>
+  );
+}
 
 const TestApp = () => {
   const { addToast } = useToast();
+
   const [step, setStep] = useState(1);
-  const [form, setForm] = useState<FormState>(INITIAL_STATE);
+  const [form, setForm] = useState<FormState>(BLANK);
   const [errors, setErrors] = useState<Partial<Record<keyof FormState, string>>>({});
   const [submitting, setSubmitting] = useState(false);
-  const [loading, setLoading] = useState(false);
-  const [submitted, setSubmitted] = useState(false);
-  const [confirmationNumber, setConfirmationNumber] = useState('');
-  const [reviewExpanded, setReviewExpanded] = useState<Set<string | number>>(
-    new Set(['personal', 'event', 'prefs'])
-  );
+  const [complete, setComplete] = useState(false);
+  const [confirmNum] = useState(makeConfirmationNumber);
 
   const update = <K extends keyof FormState>(key: K, value: FormState[K]) => {
     setForm(prev => ({ ...prev, [key]: value }));
-    setErrors(prev => {
-      const next = { ...prev };
-      delete next[key];
-      return next;
-    });
+    setErrors(prev => ({ ...prev, [key]: undefined }));
   };
 
-  const validate = (s: number): Partial<Record<keyof FormState, string>> => {
-    const errs: Partial<Record<keyof FormState, string>> = {};
+  const validate = (s: number) => {
+    const e: Partial<Record<keyof FormState, string>> = {};
     if (s === 1) {
-      if (!form.fullName.trim()) errs.fullName = 'Full name is required.';
-      if (!form.email.trim()) {
-        errs.email = 'Email is required.';
-      } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(form.email)) {
-        errs.email = 'Please enter a valid email address.';
-      }
+      if (!form.fullName.trim()) e.fullName = 'Full name is required.';
+      if (!form.email.trim()) e.email = 'Email is required.';
+      else if (!EMAIL_RE.test(form.email)) e.email = 'Enter a valid email address.';
     }
     if (s === 2) {
-      if (!form.eventDate) errs.eventDate = 'Event date is required.';
+      if (!form.eventDate) e.eventDate = 'Please select an event date.';
     }
-    return errs;
+    setErrors(e);
+    return Object.keys(e).length === 0;
   };
 
-  const handleNext = async () => {
-    const errs = validate(step);
-    if (Object.keys(errs).length > 0) {
-      setErrors(errs);
-      return;
-    }
-    if (step < 4) {
-      setStep(s => s + 1);
-      return;
-    }
+  const handleNext = () => {
+    if (validate(step)) setStep(s => s + 1);
+  };
+
+  const handleBack = () => setStep(s => s - 1);
+
+  const handleSubmit = () => {
     setSubmitting(true);
-    setLoading(true);
-    await new Promise(resolve => setTimeout(resolve, 1000));
-    const confNum = 'REG-' + String(Math.floor(Math.random() * 900000 + 100000));
-    setConfirmationNumber(confNum);
-    setLoading(false);
-    setSubmitting(false);
-    setSubmitted(true);
-    addToast({ title: 'Registration submitted successfully', variant: 'success' });
-  };
-
-  const handleBack = () => {
-    if (step <= 1) return;
-    setErrors({});
-    setStep(s => s - 1);
+    setTimeout(() => {
+      setSubmitting(false);
+      setComplete(true);
+      addToast({ title: 'Registration submitted successfully', variant: 'success', timeout: 5000 });
+    }, 1000);
   };
 
   const handleReset = () => {
     setStep(1);
-    setForm(INITIAL_STATE);
+    setForm(BLANK);
     setErrors({});
-    setSubmitted(false);
-    setConfirmationNumber('');
+    setComplete(false);
   };
 
-  const dateStr = form.eventDate
-    ? `${form.eventDate.year}-${String(form.eventDate.month).padStart(2, '0')}-${String(form.eventDate.day).padStart(2, '0')}`
-    : 'Not selected';
+  if (submitting) {
+    return (
+      <>
+        <ToastProvider position="bottom-right" />
+        <Inset space={8}>
+          <Stack space={6}>
+            <Headline level={1}>Event Registration</Headline>
+            <Card>
+              <Stack space={6} alignX="center">
+                <Loader />
+                <Text>Processing your registration…</Text>
+              </Stack>
+            </Card>
+          </Stack>
+        </Inset>
+      </>
+    );
+  }
 
-  const topicNames = form.topicsOfInterest
-    .map(id => TOPICS.find(t => t.id === id)?.name ?? id)
-    .join(', ');
-
-  const commPrefLabels = form.communicationPreferences
-    .map(id => COMM_PREFS.find(p => p.id === id)?.label ?? id)
-    .join(', ');
+  if (complete) {
+    return (
+      <>
+        <ToastProvider position="bottom-right" />
+        <Inset space={8}>
+          <Stack space={6}>
+            <Headline level={1}>Event Registration</Headline>
+            <SectionMessage variant="success">
+              <SectionMessage.Title>Registration confirmed!</SectionMessage.Title>
+              <SectionMessage.Content>
+                Thank you for registering. We look forward to seeing you at the event.
+              </SectionMessage.Content>
+            </SectionMessage>
+            <Card>
+              <Stack space={4}>
+                <Headline level={2}>Registration Summary</Headline>
+                <Stack space={2}>
+                  <ReviewRow label="Name:" value={form.fullName} />
+                  <ReviewRow label="Email:" value={form.email} />
+                  <ReviewRow label="Event Date:" value={formatDate(form.eventDate)} />
+                  <ReviewRow label="Confirmation #:" value={confirmNum} />
+                </Stack>
+                <Button onPress={handleReset}>Register Another</Button>
+              </Stack>
+            </Card>
+          </Stack>
+        </Inset>
+      </>
+    );
+  }
 
   return (
     <>
       <ToastProvider position="bottom-right" />
-      {loading && <Loader mode="fullscreen" />}
-
-      <Stack role="main" space={6} aria-label="Event Registration">
-        <Headline level={1}>Event Registration</Headline>
-
-      {submitted ? (
+      <Inset space={8}>
         <Stack space={6}>
-          <SectionMessage variant="success">
-            <SectionMessage.Title>Registration confirmed!</SectionMessage.Title>
-            <SectionMessage.Content>
-              Your registration has been successfully submitted.
-            </SectionMessage.Content>
-          </SectionMessage>
+          <Headline level={1}>Event Registration</Headline>
           <Card>
-            <Stack space={4}>
-              <Headline level={3}>Registration Summary</Headline>
-              <Stack space={3}>
-                <Stack space={1}>
-                  <Text weight="bold">Name</Text>
-                  <Text>{form.fullName}</Text>
+            <Stack space={6}>
+              <Headline level={2}>
+                Step {step} of 4 — {STEP_TITLES[step - 1]}
+              </Headline>
+
+              {step === 1 && (
+                <Stack space={4}>
+                  <TextField
+                    label="Full Name"
+                    required
+                    value={form.fullName}
+                    onChange={v => update('fullName', v)}
+                    error={!!errors.fullName}
+                    errorMessage={errors.fullName}
+                  />
+                  <TextField
+                    label="Email"
+                    type="email"
+                    required
+                    value={form.email}
+                    onChange={v => update('email', v)}
+                    error={!!errors.email}
+                    errorMessage={errors.email}
+                  />
+                  <TextField
+                    label="Phone Number"
+                    type="tel"
+                    value={form.phone}
+                    onChange={v => update('phone', v)}
+                  />
+                  <TextField
+                    label="Company / Organization"
+                    value={form.company}
+                    onChange={v => update('company', v)}
+                  />
+                  <Autocomplete
+                    label="Job Title"
+                    value={form.jobTitle}
+                    onChange={v => update('jobTitle', v)}
+                    menuTrigger="focus"
+                  >
+                    <Autocomplete.Option id="Developer">Developer</Autocomplete.Option>
+                    <Autocomplete.Option id="Designer">Designer</Autocomplete.Option>
+                    <Autocomplete.Option id="Product Manager">Product Manager</Autocomplete.Option>
+                    <Autocomplete.Option id="Engineering Manager">Engineering Manager</Autocomplete.Option>
+                    <Autocomplete.Option id="CTO">CTO</Autocomplete.Option>
+                    <Autocomplete.Option id="Other">Other</Autocomplete.Option>
+                  </Autocomplete>
+                  <FileField
+                    label="Profile Photo"
+                    accept={['image/*']}
+                  />
+                  <SectionMessage variant="info">
+                    <SectionMessage.Title>Privacy notice</SectionMessage.Title>
+                    <SectionMessage.Content>
+                      Your information will only be used for this event.
+                    </SectionMessage.Content>
+                  </SectionMessage>
                 </Stack>
-                <Stack space={1}>
-                  <Text weight="bold">Email</Text>
-                  <Text>{form.email}</Text>
+              )}
+
+              {step === 2 && (
+                <Stack space={4}>
+                  <DatePicker
+                    label="Event Date"
+                    required
+                    value={form.eventDate}
+                    onChange={v => update('eventDate', v)}
+                    error={!!errors.eventDate}
+                    errorMessage={errors.eventDate}
+                  />
+                  <TimeField
+                    label="Preferred Time Slot"
+                    value={form.preferredTimeSlot ?? undefined}
+                    onChange={v => update('preferredTimeSlot', v)}
+                  />
+                  <Radio.Group
+                    label="Session Track"
+                    value={form.sessionTrack}
+                    onChange={v => update('sessionTrack', v)}
+                  >
+                    <Radio value="Technical">Technical</Radio>
+                    <Radio value="Design">Design</Radio>
+                    <Radio value="Business">Business</Radio>
+                    <Radio value="Workshop">Workshop</Radio>
+                  </Radio.Group>
+                  <ComboBox
+                    label="Dietary Requirements"
+                    allowsCustomValue
+                    value={form.dietaryRequirements}
+                    onChange={v => update('dietaryRequirements', v ?? '')}
+                    onSelectionChange={key => {
+                      if (key != null) update('dietaryRequirements', String(key));
+                    }}
+                  >
+                    <ComboBox.Option id="None">None</ComboBox.Option>
+                    <ComboBox.Option id="Vegetarian">Vegetarian</ComboBox.Option>
+                    <ComboBox.Option id="Vegan">Vegan</ComboBox.Option>
+                    <ComboBox.Option id="Gluten-Free">Gluten-Free</ComboBox.Option>
+                    <ComboBox.Option id="Kosher">Kosher</ComboBox.Option>
+                    <ComboBox.Option id="Halal">Halal</ComboBox.Option>
+                  </ComboBox>
+                  <NumberField
+                    label="Number of Guests"
+                    value={form.numberOfGuests}
+                    onChange={v => update('numberOfGuests', v)}
+                    minValue={0}
+                    maxValue={5}
+                  />
+                  <TextArea
+                    label="Special Requests"
+                    value={form.specialRequests}
+                    onChange={v => update('specialRequests', v)}
+                  />
                 </Stack>
-                <Stack space={1}>
-                  <Text weight="bold">Event Date</Text>
-                  <Text>{dateStr}</Text>
+              )}
+
+              {step === 3 && (
+                <Stack space={4}>
+                  <Select
+                    label="T-Shirt Size"
+                    selectedKey={form.tshirtSize || null}
+                    onSelectionChange={key => update('tshirtSize', String(key))}
+                  >
+                    <Select.Option id="XS">XS</Select.Option>
+                    <Select.Option id="S">S</Select.Option>
+                    <Select.Option id="M">M</Select.Option>
+                    <Select.Option id="L">L</Select.Option>
+                    <Select.Option id="XL">XL</Select.Option>
+                    <Select.Option id="XXL">XXL</Select.Option>
+                  </Select>
+                  <TagField
+                    label="Topics of Interest"
+                    value={form.topicsOfInterest}
+                    onChange={v => update('topicsOfInterest', v)}
+                  >
+                    <TagField.Option id="AI/ML">AI/ML</TagField.Option>
+                    <TagField.Option id="Web Development">Web Development</TagField.Option>
+                    <TagField.Option id="Cloud">Cloud</TagField.Option>
+                    <TagField.Option id="Security">Security</TagField.Option>
+                    <TagField.Option id="DevOps">DevOps</TagField.Option>
+                    <TagField.Option id="Mobile">Mobile</TagField.Option>
+                    <TagField.Option id="Data Science">Data Science</TagField.Option>
+                  </TagField>
+                  <Checkbox.Group
+                    label="Communication Preferences"
+                    value={form.communicationPreferences}
+                    onChange={v => update('communicationPreferences', v)}
+                  >
+                    <Checkbox value="email" label="Email updates about the event" />
+                    <Checkbox value="sms" label="SMS reminders" />
+                    <Checkbox value="survey" label="Post-event survey" />
+                    <Checkbox value="newsletter" label="Newsletter subscription" />
+                  </Checkbox.Group>
+                  <Stack space={3}>
+                    <Switch
+                      label="I have accessibility requirements"
+                      selected={form.hasAccessibilityNeeds}
+                      onChange={v => update('hasAccessibilityNeeds', v)}
+                    />
+                    {form.hasAccessibilityNeeds && (
+                      <TextArea
+                        label="Accessibility needs details"
+                        value={form.accessibilityDetails}
+                        onChange={v => update('accessibilityDetails', v)}
+                      />
+                    )}
+                  </Stack>
                 </Stack>
-                <Stack space={1}>
-                  <Text weight="bold">Confirmation Number</Text>
-                  <Text>{confirmationNumber}</Text>
+              )}
+
+              {step === 4 && (
+                <Stack space={4}>
+                  <Accordion>
+                    <Accordion.Item>
+                      <Accordion.Header>Personal Information</Accordion.Header>
+                      <Accordion.Content>
+                        <Stack space={2}>
+                          <ReviewRow label="Name:" value={form.fullName} />
+                          <ReviewRow label="Email:" value={form.email} />
+                          <ReviewRow label="Phone:" value={form.phone} />
+                          <ReviewRow label="Company:" value={form.company} />
+                          <ReviewRow label="Job Title:" value={form.jobTitle} />
+                        </Stack>
+                      </Accordion.Content>
+                    </Accordion.Item>
+                    <Accordion.Item>
+                      <Accordion.Header>Event Details</Accordion.Header>
+                      <Accordion.Content>
+                        <Stack space={2}>
+                          <ReviewRow label="Date:" value={formatDate(form.eventDate)} />
+                          <ReviewRow
+                            label="Time:"
+                            value={form.preferredTimeSlot ? String(form.preferredTimeSlot) : '—'}
+                          />
+                          <ReviewRow label="Track:" value={form.sessionTrack} />
+                          <ReviewRow label="Dietary:" value={form.dietaryRequirements} />
+                          <ReviewRow label="Guests:" value={String(form.numberOfGuests)} />
+                        </Stack>
+                      </Accordion.Content>
+                    </Accordion.Item>
+                    <Accordion.Item>
+                      <Accordion.Header>Preferences</Accordion.Header>
+                      <Accordion.Content>
+                        <Stack space={2}>
+                          <ReviewRow label="T-Shirt Size:" value={form.tshirtSize} />
+                          <ReviewRow
+                            label="Topics:"
+                            value={
+                              form.topicsOfInterest.length > 0
+                                ? form.topicsOfInterest.join(', ')
+                                : '—'
+                            }
+                          />
+                          <ReviewRow
+                            label="Communication:"
+                            value={
+                              form.communicationPreferences.length > 0
+                                ? form.communicationPreferences.map(k => COMM_LABELS[k] ?? k).join(', ')
+                                : '—'
+                            }
+                          />
+                        </Stack>
+                      </Accordion.Content>
+                    </Accordion.Item>
+                  </Accordion>
+                  <Checkbox
+                    label="I agree to the terms and conditions"
+                    checked={form.agreeToTerms}
+                    onChange={v => update('agreeToTerms', v)}
+                    required
+                  />
                 </Stack>
-              </Stack>
-              <Divider />
-              <Button variant="primary" onPress={handleReset}>
-                Register Another
-              </Button>
+              )}
+
+              <Inline space={4} alignY="center">
+                <Button onPress={handleBack} disabled={step === 1}>
+                  Back
+                </Button>
+                <Split />
+                {step < 4 ? (
+                  <Button variant="primary" onPress={handleNext}>
+                    Next
+                  </Button>
+                ) : (
+                  <Button
+                    variant="primary"
+                    onPress={handleSubmit}
+                    disabled={!form.agreeToTerms}
+                  >
+                    Submit Registration
+                  </Button>
+                )}
+              </Inline>
             </Stack>
           </Card>
         </Stack>
-      ) : (
-        <Card>
-          <Stack space={6}>
-            <Stack space={2}>
-              <Text>
-                Step {step} of 4 — {STEP_TITLES[step - 1]}
-              </Text>
-              <Divider />
-            </Stack>
-
-            {step === 1 && (
-              <Stack space={4}>
-                <TextField
-                  label="Full Name"
-                  required
-                  value={form.fullName}
-                  onChange={val => update('fullName', val)}
-                  error={!!errors.fullName}
-                  errorMessage={errors.fullName}
-                />
-                <TextField
-                  label="Email"
-                  type="email"
-                  required
-                  value={form.email}
-                  onChange={val => update('email', val)}
-                  error={!!errors.email}
-                  errorMessage={errors.email}
-                />
-                <TextField
-                  label="Phone Number"
-                  type="tel"
-                  value={form.phoneNumber}
-                  onChange={val => update('phoneNumber', val)}
-                />
-                <TextField
-                  label="Company / Organization"
-                  value={form.company}
-                  onChange={val => update('company', val)}
-                />
-                <TextField
-                  label="Job Title"
-                  value={form.jobTitle}
-                  onChange={val => update('jobTitle', val)}
-                />
-                <FileField label="Profile Photo" accept={['image/*']} />
-                <SectionMessage variant="info">
-                  <SectionMessage.Title>Privacy Notice</SectionMessage.Title>
-                  <SectionMessage.Content>
-                    Your information will only be used for this event.
-                  </SectionMessage.Content>
-                </SectionMessage>
-              </Stack>
-            )}
-
-            {step === 2 && (
-              <Stack space={4}>
-                <DatePicker
-                  label="Event Date"
-                  required
-                  value={form.eventDate ?? undefined}
-                  onChange={val => update('eventDate', val ?? null)}
-                  error={!!errors.eventDate}
-                  errorMessage={errors.eventDate}
-                />
-                <TimeField
-                  label="Preferred Time Slot"
-                  value={form.preferredTimeSlot}
-                  onChange={val => update('preferredTimeSlot', val)}
-                />
-                <Radio.Group
-                  label="Session Track"
-                  value={form.sessionTrack}
-                  onChange={val => update('sessionTrack', val)}
-                >
-                  {SESSION_TRACKS.map(track => (
-                    <Radio key={track} value={track}>
-                      {track}
-                    </Radio>
-                  ))}
-                </Radio.Group>
-                <ComboBox
-                  label="Dietary Requirements"
-                  allowsCustomValue
-                  value={form.dietaryRequirements}
-                  onChange={val => update('dietaryRequirements', val ?? '')}
-                  onSelectionChange={key => {
-                    if (key != null) update('dietaryRequirements', String(key));
-                  }}
-                >
-                  {DIETARY_OPTIONS.map(opt => (
-                    <ComboBox.Option key={opt} id={opt}>
-                      {opt}
-                    </ComboBox.Option>
-                  ))}
-                </ComboBox>
-                <NumberField
-                  label="Number of Guests"
-                  minValue={0}
-                  maxValue={5}
-                  value={form.numberOfGuests}
-                  onChange={val => update('numberOfGuests', val)}
-                  width="1/4"
-                />
-                <TextArea
-                  label="Special Requests"
-                  value={form.specialRequests}
-                  onChange={val => update('specialRequests', val)}
-                  rows={4}
-                />
-              </Stack>
-            )}
-
-            {step === 3 && (
-              <Stack space={4}>
-                <Select
-                  label="T-Shirt Size"
-                  selectedKey={form.tshirtSize || null}
-                  onSelectionChange={key => {
-                    if (key != null) update('tshirtSize', String(key));
-                  }}
-                >
-                  {TSHIRT_SIZES.map(size => (
-                    <Select.Option key={size} id={size}>
-                      {size}
-                    </Select.Option>
-                  ))}
-                </Select>
-                <TagField
-                  label="Topics of Interest"
-                  value={form.topicsOfInterest as any}
-                  onSelectionChange={(keys: any) =>
-                    update('topicsOfInterest', Array.from(keys as Iterable<string>))
-                  }
-                >
-                  {TOPICS.map(topic => (
-                    <TagField.Option key={topic.id} id={topic.id}>
-                      {topic.name}
-                    </TagField.Option>
-                  ))}
-                </TagField>
-                <Checkbox.Group
-                  label="Communication Preferences"
-                  value={form.communicationPreferences}
-                  onChange={(vals: string[]) =>
-                    update('communicationPreferences', vals)
-                  }
-                >
-                  {COMM_PREFS.map(pref => (
-                    <Checkbox key={pref.id} value={pref.id} label={pref.label} />
-                  ))}
-                </Checkbox.Group>
-                <Stack space={3}>
-                  <Switch
-                    label="I have accessibility requirements"
-                    selected={form.hasAccessibilityNeeds}
-                    onChange={(val: boolean) =>
-                      update('hasAccessibilityNeeds', val)
-                    }
-                  />
-                  {form.hasAccessibilityNeeds && (
-                    <TextArea
-                      label="Accessibility Details"
-                      value={form.accessibilityDetails}
-                      onChange={val => update('accessibilityDetails', val)}
-                      rows={3}
-                    />
-                  )}
-                </Stack>
-              </Stack>
-            )}
-
-            {step === 4 && (
-              <Stack space={4}>
-                <Accordion
-                  expandedKeys={reviewExpanded}
-                  onExpandedChange={keys =>
-                    setReviewExpanded(keys as Set<string | number>)
-                  }
-                >
-                  <Accordion.Item id="personal">
-                    <Accordion.Header>Personal Information</Accordion.Header>
-                    <Accordion.Content>
-                      <Stack space={3}>
-                        <Stack space={1}>
-                          <Text weight="bold">Name</Text>
-                          <Text>{form.fullName || '—'}</Text>
-                        </Stack>
-                        <Stack space={1}>
-                          <Text weight="bold">Email</Text>
-                          <Text>{form.email || '—'}</Text>
-                        </Stack>
-                        <Stack space={1}>
-                          <Text weight="bold">Phone</Text>
-                          <Text>{form.phoneNumber || '—'}</Text>
-                        </Stack>
-                        <Stack space={1}>
-                          <Text weight="bold">Company</Text>
-                          <Text>{form.company || '—'}</Text>
-                        </Stack>
-                        <Stack space={1}>
-                          <Text weight="bold">Job Title</Text>
-                          <Text>{form.jobTitle || '—'}</Text>
-                        </Stack>
-                      </Stack>
-                    </Accordion.Content>
-                  </Accordion.Item>
-                  <Accordion.Item id="event">
-                    <Accordion.Header>Event Details</Accordion.Header>
-                    <Accordion.Content>
-                      <Stack space={3}>
-                        <Stack space={1}>
-                          <Text weight="bold">Date</Text>
-                          <Text>{dateStr}</Text>
-                        </Stack>
-                        <Stack space={1}>
-                          <Text weight="bold">Track</Text>
-                          <Text>{form.sessionTrack || '—'}</Text>
-                        </Stack>
-                        <Stack space={1}>
-                          <Text weight="bold">Dietary Requirements</Text>
-                          <Text>{form.dietaryRequirements || '—'}</Text>
-                        </Stack>
-                        <Stack space={1}>
-                          <Text weight="bold">Number of Guests</Text>
-                          <Text>{form.numberOfGuests}</Text>
-                        </Stack>
-                        {form.specialRequests && (
-                          <Stack space={1}>
-                            <Text weight="bold">Special Requests</Text>
-                            <Text>{form.specialRequests}</Text>
-                          </Stack>
-                        )}
-                      </Stack>
-                    </Accordion.Content>
-                  </Accordion.Item>
-                  <Accordion.Item id="prefs">
-                    <Accordion.Header>Preferences</Accordion.Header>
-                    <Accordion.Content>
-                      <Stack space={3}>
-                        <Stack space={1}>
-                          <Text weight="bold">T-Shirt Size</Text>
-                          <Text>{form.tshirtSize || '—'}</Text>
-                        </Stack>
-                        <Stack space={1}>
-                          <Text weight="bold">Topics of Interest</Text>
-                          <Text>{topicNames || '—'}</Text>
-                        </Stack>
-                        <Stack space={1}>
-                          <Text weight="bold">Communication Preferences</Text>
-                          <Text>{commPrefLabels || '—'}</Text>
-                        </Stack>
-                        {form.hasAccessibilityNeeds && (
-                          <Stack space={1}>
-                            <Text weight="bold">Accessibility Needs</Text>
-                            <Text>{form.accessibilityDetails || '—'}</Text>
-                          </Stack>
-                        )}
-                      </Stack>
-                    </Accordion.Content>
-                  </Accordion.Item>
-                </Accordion>
-                <Divider />
-                <Checkbox.Group
-                  value={form.termsAccepted ? ['agreed'] : []}
-                  onChange={(vals: string[]) =>
-                    update('termsAccepted', vals.includes('agreed'))
-                  }
-                >
-                  <Checkbox value="agreed" label="I agree to the terms and conditions" />
-                </Checkbox.Group>
-              </Stack>
-            )}
-
-            <Divider />
-            <Inline>
-              <Button
-                variant="secondary"
-                onPress={handleBack}
-              >
-                Back
-              </Button>
-              <Split />
-              <Button
-                variant="primary"
-                disabled={step === 4 && !form.termsAccepted}
-                onPress={handleNext}
-                loading={submitting}
-              >
-                {step === 4 ? 'Submit Registration' : 'Next'}
-              </Button>
-            </Inline>
-          </Stack>
-        </Card>
-      )}
-
-      </Stack>
+      </Inset>
     </>
   );
 };

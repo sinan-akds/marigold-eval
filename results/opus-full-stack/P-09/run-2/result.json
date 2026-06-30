@@ -1,0 +1,404 @@
+{
+  "runId": "opus-full-stack-P-09-r2",
+  "promptId": "P-09",
+  "model": "opus",
+  "config": "full-stack",
+  "timestamp": "2026-06-28T12:47:05.651Z",
+  "quality": {
+    "overall": 93.64,
+    "categories": {
+      "A": {
+        "category": "A",
+        "label": "Design System API",
+        "score": 100,
+        "weight": 0.225,
+        "weightedScore": 22.5,
+        "errorCount": 0,
+        "warningCount": 0,
+        "issues": []
+      },
+      "B": {
+        "category": "B",
+        "label": "Token Compliance",
+        "score": 100,
+        "weight": 0.1,
+        "weightedScore": 10,
+        "errorCount": 0,
+        "warningCount": 0,
+        "issues": []
+      },
+      "C": {
+        "category": "C",
+        "label": "DOM / Structure",
+        "score": 100,
+        "weight": 0.225,
+        "weightedScore": 22.5,
+        "errorCount": 0,
+        "warningCount": 0,
+        "issues": []
+      },
+      "D": {
+        "category": "D",
+        "label": "Spatial & A11y",
+        "score": 71.72,
+        "weight": 0.225,
+        "weightedScore": 16.14,
+        "errorCount": 0,
+        "warningCount": 4,
+        "issues": [
+          {
+            "type": "spatial",
+            "severity": "warning",
+            "source": "responsive-checker",
+            "component": "page",
+            "message": "Content uses only 40% of the desktop width (1280px): it stays in a narrow, mobile-shaped band instead of adapting to the available space.",
+            "suggestion": "Let the layout grow with the viewport using Marigold responsive primitives — <Columns collapseAt=\"...\"> for multi-column areas, AppLayout for the shell, Stack/Inline for flow — instead of a fixed-width container. (Intentionally centred max-width reading columns are fine and may trip this; treat it as a relative signal.)",
+            "details": {
+              "widthUtilization": 0.396875,
+              "contentElements": 57,
+              "scope": "page"
+            }
+          },
+          {
+            "type": "a11y",
+            "severity": "warning",
+            "source": "aom-extractor",
+            "component": "html",
+            "message": "Document should have one main landmark (landmark-one-main)",
+            "suggestion": "Wrap your page content in `<AppLayout>` with `<AppLayout.Main>` to provide a `<main>` landmark. Import AppLayout from `@marigold/components`.",
+            "details": {
+              "ruleId": "landmark-one-main",
+              "impact": "moderate",
+              "target": [
+                "html"
+              ],
+              "html": "<html lang=\"en\" data-theme=\"rui\">",
+              "scope": "page"
+            }
+          },
+          {
+            "type": "a11y",
+            "severity": "warning",
+            "source": "aom-extractor",
+            "component": "page",
+            "message": "All page content should be contained by landmarks — 12 elements affected (region)",
+            "suggestion": "All page content must be inside a landmark region. Use `<AppLayout>` with `<AppLayout.Main>` for the main area, `<TopNavigation>` for the header (`<header>`), and `<Sidebar>` for side navigation (`<aside>`). Import from `@marigold/components`.",
+            "details": {
+              "ruleId": "region",
+              "impact": "moderate",
+              "affectedCount": 12,
+              "scope": "page"
+            }
+          },
+          {
+            "type": "a11y",
+            "severity": "warning",
+            "source": "keyboard-a11y",
+            "component": "input",
+            "message": "Interactive element <input> (input) is not reachable via Tab key.",
+            "suggestion": "Ensure the element is focusable. Marigold interactive components are focusable by default — check if a parent has tabindex=\"-1\" or focus is trapped.",
+            "details": {
+              "selector": "body:nth-child(2) > div:nth-child(2) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > form:nth-child(3) > div:nth-child(1) > div:nth-child(1) > div:nth-child(2) > input:nth-child(1)",
+              "role": "input",
+              "scope": "page"
+            }
+          }
+        ]
+      },
+      "E": {
+        "category": "E",
+        "label": "Functional Completeness",
+        "score": 100,
+        "weight": 0.225,
+        "weightedScore": 22.5,
+        "errorCount": 0,
+        "warningCount": 0,
+        "issues": []
+      }
+    },
+    "renderSuccess": true
+  },
+  "efficiency": {
+    "durationMs": 1747882,
+    "costUsd": 10.438231499999997,
+    "inputTokens": 4140,
+    "outputTokens": 64339,
+    "cacheReadTokens": 13661157,
+    "cacheCreationTokens": 196585,
+    "totalTokens": 68479,
+    "numTurns": 114
+  },
+  "report": {
+    "file": "TestApp.tsx",
+    "errors": [],
+    "warnings": [
+      {
+        "type": "spatial",
+        "severity": "warning",
+        "source": "responsive-checker",
+        "component": "page",
+        "message": "Content uses only 40% of the desktop width (1280px): it stays in a narrow, mobile-shaped band instead of adapting to the available space.",
+        "suggestion": "Let the layout grow with the viewport using Marigold responsive primitives — <Columns collapseAt=\"...\"> for multi-column areas, AppLayout for the shell, Stack/Inline for flow — instead of a fixed-width container. (Intentionally centred max-width reading columns are fine and may trip this; treat it as a relative signal.)",
+        "details": {
+          "widthUtilization": 0.396875,
+          "contentElements": 57,
+          "scope": "page"
+        }
+      },
+      {
+        "type": "a11y",
+        "severity": "warning",
+        "source": "aom-extractor",
+        "component": "html",
+        "message": "Document should have one main landmark (landmark-one-main)",
+        "suggestion": "Wrap your page content in `<AppLayout>` with `<AppLayout.Main>` to provide a `<main>` landmark. Import AppLayout from `@marigold/components`.",
+        "details": {
+          "ruleId": "landmark-one-main",
+          "impact": "moderate",
+          "target": [
+            "html"
+          ],
+          "html": "<html lang=\"en\" data-theme=\"rui\">",
+          "scope": "page"
+        }
+      },
+      {
+        "type": "a11y",
+        "severity": "warning",
+        "source": "aom-extractor",
+        "component": "page",
+        "message": "All page content should be contained by landmarks — 12 elements affected (region)",
+        "suggestion": "All page content must be inside a landmark region. Use `<AppLayout>` with `<AppLayout.Main>` for the main area, `<TopNavigation>` for the header (`<header>`), and `<Sidebar>` for side navigation (`<aside>`). Import from `@marigold/components`.",
+        "details": {
+          "ruleId": "region",
+          "impact": "moderate",
+          "affectedCount": 12,
+          "scope": "page"
+        }
+      },
+      {
+        "type": "a11y",
+        "severity": "warning",
+        "source": "keyboard-a11y",
+        "component": "input",
+        "message": "Interactive element <input> (input) is not reachable via Tab key.",
+        "suggestion": "Ensure the element is focusable. Marigold interactive components are focusable by default — check if a parent has tabindex=\"-1\" or focus is trapped.",
+        "details": {
+          "selector": "body:nth-child(2) > div:nth-child(2) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > form:nth-child(3) > div:nth-child(1) > div:nth-child(1) > div:nth-child(2) > input:nth-child(1)",
+          "role": "input",
+          "scope": "page"
+        }
+      }
+    ],
+    "passed": [
+      "TypeScript compilation",
+      "All Marigold props are valid",
+      "Component composition",
+      "Overlay accessible names",
+      "Compound component placement",
+      "Section headers",
+      "Collection item ids",
+      "Design system usage",
+      "Layout usage",
+      "Table usage",
+      "Component conventions",
+      "Theme variant compliance",
+      "No overlapping components detected"
+    ],
+    "metadata": {
+      "renderTimeMs": 2037,
+      "componentsFound": [
+        "div",
+        "input",
+        "button"
+      ],
+      "checksRun": [
+        "technical",
+        "spatial",
+        "a11y"
+      ],
+      "coverage": {
+        "staticValuesChecked": 22,
+        "dynamicValuesSkipped": 20,
+        "spreadPropsBypassed": 0
+      },
+      "widthUtilization": 0.396875
+    },
+    "markdown": "marigold-validate: TestApp.tsx — 0 error(s), 4 warning(s)\n\n[warning/spatial] <page>: Content uses only 40% of the desktop width (1280px): it stays in a narrow, mobile-shaped band instead of adapting to the available space.\n  → Let the layout grow with the viewport using Marigold responsive primitives — <Columns collapseAt=\"...\"> for multi-column areas, AppLayout for the shell, Stack/Inline for flow — instead of a fixed-width container. (Intentionally centred max-width reading columns are fine and may trip this; treat it as a relative signal.)\n  data: {widthUtilization=0.396875, contentElements=57, scope=page}\n[warning/a11y] <html>: Document should have one main landmark (landmark-one-main)\n  → Wrap your page content in `<AppLayout>` with `<AppLayout.Main>` to provide a `<main>` landmark. Import AppLayout from `@marigold/components`.\n  data: {ruleId=landmark-one-main, impact=moderate, target=[\"html\"], html=<html lang=\"en\" data-theme=\"rui\">, scope=page}\n[warning/a11y] <input>: Interactive element <input> (input) is not reachable via Tab key.\n  → Ensure the element is focusable. Marigold interactive components are focusable by default — check if a parent has tabindex=\"-1\" or focus is trapped.\n  data: {selector=body:nth-child(2) > div:nth-child(2) > div:nth-child(1) > div:nth-child(1) > ..., role=input, scope=page}\n[warning/a11y] <page>: All page content should be contained by landmarks — 12 elements affected (region)\n  → All page content must be inside a landmark region. Use `<AppLayout>` with `<AppLayout.Main>` for the main area, `<TopNavigation>` for the header (`<header>`), and `<Sidebar>` for side navigation (`<aside>`). Import from `@marigold/components`.\n  data: {ruleId=region, impact=moderate, affectedCount=12, scope=page}\n\npassed: TypeScript compilation, All Marigold props are valid, Component composition, Overlay accessible names, Compound component placement, Section headers, Collection item ids, Design system usage, Layout usage, Table usage, Component conventions, Theme variant compliance, No overlapping components detected\n\nchecks run: technical, spatial, a11y"
+  },
+  "componentsFound": [
+    "div",
+    "input",
+    "button"
+  ],
+  "renderTimeMs": 2037,
+  "sourceCode": "import { useEffect, useRef, useState } from 'react';\nimport type { DateValue } from '@internationalized/date';\nimport {\n  Accordion,\n  Autocomplete,\n  Button,\n  Card,\n  Center,\n  Checkbox,\n  CheckboxGroup,\n  ComboBox,\n  DatePicker,\n  Divider,\n  FileField,\n  Form,\n  Headline,\n  Inline,\n  Loader,\n  NumberField,\n  Radio,\n  SectionMessage,\n  Select,\n  Split,\n  Stack,\n  Switch,\n  TagField,\n  Text,\n  TextArea,\n  TextField,\n  TimeField,\n  ToastProvider,\n  useToast,\n} from '@marigold/components';\nimport type { TimeValue } from '@marigold/components';\n\nconst STEP_TITLES = [\n  'Personal Information',\n  'Event Details',\n  'Preferences',\n  'Review & Confirm',\n];\n\nconst JOB_TITLES = [\n  'Developer',\n  'Designer',\n  'Product Manager',\n  'Engineering Manager',\n  'CTO',\n  'Other',\n];\n\nconst TRACKS = ['Technical', 'Design', 'Business', 'Workshop'];\n\nconst DIETARY_OPTIONS = [\n  'None',\n  'Vegetarian',\n  'Vegan',\n  'Gluten-Free',\n  'Kosher',\n  'Halal',\n];\n\nconst TSHIRT_SIZES = ['XS', 'S', 'M', 'L', 'XL', 'XXL'];\n\nconst TOPIC_OPTIONS = [\n  'AI/ML',\n  'Web Development',\n  'Cloud',\n  'Security',\n  'DevOps',\n  'Mobile',\n  'Data Science',\n];\n\nconst COMM_OPTIONS = [\n  { value: 'email', label: 'Email updates about the event' },\n  { value: 'sms', label: 'SMS reminders' },\n  { value: 'survey', label: 'Post-event survey' },\n  { value: 'newsletter', label: 'Newsletter subscription' },\n];\n\nconst pad = (n: number) => String(n).padStart(2, '0');\n\nconst formatDate = (date: DateValue | null) =>\n  date ? `${date.year}-${pad(date.month)}-${pad(date.day)}` : '—';\n\nconst formatTime = (time: TimeValue | null) =>\n  time ? `${pad(time.hour)}:${pad(time.minute)}` : '—';\n\nconst EMAIL_RE = /^[^\\s@]+@[^\\s@]+\\.[^\\s@]+$/;\n\nconst TestApp = () => {\n  const { addToast } = useToast();\n  const formRef = useRef<HTMLFormElement>(null);\n\n  // Flow state\n  const [step, setStep] = useState(1);\n  const [errors, setErrors] = useState<Record<string, string>>({});\n  const [loading, setLoading] = useState(false);\n  const [submitted, setSubmitted] = useState(false);\n  const [confirmation, setConfirmation] = useState('');\n\n  // Step 1 — Personal information\n  const [fullName, setFullName] = useState('');\n  const [email, setEmail] = useState('');\n  const [phone, setPhone] = useState('');\n  const [company, setCompany] = useState('');\n  const [jobTitle, setJobTitle] = useState('');\n  const [photoName, setPhotoName] = useState<string | null>(null);\n  const [photoPreview, setPhotoPreview] = useState<string | null>(null);\n\n  // Step 2 — Event details\n  const [eventDate, setEventDate] = useState<DateValue | null>(null);\n  const [timeSlot, setTimeSlot] = useState<TimeValue | null>(null);\n  const [track, setTrack] = useState('');\n  const [dietary, setDietary] = useState('');\n  const [guests, setGuests] = useState(0);\n  const [specialRequests, setSpecialRequests] = useState('');\n\n  // Step 3 — Preferences\n  const [tshirt, setTshirt] = useState('');\n  const [topics, setTopics] = useState<string[]>([]);\n  const [comms, setComms] = useState<string[]>([]);\n  const [accessibility, setAccessibility] = useState(false);\n  const [accessibilityDetails, setAccessibilityDetails] = useState('');\n\n  // Step 4 — Review & confirm\n  const [agree, setAgree] = useState(false);\n\n  const validateStep = (current: number) => {\n    const e: Record<string, string> = {};\n    if (current === 1) {\n      if (!fullName.trim()) e.fullName = 'Please enter your full name.';\n      if (!email.trim()) {\n        e.email = 'Please enter your email address.';\n      } else if (!EMAIL_RE.test(email.trim())) {\n        e.email = 'Please enter a valid email address.';\n      }\n    }\n    if (current === 2) {\n      if (!eventDate) e.eventDate = 'Please choose an event date.';\n    }\n    return e;\n  };\n\n  const handleNext = () => {\n    if (step < 4) {\n      const e = validateStep(step);\n      if (Object.keys(e).length) {\n        setErrors(e);\n        return;\n      }\n      setErrors({});\n      setStep(step + 1);\n    } else {\n      handleSubmit();\n    }\n  };\n\n  const handleBack = () => {\n    setErrors({});\n    if (step > 1) setStep(step - 1);\n  };\n\n  const handleSubmit = () => {\n    setLoading(true);\n    window.setTimeout(() => {\n      const code = `REG-${Math.floor(100000 + Math.random() * 900000)}`;\n      setConfirmation(code);\n      setLoading(false);\n      setSubmitted(true);\n      addToast({\n        title: 'Registration submitted successfully',\n        variant: 'success',\n      });\n    }, 1000);\n  };\n\n  const handleReset = () => {\n    setStep(1);\n    setErrors({});\n    setSubmitted(false);\n    setConfirmation('');\n    setFullName('');\n    setEmail('');\n    setPhone('');\n    setCompany('');\n    setJobTitle('');\n    setPhotoName(null);\n    setPhotoPreview(null);\n    setEventDate(null);\n    setTimeSlot(null);\n    setTrack('');\n    setDietary('');\n    setGuests(0);\n    setSpecialRequests('');\n    setTshirt('');\n    setTopics([]);\n    setComms([]);\n    setAccessibility(false);\n    setAccessibilityDetails('');\n    setAgree(false);\n  };\n\n  // Capture the selected profile photo from the FileField's underlying input.\n  // We listen for the bubbling native change event instead of using an\n  // onChange prop, since the form components manage their own values.\n  useEffect(() => {\n    const el = formRef.current;\n    if (!el) return;\n    const listener = (event: Event) => {\n      const target = event.target as HTMLInputElement;\n      if (target.type === 'file' && target.files && target.files[0]) {\n        const file = target.files[0];\n        if (file.type.startsWith('image/')) {\n          setPhotoName(file.name);\n          const reader = new FileReader();\n          reader.onload = () => setPhotoPreview(reader.result as string);\n          reader.readAsDataURL(file);\n        }\n      }\n    };\n    el.addEventListener('change', listener);\n    return () => el.removeEventListener('change', listener);\n  }, [step]);\n\n  const commLabel = (value: string) =>\n    COMM_OPTIONS.find(o => o.value === value)?.label ?? value;\n\n  const renderReviewRow = (label: string, value: string) => (\n    <Inline space={2} alignY=\"center\">\n      <Text weight=\"bold\">{label}:</Text>\n      <Text>{value || '—'}</Text>\n    </Inline>\n  );\n\n  if (submitted) {\n    return (\n      <>\n        <ToastProvider position=\"bottom-right\" />\n        <Center>\n          <Card p=\"square-relaxed\" space=\"related\">\n            <Stack space={6}>\n              <Headline level={1}>Event Registration</Headline>\n              <SectionMessage variant=\"success\">\n                <SectionMessage.Title>\n                  Registration confirmed!\n                </SectionMessage.Title>\n                <SectionMessage.Content>\n                  Thank you for registering. A confirmation has been generated\n                  below.\n                </SectionMessage.Content>\n              </SectionMessage>\n\n              <Card variant=\"default\" p=\"square-regular\">\n                <Stack space={3}>\n                  <Headline level={3}>Confirmation Summary</Headline>\n                  <Divider />\n                  {renderReviewRow('Name', fullName)}\n                  {renderReviewRow('Email', email)}\n                  {renderReviewRow('Event Date', formatDate(eventDate))}\n                  {renderReviewRow('Confirmation Number', confirmation)}\n                </Stack>\n              </Card>\n\n              <Button variant=\"primary\" onPress={handleReset}>\n                Register Another\n              </Button>\n            </Stack>\n          </Card>\n        </Center>\n      </>\n    );\n  }\n\n  return (\n    <>\n      <ToastProvider position=\"bottom-right\" />\n      {loading ? <Loader mode=\"fullscreen\" /> : null}\n      <Center>\n        <Card p=\"square-relaxed\" space=\"related\">\n          <Stack space={6}>\n            <Stack space={1}>\n              <Headline level={1}>Event Registration</Headline>\n              <Headline level={2}>\n                Step {step} of 4 — {STEP_TITLES[step - 1]}\n              </Headline>\n            </Stack>\n\n            <Divider />\n\n            <Form ref={formRef} onSubmit={e => e.preventDefault()}>\n              {step === 1 && (\n                <Stack space={5}>\n                  <TextField\n                    label=\"Full Name\"\n                    name=\"fullName\"\n                    value={fullName}\n                    onChange={setFullName}\n                    required\n                    error={!!errors.fullName}\n                    errorMessage={errors.fullName}\n                  />\n                  <TextField\n                    label=\"Email\"\n                    name=\"email\"\n                    type=\"email\"\n                    value={email}\n                    onChange={setEmail}\n                    required\n                    error={!!errors.email}\n                    errorMessage={errors.email}\n                  />\n                  <TextField\n                    label=\"Phone Number\"\n                    name=\"phone\"\n                    type=\"tel\"\n                    value={phone}\n                    onChange={setPhone}\n                  />\n                  <TextField\n                    label=\"Company / Organization\"\n                    name=\"company\"\n                    value={company}\n                    onChange={setCompany}\n                  />\n                  <Autocomplete\n                    label=\"Job Title\"\n                    description=\"Choose a suggestion or type your own.\"\n                    menuTrigger=\"focus\"\n                    value={jobTitle}\n                    onChange={setJobTitle}\n                  >\n                    {JOB_TITLES.map(title => (\n                      <Autocomplete.Option key={title} id={title}>\n                        {title}\n                      </Autocomplete.Option>\n                    ))}\n                  </Autocomplete>\n                  <Stack space={2}>\n                    <FileField label=\"Profile Photo\" accept={['image/*']} />\n                    {photoPreview ? (\n                      <Inline space={2} alignY=\"center\">\n                        <img\n                          src={photoPreview}\n                          alt=\"Profile preview\"\n                          width={96}\n                          height={96}\n                        />\n                        <Text fontSize=\"sm\">{photoName}</Text>\n                      </Inline>\n                    ) : null}\n                  </Stack>\n                  <SectionMessage variant=\"info\">\n                    <SectionMessage.Title>Privacy</SectionMessage.Title>\n                    <SectionMessage.Content>\n                      Your information will only be used for this event.\n                    </SectionMessage.Content>\n                  </SectionMessage>\n                </Stack>\n              )}\n\n              {step === 2 && (\n                <Stack space={5}>\n                  <DatePicker\n                    label=\"Event Date\"\n                    value={eventDate}\n                    onChange={setEventDate}\n                    required\n                    error={!!errors.eventDate}\n                    errorMessage={errors.eventDate}\n                  />\n                  <TimeField\n                    label=\"Preferred Time Slot\"\n                    value={timeSlot}\n                    onChange={setTimeSlot}\n                  />\n                  <Radio.Group\n                    label=\"Session Track\"\n                    value={track}\n                    onChange={setTrack}\n                  >\n                    {TRACKS.map(t => (\n                      <Radio key={t} value={t}>\n                        {t}\n                      </Radio>\n                    ))}\n                  </Radio.Group>\n                  <ComboBox\n                    label=\"Dietary Requirements\"\n                    description=\"Search the list or type a custom value.\"\n                    menuTrigger=\"focus\"\n                    allowsCustomValue\n                    value={dietary}\n                    onChange={setDietary}\n                  >\n                    {DIETARY_OPTIONS.map(option => (\n                      <ComboBox.Option key={option} id={option}>\n                        {option}\n                      </ComboBox.Option>\n                    ))}\n                  </ComboBox>\n                  <NumberField\n                    label=\"Number of Guests\"\n                    minValue={0}\n                    maxValue={5}\n                    value={guests}\n                    onChange={v => setGuests(Number.isNaN(v) ? 0 : v)}\n                  />\n                  <TextArea\n                    label=\"Special Requests\"\n                    rows={4}\n                    value={specialRequests}\n                    onChange={setSpecialRequests}\n                  />\n                </Stack>\n              )}\n\n              {step === 3 && (\n                <Stack space={5}>\n                  <Select\n                    label=\"T-Shirt Size\"\n                    placeholder=\"Select a size\"\n                    selectedKey={tshirt || null}\n                    onSelectionChange={key => setTshirt(key ? String(key) : '')}\n                  >\n                    {TSHIRT_SIZES.map(size => (\n                      <Select.Option key={size} id={size}>\n                        {size}\n                      </Select.Option>\n                    ))}\n                  </Select>\n                  <TagField\n                    label=\"Topics of Interest\"\n                    description=\"Add topics from the suggestions.\"\n                    value={topics}\n                    onChange={keys => setTopics(keys as string[])}\n                  >\n                    {TOPIC_OPTIONS.map(topic => (\n                      <TagField.Option key={topic} id={topic}>\n                        {topic}\n                      </TagField.Option>\n                    ))}\n                  </TagField>\n                  <CheckboxGroup\n                    label=\"Communication Preferences\"\n                    value={comms}\n                    onChange={setComms}\n                  >\n                    {COMM_OPTIONS.map(option => (\n                      <Checkbox\n                        key={option.value}\n                        value={option.value}\n                        label={option.label}\n                      />\n                    ))}\n                  </CheckboxGroup>\n                  <Stack space={3}>\n                    <Switch\n                      label=\"I have accessibility requirements\"\n                      selected={accessibility}\n                      onChange={setAccessibility}\n                    />\n                    {accessibility ? (\n                      <TextArea\n                        label=\"Accessibility Details\"\n                        rows={3}\n                        value={accessibilityDetails}\n                        onChange={setAccessibilityDetails}\n                      />\n                    ) : null}\n                  </Stack>\n                </Stack>\n              )}\n\n              {step === 4 && (\n                <Stack space={5}>\n                  <Accordion\n                    allowsMultipleExpanded\n                    defaultExpandedKeys={[\n                      'personal',\n                      'event',\n                      'preferences',\n                    ]}\n                  >\n                    <Accordion.Item id=\"personal\">\n                      <Accordion.Header>Personal Information</Accordion.Header>\n                      <Accordion.Content>\n                        <Stack space={2}>\n                          {renderReviewRow('Name', fullName)}\n                          {renderReviewRow('Email', email)}\n                          {renderReviewRow('Phone', phone)}\n                          {renderReviewRow('Company', company)}\n                          {renderReviewRow('Job Title', jobTitle)}\n                        </Stack>\n                      </Accordion.Content>\n                    </Accordion.Item>\n                    <Accordion.Item id=\"event\">\n                      <Accordion.Header>Event Details</Accordion.Header>\n                      <Accordion.Content>\n                        <Stack space={2}>\n                          {renderReviewRow('Date', formatDate(eventDate))}\n                          {renderReviewRow('Time', formatTime(timeSlot))}\n                          {renderReviewRow('Track', track)}\n                          {renderReviewRow('Dietary', dietary)}\n                          {renderReviewRow('Guests', String(guests))}\n                        </Stack>\n                      </Accordion.Content>\n                    </Accordion.Item>\n                    <Accordion.Item id=\"preferences\">\n                      <Accordion.Header>Preferences</Accordion.Header>\n                      <Accordion.Content>\n                        <Stack space={2}>\n                          {renderReviewRow('T-Shirt Size', tshirt)}\n                          {renderReviewRow(\n                            'Topics',\n                            topics.join(', ')\n                          )}\n                          {renderReviewRow(\n                            'Communication',\n                            comms.map(commLabel).join(', ')\n                          )}\n                        </Stack>\n                      </Accordion.Content>\n                    </Accordion.Item>\n                  </Accordion>\n\n                  <Divider />\n\n                  <Checkbox\n                    checked={agree}\n                    onChange={setAgree}\n                    label=\"I agree to the terms and conditions\"\n                  />\n                </Stack>\n              )}\n            </Form>\n\n            <Divider />\n\n            <Inline space={3} alignY=\"center\">\n              <Button\n                variant=\"secondary\"\n                onPress={handleBack}\n                disabled={step === 1}\n              >\n                Back\n              </Button>\n              <Split />\n              <Button\n                variant=\"primary\"\n                onPress={handleNext}\n                disabled={step === 4 && !agree}\n              >\n                {step === 4 ? 'Submit Registration' : 'Next'}\n              </Button>\n            </Inline>\n          </Stack>\n        </Card>\n      </Center>\n    </>\n  );\n};\n\nexport default TestApp;\n",
+  "assertions": {
+    "passed": [
+      {
+        "id": "a-import-marigold",
+        "description": "Imports from @marigold/components",
+        "severity": "required",
+        "passed": true,
+        "evidence": "import from \"@marigold/components\" found"
+      },
+      {
+        "id": "a-form",
+        "description": "Form component",
+        "severity": "required",
+        "passed": true,
+        "evidence": "<Form> found"
+      },
+      {
+        "id": "a-text-field",
+        "description": "TextField for text inputs",
+        "severity": "required",
+        "passed": true,
+        "evidence": "<TextField> found"
+      },
+      {
+        "id": "a-datepicker",
+        "description": "DatePicker for event date",
+        "severity": "required",
+        "passed": true,
+        "evidence": "<DatePicker> found"
+      },
+      {
+        "id": "a-timefield",
+        "description": "TimeField for time slot",
+        "severity": "required",
+        "passed": true,
+        "evidence": "<TimeField> found"
+      },
+      {
+        "id": "a-radio",
+        "description": "Radio/RadioGroup for session track",
+        "severity": "required",
+        "passed": true,
+        "evidence": "matched: <Radio> found"
+      },
+      {
+        "id": "a-combobox",
+        "description": "ComboBox for dietary requirements",
+        "severity": "required",
+        "passed": true,
+        "evidence": "<ComboBox> found"
+      },
+      {
+        "id": "a-numberfield",
+        "description": "NumberField for guests",
+        "severity": "required",
+        "passed": true,
+        "evidence": "<NumberField> found"
+      },
+      {
+        "id": "a-select",
+        "description": "Select for t-shirt size",
+        "severity": "required",
+        "passed": true,
+        "evidence": "<Select> found"
+      },
+      {
+        "id": "a-tagfield",
+        "description": "TagField for topics of interest",
+        "severity": "required",
+        "passed": true,
+        "evidence": "<TagField> found"
+      },
+      {
+        "id": "a-checkbox",
+        "description": "Checkbox for communication preferences",
+        "severity": "required",
+        "passed": true,
+        "evidence": "matched: <Checkbox> found; <CheckboxGroup> found"
+      },
+      {
+        "id": "a-switch",
+        "description": "Switch for accessibility needs",
+        "severity": "required",
+        "passed": true,
+        "evidence": "<Switch> found"
+      },
+      {
+        "id": "a-textarea",
+        "description": "TextArea for special requests",
+        "severity": "required",
+        "passed": true,
+        "evidence": "<TextArea> found"
+      },
+      {
+        "id": "a-autocomplete",
+        "description": "Autocomplete for job title",
+        "severity": "required",
+        "passed": true,
+        "evidence": "<Autocomplete> found"
+      },
+      {
+        "id": "a-filefield",
+        "description": "FileField for profile photo",
+        "severity": "required",
+        "passed": true,
+        "evidence": "<FileField> found"
+      },
+      {
+        "id": "a-accordion",
+        "description": "Accordion for review sections",
+        "severity": "required",
+        "passed": true,
+        "evidence": "<Accordion> found"
+      },
+      {
+        "id": "a-button",
+        "description": "Button for navigation/submit",
+        "severity": "required",
+        "passed": true,
+        "evidence": "<Button> found"
+      },
+      {
+        "id": "a-card",
+        "description": "Card as form container",
+        "severity": "required",
+        "passed": true,
+        "evidence": "<Card> found"
+      },
+      {
+        "id": "a-section-message",
+        "description": "SectionMessage for info/success",
+        "severity": "required",
+        "passed": true,
+        "evidence": "<SectionMessage> found"
+      },
+      {
+        "id": "a-loader",
+        "description": "Loader for submission",
+        "severity": "recommended",
+        "passed": true,
+        "evidence": "<Loader> found"
+      },
+      {
+        "id": "a-step-state",
+        "description": "Multi-step state management (useState)",
+        "severity": "recommended",
+        "passed": true,
+        "evidence": "pattern \"/useState/\" found"
+      },
+      {
+        "id": "a-toast",
+        "description": "Toast notification after submission",
+        "severity": "recommended",
+        "passed": true,
+        "evidence": "matched: pattern \"/useToast/\" found"
+      }
+    ],
+    "failed": [],
+    "passRate": 1,
+    "requiredPassRate": 1,
+    "weightedPassRate": 1,
+    "total": 22
+  },
+  "validatePackageVersion": "0.0.1",
+  "playwrightVersion": null,
+  "resolvedModelId": "claude-opus-4-8",
+  "claudeCliVersion": "2.1.193 (Claude Code)",
+  "sessionId": "c164f4ca-27b5-442f-9891-11cac244c9a7"
+}

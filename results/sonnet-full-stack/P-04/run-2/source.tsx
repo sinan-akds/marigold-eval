@@ -3,6 +3,7 @@ import {
   Badge,
   Button,
   Card,
+  Columns,
   Divider,
   Form,
   Headline,
@@ -10,186 +11,168 @@ import {
   Inset,
   NumberField,
   SectionMessage,
-  Split,
   Stack,
   Text,
   TextField,
   Tiles,
 } from '@marigold/components';
 
-interface Ticket {
-  id: string;
-  name: string;
-  price: number;
-  description: string;
-  maxQty: number;
-  available: boolean;
-  limitedText?: string;
-  soldOut?: boolean;
-}
-
-const TICKETS: Ticket[] = [
+const TICKETS = [
   {
-    id: 'early-bird',
+    id: 'earlyBird',
     name: 'Early Bird',
     price: 49,
-    description: 'Limited early access tickets.',
-    maxQty: 12,
-    available: true,
-    limitedText: 'Only 12 left',
+    description: 'Limited availability — grab yours before they\'re gone.',
+    max: 12,
+    soldOut: false,
+    limited: true,
   },
   {
     id: 'regular',
     name: 'Regular',
     price: 79,
-    description: 'Standard festival admission.',
-    maxQty: 99,
-    available: true,
+    description: 'Standard admission to all three days.',
+    max: 99,
+    soldOut: false,
+    limited: false,
   },
   {
     id: 'vip',
     name: 'VIP',
     price: 149,
     description: 'Premium experience with backstage access.',
-    maxQty: 0,
-    available: false,
+    max: 0,
     soldOut: true,
+    limited: false,
   },
 ];
 
-const isValidEmail = (value: string): boolean =>
-  /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value);
-
-const TestApp = () => {
+export default function TestApp() {
   const [quantities, setQuantities] = useState<Record<string, number>>({
-    'early-bird': 0,
+    earlyBird: 0,
     regular: 0,
     vip: 0,
   });
-  const [name, setName] = useState('');
+  const [fullName, setFullName] = useState('');
   const [email, setEmail] = useState('');
   const [phone, setPhone] = useState('');
-  const [attempted, setAttempted] = useState(false);
-  const [orderSuccess, setOrderSuccess] = useState(false);
+  const [submitted, setSubmitted] = useState(false);
+  const [purchaseError, setPurchaseError] = useState<string | null>(null);
 
   const totalTickets = Object.values(quantities).reduce((a, b) => a + b, 0);
   const grandTotal = TICKETS.reduce(
-    (sum, t) => sum + (quantities[t.id] ?? 0) * t.price,
+    (sum, t) => sum + t.price * (quantities[t.id] ?? 0),
     0
   );
   const lineItems = TICKETS.filter(t => (quantities[t.id] ?? 0) > 0);
 
-  const nameError = attempted && !name.trim();
-  const emailError = attempted && !isValidEmail(email);
-  const noTicketsError = attempted && totalTickets === 0;
-  const hasErrors = nameError || emailError || noTicketsError;
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
 
-  const handleQtyChange = (id: string, val: number) => {
-    setOrderSuccess(false);
-    setQuantities(prev => ({
-      ...prev,
-      [id]: Number.isFinite(val) ? val : 0,
-    }));
+    if (totalTickets === 0) {
+      setPurchaseError('Please select at least one ticket before purchasing.');
+      return;
+    }
+    if (!fullName.trim()) {
+      setPurchaseError('Full name is required.');
+      return;
+    }
+    if (!email.trim() || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+      setPurchaseError('Please enter a valid email address.');
+      return;
+    }
+
+    setPurchaseError(null);
+    setSubmitted(true);
   };
 
-  return (
-    <main>
-    <Inset space={8}>
-      <Stack space={8}>
-        {/* Event header */}
-        <Card>
-          <Inset spaceX="padding-regular" spaceY="padding-snug">
-            <Stack space={2}>
-              <Headline level={1}>Summer Music Festival 2026</Headline>
-              <Inline space={4}>
-                <Text weight="bold">July 15–17, 2026</Text>
-                <Text variant="muted">Stadtpark Freiburg</Text>
-              </Inline>
-              <Text>
-                Three days of live music featuring local and international
-                artists.
-              </Text>
-            </Stack>
-          </Inset>
-        </Card>
+  if (submitted) {
+    return (
+      <Inset space={8}>
+        <SectionMessage variant="success">
+          <SectionMessage.Title>Order Confirmed!</SectionMessage.Title>
+          <SectionMessage.Content>
+            Thank you, {fullName}! Your tickets for the Summer Music Festival
+            2026 have been booked. A confirmation will be sent to {email}.
+          </SectionMessage.Content>
+        </SectionMessage>
+      </Inset>
+    );
+  }
 
-        {/* Ticket categories */}
-        <Stack space={4}>
-          <Headline level={2}>Select Tickets</Headline>
-          <Tiles tilesWidth="260px" space={4} stretch equalHeight>
-            {TICKETS.map(ticket => (
-              <Card key={ticket.id}>
-                <Inset spaceX="padding-regular" spaceY="padding-snug">
+  return (
+    <Inset space={8}>
+      <Form onSubmit={handleSubmit}>
+        <Stack space={8}>
+          {/* Event Header */}
+          <Stack space={2}>
+            <Headline level="1">Summer Music Festival 2026</Headline>
+            <Inline space={2}>
+              <Text>July 15–17, 2026</Text>
+              <Text>·</Text>
+              <Text>Stadtpark Freiburg</Text>
+            </Inline>
+            <Text variant="muted">
+              Three days of live music featuring local and international artists.
+            </Text>
+          </Stack>
+
+          <Divider />
+
+          {/* Ticket Categories */}
+          <Stack space={4}>
+            <Headline level="2">Choose Your Tickets</Headline>
+            <Tiles tilesWidth="240px" space={4} equalHeight stretch>
+              {TICKETS.map(ticket => (
+                <Card key={ticket.id} p={4}>
                   <Stack space={3}>
-                    <Inline space={2}>
-                      <Text weight="bold" size="lg">
-                        {ticket.name}
-                      </Text>
-                      {ticket.limitedText && (
-                        <Badge variant="warning">{ticket.limitedText}</Badge>
-                      )}
-                      {ticket.soldOut && (
-                        <Badge variant="error">Sold Out</Badge>
-                      )}
-                    </Inline>
-                    <Text weight="bold" size="xl">
-                      ${ticket.price}
-                    </Text>
+                    <Stack space={1}>
+                      <Inline space={2}>
+                        <Headline level="3">{ticket.name}</Headline>
+                        {ticket.soldOut && (
+                          <Badge variant="error">Sold Out</Badge>
+                        )}
+                        {ticket.limited && !ticket.soldOut && (
+                          <Badge variant="warning">Only 12 left</Badge>
+                        )}
+                      </Inline>
+                      <Text size="xl">${ticket.price}</Text>
+                    </Stack>
                     <Text variant="muted">{ticket.description}</Text>
                     <NumberField
                       label="Quantity"
-                      value={quantities[ticket.id]}
-                      onChange={val => handleQtyChange(ticket.id, val)}
+                      value={quantities[ticket.id] ?? 0}
                       minValue={0}
-                      maxValue={ticket.available ? ticket.maxQty : 0}
-                      disabled={!ticket.available}
-                      hideStepper
+                      maxValue={ticket.soldOut ? 0 : ticket.max}
+                      onChange={value => {
+                        setQuantities(prev => ({ ...prev, [ticket.id]: value }));
+                        setPurchaseError(null);
+                      }}
+                      disabled={ticket.soldOut}
+                      width="1/2"
                     />
                   </Stack>
-                </Inset>
-              </Card>
-            ))}
-          </Tiles>
-        </Stack>
+                </Card>
+              ))}
+            </Tiles>
+          </Stack>
 
-        <Divider />
+          <Divider />
 
-        {/* Buyer info, order summary and checkout */}
-        <Form
-          onSubmit={e => {
-            e.preventDefault();
-            setAttempted(true);
-            const valid =
-              totalTickets > 0 &&
-              name.trim() !== '' &&
-              isValidEmail(email);
-            setOrderSuccess(valid);
-          }}
-        >
-          <Stack space={6}>
-            {/* Buyer fields */}
-            <Stack space={4}>
-              <Headline level={2}>Buyer Information</Headline>
+          {/* Buyer Information */}
+          <Stack space={4}>
+            <Headline level="2">Your Information</Headline>
+            <Stack space={3}>
               <TextField
                 label="Full Name"
-                value={name}
-                onChange={val => {
-                  setOrderSuccess(false);
-                  setName(val);
-                }}
-                error={nameError}
-                errorMessage="Full Name is required."
+                value={fullName}
+                onChange={setFullName}
               />
               <TextField
                 label="Email"
                 type="email"
                 value={email}
-                onChange={val => {
-                  setOrderSuccess(false);
-                  setEmail(val);
-                }}
-                error={emailError}
-                errorMessage="Please enter a valid email address."
+                onChange={setEmail}
               />
               <TextField
                 label="Phone Number"
@@ -198,78 +181,55 @@ const TestApp = () => {
                 onChange={setPhone}
               />
             </Stack>
+          </Stack>
 
-            <Divider />
+          <Divider />
 
-            {/* Order summary */}
-            <Stack space={3}>
-              <Headline level={3}>Order Summary</Headline>
-              {lineItems.length === 0 ? (
-                <Text variant="muted">No tickets selected yet.</Text>
-              ) : (
-                <Stack space={2}>
-                  {lineItems.map(ticket => (
-                    <Inline key={ticket.id} space={2}>
+          {/* Order Summary */}
+          <Stack space={4}>
+            <Headline level="2">Order Summary</Headline>
+            <Card p={4}>
+              <Stack space={3}>
+                {lineItems.length === 0 ? (
+                  <Text variant="muted">No tickets selected yet.</Text>
+                ) : (
+                  lineItems.map(ticket => (
+                    <Columns
+                      key={ticket.id}
+                      columns={[1, 'fit']}
+                      space={2}
+                      collapseAt="0em"
+                    >
                       <Text>
-                        {ticket.name} &times; {quantities[ticket.id]}
+                        {ticket.name} × {quantities[ticket.id]}
                       </Text>
-                      <Split />
-                      <Text weight="bold">
-                        ${(quantities[ticket.id] ?? 0) * ticket.price}
+                      <Text>
+                        ${ticket.price * (quantities[ticket.id] ?? 0)}
                       </Text>
-                    </Inline>
-                  ))}
-                  <Divider />
-                  <Inline space={2}>
-                    <Text weight="bold">Grand Total</Text>
-                    <Split />
-                    <Text weight="bold" size="xl">
-                      ${grandTotal}
-                    </Text>
-                  </Inline>
-                </Stack>
-              )}
-            </Stack>
+                    </Columns>
+                  ))
+                )}
+                <Divider />
+                <Columns columns={[1, 'fit']} space={2} collapseAt="0em">
+                  <Headline level="3">Grand Total</Headline>
+                  <Headline level="3">${grandTotal}</Headline>
+                </Columns>
+              </Stack>
+            </Card>
 
-            {/* Feedback */}
-            {orderSuccess && (
-              <SectionMessage variant="success">
-                <SectionMessage.Title>Order Confirmed!</SectionMessage.Title>
-                <SectionMessage.Content>
-                  Thank you, {name}! Your {totalTickets} ticket
-                  {totalTickets !== 1 ? 's have' : ' has'} been reserved. A
-                  confirmation will be sent to {email}.
-                </SectionMessage.Content>
-              </SectionMessage>
-            )}
-            {attempted && hasErrors && (
-              <SectionMessage variant="error">
-                <SectionMessage.Title>
-                  Unable to complete purchase
-                </SectionMessage.Title>
-                <SectionMessage.Content>
-                  <Stack space={1}>
-                    {noTicketsError && (
-                      <Text>Please select at least one ticket.</Text>
-                    )}
-                    {nameError && <Text>Full Name is required.</Text>}
-                    {emailError && (
-                      <Text>Please enter a valid email address.</Text>
-                    )}
-                  </Stack>
-                </SectionMessage.Content>
+            {purchaseError && (
+              <SectionMessage variant="warning">
+                <SectionMessage.Title>Cannot Complete Purchase</SectionMessage.Title>
+                <SectionMessage.Content>{purchaseError}</SectionMessage.Content>
               </SectionMessage>
             )}
 
-            <Button type="submit" variant="primary" fullWidth>
+            <Button variant="primary" fullWidth type="submit">
               Purchase Tickets
             </Button>
           </Stack>
-        </Form>
-      </Stack>
+        </Stack>
+      </Form>
     </Inset>
-    </main>
   );
-};
-
-export default TestApp;
+}

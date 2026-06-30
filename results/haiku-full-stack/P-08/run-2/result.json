@@ -3,36 +3,19 @@
   "promptId": "P-08",
   "model": "haiku",
   "config": "full-stack",
-  "timestamp": "2026-06-22T08:09:05.061Z",
+  "timestamp": "2026-06-28T11:28:30.477Z",
   "quality": {
-    "overall": 74.13,
+    "overall": 90.7,
     "categories": {
       "A": {
         "category": "A",
         "label": "Design System API",
-        "score": 85.86,
+        "score": 100,
         "weight": 0.225,
-        "weightedScore": 19.32,
+        "weightedScore": 22.5,
         "errorCount": 0,
-        "warningCount": 1,
-        "issues": [
-          {
-            "type": "technical",
-            "severity": "warning",
-            "source": "design-system-usage",
-            "component": "nav",
-            "message": "Raw <nav> used instead of a Marigold component.",
-            "suggestion": "Raw <nav> used instead of a Marigold navigation component. Search the Marigold docs for navigation alternatives.",
-            "location": {
-              "file": "TestApp.tsx",
-              "line": 769,
-              "column": 15
-            },
-            "details": {
-              "htmlElement": "nav"
-            }
-          }
-        ]
+        "warningCount": 0,
+        "issues": []
       },
       "B": {
         "category": "B",
@@ -63,98 +46,12 @@
       "C": {
         "category": "C",
         "label": "DOM / Structure",
-        "score": 44.66,
+        "score": 100,
         "weight": 0.225,
-        "weightedScore": 10.05,
+        "weightedScore": 22.5,
         "errorCount": 0,
-        "warningCount": 5,
-        "issues": [
-          {
-            "type": "technical",
-            "severity": "warning",
-            "source": "layout-usage",
-            "component": "Inline",
-            "message": "<Inline> wraps a single child. A flow layout earns its place only with two or more children; with one child it adds a wrapper that does nothing.",
-            "suggestion": "Render the child directly instead of wrapping it in <Inline>. For single-child spacing use Inset, Center, Breakout or Aspect.",
-            "location": {
-              "file": "TestApp.tsx",
-              "line": 237,
-              "column": 13
-            },
-            "details": {
-              "layout": "Inline",
-              "childCount": 1
-            }
-          },
-          {
-            "type": "technical",
-            "severity": "warning",
-            "source": "table-usage",
-            "component": "Table",
-            "message": "<Table> has no column marked rowHeader. Exactly one Table.Column should set rowHeader so screen readers can announce each row by it.",
-            "suggestion": "Add rowHeader to the column that identifies each row, e.g. <Table.Column rowHeader>Name</Table.Column>.",
-            "location": {
-              "file": "TestApp.tsx",
-              "line": 256,
-              "column": 9
-            },
-            "details": {
-              "missingRowHeader": true,
-              "columnCount": 5
-            }
-          },
-          {
-            "type": "technical",
-            "severity": "warning",
-            "source": "table-usage",
-            "component": "Table",
-            "message": "<Table> has no column marked rowHeader. Exactly one Table.Column should set rowHeader so screen readers can announce each row by it.",
-            "suggestion": "Add rowHeader to the column that identifies each row, e.g. <Table.Column rowHeader>Name</Table.Column>.",
-            "location": {
-              "file": "TestApp.tsx",
-              "line": 321,
-              "column": 7
-            },
-            "details": {
-              "missingRowHeader": true,
-              "columnCount": 5
-            }
-          },
-          {
-            "type": "technical",
-            "severity": "warning",
-            "source": "table-usage",
-            "component": "Table",
-            "message": "<Table> has no column marked rowHeader. Exactly one Table.Column should set rowHeader so screen readers can announce each row by it.",
-            "suggestion": "Add rowHeader to the column that identifies each row, e.g. <Table.Column rowHeader>Name</Table.Column>.",
-            "location": {
-              "file": "TestApp.tsx",
-              "line": 362,
-              "column": 7
-            },
-            "details": {
-              "missingRowHeader": true,
-              "columnCount": 5
-            }
-          },
-          {
-            "type": "technical",
-            "severity": "warning",
-            "source": "table-usage",
-            "component": "Table",
-            "message": "<Table> has no column marked rowHeader. Exactly one Table.Column should set rowHeader so screen readers can announce each row by it.",
-            "suggestion": "Add rowHeader to the column that identifies each row, e.g. <Table.Column rowHeader>Name</Table.Column>.",
-            "location": {
-              "file": "TestApp.tsx",
-              "line": 468,
-              "column": 13
-            },
-            "details": {
-              "missingRowHeader": true,
-              "columnCount": 5
-            }
-          }
-        ]
+        "warningCount": 0,
+        "issues": []
       },
       "D": {
         "category": "D",
@@ -229,9 +126,9 @@
       "E": {
         "category": "E",
         "label": "Functional Completeness",
-        "score": 87.5,
+        "score": 91.67,
         "weight": 0.225,
-        "weightedScore": 19.69,
+        "weightedScore": 20.63,
         "errorCount": 0,
         "warningCount": 0,
         "issues": []
@@ -240,120 +137,19 @@
     "renderSuccess": true
   },
   "efficiency": {
-    "durationMs": 197117,
-    "costUsd": 0.8360857,
-    "inputTokens": 96,
-    "outputTokens": 18456,
-    "cacheReadTokens": 2500777,
-    "cacheCreationTokens": 246057,
-    "totalTokens": 18552,
-    "numTurns": 50
+    "durationMs": 272924,
+    "costUsd": 0.9132857999999999,
+    "inputTokens": 89,
+    "outputTokens": 21559,
+    "cacheReadTokens": 3404658,
+    "cacheCreationTokens": 231709,
+    "totalTokens": 21648,
+    "numTurns": 61
   },
   "report": {
     "file": "TestApp.tsx",
     "errors": [],
     "warnings": [
-      {
-        "type": "technical",
-        "severity": "warning",
-        "source": "design-system-usage",
-        "component": "nav",
-        "message": "Raw <nav> used instead of a Marigold component.",
-        "suggestion": "Raw <nav> used instead of a Marigold navigation component. Search the Marigold docs for navigation alternatives.",
-        "location": {
-          "file": "TestApp.tsx",
-          "line": 769,
-          "column": 15
-        },
-        "details": {
-          "htmlElement": "nav"
-        }
-      },
-      {
-        "type": "technical",
-        "severity": "warning",
-        "source": "layout-usage",
-        "component": "Inline",
-        "message": "<Inline> wraps a single child. A flow layout earns its place only with two or more children; with one child it adds a wrapper that does nothing.",
-        "suggestion": "Render the child directly instead of wrapping it in <Inline>. For single-child spacing use Inset, Center, Breakout or Aspect.",
-        "location": {
-          "file": "TestApp.tsx",
-          "line": 237,
-          "column": 13
-        },
-        "details": {
-          "layout": "Inline",
-          "childCount": 1
-        }
-      },
-      {
-        "type": "technical",
-        "severity": "warning",
-        "source": "table-usage",
-        "component": "Table",
-        "message": "<Table> has no column marked rowHeader. Exactly one Table.Column should set rowHeader so screen readers can announce each row by it.",
-        "suggestion": "Add rowHeader to the column that identifies each row, e.g. <Table.Column rowHeader>Name</Table.Column>.",
-        "location": {
-          "file": "TestApp.tsx",
-          "line": 256,
-          "column": 9
-        },
-        "details": {
-          "missingRowHeader": true,
-          "columnCount": 5
-        }
-      },
-      {
-        "type": "technical",
-        "severity": "warning",
-        "source": "table-usage",
-        "component": "Table",
-        "message": "<Table> has no column marked rowHeader. Exactly one Table.Column should set rowHeader so screen readers can announce each row by it.",
-        "suggestion": "Add rowHeader to the column that identifies each row, e.g. <Table.Column rowHeader>Name</Table.Column>.",
-        "location": {
-          "file": "TestApp.tsx",
-          "line": 321,
-          "column": 7
-        },
-        "details": {
-          "missingRowHeader": true,
-          "columnCount": 5
-        }
-      },
-      {
-        "type": "technical",
-        "severity": "warning",
-        "source": "table-usage",
-        "component": "Table",
-        "message": "<Table> has no column marked rowHeader. Exactly one Table.Column should set rowHeader so screen readers can announce each row by it.",
-        "suggestion": "Add rowHeader to the column that identifies each row, e.g. <Table.Column rowHeader>Name</Table.Column>.",
-        "location": {
-          "file": "TestApp.tsx",
-          "line": 362,
-          "column": 7
-        },
-        "details": {
-          "missingRowHeader": true,
-          "columnCount": 5
-        }
-      },
-      {
-        "type": "technical",
-        "severity": "warning",
-        "source": "table-usage",
-        "component": "Table",
-        "message": "<Table> has no column marked rowHeader. Exactly one Table.Column should set rowHeader so screen readers can announce each row by it.",
-        "suggestion": "Add rowHeader to the column that identifies each row, e.g. <Table.Column rowHeader>Name</Table.Column>.",
-        "location": {
-          "file": "TestApp.tsx",
-          "line": 468,
-          "column": 13
-        },
-        "details": {
-          "missingRowHeader": true,
-          "columnCount": 5
-        }
-      },
       {
         "type": "style",
         "severity": "warning",
@@ -437,12 +233,15 @@
       "Compound component placement",
       "Section headers",
       "Collection item ids",
+      "Design system usage",
+      "Layout usage",
+      "Table usage",
       "Component conventions",
       "Theme variant compliance",
       "No overlapping components detected"
     ],
     "metadata": {
-      "renderTimeMs": 2570,
+      "renderTimeMs": 2274,
       "componentsFound": [
         "button",
         "li",
@@ -462,13 +261,13 @@
         "a11y"
       ],
       "coverage": {
-        "staticValuesChecked": 47,
-        "dynamicValuesSkipped": 62,
+        "staticValuesChecked": 68,
+        "dynamicValuesSkipped": 55,
         "spreadPropsBypassed": 0
       },
       "widthUtilization": 1
     },
-    "markdown": "marigold-validate: TestApp.tsx — 0 error(s), 11 warning(s)\n\n[warning/technical] <Inline>: <Inline> wraps a single child. A flow layout earns its place only with two or more children; with one child it adds a wrapper that does nothing. (TestApp.tsx:237:13)\n  → Render the child directly instead of wrapping it in <Inline>. For single-child spacing use Inset, Center, Breakout or Aspect.\n  data: {layout=Inline, childCount=1}\n[warning/technical] <nav>: Raw <nav> used instead of a Marigold component. (TestApp.tsx:769:15)\n  → Raw <nav> used instead of a Marigold navigation component. Search the Marigold docs for navigation alternatives.\n  data: {htmlElement=nav}\n[warning/technical] <Table>: <Table> has no column marked rowHeader. Exactly one Table.Column should set rowHeader so screen readers can announce each row by it. (TestApp.tsx:256:9)\n  → Add rowHeader to the column that identifies each row, e.g. <Table.Column rowHeader>Name</Table.Column>.\n  data: {missingRowHeader=true, columnCount=5}\n[warning/technical] <Table>: <Table> has no column marked rowHeader. Exactly one Table.Column should set rowHeader so screen readers can announce each row by it. (TestApp.tsx:321:7)\n  → Add rowHeader to the column that identifies each row, e.g. <Table.Column rowHeader>Name</Table.Column>.\n  data: {missingRowHeader=true, columnCount=5}\n[warning/technical] <Table>: <Table> has no column marked rowHeader. Exactly one Table.Column should set rowHeader so screen readers can announce each row by it. (TestApp.tsx:362:7)\n  → Add rowHeader to the column that identifies each row, e.g. <Table.Column rowHeader>Name</Table.Column>.\n  data: {missingRowHeader=true, columnCount=5}\n[warning/technical] <Table>: <Table> has no column marked rowHeader. Exactly one Table.Column should set rowHeader so screen readers can announce each row by it. (TestApp.tsx:468:13)\n  → Add rowHeader to the column that identifies each row, e.g. <Table.Column rowHeader>Name</Table.Column>.\n  data: {missingRowHeader=true, columnCount=5}\n[warning/style] <thead>: Computed background-color value \"oklab(0.999994 0.0000455678 0.0000200868 / 0.9)\" on <thead> (“EventDateVenueTickets SoldStatus”) does not map to a known design token.\n  → If this is intentional, ignore the warning. Otherwise, use a Marigold variant or a theme-rui token instead of a hard-coded value.\n  data: {property=background-color, value=oklab(0.999994 0.0000455678 0.0000200868 / 0.9), selector=body:nth-child(2) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > ..., fingerprint=EventDateVenueTickets SoldStatus, scope=page}\n[warning/a11y] <a>: Touch target too small at mobile (375px): a elements are 68x20px (minimum 24x24px per WCAG 2.5.8).\n  → Increase the clickable area. Marigold interactive components have built-in minimum sizes — check if custom styling reduces the target.\n  data: {breakpoint=mobile, tag=a, count=1, minWidth=68, minHeight=20, scope=page}\n[warning/a11y] <a>: Interactive element <a> (a) is not reachable via Tab key.\n  → Ensure the element is focusable. Marigold interactive components are focusable by default — check if a parent has tabindex=\"-1\" or focus is trapped.\n  data: {selector=body:nth-child(2) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > ..., role=a, scope=page}\n[warning/a11y] <button>: Interactive element <button> (button) is not reachable via Tab key.\n  → Ensure the element is focusable. Marigold interactive components are focusable by default — check if a parent has tabindex=\"-1\" or focus is trapped.\n  data: {selector=body:nth-child(2) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > ..., role=button, scope=page}\n[warning/a11y] <html>: Page should contain a level-one heading (page-has-heading-one)\n  → Add a `<Headline level={1}>` component for the page title — it renders an `<h1>`. Import Headline from `@marigold/components`.\n  data: {ruleId=page-has-heading-one, impact=moderate, target=[\"html\"], html=<html lang=\"en\" data-theme=\"rui\">, scope=page}\n\npassed: TypeScript compilation, All Marigold props are valid, Component composition, Overlay accessible names, Compound component placement, Section headers, Collection item ids, Component conventions, Theme variant compliance, No overlapping components detected\n\nchecks run: technical, spatial, a11y"
+    "markdown": "marigold-validate: TestApp.tsx — 0 error(s), 5 warning(s)\n\n[warning/style] <thead>: Computed background-color value \"oklab(0.999994 0.0000455678 0.0000200868 / 0.9)\" on <thead> (“EventDateVenueTickets SoldStatus”) does not map to a known design token.\n  → If this is intentional, ignore the warning. Otherwise, use a Marigold variant or a theme-rui token instead of a hard-coded value.\n  data: {property=background-color, value=oklab(0.999994 0.0000455678 0.0000200868 / 0.9), selector=body:nth-child(2) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > ..., fingerprint=EventDateVenueTickets SoldStatus, scope=page}\n[warning/a11y] <a>: Touch target too small at mobile (375px): a elements are 68x20px (minimum 24x24px per WCAG 2.5.8).\n  → Increase the clickable area. Marigold interactive components have built-in minimum sizes — check if custom styling reduces the target.\n  data: {breakpoint=mobile, tag=a, count=1, minWidth=68, minHeight=20, scope=page}\n[warning/a11y] <a>: Interactive element <a> (a) is not reachable via Tab key.\n  → Ensure the element is focusable. Marigold interactive components are focusable by default — check if a parent has tabindex=\"-1\" or focus is trapped.\n  data: {selector=body:nth-child(2) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > ..., role=a, scope=page}\n[warning/a11y] <button>: Interactive element <button> (button) is not reachable via Tab key.\n  → Ensure the element is focusable. Marigold interactive components are focusable by default — check if a parent has tabindex=\"-1\" or focus is trapped.\n  data: {selector=body:nth-child(2) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > ..., role=button, scope=page}\n[warning/a11y] <html>: Page should contain a level-one heading (page-has-heading-one)\n  → Add a `<Headline level={1}>` component for the page title — it renders an `<h1>`. Import Headline from `@marigold/components`.\n  data: {ruleId=page-has-heading-one, impact=moderate, target=[\"html\"], html=<html lang=\"en\" data-theme=\"rui\">, scope=page}\n\npassed: TypeScript compilation, All Marigold props are valid, Component composition, Overlay accessible names, Compound component placement, Section headers, Collection item ids, Design system usage, Layout usage, Table usage, Component conventions, Theme variant compliance, No overlapping components detected\n\nchecks run: technical, spatial, a11y"
   },
   "componentsFound": [
     "button",
@@ -483,8 +282,8 @@
     "tr",
     "td"
   ],
-  "renderTimeMs": 2570,
-  "sourceCode": "import { useState } from 'react';\nimport {\n  AppLayout,\n  Sidebar,\n  TopNavigation,\n  Breadcrumbs,\n  Menu,\n  Dialog,\n  Button,\n  Card,\n  Headline,\n  Text,\n  TextField,\n  TextArea,\n  DateField,\n  NumberField,\n  SearchField,\n  Select,\n  Stack,\n  Inline,\n  Columns,\n  Table,\n  Badge,\n  SectionMessage,\n  Tabs,\n  Accordion,\n  Switch,\n  Inset,\n  RouterProvider,\n} from '@marigold/components';\n\ntype Page = 'dashboard' | 'events' | 'attendees' | 'reports' | 'settings';\n\ninterface EventData {\n  id: string;\n  name: string;\n  date: string;\n  location: string;\n  capacity: number;\n  status: 'Draft' | 'On Sale' | 'Sold Out';\n  ticketsSold: number;\n}\n\ninterface AttendeeData {\n  id: string;\n  name: string;\n  email: string;\n  eventsAttended: number;\n  lastActive: string;\n}\n\ninterface TableSearchState {\n  events: string;\n  attendees: string;\n}\n\nconst TestApp = () => {\n  const [currentPage, setCurrentPage] = useState<Page>('dashboard');\n  const [tableSearchState, setTableSearchState] = useState<TableSearchState>({\n    events: '',\n    attendees: '',\n  });\n  const [showCreateEventDialog, setShowCreateEventDialog] = useState(false);\n  const [signOutDialogOpen, setSignOutDialogOpen] = useState(false);\n  const [settingsSaved, setSettingsSaved] = useState(false);\n  const [notificationsSaved, setNotificationsSaved] = useState(false);\n\n  const events: EventData[] = [\n    {\n      id: '1',\n      name: 'Summer Festival',\n      date: '2026-07-15',\n      location: 'Central Park',\n      capacity: 5000,\n      status: 'On Sale',\n      ticketsSold: 3200,\n    },\n    {\n      id: '2',\n      name: 'Tech Conference 2026',\n      date: '2026-08-20',\n      location: 'Convention Center',\n      capacity: 2000,\n      status: 'On Sale',\n      ticketsSold: 1849,\n    },\n    {\n      id: '3',\n      name: 'Jazz Night',\n      date: '2026-06-28',\n      location: 'Downtown Theater',\n      capacity: 800,\n      status: 'Sold Out',\n      ticketsSold: 800,\n    },\n    {\n      id: '4',\n      name: 'Art Exhibition Opening',\n      date: '2026-07-10',\n      location: 'Gallery District',\n      capacity: 500,\n      status: 'On Sale',\n      ticketsSold: 245,\n    },\n    {\n      id: '5',\n      name: 'Marathon 2026',\n      date: '2026-09-05',\n      location: 'City Routes',\n      capacity: 3000,\n      status: 'Draft',\n      ticketsSold: 0,\n    },\n    {\n      id: '6',\n      name: 'Food Festival',\n      date: '2026-07-25',\n      location: 'Riverside Park',\n      capacity: 4000,\n      status: 'On Sale',\n      ticketsSold: 2156,\n    },\n  ];\n\n  const upcomingEvents = events.slice(0, 6);\n\n  const attendees: AttendeeData[] = [\n    {\n      id: '1',\n      name: 'John Smith',\n      email: 'john.smith@example.com',\n      eventsAttended: 8,\n      lastActive: '2026-06-20',\n    },\n    {\n      id: '2',\n      name: 'Sarah Johnson',\n      email: 'sarah.j@example.com',\n      eventsAttended: 5,\n      lastActive: '2026-06-15',\n    },\n    {\n      id: '3',\n      name: 'Mike Chen',\n      email: 'mike.chen@example.com',\n      eventsAttended: 12,\n      lastActive: '2026-06-01',\n    },\n    {\n      id: '4',\n      name: 'Emma Wilson',\n      email: 'emma.w@example.com',\n      eventsAttended: 3,\n      lastActive: '2026-05-10',\n    },\n    {\n      id: '5',\n      name: 'David Martinez',\n      email: 'david.m@example.com',\n      eventsAttended: 15,\n      lastActive: '2026-06-22',\n    },\n    {\n      id: '6',\n      name: 'Lisa Anderson',\n      email: 'lisa.a@example.com',\n      eventsAttended: 2,\n      lastActive: '2026-04-15',\n    },\n  ];\n\n  const isActive = (lastActiveDate: string): boolean => {\n    const lastDate = new Date(lastActiveDate);\n    const thirtyDaysAgo = new Date();\n    thirtyDaysAgo.setDate(thirtyDaysAgo.getDate() - 30);\n    return lastDate > thirtyDaysAgo;\n  };\n\n  const getStatusVariant = (\n    status: string\n  ): 'default' | 'success' | 'warning' | 'error' | 'info' => {\n    if (status === 'On Sale') return 'success';\n    if (status === 'Sold Out') return 'default';\n    return 'warning';\n  };\n\n  const getAttendeeStatusVariant = (\n    active: boolean\n  ): 'success' | 'warning' => {\n    return active ? 'success' : 'warning';\n  };\n\n  const filteredEvents = events.filter(\n    event =>\n      event.name.toLowerCase().includes(tableSearchState.events.toLowerCase()) ||\n      event.location\n        .toLowerCase()\n        .includes(tableSearchState.events.toLowerCase())\n  );\n\n  const filteredAttendees = attendees.filter(\n    attendee =>\n      attendee.name\n        .toLowerCase()\n        .includes(tableSearchState.attendees.toLowerCase()) ||\n      attendee.email\n        .toLowerCase()\n        .includes(tableSearchState.attendees.toLowerCase())\n  );\n\n  const dashboardPage = (\n    <Stack space={4}>\n      <Headline level={2}>Dashboard Overview</Headline>\n\n      <SectionMessage variant=\"info\">\n        <SectionMessage.Title>Welcome back!</SectionMessage.Title>\n        <SectionMessage.Content>\n          You have 3 events starting this week.\n        </SectionMessage.Content>\n      </SectionMessage>\n\n      <Columns columns={[1, 1, 1, 1]} space={3}>\n        <Card>\n          <Stack space={2}>\n            <Text size=\"sm\">Total Events</Text>\n            <Headline level={3}>24</Headline>\n          </Stack>\n        </Card>\n        <Card>\n          <Stack space={2}>\n            <Text size=\"sm\">Tickets Sold</Text>\n            <Headline level={3}>1,849</Headline>\n          </Stack>\n        </Card>\n        <Card>\n          <Stack space={2}>\n            <Inline space={2} alignY=\"center\">\n              <Text size=\"sm\">Revenue</Text>\n            </Inline>\n            <Headline level={3}>$45,230</Headline>\n            <Text size=\"xs\">\n              Net revenue after fees and refunds\n            </Text>\n          </Stack>\n        </Card>\n        <Card>\n          <Stack space={2}>\n            <Text size=\"sm\">Upcoming</Text>\n            <Headline level={3}>8</Headline>\n          </Stack>\n        </Card>\n      </Columns>\n\n      <Stack space={3}>\n        <Headline level={3}>Upcoming Events</Headline>\n        <Table aria-label=\"Upcoming Events\">\n          <Table.Header>\n            <Table.Column>Event</Table.Column>\n            <Table.Column>Date</Table.Column>\n            <Table.Column>Venue</Table.Column>\n            <Table.Column>Tickets Sold</Table.Column>\n            <Table.Column>Status</Table.Column>\n          </Table.Header>\n          <Table.Body items={upcomingEvents}>\n            {upcomingEvents.map(event => (\n              <Table.Row key={event.id}>\n                <Table.Cell>{event.name}</Table.Cell>\n                <Table.Cell>{event.date}</Table.Cell>\n                <Table.Cell>{event.location}</Table.Cell>\n                <Table.Cell>{event.ticketsSold}</Table.Cell>\n                <Table.Cell>\n                  <Badge variant={getStatusVariant(event.status)}>\n                    {event.status}\n                  </Badge>\n                </Table.Cell>\n              </Table.Row>\n            ))}\n          </Table.Body>\n        </Table>\n      </Stack>\n    </Stack>\n  );\n\n  const eventsPage = (\n    <Stack space={4}>\n      <Headline level={2}>Events</Headline>\n      <Inline space={3} alignY=\"center\">\n        <SearchField\n          label=\"Search events\"\n          value={tableSearchState.events}\n          onChange={e => setTableSearchState({ ...tableSearchState, events: e })}\n          placeholder=\"Search by name or location...\"\n        />\n        <Dialog.Trigger\n          open={showCreateEventDialog}\n          onOpenChange={setShowCreateEventDialog}\n        >\n          <Button variant=\"primary\">Create Event</Button>\n          <Dialog size=\"small\">\n            <Dialog.Title>Create Event</Dialog.Title>\n            <Dialog.Content>\n              <Stack space={3}>\n                <TextField label=\"Event Name\" required />\n                <DateField label=\"Date\" />\n                <TextField label=\"Location\" />\n                <NumberField label=\"Capacity\" />\n                <TextArea label=\"Description\" />\n              </Stack>\n            </Dialog.Content>\n            <Dialog.Actions>\n              <Button variant=\"secondary\" slot=\"close\">\n                Cancel\n              </Button>\n              <Button variant=\"primary\" slot=\"close\">\n                Create\n              </Button>\n            </Dialog.Actions>\n          </Dialog>\n        </Dialog.Trigger>\n      </Inline>\n      <Table aria-label=\"Events Table\">\n        <Table.Header>\n          <Table.Column>Name</Table.Column>\n          <Table.Column>Date</Table.Column>\n          <Table.Column>Location</Table.Column>\n          <Table.Column>Capacity</Table.Column>\n          <Table.Column>Status</Table.Column>\n        </Table.Header>\n        <Table.Body items={filteredEvents}>\n          {filteredEvents.map(event => (\n            <Table.Row key={event.id}>\n              <Table.Cell>{event.name}</Table.Cell>\n              <Table.Cell>{event.date}</Table.Cell>\n              <Table.Cell>{event.location}</Table.Cell>\n              <Table.Cell>{event.capacity}</Table.Cell>\n              <Table.Cell>\n                <Badge variant={getStatusVariant(event.status)}>\n                  {event.status}\n                </Badge>\n              </Table.Cell>\n            </Table.Row>\n          ))}\n        </Table.Body>\n      </Table>\n    </Stack>\n  );\n\n  const attendeesPage = (\n    <Stack space={4}>\n      <Headline level={2}>Attendees</Headline>\n      <Inline space={3} alignY=\"center\">\n        <SearchField\n          label=\"Search attendees\"\n          value={tableSearchState.attendees}\n          onChange={e =>\n            setTableSearchState({ ...tableSearchState, attendees: e })\n          }\n          placeholder=\"Search by name or email...\"\n        />\n        <Text>{filteredAttendees.length} attendees</Text>\n      </Inline>\n      <Table aria-label=\"Attendees Table\">\n        <Table.Header>\n          <Table.Column>Name</Table.Column>\n          <Table.Column>Email</Table.Column>\n          <Table.Column>Events Attended</Table.Column>\n          <Table.Column>Last Active</Table.Column>\n          <Table.Column>Status</Table.Column>\n        </Table.Header>\n        <Table.Body items={filteredAttendees}>\n          {filteredAttendees.map(attendee => (\n            <Table.Row key={attendee.id}>\n              <Table.Cell>{attendee.name}</Table.Cell>\n              <Table.Cell>{attendee.email}</Table.Cell>\n              <Table.Cell>{attendee.eventsAttended}</Table.Cell>\n              <Table.Cell>{attendee.lastActive}</Table.Cell>\n              <Table.Cell>\n                <Badge\n                  variant={getAttendeeStatusVariant(\n                    isActive(attendee.lastActive)\n                  )}\n                >\n                  {isActive(attendee.lastActive) ? 'Active' : 'Inactive'}\n                </Badge>\n              </Table.Cell>\n            </Table.Row>\n          ))}\n        </Table.Body>\n      </Table>\n    </Stack>\n  );\n\n  const reportsPage = (\n    <Stack space={4}>\n      <Headline level={2}>Reports</Headline>\n      <Tabs aria-label=\"Reports\">\n        <Tabs.List>\n          <Tabs.Item id=\"revenue\">Revenue</Tabs.Item>\n          <Tabs.Item id=\"attendance\">Attendance</Tabs.Item>\n          <Tabs.Item id=\"overview\">Overview</Tabs.Item>\n        </Tabs.List>\n\n        <Tabs.TabPanel id=\"revenue\">\n          <Stack space={4}>\n            <Columns columns={[1, 1, 1, 1]} space={3}>\n              <Card>\n                <Stack space={2}>\n                  <Text size=\"sm\">Total Revenue</Text>\n                  <Headline level={3}>$45,230</Headline>\n                </Stack>\n              </Card>\n              <Card>\n                <Stack space={2}>\n                  <Text size=\"sm\">This Month</Text>\n                  <Headline level={3}>$8,420</Headline>\n                </Stack>\n              </Card>\n              <Card>\n                <Stack space={2}>\n                  <Text size=\"sm\">Average per Event</Text>\n                  <Headline level={3}>$1,885</Headline>\n                </Stack>\n              </Card>\n              <Card>\n                <Stack space={2}>\n                  <Text size=\"sm\">Refunds</Text>\n                  <Headline level={3}>$1,230</Headline>\n                </Stack>\n              </Card>\n            </Columns>\n            <SectionMessage variant=\"success\">\n              <SectionMessage.Title>Revenue Trend</SectionMessage.Title>\n              <SectionMessage.Content>\n                Revenue is up 12% compared to last month.\n              </SectionMessage.Content>\n            </SectionMessage>\n          </Stack>\n        </Tabs.TabPanel>\n\n        <Tabs.TabPanel id=\"attendance\">\n          <Stack space={4}>\n            <Columns columns={[1, 1, 1, 1]} space={3}>\n              <Card>\n                <Stack space={2}>\n                  <Text size=\"sm\">Total Attendees</Text>\n                  <Headline level={3}>3,200</Headline>\n                </Stack>\n              </Card>\n              <Card>\n                <Stack space={2}>\n                  <Text size=\"sm\">Repeat Visitors</Text>\n                  <Headline level={3}>890</Headline>\n                </Stack>\n              </Card>\n              <Card>\n                <Stack space={2}>\n                  <Text size=\"sm\">Average per Event</Text>\n                  <Headline level={3}>178</Headline>\n                </Stack>\n              </Card>\n              <Card>\n                <Stack space={2}>\n                  <Text size=\"sm\">No-shows</Text>\n                  <Headline level={3}>145</Headline>\n                </Stack>\n              </Card>\n            </Columns>\n            <Table aria-label=\"Top Events by Attendance\">\n              <Table.Header>\n                <Table.Column>Event</Table.Column>\n                <Table.Column>Date</Table.Column>\n                <Table.Column>Attendees</Table.Column>\n                <Table.Column>Capacity</Table.Column>\n                <Table.Column>Fill Rate</Table.Column>\n              </Table.Header>\n              <Table.Body\n                items={[\n                  {\n                    id: '1',\n                    name: 'Summer Festival',\n                    date: '2026-07-15',\n                    attendees: 4800,\n                    capacity: 5000,\n                  },\n                  {\n                    id: '2',\n                    name: 'Tech Conference',\n                    date: '2026-08-20',\n                    attendees: 1950,\n                    capacity: 2000,\n                  },\n                  {\n                    id: '3',\n                    name: 'Jazz Night',\n                    date: '2026-06-28',\n                    attendees: 800,\n                    capacity: 800,\n                  },\n                  {\n                    id: '4',\n                    name: 'Food Festival',\n                    date: '2026-07-25',\n                    attendees: 3600,\n                    capacity: 4000,\n                  },\n                ]}\n              >\n                {[\n                  {\n                    id: '1',\n                    name: 'Summer Festival',\n                    date: '2026-07-15',\n                    attendees: 4800,\n                    capacity: 5000,\n                  },\n                  {\n                    id: '2',\n                    name: 'Tech Conference',\n                    date: '2026-08-20',\n                    attendees: 1950,\n                    capacity: 2000,\n                  },\n                  {\n                    id: '3',\n                    name: 'Jazz Night',\n                    date: '2026-06-28',\n                    attendees: 800,\n                    capacity: 800,\n                  },\n                  {\n                    id: '4',\n                    name: 'Food Festival',\n                    date: '2026-07-25',\n                    attendees: 3600,\n                    capacity: 4000,\n                  },\n                ].map(item => (\n                  <Table.Row key={item.id}>\n                    <Table.Cell>{item.name}</Table.Cell>\n                    <Table.Cell>{item.date}</Table.Cell>\n                    <Table.Cell>{item.attendees}</Table.Cell>\n                    <Table.Cell>{item.capacity}</Table.Cell>\n                    <Table.Cell>\n                      {Math.round((item.attendees / item.capacity) * 100)}%\n                    </Table.Cell>\n                  </Table.Row>\n                ))}\n              </Table.Body>\n            </Table>\n          </Stack>\n        </Tabs.TabPanel>\n\n        <Tabs.TabPanel id=\"overview\">\n          <Stack space={4}>\n            <Text>\n              This quarter has shown strong growth across all metrics. Event\n              attendance has increased by 28% year-over-year, and revenue is\n              tracking ahead of projections.\n            </Text>\n            <Accordion>\n              <Accordion.Item>\n                <Accordion.Header>Q1 Summary</Accordion.Header>\n                <Accordion.Content>\n                  Q1 focused on launching our winter festival series. We\n                  successfully attracted 12,000 attendees across 8 events and\n                  generated $180,000 in revenue.\n                </Accordion.Content>\n              </Accordion.Item>\n              <Accordion.Item>\n                <Accordion.Header>Q2 Summary</Accordion.Header>\n                <Accordion.Content>\n                  Q2 marked our spring expansion with 15 events and 18,500\n                  attendees. Revenue reached $245,000 with improved sponsorship\n                  deals.\n                </Accordion.Content>\n              </Accordion.Item>\n              <Accordion.Item>\n                <Accordion.Header>Q3 Summary</Accordion.Header>\n                <Accordion.Content>\n                  Q3 is our peak season with summer events. Current projections\n                  show 25,000+ attendees and $320,000+ in revenue from 20\n                  planned events.\n                </Accordion.Content>\n              </Accordion.Item>\n            </Accordion>\n          </Stack>\n        </Tabs.TabPanel>\n      </Tabs>\n    </Stack>\n  );\n\n  const settingsPage = (\n    <Stack space={4}>\n      <Headline level={2}>Settings</Headline>\n      <Tabs aria-label=\"Settings\">\n        <Tabs.List>\n          <Tabs.Item id=\"general\">General</Tabs.Item>\n          <Tabs.Item id=\"notifications\">Notifications</Tabs.Item>\n        </Tabs.List>\n\n        <Tabs.TabPanel id=\"general\">\n          <Stack space={4}>\n            {settingsSaved && (\n              <SectionMessage variant=\"success\">\n                <SectionMessage.Title>Success</SectionMessage.Title>\n                <SectionMessage.Content>\n                  Settings saved successfully.\n                </SectionMessage.Content>\n              </SectionMessage>\n            )}\n            <Stack space={3}>\n              <TextField label=\"Organization Name\" />\n              <TextField label=\"Contact Email\" type=\"email\" />\n              <Select label=\"Default Currency\">\n                <Select.Option id=\"usd\">USD</Select.Option>\n                <Select.Option id=\"eur\">EUR</Select.Option>\n                <Select.Option id=\"gbp\">GBP</Select.Option>\n              </Select>\n              <Select label=\"Default Timezone\">\n                <Select.Option id=\"utc\">UTC</Select.Option>\n                <Select.Option id=\"cet\">CET</Select.Option>\n                <Select.Option id=\"est\">EST</Select.Option>\n                <Select.Option id=\"pst\">PST</Select.Option>\n              </Select>\n              <Button\n                variant=\"primary\"\n                onPress={() => {\n                  setSettingsSaved(true);\n                  setTimeout(() => setSettingsSaved(false), 3000);\n                }}\n              >\n                Save Changes\n              </Button>\n            </Stack>\n          </Stack>\n        </Tabs.TabPanel>\n\n        <Tabs.TabPanel id=\"notifications\">\n          <Stack space={4}>\n            {notificationsSaved && (\n              <SectionMessage variant=\"success\">\n                <SectionMessage.Title>Success</SectionMessage.Title>\n                <SectionMessage.Content>\n                  Preferences saved successfully.\n                </SectionMessage.Content>\n              </SectionMessage>\n            )}\n            <Stack space={3}>\n              <Inline space={3} alignY=\"center\">\n                <Switch id=\"email\" />\n                <Stack space={1} alignX=\"left\">\n                  <Text weight=\"bold\">Email Notifications</Text>\n                  <Text size=\"sm\">Receive updates via email</Text>\n                </Stack>\n              </Inline>\n              <Inline space={3} alignY=\"center\">\n                <Switch id=\"sms\" />\n                <Stack space={1} alignX=\"left\">\n                  <Text weight=\"bold\">SMS Notifications</Text>\n                  <Text size=\"sm\">Receive updates via SMS</Text>\n                </Stack>\n              </Inline>\n              <Inline space={3} alignY=\"center\">\n                <Switch id=\"digest\" />\n                <Stack space={1} alignX=\"left\">\n                  <Text weight=\"bold\">Weekly Digest</Text>\n                  <Text size=\"sm\">Get a weekly summary of events</Text>\n                </Stack>\n              </Inline>\n              <Inline space={3} alignY=\"center\">\n                <Switch id=\"marketing\" />\n                <Stack space={1} alignX=\"left\">\n                  <Text weight=\"bold\">Marketing Emails</Text>\n                  <Text size=\"sm\">Receive promotional offers</Text>\n                </Stack>\n              </Inline>\n              <Button\n                variant=\"primary\"\n                onPress={() => {\n                  setNotificationsSaved(true);\n                  setTimeout(() => setNotificationsSaved(false), 3000);\n                }}\n              >\n                Save Preferences\n              </Button>\n            </Stack>\n          </Stack>\n        </Tabs.TabPanel>\n      </Tabs>\n    </Stack>\n  );\n\n  const getPageContent = () => {\n    switch (currentPage) {\n      case 'dashboard':\n        return dashboardPage;\n      case 'events':\n        return eventsPage;\n      case 'attendees':\n        return attendeesPage;\n      case 'reports':\n        return reportsPage;\n      case 'settings':\n        return settingsPage;\n      default:\n        return dashboardPage;\n    }\n  };\n\n  const getBreadcrumbLabel = () => {\n    const labels: Record<Page, string> = {\n      dashboard: 'Dashboard',\n      events: 'Events',\n      attendees: 'Attendees',\n      reports: 'Reports',\n      settings: 'Settings',\n    };\n    return labels[currentPage];\n  };\n\n  const handleNavigate = (path: string) => {\n    const pageMap: Record<string, Page> = {\n      '/dashboard': 'dashboard',\n      '/events': 'events',\n      '/attendees': 'attendees',\n      '/reports': 'reports',\n      '/settings': 'settings',\n    };\n    setCurrentPage(pageMap[path] || 'dashboard');\n  };\n\n  return (\n    <RouterProvider navigate={handleNavigate}>\n      <Sidebar.Provider defaultOpen>\n        <AppLayout>\n          <AppLayout.Sidebar>\n            <Sidebar.Header>\n              <Headline level={3}>EventHub</Headline>\n            </Sidebar.Header>\n            <Sidebar.Nav current={`/${currentPage}`}>\n              <Sidebar.Item href=\"/dashboard\">\n                Dashboard\n              </Sidebar.Item>\n              <Sidebar.Item href=\"/events\">\n                Events\n              </Sidebar.Item>\n              <Sidebar.Item href=\"/attendees\">\n                Attendees\n              </Sidebar.Item>\n              <Sidebar.Item href=\"/reports\">\n                Reports\n              </Sidebar.Item>\n              <Sidebar.Separator />\n              <Sidebar.Item href=\"/settings\">\n                Settings\n              </Sidebar.Item>\n              <Sidebar.Separator />\n            </Sidebar.Nav>\n            <Sidebar.Footer>\n              <Sidebar.Item href=\"#help\">Help & Support</Sidebar.Item>\n            </Sidebar.Footer>\n          </AppLayout.Sidebar>\n\n          <AppLayout.Header>\n            <TopNavigation.Start>\n              <Sidebar.Toggle />\n            </TopNavigation.Start>\n            <TopNavigation.Middle>\n              <nav aria-label=\"Breadcrumbs\">\n                <Breadcrumbs>\n                  <Breadcrumbs.Item href=\"/dashboard\">\n                    EventHub\n                  </Breadcrumbs.Item>\n                  <Breadcrumbs.Item href=\"#\">\n                    {getBreadcrumbLabel()}\n                  </Breadcrumbs.Item>\n                </Breadcrumbs>\n              </nav>\n            </TopNavigation.Middle>\n          <TopNavigation.End>\n            <Dialog.Trigger\n              open={signOutDialogOpen}\n              onOpenChange={setSignOutDialogOpen}\n            >\n              <Menu label=\"Account\">\n                <Menu.Item id=\"profile\">Profile</Menu.Item>\n                <Menu.Item id=\"signout\" variant=\"destructive\">\n                  Sign out\n                </Menu.Item>\n              </Menu>\n              <Dialog role=\"alertdialog\">\n                <Dialog.Title>Sign out</Dialog.Title>\n                <Dialog.Content>\n                  Are you sure you want to sign out?\n                </Dialog.Content>\n                <Dialog.Actions>\n                  <Button variant=\"secondary\" slot=\"close\">\n                    Cancel\n                  </Button>\n                  <Button variant=\"destructive\" slot=\"close\">\n                    Sign out\n                  </Button>\n                </Dialog.Actions>\n              </Dialog>\n            </Dialog.Trigger>\n          </TopNavigation.End>\n        </AppLayout.Header>\n\n        <AppLayout.Main>\n          <Inset space={4}>{getPageContent()}</Inset>\n        </AppLayout.Main>\n      </AppLayout>\n      </Sidebar.Provider>\n    </RouterProvider>\n  );\n};\n\nexport default TestApp;\n",
+  "renderTimeMs": 2274,
+  "sourceCode": "import { useState } from 'react';\nimport {\n  AppLayout,\n  Badge,\n  Breadcrumbs,\n  Button,\n  Card,\n  Dialog,\n  Headline,\n  Inline,\n  Inset,\n  Menu,\n  SearchField,\n  SectionMessage,\n  Sidebar,\n  Stack,\n  Table,\n  Tabs,\n  Text,\n  TextArea,\n  TextField,\n  TopNavigation,\n  Divider,\n  Accordion,\n  Switch,\n  DateField,\n  NumberField,\n  Select,\n  Tooltip,\n  Tiles,\n} from '@marigold/components';\n\ntype Page = 'dashboard' | 'events' | 'attendees' | 'reports' | 'settings';\n\ninterface Event {\n  id: string;\n  name: string;\n  date: string;\n  location: string;\n  ticketsSold: number;\n  status: 'On Sale' | 'Draft' | 'Sold Out';\n  venue: string;\n}\n\ninterface Attendee {\n  id: string;\n  name: string;\n  email: string;\n  eventsAttended: number;\n  lastActive: string;\n  status: 'Active' | 'Inactive';\n}\n\nconst mockEvents: Event[] = [\n  {\n    id: '1',\n    name: 'Summer Music Festival',\n    date: '2024-07-15',\n    location: 'Central Park',\n    ticketsSold: 450,\n    venue: 'Central Park',\n    status: 'On Sale',\n  },\n  {\n    id: '2',\n    name: 'Tech Conference 2024',\n    date: '2024-08-20',\n    location: 'Convention Center',\n    ticketsSold: 320,\n    venue: 'Convention Center',\n    status: 'On Sale',\n  },\n  {\n    id: '3',\n    name: 'Jazz Night',\n    date: '2024-06-30',\n    location: 'Blue Note Theater',\n    ticketsSold: 0,\n    venue: 'Blue Note Theater',\n    status: 'Sold Out',\n  },\n  {\n    id: '4',\n    name: 'Art Exhibition Opening',\n    date: '2024-07-05',\n    location: 'Modern Art Museum',\n    ticketsSold: 150,\n    venue: 'Modern Art Museum',\n    status: 'Draft',\n  },\n  {\n    id: '5',\n    name: 'Comedy Show Special',\n    date: '2024-07-22',\n    location: 'Comedy Club',\n    ticketsSold: 280,\n    venue: 'Comedy Club',\n    status: 'On Sale',\n  },\n  {\n    id: '6',\n    name: 'Marathon 2024',\n    date: '2024-09-10',\n    location: 'City Streets',\n    ticketsSold: 1200,\n    venue: 'City Streets',\n    status: 'On Sale',\n  },\n];\n\nconst mockAttendees: Attendee[] = [\n  {\n    id: 'a1',\n    name: 'Alice Johnson',\n    email: 'alice@example.com',\n    eventsAttended: 5,\n    lastActive: '2024-06-25',\n    status: 'Active',\n  },\n  {\n    id: 'a2',\n    name: 'Bob Smith',\n    email: 'bob@example.com',\n    eventsAttended: 3,\n    lastActive: '2024-06-20',\n    status: 'Active',\n  },\n  {\n    id: 'a3',\n    name: 'Carol Williams',\n    email: 'carol@example.com',\n    eventsAttended: 8,\n    lastActive: '2024-06-28',\n    status: 'Active',\n  },\n  {\n    id: 'a4',\n    name: 'David Brown',\n    email: 'david@example.com',\n    eventsAttended: 1,\n    lastActive: '2024-05-10',\n    status: 'Inactive',\n  },\n  {\n    id: 'a5',\n    name: 'Emma Davis',\n    email: 'emma@example.com',\n    eventsAttended: 12,\n    lastActive: '2024-06-27',\n    status: 'Active',\n  },\n  {\n    id: 'a6',\n    name: 'Frank Miller',\n    email: 'frank@example.com',\n    eventsAttended: 2,\n    lastActive: '2024-06-15',\n    status: 'Active',\n  },\n];\n\nconst Dashboard = () => (\n  <Stack space={4}>\n    <Headline level={2}>Dashboard Overview</Headline>\n    <SectionMessage variant=\"info\">\n      <SectionMessage.Title>Welcome back!</SectionMessage.Title>\n      <SectionMessage.Content>\n        You have 3 events starting this week.\n      </SectionMessage.Content>\n    </SectionMessage>\n\n    <Stack space={2}>\n      <Headline level={3}>Summary</Headline>\n      <Tiles space={4}>\n        <Card>\n          <Stack space={2}>\n            <Text size=\"sm\" color=\"muted\">\n              Total Events\n            </Text>\n            <Text size=\"lg\" weight=\"bold\">\n              24\n            </Text>\n          </Stack>\n        </Card>\n        <Card>\n          <Stack space={2}>\n            <Text size=\"sm\" color=\"muted\">\n              Tickets Sold\n            </Text>\n            <Text size=\"lg\" weight=\"bold\">\n              1,849\n            </Text>\n          </Stack>\n        </Card>\n        <Card>\n          <Stack space={1}>\n            <Text size=\"sm\" color=\"muted\">\n              Revenue\n            </Text>\n            <Inline space={2} alignY=\"center\">\n              <Text size=\"lg\" weight=\"bold\">\n                $45,230\n              </Text>\n              <Tooltip.Trigger>\n                <Button size=\"icon\" variant=\"ghost\">\n                  ?\n                </Button>\n                <Tooltip>Net revenue after fees and refunds</Tooltip>\n              </Tooltip.Trigger>\n            </Inline>\n          </Stack>\n        </Card>\n        <Card>\n          <Stack space={2}>\n            <Text size=\"sm\" color=\"muted\">\n              Upcoming\n            </Text>\n            <Text size=\"lg\" weight=\"bold\">\n              8\n            </Text>\n          </Stack>\n        </Card>\n      </Tiles>\n    </Stack>\n\n    <Stack space={2}>\n      <Headline level={3}>Upcoming Events</Headline>\n      <Table aria-label=\"Upcoming events\">\n        <Table.Header>\n          <Table.Column rowHeader>Event</Table.Column>\n          <Table.Column>Date</Table.Column>\n          <Table.Column>Venue</Table.Column>\n          <Table.Column>Tickets Sold</Table.Column>\n          <Table.Column>Status</Table.Column>\n        </Table.Header>\n        <Table.Body items={mockEvents}>\n          {event => (\n            <Table.Row key={event.id}>\n              <Table.Cell>{event.name}</Table.Cell>\n              <Table.Cell>{event.date}</Table.Cell>\n              <Table.Cell>{event.venue}</Table.Cell>\n              <Table.Cell>{event.ticketsSold}</Table.Cell>\n              <Table.Cell>\n                <Badge\n                  variant={\n                    event.status === 'On Sale'\n                      ? 'success'\n                      : event.status === 'Sold Out'\n                        ? 'warning'\n                        : 'info'\n                  }\n                >\n                  {event.status}\n                </Badge>\n              </Table.Cell>\n            </Table.Row>\n          )}\n        </Table.Body>\n      </Table>\n    </Stack>\n  </Stack>\n);\n\nconst Events = () => {\n  const [searchText, setSearchText] = useState('');\n  const [createDialogOpen, setCreateDialogOpen] = useState(false);\n  const [formData, setFormData] = useState({\n    name: '',\n    date: null as any,\n    location: '',\n    capacity: '',\n    description: '',\n  });\n\n  const filtered = mockEvents.filter(\n    event =>\n      event.name.toLowerCase().includes(searchText.toLowerCase()) ||\n      event.location.toLowerCase().includes(searchText.toLowerCase())\n  );\n\n  const handleCreateEvent = () => {\n    setFormData({ name: '', date: null, location: '', capacity: '', description: '' });\n    setCreateDialogOpen(false);\n  };\n\n  return (\n    <Stack space={4}>\n      <Headline level={2}>Events</Headline>\n\n      <Inline space={2} alignY=\"center\">\n        <SearchField\n          placeholder=\"Search by name or location...\"\n          value={searchText}\n          onChange={setSearchText}\n          width={48}\n        />\n        <Dialog.Trigger dismissable={false}>\n          <Button variant=\"primary\">Create Event</Button>\n          <Dialog size=\"small\">\n            <Dialog.Title>Create Event</Dialog.Title>\n            <Dialog.Content>\n              <Stack space={3}>\n                <TextField\n                  label=\"Event Name\"\n                  required\n                  value={formData.name}\n                  onChange={name => setFormData(prev => ({ ...prev, name }))}\n                />\n                <DateField\n                  label=\"Date\"\n                  value={formData.date}\n                  onChange={date => setFormData(prev => ({ ...prev, date }))}\n                />\n                <TextField\n                  label=\"Location\"\n                  value={formData.location}\n                  onChange={location => setFormData(prev => ({ ...prev, location }))}\n                />\n                <NumberField\n                  label=\"Capacity\"\n                  value={formData.capacity ? parseInt(formData.capacity) : undefined}\n                  onChange={capacity => setFormData(prev => ({ ...prev, capacity: capacity?.toString() || '' }))}\n                />\n                <TextArea\n                  label=\"Description\"\n                  value={formData.description}\n                  onChange={description => setFormData(prev => ({ ...prev, description }))}\n                  rows={4}\n                />\n              </Stack>\n            </Dialog.Content>\n            <Dialog.Actions>\n              <Button variant=\"secondary\" slot=\"close\">\n                Cancel\n              </Button>\n              <Button\n                variant=\"primary\"\n                onPress={() => handleCreateEvent()}\n              >\n                Create\n              </Button>\n            </Dialog.Actions>\n          </Dialog>\n        </Dialog.Trigger>\n      </Inline>\n\n      <Table aria-label=\"Events list\">\n        <Table.Header>\n          <Table.Column rowHeader>Name</Table.Column>\n          <Table.Column>Date</Table.Column>\n          <Table.Column>Location</Table.Column>\n          <Table.Column>Capacity</Table.Column>\n          <Table.Column>Status</Table.Column>\n        </Table.Header>\n        <Table.Body items={filtered}>\n          {event => (\n            <Table.Row key={event.id}>\n              <Table.Cell>{event.name}</Table.Cell>\n              <Table.Cell>{event.date}</Table.Cell>\n              <Table.Cell>{event.location}</Table.Cell>\n              <Table.Cell>500</Table.Cell>\n              <Table.Cell>\n                <Badge\n                  variant={\n                    event.status === 'On Sale'\n                      ? 'success'\n                      : event.status === 'Sold Out'\n                        ? 'error'\n                        : 'info'\n                  }\n                >\n                  {event.status}\n                </Badge>\n              </Table.Cell>\n            </Table.Row>\n          )}\n        </Table.Body>\n      </Table>\n    </Stack>\n  );\n};\n\nconst Attendees = () => {\n  const [searchText, setSearchText] = useState('');\n\n  const filtered = mockAttendees.filter(\n    attendee =>\n      attendee.name.toLowerCase().includes(searchText.toLowerCase()) ||\n      attendee.email.toLowerCase().includes(searchText.toLowerCase())\n  );\n\n  return (\n    <Stack space={4}>\n      <Headline level={2}>Attendees</Headline>\n\n      <Inline space={2} alignY=\"center\">\n        <SearchField\n          placeholder=\"Search by name or email...\"\n          value={searchText}\n          onChange={setSearchText}\n          width={48}\n        />\n        <Text size=\"sm\" color=\"muted\">\n          {filtered.length} attendees\n        </Text>\n      </Inline>\n\n      <Table aria-label=\"Attendees list\">\n        <Table.Header>\n          <Table.Column rowHeader>Name</Table.Column>\n          <Table.Column>Email</Table.Column>\n          <Table.Column>Events Attended</Table.Column>\n          <Table.Column>Last Active</Table.Column>\n          <Table.Column>Status</Table.Column>\n        </Table.Header>\n        <Table.Body items={filtered}>\n          {attendee => (\n            <Table.Row key={attendee.id}>\n              <Table.Cell>{attendee.name}</Table.Cell>\n              <Table.Cell>{attendee.email}</Table.Cell>\n              <Table.Cell>{attendee.eventsAttended}</Table.Cell>\n              <Table.Cell>{attendee.lastActive}</Table.Cell>\n              <Table.Cell>\n                <Badge variant={attendee.status === 'Active' ? 'success' : 'warning'}>\n                  {attendee.status}\n                </Badge>\n              </Table.Cell>\n            </Table.Row>\n          )}\n        </Table.Body>\n      </Table>\n    </Stack>\n  );\n};\n\nconst Reports = () => {\n  return (\n    <Stack space={4}>\n      <Headline level={2}>Reports</Headline>\n\n      <Tabs aria-label=\"Report tabs\">\n        <Tabs.List aria-label=\"Reports\">\n          <Tabs.Item id=\"revenue\">Revenue</Tabs.Item>\n          <Tabs.Item id=\"attendance\">Attendance</Tabs.Item>\n          <Tabs.Item id=\"overview\">Overview</Tabs.Item>\n        </Tabs.List>\n\n        <Tabs.TabPanel id=\"revenue\">\n          <Stack space={4}>\n            <Tiles space={4}>\n              <Card>\n                <Stack space={2}>\n                  <Text size=\"sm\" color=\"muted\">\n                    Total Revenue\n                  </Text>\n                  <Text size=\"lg\" weight=\"bold\">\n                    $45,230\n                  </Text>\n                </Stack>\n              </Card>\n              <Card>\n                <Stack space={2}>\n                  <Text size=\"sm\" color=\"muted\">\n                    This Month\n                  </Text>\n                  <Text size=\"lg\" weight=\"bold\">\n                    $8,420\n                  </Text>\n                </Stack>\n              </Card>\n              <Card>\n                <Stack space={2}>\n                  <Text size=\"sm\" color=\"muted\">\n                    Average per Event\n                  </Text>\n                  <Text size=\"lg\" weight=\"bold\">\n                    $1,885\n                  </Text>\n                </Stack>\n              </Card>\n              <Card>\n                <Stack space={2}>\n                  <Text size=\"sm\" color=\"muted\">\n                    Refunds\n                  </Text>\n                  <Text size=\"lg\" weight=\"bold\">\n                    $1,230\n                  </Text>\n                </Stack>\n              </Card>\n            </Tiles>\n\n            <SectionMessage variant=\"success\">\n              <SectionMessage.Title>Revenue is up 12%</SectionMessage.Title>\n              <SectionMessage.Content>\n                Revenue is up 12% compared to last month.\n              </SectionMessage.Content>\n            </SectionMessage>\n          </Stack>\n        </Tabs.TabPanel>\n\n        <Tabs.TabPanel id=\"attendance\">\n          <Stack space={4}>\n            <Tiles space={4}>\n              <Card>\n                <Stack space={2}>\n                  <Text size=\"sm\" color=\"muted\">\n                    Total Attendees\n                  </Text>\n                  <Text size=\"lg\" weight=\"bold\">\n                    3,200\n                  </Text>\n                </Stack>\n              </Card>\n              <Card>\n                <Stack space={2}>\n                  <Text size=\"sm\" color=\"muted\">\n                    Repeat Visitors\n                  </Text>\n                  <Text size=\"lg\" weight=\"bold\">\n                    890\n                  </Text>\n                </Stack>\n              </Card>\n              <Card>\n                <Stack space={2}>\n                  <Text size=\"sm\" color=\"muted\">\n                    Average per Event\n                  </Text>\n                  <Text size=\"lg\" weight=\"bold\">\n                    178\n                  </Text>\n                </Stack>\n              </Card>\n              <Card>\n                <Stack space={2}>\n                  <Text size=\"sm\" color=\"muted\">\n                    No-shows\n                  </Text>\n                  <Text size=\"lg\" weight=\"bold\">\n                    145\n                  </Text>\n                </Stack>\n              </Card>\n            </Tiles>\n\n            <Stack space={2}>\n              <Headline level={3}>Top Events by Attendance</Headline>\n              <Table aria-label=\"Top events by attendance\">\n                <Table.Header>\n                  <Table.Column rowHeader>Event</Table.Column>\n                  <Table.Column>Date</Table.Column>\n                  <Table.Column>Attendees</Table.Column>\n                  <Table.Column>Capacity</Table.Column>\n                  <Table.Column>Fill Rate</Table.Column>\n                </Table.Header>\n                <Table.Body items={[\n                  { id: '1', name: 'Marathon 2024', date: '2024-09-10', attendees: 890, capacity: 1000, fillRate: '89%' },\n                  { id: '2', name: 'Summer Music Festival', date: '2024-07-15', attendees: 750, capacity: 1000, fillRate: '75%' },\n                  { id: '3', name: 'Tech Conference 2024', date: '2024-08-20', attendees: 680, capacity: 800, fillRate: '85%' },\n                  { id: '4', name: 'Comedy Show Special', date: '2024-07-22', attendees: 280, capacity: 300, fillRate: '93%' },\n                ]}>\n                  {row => (\n                    <Table.Row key={row.id}>\n                      <Table.Cell>{row.name}</Table.Cell>\n                      <Table.Cell>{row.date}</Table.Cell>\n                      <Table.Cell>{row.attendees}</Table.Cell>\n                      <Table.Cell>{row.capacity}</Table.Cell>\n                      <Table.Cell>{row.fillRate}</Table.Cell>\n                    </Table.Row>\n                  )}\n                </Table.Body>\n              </Table>\n            </Stack>\n          </Stack>\n        </Tabs.TabPanel>\n\n        <Tabs.TabPanel id=\"overview\">\n          <Stack space={4}>\n            <Text>\n              This quarterly report summarizes the performance of all events held throughout the period. We have seen\n              significant growth in attendance and revenue, with strong customer satisfaction ratings. The data shows\n              positive trends across all key metrics.\n            </Text>\n\n            <Accordion allowsMultipleExpanded>\n              <Accordion.Item id=\"q1\">\n                <Accordion.Header>Q1 Summary</Accordion.Header>\n                <Accordion.Content>\n                  Q1 was a strong quarter with 8 events held. Total attendance was 1,200 with revenue of $15,000. Key\n                  highlights include the successful launch of our new ticket platform and increased social media\n                  engagement.\n                </Accordion.Content>\n              </Accordion.Item>\n              <Accordion.Item id=\"q2\">\n                <Accordion.Header>Q2 Summary</Accordion.Header>\n                <Accordion.Content>\n                  Q2 exceeded expectations with 12 events and 1,500 attendees. Revenue reached $18,500. We expanded\n                  our marketing efforts which resulted in higher ticket sales and improved customer retention.\n                </Accordion.Content>\n              </Accordion.Item>\n              <Accordion.Item id=\"q3\">\n                <Accordion.Header>Q3 Summary</Accordion.Header>\n                <Accordion.Content>\n                  Q3 continues the upward trend with 10 events planned and strong pre-sales. Expected attendance is\n                  1,500 with projected revenue of $11,730. We are focusing on premium events and partnerships to\n                  increase average ticket value.\n                </Accordion.Content>\n              </Accordion.Item>\n            </Accordion>\n          </Stack>\n        </Tabs.TabPanel>\n      </Tabs>\n    </Stack>\n  );\n};\n\nconst Settings = () => {\n  const [notificationSettings, setNotificationSettings] = useState({\n    email: true,\n    sms: false,\n    digest: true,\n    marketing: false,\n  });\n\n  return (\n    <Stack space={4}>\n      <Headline level={2}>Settings</Headline>\n\n      <Tabs aria-label=\"Settings tabs\">\n        <Tabs.List aria-label=\"Settings sections\">\n          <Tabs.Item id=\"general\">General</Tabs.Item>\n          <Tabs.Item id=\"notifications\">Notifications</Tabs.Item>\n        </Tabs.List>\n\n        <Tabs.TabPanel id=\"general\">\n          <Stack space={4}>\n            <Stack space={3}>\n              <TextField label=\"Organization Name\" defaultValue=\"EventHub Inc.\" />\n              <TextField label=\"Contact Email\" type=\"email\" defaultValue=\"contact@eventhub.com\" />\n              <Select label=\"Default Currency\">\n                <Select.Option id=\"usd\">USD</Select.Option>\n                <Select.Option id=\"eur\">EUR</Select.Option>\n                <Select.Option id=\"gbp\">GBP</Select.Option>\n              </Select>\n              <Select label=\"Default Timezone\">\n                <Select.Option id=\"utc\">UTC</Select.Option>\n                <Select.Option id=\"cet\">CET</Select.Option>\n                <Select.Option id=\"est\">EST</Select.Option>\n                <Select.Option id=\"pst\">PST</Select.Option>\n              </Select>\n            </Stack>\n            <Button variant=\"primary\">\n              Save Changes\n            </Button>\n            <SectionMessage variant=\"success\" closeButton>\n              <SectionMessage.Title>Settings saved successfully.</SectionMessage.Title>\n            </SectionMessage>\n          </Stack>\n        </Tabs.TabPanel>\n\n        <Tabs.TabPanel id=\"notifications\">\n          <Stack space={4}>\n            <Stack space={3}>\n              <Stack space={1}>\n                <Inline space={2} alignY=\"center\">\n                  <Switch\n                    selected={notificationSettings.email}\n                    onChange={email => setNotificationSettings(prev => ({ ...prev, email }))}\n                  />\n                  <Text weight=\"bold\">Email Notifications</Text>\n                </Inline>\n                <Text size=\"sm\" color=\"muted\">\n                  Receive email updates about your events\n                </Text>\n              </Stack>\n              <Divider />\n\n              <Stack space={1}>\n                <Inline space={2} alignY=\"center\">\n                  <Switch\n                    selected={notificationSettings.sms}\n                    onChange={sms => setNotificationSettings(prev => ({ ...prev, sms }))}\n                  />\n                  <Text weight=\"bold\">SMS Notifications</Text>\n                </Inline>\n                <Text size=\"sm\" color=\"muted\">\n                  Get text messages for important updates\n                </Text>\n              </Stack>\n              <Divider />\n\n              <Stack space={1}>\n                <Inline space={2} alignY=\"center\">\n                  <Switch\n                    selected={notificationSettings.digest}\n                    onChange={digest => setNotificationSettings(prev => ({ ...prev, digest }))}\n                  />\n                  <Text weight=\"bold\">Weekly Digest</Text>\n                </Inline>\n                <Text size=\"sm\" color=\"muted\">\n                  Receive a weekly summary of your events\n                </Text>\n              </Stack>\n              <Divider />\n\n              <Stack space={1}>\n                <Inline space={2} alignY=\"center\">\n                  <Switch\n                    selected={notificationSettings.marketing}\n                    onChange={marketing => setNotificationSettings(prev => ({ ...prev, marketing }))}\n                  />\n                  <Text weight=\"bold\">Marketing Emails</Text>\n                </Inline>\n                <Text size=\"sm\" color=\"muted\">\n                  Receive promotional offers and updates\n                </Text>\n              </Stack>\n            </Stack>\n            <Button variant=\"primary\">\n              Save Preferences\n            </Button>\n          </Stack>\n        </Tabs.TabPanel>\n      </Tabs>\n    </Stack>\n  );\n};\n\nconst TestApp = () => {\n  const [currentPage, setCurrentPage] = useState<Page>('dashboard');\n  const [sidebarOpen, setSidebarOpen] = useState(true);\n  const [signOutDialogOpen, setSignOutDialogOpen] = useState(false);\n\n  const pages: Record<Page, string> = {\n    dashboard: 'Dashboard',\n    events: 'Events',\n    attendees: 'Attendees',\n    reports: 'Reports',\n    settings: 'Settings',\n  };\n\n  return (\n    <Sidebar.Provider defaultOpen={sidebarOpen}>\n      <AppLayout>\n        <AppLayout.Sidebar>\n          <Sidebar.Header>\n            <Text weight=\"bold\">EventHub</Text>\n          </Sidebar.Header>\n          <Sidebar.Nav current={`/${currentPage}`}>\n            <Sidebar.Item href=\"/dashboard\" onPress={() => setCurrentPage('dashboard')}>\n              Dashboard\n            </Sidebar.Item>\n            <Sidebar.Item href=\"/events\" onPress={() => setCurrentPage('events')}>\n              Events\n            </Sidebar.Item>\n            <Sidebar.Item href=\"/attendees\" onPress={() => setCurrentPage('attendees')}>\n              Attendees\n            </Sidebar.Item>\n            <Sidebar.Item href=\"/reports\" onPress={() => setCurrentPage('reports')}>\n              Reports\n            </Sidebar.Item>\n            <Sidebar.Separator />\n            <Sidebar.Item href=\"/settings\" onPress={() => setCurrentPage('settings')}>\n              Settings\n            </Sidebar.Item>\n            <Sidebar.Footer>\n              <Sidebar.Item href=\"#help\">Help & Support</Sidebar.Item>\n            </Sidebar.Footer>\n          </Sidebar.Nav>\n        </AppLayout.Sidebar>\n\n        <AppLayout.Header>\n          <TopNavigation.Start>\n            <Sidebar.Toggle />\n          </TopNavigation.Start>\n\n          <TopNavigation.Middle>\n            <Breadcrumbs>\n              <Breadcrumbs.Item href=\"#home\">EventHub</Breadcrumbs.Item>\n              <Breadcrumbs.Item href={`#${currentPage}`}>{pages[currentPage]}</Breadcrumbs.Item>\n            </Breadcrumbs>\n          </TopNavigation.Middle>\n\n          <TopNavigation.End>\n            <Menu onAction={action => {\n              if (action === 'signout') {\n                setSignOutDialogOpen(true);\n              }\n            }} label=\"Account\">\n              <Menu.Item id=\"profile\">Profile</Menu.Item>\n              <Menu.Item id=\"signout\" variant=\"destructive\">\n                Sign out\n              </Menu.Item>\n            </Menu>\n          </TopNavigation.End>\n        </AppLayout.Header>\n\n        <AppLayout.Main>\n          <Inset space={4}>\n            {currentPage === 'dashboard' && <Dashboard />}\n            {currentPage === 'events' && <Events />}\n            {currentPage === 'attendees' && <Attendees />}\n            {currentPage === 'reports' && <Reports />}\n            {currentPage === 'settings' && <Settings />}\n          </Inset>\n        </AppLayout.Main>\n      </AppLayout>\n\n      <Dialog open={signOutDialogOpen} onOpenChange={setSignOutDialogOpen}>\n        <Dialog.Title>Sign out</Dialog.Title>\n        <Dialog.Content>\n          Are you sure you want to sign out?\n        </Dialog.Content>\n        <Dialog.Actions>\n          <Button variant=\"secondary\" onPress={() => setSignOutDialogOpen(false)}>\n            Cancel\n          </Button>\n          <Button variant=\"destructive\" onPress={() => setSignOutDialogOpen(false)}>\n            Sign out\n          </Button>\n        </Dialog.Actions>\n      </Dialog>\n    </Sidebar.Provider>\n  );\n};\n\nexport default TestApp;\n",
   "assertions": {
     "passed": [
       {
@@ -607,6 +406,13 @@
         "evidence": "<SectionMessage> found"
       },
       {
+        "id": "a-tooltip",
+        "description": "Tooltip on revenue card",
+        "severity": "required",
+        "passed": true,
+        "evidence": "<Tooltip> found"
+      },
+      {
         "id": "a-no-onclick-on-marigold",
         "description": "No onClick on Marigold Button components",
         "severity": "recommended",
@@ -670,23 +476,16 @@
         "severity": "required",
         "passed": false,
         "evidence": "<Form> not found"
-      },
-      {
-        "id": "a-tooltip",
-        "description": "Tooltip on revenue card",
-        "severity": "required",
-        "passed": false,
-        "evidence": "<Tooltip> not found"
       }
     ],
-    "passRate": 0.8889,
-    "requiredPassRate": 0.8696,
-    "weightedPassRate": 0.875,
+    "passRate": 0.9259,
+    "requiredPassRate": 0.913,
+    "weightedPassRate": 0.9167,
     "total": 27
   },
   "validatePackageVersion": "0.0.1",
   "playwrightVersion": null,
   "resolvedModelId": "claude-haiku-4-5",
-  "claudeCliVersion": "2.1.185 (Claude Code)",
-  "sessionId": "a5b6a5cf-b25e-4006-9f45-9588c49dab1c"
+  "claudeCliVersion": "2.1.193 (Claude Code)",
+  "sessionId": "3644fb16-b77e-4bb0-8083-aa512178662b"
 }

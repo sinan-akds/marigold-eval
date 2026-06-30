@@ -3,9 +3,9 @@
   "promptId": "P-03",
   "model": "sonnet",
   "config": "full-stack",
-  "timestamp": "2026-06-23T11:06:00.411Z",
+  "timestamp": "2026-06-28T16:02:11.750Z",
   "quality": {
-    "overall": 95.5,
+    "overall": 92.17,
     "categories": {
       "A": {
         "category": "A",
@@ -82,9 +82,9 @@
       "E": {
         "category": "E",
         "label": "Functional Completeness",
-        "score": 100,
+        "score": 85.19,
         "weight": 0.225,
-        "weightedScore": 22.5,
+        "weightedScore": 19.17,
         "errorCount": 0,
         "warningCount": 0,
         "issues": []
@@ -93,14 +93,14 @@
     "renderSuccess": true
   },
   "efficiency": {
-    "durationMs": 247863,
-    "costUsd": 1.0014123,
-    "inputTokens": 47,
-    "outputTokens": 9682,
-    "cacheReadTokens": 1842861,
-    "cacheCreationTokens": 48014,
-    "totalTokens": 9729,
-    "numTurns": 45
+    "durationMs": 415704,
+    "costUsd": 1.2014242999999996,
+    "inputTokens": 45,
+    "outputTokens": 13433,
+    "cacheReadTokens": 2165051,
+    "cacheCreationTokens": 56845,
+    "totalTokens": 13478,
+    "numTurns": 52
   },
   "report": {
     "file": "TestApp.tsx",
@@ -155,12 +155,11 @@
       "Responsive layout"
     ],
     "metadata": {
-      "renderTimeMs": 1922,
+      "renderTimeMs": 1450,
       "componentsFound": [
         "li",
         "a",
-        "span",
-        "div"
+        "span"
       ],
       "checksRun": [
         "technical",
@@ -168,22 +167,21 @@
         "a11y"
       ],
       "coverage": {
-        "staticValuesChecked": 9,
-        "dynamicValuesSkipped": 13,
+        "staticValuesChecked": 27,
+        "dynamicValuesSkipped": 1,
         "spreadPropsBypassed": 0
       },
-      "widthUtilization": 0.975
+      "widthUtilization": 1
     },
     "markdown": "marigold-validate: TestApp.tsx — 0 error(s), 2 warning(s)\n\n[warning/a11y] <html>: Document should have one main landmark (landmark-one-main)\n  → Wrap your page content in `<AppLayout>` with `<AppLayout.Main>` to provide a `<main>` landmark. Import AppLayout from `@marigold/components`.\n  data: {ruleId=landmark-one-main, impact=moderate, target=[\"html\"], html=<html lang=\"en\" data-theme=\"rui\">, scope=page}\n[warning/a11y] <page>: All page content should be contained by landmarks — 10 elements affected (region)\n  → All page content must be inside a landmark region. Use `<AppLayout>` with `<AppLayout.Main>` for the main area, `<TopNavigation>` for the header (`<header>`), and `<Sidebar>` for side navigation (`<aside>`). Import from `@marigold/components`.\n  data: {ruleId=region, impact=moderate, affectedCount=10, scope=page}\n\npassed: TypeScript compilation, All Marigold props are valid, Component composition, Overlay accessible names, Compound component placement, Section headers, Collection item ids, Design system usage, Layout usage, Table usage, Component conventions, Theme variant compliance, No overlapping components detected, Responsive layout\n\nchecks run: technical, spatial, a11y"
   },
   "componentsFound": [
     "li",
     "a",
-    "span",
-    "div"
+    "span"
   ],
-  "renderTimeMs": 1922,
-  "sourceCode": "import {\n  Badge,\n  Breadcrumbs,\n  Card,\n  Columns,\n  Container,\n  Divider,\n  Headline,\n  Inline,\n  Link,\n  List,\n  SectionMessage,\n  Stack,\n  Tag,\n  Text,\n} from '@marigold/components';\n\nconst TestApp = () => {\n  return (\n    <Container space={8} align=\"center\">\n      {/* Breadcrumb trail */}\n      <Breadcrumbs>\n        <Breadcrumbs.Item href=\"#\">Blog</Breadcrumbs.Item>\n        <Breadcrumbs.Item href=\"#\">Frontend</Breadcrumbs.Item>\n        <Breadcrumbs.Item href=\"#\">Accessibility</Breadcrumbs.Item>\n      </Breadcrumbs>\n\n      {/* Article header */}\n      <Stack space={3}>\n        <Headline level=\"1\">Building Accessible Design Systems</Headline>\n        <Inline space={3}>\n          <Text>Sarah Chen</Text>\n          <Badge variant=\"primary\">Staff Engineer</Badge>\n          <Text variant=\"muted\">Published May 15, 2026</Text>\n        </Inline>\n        <Divider />\n      </Stack>\n\n      {/* Article body */}\n      <Stack space={6}>\n        <Text>\n          Accessible design systems form the backbone of inclusive digital\n          experiences, ensuring that every user — regardless of ability — can\n          interact with software confidently and independently. Building such\n          systems requires deliberate decisions at every layer, from token\n          choices to component APIs.\n        </Text>\n\n        <SectionMessage variant=\"info\">\n          <SectionMessage.Title>Accessibility Series</SectionMessage.Title>\n          <SectionMessage.Content>\n            This article is part of our accessibility series. Check out the\n            full series for more.\n          </SectionMessage.Content>\n        </SectionMessage>\n\n        <Text>\n          Design tokens serve as the foundation for communicating accessible\n          visual properties like color contrast, focus states, and spacing.\n          When tokens are defined with accessibility in mind from the start,\n          every component built on top of them inherits those guarantees\n          automatically.\n        </Text>\n\n        <List>\n          <List.Item>Semantic HTML as the foundation</List.Item>\n          <List.Item>ARIA attributes for complex widgets</List.Item>\n          <List.Item>Keyboard navigation patterns</List.Item>\n          <List.Item>Color contrast and visual indicators</List.Item>\n        </List>\n\n        <Text>\n          Investing in accessibility at the design system level multiplies the\n          impact across every product built on top of it. Teams no longer need\n          to solve the same accessibility problems in isolation — the design\n          system becomes a shared foundation of inclusive defaults.\n        </Text>\n      </Stack>\n\n      {/* Tags */}\n      <Stack space={3}>\n        <Divider />\n        <Tag.Group label=\"Tags\">\n          <Tag id=\"accessibility\">Accessibility</Tag>\n          <Tag id=\"design-systems\">Design Systems</Tag>\n          <Tag id=\"react\">React</Tag>\n          <Tag id=\"wcag\">WCAG</Tag>\n        </Tag.Group>\n      </Stack>\n\n      {/* Related articles */}\n      <Stack space={4}>\n        <Headline level=\"2\">Related Articles</Headline>\n        <Columns columns={[1, 1, 1]} space={4} collapseAt=\"40em\">\n          <Card p={4}>\n            <Stack space={2}>\n              <Headline level=\"3\">Getting Started with ARIA</Headline>\n              <Text>\n                A beginner's guide to ARIA roles and properties for building\n                complex interactive widgets accessibly.\n              </Text>\n              <Link href=\"#\">Read more →</Link>\n            </Stack>\n          </Card>\n          <Card p={4}>\n            <Stack space={2}>\n              <Headline level=\"3\">Keyboard Navigation Patterns</Headline>\n              <Text>\n                Learn how to design and implement fully keyboard-navigable\n                interfaces that work for every user.\n              </Text>\n              <Link href=\"#\">Read more →</Link>\n            </Stack>\n          </Card>\n          <Card p={4}>\n            <Stack space={2}>\n              <Headline level=\"3\">Color Contrast in Modern UIs</Headline>\n              <Text>\n                Ensure your color choices meet WCAG 2.2 requirements while\n                maintaining a beautiful, on-brand visual design.\n              </Text>\n              <Link href=\"#\">Read more →</Link>\n            </Stack>\n          </Card>\n        </Columns>\n      </Stack>\n    </Container>\n  );\n};\n\nexport default TestApp;\n",
+  "renderTimeMs": 1450,
+  "sourceCode": "import {\n  Badge,\n  Breadcrumbs,\n  Card,\n  Center,\n  Columns,\n  Divider,\n  Headline,\n  Inline,\n  Inset,\n  Link,\n  List,\n  SectionMessage,\n  Stack,\n  Text,\n} from '@marigold/components';\n\nconst ArticlePage = () => {\n  return (\n    <Center maxWidth=\"xlarge\">\n      <Stack space=\"section\">\n        <Breadcrumbs>\n          <Breadcrumbs.Item href=\"#\">Blog</Breadcrumbs.Item>\n          <Breadcrumbs.Item href=\"#\">Frontend</Breadcrumbs.Item>\n          <Breadcrumbs.Item href=\"#\">Accessibility</Breadcrumbs.Item>\n        </Breadcrumbs>\n\n        <Stack space=\"group\">\n          {/* Article header */}\n          <Stack space=\"regular\">\n            <Headline level=\"1\">Building Accessible Design Systems</Headline>\n            <Inline space=\"related\" alignY=\"center\">\n              <Text weight=\"bold\">Sarah Chen</Text>\n              <Badge variant=\"info\">Staff Engineer</Badge>\n              <Text variant=\"muted\">Published May 15, 2026</Text>\n            </Inline>\n            <Divider />\n          </Stack>\n\n          {/* Article body */}\n          <Stack space=\"regular\">\n            <Text>\n              Accessible design systems are the foundation of inclusive digital products. They\n              provide a shared vocabulary for designers and engineers to build interfaces that\n              work for everyone, regardless of ability or the assistive technology they rely on.\n            </Text>\n\n            <SectionMessage variant=\"info\">\n              <SectionMessage.Title>Accessibility Series</SectionMessage.Title>\n              <SectionMessage.Content>\n                This article is part of our accessibility series. Check out the full series for more.\n              </SectionMessage.Content>\n            </SectionMessage>\n\n            <Text>\n              Building an accessible design system goes beyond checklists and audits. It requires\n              deep empathy for how people with disabilities interact with technology and a sustained\n              commitment to involving real users throughout the design and development process.\n            </Text>\n\n            <List>\n              <List.Item>Semantic HTML as the foundation</List.Item>\n              <List.Item>ARIA attributes for complex widgets</List.Item>\n              <List.Item>Keyboard navigation patterns</List.Item>\n              <List.Item>Color contrast and visual indicators</List.Item>\n            </List>\n\n            <Text>\n              Accessibility in design systems is an ongoing practice, not a one-time effort.\n              Regular audits, evolving standards, and continuous feedback from users with\n              disabilities keep your system genuinely inclusive over time.\n            </Text>\n          </Stack>\n\n          {/* Tags */}\n          <Stack space=\"related\">\n            <Divider />\n            <Inline space=\"related\">\n              <Badge>Accessibility</Badge>\n              <Badge>Design Systems</Badge>\n              <Badge>React</Badge>\n              <Badge>WCAG</Badge>\n            </Inline>\n          </Stack>\n        </Stack>\n\n        {/* Related articles */}\n        <Stack space=\"regular\">\n          <Headline level=\"2\">Related Articles</Headline>\n          <Columns columns={[1, 1, 1]} space={4} collapseAt=\"40em\">\n            <Card>\n              <Inset spaceX=\"padding-regular\" spaceY=\"padding-snug\">\n                <Stack space=\"related\">\n                  <Headline level=\"3\">ARIA Roles Explained</Headline>\n                  <Text>\n                    Learn how ARIA roles help assistive technologies understand the structure of your interface.\n                  </Text>\n                  <Link href=\"#\">Read more →</Link>\n                </Stack>\n              </Inset>\n            </Card>\n            <Card>\n              <Inset spaceX=\"padding-regular\" spaceY=\"padding-snug\">\n                <Stack space=\"related\">\n                  <Headline level=\"3\">Focus Management Patterns</Headline>\n                  <Text>\n                    Discover best practices for managing keyboard focus in complex interactive web applications.\n                  </Text>\n                  <Link href=\"#\">Read more →</Link>\n                </Stack>\n              </Inset>\n            </Card>\n            <Card>\n              <Inset spaceX=\"padding-regular\" spaceY=\"padding-snug\">\n                <Stack space=\"related\">\n                  <Headline level=\"3\">Color Contrast in UI Design</Headline>\n                  <Text>\n                    Understand WCAG color contrast requirements and practical techniques to meet them in practice.\n                  </Text>\n                  <Link href=\"#\">Read more →</Link>\n                </Stack>\n              </Inset>\n            </Card>\n          </Columns>\n        </Stack>\n      </Stack>\n    </Center>\n  );\n};\n\nexport default ArticlePage;\n",
   "assertions": {
     "passed": [
       {
@@ -192,13 +190,6 @@
         "severity": "required",
         "passed": true,
         "evidence": "import from \"@marigold/components\" found"
-      },
-      {
-        "id": "a-container",
-        "description": "Container for reading width",
-        "severity": "required",
-        "passed": true,
-        "evidence": "<Container> found"
       },
       {
         "id": "a-headline",
@@ -257,13 +248,6 @@
         "evidence": "<Card> found"
       },
       {
-        "id": "a-tag",
-        "description": "Tag component for article tags",
-        "severity": "required",
-        "passed": true,
-        "evidence": "matched: <Tag> found"
-      },
-      {
         "id": "a-section-message",
         "description": "SectionMessage for callout",
         "severity": "required",
@@ -292,15 +276,30 @@
         "evidence": "\"/^(a|div|span|p|h[1-6]|ul|ol|li|button|input|select|textarea|table)$/\" correctly absent"
       }
     ],
-    "failed": [],
-    "passRate": 1,
-    "requiredPassRate": 1,
-    "weightedPassRate": 1,
+    "failed": [
+      {
+        "id": "a-container",
+        "description": "Container for reading width",
+        "severity": "required",
+        "passed": false,
+        "evidence": "<Container> not found"
+      },
+      {
+        "id": "a-tag",
+        "description": "Tag component for article tags",
+        "severity": "required",
+        "passed": false,
+        "evidence": "none matched: <Tag> not found; <TagGroup> not found"
+      }
+    ],
+    "passRate": 0.8667,
+    "requiredPassRate": 0.8462,
+    "weightedPassRate": 0.8519,
     "total": 15
   },
   "validatePackageVersion": "0.0.1",
   "playwrightVersion": null,
   "resolvedModelId": "claude-sonnet-4-6",
-  "claudeCliVersion": "2.1.185 (Claude Code)",
-  "sessionId": "ed3d8b27-ca0d-4ec5-98b5-048770d3ff28"
+  "claudeCliVersion": "2.1.193 (Claude Code)",
+  "sessionId": "8491a44c-733e-4297-9d8b-22a80797c50d"
 }

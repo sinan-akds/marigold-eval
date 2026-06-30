@@ -3,75 +3,19 @@
   "promptId": "P-01",
   "model": "haiku",
   "config": "full-stack",
-  "timestamp": "2026-06-21T11:24:08.845Z",
+  "timestamp": "2026-06-28T01:43:59.164Z",
   "quality": {
-    "overall": 89.14,
+    "overall": 93.72,
     "categories": {
       "A": {
         "category": "A",
         "label": "Design System API",
-        "score": 71.72,
+        "score": 100,
         "weight": 0.225,
-        "weightedScore": 16.14,
+        "weightedScore": 22.5,
         "errorCount": 0,
-        "warningCount": 4,
-        "issues": [
-          {
-            "type": "technical",
-            "severity": "warning",
-            "source": "prop-validator",
-            "component": "TextField",
-            "message": "Spread props on <TextField> bypass prop validation.",
-            "suggestion": "Pass props explicitly so they can be validated against the component's API.",
-            "location": {
-              "file": "TestApp.tsx",
-              "line": 77,
-              "column": 17
-            }
-          },
-          {
-            "type": "technical",
-            "severity": "warning",
-            "source": "prop-validator",
-            "component": "TextField",
-            "message": "Spread props on <TextField> bypass prop validation.",
-            "suggestion": "Pass props explicitly so they can be validated against the component's API.",
-            "location": {
-              "file": "TestApp.tsx",
-              "line": 86,
-              "column": 17
-            }
-          },
-          {
-            "type": "technical",
-            "severity": "warning",
-            "source": "prop-validator",
-            "component": "Select",
-            "message": "Spread props on <Select> bypass prop validation.",
-            "suggestion": "Pass props explicitly so they can be validated against the component's API.",
-            "location": {
-              "file": "TestApp.tsx",
-              "line": 93,
-              "column": 17
-            }
-          },
-          {
-            "type": "technical",
-            "severity": "warning",
-            "source": "design-system-usage",
-            "component": "main",
-            "message": "Raw <main> used instead of a Marigold component.",
-            "suggestion": "Raw <main> used instead of a Marigold layout component. Search the Marigold docs for layout alternatives.",
-            "location": {
-              "file": "TestApp.tsx",
-              "line": 63,
-              "column": 5
-            },
-            "details": {
-              "htmlElement": "main"
-            }
-          }
-        ]
+        "warningCount": 0,
+        "issues": []
       },
       "B": {
         "category": "B",
@@ -96,25 +40,12 @@
       "D": {
         "category": "D",
         "label": "Spatial & A11y",
-        "score": 80,
+        "score": 85.86,
         "weight": 0.225,
-        "weightedScore": 18,
+        "weightedScore": 19.32,
         "errorCount": 0,
-        "warningCount": 2,
+        "warningCount": 1,
         "issues": [
-          {
-            "type": "spatial",
-            "severity": "warning",
-            "source": "responsive-checker",
-            "component": "page",
-            "message": "Content uses only 20% of the desktop width (1280px): it stays in a narrow, mobile-shaped band instead of adapting to the available space.",
-            "suggestion": "Let the layout grow with the viewport using Marigold responsive primitives — <Columns collapseAt=\"...\"> for multi-column areas, AppLayout for the shell, Stack/Inline for flow — instead of a fixed-width container. (Intentionally centred max-width reading columns are fine and may trip this; treat it as a relative signal.)",
-            "details": {
-              "widthUtilization": 0.20234375,
-              "contentElements": 25,
-              "scope": "page"
-            }
-          },
           {
             "type": "a11y",
             "severity": "warning",
@@ -123,7 +54,7 @@
             "message": "Interactive element <input> (input) is not reachable via Tab key.",
             "suggestion": "Ensure the element is focusable. Marigold interactive components are focusable by default — check if a parent has tabindex=\"-1\" or focus is trapped.",
             "details": {
-              "selector": "body:nth-child(2) > div:nth-child(1) > div:nth-child(1) > main:nth-child(1) > div:nth-child(1) > div:nth-child(1) > form:nth-child(2) > div:nth-child(1) > div:nth-child(2) > div:nth-child(2) > input:nth-child(1)",
+              "selector": "body:nth-child(2) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > main:nth-child(1) > div:nth-child(1) > div:nth-child(1) > form:nth-child(2) > div:nth-child(1) > div:nth-child(1) > div:nth-child(2) > input:nth-child(1)",
               "role": "input",
               "scope": "page"
             }
@@ -133,9 +64,9 @@
       "E": {
         "category": "E",
         "label": "Functional Completeness",
-        "score": 100,
+        "score": 86.21,
         "weight": 0.225,
-        "weightedScore": 22.5,
+        "weightedScore": 19.4,
         "errorCount": 0,
         "warningCount": 0,
         "issues": []
@@ -144,87 +75,19 @@
     "renderSuccess": true
   },
   "efficiency": {
-    "durationMs": 415786,
-    "costUsd": 1.0352257000000002,
-    "inputTokens": 94,
-    "outputTokens": 23759,
-    "cacheReadTokens": 5887617,
-    "cacheCreationTokens": 163410,
-    "totalTokens": 23853,
-    "numTurns": 82
+    "durationMs": 510829,
+    "costUsd": 0.9502299499999999,
+    "inputTokens": 580,
+    "outputTokens": 15357,
+    "cacheReadTokens": 3143558,
+    "cacheCreationTokens": 161206,
+    "totalTokens": 15937,
+    "numTurns": 76
   },
   "report": {
     "file": "TestApp.tsx",
     "errors": [],
     "warnings": [
-      {
-        "type": "technical",
-        "severity": "warning",
-        "source": "prop-validator",
-        "component": "TextField",
-        "message": "Spread props on <TextField> bypass prop validation.",
-        "suggestion": "Pass props explicitly so they can be validated against the component's API.",
-        "location": {
-          "file": "TestApp.tsx",
-          "line": 77,
-          "column": 17
-        }
-      },
-      {
-        "type": "technical",
-        "severity": "warning",
-        "source": "prop-validator",
-        "component": "TextField",
-        "message": "Spread props on <TextField> bypass prop validation.",
-        "suggestion": "Pass props explicitly so they can be validated against the component's API.",
-        "location": {
-          "file": "TestApp.tsx",
-          "line": 86,
-          "column": 17
-        }
-      },
-      {
-        "type": "technical",
-        "severity": "warning",
-        "source": "prop-validator",
-        "component": "Select",
-        "message": "Spread props on <Select> bypass prop validation.",
-        "suggestion": "Pass props explicitly so they can be validated against the component's API.",
-        "location": {
-          "file": "TestApp.tsx",
-          "line": 93,
-          "column": 17
-        }
-      },
-      {
-        "type": "technical",
-        "severity": "warning",
-        "source": "design-system-usage",
-        "component": "main",
-        "message": "Raw <main> used instead of a Marigold component.",
-        "suggestion": "Raw <main> used instead of a Marigold layout component. Search the Marigold docs for layout alternatives.",
-        "location": {
-          "file": "TestApp.tsx",
-          "line": 63,
-          "column": 5
-        },
-        "details": {
-          "htmlElement": "main"
-        }
-      },
-      {
-        "type": "spatial",
-        "severity": "warning",
-        "source": "responsive-checker",
-        "component": "page",
-        "message": "Content uses only 20% of the desktop width (1280px): it stays in a narrow, mobile-shaped band instead of adapting to the available space.",
-        "suggestion": "Let the layout grow with the viewport using Marigold responsive primitives — <Columns collapseAt=\"...\"> for multi-column areas, AppLayout for the shell, Stack/Inline for flow — instead of a fixed-width container. (Intentionally centred max-width reading columns are fine and may trip this; treat it as a relative signal.)",
-        "details": {
-          "widthUtilization": 0.20234375,
-          "contentElements": 25,
-          "scope": "page"
-        }
-      },
       {
         "type": "a11y",
         "severity": "warning",
@@ -233,7 +96,7 @@
         "message": "Interactive element <input> (input) is not reachable via Tab key.",
         "suggestion": "Ensure the element is focusable. Marigold interactive components are focusable by default — check if a parent has tabindex=\"-1\" or focus is trapped.",
         "details": {
-          "selector": "body:nth-child(2) > div:nth-child(1) > div:nth-child(1) > main:nth-child(1) > div:nth-child(1) > div:nth-child(1) > form:nth-child(2) > div:nth-child(1) > div:nth-child(2) > div:nth-child(2) > input:nth-child(1)",
+          "selector": "body:nth-child(2) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > main:nth-child(1) > div:nth-child(1) > div:nth-child(1) > form:nth-child(2) > div:nth-child(1) > div:nth-child(1) > div:nth-child(2) > input:nth-child(1)",
           "role": "input",
           "scope": "page"
         }
@@ -241,19 +104,22 @@
     ],
     "passed": [
       "TypeScript compilation",
+      "All Marigold props are valid",
       "Component composition",
       "Overlay accessible names",
       "Compound component placement",
       "Section headers",
       "Collection item ids",
+      "Design system usage",
       "Layout usage",
       "Table usage",
       "Component conventions",
       "Theme variant compliance",
-      "No overlapping components detected"
+      "No overlapping components detected",
+      "Responsive layout"
     ],
     "metadata": {
-      "renderTimeMs": 1556,
+      "renderTimeMs": 2174,
       "componentsFound": [
         "div",
         "input",
@@ -267,13 +133,13 @@
         "a11y"
       ],
       "coverage": {
-        "staticValuesChecked": 19,
-        "dynamicValuesSkipped": 11,
-        "spreadPropsBypassed": 3
+        "staticValuesChecked": 3,
+        "dynamicValuesSkipped": 3,
+        "spreadPropsBypassed": 0
       },
-      "widthUtilization": 0.20234375
+      "widthUtilization": null
     },
-    "markdown": "marigold-validate: TestApp.tsx — 0 error(s), 6 warning(s)\n\n[warning/technical] <main>: Raw <main> used instead of a Marigold component. (TestApp.tsx:63:5)\n  → Raw <main> used instead of a Marigold layout component. Search the Marigold docs for layout alternatives.\n  data: {htmlElement=main}\n[warning/technical] <Select>: Spread props on <Select> bypass prop validation. (TestApp.tsx:93:17)\n  → Pass props explicitly so they can be validated against the component's API.\n[warning/technical] <TextField>: Spread props on <TextField> bypass prop validation. (TestApp.tsx:77:17)\n  → Pass props explicitly so they can be validated against the component's API.\n[warning/technical] <TextField>: Spread props on <TextField> bypass prop validation. (TestApp.tsx:86:17)\n  → Pass props explicitly so they can be validated against the component's API.\n[warning/spatial] <page>: Content uses only 20% of the desktop width (1280px): it stays in a narrow, mobile-shaped band instead of adapting to the available space.\n  → Let the layout grow with the viewport using Marigold responsive primitives — <Columns collapseAt=\"...\"> for multi-column areas, AppLayout for the shell, Stack/Inline for flow — instead of a fixed-width container. (Intentionally centred max-width reading columns are fine and may trip this; treat it as a relative signal.)\n  data: {widthUtilization=0.20234375, contentElements=25, scope=page}\n[warning/a11y] <input>: Interactive element <input> (input) is not reachable via Tab key.\n  → Ensure the element is focusable. Marigold interactive components are focusable by default — check if a parent has tabindex=\"-1\" or focus is trapped.\n  data: {selector=body:nth-child(2) > div:nth-child(1) > div:nth-child(1) > main:nth-child(1) >..., role=input, scope=page}\n\npassed: TypeScript compilation, Component composition, Overlay accessible names, Compound component placement, Section headers, Collection item ids, Layout usage, Table usage, Component conventions, Theme variant compliance, No overlapping components detected\n\nchecks run: technical, spatial, a11y"
+    "markdown": "marigold-validate: TestApp.tsx — 0 error(s), 1 warning(s)\n\n[warning/a11y] <input>: Interactive element <input> (input) is not reachable via Tab key.\n  → Ensure the element is focusable. Marigold interactive components are focusable by default — check if a parent has tabindex=\"-1\" or focus is trapped.\n  data: {selector=body:nth-child(2) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > ..., role=input, scope=page}\n\npassed: TypeScript compilation, All Marigold props are valid, Component composition, Overlay accessible names, Compound component placement, Section headers, Collection item ids, Design system usage, Layout usage, Table usage, Component conventions, Theme variant compliance, No overlapping components detected, Responsive layout\n\nchecks run: technical, spatial, a11y"
   },
   "componentsFound": [
     "div",
@@ -282,8 +148,8 @@
     "span",
     "textarea"
   ],
-  "renderTimeMs": 1556,
-  "sourceCode": "import { useState } from 'react';\nimport {\n  Form,\n  TextField,\n  TextArea,\n  Select,\n  Button,\n  Stack,\n  Inset,\n  Card,\n  Headline,\n  Text,\n} from '@marigold/components';\n\nconst TestApp = () => {\n  const [submittedData, setSubmittedData] = useState<Record<string, string> | null>(null);\n  const [selectedSubject, setSelectedSubject] = useState<string>('general');\n  const [validationErrors, setValidationErrors] = useState<Record<string, string>>({});\n\n  const validateEmail = (email: string): boolean => {\n    const emailRegex = /^[^\\s@]+@[^\\s@]+\\.[^\\s@]+$/;\n    return emailRegex.test(email);\n  };\n\n  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {\n    e.preventDefault();\n\n    const formData = new FormData(e.currentTarget);\n    const data: Record<string, string> = {\n      name: (formData.get('name') as string) || '',\n      email: (formData.get('email') as string) || '',\n      subject: selectedSubject,\n      message: (formData.get('message') as string) || '',\n    };\n\n    const newErrors: Record<string, string> = {};\n\n    if (!data.name.trim()) {\n      newErrors.name = 'Name is required.';\n    }\n\n    if (!data.email.trim()) {\n      newErrors.email = 'Email is required.';\n    } else if (!validateEmail(data.email)) {\n      newErrors.email = 'Please enter a valid email address.';\n    }\n\n    if (!data.subject) {\n      newErrors.subject = 'Please select a subject.';\n    }\n\n    if (Object.keys(newErrors).length > 0) {\n      setValidationErrors(newErrors);\n      setSubmittedData(null);\n      return;\n    }\n\n    setValidationErrors({});\n    setSubmittedData(data);\n  };\n\n  return (\n    <main>\n      <Inset space={8}>\n        <Stack space={6} alignX=\"left\">\n          <Headline level={1}>Contact Form</Headline>\n\n          <Form onSubmit={handleSubmit}>\n            <Stack space={4} alignX=\"left\">\n              <Headline level={2}>Contact Us</Headline>\n\n              <TextField\n                label=\"Name\"\n                name=\"name\"\n                required\n                width=\"full\"\n                {...(validationErrors.name && { error: true, errorMessage: validationErrors.name })}\n              />\n\n              <TextField\n                label=\"Email\"\n                name=\"email\"\n                type=\"email\"\n                required\n                width=\"full\"\n                {...(validationErrors.email && { error: true, errorMessage: validationErrors.email })}\n              />\n\n              <Select\n                label=\"Subject\"\n                selectedKey={selectedSubject}\n                onSelectionChange={(key) => setSelectedSubject(key as string)}\n                {...(validationErrors.subject && { error: true, errorMessage: validationErrors.subject })}\n              >\n                <Select.Option id=\"general\">General</Select.Option>\n                <Select.Option id=\"support\">Support</Select.Option>\n                <Select.Option id=\"feedback\">Feedback</Select.Option>\n              </Select>\n\n              <TextArea\n                label=\"Message\"\n                name=\"message\"\n                rows={6}\n                width=\"full\"\n              />\n\n              <Button variant=\"primary\" type=\"submit\">\n                Submit\n              </Button>\n            </Stack>\n          </Form>\n\n          {submittedData && (\n            <Card>\n              <Inset space={6}>\n                <Stack space={3} alignX=\"left\">\n                  <Headline level={3}>Thank You!</Headline>\n                  <Text>Your message has been sent successfully. We will get back to you soon.</Text>\n                  <Text weight=\"bold\">Submitted details:</Text>\n                  <Stack space={2} alignX=\"left\">\n                    <Stack space={1} alignX=\"left\">\n                      <Text weight=\"bold\">Name:</Text>\n                      <Text>{submittedData.name}</Text>\n                    </Stack>\n                    <Stack space={1} alignX=\"left\">\n                      <Text weight=\"bold\">Email:</Text>\n                      <Text>{submittedData.email}</Text>\n                    </Stack>\n                    <Stack space={1} alignX=\"left\">\n                      <Text weight=\"bold\">Subject:</Text>\n                      <Text>{submittedData.subject}</Text>\n                    </Stack>\n                    {submittedData.message && (\n                      <Stack space={1} alignX=\"left\">\n                        <Text weight=\"bold\">Message:</Text>\n                        <Text>{submittedData.message}</Text>\n                      </Stack>\n                    )}\n                  </Stack>\n                </Stack>\n              </Inset>\n            </Card>\n          )}\n        </Stack>\n      </Inset>\n    </main>\n  );\n};\n\nexport default TestApp;\n",
+  "renderTimeMs": 2174,
+  "sourceCode": "import { useState } from 'react';\nimport {\n  Form,\n  TextField,\n  Select,\n  TextArea,\n  Button,\n  Stack,\n  Inset,\n  SectionMessage,\n  Headline,\n  Text,\n  AppLayout,\n} from '@marigold/components';\n\nconst TestApp = () => {\n  const [formData, setFormData] = useState({\n    name: '',\n    email: '',\n    subject: 'General',\n    message: '',\n  });\n\n  const [errors, setErrors] = useState<Record<string, string>>({});\n  const [submitted, setSubmitted] = useState(false);\n\n  const validateEmail = (email: string) => {\n    return /^[^\\s@]+@[^\\s@]+\\.[^\\s@]+$/.test(email);\n  };\n\n  const handleSubmit = () => {\n    const newErrors: Record<string, string> = {};\n\n    if (!formData.name.trim()) {\n      newErrors.name = 'Name is required';\n    }\n\n    if (!formData.email.trim()) {\n      newErrors.email = 'Email is required';\n    } else if (!validateEmail(formData.email)) {\n      newErrors.email = 'Please enter a valid email address';\n    }\n\n    if (Object.keys(newErrors).length > 0) {\n      setErrors(newErrors);\n      setSubmitted(false);\n      return;\n    }\n\n    setErrors({});\n    setSubmitted(true);\n    setFormData({\n      name: '',\n      email: '',\n      subject: 'General',\n      message: '',\n    });\n  };\n\n  const handleFieldChange = (\n    field: keyof typeof formData,\n    value: string\n  ) => {\n    setFormData((prev) => ({\n      ...prev,\n      [field]: value,\n    }));\n    if (errors[field]) {\n      setErrors((prev) => ({\n        ...prev,\n        [field]: '',\n      }));\n    }\n  };\n\n  return (\n    <AppLayout>\n      <AppLayout.Main>\n        <Inset space={8}>\n          <Stack space={6}>\n            <Stack space={2}>\n              <Headline>Contact Us</Headline>\n              <Text>We'd love to hear from you. Send us a message!</Text>\n            </Stack>\n\n            {submitted && (\n              <SectionMessage variant=\"success\">\n                Thank you for your message! We'll get back to you soon.\n              </SectionMessage>\n            )}\n\n            <Form>\n              <Stack space={4}>\n                <TextField\n                  label=\"Name\"\n                  name=\"name\"\n                  required\n                  value={formData.name}\n                  onChange={(value) => handleFieldChange('name', value)}\n                  error={!!errors.name}\n                  errorMessage={errors.name}\n                  type=\"text\"\n                />\n\n                <TextField\n                  label=\"Email\"\n                  name=\"email\"\n                  required\n                  value={formData.email}\n                  onChange={(value) => handleFieldChange('email', value)}\n                  error={!!errors.email}\n                  errorMessage={errors.email}\n                  type=\"email\"\n                />\n\n                <Select\n                  label=\"Subject\"\n                  name=\"subject\"\n                  selectedKey={formData.subject}\n                  onChange={(value) =>\n                    handleFieldChange('subject', String(value))\n                  }\n                >\n                  <Select.Option key=\"general\">General</Select.Option>\n                  <Select.Option key=\"support\">Support</Select.Option>\n                  <Select.Option key=\"feedback\">Feedback</Select.Option>\n                </Select>\n\n                <TextArea\n                  label=\"Message\"\n                  name=\"message\"\n                  value={formData.message}\n                  onChange={(value) => handleFieldChange('message', value)}\n                  rows={6}\n                />\n\n                <Button onPress={handleSubmit}>\n                  Send Message\n                </Button>\n              </Stack>\n            </Form>\n          </Stack>\n        </Inset>\n      </AppLayout.Main>\n    </AppLayout>\n  );\n};\n\nexport default TestApp;\n",
   "assertions": {
     "passed": [
       {
@@ -322,13 +188,6 @@
         "evidence": "<TextArea> found"
       },
       {
-        "id": "a-submit-button",
-        "description": "Submit button with type=submit",
-        "severity": "required",
-        "passed": true,
-        "evidence": "<Button> found"
-      },
-      {
         "id": "a-form-wrapper",
         "description": "Form component wrapping fields",
         "severity": "required",
@@ -343,15 +202,23 @@
         "evidence": "\"/<Button[^>]*onClick/\" correctly absent"
       }
     ],
-    "failed": [],
-    "passRate": 1,
-    "requiredPassRate": 1,
-    "weightedPassRate": 1,
+    "failed": [
+      {
+        "id": "a-submit-button",
+        "description": "Submit button with type=submit",
+        "severity": "required",
+        "passed": false,
+        "evidence": "<Button> not found"
+      }
+    ],
+    "passRate": 0.875,
+    "requiredPassRate": 0.8571,
+    "weightedPassRate": 0.8621,
     "total": 8
   },
   "validatePackageVersion": "0.0.1",
   "playwrightVersion": null,
   "resolvedModelId": "claude-haiku-4-5",
-  "claudeCliVersion": "2.1.185 (Claude Code)",
-  "sessionId": "fa1a2dc6-bf6f-4cd0-aeca-5bbeb8b85f54"
+  "claudeCliVersion": "2.1.193 (Claude Code)",
+  "sessionId": "e382bd94-c028-4619-a034-0d1e54bbf511"
 }

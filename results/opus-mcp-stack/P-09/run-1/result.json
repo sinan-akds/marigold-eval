@@ -1,0 +1,707 @@
+{
+  "runId": "opus-mcp-stack-P-09-r1",
+  "promptId": "P-09",
+  "model": "opus",
+  "config": "mcp-stack",
+  "timestamp": "2026-06-27T13:32:37.505Z",
+  "quality": {
+    "overall": 76.86,
+    "categories": {
+      "A": {
+        "category": "A",
+        "label": "Design System API",
+        "score": 80,
+        "weight": 0.225,
+        "weightedScore": 18,
+        "errorCount": 0,
+        "warningCount": 2,
+        "issues": [
+          {
+            "type": "technical",
+            "severity": "warning",
+            "source": "prop-validator",
+            "component": "FileField",
+            "message": "Spread props on <FileField> bypass prop validation.",
+            "suggestion": "Pass props explicitly so they can be validated against the component's API.",
+            "location": {
+              "file": "TestApp.tsx",
+              "line": 332,
+              "column": 25
+            }
+          },
+          {
+            "type": "technical",
+            "severity": "warning",
+            "source": "design-system-usage",
+            "component": "img",
+            "message": "Inline style on <img> bypasses the design system (width, height, objectFit, borderRadius).",
+            "suggestion": "Use Marigold layout components (Stack, Columns, Inset, Container) and theme tokens instead of inline styles.",
+            "location": {
+              "file": "TestApp.tsx",
+              "line": 342,
+              "column": 29
+            },
+            "details": {
+              "cssProperties": [
+                "width",
+                "height",
+                "objectFit",
+                "borderRadius"
+              ]
+            }
+          }
+        ]
+      },
+      "B": {
+        "category": "B",
+        "label": "Token Compliance",
+        "score": 81.63,
+        "weight": 0.1,
+        "weightedScore": 8.16,
+        "errorCount": 0,
+        "warningCount": 3,
+        "issues": [
+          {
+            "type": "style",
+            "severity": "warning",
+            "source": "token-compliance",
+            "component": "button",
+            "message": "Computed color value \"oklab(0.444 0.00309857 0.0105546 / 0.8)\" on <button> (“Show suggestions”) does not map to a known design token.",
+            "suggestion": "If this is intentional, ignore the warning. Otherwise, use a Marigold variant or a theme-rui token instead of a hard-coded value.",
+            "details": {
+              "property": "color",
+              "value": "oklab(0.444 0.00309857 0.0105546 / 0.8)",
+              "selector": "body:nth-child(2) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > form:nth-child(1) > div:nth-child(1) > div:nth-child(2) > div:nth-child(7) > div:nth-child(2) > button:nth-child(2)",
+              "fingerprint": "Show suggestions",
+              "scope": "page"
+            }
+          },
+          {
+            "type": "style",
+            "severity": "warning",
+            "source": "token-compliance",
+            "component": "button",
+            "message": "Computed border-color value \"oklab(0.444 0.00309857 0.0105546 / 0.8)\" on <button> (“Show suggestions”) does not map to a known design token.",
+            "suggestion": "If this is intentional, ignore the warning. Otherwise, use a Marigold variant or a theme-rui token instead of a hard-coded value.",
+            "details": {
+              "property": "border-color",
+              "value": "oklab(0.444 0.00309857 0.0105546 / 0.8)",
+              "selector": "body:nth-child(2) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > form:nth-child(1) > div:nth-child(1) > div:nth-child(2) > div:nth-child(7) > div:nth-child(2) > button:nth-child(2)",
+              "fingerprint": "Show suggestions",
+              "scope": "page"
+            }
+          },
+          {
+            "type": "style",
+            "severity": "warning",
+            "source": "token-compliance",
+            "component": "button",
+            "message": "Computed outline-color value \"oklab(0.444 0.00309857 0.0105546 / 0.8)\" on <button> (“Show suggestions”) does not map to a known design token.",
+            "suggestion": "If this is intentional, ignore the warning. Otherwise, use a Marigold variant or a theme-rui token instead of a hard-coded value.",
+            "details": {
+              "property": "outline-color",
+              "value": "oklab(0.444 0.00309857 0.0105546 / 0.8)",
+              "selector": "body:nth-child(2) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > form:nth-child(1) > div:nth-child(1) > div:nth-child(2) > div:nth-child(7) > div:nth-child(2) > button:nth-child(2)",
+              "fingerprint": "Show suggestions",
+              "scope": "page"
+            }
+          }
+        ]
+      },
+      "C": {
+        "category": "C",
+        "label": "DOM / Structure",
+        "score": 65,
+        "weight": 0.225,
+        "weightedScore": 14.63,
+        "errorCount": 0,
+        "warningCount": 2,
+        "issues": [
+          {
+            "type": "technical",
+            "severity": "warning",
+            "source": "layout-usage",
+            "component": "Stack",
+            "message": "<Stack> wraps a single child. A flow layout earns its place only with two or more children; with one child it adds a wrapper that does nothing.",
+            "suggestion": "Render the child directly instead of wrapping it in <Stack>. For single-child spacing use Inset, Center, Breakout or Aspect.",
+            "location": {
+              "file": "TestApp.tsx",
+              "line": 218,
+              "column": 17
+            },
+            "details": {
+              "layout": "Stack",
+              "childCount": 1
+            }
+          },
+          {
+            "type": "technical",
+            "severity": "warning",
+            "source": "layout-usage",
+            "component": "Inline",
+            "message": "<Inline> wraps a single child. A flow layout earns its place only with two or more children; with one child it adds a wrapper that does nothing.",
+            "suggestion": "Render the child directly instead of wrapping it in <Inline>. For single-child spacing use Inset, Center, Breakout or Aspect.",
+            "location": {
+              "file": "TestApp.tsx",
+              "line": 251,
+              "column": 19
+            },
+            "details": {
+              "layout": "Inline",
+              "childCount": 1
+            }
+          }
+        ]
+      },
+      "D": {
+        "category": "D",
+        "label": "Spatial & A11y",
+        "score": 65.36,
+        "weight": 0.225,
+        "weightedScore": 14.71,
+        "errorCount": 0,
+        "warningCount": 6,
+        "issues": [
+          {
+            "type": "spatial",
+            "severity": "warning",
+            "source": "responsive-checker",
+            "component": "page",
+            "message": "Content uses only 55% of the desktop width (1280px): it stays in a narrow, mobile-shaped band instead of adapting to the available space.",
+            "suggestion": "Let the layout grow with the viewport using Marigold responsive primitives — <Columns collapseAt=\"...\"> for multi-column areas, AppLayout for the shell, Stack/Inline for flow — instead of a fixed-width container. (Intentionally centred max-width reading columns are fine and may trip this; treat it as a relative signal.)",
+            "details": {
+              "widthUtilization": 0.55,
+              "contentElements": 50,
+              "scope": "page"
+            }
+          },
+          {
+            "type": "a11y",
+            "severity": "warning",
+            "source": "aom-extractor",
+            "component": "html",
+            "message": "Document should have one main landmark (landmark-one-main)",
+            "suggestion": "Wrap your page content in `<AppLayout>` with `<AppLayout.Main>` to provide a `<main>` landmark. Import AppLayout from `@marigold/components`.",
+            "details": {
+              "ruleId": "landmark-one-main",
+              "impact": "moderate",
+              "target": [
+                "html"
+              ],
+              "html": "<html lang=\"en\" data-theme=\"rui\">",
+              "scope": "page"
+            }
+          },
+          {
+            "type": "a11y",
+            "severity": "warning",
+            "source": "aom-extractor",
+            "component": "html",
+            "message": "Page should contain a level-one heading (page-has-heading-one)",
+            "suggestion": "Add a `<Headline level={1}>` component for the page title — it renders an `<h1>`. Import Headline from `@marigold/components`.",
+            "details": {
+              "ruleId": "page-has-heading-one",
+              "impact": "moderate",
+              "target": [
+                "html"
+              ],
+              "html": "<html lang=\"en\" data-theme=\"rui\">",
+              "scope": "page"
+            }
+          },
+          {
+            "type": "a11y",
+            "severity": "warning",
+            "source": "aom-extractor",
+            "component": "page",
+            "message": "All page content should be contained by landmarks — 10 elements affected (region)",
+            "suggestion": "All page content must be inside a landmark region. Use `<AppLayout>` with `<AppLayout.Main>` for the main area, `<TopNavigation>` for the header (`<header>`), and `<Sidebar>` for side navigation (`<aside>`). Import from `@marigold/components`.",
+            "details": {
+              "ruleId": "region",
+              "impact": "moderate",
+              "affectedCount": 10,
+              "scope": "page"
+            }
+          },
+          {
+            "type": "a11y",
+            "severity": "warning",
+            "source": "keyboard-a11y",
+            "component": "input",
+            "message": "Interactive element <input> (input) is not reachable via Tab key.",
+            "suggestion": "Ensure the element is focusable. Marigold interactive components are focusable by default — check if a parent has tabindex=\"-1\" or focus is trapped.",
+            "details": {
+              "selector": "body:nth-child(2) > div:nth-child(2) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > form:nth-child(1) > div:nth-child(1) > div:nth-child(2) > div:nth-child(2) > div:nth-child(2) > input:nth-child(1)",
+              "role": "input",
+              "scope": "page"
+            }
+          },
+          {
+            "type": "a11y",
+            "severity": "warning",
+            "source": "keyboard-a11y",
+            "component": "button",
+            "message": "Component order inconsistency: Tab moved from <button> at (639, 719) to <button> at (586, 684).",
+            "suggestion": "Reorder components in JSX to match the visual layout, or use Marigold layout components (Stack, Columns) to control both visual and DOM order.",
+            "details": {
+              "from": {
+                "component": "button",
+                "x": 639,
+                "y": 719
+              },
+              "to": {
+                "component": "button",
+                "x": 586,
+                "y": 684
+              },
+              "scope": "page"
+            }
+          }
+        ]
+      },
+      "E": {
+        "category": "E",
+        "label": "Functional Completeness",
+        "score": 94.94,
+        "weight": 0.225,
+        "weightedScore": 21.36,
+        "errorCount": 0,
+        "warningCount": 0,
+        "issues": []
+      }
+    },
+    "renderSuccess": true
+  },
+  "efficiency": {
+    "durationMs": 902447,
+    "costUsd": 6.140934499999999,
+    "inputTokens": 2740,
+    "outputTokens": 45080,
+    "cacheReadTokens": 7070007,
+    "cacheCreationTokens": 146392,
+    "totalTokens": 47820,
+    "numTurns": 83
+  },
+  "report": {
+    "file": "TestApp.tsx",
+    "errors": [],
+    "warnings": [
+      {
+        "type": "technical",
+        "severity": "warning",
+        "source": "prop-validator",
+        "component": "FileField",
+        "message": "Spread props on <FileField> bypass prop validation.",
+        "suggestion": "Pass props explicitly so they can be validated against the component's API.",
+        "location": {
+          "file": "TestApp.tsx",
+          "line": 332,
+          "column": 25
+        }
+      },
+      {
+        "type": "technical",
+        "severity": "warning",
+        "source": "design-system-usage",
+        "component": "img",
+        "message": "Inline style on <img> bypasses the design system (width, height, objectFit, borderRadius).",
+        "suggestion": "Use Marigold layout components (Stack, Columns, Inset, Container) and theme tokens instead of inline styles.",
+        "location": {
+          "file": "TestApp.tsx",
+          "line": 342,
+          "column": 29
+        },
+        "details": {
+          "cssProperties": [
+            "width",
+            "height",
+            "objectFit",
+            "borderRadius"
+          ]
+        }
+      },
+      {
+        "type": "technical",
+        "severity": "warning",
+        "source": "layout-usage",
+        "component": "Stack",
+        "message": "<Stack> wraps a single child. A flow layout earns its place only with two or more children; with one child it adds a wrapper that does nothing.",
+        "suggestion": "Render the child directly instead of wrapping it in <Stack>. For single-child spacing use Inset, Center, Breakout or Aspect.",
+        "location": {
+          "file": "TestApp.tsx",
+          "line": 218,
+          "column": 17
+        },
+        "details": {
+          "layout": "Stack",
+          "childCount": 1
+        }
+      },
+      {
+        "type": "technical",
+        "severity": "warning",
+        "source": "layout-usage",
+        "component": "Inline",
+        "message": "<Inline> wraps a single child. A flow layout earns its place only with two or more children; with one child it adds a wrapper that does nothing.",
+        "suggestion": "Render the child directly instead of wrapping it in <Inline>. For single-child spacing use Inset, Center, Breakout or Aspect.",
+        "location": {
+          "file": "TestApp.tsx",
+          "line": 251,
+          "column": 19
+        },
+        "details": {
+          "layout": "Inline",
+          "childCount": 1
+        }
+      },
+      {
+        "type": "style",
+        "severity": "warning",
+        "source": "token-compliance",
+        "component": "button",
+        "message": "Computed color value \"oklab(0.444 0.00309857 0.0105546 / 0.8)\" on <button> (“Show suggestions”) does not map to a known design token.",
+        "suggestion": "If this is intentional, ignore the warning. Otherwise, use a Marigold variant or a theme-rui token instead of a hard-coded value.",
+        "details": {
+          "property": "color",
+          "value": "oklab(0.444 0.00309857 0.0105546 / 0.8)",
+          "selector": "body:nth-child(2) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > form:nth-child(1) > div:nth-child(1) > div:nth-child(2) > div:nth-child(7) > div:nth-child(2) > button:nth-child(2)",
+          "fingerprint": "Show suggestions",
+          "scope": "page"
+        }
+      },
+      {
+        "type": "style",
+        "severity": "warning",
+        "source": "token-compliance",
+        "component": "button",
+        "message": "Computed border-color value \"oklab(0.444 0.00309857 0.0105546 / 0.8)\" on <button> (“Show suggestions”) does not map to a known design token.",
+        "suggestion": "If this is intentional, ignore the warning. Otherwise, use a Marigold variant or a theme-rui token instead of a hard-coded value.",
+        "details": {
+          "property": "border-color",
+          "value": "oklab(0.444 0.00309857 0.0105546 / 0.8)",
+          "selector": "body:nth-child(2) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > form:nth-child(1) > div:nth-child(1) > div:nth-child(2) > div:nth-child(7) > div:nth-child(2) > button:nth-child(2)",
+          "fingerprint": "Show suggestions",
+          "scope": "page"
+        }
+      },
+      {
+        "type": "style",
+        "severity": "warning",
+        "source": "token-compliance",
+        "component": "button",
+        "message": "Computed outline-color value \"oklab(0.444 0.00309857 0.0105546 / 0.8)\" on <button> (“Show suggestions”) does not map to a known design token.",
+        "suggestion": "If this is intentional, ignore the warning. Otherwise, use a Marigold variant or a theme-rui token instead of a hard-coded value.",
+        "details": {
+          "property": "outline-color",
+          "value": "oklab(0.444 0.00309857 0.0105546 / 0.8)",
+          "selector": "body:nth-child(2) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > form:nth-child(1) > div:nth-child(1) > div:nth-child(2) > div:nth-child(7) > div:nth-child(2) > button:nth-child(2)",
+          "fingerprint": "Show suggestions",
+          "scope": "page"
+        }
+      },
+      {
+        "type": "spatial",
+        "severity": "warning",
+        "source": "responsive-checker",
+        "component": "page",
+        "message": "Content uses only 55% of the desktop width (1280px): it stays in a narrow, mobile-shaped band instead of adapting to the available space.",
+        "suggestion": "Let the layout grow with the viewport using Marigold responsive primitives — <Columns collapseAt=\"...\"> for multi-column areas, AppLayout for the shell, Stack/Inline for flow — instead of a fixed-width container. (Intentionally centred max-width reading columns are fine and may trip this; treat it as a relative signal.)",
+        "details": {
+          "widthUtilization": 0.55,
+          "contentElements": 50,
+          "scope": "page"
+        }
+      },
+      {
+        "type": "a11y",
+        "severity": "warning",
+        "source": "aom-extractor",
+        "component": "html",
+        "message": "Document should have one main landmark (landmark-one-main)",
+        "suggestion": "Wrap your page content in `<AppLayout>` with `<AppLayout.Main>` to provide a `<main>` landmark. Import AppLayout from `@marigold/components`.",
+        "details": {
+          "ruleId": "landmark-one-main",
+          "impact": "moderate",
+          "target": [
+            "html"
+          ],
+          "html": "<html lang=\"en\" data-theme=\"rui\">",
+          "scope": "page"
+        }
+      },
+      {
+        "type": "a11y",
+        "severity": "warning",
+        "source": "aom-extractor",
+        "component": "html",
+        "message": "Page should contain a level-one heading (page-has-heading-one)",
+        "suggestion": "Add a `<Headline level={1}>` component for the page title — it renders an `<h1>`. Import Headline from `@marigold/components`.",
+        "details": {
+          "ruleId": "page-has-heading-one",
+          "impact": "moderate",
+          "target": [
+            "html"
+          ],
+          "html": "<html lang=\"en\" data-theme=\"rui\">",
+          "scope": "page"
+        }
+      },
+      {
+        "type": "a11y",
+        "severity": "warning",
+        "source": "aom-extractor",
+        "component": "page",
+        "message": "All page content should be contained by landmarks — 10 elements affected (region)",
+        "suggestion": "All page content must be inside a landmark region. Use `<AppLayout>` with `<AppLayout.Main>` for the main area, `<TopNavigation>` for the header (`<header>`), and `<Sidebar>` for side navigation (`<aside>`). Import from `@marigold/components`.",
+        "details": {
+          "ruleId": "region",
+          "impact": "moderate",
+          "affectedCount": 10,
+          "scope": "page"
+        }
+      },
+      {
+        "type": "a11y",
+        "severity": "warning",
+        "source": "keyboard-a11y",
+        "component": "input",
+        "message": "Interactive element <input> (input) is not reachable via Tab key.",
+        "suggestion": "Ensure the element is focusable. Marigold interactive components are focusable by default — check if a parent has tabindex=\"-1\" or focus is trapped.",
+        "details": {
+          "selector": "body:nth-child(2) > div:nth-child(2) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > form:nth-child(1) > div:nth-child(1) > div:nth-child(2) > div:nth-child(2) > div:nth-child(2) > input:nth-child(1)",
+          "role": "input",
+          "scope": "page"
+        }
+      },
+      {
+        "type": "a11y",
+        "severity": "warning",
+        "source": "keyboard-a11y",
+        "component": "button",
+        "message": "Component order inconsistency: Tab moved from <button> at (639, 719) to <button> at (586, 684).",
+        "suggestion": "Reorder components in JSX to match the visual layout, or use Marigold layout components (Stack, Columns) to control both visual and DOM order.",
+        "details": {
+          "from": {
+            "component": "button",
+            "x": 639,
+            "y": 719
+          },
+          "to": {
+            "component": "button",
+            "x": 586,
+            "y": 684
+          },
+          "scope": "page"
+        }
+      }
+    ],
+    "passed": [
+      "TypeScript compilation",
+      "Component composition",
+      "Overlay accessible names",
+      "Compound component placement",
+      "Section headers",
+      "Collection item ids",
+      "Table usage",
+      "Component conventions",
+      "Theme variant compliance",
+      "No overlapping components detected"
+    ],
+    "metadata": {
+      "renderTimeMs": 6447,
+      "componentsFound": [
+        "div",
+        "input",
+        "button"
+      ],
+      "checksRun": [
+        "technical",
+        "spatial",
+        "a11y"
+      ],
+      "coverage": {
+        "staticValuesChecked": 23,
+        "dynamicValuesSkipped": 19,
+        "spreadPropsBypassed": 1
+      },
+      "widthUtilization": 0.55
+    },
+    "markdown": "marigold-validate: TestApp.tsx — 0 error(s), 13 warning(s)\n\n[warning/technical] <FileField>: Spread props on <FileField> bypass prop validation. (TestApp.tsx:332:25)\n  → Pass props explicitly so they can be validated against the component's API.\n[warning/technical] <img>: Inline style on <img> bypasses the design system (width, height, objectFit, borderRadius). (TestApp.tsx:342:29)\n  → Use Marigold layout components (Stack, Columns, Inset, Container) and theme tokens instead of inline styles.\n  data: {cssProperties=[\"width\",\"height\",\"objectFit\",\"borderRadius\"]}\n[warning/technical] <Inline>: <Inline> wraps a single child. A flow layout earns its place only with two or more children; with one child it adds a wrapper that does nothing. (TestApp.tsx:251:19)\n  → Render the child directly instead of wrapping it in <Inline>. For single-child spacing use Inset, Center, Breakout or Aspect.\n  data: {layout=Inline, childCount=1}\n[warning/technical] <Stack>: <Stack> wraps a single child. A flow layout earns its place only with two or more children; with one child it adds a wrapper that does nothing. (TestApp.tsx:218:17)\n  → Render the child directly instead of wrapping it in <Stack>. For single-child spacing use Inset, Center, Breakout or Aspect.\n  data: {layout=Stack, childCount=1}\n[warning/spatial] <page>: Content uses only 55% of the desktop width (1280px): it stays in a narrow, mobile-shaped band instead of adapting to the available space.\n  → Let the layout grow with the viewport using Marigold responsive primitives — <Columns collapseAt=\"...\"> for multi-column areas, AppLayout for the shell, Stack/Inline for flow — instead of a fixed-width container. (Intentionally centred max-width reading columns are fine and may trip this; treat it as a relative signal.)\n  data: {widthUtilization=0.55, contentElements=50, scope=page}\n[warning/style] <button>: Computed color value \"oklab(0.444 0.00309857 0.0105546 / 0.8)\" on <button> (“Show suggestions”) does not map to a known design token.\n  → If this is intentional, ignore the warning. Otherwise, use a Marigold variant or a theme-rui token instead of a hard-coded value.\n  data: {property=color, value=oklab(0.444 0.00309857 0.0105546 / 0.8), selector=body:nth-child(2) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > ..., fingerprint=Show suggestions, scope=page}\n[warning/style] <button>: Computed border-color value \"oklab(0.444 0.00309857 0.0105546 / 0.8)\" on <button> (“Show suggestions”) does not map to a known design token.\n  → If this is intentional, ignore the warning. Otherwise, use a Marigold variant or a theme-rui token instead of a hard-coded value.\n  data: {property=border-color, value=oklab(0.444 0.00309857 0.0105546 / 0.8), selector=body:nth-child(2) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > ..., fingerprint=Show suggestions, scope=page}\n[warning/style] <button>: Computed outline-color value \"oklab(0.444 0.00309857 0.0105546 / 0.8)\" on <button> (“Show suggestions”) does not map to a known design token.\n  → If this is intentional, ignore the warning. Otherwise, use a Marigold variant or a theme-rui token instead of a hard-coded value.\n  data: {property=outline-color, value=oklab(0.444 0.00309857 0.0105546 / 0.8), selector=body:nth-child(2) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > ..., fingerprint=Show suggestions, scope=page}\n[warning/a11y] <button>: Component order inconsistency: Tab moved from <button> at (639, 719) to <button> at (586, 684).\n  → Reorder components in JSX to match the visual layout, or use Marigold layout components (Stack, Columns) to control both visual and DOM order.\n  data: {from={\"component\":\"button\",\"x\":639,\"y\":719}, to={\"component\":\"button\",\"x\":586,\"y\":684}, scope=page}\n[warning/a11y] <html>: Document should have one main landmark (landmark-one-main)\n  → Wrap your page content in `<AppLayout>` with `<AppLayout.Main>` to provide a `<main>` landmark. Import AppLayout from `@marigold/components`.\n  data: {ruleId=landmark-one-main, impact=moderate, target=[\"html\"], html=<html lang=\"en\" data-theme=\"rui\">, scope=page}\n[warning/a11y] <html>: Page should contain a level-one heading (page-has-heading-one)\n  → Add a `<Headline level={1}>` component for the page title — it renders an `<h1>`. Import Headline from `@marigold/components`.\n  data: {ruleId=page-has-heading-one, impact=moderate, target=[\"html\"], html=<html lang=\"en\" data-theme=\"rui\">, scope=page}\n[warning/a11y] <input>: Interactive element <input> (input) is not reachable via Tab key.\n  → Ensure the element is focusable. Marigold interactive components are focusable by default — check if a parent has tabindex=\"-1\" or focus is trapped.\n  data: {selector=body:nth-child(2) > div:nth-child(2) > div:nth-child(1) > div:nth-child(1) > ..., role=input, scope=page}\n[warning/a11y] <page>: All page content should be contained by landmarks — 10 elements affected (region)\n  → All page content must be inside a landmark region. Use `<AppLayout>` with `<AppLayout.Main>` for the main area, `<TopNavigation>` for the header (`<header>`), and `<Sidebar>` for side navigation (`<aside>`). Import from `@marigold/components`.\n  data: {ruleId=region, impact=moderate, affectedCount=10, scope=page}\n\npassed: TypeScript compilation, Component composition, Overlay accessible names, Compound component placement, Section headers, Collection item ids, Table usage, Component conventions, Theme variant compliance, No overlapping components detected\n\nchecks run: technical, spatial, a11y"
+  },
+  "componentsFound": [
+    "div",
+    "input",
+    "button"
+  ],
+  "renderTimeMs": 6447,
+  "sourceCode": "import { useMemo, useState } from 'react';\nimport type { DateValue } from '@internationalized/date';\nimport type { TimeValue } from '@marigold/components';\nimport {\n  Accordion,\n  Button,\n  Card,\n  Center,\n  Checkbox,\n  CheckboxGroup,\n  ComboBox,\n  DatePicker,\n  FileField,\n  Form,\n  Headline,\n  Inline,\n  Inset,\n  Loader,\n  NumberField,\n  Radio,\n  SectionMessage,\n  Select,\n  Stack,\n  Switch,\n  TagField,\n  Text,\n  TextArea,\n  TextField,\n  TimeField,\n  ToastProvider,\n  useToast,\n} from '@marigold/components';\ntype Key = string | number;\n\nconst STEP_TITLES = [\n  'Personal Information',\n  'Event Details',\n  'Preferences',\n  'Review & Confirm',\n];\n\nconst JOB_TITLES = [\n  'Developer',\n  'Designer',\n  'Product Manager',\n  'Engineering Manager',\n  'CTO',\n  'Other',\n];\n\nconst DIETARY_OPTIONS = [\n  'None',\n  'Vegetarian',\n  'Vegan',\n  'Gluten-Free',\n  'Kosher',\n  'Halal',\n];\n\nconst TRACKS = ['Technical', 'Design', 'Business', 'Workshop'];\n\nconst TSHIRT_SIZES = ['XS', 'S', 'M', 'L', 'XL', 'XXL'];\n\nconst TOPICS = [\n  'AI/ML',\n  'Web Development',\n  'Cloud',\n  'Security',\n  'DevOps',\n  'Mobile',\n  'Data Science',\n];\n\nconst COMMUNICATION_OPTIONS = [\n  { value: 'email', label: 'Email updates about the event' },\n  { value: 'sms', label: 'SMS reminders' },\n  { value: 'survey', label: 'Post-event survey' },\n  { value: 'newsletter', label: 'Newsletter subscription' },\n];\n\nconst formatDate = (date: DateValue | null) =>\n  date\n    ? date.toDate('UTC').toLocaleDateString('en-US', {\n        year: 'numeric',\n        month: 'long',\n        day: 'numeric',\n      })\n    : '—';\n\nconst formatTime = (time: TimeValue | null) =>\n  time\n    ? `${String(time.hour).padStart(2, '0')}:${String(time.minute).padStart(2, '0')}`\n    : '—';\n\nconst SummaryRow = ({ label, value }: { label: string; value: string }) => (\n  <Inline space={2} alignY=\"center\">\n    <Text weight=\"bold\">{label}:</Text>\n    <Text>{value && value.length > 0 ? value : '—'}</Text>\n  </Inline>\n);\n\nconst RegistrationForm = () => {\n  const { addToast } = useToast();\n\n  const [step, setStep] = useState(1);\n  const [submitting, setSubmitting] = useState(false);\n  const [submitted, setSubmitted] = useState(false);\n  const [confirmationNumber, setConfirmationNumber] = useState('');\n\n  // Step 1 — Personal information\n  const [fullName, setFullName] = useState('');\n  const [email, setEmail] = useState('');\n  const [phone, setPhone] = useState('');\n  const [company, setCompany] = useState('');\n  const [jobTitle, setJobTitle] = useState('');\n  const [photoName, setPhotoName] = useState('');\n  const [photoUrl, setPhotoUrl] = useState<string | null>(null);\n\n  // Step 2 — Event details\n  const [eventDate, setEventDate] = useState<DateValue | null>(null);\n  const [timeSlot, setTimeSlot] = useState<TimeValue | null>(null);\n  const [track, setTrack] = useState('');\n  const [dietary, setDietary] = useState('');\n  const [guests, setGuests] = useState<number>(0);\n  const [specialRequests, setSpecialRequests] = useState('');\n\n  // Step 3 — Preferences\n  const [tshirtSize, setTshirtSize] = useState<string>('');\n  const [topics, setTopics] = useState<Key[]>([]);\n  const [comms, setComms] = useState<string[]>([]);\n  const [accessibility, setAccessibility] = useState(false);\n  const [accessibilityDetails, setAccessibilityDetails] = useState('');\n\n  // Step 4 — Confirm\n  const [agreed, setAgreed] = useState(false);\n\n  const handlePhotoChange = (event: React.ChangeEvent<HTMLInputElement>) => {\n    const file = event.target.files?.[0];\n    if (!file) return;\n    setPhotoName(file.name);\n    setPhotoUrl(prev => {\n      if (prev) URL.revokeObjectURL(prev);\n      return URL.createObjectURL(file);\n    });\n  };\n\n  const goBack = () => setStep(s => Math.max(1, s - 1));\n\n  const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {\n    event.preventDefault();\n    if (step < 4) {\n      setStep(s => s + 1);\n      return;\n    }\n\n    // Final submission\n    setSubmitting(true);\n    window.setTimeout(() => {\n      const confirmation = `EVT-${Math.random()\n        .toString(36)\n        .slice(2, 8)\n        .toUpperCase()}`;\n      setConfirmationNumber(confirmation);\n      setSubmitting(false);\n      setSubmitted(true);\n      addToast({\n        title: 'Registration submitted successfully',\n        variant: 'success',\n      });\n    }, 1000);\n  };\n\n  const resetFlow = () => {\n    setStep(1);\n    setSubmitted(false);\n    setSubmitting(false);\n    setConfirmationNumber('');\n    setFullName('');\n    setEmail('');\n    setPhone('');\n    setCompany('');\n    setJobTitle('');\n    setPhotoName('');\n    setPhotoUrl(prev => {\n      if (prev) URL.revokeObjectURL(prev);\n      return null;\n    });\n    setEventDate(null);\n    setTimeSlot(null);\n    setTrack('');\n    setDietary('');\n    setGuests(0);\n    setSpecialRequests('');\n    setTshirtSize('');\n    setTopics([]);\n    setComms([]);\n    setAccessibility(false);\n    setAccessibilityDetails('');\n    setAgreed(false);\n  };\n\n  const commsLabels = useMemo(\n    () =>\n      comms\n        .map(v => COMMUNICATION_OPTIONS.find(o => o.value === v)?.label ?? v)\n        .join(', '),\n    [comms]\n  );\n\n  // --- Success view ---\n  if (submitting || submitted) {\n    return (\n      <Inset space={8}>\n        <Center maxWidth=\"40rem\">\n          <Card>\n            <Inset space={8}>\n              {submitting ? (\n                <Stack space={4} alignX=\"center\">\n                  <Loader>Submitting your registration…</Loader>\n                </Stack>\n              ) : (\n                <Stack space={6}>\n                  <SectionMessage variant=\"success\">\n                    <SectionMessage.Title>\n                      Registration confirmed!\n                    </SectionMessage.Title>\n                    <SectionMessage.Content>\n                      Thanks for registering. A confirmation has been generated\n                      below.\n                    </SectionMessage.Content>\n                  </SectionMessage>\n\n                  <Card variant=\"default\">\n                    <Inset space={6}>\n                      <Stack space={3}>\n                        <Headline level={3}>Your Confirmation</Headline>\n                        <SummaryRow label=\"Name\" value={fullName} />\n                        <SummaryRow label=\"Email\" value={email} />\n                        <SummaryRow\n                          label=\"Event Date\"\n                          value={formatDate(eventDate)}\n                        />\n                        <SummaryRow\n                          label=\"Confirmation Number\"\n                          value={confirmationNumber}\n                        />\n                      </Stack>\n                    </Inset>\n                  </Card>\n\n                  <Inline space={3} alignX=\"center\">\n                    <Button variant=\"primary\" onPress={resetFlow}>\n                      Register Another\n                    </Button>\n                  </Inline>\n                </Stack>\n              )}\n            </Inset>\n          </Card>\n        </Center>\n      </Inset>\n    );\n  }\n\n  // --- Form view ---\n  return (\n    <Inset space={8}>\n      <Center maxWidth=\"44rem\">\n        <Card>\n          <Inset space={8}>\n            <Form onSubmit={handleSubmit} validationBehavior=\"native\">\n              <Stack space={6}>\n                <Headline level={2}>\n                  Step {step} of 4 — {STEP_TITLES[step - 1]}\n                </Headline>\n\n                {step === 1 && (\n                  <Stack space={5}>\n                    <SectionMessage variant=\"info\">\n                      <SectionMessage.Content>\n                        Your information will only be used for this event.\n                      </SectionMessage.Content>\n                    </SectionMessage>\n\n                    <TextField\n                      label=\"Full Name\"\n                      name=\"fullName\"\n                      value={fullName}\n                      onChange={setFullName}\n                      required\n                    />\n                    <TextField\n                      label=\"Email\"\n                      name=\"email\"\n                      type=\"email\"\n                      value={email}\n                      onChange={setEmail}\n                      required\n                    />\n                    <TextField\n                      label=\"Phone Number\"\n                      name=\"phone\"\n                      type=\"tel\"\n                      value={phone}\n                      onChange={setPhone}\n                    />\n                    <TextField\n                      label=\"Company / Organization\"\n                      name=\"company\"\n                      value={company}\n                      onChange={setCompany}\n                    />\n                    <ComboBox\n                      label=\"Job Title\"\n                      menuTrigger=\"focus\"\n                      allowsCustomValue\n                      value={jobTitle}\n                      onChange={setJobTitle}\n                    >\n                      {JOB_TITLES.map(title => (\n                        <ComboBox.Option key={title} id={title}>\n                          {title}\n                        </ComboBox.Option>\n                      ))}\n                    </ComboBox>\n                    <Stack space={2}>\n                      <FileField\n                        label=\"Profile Photo\"\n                        accept={['image/*']}\n                        // FileField forwards extra props to its container, so the\n                        // native file input's change event bubbles up here.\n                        {...({ onChange: handlePhotoChange } as Record<\n                          string,\n                          unknown\n                        >)}\n                      />\n                      {photoUrl && (\n                        <Inline space={3} alignY=\"center\">\n                          <img\n                            src={photoUrl}\n                            alt=\"Profile preview\"\n                            style={{\n                              width: '64px',\n                              height: '64px',\n                              objectFit: 'cover',\n                              borderRadius: 'var(--radius-md, 8px)',\n                            }}\n                          />\n                          <Text size=\"small\">{photoName}</Text>\n                        </Inline>\n                      )}\n                    </Stack>\n                  </Stack>\n                )}\n\n                {step === 2 && (\n                  <Stack space={5}>\n                    <DatePicker\n                      label=\"Event Date\"\n                      value={eventDate}\n                      onChange={setEventDate}\n                      required\n                    />\n                    <TimeField\n                      label=\"Preferred Time Slot\"\n                      value={timeSlot}\n                      onChange={setTimeSlot}\n                    />\n                    <Radio.Group\n                      label=\"Session Track\"\n                      value={track}\n                      onChange={setTrack}\n                    >\n                      {TRACKS.map(t => (\n                        <Radio key={t} value={t}>\n                          {t}\n                        </Radio>\n                      ))}\n                    </Radio.Group>\n                    <ComboBox\n                      label=\"Dietary Requirements\"\n                      menuTrigger=\"focus\"\n                      allowsCustomValue\n                      value={dietary}\n                      onChange={setDietary}\n                      description=\"Search or type your own requirement.\"\n                    >\n                      {DIETARY_OPTIONS.map(option => (\n                        <ComboBox.Option key={option} id={option}>\n                          {option}\n                        </ComboBox.Option>\n                      ))}\n                    </ComboBox>\n                    <NumberField\n                      label=\"Number of Guests\"\n                      value={guests}\n                      onChange={setGuests}\n                      minValue={0}\n                      maxValue={5}\n                      width=\"1/3\"\n                    />\n                    <TextArea\n                      label=\"Special Requests\"\n                      value={specialRequests}\n                      onChange={setSpecialRequests}\n                      rows={4}\n                    />\n                  </Stack>\n                )}\n\n                {step === 3 && (\n                  <Stack space={5}>\n                    <Select\n                      label=\"T-Shirt Size\"\n                      selectedKey={tshirtSize || null}\n                      onSelectionChange={key => setTshirtSize(key as string)}\n                      width=\"1/3\"\n                    >\n                      {TSHIRT_SIZES.map(size => (\n                        <Select.Option key={size} id={size}>\n                          {size}\n                        </Select.Option>\n                      ))}\n                    </Select>\n                    <TagField\n                      label=\"Topics of Interest\"\n                      value={topics}\n                      onChange={setTopics}\n                      description=\"Add topics you're interested in.\"\n                    >\n                      {TOPICS.map(topic => (\n                        <TagField.Option key={topic} id={topic}>\n                          {topic}\n                        </TagField.Option>\n                      ))}\n                    </TagField>\n                    <CheckboxGroup\n                      label=\"Communication Preferences\"\n                      value={comms}\n                      onChange={setComms}\n                    >\n                      {COMMUNICATION_OPTIONS.map(option => (\n                        <Checkbox\n                          key={option.value}\n                          value={option.value}\n                          label={option.label}\n                        />\n                      ))}\n                    </CheckboxGroup>\n                    <Stack space={3}>\n                      <Switch\n                        label=\"I have accessibility requirements\"\n                        selected={accessibility}\n                        onChange={setAccessibility}\n                      />\n                      {accessibility && (\n                        <TextArea\n                          label=\"Accessibility Details\"\n                          value={accessibilityDetails}\n                          onChange={setAccessibilityDetails}\n                          rows={3}\n                        />\n                      )}\n                    </Stack>\n                  </Stack>\n                )}\n\n                {step === 4 && (\n                  <Stack space={5}>\n                    <Accordion defaultExpandedKeys={['personal']}>\n                      <Accordion.Item id=\"personal\">\n                        <Accordion.Header>\n                          Personal Information\n                        </Accordion.Header>\n                        <Accordion.Content>\n                          <Stack space={2}>\n                            <SummaryRow label=\"Name\" value={fullName} />\n                            <SummaryRow label=\"Email\" value={email} />\n                            <SummaryRow label=\"Phone\" value={phone} />\n                            <SummaryRow label=\"Company\" value={company} />\n                            <SummaryRow label=\"Job Title\" value={jobTitle} />\n                          </Stack>\n                        </Accordion.Content>\n                      </Accordion.Item>\n                      <Accordion.Item id=\"event\">\n                        <Accordion.Header>Event Details</Accordion.Header>\n                        <Accordion.Content>\n                          <Stack space={2}>\n                            <SummaryRow\n                              label=\"Date\"\n                              value={formatDate(eventDate)}\n                            />\n                            <SummaryRow\n                              label=\"Time\"\n                              value={formatTime(timeSlot)}\n                            />\n                            <SummaryRow label=\"Track\" value={track} />\n                            <SummaryRow label=\"Dietary\" value={dietary} />\n                            <SummaryRow\n                              label=\"Guests\"\n                              value={String(guests)}\n                            />\n                          </Stack>\n                        </Accordion.Content>\n                      </Accordion.Item>\n                      <Accordion.Item id=\"preferences\">\n                        <Accordion.Header>Preferences</Accordion.Header>\n                        <Accordion.Content>\n                          <Stack space={2}>\n                            <SummaryRow\n                              label=\"T-Shirt Size\"\n                              value={tshirtSize}\n                            />\n                            <SummaryRow\n                              label=\"Topics\"\n                              value={topics.join(', ')}\n                            />\n                            <SummaryRow\n                              label=\"Communication\"\n                              value={commsLabels}\n                            />\n                          </Stack>\n                        </Accordion.Content>\n                      </Accordion.Item>\n                    </Accordion>\n\n                    <Checkbox\n                      checked={agreed}\n                      onChange={setAgreed}\n                      label=\"I agree to the terms and conditions\"\n                    />\n                  </Stack>\n                )}\n\n                <Inline space={3} alignX=\"between\" alignY=\"center\">\n                  <Button\n                    type=\"button\"\n                    variant=\"secondary\"\n                    onPress={goBack}\n                    disabled={step === 1}\n                  >\n                    Back\n                  </Button>\n                  <Button\n                    type=\"submit\"\n                    variant=\"primary\"\n                    disabled={step === 4 && !agreed}\n                  >\n                    {step === 4 ? 'Submit Registration' : 'Next'}\n                  </Button>\n                </Inline>\n              </Stack>\n            </Form>\n          </Inset>\n        </Card>\n      </Center>\n    </Inset>\n  );\n};\n\nconst TestApp = () => (\n  <>\n    <ToastProvider position=\"bottom-right\" />\n    <RegistrationForm />\n  </>\n);\n\nexport default TestApp;\n",
+  "assertions": {
+    "passed": [
+      {
+        "id": "a-import-marigold",
+        "description": "Imports from @marigold/components",
+        "severity": "required",
+        "passed": true,
+        "evidence": "import from \"@marigold/components\" found"
+      },
+      {
+        "id": "a-form",
+        "description": "Form component",
+        "severity": "required",
+        "passed": true,
+        "evidence": "<Form> found"
+      },
+      {
+        "id": "a-text-field",
+        "description": "TextField for text inputs",
+        "severity": "required",
+        "passed": true,
+        "evidence": "<TextField> found"
+      },
+      {
+        "id": "a-datepicker",
+        "description": "DatePicker for event date",
+        "severity": "required",
+        "passed": true,
+        "evidence": "<DatePicker> found"
+      },
+      {
+        "id": "a-timefield",
+        "description": "TimeField for time slot",
+        "severity": "required",
+        "passed": true,
+        "evidence": "<TimeField> found"
+      },
+      {
+        "id": "a-radio",
+        "description": "Radio/RadioGroup for session track",
+        "severity": "required",
+        "passed": true,
+        "evidence": "matched: <Radio> found"
+      },
+      {
+        "id": "a-combobox",
+        "description": "ComboBox for dietary requirements",
+        "severity": "required",
+        "passed": true,
+        "evidence": "<ComboBox> found"
+      },
+      {
+        "id": "a-numberfield",
+        "description": "NumberField for guests",
+        "severity": "required",
+        "passed": true,
+        "evidence": "<NumberField> found"
+      },
+      {
+        "id": "a-select",
+        "description": "Select for t-shirt size",
+        "severity": "required",
+        "passed": true,
+        "evidence": "<Select> found"
+      },
+      {
+        "id": "a-tagfield",
+        "description": "TagField for topics of interest",
+        "severity": "required",
+        "passed": true,
+        "evidence": "<TagField> found"
+      },
+      {
+        "id": "a-checkbox",
+        "description": "Checkbox for communication preferences",
+        "severity": "required",
+        "passed": true,
+        "evidence": "matched: <Checkbox> found; <CheckboxGroup> found"
+      },
+      {
+        "id": "a-switch",
+        "description": "Switch for accessibility needs",
+        "severity": "required",
+        "passed": true,
+        "evidence": "<Switch> found"
+      },
+      {
+        "id": "a-textarea",
+        "description": "TextArea for special requests",
+        "severity": "required",
+        "passed": true,
+        "evidence": "<TextArea> found"
+      },
+      {
+        "id": "a-filefield",
+        "description": "FileField for profile photo",
+        "severity": "required",
+        "passed": true,
+        "evidence": "<FileField> found"
+      },
+      {
+        "id": "a-accordion",
+        "description": "Accordion for review sections",
+        "severity": "required",
+        "passed": true,
+        "evidence": "<Accordion> found"
+      },
+      {
+        "id": "a-button",
+        "description": "Button for navigation/submit",
+        "severity": "required",
+        "passed": true,
+        "evidence": "<Button> found"
+      },
+      {
+        "id": "a-card",
+        "description": "Card as form container",
+        "severity": "required",
+        "passed": true,
+        "evidence": "<Card> found"
+      },
+      {
+        "id": "a-section-message",
+        "description": "SectionMessage for info/success",
+        "severity": "required",
+        "passed": true,
+        "evidence": "<SectionMessage> found"
+      },
+      {
+        "id": "a-loader",
+        "description": "Loader for submission",
+        "severity": "recommended",
+        "passed": true,
+        "evidence": "<Loader> found"
+      },
+      {
+        "id": "a-step-state",
+        "description": "Multi-step state management (useState)",
+        "severity": "recommended",
+        "passed": true,
+        "evidence": "pattern \"/useState/\" found"
+      },
+      {
+        "id": "a-toast",
+        "description": "Toast notification after submission",
+        "severity": "recommended",
+        "passed": true,
+        "evidence": "matched: pattern \"/useToast/\" found"
+      }
+    ],
+    "failed": [
+      {
+        "id": "a-autocomplete",
+        "description": "Autocomplete for job title",
+        "severity": "required",
+        "passed": false,
+        "evidence": "<Autocomplete> not found"
+      }
+    ],
+    "passRate": 0.9545,
+    "requiredPassRate": 0.9474,
+    "weightedPassRate": 0.9494,
+    "total": 22
+  },
+  "validatePackageVersion": "0.0.1",
+  "playwrightVersion": null,
+  "resolvedModelId": "claude-opus-4-8",
+  "claudeCliVersion": "2.1.193 (Claude Code)",
+  "sessionId": "f11a6ff7-6890-4837-bb92-b556ee256b06"
+}

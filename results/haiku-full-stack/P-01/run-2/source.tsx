@@ -2,148 +2,147 @@ import { useState } from 'react';
 import {
   Form,
   TextField,
-  TextArea,
   Select,
+  TextArea,
   Button,
   Stack,
   Inset,
-  Card,
+  SectionMessage,
   Headline,
   Text,
+  AppLayout,
 } from '@marigold/components';
 
 const TestApp = () => {
-  const [submittedData, setSubmittedData] = useState<Record<string, string> | null>(null);
-  const [selectedSubject, setSelectedSubject] = useState<string>('general');
-  const [validationErrors, setValidationErrors] = useState<Record<string, string>>({});
+  const [formData, setFormData] = useState({
+    name: '',
+    email: '',
+    subject: 'General',
+    message: '',
+  });
 
-  const validateEmail = (email: string): boolean => {
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    return emailRegex.test(email);
+  const [errors, setErrors] = useState<Record<string, string>>({});
+  const [submitted, setSubmitted] = useState(false);
+
+  const validateEmail = (email: string) => {
+    return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
   };
 
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-
-    const formData = new FormData(e.currentTarget);
-    const data: Record<string, string> = {
-      name: (formData.get('name') as string) || '',
-      email: (formData.get('email') as string) || '',
-      subject: selectedSubject,
-      message: (formData.get('message') as string) || '',
-    };
-
+  const handleSubmit = () => {
     const newErrors: Record<string, string> = {};
 
-    if (!data.name.trim()) {
-      newErrors.name = 'Name is required.';
+    if (!formData.name.trim()) {
+      newErrors.name = 'Name is required';
     }
 
-    if (!data.email.trim()) {
-      newErrors.email = 'Email is required.';
-    } else if (!validateEmail(data.email)) {
-      newErrors.email = 'Please enter a valid email address.';
-    }
-
-    if (!data.subject) {
-      newErrors.subject = 'Please select a subject.';
+    if (!formData.email.trim()) {
+      newErrors.email = 'Email is required';
+    } else if (!validateEmail(formData.email)) {
+      newErrors.email = 'Please enter a valid email address';
     }
 
     if (Object.keys(newErrors).length > 0) {
-      setValidationErrors(newErrors);
-      setSubmittedData(null);
+      setErrors(newErrors);
+      setSubmitted(false);
       return;
     }
 
-    setValidationErrors({});
-    setSubmittedData(data);
+    setErrors({});
+    setSubmitted(true);
+    setFormData({
+      name: '',
+      email: '',
+      subject: 'General',
+      message: '',
+    });
+  };
+
+  const handleFieldChange = (
+    field: keyof typeof formData,
+    value: string
+  ) => {
+    setFormData((prev) => ({
+      ...prev,
+      [field]: value,
+    }));
+    if (errors[field]) {
+      setErrors((prev) => ({
+        ...prev,
+        [field]: '',
+      }));
+    }
   };
 
   return (
-    <main>
-      <Inset space={8}>
-        <Stack space={6} alignX="left">
-          <Headline level={1}>Contact Form</Headline>
-
-          <Form onSubmit={handleSubmit}>
-            <Stack space={4} alignX="left">
-              <Headline level={2}>Contact Us</Headline>
-
-              <TextField
-                label="Name"
-                name="name"
-                required
-                width="full"
-                {...(validationErrors.name && { error: true, errorMessage: validationErrors.name })}
-              />
-
-              <TextField
-                label="Email"
-                name="email"
-                type="email"
-                required
-                width="full"
-                {...(validationErrors.email && { error: true, errorMessage: validationErrors.email })}
-              />
-
-              <Select
-                label="Subject"
-                selectedKey={selectedSubject}
-                onSelectionChange={(key) => setSelectedSubject(key as string)}
-                {...(validationErrors.subject && { error: true, errorMessage: validationErrors.subject })}
-              >
-                <Select.Option id="general">General</Select.Option>
-                <Select.Option id="support">Support</Select.Option>
-                <Select.Option id="feedback">Feedback</Select.Option>
-              </Select>
-
-              <TextArea
-                label="Message"
-                name="message"
-                rows={6}
-                width="full"
-              />
-
-              <Button variant="primary" type="submit">
-                Submit
-              </Button>
+    <AppLayout>
+      <AppLayout.Main>
+        <Inset space={8}>
+          <Stack space={6}>
+            <Stack space={2}>
+              <Headline>Contact Us</Headline>
+              <Text>We'd love to hear from you. Send us a message!</Text>
             </Stack>
-          </Form>
 
-          {submittedData && (
-            <Card>
-              <Inset space={6}>
-                <Stack space={3} alignX="left">
-                  <Headline level={3}>Thank You!</Headline>
-                  <Text>Your message has been sent successfully. We will get back to you soon.</Text>
-                  <Text weight="bold">Submitted details:</Text>
-                  <Stack space={2} alignX="left">
-                    <Stack space={1} alignX="left">
-                      <Text weight="bold">Name:</Text>
-                      <Text>{submittedData.name}</Text>
-                    </Stack>
-                    <Stack space={1} alignX="left">
-                      <Text weight="bold">Email:</Text>
-                      <Text>{submittedData.email}</Text>
-                    </Stack>
-                    <Stack space={1} alignX="left">
-                      <Text weight="bold">Subject:</Text>
-                      <Text>{submittedData.subject}</Text>
-                    </Stack>
-                    {submittedData.message && (
-                      <Stack space={1} alignX="left">
-                        <Text weight="bold">Message:</Text>
-                        <Text>{submittedData.message}</Text>
-                      </Stack>
-                    )}
-                  </Stack>
-                </Stack>
-              </Inset>
-            </Card>
-          )}
-        </Stack>
-      </Inset>
-    </main>
+            {submitted && (
+              <SectionMessage variant="success">
+                Thank you for your message! We'll get back to you soon.
+              </SectionMessage>
+            )}
+
+            <Form>
+              <Stack space={4}>
+                <TextField
+                  label="Name"
+                  name="name"
+                  required
+                  value={formData.name}
+                  onChange={(value) => handleFieldChange('name', value)}
+                  error={!!errors.name}
+                  errorMessage={errors.name}
+                  type="text"
+                />
+
+                <TextField
+                  label="Email"
+                  name="email"
+                  required
+                  value={formData.email}
+                  onChange={(value) => handleFieldChange('email', value)}
+                  error={!!errors.email}
+                  errorMessage={errors.email}
+                  type="email"
+                />
+
+                <Select
+                  label="Subject"
+                  name="subject"
+                  selectedKey={formData.subject}
+                  onChange={(value) =>
+                    handleFieldChange('subject', String(value))
+                  }
+                >
+                  <Select.Option key="general">General</Select.Option>
+                  <Select.Option key="support">Support</Select.Option>
+                  <Select.Option key="feedback">Feedback</Select.Option>
+                </Select>
+
+                <TextArea
+                  label="Message"
+                  name="message"
+                  value={formData.message}
+                  onChange={(value) => handleFieldChange('message', value)}
+                  rows={6}
+                />
+
+                <Button onPress={handleSubmit}>
+                  Send Message
+                </Button>
+              </Stack>
+            </Form>
+          </Stack>
+        </Inset>
+      </AppLayout.Main>
+    </AppLayout>
   );
 };
 

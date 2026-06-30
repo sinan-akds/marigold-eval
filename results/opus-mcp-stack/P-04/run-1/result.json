@@ -1,0 +1,322 @@
+{
+  "runId": "opus-mcp-stack-P-04-r1",
+  "promptId": "P-04",
+  "model": "opus",
+  "config": "mcp-stack",
+  "timestamp": "2026-06-27T08:34:45.225Z",
+  "quality": {
+    "overall": 52.77,
+    "categories": {
+      "A": {
+        "category": "A",
+        "label": "Design System API",
+        "score": 100,
+        "weight": 0.225,
+        "weightedScore": 22.5,
+        "errorCount": 0,
+        "warningCount": 0,
+        "issues": []
+      },
+      "B": {
+        "category": "B",
+        "label": "Token Compliance",
+        "score": 0,
+        "weight": 0.1,
+        "weightedScore": 0,
+        "errorCount": 0,
+        "warningCount": 0,
+        "issues": []
+      },
+      "C": {
+        "category": "C",
+        "label": "DOM / Structure",
+        "score": 34.52,
+        "weight": 0.225,
+        "weightedScore": 7.77,
+        "errorCount": 3,
+        "warningCount": 1,
+        "issues": [
+          {
+            "type": "technical",
+            "severity": "error",
+            "source": "compiler",
+            "component": "TypeScript",
+            "message": "TS2559: Type '{ children: Element[]; }' has no properties in common with type 'IntrinsicAttributes'.",
+            "suggestion": "Fix the TypeScript error reported by the compiler. The exact location is included in the issue location field.",
+            "location": {
+              "file": "TestApp.tsx",
+              "line": 159,
+              "column": 24
+            }
+          },
+          {
+            "type": "technical",
+            "severity": "error",
+            "source": "compiler",
+            "component": "TypeScript",
+            "message": "TS2322: Type '{ children: Element[]; key: CategoryId; }' is not assignable to type 'IntrinsicAttributes'.\n  Property 'children' does not exist on type 'IntrinsicAttributes'.",
+            "suggestion": "Fix the TypeScript error reported by the compiler. The exact location is included in the issue location field.",
+            "location": {
+              "file": "TestApp.tsx",
+              "line": 241,
+              "column": 26
+            }
+          },
+          {
+            "type": "technical",
+            "severity": "error",
+            "source": "compiler",
+            "component": "TypeScript",
+            "message": "TS2559: Type '{ children: Element[]; }' has no properties in common with type 'IntrinsicAttributes'.",
+            "suggestion": "Fix the TypeScript error reported by the compiler. The exact location is included in the issue location field.",
+            "location": {
+              "file": "TestApp.tsx",
+              "line": 252,
+              "column": 22
+            }
+          },
+          {
+            "type": "technical",
+            "severity": "warning",
+            "source": "layout-usage",
+            "component": "Stack",
+            "message": "<Stack> wraps a single child. A flow layout earns its place only with two or more children; with one child it adds a wrapper that does nothing.",
+            "suggestion": "Render the child directly instead of wrapping it in <Stack>. For single-child spacing use Inset, Center, Breakout or Aspect.",
+            "location": {
+              "file": "TestApp.tsx",
+              "line": 135,
+              "column": 7
+            },
+            "details": {
+              "layout": "Stack",
+              "childCount": 1
+            }
+          }
+        ]
+      },
+      "D": {
+        "category": "D",
+        "label": "Spatial & A11y",
+        "score": 0,
+        "weight": 0.225,
+        "weightedScore": 0,
+        "errorCount": 0,
+        "warningCount": 0,
+        "issues": []
+      },
+      "E": {
+        "category": "E",
+        "label": "Functional Completeness",
+        "score": 100,
+        "weight": 0.225,
+        "weightedScore": 22.5,
+        "errorCount": 0,
+        "warningCount": 0,
+        "issues": []
+      }
+    },
+    "renderSuccess": false
+  },
+  "efficiency": {
+    "durationMs": 576384,
+    "costUsd": 1.3322895000000001,
+    "inputTokens": 1882,
+    "outputTokens": 9731,
+    "cacheReadTokens": 1140345,
+    "cacheCreationTokens": 49838,
+    "totalTokens": 11613,
+    "numTurns": 37
+  },
+  "report": {
+    "file": "TestApp.tsx",
+    "errors": [
+      {
+        "type": "technical",
+        "severity": "error",
+        "source": "compiler",
+        "component": "TypeScript",
+        "message": "TS2559: Type '{ children: Element[]; }' has no properties in common with type 'IntrinsicAttributes'.",
+        "suggestion": "Fix the TypeScript error reported by the compiler. The exact location is included in the issue location field.",
+        "location": {
+          "file": "TestApp.tsx",
+          "line": 159,
+          "column": 24
+        }
+      },
+      {
+        "type": "technical",
+        "severity": "error",
+        "source": "compiler",
+        "component": "TypeScript",
+        "message": "TS2322: Type '{ children: Element[]; key: CategoryId; }' is not assignable to type 'IntrinsicAttributes'.\n  Property 'children' does not exist on type 'IntrinsicAttributes'.",
+        "suggestion": "Fix the TypeScript error reported by the compiler. The exact location is included in the issue location field.",
+        "location": {
+          "file": "TestApp.tsx",
+          "line": 241,
+          "column": 26
+        }
+      },
+      {
+        "type": "technical",
+        "severity": "error",
+        "source": "compiler",
+        "component": "TypeScript",
+        "message": "TS2559: Type '{ children: Element[]; }' has no properties in common with type 'IntrinsicAttributes'.",
+        "suggestion": "Fix the TypeScript error reported by the compiler. The exact location is included in the issue location field.",
+        "location": {
+          "file": "TestApp.tsx",
+          "line": 252,
+          "column": 22
+        }
+      }
+    ],
+    "warnings": [
+      {
+        "type": "technical",
+        "severity": "warning",
+        "source": "layout-usage",
+        "component": "Stack",
+        "message": "<Stack> wraps a single child. A flow layout earns its place only with two or more children; with one child it adds a wrapper that does nothing.",
+        "suggestion": "Render the child directly instead of wrapping it in <Stack>. For single-child spacing use Inset, Center, Breakout or Aspect.",
+        "location": {
+          "file": "TestApp.tsx",
+          "line": 135,
+          "column": 7
+        },
+        "details": {
+          "layout": "Stack",
+          "childCount": 1
+        }
+      }
+    ],
+    "passed": [
+      "All Marigold props are valid",
+      "Component composition",
+      "Overlay accessible names",
+      "Compound component placement",
+      "Section headers",
+      "Collection item ids",
+      "Design system usage",
+      "Table usage",
+      "Component conventions",
+      "Theme variant compliance"
+    ],
+    "metadata": {
+      "renderTimeMs": 0,
+      "componentsFound": [],
+      "checksRun": [
+        "technical",
+        "spatial",
+        "a11y"
+      ],
+      "coverage": {
+        "staticValuesChecked": 23,
+        "dynamicValuesSkipped": 21,
+        "spreadPropsBypassed": 0
+      },
+      "widthUtilization": null
+    },
+    "markdown": "marigold-validate: TestApp.tsx — 3 error(s), 1 warning(s)\n\n[error/technical] <TypeScript>: TS2559: Type '{ children: Element[]; }' has no properties in common with type 'IntrinsicAttributes'. (TestApp.tsx:159:24)\n  → Fix the TypeScript error reported by the compiler. The exact location is included in the issue location field.\n[error/technical] <TypeScript>: TS2322: Type '{ children: Element[]; key: CategoryId; }' is not assignable to type 'IntrinsicAttributes'.\n  Property 'children' does not exist on type 'IntrinsicAttributes'. (TestApp.tsx:241:26)\n  → Fix the TypeScript error reported by the compiler. The exact location is included in the issue location field.\n[error/technical] <TypeScript>: TS2559: Type '{ children: Element[]; }' has no properties in common with type 'IntrinsicAttributes'. (TestApp.tsx:252:22)\n  → Fix the TypeScript error reported by the compiler. The exact location is included in the issue location field.\n[warning/technical] <Stack>: <Stack> wraps a single child. A flow layout earns its place only with two or more children; with one child it adds a wrapper that does nothing. (TestApp.tsx:135:7)\n  → Render the child directly instead of wrapping it in <Stack>. For single-child spacing use Inset, Center, Breakout or Aspect.\n  data: {layout=Stack, childCount=1}\n\npassed: All Marigold props are valid, Component composition, Overlay accessible names, Compound component placement, Section headers, Collection item ids, Design system usage, Table usage, Component conventions, Theme variant compliance\n\nchecks run: technical, spatial, a11y"
+  },
+  "componentsFound": [],
+  "renderTimeMs": 0,
+  "sourceCode": "import { useState } from 'react';\nimport {\n  Badge,\n  Button,\n  Card,\n  Divider,\n  Form,\n  Headline,\n  Inline,\n  Inset,\n  NumberField,\n  SectionMessage,\n  Split,\n  Stack,\n  Text,\n  TextField,\n  Tiles,\n} from '@marigold/components';\n\ntype CategoryId = 'earlyBird' | 'regular' | 'vip';\n\ninterface Category {\n  id: CategoryId;\n  name: string;\n  price: number;\n  description: string;\n  maxQuantity: number;\n  soldOut?: boolean;\n  limitedNote?: string;\n}\n\nconst categories: Category[] = [\n  {\n    id: 'earlyBird',\n    name: 'Early Bird',\n    price: 49,\n    description: 'Discounted entry for the whole festival.',\n    maxQuantity: 12,\n    limitedNote: 'Only 12 left',\n  },\n  {\n    id: 'regular',\n    name: 'Regular',\n    price: 79,\n    description: 'Standard three-day festival pass.',\n    maxQuantity: 10,\n  },\n  {\n    id: 'vip',\n    name: 'VIP',\n    price: 149,\n    description: 'Backstage access and premium viewing area.',\n    maxQuantity: 0,\n    soldOut: true,\n  },\n];\n\nconst formatCurrency = (value: number) =>\n  value.toLocaleString('en-US', { style: 'currency', currency: 'USD' });\n\nconst isValidEmail = (email: string) => /^[^\\s@]+@[^\\s@]+\\.[^\\s@]+$/.test(email);\n\nconst TestApp = () => {\n  const [quantities, setQuantities] = useState<Record<CategoryId, number>>({\n    earlyBird: 0,\n    regular: 0,\n    vip: 0,\n  });\n  const [name, setName] = useState('');\n  const [email, setEmail] = useState('');\n  const [phone, setPhone] = useState('');\n  const [feedback, setFeedback] = useState<{\n    variant: 'success' | 'warning';\n    title: string;\n    content: string;\n  } | null>(null);\n\n  const setQuantity = (id: CategoryId, value: number) =>\n    setQuantities(prev => ({ ...prev, [id]: Number.isNaN(value) ? 0 : value }));\n\n  const lineItems = categories\n    .map(category => ({\n      category,\n      quantity: quantities[category.id],\n      subtotal: quantities[category.id] * category.price,\n    }))\n    .filter(item => item.quantity > 0);\n\n  const totalQuantity = lineItems.reduce((sum, item) => sum + item.quantity, 0);\n  const grandTotal = lineItems.reduce((sum, item) => sum + item.subtotal, 0);\n\n  const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {\n    event.preventDefault();\n\n    if (totalQuantity === 0) {\n      setFeedback({\n        variant: 'warning',\n        title: 'No tickets selected',\n        content: 'Choose a quantity for at least one ticket category to continue.',\n      });\n      return;\n    }\n\n    if (!name.trim()) {\n      setFeedback({\n        variant: 'warning',\n        title: 'Name required',\n        content: 'Enter your full name so we can issue your tickets.',\n      });\n      return;\n    }\n\n    if (!email.trim() || !isValidEmail(email)) {\n      setFeedback({\n        variant: 'warning',\n        title: 'Valid email required',\n        content: 'Enter a valid email address so we can send your confirmation.',\n      });\n      return;\n    }\n\n    setFeedback({\n      variant: 'success',\n      title: 'Order confirmed!',\n      content: `Thank you, ${name.trim()}. ${totalQuantity} ticket${\n        totalQuantity > 1 ? 's' : ''\n      } totalling ${formatCurrency(\n        grandTotal\n      )} are confirmed. A confirmation has been sent to ${email.trim()}.`,\n    });\n  };\n\n  return (\n    <Inset space={8}>\n      <Stack space={8} alignX=\"center\">\n        <Stack space={6}>\n          {/* Event information */}\n          <Stack space={2}>\n            <Headline level={1}>Summer Music Festival 2026</Headline>\n            <Inline space={2} alignY=\"center\">\n              <Badge variant=\"info\">July 15-17, 2026</Badge>\n              <Text weight=\"medium\">Stadtpark Freiburg</Text>\n            </Inline>\n            <Text color=\"text-secondary-muted\">\n              Three days of live music featuring local and international artists.\n            </Text>\n          </Stack>\n\n          <Divider />\n\n          {/* Ticket categories */}\n          <Stack space={4}>\n            <Headline level={2}>Choose your tickets</Headline>\n            <Tiles tilesWidth=\"240px\" space={4} stretch equalHeight>\n              {categories.map(category => (\n                <Card key={category.id} p={5}>\n                  <Stack space={4}>\n                    <Stack space={2}>\n                      <Split>\n                        <Headline level={3}>{category.name}</Headline>\n                        {category.soldOut ? (\n                          <Badge variant=\"error\">Sold Out</Badge>\n                        ) : category.limitedNote ? (\n                          <Badge variant=\"warning\">{category.limitedNote}</Badge>\n                        ) : (\n                          <Badge variant=\"success\">Available</Badge>\n                        )}\n                      </Split>\n                      <Text fontSize=\"xl\" weight=\"bold\">\n                        {formatCurrency(category.price)}\n                      </Text>\n                      <Text color=\"text-secondary-muted\">\n                        {category.description}\n                      </Text>\n                    </Stack>\n                    <NumberField\n                      label=\"Quantity\"\n                      width=\"full\"\n                      minValue={0}\n                      maxValue={category.maxQuantity}\n                      value={quantities[category.id]}\n                      onChange={value => setQuantity(category.id, value)}\n                      disabled={category.soldOut}\n                    />\n                  </Stack>\n                </Card>\n              ))}\n            </Tiles>\n          </Stack>\n\n          <Divider />\n\n          {/* Buyer information + Order summary */}\n          <Form onSubmit={handleSubmit}>\n            <Stack space={6}>\n              <Stack space={4}>\n                <Headline level={2}>Buyer information</Headline>\n                <Stack space={3}>\n                  <TextField\n                    label=\"Full Name\"\n                    name=\"fullName\"\n                    value={name}\n                    onChange={setName}\n                    required\n                    width=\"full\"\n                  />\n                  <TextField\n                    label=\"Email\"\n                    name=\"email\"\n                    type=\"email\"\n                    value={email}\n                    onChange={setEmail}\n                    required\n                    width=\"full\"\n                  />\n                  <TextField\n                    label=\"Phone Number\"\n                    name=\"phone\"\n                    type=\"tel\"\n                    value={phone}\n                    onChange={setPhone}\n                    description=\"Optional\"\n                    width=\"full\"\n                  />\n                </Stack>\n              </Stack>\n\n              <Divider />\n\n              {/* Order summary */}\n              <Stack space={4}>\n                <Headline level={2}>Order summary</Headline>\n                <Card p={5}>\n                  <Stack space={3}>\n                    {lineItems.length === 0 ? (\n                      <Text color=\"text-secondary-muted\">\n                        No tickets selected yet.\n                      </Text>\n                    ) : (\n                      lineItems.map(item => (\n                        <Split key={item.category.id}>\n                          <Text>\n                            {item.category.name} × {item.quantity}\n                          </Text>\n                          <Text weight=\"medium\">\n                            {formatCurrency(item.subtotal)}\n                          </Text>\n                        </Split>\n                      ))\n                    )}\n                    <Divider />\n                    <Split>\n                      <Text weight=\"bold\" fontSize=\"lg\">\n                        Grand Total\n                      </Text>\n                      <Text weight=\"bold\" fontSize=\"lg\">\n                        {formatCurrency(grandTotal)}\n                      </Text>\n                    </Split>\n                  </Stack>\n                </Card>\n              </Stack>\n\n              {feedback && (\n                <SectionMessage variant={feedback.variant}>\n                  <SectionMessage.Title>{feedback.title}</SectionMessage.Title>\n                  <SectionMessage.Content>\n                    {feedback.content}\n                  </SectionMessage.Content>\n                </SectionMessage>\n              )}\n\n              <Button variant=\"primary\" type=\"submit\" size=\"large\">\n                Purchase Tickets\n              </Button>\n            </Stack>\n          </Form>\n        </Stack>\n      </Stack>\n    </Inset>\n  );\n};\n\nexport default TestApp;\n",
+  "assertions": {
+    "passed": [
+      {
+        "id": "a-import-marigold",
+        "description": "Imports from @marigold/components",
+        "severity": "required",
+        "passed": true,
+        "evidence": "import from \"@marigold/components\" found"
+      },
+      {
+        "id": "a-has-button",
+        "description": "Button component present",
+        "severity": "required",
+        "passed": true,
+        "evidence": "<Button> found"
+      },
+      {
+        "id": "a-has-form-input",
+        "description": "Uses at least one form input component",
+        "severity": "required",
+        "passed": true,
+        "evidence": "matched: <TextField> found; <NumberField> found"
+      },
+      {
+        "id": "a-has-layout-primitive",
+        "description": "Uses at least one layout component",
+        "severity": "required",
+        "passed": true,
+        "evidence": "matched: <Stack> found; <Card> found; <Inline> found"
+      },
+      {
+        "id": "a-price-indicator",
+        "description": "Shows pricing information",
+        "severity": "recommended",
+        "passed": true,
+        "evidence": "pattern \"/\\$|€|price|cost|total|amount/i\" found"
+      },
+      {
+        "id": "a-has-quantity-mechanism",
+        "description": "Has a mechanism for selecting ticket quantity",
+        "severity": "required",
+        "passed": true,
+        "evidence": "matched: <NumberField> found; pattern \"/quantity|qty|amount|count|tickets?\\s*:/i\" found"
+      },
+      {
+        "id": "a-has-feedback-mechanism",
+        "description": "Has user feedback mechanism",
+        "severity": "required",
+        "passed": true,
+        "evidence": "matched: <SectionMessage> found; pattern \"/error|success|confirm/i\" found"
+      },
+      {
+        "id": "a-no-onclick-on-marigold",
+        "description": "No onClick on Marigold Button components",
+        "severity": "recommended",
+        "passed": true,
+        "evidence": "\"/<Button[^>]*onClick/\" correctly absent"
+      },
+      {
+        "id": "a-has-headline",
+        "description": "Headline for event name",
+        "severity": "required",
+        "passed": true,
+        "evidence": "<Headline> found"
+      },
+      {
+        "id": "a-has-form",
+        "description": "Form component wrapping buyer info",
+        "severity": "required",
+        "passed": true,
+        "evidence": "<Form> found"
+      },
+      {
+        "id": "a-sold-out-state",
+        "description": "Sold-out state indicated",
+        "severity": "required",
+        "passed": true,
+        "evidence": "matched: pattern \"/sold.?out|unavailable|disabled/i\" found; <Badge> found"
+      },
+      {
+        "id": "a-card",
+        "description": "Ticket category cards",
+        "severity": "required",
+        "passed": true,
+        "evidence": "<Card> found"
+      }
+    ],
+    "failed": [],
+    "passRate": 1,
+    "requiredPassRate": 1,
+    "weightedPassRate": 1,
+    "total": 12
+  },
+  "validatePackageVersion": "0.0.1",
+  "playwrightVersion": null,
+  "resolvedModelId": "claude-opus-4-8",
+  "claudeCliVersion": "2.1.193 (Claude Code)",
+  "sessionId": "7c561d73-2dea-4f1c-b7af-667ec8bd7e86"
+}

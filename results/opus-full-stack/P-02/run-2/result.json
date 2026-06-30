@@ -1,0 +1,387 @@
+{
+  "runId": "opus-full-stack-P-02-r2",
+  "promptId": "P-02",
+  "model": "opus",
+  "config": "full-stack",
+  "timestamp": "2026-06-27T16:14:02.682Z",
+  "quality": {
+    "overall": 92.21,
+    "categories": {
+      "A": {
+        "category": "A",
+        "label": "Design System API",
+        "score": 100,
+        "weight": 0.225,
+        "weightedScore": 22.5,
+        "errorCount": 0,
+        "warningCount": 0,
+        "issues": []
+      },
+      "B": {
+        "category": "B",
+        "label": "Token Compliance",
+        "score": 100,
+        "weight": 0.1,
+        "weightedScore": 10,
+        "errorCount": 0,
+        "warningCount": 0,
+        "issues": []
+      },
+      "C": {
+        "category": "C",
+        "label": "DOM / Structure",
+        "score": 100,
+        "weight": 0.225,
+        "weightedScore": 22.5,
+        "errorCount": 0,
+        "warningCount": 0,
+        "issues": []
+      },
+      "D": {
+        "category": "D",
+        "label": "Spatial & A11y",
+        "score": 65.36,
+        "weight": 0.225,
+        "weightedScore": 14.71,
+        "errorCount": 0,
+        "warningCount": 6,
+        "issues": [
+          {
+            "type": "a11y",
+            "severity": "warning",
+            "source": "aom-extractor",
+            "component": "html",
+            "message": "Document should have one main landmark (landmark-one-main)",
+            "suggestion": "Wrap your page content in `<AppLayout>` with `<AppLayout.Main>` to provide a `<main>` landmark. Import AppLayout from `@marigold/components`.",
+            "details": {
+              "ruleId": "landmark-one-main",
+              "impact": "moderate",
+              "target": [
+                "html"
+              ],
+              "html": "<html lang=\"en\" data-theme=\"rui\">",
+              "scope": "page"
+            }
+          },
+          {
+            "type": "a11y",
+            "severity": "warning",
+            "source": "aom-extractor",
+            "component": "page",
+            "message": "All page content should be contained by landmarks — 3 elements affected (region)",
+            "suggestion": "All page content must be inside a landmark region. Use `<AppLayout>` with `<AppLayout.Main>` for the main area, `<TopNavigation>` for the header (`<header>`), and `<Sidebar>` for side navigation (`<aside>`). Import from `@marigold/components`.",
+            "details": {
+              "ruleId": "region",
+              "impact": "moderate",
+              "affectedCount": 3,
+              "scope": "page"
+            }
+          },
+          {
+            "type": "a11y",
+            "severity": "warning",
+            "source": "keyboard-a11y",
+            "component": "button",
+            "message": "Interactive element <button> (button) is not reachable via Tab key.",
+            "suggestion": "Ensure the element is focusable. Marigold interactive components are focusable by default — check if a parent has tabindex=\"-1\" or focus is trapped.",
+            "details": {
+              "selector": "body:nth-child(2) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div:nth-child(6) > button:nth-child(1)",
+              "role": "button",
+              "scope": "page"
+            }
+          },
+          {
+            "type": "a11y",
+            "severity": "warning",
+            "source": "keyboard-a11y",
+            "component": "textarea",
+            "message": "Component order inconsistency: Tab moved from <button> at (764, 429) to <textarea> at (353, 311).",
+            "suggestion": "Reorder components in JSX to match the visual layout, or use Marigold layout components (Stack, Columns) to control both visual and DOM order.",
+            "details": {
+              "from": {
+                "component": "button",
+                "x": 764,
+                "y": 429
+              },
+              "to": {
+                "component": "textarea",
+                "x": 353,
+                "y": 311
+              },
+              "scope": "page"
+            }
+          },
+          {
+            "type": "a11y",
+            "severity": "warning",
+            "source": "keyboard-a11y",
+            "component": "textarea",
+            "message": "Element <textarea> has no visible focus indicator when focused (WCAG 2.4.7).",
+            "suggestion": "Marigold components provide built-in focus rings via the theme. For custom elements, add an outline or box-shadow on :focus-visible.",
+            "details": {
+              "selector": "body:nth-child(2) > div:nth-child(4) > div:nth-child(1) > section:nth-child(1) > div:nth-child(2) > div:nth-child(1) > textarea:nth-child(2)",
+              "role": "textarea",
+              "scope": "page"
+            }
+          },
+          {
+            "type": "a11y",
+            "severity": "warning",
+            "source": "keyboard-a11y",
+            "component": "body:nth-child(2) > div:nth-child(4) > div:nth-child(1) > section:nth-child(1) > div:nth-child(3) > button:nth-child(1)",
+            "message": "Keyboard trap detected — focus cycles through 2 elements without reaching the rest of the page (WCAG 2.1.2).",
+            "suggestion": "Ensure focus can leave this container via Tab, or provide an Escape key handler to close it.",
+            "details": {
+              "cycleLength": 2,
+              "totalFocusable": 4,
+              "escapable": false,
+              "scope": "page"
+            }
+          }
+        ]
+      },
+      "E": {
+        "category": "E",
+        "label": "Functional Completeness",
+        "score": 100,
+        "weight": 0.225,
+        "weightedScore": 22.5,
+        "errorCount": 0,
+        "warningCount": 0,
+        "issues": []
+      }
+    },
+    "renderSuccess": true
+  },
+  "efficiency": {
+    "durationMs": 628848,
+    "costUsd": 2.1245774999999996,
+    "inputTokens": 2027,
+    "outputTokens": 17997,
+    "cacheReadTokens": 1905111,
+    "cacheCreationTokens": 70419,
+    "totalTokens": 20024,
+    "numTurns": 43
+  },
+  "report": {
+    "file": "TestApp.tsx",
+    "errors": [],
+    "warnings": [
+      {
+        "type": "a11y",
+        "severity": "warning",
+        "source": "aom-extractor",
+        "component": "html",
+        "message": "Document should have one main landmark (landmark-one-main)",
+        "suggestion": "Wrap your page content in `<AppLayout>` with `<AppLayout.Main>` to provide a `<main>` landmark. Import AppLayout from `@marigold/components`.",
+        "details": {
+          "ruleId": "landmark-one-main",
+          "impact": "moderate",
+          "target": [
+            "html"
+          ],
+          "html": "<html lang=\"en\" data-theme=\"rui\">",
+          "scope": "page"
+        }
+      },
+      {
+        "type": "a11y",
+        "severity": "warning",
+        "source": "aom-extractor",
+        "component": "page",
+        "message": "All page content should be contained by landmarks — 3 elements affected (region)",
+        "suggestion": "All page content must be inside a landmark region. Use `<AppLayout>` with `<AppLayout.Main>` for the main area, `<TopNavigation>` for the header (`<header>`), and `<Sidebar>` for side navigation (`<aside>`). Import from `@marigold/components`.",
+        "details": {
+          "ruleId": "region",
+          "impact": "moderate",
+          "affectedCount": 3,
+          "scope": "page"
+        }
+      },
+      {
+        "type": "a11y",
+        "severity": "warning",
+        "source": "keyboard-a11y",
+        "component": "button",
+        "message": "Interactive element <button> (button) is not reachable via Tab key.",
+        "suggestion": "Ensure the element is focusable. Marigold interactive components are focusable by default — check if a parent has tabindex=\"-1\" or focus is trapped.",
+        "details": {
+          "selector": "body:nth-child(2) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div:nth-child(6) > button:nth-child(1)",
+          "role": "button",
+          "scope": "page"
+        }
+      },
+      {
+        "type": "a11y",
+        "severity": "warning",
+        "source": "keyboard-a11y",
+        "component": "textarea",
+        "message": "Component order inconsistency: Tab moved from <button> at (764, 429) to <textarea> at (353, 311).",
+        "suggestion": "Reorder components in JSX to match the visual layout, or use Marigold layout components (Stack, Columns) to control both visual and DOM order.",
+        "details": {
+          "from": {
+            "component": "button",
+            "x": 764,
+            "y": 429
+          },
+          "to": {
+            "component": "textarea",
+            "x": 353,
+            "y": 311
+          },
+          "scope": "page"
+        }
+      },
+      {
+        "type": "a11y",
+        "severity": "warning",
+        "source": "keyboard-a11y",
+        "component": "textarea",
+        "message": "Element <textarea> has no visible focus indicator when focused (WCAG 2.4.7).",
+        "suggestion": "Marigold components provide built-in focus rings via the theme. For custom elements, add an outline or box-shadow on :focus-visible.",
+        "details": {
+          "selector": "body:nth-child(2) > div:nth-child(4) > div:nth-child(1) > section:nth-child(1) > div:nth-child(2) > div:nth-child(1) > textarea:nth-child(2)",
+          "role": "textarea",
+          "scope": "page"
+        }
+      },
+      {
+        "type": "a11y",
+        "severity": "warning",
+        "source": "keyboard-a11y",
+        "component": "body:nth-child(2) > div:nth-child(4) > div:nth-child(1) > section:nth-child(1) > div:nth-child(3) > button:nth-child(1)",
+        "message": "Keyboard trap detected — focus cycles through 2 elements without reaching the rest of the page (WCAG 2.1.2).",
+        "suggestion": "Ensure focus can leave this container via Tab, or provide an Escape key handler to close it.",
+        "details": {
+          "cycleLength": 2,
+          "totalFocusable": 4,
+          "escapable": false,
+          "scope": "page"
+        }
+      }
+    ],
+    "passed": [
+      "TypeScript compilation",
+      "All Marigold props are valid",
+      "Component composition",
+      "Overlay accessible names",
+      "Compound component placement",
+      "Section headers",
+      "Collection item ids",
+      "Design system usage",
+      "Layout usage",
+      "Table usage",
+      "Component conventions",
+      "Theme variant compliance",
+      "No overlapping components detected",
+      "Responsive layout"
+    ],
+    "metadata": {
+      "renderTimeMs": 2429,
+      "componentsFound": [
+        "button"
+      ],
+      "checksRun": [
+        "technical",
+        "spatial",
+        "a11y"
+      ],
+      "coverage": {
+        "staticValuesChecked": 27,
+        "dynamicValuesSkipped": 0,
+        "spreadPropsBypassed": 0
+      },
+      "widthUtilization": 0.9734375
+    },
+    "markdown": "marigold-validate: TestApp.tsx — 0 error(s), 6 warning(s)\n\n[warning/a11y] <body:nth-child(2) > div:nth-child(4) > div:nth-child(1) > section:nth-child(1) > div:nth-child(3) > button:nth-child(1)>: Keyboard trap detected — focus cycles through 2 elements without reaching the rest of the page (WCAG 2.1.2).\n  → Ensure focus can leave this container via Tab, or provide an Escape key handler to close it.\n  data: {cycleLength=2, totalFocusable=4, escapable=false, scope=page}\n[warning/a11y] <button>: Interactive element <button> (button) is not reachable via Tab key.\n  → Ensure the element is focusable. Marigold interactive components are focusable by default — check if a parent has tabindex=\"-1\" or focus is trapped.\n  data: {selector=body:nth-child(2) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > ..., role=button, scope=page}\n[warning/a11y] <html>: Document should have one main landmark (landmark-one-main)\n  → Wrap your page content in `<AppLayout>` with `<AppLayout.Main>` to provide a `<main>` landmark. Import AppLayout from `@marigold/components`.\n  data: {ruleId=landmark-one-main, impact=moderate, target=[\"html\"], html=<html lang=\"en\" data-theme=\"rui\">, scope=page}\n[warning/a11y] <page>: All page content should be contained by landmarks — 3 elements affected (region)\n  → All page content must be inside a landmark region. Use `<AppLayout>` with `<AppLayout.Main>` for the main area, `<TopNavigation>` for the header (`<header>`), and `<Sidebar>` for side navigation (`<aside>`). Import from `@marigold/components`.\n  data: {ruleId=region, impact=moderate, affectedCount=3, scope=page}\n[warning/a11y] <textarea>: Component order inconsistency: Tab moved from <button> at (764, 429) to <textarea> at (353, 311).\n  → Reorder components in JSX to match the visual layout, or use Marigold layout components (Stack, Columns) to control both visual and DOM order.\n  data: {from={\"component\":\"button\",\"x\":764,\"y\":429}, to={\"component\":\"textarea\",\"x\":353,\"y\":311}, scope=page}\n[warning/a11y] <textarea>: Element <textarea> has no visible focus indicator when focused (WCAG 2.4.7).\n  → Marigold components provide built-in focus rings via the theme. For custom elements, add an outline or box-shadow on :focus-visible.\n  data: {selector=body:nth-child(2) > div:nth-child(4) > div:nth-child(1) > section:nth-child(1..., role=textarea, scope=page}\n\npassed: TypeScript compilation, All Marigold props are valid, Component composition, Overlay accessible names, Compound component placement, Section headers, Collection item ids, Design system usage, Layout usage, Table usage, Component conventions, Theme variant compliance, No overlapping components detected, Responsive layout\n\nchecks run: technical, spatial, a11y"
+  },
+  "componentsFound": [
+    "button"
+  ],
+  "renderTimeMs": 2429,
+  "sourceCode": "import { useState } from 'react';\nimport {\n  Aspect,\n  Badge,\n  Button,\n  Card,\n  Columns,\n  Dialog,\n  Divider,\n  Headline,\n  Inline,\n  Stack,\n  Text,\n  TextArea,\n  TextField,\n} from '@marigold/components';\n\ntype Status = 'active' | 'away';\n\ninterface Profile {\n  name: string;\n  role: string;\n  department: string;\n  email: string;\n  location: string;\n  bio: string;\n  status: Status;\n  avatar: string;\n}\n\nconst initialProfile: Profile = {\n  name: 'Jane Doe',\n  role: 'Senior Developer',\n  department: 'Engineering',\n  email: 'jane.doe@example.com',\n  location: 'Freiburg, Germany',\n  bio: 'Jane is a Senior Developer on the platform team, focused on building accessible, resilient interfaces. She enjoys mentoring engineers, tidying up legacy code, and a good cup of coffee while reviewing pull requests.',\n  status: 'active',\n  avatar: 'https://i.pravatar.cc/160?img=47',\n};\n\nconst DetailRow = ({ label, value }: { label: string; value: string }) => (\n  <Columns columns={['fit', 1]} space=\"group\">\n    <Text weight=\"medium\">{label}</Text>\n    <Text variant=\"muted\">{value}</Text>\n  </Columns>\n);\n\nconst TestApp = () => {\n  const [profile, setProfile] = useState<Profile>(initialProfile);\n  const [messages, setMessages] = useState<string[]>([]);\n\n  const statusBadge =\n    profile.status === 'active' ? (\n      <Badge variant=\"success\">Active</Badge>\n    ) : (\n      <Badge variant=\"warning\">Away</Badge>\n    );\n\n  return (\n    <Card variant=\"default\" p=\"square-relaxed\" space=\"related\">\n      <Stack space=\"section\">\n        <Inline space=\"regular\" alignY=\"center\">\n          <Aspect ratio=\"square\" maxWidth=\"72px\">\n            <img\n              src={profile.avatar}\n              alt={`Portrait of ${profile.name}`}\n              className=\"size-full rounded-full object-cover\"\n            />\n          </Aspect>\n          <Stack space=\"tight\">\n            <Headline level=\"1\">{profile.name}</Headline>\n            {statusBadge}\n          </Stack>\n        </Inline>\n\n        <Divider />\n\n        <Stack space=\"regular\">\n          <DetailRow label=\"Role\" value={profile.role} />\n          <DetailRow label=\"Department\" value={profile.department} />\n          <DetailRow label=\"Email\" value={profile.email} />\n          <DetailRow label=\"Location\" value={profile.location} />\n        </Stack>\n\n        <Text>{profile.bio}</Text>\n\n        {messages.length > 0 ? (\n          <Text variant=\"muted\">\n            {messages.length === 1\n              ? '1 message sent to ' + profile.name + '.'\n              : messages.length + ' messages sent to ' + profile.name + '.'}\n          </Text>\n        ) : null}\n\n        <Divider />\n\n        <Inline space=\"regular\" alignY=\"center\">\n          <SendMessageDialog\n            name={profile.name}\n            onSend={message => setMessages(prev => [...prev, message])}\n          />\n          <EditProfileDialog profile={profile} onSave={setProfile} />\n        </Inline>\n      </Stack>\n    </Card>\n  );\n};\n\nconst SendMessageDialog = ({\n  name,\n  onSend,\n}: {\n  name: string;\n  onSend: (message: string) => void;\n}) => {\n  const [draft, setDraft] = useState('');\n\n  return (\n    <Dialog.Trigger>\n      <Button variant=\"primary\">Send Message</Button>\n      <Dialog size=\"small\">\n        {({ close }) => (\n          <>\n            <Dialog.Title>Send a message to {name}</Dialog.Title>\n            <Dialog.Content>\n              <TextArea\n                label=\"Message\"\n                placeholder={`Write your message to ${name}…`}\n                value={draft}\n                onChange={setDraft}\n                rows={4}\n                autoFocus\n              />\n            </Dialog.Content>\n            <Dialog.Actions>\n              <Button variant=\"secondary\" slot=\"close\">\n                Cancel\n              </Button>\n              <Button\n                variant=\"primary\"\n                disabled={draft.trim().length === 0}\n                onPress={() => {\n                  onSend(draft.trim());\n                  setDraft('');\n                  close();\n                }}\n              >\n                Send\n              </Button>\n            </Dialog.Actions>\n          </>\n        )}\n      </Dialog>\n    </Dialog.Trigger>\n  );\n};\n\nconst EditProfileDialog = ({\n  profile,\n  onSave,\n}: {\n  profile: Profile;\n  onSave: (profile: Profile) => void;\n}) => {\n  const [draft, setDraft] = useState<Profile>(profile);\n\n  return (\n    <Dialog.Trigger>\n      <Button variant=\"secondary\">Edit Profile</Button>\n      <Dialog size=\"medium\">\n        {({ close }) => (\n          <>\n            <Dialog.Title>Edit Profile</Dialog.Title>\n            <Dialog.Content>\n              <Stack space=\"regular\">\n                <TextField\n                  label=\"Name\"\n                  value={draft.name}\n                  onChange={value => setDraft({ ...draft, name: value })}\n                  autoFocus\n                />\n                <TextField\n                  label=\"Role\"\n                  value={draft.role}\n                  onChange={value => setDraft({ ...draft, role: value })}\n                />\n                <TextField\n                  label=\"Department\"\n                  value={draft.department}\n                  onChange={value => setDraft({ ...draft, department: value })}\n                />\n                <TextField\n                  label=\"Email\"\n                  type=\"email\"\n                  value={draft.email}\n                  onChange={value => setDraft({ ...draft, email: value })}\n                />\n                <TextField\n                  label=\"Location\"\n                  value={draft.location}\n                  onChange={value => setDraft({ ...draft, location: value })}\n                />\n                <TextArea\n                  label=\"Bio\"\n                  value={draft.bio}\n                  onChange={value => setDraft({ ...draft, bio: value })}\n                  rows={4}\n                />\n              </Stack>\n            </Dialog.Content>\n            <Dialog.Actions>\n              <Button\n                variant=\"secondary\"\n                slot=\"close\"\n                onPress={() => setDraft(profile)}\n              >\n                Cancel\n              </Button>\n              <Button\n                variant=\"primary\"\n                onPress={() => {\n                  onSave(draft);\n                  close();\n                }}\n              >\n                Save Changes\n              </Button>\n            </Dialog.Actions>\n          </>\n        )}\n      </Dialog>\n    </Dialog.Trigger>\n  );\n};\n\nexport default TestApp;\n",
+  "assertions": {
+    "passed": [
+      {
+        "id": "a-import-marigold",
+        "description": "Imports from @marigold/components",
+        "severity": "required",
+        "passed": true,
+        "evidence": "import from \"@marigold/components\" found"
+      },
+      {
+        "id": "a-card",
+        "description": "Card component as container",
+        "severity": "required",
+        "passed": true,
+        "evidence": "<Card> found"
+      },
+      {
+        "id": "a-image",
+        "description": "Includes a profile image (img tag or image URL)",
+        "severity": "recommended",
+        "passed": true,
+        "evidence": "matched: pattern \"/<img/\" found; pattern \"/placeholder.*image|avatar|profile.*photo/i\" found"
+      },
+      {
+        "id": "a-headline",
+        "description": "Headline for user name",
+        "severity": "required",
+        "passed": true,
+        "evidence": "<Headline> found"
+      },
+      {
+        "id": "a-badge",
+        "description": "Badge for status indicator",
+        "severity": "required",
+        "passed": true,
+        "evidence": "<Badge> found"
+      },
+      {
+        "id": "a-text",
+        "description": "Text component for details",
+        "severity": "required",
+        "passed": true,
+        "evidence": "<Text> found"
+      },
+      {
+        "id": "a-button",
+        "description": "Button component for actions",
+        "severity": "required",
+        "passed": true,
+        "evidence": "<Button> found"
+      },
+      {
+        "id": "a-layout",
+        "description": "Uses layout primitives (Stack, Columns, or Inline)",
+        "severity": "required",
+        "passed": true,
+        "evidence": "matched: <Stack> found; <Columns> found; <Inline> found"
+      },
+      {
+        "id": "a-no-onclick-on-marigold",
+        "description": "No onClick on Marigold Button components",
+        "severity": "recommended",
+        "passed": true,
+        "evidence": "\"/<Button[^>]*onClick/\" correctly absent"
+      },
+      {
+        "id": "a-user-details",
+        "description": "Shows user details (role, department, email)",
+        "severity": "recommended",
+        "passed": true,
+        "evidence": "pattern \"/role|department|email|location/i\" found"
+      }
+    ],
+    "failed": [],
+    "passRate": 1,
+    "requiredPassRate": 1,
+    "weightedPassRate": 1,
+    "total": 10
+  },
+  "validatePackageVersion": "0.0.1",
+  "playwrightVersion": null,
+  "resolvedModelId": "claude-opus-4-8",
+  "claudeCliVersion": "2.1.193 (Claude Code)",
+  "sessionId": "d6e8c403-351a-46af-bb65-616782448d82"
+}

@@ -1,0 +1,317 @@
+{
+  "runId": "opus-full-stack-P-04-r3",
+  "promptId": "P-04",
+  "model": "opus",
+  "config": "full-stack",
+  "timestamp": "2026-06-27T17:19:29.680Z",
+  "quality": {
+    "overall": 89.93,
+    "categories": {
+      "A": {
+        "category": "A",
+        "label": "Design System API",
+        "score": 100,
+        "weight": 0.225,
+        "weightedScore": 22.5,
+        "errorCount": 0,
+        "warningCount": 0,
+        "issues": []
+      },
+      "B": {
+        "category": "B",
+        "label": "Token Compliance",
+        "score": 100,
+        "weight": 0.1,
+        "weightedScore": 10,
+        "errorCount": 0,
+        "warningCount": 0,
+        "issues": []
+      },
+      "C": {
+        "category": "C",
+        "label": "DOM / Structure",
+        "score": 75.25,
+        "weight": 0.225,
+        "weightedScore": 16.93,
+        "errorCount": 0,
+        "warningCount": 1,
+        "issues": [
+          {
+            "type": "technical",
+            "severity": "warning",
+            "source": "layout-usage",
+            "component": "Stack",
+            "message": "<Stack> wraps a single child. A flow layout earns its place only with two or more children; with one child it adds a wrapper that does nothing.",
+            "suggestion": "Render the child directly instead of wrapping it in <Stack>. For single-child spacing use Inset, Center, Breakout or Aspect.",
+            "location": {
+              "file": "TestApp.tsx",
+              "line": 240,
+              "column": 15
+            },
+            "details": {
+              "layout": "Stack",
+              "childCount": 1
+            }
+          }
+        ]
+      },
+      "D": {
+        "category": "D",
+        "label": "Spatial & A11y",
+        "score": 80,
+        "weight": 0.225,
+        "weightedScore": 18,
+        "errorCount": 0,
+        "warningCount": 2,
+        "issues": [
+          {
+            "type": "a11y",
+            "severity": "warning",
+            "source": "aom-extractor",
+            "component": "html",
+            "message": "Document should have one main landmark (landmark-one-main)",
+            "suggestion": "Wrap your page content in `<AppLayout>` with `<AppLayout.Main>` to provide a `<main>` landmark. Import AppLayout from `@marigold/components`.",
+            "details": {
+              "ruleId": "landmark-one-main",
+              "impact": "moderate",
+              "target": [
+                "html"
+              ],
+              "html": "<html lang=\"en\" data-theme=\"rui\">",
+              "scope": "page"
+            }
+          },
+          {
+            "type": "a11y",
+            "severity": "warning",
+            "source": "aom-extractor",
+            "component": "page",
+            "message": "All page content should be contained by landmarks — 20 elements affected (region)",
+            "suggestion": "All page content must be inside a landmark region. Use `<AppLayout>` with `<AppLayout.Main>` for the main area, `<TopNavigation>` for the header (`<header>`), and `<Sidebar>` for side navigation (`<aside>`). Import from `@marigold/components`.",
+            "details": {
+              "ruleId": "region",
+              "impact": "moderate",
+              "affectedCount": 20,
+              "scope": "page"
+            }
+          }
+        ]
+      },
+      "E": {
+        "category": "E",
+        "label": "Functional Completeness",
+        "score": 100,
+        "weight": 0.225,
+        "weightedScore": 22.5,
+        "errorCount": 0,
+        "warningCount": 0,
+        "issues": []
+      }
+    },
+    "renderSuccess": true
+  },
+  "efficiency": {
+    "durationMs": 376901,
+    "costUsd": 1.6813480000000003,
+    "inputTokens": 1890,
+    "outputTokens": 13567,
+    "cacheReadTokens": 1434468,
+    "cacheCreationTokens": 60628,
+    "totalTokens": 15457,
+    "numTurns": 33
+  },
+  "report": {
+    "file": "TestApp.tsx",
+    "errors": [],
+    "warnings": [
+      {
+        "type": "technical",
+        "severity": "warning",
+        "source": "layout-usage",
+        "component": "Stack",
+        "message": "<Stack> wraps a single child. A flow layout earns its place only with two or more children; with one child it adds a wrapper that does nothing.",
+        "suggestion": "Render the child directly instead of wrapping it in <Stack>. For single-child spacing use Inset, Center, Breakout or Aspect.",
+        "location": {
+          "file": "TestApp.tsx",
+          "line": 240,
+          "column": 15
+        },
+        "details": {
+          "layout": "Stack",
+          "childCount": 1
+        }
+      },
+      {
+        "type": "a11y",
+        "severity": "warning",
+        "source": "aom-extractor",
+        "component": "html",
+        "message": "Document should have one main landmark (landmark-one-main)",
+        "suggestion": "Wrap your page content in `<AppLayout>` with `<AppLayout.Main>` to provide a `<main>` landmark. Import AppLayout from `@marigold/components`.",
+        "details": {
+          "ruleId": "landmark-one-main",
+          "impact": "moderate",
+          "target": [
+            "html"
+          ],
+          "html": "<html lang=\"en\" data-theme=\"rui\">",
+          "scope": "page"
+        }
+      },
+      {
+        "type": "a11y",
+        "severity": "warning",
+        "source": "aom-extractor",
+        "component": "page",
+        "message": "All page content should be contained by landmarks — 20 elements affected (region)",
+        "suggestion": "All page content must be inside a landmark region. Use `<AppLayout>` with `<AppLayout.Main>` for the main area, `<TopNavigation>` for the header (`<header>`), and `<Sidebar>` for side navigation (`<aside>`). Import from `@marigold/components`.",
+        "details": {
+          "ruleId": "region",
+          "impact": "moderate",
+          "affectedCount": 20,
+          "scope": "page"
+        }
+      }
+    ],
+    "passed": [
+      "TypeScript compilation",
+      "All Marigold props are valid",
+      "Component composition",
+      "Overlay accessible names",
+      "Compound component placement",
+      "Section headers",
+      "Collection item ids",
+      "Design system usage",
+      "Table usage",
+      "Component conventions",
+      "Theme variant compliance",
+      "No overlapping components detected",
+      "Responsive layout"
+    ],
+    "metadata": {
+      "renderTimeMs": 1452,
+      "componentsFound": [
+        "div",
+        "button",
+        "input"
+      ],
+      "checksRun": [
+        "technical",
+        "spatial",
+        "a11y"
+      ],
+      "coverage": {
+        "staticValuesChecked": 13,
+        "dynamicValuesSkipped": 24,
+        "spreadPropsBypassed": 0
+      },
+      "widthUtilization": 0.9625
+    },
+    "markdown": "marigold-validate: TestApp.tsx — 0 error(s), 3 warning(s)\n\n[warning/technical] <Stack>: <Stack> wraps a single child. A flow layout earns its place only with two or more children; with one child it adds a wrapper that does nothing. (TestApp.tsx:240:15)\n  → Render the child directly instead of wrapping it in <Stack>. For single-child spacing use Inset, Center, Breakout or Aspect.\n  data: {layout=Stack, childCount=1}\n[warning/a11y] <html>: Document should have one main landmark (landmark-one-main)\n  → Wrap your page content in `<AppLayout>` with `<AppLayout.Main>` to provide a `<main>` landmark. Import AppLayout from `@marigold/components`.\n  data: {ruleId=landmark-one-main, impact=moderate, target=[\"html\"], html=<html lang=\"en\" data-theme=\"rui\">, scope=page}\n[warning/a11y] <page>: All page content should be contained by landmarks — 20 elements affected (region)\n  → All page content must be inside a landmark region. Use `<AppLayout>` with `<AppLayout.Main>` for the main area, `<TopNavigation>` for the header (`<header>`), and `<Sidebar>` for side navigation (`<aside>`). Import from `@marigold/components`.\n  data: {ruleId=region, impact=moderate, affectedCount=20, scope=page}\n\npassed: TypeScript compilation, All Marigold props are valid, Component composition, Overlay accessible names, Compound component placement, Section headers, Collection item ids, Design system usage, Table usage, Component conventions, Theme variant compliance, No overlapping components detected, Responsive layout\n\nchecks run: technical, spatial, a11y"
+  },
+  "componentsFound": [
+    "div",
+    "button",
+    "input"
+  ],
+  "renderTimeMs": 1452,
+  "sourceCode": "import { useState } from 'react';\nimport {\n  Badge,\n  Button,\n  Card,\n  Columns,\n  Form,\n  Headline,\n  Inline,\n  Inset,\n  NumberField,\n  SectionMessage,\n  Stack,\n  Text,\n  TextField,\n} from '@marigold/components';\n\ntype CategoryId = 'earlyBird' | 'regular' | 'vip';\n\ninterface Category {\n  id: CategoryId;\n  name: string;\n  price: number;\n  description: string;\n  maxQuantity: number;\n  soldOut?: boolean;\n  badge: { variant: 'warning' | 'success' | 'error'; label: string };\n}\n\nconst CATEGORIES: Category[] = [\n  {\n    id: 'earlyBird',\n    name: 'Early Bird',\n    price: 49,\n    description: 'Discounted entry for the first wave of fans.',\n    maxQuantity: 12,\n    badge: { variant: 'warning', label: 'Only 12 left' },\n  },\n  {\n    id: 'regular',\n    name: 'Regular',\n    price: 79,\n    description: 'Standard three-day festival pass.',\n    maxQuantity: 20,\n    badge: { variant: 'success', label: 'Available' },\n  },\n  {\n    id: 'vip',\n    name: 'VIP',\n    price: 149,\n    description: 'Backstage access and premium viewing area.',\n    maxQuantity: 0,\n    soldOut: true,\n    badge: { variant: 'error', label: 'Sold Out' },\n  },\n];\n\ntype Feedback =\n  | { type: 'success'; message: string }\n  | { type: 'warning'; message: string }\n  | null;\n\nconst formatPrice = (value: number) => `$${value}`;\n\nconst TestApp = () => {\n  const [quantities, setQuantities] = useState<Record<CategoryId, number>>({\n    earlyBird: 0,\n    regular: 0,\n    vip: 0,\n  });\n  const [feedback, setFeedback] = useState<Feedback>(null);\n\n  const lineItems = CATEGORIES.map(category => ({\n    category,\n    quantity: quantities[category.id],\n    subtotal: quantities[category.id] * category.price,\n  })).filter(item => item.quantity > 0);\n\n  const totalQuantity = lineItems.reduce((sum, item) => sum + item.quantity, 0);\n  const grandTotal = lineItems.reduce((sum, item) => sum + item.subtotal, 0);\n\n  const handleQuantityChange = (id: CategoryId, value: number) => {\n    const category = CATEGORIES.find(c => c.id === id)!;\n    const safeValue = Number.isNaN(value) ? 0 : value;\n    const clamped = Math.max(0, Math.min(category.maxQuantity, safeValue));\n    setQuantities(prev => ({ ...prev, [id]: clamped }));\n    setFeedback(null);\n  };\n\n  const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {\n    event.preventDefault();\n    if (totalQuantity === 0) {\n      setFeedback({\n        type: 'warning',\n        message: 'Please select at least one ticket before purchasing.',\n      });\n      return;\n    }\n    const data = Object.fromEntries(new FormData(event.currentTarget));\n    setFeedback({\n      type: 'success',\n      message: `Thank you, ${data.fullName}! Your order of ${totalQuantity} ticket(s) totalling ${formatPrice(\n        grandTotal\n      )} is confirmed. A confirmation has been sent to ${data.email}.`,\n    });\n  };\n\n  const handleInvalid = (event: React.FormEvent<HTMLFormElement>) => {\n    event.preventDefault();\n    setFeedback({\n      type: 'warning',\n      message:\n        'Please fill in all required buyer fields with a valid email address before purchasing.',\n    });\n  };\n\n  return (\n    <Inset space={6}>\n      <Stack space={8}>\n        <Stack space={2}>\n          <Headline level={1}>Summer Music Festival 2026</Headline>\n          <Inline space={4} alignY=\"center\">\n            <Text weight=\"bold\">July 15–17, 2026</Text>\n            <Text color=\"text-secondary\">Stadtpark Freiburg</Text>\n          </Inline>\n          <Text>\n            Three days of live music featuring local and international artists.\n          </Text>\n        </Stack>\n\n        <Stack space={4}>\n          <Headline level={2}>Choose Your Tickets</Headline>\n          <Columns columns={[1, 1, 1]} space={4} collapseAt=\"48em\">\n            {CATEGORIES.map(category => (\n              <Card key={category.id}>\n                <Inset space={5}>\n                  <Stack space={4}>\n                    <Inline space={2} alignY=\"center\" alignX=\"between\">\n                      <Headline level={3}>{category.name}</Headline>\n                      <Badge variant={category.badge.variant}>\n                        {category.badge.label}\n                      </Badge>\n                    </Inline>\n                    <Text weight=\"bold\" size=\"body-large\">\n                      {formatPrice(category.price)}\n                    </Text>\n                    <Text>{category.description}</Text>\n                    <NumberField\n                      label=\"Quantity\"\n                      value={quantities[category.id]}\n                      minValue={0}\n                      maxValue={category.maxQuantity}\n                      disabled={category.soldOut}\n                      width=\"full\"\n                      onChange={value =>\n                        handleQuantityChange(category.id, value)\n                      }\n                    />\n                  </Stack>\n                </Inset>\n              </Card>\n            ))}\n          </Columns>\n        </Stack>\n\n        <Form onSubmit={handleSubmit} onInvalid={handleInvalid}>\n          <Stack space={8}>\n            <Stack space={4}>\n              <Headline level={2}>Buyer Information</Headline>\n              <Columns columns={[1, 1]} space={4} collapseAt=\"40em\">\n                <TextField\n                  label=\"Full Name\"\n                  name=\"fullName\"\n                  type=\"text\"\n                  required\n                  errorMessage=\"Please enter your full name.\"\n                />\n                <TextField\n                  label=\"Email\"\n                  name=\"email\"\n                  type=\"email\"\n                  required\n                  errorMessage=\"Please enter a valid email address.\"\n                />\n              </Columns>\n              <TextField\n                label=\"Phone Number\"\n                name=\"phone\"\n                type=\"tel\"\n                description=\"Optional\"\n              />\n            </Stack>\n\n            <Stack space={4}>\n              <Headline level={2}>Order Summary</Headline>\n              <Card>\n                <Inset space={5}>\n                  <Stack space={4}>\n                    {lineItems.length === 0 ? (\n                      <Text color=\"text-secondary\">\n                        No tickets selected yet.\n                      </Text>\n                    ) : (\n                      <Stack space={3}>\n                        {lineItems.map(item => (\n                          <Columns\n                            key={item.category.id}\n                            columns={[1, 'fit']}\n                            space={4}\n                          >\n                            <Text>\n                              {item.category.name} × {item.quantity}\n                            </Text>\n                            <Text>{formatPrice(item.subtotal)}</Text>\n                          </Columns>\n                        ))}\n                      </Stack>\n                    )}\n                    <Columns columns={[1, 'fit']} space={4}>\n                      <Headline level={3}>Grand Total</Headline>\n                      <Headline level={3}>{formatPrice(grandTotal)}</Headline>\n                    </Columns>\n                  </Stack>\n                </Inset>\n              </Card>\n\n              {feedback ? (\n                <SectionMessage variant={feedback.type}>\n                  <SectionMessage.Title>\n                    {feedback.type === 'success'\n                      ? 'Order Confirmed'\n                      : 'Action Required'}\n                  </SectionMessage.Title>\n                  <SectionMessage.Content>\n                    {feedback.message}\n                  </SectionMessage.Content>\n                </SectionMessage>\n              ) : null}\n\n              <Stack alignX=\"right\">\n                <Button variant=\"primary\" type=\"submit\">\n                  Purchase Tickets\n                </Button>\n              </Stack>\n            </Stack>\n          </Stack>\n        </Form>\n      </Stack>\n    </Inset>\n  );\n};\n\nexport default TestApp;\n",
+  "assertions": {
+    "passed": [
+      {
+        "id": "a-import-marigold",
+        "description": "Imports from @marigold/components",
+        "severity": "required",
+        "passed": true,
+        "evidence": "import from \"@marigold/components\" found"
+      },
+      {
+        "id": "a-has-button",
+        "description": "Button component present",
+        "severity": "required",
+        "passed": true,
+        "evidence": "<Button> found"
+      },
+      {
+        "id": "a-has-form-input",
+        "description": "Uses at least one form input component",
+        "severity": "required",
+        "passed": true,
+        "evidence": "matched: <TextField> found; <NumberField> found"
+      },
+      {
+        "id": "a-has-layout-primitive",
+        "description": "Uses at least one layout component",
+        "severity": "required",
+        "passed": true,
+        "evidence": "matched: <Stack> found; <Card> found; <Columns> found; <Inline> found"
+      },
+      {
+        "id": "a-price-indicator",
+        "description": "Shows pricing information",
+        "severity": "recommended",
+        "passed": true,
+        "evidence": "pattern \"/\\$|€|price|cost|total|amount/i\" found"
+      },
+      {
+        "id": "a-has-quantity-mechanism",
+        "description": "Has a mechanism for selecting ticket quantity",
+        "severity": "required",
+        "passed": true,
+        "evidence": "matched: <NumberField> found; pattern \"/quantity|qty|amount|count|tickets?\\s*:/i\" found"
+      },
+      {
+        "id": "a-has-feedback-mechanism",
+        "description": "Has user feedback mechanism",
+        "severity": "required",
+        "passed": true,
+        "evidence": "matched: <SectionMessage> found; pattern \"/error|success|confirm/i\" found"
+      },
+      {
+        "id": "a-no-onclick-on-marigold",
+        "description": "No onClick on Marigold Button components",
+        "severity": "recommended",
+        "passed": true,
+        "evidence": "\"/<Button[^>]*onClick/\" correctly absent"
+      },
+      {
+        "id": "a-has-headline",
+        "description": "Headline for event name",
+        "severity": "required",
+        "passed": true,
+        "evidence": "<Headline> found"
+      },
+      {
+        "id": "a-has-form",
+        "description": "Form component wrapping buyer info",
+        "severity": "required",
+        "passed": true,
+        "evidence": "<Form> found"
+      },
+      {
+        "id": "a-sold-out-state",
+        "description": "Sold-out state indicated",
+        "severity": "required",
+        "passed": true,
+        "evidence": "matched: pattern \"/sold.?out|unavailable|disabled/i\" found; <Badge> found"
+      },
+      {
+        "id": "a-card",
+        "description": "Ticket category cards",
+        "severity": "required",
+        "passed": true,
+        "evidence": "<Card> found"
+      }
+    ],
+    "failed": [],
+    "passRate": 1,
+    "requiredPassRate": 1,
+    "weightedPassRate": 1,
+    "total": 12
+  },
+  "validatePackageVersion": "0.0.1",
+  "playwrightVersion": null,
+  "resolvedModelId": "claude-opus-4-8",
+  "claudeCliVersion": "2.1.193 (Claude Code)",
+  "sessionId": "2bf14939-045c-4f3c-a28a-af6c603bf620"
+}

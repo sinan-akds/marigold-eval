@@ -28,7 +28,7 @@ There is no single score. The analysis reports raw numbers only.
 
 - Render rate, whether the component compiles and renders.
 - Error count per source, such as compiler, props, composition, design system usage, spatial and accessibility.
-- Assertion pass rate, the main metric, which does not depend on the validate tool.
+- Assertion pass rate, a tool-independent check of whether the result fulfils the task.
 - Convergence, how the error count falls across the self-correction loop.
 
 ## Layout

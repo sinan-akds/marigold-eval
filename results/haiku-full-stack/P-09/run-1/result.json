@@ -3,9 +3,9 @@
   "promptId": "P-09",
   "model": "haiku",
   "config": "full-stack",
-  "timestamp": "2026-06-21T12:32:15.159Z",
+  "timestamp": "2026-06-28T11:37:44.972Z",
   "quality": {
-    "overall": 86.18,
+    "overall": 82.52,
     "categories": {
       "A": {
         "category": "A",
@@ -20,12 +20,58 @@
       "B": {
         "category": "B",
         "label": "Token Compliance",
-        "score": 100,
+        "score": 81.63,
         "weight": 0.1,
-        "weightedScore": 10,
+        "weightedScore": 8.16,
         "errorCount": 0,
-        "warningCount": 0,
-        "issues": []
+        "warningCount": 3,
+        "issues": [
+          {
+            "type": "style",
+            "severity": "warning",
+            "source": "token-compliance",
+            "component": "button",
+            "message": "Computed color value \"oklab(0.444 0.00309857 0.0105546 / 0.8)\" on <button> (“Show suggestions”) does not map to a known design token.",
+            "suggestion": "If this is intentional, ignore the warning. Otherwise, use a Marigold variant or a theme-rui token instead of a hard-coded value.",
+            "details": {
+              "property": "color",
+              "value": "oklab(0.444 0.00309857 0.0105546 / 0.8)",
+              "selector": "body:nth-child(2) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > form:nth-child(3) > div:nth-child(1) > div:nth-child(1) > div:nth-child(6) > div:nth-child(2) > button:nth-child(2)",
+              "fingerprint": "Show suggestions",
+              "scope": "page"
+            }
+          },
+          {
+            "type": "style",
+            "severity": "warning",
+            "source": "token-compliance",
+            "component": "button",
+            "message": "Computed border-color value \"oklab(0.444 0.00309857 0.0105546 / 0.8)\" on <button> (“Show suggestions”) does not map to a known design token.",
+            "suggestion": "If this is intentional, ignore the warning. Otherwise, use a Marigold variant or a theme-rui token instead of a hard-coded value.",
+            "details": {
+              "property": "border-color",
+              "value": "oklab(0.444 0.00309857 0.0105546 / 0.8)",
+              "selector": "body:nth-child(2) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > form:nth-child(3) > div:nth-child(1) > div:nth-child(1) > div:nth-child(6) > div:nth-child(2) > button:nth-child(2)",
+              "fingerprint": "Show suggestions",
+              "scope": "page"
+            }
+          },
+          {
+            "type": "style",
+            "severity": "warning",
+            "source": "token-compliance",
+            "component": "button",
+            "message": "Computed outline-color value \"oklab(0.444 0.00309857 0.0105546 / 0.8)\" on <button> (“Show suggestions”) does not map to a known design token.",
+            "suggestion": "If this is intentional, ignore the warning. Otherwise, use a Marigold variant or a theme-rui token instead of a hard-coded value.",
+            "details": {
+              "property": "outline-color",
+              "value": "oklab(0.444 0.00309857 0.0105546 / 0.8)",
+              "selector": "body:nth-child(2) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > form:nth-child(3) > div:nth-child(1) > div:nth-child(1) > div:nth-child(6) > div:nth-child(2) > button:nth-child(2)",
+              "fingerprint": "Show suggestions",
+              "scope": "page"
+            }
+          }
+        ]
       },
       "C": {
         "category": "C",
@@ -39,18 +85,17 @@
           {
             "type": "technical",
             "severity": "warning",
-            "source": "layout-usage",
-            "component": "Stack",
-            "message": "<Stack> wraps a single child. A flow layout earns its place only with two or more children; with one child it adds a wrapper that does nothing.",
-            "suggestion": "Render the child directly instead of wrapping it in <Stack>. For single-child spacing use Inset, Center, Breakout or Aspect.",
+            "source": "component-conventions",
+            "component": "Form",
+            "message": "This <Form> has 2 primary buttons (variant=\"primary\"). A form should have exactly one primary action; all others should be secondary, ghost or link.",
+            "suggestion": "Keep one Button variant=\"primary\" (the submit) and change the rest to variant=\"secondary\"/\"ghost\"/\"link\".",
             "location": {
               "file": "TestApp.tsx",
-              "line": 234,
-              "column": 5
+              "line": 256,
+              "column": 17
             },
             "details": {
-              "layout": "Stack",
-              "childCount": 1
+              "primaryCount": 2
             }
           }
         ]
@@ -58,22 +103,22 @@
       "D": {
         "category": "D",
         "label": "Spatial & A11y",
-        "score": 68.38,
+        "score": 65.36,
         "weight": 0.225,
-        "weightedScore": 15.39,
+        "weightedScore": 14.71,
         "errorCount": 0,
-        "warningCount": 5,
+        "warningCount": 6,
         "issues": [
           {
             "type": "spatial",
             "severity": "warning",
             "source": "responsive-checker",
             "component": "page",
-            "message": "Content uses only 34% of the desktop width (1280px): it stays in a narrow, mobile-shaped band instead of adapting to the available space.",
+            "message": "Content uses only 39% of the desktop width (1280px): it stays in a narrow, mobile-shaped band instead of adapting to the available space.",
             "suggestion": "Let the layout grow with the viewport using Marigold responsive primitives — <Columns collapseAt=\"...\"> for multi-column areas, AppLayout for the shell, Stack/Inline for flow — instead of a fixed-width container. (Intentionally centred max-width reading columns are fine and may trip this; treat it as a relative signal.)",
             "details": {
-              "widthUtilization": 0.34296875,
-              "contentElements": 50,
+              "widthUtilization": 0.39296875,
+              "contentElements": 52,
               "scope": "page"
             }
           },
@@ -133,8 +178,29 @@
             "message": "Interactive element <input> (input) is not reachable via Tab key.",
             "suggestion": "Ensure the element is focusable. Marigold interactive components are focusable by default — check if a parent has tabindex=\"-1\" or focus is trapped.",
             "details": {
-              "selector": "body:nth-child(2) > div:nth-child(2) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > form:nth-child(2) > div:nth-child(1) > div:nth-child(1) > div:nth-child(2) > input:nth-child(1)",
+              "selector": "body:nth-child(2) > div:nth-child(2) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > form:nth-child(3) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div:nth-child(2) > input:nth-child(1)",
               "role": "input",
+              "scope": "page"
+            }
+          },
+          {
+            "type": "a11y",
+            "severity": "warning",
+            "source": "keyboard-a11y",
+            "component": "button",
+            "message": "Component order inconsistency: Tab moved from <button> at (230, 661) to <button> at (165, 603).",
+            "suggestion": "Reorder components in JSX to match the visual layout, or use Marigold layout components (Stack, Columns) to control both visual and DOM order.",
+            "details": {
+              "from": {
+                "component": "button",
+                "x": 230,
+                "y": 661
+              },
+              "to": {
+                "component": "button",
+                "x": 165,
+                "y": 603
+              },
               "scope": "page"
             }
           }
@@ -143,9 +209,9 @@
       "E": {
         "category": "E",
         "label": "Functional Completeness",
-        "score": 94.94,
+        "score": 89.87,
         "weight": 0.225,
-        "weightedScore": 21.36,
+        "weightedScore": 20.22,
         "errorCount": 0,
         "warningCount": 0,
         "issues": []
@@ -154,14 +220,14 @@
     "renderSuccess": true
   },
   "efficiency": {
-    "durationMs": 251852,
-    "costUsd": 1.0321292000000002,
-    "inputTokens": 105,
-    "outputTokens": 23189,
-    "cacheReadTokens": 4531222,
-    "cacheCreationTokens": 226910,
-    "totalTokens": 23294,
-    "numTurns": 72
+    "durationMs": 307762,
+    "costUsd": 1.0170219,
+    "inputTokens": 102,
+    "outputTokens": 21684,
+    "cacheReadTokens": 4133809,
+    "cacheCreationTokens": 240616,
+    "totalTokens": 21786,
+    "numTurns": 68
   },
   "report": {
     "file": "TestApp.tsx",
@@ -170,18 +236,62 @@
       {
         "type": "technical",
         "severity": "warning",
-        "source": "layout-usage",
-        "component": "Stack",
-        "message": "<Stack> wraps a single child. A flow layout earns its place only with two or more children; with one child it adds a wrapper that does nothing.",
-        "suggestion": "Render the child directly instead of wrapping it in <Stack>. For single-child spacing use Inset, Center, Breakout or Aspect.",
+        "source": "component-conventions",
+        "component": "Form",
+        "message": "This <Form> has 2 primary buttons (variant=\"primary\"). A form should have exactly one primary action; all others should be secondary, ghost or link.",
+        "suggestion": "Keep one Button variant=\"primary\" (the submit) and change the rest to variant=\"secondary\"/\"ghost\"/\"link\".",
         "location": {
           "file": "TestApp.tsx",
-          "line": 234,
-          "column": 5
+          "line": 256,
+          "column": 17
         },
         "details": {
-          "layout": "Stack",
-          "childCount": 1
+          "primaryCount": 2
+        }
+      },
+      {
+        "type": "style",
+        "severity": "warning",
+        "source": "token-compliance",
+        "component": "button",
+        "message": "Computed color value \"oklab(0.444 0.00309857 0.0105546 / 0.8)\" on <button> (“Show suggestions”) does not map to a known design token.",
+        "suggestion": "If this is intentional, ignore the warning. Otherwise, use a Marigold variant or a theme-rui token instead of a hard-coded value.",
+        "details": {
+          "property": "color",
+          "value": "oklab(0.444 0.00309857 0.0105546 / 0.8)",
+          "selector": "body:nth-child(2) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > form:nth-child(3) > div:nth-child(1) > div:nth-child(1) > div:nth-child(6) > div:nth-child(2) > button:nth-child(2)",
+          "fingerprint": "Show suggestions",
+          "scope": "page"
+        }
+      },
+      {
+        "type": "style",
+        "severity": "warning",
+        "source": "token-compliance",
+        "component": "button",
+        "message": "Computed border-color value \"oklab(0.444 0.00309857 0.0105546 / 0.8)\" on <button> (“Show suggestions”) does not map to a known design token.",
+        "suggestion": "If this is intentional, ignore the warning. Otherwise, use a Marigold variant or a theme-rui token instead of a hard-coded value.",
+        "details": {
+          "property": "border-color",
+          "value": "oklab(0.444 0.00309857 0.0105546 / 0.8)",
+          "selector": "body:nth-child(2) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > form:nth-child(3) > div:nth-child(1) > div:nth-child(1) > div:nth-child(6) > div:nth-child(2) > button:nth-child(2)",
+          "fingerprint": "Show suggestions",
+          "scope": "page"
+        }
+      },
+      {
+        "type": "style",
+        "severity": "warning",
+        "source": "token-compliance",
+        "component": "button",
+        "message": "Computed outline-color value \"oklab(0.444 0.00309857 0.0105546 / 0.8)\" on <button> (“Show suggestions”) does not map to a known design token.",
+        "suggestion": "If this is intentional, ignore the warning. Otherwise, use a Marigold variant or a theme-rui token instead of a hard-coded value.",
+        "details": {
+          "property": "outline-color",
+          "value": "oklab(0.444 0.00309857 0.0105546 / 0.8)",
+          "selector": "body:nth-child(2) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > form:nth-child(3) > div:nth-child(1) > div:nth-child(1) > div:nth-child(6) > div:nth-child(2) > button:nth-child(2)",
+          "fingerprint": "Show suggestions",
+          "scope": "page"
         }
       },
       {
@@ -189,11 +299,11 @@
         "severity": "warning",
         "source": "responsive-checker",
         "component": "page",
-        "message": "Content uses only 34% of the desktop width (1280px): it stays in a narrow, mobile-shaped band instead of adapting to the available space.",
+        "message": "Content uses only 39% of the desktop width (1280px): it stays in a narrow, mobile-shaped band instead of adapting to the available space.",
         "suggestion": "Let the layout grow with the viewport using Marigold responsive primitives — <Columns collapseAt=\"...\"> for multi-column areas, AppLayout for the shell, Stack/Inline for flow — instead of a fixed-width container. (Intentionally centred max-width reading columns are fine and may trip this; treat it as a relative signal.)",
         "details": {
-          "widthUtilization": 0.34296875,
-          "contentElements": 50,
+          "widthUtilization": 0.39296875,
+          "contentElements": 52,
           "scope": "page"
         }
       },
@@ -253,8 +363,29 @@
         "message": "Interactive element <input> (input) is not reachable via Tab key.",
         "suggestion": "Ensure the element is focusable. Marigold interactive components are focusable by default — check if a parent has tabindex=\"-1\" or focus is trapped.",
         "details": {
-          "selector": "body:nth-child(2) > div:nth-child(2) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > form:nth-child(2) > div:nth-child(1) > div:nth-child(1) > div:nth-child(2) > input:nth-child(1)",
+          "selector": "body:nth-child(2) > div:nth-child(2) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > form:nth-child(3) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div:nth-child(2) > input:nth-child(1)",
           "role": "input",
+          "scope": "page"
+        }
+      },
+      {
+        "type": "a11y",
+        "severity": "warning",
+        "source": "keyboard-a11y",
+        "component": "button",
+        "message": "Component order inconsistency: Tab moved from <button> at (230, 661) to <button> at (165, 603).",
+        "suggestion": "Reorder components in JSX to match the visual layout, or use Marigold layout components (Stack, Columns) to control both visual and DOM order.",
+        "details": {
+          "from": {
+            "component": "button",
+            "x": 230,
+            "y": 661
+          },
+          "to": {
+            "component": "button",
+            "x": 165,
+            "y": 603
+          },
           "scope": "page"
         }
       }
@@ -268,13 +399,13 @@
       "Section headers",
       "Collection item ids",
       "Design system usage",
+      "Layout usage",
       "Table usage",
-      "Component conventions",
       "Theme variant compliance",
       "No overlapping components detected"
     ],
     "metadata": {
-      "renderTimeMs": 1421,
+      "renderTimeMs": 2231,
       "componentsFound": [
         "div",
         "input",
@@ -286,21 +417,21 @@
         "a11y"
       ],
       "coverage": {
-        "staticValuesChecked": 17,
-        "dynamicValuesSkipped": 15,
+        "staticValuesChecked": 73,
+        "dynamicValuesSkipped": 16,
         "spreadPropsBypassed": 0
       },
-      "widthUtilization": 0.34296875
+      "widthUtilization": 0.39296875
     },
-    "markdown": "marigold-validate: TestApp.tsx — 0 error(s), 6 warning(s)\n\n[warning/technical] <Stack>: <Stack> wraps a single child. A flow layout earns its place only with two or more children; with one child it adds a wrapper that does nothing. (TestApp.tsx:234:5)\n  → Render the child directly instead of wrapping it in <Stack>. For single-child spacing use Inset, Center, Breakout or Aspect.\n  data: {layout=Stack, childCount=1}\n[warning/spatial] <page>: Content uses only 34% of the desktop width (1280px): it stays in a narrow, mobile-shaped band instead of adapting to the available space.\n  → Let the layout grow with the viewport using Marigold responsive primitives — <Columns collapseAt=\"...\"> for multi-column areas, AppLayout for the shell, Stack/Inline for flow — instead of a fixed-width container. (Intentionally centred max-width reading columns are fine and may trip this; treat it as a relative signal.)\n  data: {widthUtilization=0.34296875, contentElements=50, scope=page}\n[warning/a11y] <html>: Document should have one main landmark (landmark-one-main)\n  → Wrap your page content in `<AppLayout>` with `<AppLayout.Main>` to provide a `<main>` landmark. Import AppLayout from `@marigold/components`.\n  data: {ruleId=landmark-one-main, impact=moderate, target=[\"html\"], html=<html lang=\"en\" data-theme=\"rui\">, scope=page}\n[warning/a11y] <html>: Page should contain a level-one heading (page-has-heading-one)\n  → Add a `<Headline level={1}>` component for the page title — it renders an `<h1>`. Import Headline from `@marigold/components`.\n  data: {ruleId=page-has-heading-one, impact=moderate, target=[\"html\"], html=<html lang=\"en\" data-theme=\"rui\">, scope=page}\n[warning/a11y] <input>: Interactive element <input> (input) is not reachable via Tab key.\n  → Ensure the element is focusable. Marigold interactive components are focusable by default — check if a parent has tabindex=\"-1\" or focus is trapped.\n  data: {selector=body:nth-child(2) > div:nth-child(2) > div:nth-child(1) > div:nth-child(1) > ..., role=input, scope=page}\n[warning/a11y] <page>: All page content should be contained by landmarks — 11 elements affected (region)\n  → All page content must be inside a landmark region. Use `<AppLayout>` with `<AppLayout.Main>` for the main area, `<TopNavigation>` for the header (`<header>`), and `<Sidebar>` for side navigation (`<aside>`). Import from `@marigold/components`.\n  data: {ruleId=region, impact=moderate, affectedCount=11, scope=page}\n\npassed: TypeScript compilation, All Marigold props are valid, Component composition, Overlay accessible names, Compound component placement, Section headers, Collection item ids, Design system usage, Table usage, Component conventions, Theme variant compliance, No overlapping components detected\n\nchecks run: technical, spatial, a11y"
+    "markdown": "marigold-validate: TestApp.tsx — 0 error(s), 10 warning(s)\n\n[warning/technical] <Form>: This <Form> has 2 primary buttons (variant=\"primary\"). A form should have exactly one primary action; all others should be secondary, ghost or link. (TestApp.tsx:256:17)\n  → Keep one Button variant=\"primary\" (the submit) and change the rest to variant=\"secondary\"/\"ghost\"/\"link\".\n  data: {primaryCount=2}\n[warning/spatial] <page>: Content uses only 39% of the desktop width (1280px): it stays in a narrow, mobile-shaped band instead of adapting to the available space.\n  → Let the layout grow with the viewport using Marigold responsive primitives — <Columns collapseAt=\"...\"> for multi-column areas, AppLayout for the shell, Stack/Inline for flow — instead of a fixed-width container. (Intentionally centred max-width reading columns are fine and may trip this; treat it as a relative signal.)\n  data: {widthUtilization=0.39296875, contentElements=52, scope=page}\n[warning/style] <button>: Computed color value \"oklab(0.444 0.00309857 0.0105546 / 0.8)\" on <button> (“Show suggestions”) does not map to a known design token.\n  → If this is intentional, ignore the warning. Otherwise, use a Marigold variant or a theme-rui token instead of a hard-coded value.\n  data: {property=color, value=oklab(0.444 0.00309857 0.0105546 / 0.8), selector=body:nth-child(2) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > ..., fingerprint=Show suggestions, scope=page}\n[warning/style] <button>: Computed border-color value \"oklab(0.444 0.00309857 0.0105546 / 0.8)\" on <button> (“Show suggestions”) does not map to a known design token.\n  → If this is intentional, ignore the warning. Otherwise, use a Marigold variant or a theme-rui token instead of a hard-coded value.\n  data: {property=border-color, value=oklab(0.444 0.00309857 0.0105546 / 0.8), selector=body:nth-child(2) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > ..., fingerprint=Show suggestions, scope=page}\n[warning/style] <button>: Computed outline-color value \"oklab(0.444 0.00309857 0.0105546 / 0.8)\" on <button> (“Show suggestions”) does not map to a known design token.\n  → If this is intentional, ignore the warning. Otherwise, use a Marigold variant or a theme-rui token instead of a hard-coded value.\n  data: {property=outline-color, value=oklab(0.444 0.00309857 0.0105546 / 0.8), selector=body:nth-child(2) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > ..., fingerprint=Show suggestions, scope=page}\n[warning/a11y] <button>: Component order inconsistency: Tab moved from <button> at (230, 661) to <button> at (165, 603).\n  → Reorder components in JSX to match the visual layout, or use Marigold layout components (Stack, Columns) to control both visual and DOM order.\n  data: {from={\"component\":\"button\",\"x\":230,\"y\":661}, to={\"component\":\"button\",\"x\":165,\"y\":603}, scope=page}\n[warning/a11y] <html>: Document should have one main landmark (landmark-one-main)\n  → Wrap your page content in `<AppLayout>` with `<AppLayout.Main>` to provide a `<main>` landmark. Import AppLayout from `@marigold/components`.\n  data: {ruleId=landmark-one-main, impact=moderate, target=[\"html\"], html=<html lang=\"en\" data-theme=\"rui\">, scope=page}\n[warning/a11y] <html>: Page should contain a level-one heading (page-has-heading-one)\n  → Add a `<Headline level={1}>` component for the page title — it renders an `<h1>`. Import Headline from `@marigold/components`.\n  data: {ruleId=page-has-heading-one, impact=moderate, target=[\"html\"], html=<html lang=\"en\" data-theme=\"rui\">, scope=page}\n[warning/a11y] <input>: Interactive element <input> (input) is not reachable via Tab key.\n  → Ensure the element is focusable. Marigold interactive components are focusable by default — check if a parent has tabindex=\"-1\" or focus is trapped.\n  data: {selector=body:nth-child(2) > div:nth-child(2) > div:nth-child(1) > div:nth-child(1) > ..., role=input, scope=page}\n[warning/a11y] <page>: All page content should be contained by landmarks — 11 elements affected (region)\n  → All page content must be inside a landmark region. Use `<AppLayout>` with `<AppLayout.Main>` for the main area, `<TopNavigation>` for the header (`<header>`), and `<Sidebar>` for side navigation (`<aside>`). Import from `@marigold/components`.\n  data: {ruleId=region, impact=moderate, affectedCount=11, scope=page}\n\npassed: TypeScript compilation, All Marigold props are valid, Component composition, Overlay accessible names, Compound component placement, Section headers, Collection item ids, Design system usage, Layout usage, Table usage, Theme variant compliance, No overlapping components detected\n\nchecks run: technical, spatial, a11y"
   },
   "componentsFound": [
     "div",
     "input",
     "button"
   ],
-  "renderTimeMs": 1421,
-  "sourceCode": "'use client';\n\nimport { useState } from 'react';\nimport {\n  Accordion,\n  Autocomplete,\n  Button,\n  Card,\n  Checkbox,\n  ComboBox,\n  DateField,\n  FileField,\n  Form,\n  Headline,\n  Inline,\n  Loader,\n  NumberField,\n  Radio,\n  SectionMessage,\n  Select,\n  Stack,\n  Switch,\n  TagField,\n  Text,\n  TextArea,\n  TextField,\n  TimeField,\n  useToast,\n} from '@marigold/components';\n\ninterface RegistrationData {\n  // Step 1\n  fullName: string;\n  email: string;\n  phoneNumber: string;\n  company: string;\n  jobTitle: string;\n  profilePhoto: File | null;\n  // Step 2\n  eventDate: string;\n  preferredTimeSlot: string;\n  sessionTrack: string;\n  dietaryRequirements: string;\n  numberGuestsSuffix: number;\n  specialRequests: string;\n  // Step 3\n  tshirtSize: string;\n  topicsOfInterest: (string | number)[];\n  emailUpdates: boolean;\n  smsReminders: boolean;\n  postEventSurvey: boolean;\n  newsletterSubscription: boolean;\n  hasAccessibilityNeeds: boolean;\n  accessibilityDetails: string;\n}\n\nconst jobTitleSuggestions = [\n  'Developer',\n  'Designer',\n  'Product Manager',\n  'Engineering Manager',\n  'CTO',\n  'Other',\n];\n\nconst topicSuggestions = [\n  'AI/ML',\n  'Web Development',\n  'Cloud',\n  'Security',\n  'DevOps',\n  'Mobile',\n  'Data Science',\n];\n\nconst TestApp = () => {\n  const { addToast } = useToast();\n  const [currentStep, setCurrentStep] = useState(1);\n  const [loading, setLoading] = useState(false);\n  const [showSuccess, setShowSuccess] = useState(false);\n  const [confirmationNumber, setConfirmationNumber] = useState('');\n\n  const [formData, setFormData] = useState<RegistrationData>({\n    fullName: '',\n    email: '',\n    phoneNumber: '',\n    company: '',\n    jobTitle: '',\n    profilePhoto: null,\n    eventDate: '',\n    preferredTimeSlot: '',\n    sessionTrack: '',\n    dietaryRequirements: '',\n    numberGuestsSuffix: 0,\n    specialRequests: '',\n    tshirtSize: '',\n    topicsOfInterest: [],\n    emailUpdates: false,\n    smsReminders: false,\n    postEventSurvey: false,\n    newsletterSubscription: false,\n    hasAccessibilityNeeds: false,\n    accessibilityDetails: '',\n  });\n\n  const [errors, setErrors] = useState<Record<string, string>>({});\n\n  const validateStep1 = (): boolean => {\n    const newErrors: Record<string, string> = {};\n    if (!formData.fullName.trim()) newErrors.fullName = 'Full Name is required';\n    if (!formData.email.trim()) {\n      newErrors.email = 'Email is required';\n    } else if (!formData.email.includes('@')) {\n      newErrors.email = 'Email must be valid';\n    }\n    setErrors(newErrors);\n    return Object.keys(newErrors).length === 0;\n  };\n\n  const validateStep2 = (): boolean => {\n    const newErrors: Record<string, string> = {};\n    if (!formData.eventDate) newErrors.eventDate = 'Event Date is required';\n    setErrors(newErrors);\n    return Object.keys(newErrors).length === 0;\n  };\n\n  const validateStep3 = (): boolean => {\n    setErrors({});\n    return true;\n  };\n\n  const handleNext = () => {\n    let isValid = false;\n    if (currentStep === 1) {\n      isValid = validateStep1();\n    } else if (currentStep === 2) {\n      isValid = validateStep2();\n    } else if (currentStep === 3) {\n      isValid = validateStep3();\n    }\n\n    if (isValid) {\n      setCurrentStep(currentStep + 1);\n    }\n  };\n\n  const handleBack = () => {\n    if (currentStep > 1) {\n      setCurrentStep(currentStep - 1);\n    }\n  };\n\n  const getEventDateString = (): string => {\n    return formData.eventDate || '';\n  };\n\n  const getTimeString = (): string => {\n    return formData.preferredTimeSlot || '';\n  };\n\n  const handleSubmit = async () => {\n    setLoading(true);\n    await new Promise((resolve) => setTimeout(resolve, 1000));\n    setLoading(false);\n    setShowSuccess(true);\n    setConfirmationNumber(\n      `REG-${Math.random().toString(36).substr(2, 9).toUpperCase()}`\n    );\n    addToast({\n      title: 'Registration submitted successfully',\n      variant: 'success',\n      timeout: 5000,\n    });\n  };\n\n  const handleReset = () => {\n    setCurrentStep(1);\n    setShowSuccess(false);\n    setFormData({\n      fullName: '',\n      email: '',\n      phoneNumber: '',\n      company: '',\n      jobTitle: '',\n      profilePhoto: null,\n      eventDate: '',\n      preferredTimeSlot: '',\n      sessionTrack: '',\n      dietaryRequirements: '',\n      numberGuestsSuffix: 0,\n      specialRequests: '',\n      tshirtSize: '',\n      topicsOfInterest: [],\n      emailUpdates: false,\n      smsReminders: false,\n      postEventSurvey: false,\n      newsletterSubscription: false,\n      hasAccessibilityNeeds: false,\n      accessibilityDetails: '',\n    });\n    setErrors({});\n  };\n\n  const [termsAgreed, setTermsAgreed] = useState(false);\n\n  if (showSuccess) {\n    return (\n      <Stack space={4} alignX=\"center\" alignY=\"center\" stretch>\n        {loading && <Loader mode=\"section\" />}\n        <Card>\n          <Stack space={4}>\n            <SectionMessage variant=\"success\">\n              <SectionMessage.Title>Registration confirmed!</SectionMessage.Title>\n            </SectionMessage>\n            <Card>\n              <Stack space={2}>\n                <Text weight=\"bold\">Registration Summary</Text>\n                <Text>Name: {formData.fullName}</Text>\n                <Text>Email: {formData.email}</Text>\n                <Text>Event Date: {getEventDateString()}</Text>\n                <Text weight=\"bold\">Confirmation Number: {confirmationNumber}</Text>\n              </Stack>\n            </Card>\n            <Button variant=\"primary\" fullWidth onPress={handleReset}>\n              Register Another\n            </Button>\n          </Stack>\n        </Card>\n      </Stack>\n    );\n  }\n\n  return (\n    <Stack space={4} alignX=\"center\" alignY=\"center\" stretch>\n      <Card>\n        <Stack space={4}>\n          <Headline level={3}>\n            Step {currentStep} of 4 —{' '}\n            {currentStep === 1 && 'Personal Information'}\n            {currentStep === 2 && 'Event Details'}\n            {currentStep === 3 && 'Preferences'}\n            {currentStep === 4 && 'Review & Confirm'}\n          </Headline>\n\n          <Form>\n            {currentStep === 1 && (\n              <Stack space={3}>\n                <TextField\n                  label=\"Full Name\"\n                  required\n                  value={formData.fullName}\n                  onChange={(value) =>\n                    setFormData({ ...formData, fullName: value })\n                  }\n                  errorMessage={errors.fullName}\n                />\n                <TextField\n                  label=\"Email\"\n                  type=\"email\"\n                  required\n                  value={formData.email}\n                  onChange={(value) =>\n                    setFormData({ ...formData, email: value })\n                  }\n                  errorMessage={errors.email}\n                />\n                <TextField\n                  label=\"Phone Number\"\n                  type=\"tel\"\n                  value={formData.phoneNumber}\n                  onChange={(value) =>\n                    setFormData({ ...formData, phoneNumber: value })\n                  }\n                />\n                <TextField\n                  label=\"Company / Organization\"\n                  value={formData.company}\n                  onChange={(value) =>\n                    setFormData({ ...formData, company: value })\n                  }\n                />\n                <Autocomplete\n                  label=\"Job Title\"\n                  value={formData.jobTitle}\n                  onChange={(value) =>\n                    setFormData({ ...formData, jobTitle: value })\n                  }\n                  menuTrigger=\"focus\"\n                >\n                  {jobTitleSuggestions.map((suggestion) => (\n                    <Autocomplete.Option key={suggestion} id={suggestion}>\n                      {suggestion}\n                    </Autocomplete.Option>\n                  ))}\n                </Autocomplete>\n                <FileField\n                  label=\"Profile Photo\"\n                  accept={['image/*']}\n                />\n                <SectionMessage>\n                  <SectionMessage.Title>Your Privacy</SectionMessage.Title>\n                  <SectionMessage.Content>\n                    Your information will only be used for this event.\n                  </SectionMessage.Content>\n                </SectionMessage>\n              </Stack>\n            )}\n\n            {currentStep === 2 && (\n              <Stack space={3}>\n                <DateField\n                  label=\"Event Date\"\n                  required\n                  value={formData.eventDate as any}\n                  onChange={(value: any) =>\n                    setFormData({ ...formData, eventDate: value?.toString() || '' })\n                  }\n                  errorMessage={errors.eventDate}\n                />\n                <TimeField\n                  label=\"Preferred Time Slot\"\n                  value={formData.preferredTimeSlot as any}\n                  onChange={(value: any) =>\n                    setFormData({ ...formData, preferredTimeSlot: value?.toString() || '' })\n                  }\n                />\n                <Radio.Group\n                  label=\"Session Track\"\n                  value={formData.sessionTrack}\n                  onChange={(value) =>\n                    setFormData({ ...formData, sessionTrack: value })\n                  }\n                >\n                  <Radio id=\"technical\" value=\"Technical\">\n                    Technical\n                  </Radio>\n                  <Radio id=\"design\" value=\"Design\">\n                    Design\n                  </Radio>\n                  <Radio id=\"business\" value=\"Business\">\n                    Business\n                  </Radio>\n                  <Radio id=\"workshop\" value=\"Workshop\">\n                    Workshop\n                  </Radio>\n                </Radio.Group>\n                <ComboBox\n                  label=\"Dietary Requirements\"\n                  value={formData.dietaryRequirements}\n                  onChange={(value) => {\n                    setFormData({\n                      ...formData,\n                      dietaryRequirements: value || '',\n                    });\n                  }}\n                  menuTrigger=\"focus\"\n                >\n                  <ComboBox.Option id=\"None\">None</ComboBox.Option>\n                  <ComboBox.Option id=\"Vegetarian\">Vegetarian</ComboBox.Option>\n                  <ComboBox.Option id=\"Vegan\">Vegan</ComboBox.Option>\n                  <ComboBox.Option id=\"Gluten-Free\">Gluten-Free</ComboBox.Option>\n                  <ComboBox.Option id=\"Kosher\">Kosher</ComboBox.Option>\n                  <ComboBox.Option id=\"Halal\">Halal</ComboBox.Option>\n                </ComboBox>\n                <NumberField\n                  label=\"Number of Guests\"\n                  minValue={0}\n                  maxValue={5}\n                  value={formData.numberGuestsSuffix}\n                  onChange={(value) =>\n                    setFormData({ ...formData, numberGuestsSuffix: value })\n                  }\n                />\n                <TextArea\n                  label=\"Special Requests\"\n                  value={formData.specialRequests}\n                  onChange={(value) =>\n                    setFormData({ ...formData, specialRequests: value })\n                  }\n                  rows={4}\n                />\n              </Stack>\n            )}\n\n            {currentStep === 3 && (\n              <Stack space={3}>\n                <Select\n                  label=\"T-Shirt Size\"\n                  value={formData.tshirtSize}\n                  onSelectionChange={(value) =>\n                    setFormData({\n                      ...formData,\n                      tshirtSize: value as string,\n                    })\n                  }\n                >\n                  <Select.Option id=\"XS\">XS</Select.Option>\n                  <Select.Option id=\"S\">S</Select.Option>\n                  <Select.Option id=\"M\">M</Select.Option>\n                  <Select.Option id=\"L\">L</Select.Option>\n                  <Select.Option id=\"XL\">XL</Select.Option>\n                  <Select.Option id=\"XXL\">XXL</Select.Option>\n                </Select>\n                <TagField\n                  label=\"Topics of Interest\"\n                  value={formData.topicsOfInterest}\n                  onChange={(value) =>\n                    setFormData({\n                      ...formData,\n                      topicsOfInterest: Array.from(value),\n                    })\n                  }\n                >\n                  {topicSuggestions.map((topic) => (\n                    <TagField.Option key={topic} id={topic}>\n                      {topic}\n                    </TagField.Option>\n                  ))}\n                </TagField>\n                <Checkbox.Group label=\"Communication Preferences\">\n                  <Checkbox\n                    value=\"email\"\n                    checked={formData.emailUpdates}\n                    onChange={(checked) =>\n                      setFormData({ ...formData, emailUpdates: checked })\n                    }\n                    label=\"Email updates about the event\"\n                  />\n                  <Checkbox\n                    value=\"sms\"\n                    checked={formData.smsReminders}\n                    onChange={(checked) =>\n                      setFormData({ ...formData, smsReminders: checked })\n                    }\n                    label=\"SMS reminders\"\n                  />\n                  <Checkbox\n                    value=\"survey\"\n                    checked={formData.postEventSurvey}\n                    onChange={(checked) =>\n                      setFormData({ ...formData, postEventSurvey: checked })\n                    }\n                    label=\"Post-event survey\"\n                  />\n                  <Checkbox\n                    value=\"newsletter\"\n                    checked={formData.newsletterSubscription}\n                    onChange={(checked) =>\n                      setFormData({\n                        ...formData,\n                        newsletterSubscription: checked,\n                      })\n                    }\n                    label=\"Newsletter subscription\"\n                  />\n                </Checkbox.Group>\n                <Stack space={2}>\n                  <Switch\n                    selected={formData.hasAccessibilityNeeds}\n                    onChange={(selected) =>\n                      setFormData({\n                        ...formData,\n                        hasAccessibilityNeeds: selected,\n                      })\n                    }\n                    label=\"I have accessibility requirements\"\n                  />\n                  {formData.hasAccessibilityNeeds && (\n                    <TextArea\n                      label=\"Accessibility Details\"\n                      value={formData.accessibilityDetails}\n                      onChange={(value) =>\n                        setFormData({\n                          ...formData,\n                          accessibilityDetails: value,\n                        })\n                      }\n                      rows={3}\n                    />\n                  )}\n                </Stack>\n              </Stack>\n            )}\n\n            {currentStep === 4 && (\n              <Stack space={3}>\n                <Accordion>\n                  <Accordion.Item>\n                    <Accordion.Header>Personal Information</Accordion.Header>\n                    <Accordion.Content>\n                      <Stack space={1}>\n                        <Text>Name: {formData.fullName}</Text>\n                        <Text>Email: {formData.email}</Text>\n                        {formData.phoneNumber && (\n                          <Text>Phone: {formData.phoneNumber}</Text>\n                        )}\n                        {formData.company && (\n                          <Text>Company: {formData.company}</Text>\n                        )}\n                        {formData.jobTitle && (\n                          <Text>Job Title: {formData.jobTitle}</Text>\n                        )}\n                      </Stack>\n                    </Accordion.Content>\n                  </Accordion.Item>\n                  <Accordion.Item>\n                    <Accordion.Header>Event Details</Accordion.Header>\n                    <Accordion.Content>\n                      <Stack space={1}>\n                        <Text>Event Date: {getEventDateString()}</Text>\n                        {formData.preferredTimeSlot && (\n                          <Text>Time: {getTimeString()}</Text>\n                        )}\n                        {formData.sessionTrack && (\n                          <Text>Track: {formData.sessionTrack}</Text>\n                        )}\n                        {formData.dietaryRequirements && (\n                          <Text>\n                            Dietary: {formData.dietaryRequirements}\n                          </Text>\n                        )}\n                        <Text>Guests: {formData.numberGuestsSuffix}</Text>\n                        {formData.specialRequests && (\n                          <Text>\n                            Special Requests: {formData.specialRequests}\n                          </Text>\n                        )}\n                      </Stack>\n                    </Accordion.Content>\n                  </Accordion.Item>\n                  <Accordion.Item>\n                    <Accordion.Header>Preferences</Accordion.Header>\n                    <Accordion.Content>\n                      <Stack space={1}>\n                        {formData.tshirtSize && (\n                          <Text>T-Shirt Size: {formData.tshirtSize}</Text>\n                        )}\n                        {formData.topicsOfInterest.length > 0 && (\n                          <Text>\n                            Topics:{' '}\n                            {Array.from(formData.topicsOfInterest).join(', ')}\n                          </Text>\n                        )}\n                        <Text>\n                          Email Updates: {formData.emailUpdates ? 'Yes' : 'No'}\n                        </Text>\n                        <Text>\n                          SMS Reminders:{' '}\n                          {formData.smsReminders ? 'Yes' : 'No'}\n                        </Text>\n                        <Text>\n                          Post-Event Survey:{' '}\n                          {formData.postEventSurvey ? 'Yes' : 'No'}\n                        </Text>\n                        <Text>\n                          Newsletter:{' '}\n                          {formData.newsletterSubscription ? 'Yes' : 'No'}\n                        </Text>\n                        {formData.hasAccessibilityNeeds && (\n                          <Text>\n                            Accessibility Needs:{' '}\n                            {formData.accessibilityDetails}\n                          </Text>\n                        )}\n                      </Stack>\n                    </Accordion.Content>\n                  </Accordion.Item>\n                </Accordion>\n                <Checkbox\n                  value=\"terms\"\n                  checked={termsAgreed}\n                  onChange={(checked) => setTermsAgreed(checked)}\n                  label=\"I agree to the terms and conditions\"\n                />\n              </Stack>\n            )}\n          </Form>\n\n          <Inline space={2} alignX=\"between\">\n            <Button\n              disabled={currentStep === 1}\n              onPress={handleBack}\n              variant=\"secondary\"\n            >\n              Back\n            </Button>\n            {currentStep < 4 ? (\n              <Button variant=\"primary\" onPress={handleNext}>\n                Next\n              </Button>\n            ) : (\n              <Button\n                variant=\"primary\"\n                disabled={!termsAgreed || loading}\n                loading={loading}\n                onPress={handleSubmit}\n              >\n                Submit Registration\n              </Button>\n            )}\n          </Inline>\n        </Stack>\n      </Card>\n    </Stack>\n  );\n};\n\nexport default TestApp;\n",
+  "renderTimeMs": 2231,
+  "sourceCode": "'use client';\n\nimport { useState } from 'react';\nimport {\n  Button,\n  Card,\n  Checkbox,\n  ComboBox,\n  DateField,\n  FileField,\n  Form,\n  Headline,\n  Inline,\n  Inset,\n  Loader,\n  NumberField,\n  Radio,\n  SectionMessage,\n  Select,\n  Stack,\n  Switch,\n  TagField,\n  Text,\n  TextArea,\n  TextField,\n  TimeField,\n  useToast,\n  Accordion,\n  ToastProvider,\n} from '@marigold/components';\nimport { parseDate, parseTime, today } from '@internationalized/date';\nimport { Key } from '@react-types/shared';\n\ninterface RegistrationData {\n  fullName: string;\n  email: string;\n  phone: string;\n  company: string;\n  jobTitle: string;\n  profilePhoto: FileList | null;\n  eventDate: string;\n  preferredTime: string;\n  sessionTrack: string;\n  dietaryRequirements: string;\n  numberOfGuests: number;\n  specialRequests: string;\n  tshirtSize: string;\n  topics: Key[];\n  communicationPreferences: string[];\n  accessibilityNeeds: boolean;\n  accessibilityDetails: string;\n  agreeToTerms: boolean;\n}\n\ntype Step = 1 | 2 | 3 | 4;\n\nconst initialData: RegistrationData = {\n  fullName: '',\n  email: '',\n  phone: '',\n  company: '',\n  jobTitle: '',\n  profilePhoto: null,\n  eventDate: '',\n  preferredTime: '',\n  sessionTrack: '',\n  dietaryRequirements: '',\n  numberOfGuests: 0,\n  specialRequests: '',\n  tshirtSize: '',\n  topics: [],\n  communicationPreferences: [],\n  accessibilityNeeds: false,\n  accessibilityDetails: '',\n  agreeToTerms: false,\n};\n\nconst jobTitleSuggestions = [\n  'Developer',\n  'Designer',\n  'Product Manager',\n  'Engineering Manager',\n  'CTO',\n  'Other',\n];\n\nconst dietarySuggestions = [\n  'None',\n  'Vegetarian',\n  'Vegan',\n  'Gluten-Free',\n  'Kosher',\n  'Halal',\n];\n\nconst topicSuggestions = [\n  'AI/ML',\n  'Web Development',\n  'Cloud',\n  'Security',\n  'DevOps',\n  'Mobile',\n  'Data Science',\n];\n\nconst TestApp = () => {\n  const [currentStep, setCurrentStep] = useState<Step>(1);\n  const [data, setData] = useState<RegistrationData>(initialData);\n  const [submitted, setSubmitted] = useState(false);\n  const [loading, setLoading] = useState(false);\n  const [confirmationNumber, setConfirmationNumber] = useState('');\n  const { addToast } = useToast();\n  const [validationErrors, setValidationErrors] = useState<string[]>([]);\n\n  const updateData = (field: keyof RegistrationData, value: any) => {\n    setData(prev => ({ ...prev, [field]: value }));\n    setValidationErrors([]);\n  };\n\n  const validateStep = (step: Step): boolean => {\n    const errors: string[] = [];\n\n    if (step === 1) {\n      if (!data.fullName.trim()) errors.push('Full Name is required');\n      if (!data.email.trim()) errors.push('Email is required');\n      if (data.email.trim() && !data.email.includes('@')) {\n        errors.push('Email must be valid');\n      }\n    } else if (step === 2) {\n      if (!data.eventDate) errors.push('Event Date is required');\n      if (!data.sessionTrack) errors.push('Session Track is required');\n      if (!data.dietaryRequirements) errors.push('Dietary Requirements is required');\n    } else if (step === 3) {\n      if (!data.tshirtSize) errors.push('T-Shirt Size is required');\n    }\n\n    setValidationErrors(errors);\n    return errors.length === 0;\n  };\n\n  const handleNext = () => {\n    if (validateStep(currentStep)) {\n      if (currentStep < 4) {\n        setCurrentStep((currentStep + 1) as Step);\n      }\n    }\n  };\n\n  const handleBack = () => {\n    if (currentStep > 1) {\n      setCurrentStep((currentStep - 1) as Step);\n    }\n  };\n\n  const handleSubmit = async () => {\n    if (!data.agreeToTerms) {\n      setValidationErrors(['You must agree to the terms and conditions']);\n      return;\n    }\n\n    setLoading(true);\n    await new Promise(resolve => setTimeout(resolve, 1000));\n    setLoading(false);\n\n    const confNum = `CONF-${Math.random().toString(36).substring(2, 8).toUpperCase()}`;\n    setConfirmationNumber(confNum);\n    setSubmitted(true);\n\n    addToast({\n      title: 'Registration submitted successfully',\n      variant: 'success',\n      timeout: 5000,\n    });\n  };\n\n  const handleRegisterAnother = () => {\n    setCurrentStep(1);\n    setData(initialData);\n    setSubmitted(false);\n    setValidationErrors([]);\n  };\n\n  if (submitted) {\n    return (\n      <>\n        <ToastProvider position=\"bottom-right\" />\n        <Inset space={8}>\n          <Card>\n            <Inset space={8}>\n              {loading && <Loader />}\n              {!loading && (\n                <Stack space={6} alignX=\"center\">\n                    <SectionMessage variant=\"success\">\n                        <SectionMessage.Title>\n                          Registration confirmed!\n                        </SectionMessage.Title>\n                        <SectionMessage.Content>\n                          Thank you for registering for our event.\n                        </SectionMessage.Content>\n                      </SectionMessage>\n\n                      <Card>\n                        <Inset space={6}>\n                          <Stack space={4} alignX=\"left\">\n                            <Text weight=\"bold\">Confirmation Summary</Text>\n                            <Stack space={2} alignX=\"left\">\n                              <Text>\n                                <Text weight=\"bold\" as=\"span\">Name:</Text> {data.fullName}\n                              </Text>\n                              <Text>\n                                <Text weight=\"bold\" as=\"span\">Email:</Text> {data.email}\n                              </Text>\n                              <Text>\n                                <Text weight=\"bold\" as=\"span\">Event Date:</Text> {data.eventDate}\n                              </Text>\n                              <Text>\n                                <Text weight=\"bold\" as=\"span\">Confirmation #:</Text> {confirmationNumber}\n                              </Text>\n                            </Stack>\n                          </Stack>\n                        </Inset>\n                      </Card>\n\n                      <Button\n                        variant=\"primary\"\n                        onPress={handleRegisterAnother}\n                      >\n                        Register Another\n                      </Button>\n                </Stack>\n              )}\n            </Inset>\n          </Card>\n        </Inset>\n      </>\n    );\n  }\n\n  return (\n    <>\n      <ToastProvider position=\"bottom-right\" />\n      <Inset space={8}>\n        <Card>\n          <Inset space={8}>\n            <Stack space={6}>\n                <Text weight=\"bold\" fontSize=\"sm\">\n                  Step {currentStep} of 4\n                </Text>\n                <Headline level={2}>\n                  {currentStep === 1 && 'Personal Information'}\n                  {currentStep === 2 && 'Event Details'}\n                  {currentStep === 3 && 'Preferences'}\n                  {currentStep === 4 && 'Review & Confirm'}\n                </Headline>\n\n                <Form>\n                  <Stack space={6}>\n                    {validationErrors.length > 0 && (\n                      <SectionMessage variant=\"error\">\n                        <SectionMessage.Title>\n                          Please fix the following errors:\n                        </SectionMessage.Title>\n                        <SectionMessage.Content>\n                          <Stack space={1} alignX=\"left\">\n                            {validationErrors.map((error, idx) => (\n                              <Text key={idx}>{error}</Text>\n                            ))}\n                          </Stack>\n                        </SectionMessage.Content>\n                      </SectionMessage>\n                    )}\n\n                    {currentStep === 1 && (\n                      <Stack space={4}>\n                        <TextField\n                          label=\"Full Name\"\n                          name=\"fullName\"\n                          type=\"text\"\n                          required\n                          value={data.fullName}\n                          onChange={value =>\n                            updateData('fullName', value)\n                          }\n                          width=\"full\"\n                        />\n                        <TextField\n                          label=\"Email\"\n                          name=\"email\"\n                          type=\"email\"\n                          required\n                          value={data.email}\n                          onChange={value => updateData('email', value)}\n                          width=\"full\"\n                        />\n                        <TextField\n                          label=\"Phone Number\"\n                          name=\"phone\"\n                          type=\"tel\"\n                          value={data.phone}\n                          onChange={value => updateData('phone', value)}\n                          width=\"full\"\n                        />\n                        <TextField\n                          label=\"Company / Organization\"\n                          name=\"company\"\n                          type=\"text\"\n                          value={data.company}\n                          onChange={value =>\n                            updateData('company', value)\n                          }\n                          width=\"full\"\n                        />\n                        <ComboBox\n                          label=\"Job Title\"\n                          menuTrigger=\"focus\"\n                          value={data.jobTitle}\n                          onChange={value =>\n                            updateData('jobTitle', value)\n                          }\n                          width=\"full\"\n                        >\n                          {jobTitleSuggestions.map(title => (\n                            <ComboBox.Option key={title} id={title}>\n                              {title}\n                            </ComboBox.Option>\n                          ))}\n                        </ComboBox>\n                        <FileField\n                          label=\"Profile Photo\"\n                          accept={['image/*']}\n                          name=\"profilePhoto\"\n                        />\n\n                        <SectionMessage variant=\"info\">\n                          <SectionMessage.Content>\n                            Your information will only be used for this event.\n                          </SectionMessage.Content>\n                        </SectionMessage>\n                      </Stack>\n                    )}\n\n                    {currentStep === 2 && (\n                      <Stack space={4}>\n                        <DateField\n                          label=\"Event Date\"\n                          value={\n                            data.eventDate\n                              ? parseDate(data.eventDate)\n                              : undefined\n                          }\n                          onChange={date => {\n                            if (date) {\n                              updateData(\n                                'eventDate',\n                                `${date.year}-${String(date.month).padStart(2, '0')}-${String(date.day).padStart(2, '0')}`\n                              );\n                            }\n                          }}\n                          required\n                          width=\"full\"\n                        />\n                        <TimeField\n                          label=\"Preferred Time Slot\"\n                          value={\n                            data.preferredTime\n                              ? parseTime(data.preferredTime)\n                              : undefined\n                          }\n                          onChange={time => {\n                            if (time) {\n                              updateData(\n                                'preferredTime',\n                                `${String(time.hour).padStart(2, '0')}:${String(time.minute).padStart(2, '0')}`\n                              );\n                            }\n                          }}\n                          width=\"full\"\n                        />\n                        <Radio.Group\n                          label=\"Session Track\"\n                          value={data.sessionTrack}\n                          onChange={value =>\n                            updateData('sessionTrack', value)\n                          }\n                          required\n                        >\n                          <Radio value=\"technical\">Technical</Radio>\n                          <Radio value=\"design\">Design</Radio>\n                          <Radio value=\"business\">Business</Radio>\n                          <Radio value=\"workshop\">Workshop</Radio>\n                        </Radio.Group>\n\n                        <ComboBox\n                          label=\"Dietary Requirements\"\n                          menuTrigger=\"focus\"\n                          value={data.dietaryRequirements}\n                          onChange={value =>\n                            updateData('dietaryRequirements', value)\n                          }\n                          width=\"full\"\n                          required\n                        >\n                          {dietarySuggestions.map(dietary => (\n                            <ComboBox.Option key={dietary} id={dietary}>\n                              {dietary}\n                            </ComboBox.Option>\n                          ))}\n                        </ComboBox>\n\n                        <NumberField\n                          label=\"Number of Guests\"\n                          minValue={0}\n                          maxValue={5}\n                          value={data.numberOfGuests}\n                          onChange={value =>\n                            updateData('numberOfGuests', value)\n                          }\n                          width=\"full\"\n                        />\n                        <TextArea\n                          label=\"Special Requests\"\n                          name=\"specialRequests\"\n                          value={data.specialRequests}\n                          onChange={value =>\n                            updateData('specialRequests', value)\n                          }\n                          rows={4}\n                          width=\"full\"\n                        />\n                      </Stack>\n                    )}\n\n                    {currentStep === 3 && (\n                      <Stack space={4}>\n                        <Select\n                          label=\"T-Shirt Size\"\n                          selectedKey={data.tshirtSize}\n                          onSelectionChange={value =>\n                            updateData('tshirtSize', String(value))\n                          }\n                          width=\"full\"\n                          required\n                        >\n                          <Select.Option id=\"xs\">XS</Select.Option>\n                          <Select.Option id=\"s\">S</Select.Option>\n                          <Select.Option id=\"m\">M</Select.Option>\n                          <Select.Option id=\"l\">L</Select.Option>\n                          <Select.Option id=\"xl\">XL</Select.Option>\n                          <Select.Option id=\"xxl\">XXL</Select.Option>\n                        </Select>\n\n                        <TagField\n                          label=\"Topics of Interest\"\n                          value={data.topics}\n                          onChange={keys => updateData('topics', keys)}\n                          width=\"full\"\n                        >\n                          {topicSuggestions.map(topic => (\n                            <TagField.Option key={topic} id={topic}>\n                              {topic}\n                            </TagField.Option>\n                          ))}\n                        </TagField>\n\n                        <Checkbox.Group\n                          label=\"Communication Preferences\"\n                          value={data.communicationPreferences}\n                          onChange={values =>\n                            updateData('communicationPreferences', values)\n                          }\n                        >\n                          <Checkbox\n                            value=\"email\"\n                            label=\"Email updates about the event\"\n                          />\n                          <Checkbox value=\"sms\" label=\"SMS reminders\" />\n                          <Checkbox value=\"survey\" label=\"Post-event survey\" />\n                          <Checkbox\n                            value=\"newsletter\"\n                            label=\"Newsletter subscription\"\n                          />\n                        </Checkbox.Group>\n\n                        <Stack space={2}>\n                          <Switch\n                            label=\"I have accessibility requirements\"\n                            selected={data.accessibilityNeeds}\n                            onChange={value =>\n                              updateData('accessibilityNeeds', value)\n                            }\n                          />\n                          {data.accessibilityNeeds && (\n                            <TextArea\n                              label=\"Accessibility Details\"\n                              name=\"accessibilityDetails\"\n                              value={data.accessibilityDetails}\n                              onChange={value =>\n                                updateData(\n                                  'accessibilityDetails',\n                                  value\n                                )\n                              }\n                              rows={3}\n                              width=\"full\"\n                            />\n                          )}\n                        </Stack>\n                      </Stack>\n                    )}\n\n                    {currentStep === 4 && (\n                      <Stack space={4}>\n                        <Accordion>\n                          <Accordion.Item>\n                            <Accordion.Header>\n                              Personal Information\n                            </Accordion.Header>\n                            <Accordion.Content>\n                              <Stack space={2} alignX=\"left\">\n                                <Text>\n                                  <Text weight=\"bold\" as=\"span\">Name:</Text> {data.fullName}\n                                </Text>\n                                <Text>\n                                  <Text weight=\"bold\" as=\"span\">Email:</Text> {data.email}\n                                </Text>\n                                {data.phone && (\n                                  <Text>\n                                    <Text weight=\"bold\" as=\"span\">Phone:</Text> {data.phone}\n                                  </Text>\n                                )}\n                                {data.company && (\n                                  <Text>\n                                    <Text weight=\"bold\" as=\"span\">Company:</Text> {data.company}\n                                  </Text>\n                                )}\n                                {data.jobTitle && (\n                                  <Text>\n                                    <Text weight=\"bold\" as=\"span\">Job Title:</Text> {data.jobTitle}\n                                  </Text>\n                                )}\n                              </Stack>\n                            </Accordion.Content>\n                          </Accordion.Item>\n\n                          <Accordion.Item>\n                            <Accordion.Header>Event Details</Accordion.Header>\n                            <Accordion.Content>\n                              <Stack space={2} alignX=\"left\">\n                                <Text>\n                                  <Text weight=\"bold\" as=\"span\">Date:</Text> {data.eventDate}\n                                </Text>\n                                {data.preferredTime && (\n                                  <Text>\n                                    <Text weight=\"bold\" as=\"span\">Time:</Text> {data.preferredTime}\n                                  </Text>\n                                )}\n                                <Text>\n                                  <Text weight=\"bold\" as=\"span\">Track:</Text> {data.sessionTrack}\n                                </Text>\n                                <Text>\n                                  <Text weight=\"bold\" as=\"span\">Dietary:</Text> {data.dietaryRequirements}\n                                </Text>\n                                <Text>\n                                  <Text weight=\"bold\" as=\"span\">Guests:</Text> {data.numberOfGuests}\n                                </Text>\n                              </Stack>\n                            </Accordion.Content>\n                          </Accordion.Item>\n\n                          <Accordion.Item>\n                            <Accordion.Header>Preferences</Accordion.Header>\n                            <Accordion.Content>\n                              <Stack space={2} alignX=\"left\">\n                                <Text>\n                                  <Text weight=\"bold\" as=\"span\">T-Shirt Size:</Text> {data.tshirtSize.toUpperCase()}\n                                </Text>\n                                {data.topics.length > 0 && (\n                                  <Text>\n                                    <Text weight=\"bold\" as=\"span\">Topics:</Text> {Array.from(data.topics).join(', ')}\n                                  </Text>\n                                )}\n                                {data.communicationPreferences.length > 0 && (\n                                  <Text>\n                                    <Text weight=\"bold\" as=\"span\">Communication:</Text> {data.communicationPreferences.join(', ')}\n                                  </Text>\n                                )}\n                              </Stack>\n                            </Accordion.Content>\n                          </Accordion.Item>\n                        </Accordion>\n\n                        <Checkbox\n                          value=\"terms\"\n                          label=\"I agree to the terms and conditions\"\n                          checked={data.agreeToTerms}\n                          onChange={value =>\n                            updateData('agreeToTerms', value)\n                          }\n                        />\n                      </Stack>\n                    )}\n\n                    <Inline space={4} alignX=\"left\">\n                      <Button\n                        variant=\"secondary\"\n                        onPress={handleBack}\n                        disabled={currentStep === 1}\n                      >\n                        Back\n                      </Button>\n                      {currentStep < 4 ? (\n                        <Button variant=\"primary\" onPress={handleNext}>\n                          Next\n                        </Button>\n                      ) : (\n                        <Button\n                          variant=\"primary\"\n                          onPress={handleSubmit}\n                          loading={loading}\n                          disabled={!data.agreeToTerms || loading}\n                        >\n                          Submit Registration\n                        </Button>\n                      )}\n                    </Inline>\n                  </Stack>\n                </Form>\n              </Stack>\n            </Inset>\n          </Card>\n      </Inset>\n    </>\n  );\n};\n\nexport default TestApp;\n",
   "assertions": {
     "passed": [
       {
@@ -388,13 +519,6 @@
         "evidence": "<TextArea> found"
       },
       {
-        "id": "a-autocomplete",
-        "description": "Autocomplete for job title",
-        "severity": "required",
-        "passed": true,
-        "evidence": "<Autocomplete> found"
-      },
-      {
         "id": "a-filefield",
         "description": "FileField for profile photo",
         "severity": "required",
@@ -458,16 +582,23 @@
         "severity": "required",
         "passed": false,
         "evidence": "<DatePicker> not found"
+      },
+      {
+        "id": "a-autocomplete",
+        "description": "Autocomplete for job title",
+        "severity": "required",
+        "passed": false,
+        "evidence": "<Autocomplete> not found"
       }
     ],
-    "passRate": 0.9545,
-    "requiredPassRate": 0.9474,
-    "weightedPassRate": 0.9494,
+    "passRate": 0.9091,
+    "requiredPassRate": 0.8947,
+    "weightedPassRate": 0.8987,
     "total": 22
   },
   "validatePackageVersion": "0.0.1",
   "playwrightVersion": null,
   "resolvedModelId": "claude-haiku-4-5",
-  "claudeCliVersion": "2.1.185 (Claude Code)",
-  "sessionId": "615a394e-3049-41c3-a310-53a6a8fbfdeb"
+  "claudeCliVersion": "2.1.193 (Claude Code)",
+  "sessionId": "d648e3d2-6a69-42c6-9b27-b4d29d784773"
 }

@@ -1,0 +1,462 @@
+{
+  "runId": "opus-mcp-stack-P-06-r3",
+  "promptId": "P-06",
+  "model": "opus",
+  "config": "mcp-stack",
+  "timestamp": "2026-06-27T11:46:18.607Z",
+  "quality": {
+    "overall": 88.39,
+    "categories": {
+      "A": {
+        "category": "A",
+        "label": "Design System API",
+        "score": 80,
+        "weight": 0.225,
+        "weightedScore": 18,
+        "errorCount": 1,
+        "warningCount": 0,
+        "issues": [
+          {
+            "type": "technical",
+            "severity": "error",
+            "source": "prop-validator",
+            "component": "Stack",
+            "message": "Prop \"height\" does not exist on <Stack>.",
+            "suggestion": "Remove the prop. Available props: space, children, stretch, alignX, alignY, asList, role, aria-live, id, aria-label, aria-labelledby, aria-describedby, aria-details.",
+            "location": {
+              "file": "TestApp.tsx",
+              "line": 292,
+              "column": 32
+            },
+            "details": {
+              "used": "height",
+              "available": [
+                "space",
+                "children",
+                "stretch",
+                "alignX",
+                "alignY",
+                "asList",
+                "role",
+                "aria-live",
+                "id",
+                "aria-label",
+                "aria-labelledby",
+                "aria-describedby",
+                "aria-details"
+              ]
+            }
+          }
+        ]
+      },
+      "B": {
+        "category": "B",
+        "label": "Token Compliance",
+        "score": 100,
+        "weight": 0.1,
+        "weightedScore": 10,
+        "errorCount": 0,
+        "warningCount": 0,
+        "issues": []
+      },
+      "C": {
+        "category": "C",
+        "label": "DOM / Structure",
+        "score": 100,
+        "weight": 0.225,
+        "weightedScore": 22.5,
+        "errorCount": 0,
+        "warningCount": 0,
+        "issues": []
+      },
+      "D": {
+        "category": "D",
+        "label": "Spatial & A11y",
+        "score": 68.38,
+        "weight": 0.225,
+        "weightedScore": 15.39,
+        "errorCount": 0,
+        "warningCount": 5,
+        "issues": [
+          {
+            "type": "a11y",
+            "severity": "warning",
+            "source": "aom-extractor",
+            "component": ".w-fit.rounded-md.shadow-elevation-raised:nth-child(1) > .items-stretch.gap-y-\\(--space\\)[height=\"100%\"] > .justify-between.flex-wrap.gap-\\(--space\\) > h4",
+            "message": "Heading levels should only increase by one (heading-order)",
+            "suggestion": "Use `<Headline level={N}>` with sequential levels (1, 2, 3…). Do not skip heading levels. Import Headline from `@marigold/components`.",
+            "details": {
+              "ruleId": "heading-order",
+              "impact": "moderate",
+              "target": [
+                ".w-fit.rounded-md.shadow-elevation-raised:nth-child(1) > .items-stretch.gap-y-\\(--space\\)[height=\"100%\"] > .justify-between.flex-wrap.gap-\\(--space\\) > h4"
+              ],
+              "html": "<h4 class=\"text-lg font-semibold max-w-(--maxHeadlineWidth) text-left\">Mascot Sticker</h4>",
+              "scope": "page"
+            }
+          },
+          {
+            "type": "a11y",
+            "severity": "warning",
+            "source": "aom-extractor",
+            "component": "html",
+            "message": "Document should have one main landmark (landmark-one-main)",
+            "suggestion": "Wrap your page content in `<AppLayout>` with `<AppLayout.Main>` to provide a `<main>` landmark. Import AppLayout from `@marigold/components`.",
+            "details": {
+              "ruleId": "landmark-one-main",
+              "impact": "moderate",
+              "target": [
+                "html"
+              ],
+              "html": "<html lang=\"en\" data-theme=\"rui\">",
+              "scope": "page"
+            }
+          },
+          {
+            "type": "a11y",
+            "severity": "warning",
+            "source": "aom-extractor",
+            "component": "page",
+            "message": "All page content should be contained by landmarks — 30 elements affected (region)",
+            "suggestion": "All page content must be inside a landmark region. Use `<AppLayout>` with `<AppLayout.Main>` for the main area, `<TopNavigation>` for the header (`<header>`), and `<Sidebar>` for side navigation (`<aside>`). Import from `@marigold/components`.",
+            "details": {
+              "ruleId": "region",
+              "impact": "moderate",
+              "affectedCount": 30,
+              "scope": "page"
+            }
+          },
+          {
+            "type": "a11y",
+            "severity": "warning",
+            "source": "keyboard-a11y",
+            "component": "input",
+            "message": "Interactive element <input> (input) is not reachable via Tab key.",
+            "suggestion": "Ensure the element is focusable. Marigold interactive components are focusable by default — check if a parent has tabindex=\"-1\" or focus is trapped.",
+            "details": {
+              "selector": "body:nth-child(2) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div:nth-child(2) > div:nth-child(1) > div:nth-child(2) > input:nth-child(1)",
+              "role": "input",
+              "scope": "page"
+            }
+          },
+          {
+            "type": "a11y",
+            "severity": "warning",
+            "source": "keyboard-a11y",
+            "component": "button",
+            "message": "Interactive element <button> (button) is not reachable via Tab key.",
+            "suggestion": "Ensure the element is focusable. Marigold interactive components are focusable by default — check if a parent has tabindex=\"-1\" or focus is trapped.",
+            "details": {
+              "selector": "body:nth-child(2) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div:nth-child(2) > div:nth-child(3) > button:nth-child(2)",
+              "role": "button",
+              "scope": "page"
+            }
+          }
+        ]
+      },
+      "E": {
+        "category": "E",
+        "label": "Functional Completeness",
+        "score": 100,
+        "weight": 0.225,
+        "weightedScore": 22.5,
+        "errorCount": 0,
+        "warningCount": 0,
+        "issues": []
+      }
+    },
+    "renderSuccess": true
+  },
+  "efficiency": {
+    "durationMs": 478247,
+    "costUsd": 2.4531525000000007,
+    "inputTokens": 2054,
+    "outputTokens": 26277,
+    "cacheReadTokens": 1638727,
+    "cacheCreationTokens": 95692,
+    "totalTokens": 28331,
+    "numTurns": 37
+  },
+  "report": {
+    "file": "TestApp.tsx",
+    "errors": [
+      {
+        "type": "technical",
+        "severity": "error",
+        "source": "prop-validator",
+        "component": "Stack",
+        "message": "Prop \"height\" does not exist on <Stack>.",
+        "suggestion": "Remove the prop. Available props: space, children, stretch, alignX, alignY, asList, role, aria-live, id, aria-label, aria-labelledby, aria-describedby, aria-details.",
+        "location": {
+          "file": "TestApp.tsx",
+          "line": 292,
+          "column": 32
+        },
+        "details": {
+          "used": "height",
+          "available": [
+            "space",
+            "children",
+            "stretch",
+            "alignX",
+            "alignY",
+            "asList",
+            "role",
+            "aria-live",
+            "id",
+            "aria-label",
+            "aria-labelledby",
+            "aria-describedby",
+            "aria-details"
+          ]
+        }
+      }
+    ],
+    "warnings": [
+      {
+        "type": "a11y",
+        "severity": "warning",
+        "source": "aom-extractor",
+        "component": ".w-fit.rounded-md.shadow-elevation-raised:nth-child(1) > .items-stretch.gap-y-\\(--space\\)[height=\"100%\"] > .justify-between.flex-wrap.gap-\\(--space\\) > h4",
+        "message": "Heading levels should only increase by one (heading-order)",
+        "suggestion": "Use `<Headline level={N}>` with sequential levels (1, 2, 3…). Do not skip heading levels. Import Headline from `@marigold/components`.",
+        "details": {
+          "ruleId": "heading-order",
+          "impact": "moderate",
+          "target": [
+            ".w-fit.rounded-md.shadow-elevation-raised:nth-child(1) > .items-stretch.gap-y-\\(--space\\)[height=\"100%\"] > .justify-between.flex-wrap.gap-\\(--space\\) > h4"
+          ],
+          "html": "<h4 class=\"text-lg font-semibold max-w-(--maxHeadlineWidth) text-left\">Mascot Sticker</h4>",
+          "scope": "page"
+        }
+      },
+      {
+        "type": "a11y",
+        "severity": "warning",
+        "source": "aom-extractor",
+        "component": "html",
+        "message": "Document should have one main landmark (landmark-one-main)",
+        "suggestion": "Wrap your page content in `<AppLayout>` with `<AppLayout.Main>` to provide a `<main>` landmark. Import AppLayout from `@marigold/components`.",
+        "details": {
+          "ruleId": "landmark-one-main",
+          "impact": "moderate",
+          "target": [
+            "html"
+          ],
+          "html": "<html lang=\"en\" data-theme=\"rui\">",
+          "scope": "page"
+        }
+      },
+      {
+        "type": "a11y",
+        "severity": "warning",
+        "source": "aom-extractor",
+        "component": "page",
+        "message": "All page content should be contained by landmarks — 30 elements affected (region)",
+        "suggestion": "All page content must be inside a landmark region. Use `<AppLayout>` with `<AppLayout.Main>` for the main area, `<TopNavigation>` for the header (`<header>`), and `<Sidebar>` for side navigation (`<aside>`). Import from `@marigold/components`.",
+        "details": {
+          "ruleId": "region",
+          "impact": "moderate",
+          "affectedCount": 30,
+          "scope": "page"
+        }
+      },
+      {
+        "type": "a11y",
+        "severity": "warning",
+        "source": "keyboard-a11y",
+        "component": "input",
+        "message": "Interactive element <input> (input) is not reachable via Tab key.",
+        "suggestion": "Ensure the element is focusable. Marigold interactive components are focusable by default — check if a parent has tabindex=\"-1\" or focus is trapped.",
+        "details": {
+          "selector": "body:nth-child(2) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div:nth-child(2) > div:nth-child(1) > div:nth-child(2) > input:nth-child(1)",
+          "role": "input",
+          "scope": "page"
+        }
+      },
+      {
+        "type": "a11y",
+        "severity": "warning",
+        "source": "keyboard-a11y",
+        "component": "button",
+        "message": "Interactive element <button> (button) is not reachable via Tab key.",
+        "suggestion": "Ensure the element is focusable. Marigold interactive components are focusable by default — check if a parent has tabindex=\"-1\" or focus is trapped.",
+        "details": {
+          "selector": "body:nth-child(2) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div:nth-child(2) > div:nth-child(3) > button:nth-child(2)",
+          "role": "button",
+          "scope": "page"
+        }
+      }
+    ],
+    "passed": [
+      "TypeScript compilation",
+      "Component composition",
+      "Overlay accessible names",
+      "Compound component placement",
+      "Section headers",
+      "Collection item ids",
+      "Design system usage",
+      "Layout usage",
+      "Table usage",
+      "Component conventions",
+      "Theme variant compliance",
+      "No overlapping components detected",
+      "Responsive layout"
+    ],
+    "metadata": {
+      "renderTimeMs": 2174,
+      "componentsFound": [
+        "div",
+        "input",
+        "button",
+        "span"
+      ],
+      "checksRun": [
+        "technical",
+        "spatial",
+        "a11y"
+      ],
+      "coverage": {
+        "staticValuesChecked": 18,
+        "dynamicValuesSkipped": 14,
+        "spreadPropsBypassed": 0
+      },
+      "widthUtilization": 0.9875
+    },
+    "markdown": "marigold-validate: TestApp.tsx — 1 error(s), 5 warning(s)\n\n[error/technical] <Stack>: Prop \"height\" does not exist on <Stack>. (TestApp.tsx:292:32)\n  → Remove the prop. Available props: space, children, stretch, alignX, alignY, asList, role, aria-live, id, aria-label, aria-labelledby, aria-describedby, aria-details.\n  data: {used=height, available=[\"space\",\"children\",\"stretch\",\"alignX\",\"alignY\",\"asList\",\"role\",\"aria-live\", …]}\n[warning/a11y] <.w-fit.rounded-md.shadow-elevation-raised:nth-child(1) > .items-stretch.gap-y-\\(--space\\)[height=\"100%\"] > .justify-between.flex-wrap.gap-\\(--space\\) > h4>: Heading levels should only increase by one (heading-order)\n  → Use `<Headline level={N}>` with sequential levels (1, 2, 3…). Do not skip heading levels. Import Headline from `@marigold/components`.\n  data: {ruleId=heading-order, impact=moderate, target=[\".w-fit.rounded-md.shadow-elevation-raised:nth-child(1) > .items-stretch.gap-y-\\\\(--space\\\\)[height=\\\"100%\\\"] > .justi…, html=<h4 class=\"text-lg font-semibold max-w-(--maxHeadlineWidth) text-left\">Mascot..., scope=page}\n[warning/a11y] <button>: Interactive element <button> (button) is not reachable via Tab key.\n  → Ensure the element is focusable. Marigold interactive components are focusable by default — check if a parent has tabindex=\"-1\" or focus is trapped.\n  data: {selector=body:nth-child(2) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > ..., role=button, scope=page}\n[warning/a11y] <html>: Document should have one main landmark (landmark-one-main)\n  → Wrap your page content in `<AppLayout>` with `<AppLayout.Main>` to provide a `<main>` landmark. Import AppLayout from `@marigold/components`.\n  data: {ruleId=landmark-one-main, impact=moderate, target=[\"html\"], html=<html lang=\"en\" data-theme=\"rui\">, scope=page}\n[warning/a11y] <input>: Interactive element <input> (input) is not reachable via Tab key.\n  → Ensure the element is focusable. Marigold interactive components are focusable by default — check if a parent has tabindex=\"-1\" or focus is trapped.\n  data: {selector=body:nth-child(2) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > ..., role=input, scope=page}\n[warning/a11y] <page>: All page content should be contained by landmarks — 30 elements affected (region)\n  → All page content must be inside a landmark region. Use `<AppLayout>` with `<AppLayout.Main>` for the main area, `<TopNavigation>` for the header (`<header>`), and `<Sidebar>` for side navigation (`<aside>`). Import from `@marigold/components`.\n  data: {ruleId=region, impact=moderate, affectedCount=30, scope=page}\n\npassed: TypeScript compilation, Component composition, Overlay accessible names, Compound component placement, Section headers, Collection item ids, Design system usage, Layout usage, Table usage, Component conventions, Theme variant compliance, No overlapping components detected, Responsive layout\n\nchecks run: technical, spatial, a11y"
+  },
+  "componentsFound": [
+    "div",
+    "input",
+    "button",
+    "span"
+  ],
+  "renderTimeMs": 2174,
+  "sourceCode": "import { useEffect, useMemo, useState } from 'react';\nimport type { Key } from 'react';\nimport {\n  Badge,\n  Button,\n  Card,\n  Checkbox,\n  CheckboxGroup,\n  Drawer,\n  EmptyState,\n  Headline,\n  Inline,\n  Pagination,\n  SearchField,\n  Select,\n  Slider,\n  Stack,\n  Switch,\n  Tag,\n  Text,\n  Tiles,\n} from '@marigold/components';\n\ntype Status = 'New' | 'Sale' | 'Sold Out';\ntype Category = 'T-Shirts' | 'Hoodies' | 'Accessories' | 'Posters' | 'Stickers';\n\ninterface Product {\n  id: number;\n  name: string;\n  price: number;\n  status: Status;\n  category: Category;\n  sizes: string[];\n  popularity: number;\n  description: string;\n}\n\nconst ALL_CATEGORIES: Category[] = [\n  'T-Shirts',\n  'Hoodies',\n  'Accessories',\n  'Posters',\n  'Stickers',\n];\nconst ALL_SIZES = ['XS', 'S', 'M', 'L', 'XL'];\nconst PAGE_SIZE = 8;\nconst PRICE_MIN = 0;\nconst PRICE_MAX = 100;\n\nconst STATUS_VARIANT: Record<Status, 'info' | 'warning' | 'error'> = {\n  New: 'info',\n  Sale: 'warning',\n  'Sold Out': 'error',\n};\n\nconst PRODUCTS: Product[] = [\n  { id: 1, name: 'Classic Logo Tee', price: 24.99, status: 'Sale', category: 'T-Shirts', sizes: ['S', 'M', 'L', 'XL'], popularity: 88, description: 'Soft cotton tee with the classic embroidered logo.' },\n  { id: 2, name: 'Vintage Wash Tee', price: 29.99, status: 'New', category: 'T-Shirts', sizes: ['XS', 'S', 'M', 'L'], popularity: 64, description: 'Garment-dyed tee with a lived-in vintage feel.' },\n  { id: 3, name: 'Pocket Detail Tee', price: 27.5, status: 'Sale', category: 'T-Shirts', sizes: ['M', 'L', 'XL'], popularity: 41, description: 'Everyday tee finished with a contrast chest pocket.' },\n  { id: 4, name: 'Pullover Hoodie', price: 59.99, status: 'New', category: 'Hoodies', sizes: ['S', 'M', 'L', 'XL'], popularity: 95, description: 'Heavyweight fleece hoodie with a roomy front pocket.' },\n  { id: 5, name: 'Zip-Up Hoodie', price: 64.0, status: 'Sale', category: 'Hoodies', sizes: ['XS', 'S', 'M', 'L', 'XL'], popularity: 73, description: 'Full-zip hoodie with brushed interior for warmth.' },\n  { id: 6, name: 'Cropped Hoodie', price: 54.99, status: 'New', category: 'Hoodies', sizes: ['XS', 'S', 'M'], popularity: 38, description: 'Relaxed cropped hoodie in a soft cotton blend.' },\n  { id: 7, name: 'Embroidered Cap', price: 19.99, status: 'Sale', category: 'Accessories', sizes: [], popularity: 57, description: 'Six-panel cap with a tonal embroidered mark.' },\n  { id: 8, name: 'Canvas Tote Bag', price: 14.99, status: 'New', category: 'Accessories', sizes: [], popularity: 82, description: 'Sturdy canvas tote sized for everyday carry.' },\n  { id: 9, name: 'Enamel Pin Set', price: 9.99, status: 'Sale', category: 'Accessories', sizes: [], popularity: 29, description: 'Set of three enamel pins with secure clasps.' },\n  { id: 10, name: 'Knit Beanie', price: 22.0, status: 'New', category: 'Accessories', sizes: [], popularity: 49, description: 'Ribbed knit beanie with a fold-over cuff.' },\n  { id: 11, name: 'Skyline Poster', price: 12.99, status: 'Sale', category: 'Posters', sizes: [], popularity: 35, description: 'Matte art print of a hand-drawn city skyline.' },\n  { id: 12, name: 'Typographic Poster', price: 15.0, status: 'New', category: 'Posters', sizes: [], popularity: 60, description: 'Bold typographic print on heavyweight paper.' },\n  { id: 13, name: 'Tour Poster', price: 18.5, status: 'Sale', category: 'Posters', sizes: [], popularity: 71, description: 'Limited-run tour poster with metallic ink.' },\n  { id: 14, name: 'Sticker Pack', price: 6.99, status: 'New', category: 'Stickers', sizes: [], popularity: 90, description: 'Weatherproof vinyl sticker pack of ten designs.' },\n  { id: 15, name: 'Holographic Sticker', price: 4.5, status: 'Sale', category: 'Stickers', sizes: [], popularity: 44, description: 'Single holographic die-cut sticker.' },\n  { id: 16, name: 'Logo Sticker Sheet', price: 5.99, status: 'New', category: 'Stickers', sizes: [], popularity: 26, description: 'Sheet of mixed logo stickers for laptops.' },\n  { id: 17, name: 'Performance Tee', price: 34.99, status: 'New', category: 'T-Shirts', sizes: ['S', 'M', 'L', 'XL'], popularity: 53, description: 'Moisture-wicking tee built for training days.' },\n  { id: 18, name: 'Long Sleeve Tee', price: 32.0, status: 'Sale', category: 'T-Shirts', sizes: ['XS', 'S', 'M', 'L'], popularity: 47, description: 'Lightweight long sleeve with ribbed cuffs.' },\n  { id: 19, name: 'Sherpa Hoodie', price: 79.99, status: 'New', category: 'Hoodies', sizes: ['M', 'L', 'XL'], popularity: 67, description: 'Cozy sherpa-lined hoodie for cold weather.' },\n  { id: 20, name: 'Tech Fleece Hoodie', price: 89.0, status: 'Sale', category: 'Hoodies', sizes: ['S', 'M', 'L'], popularity: 78, description: 'Streamlined fleece hoodie with a modern cut.' },\n  { id: 21, name: 'Leather Keychain', price: 11.99, status: 'Sold Out', category: 'Accessories', sizes: [], popularity: 33, description: 'Full-grain leather keychain with a brass ring.' },\n  { id: 22, name: 'Travel Mug', price: 21.5, status: 'New', category: 'Accessories', sizes: [], popularity: 58, description: 'Insulated stainless mug that keeps drinks hot.' },\n  { id: 23, name: 'Minimalist Poster', price: 16.0, status: 'New', category: 'Posters', sizes: [], popularity: 51, description: 'Clean minimalist print in a muted palette.' },\n  { id: 24, name: 'Mascot Sticker', price: 3.99, status: 'Sold Out', category: 'Stickers', sizes: [], popularity: 62, description: 'Glossy die-cut sticker of the team mascot.' },\n];\n\nconst SORT_OPTIONS = [\n  { id: 'newest', label: 'Newest' },\n  { id: 'price-asc', label: 'Price: Low to High' },\n  { id: 'price-desc', label: 'Price: High to Low' },\n  { id: 'popular', label: 'Most Popular' },\n];\n\nconst TestApp = () => {\n  const [query, setQuery] = useState('');\n  const [sort, setSort] = useState('newest');\n  const [categories, setCategories] = useState<string[]>([]);\n  const [priceRange, setPriceRange] = useState<number[]>([PRICE_MIN, PRICE_MAX]);\n  const [sizes, setSizes] = useState<string[]>([]);\n  const [inStockOnly, setInStockOnly] = useState(false);\n  const [page, setPage] = useState(1);\n  const [cart, setCart] = useState(0);\n\n  const priceFiltered =\n    priceRange[0] !== PRICE_MIN || priceRange[1] !== PRICE_MAX;\n\n  // Reset to the first page whenever the result set changes.\n  useEffect(() => {\n    setPage(1);\n  }, [query, sort, categories, priceRange, sizes, inStockOnly]);\n\n  const filtered = useMemo(() => {\n    const q = query.trim().toLowerCase();\n    const result = PRODUCTS.filter(product => {\n      if (q && !product.name.toLowerCase().includes(q)) return false;\n      if (categories.length && !categories.includes(product.category))\n        return false;\n      if (product.price < priceRange[0] || product.price > priceRange[1])\n        return false;\n      if (sizes.length && !sizes.some(size => product.sizes.includes(size)))\n        return false;\n      if (inStockOnly && product.status === 'Sold Out') return false;\n      return true;\n    });\n\n    result.sort((a, b) => {\n      switch (sort) {\n        case 'price-asc':\n          return a.price - b.price;\n        case 'price-desc':\n          return b.price - a.price;\n        case 'popular':\n          return b.popularity - a.popularity;\n        case 'newest':\n        default:\n          return b.id - a.id;\n      }\n    });\n\n    return result;\n  }, [query, sort, categories, priceRange, sizes, inStockOnly]);\n\n  const totalPages = Math.max(1, Math.ceil(filtered.length / PAGE_SIZE));\n  const currentPage = Math.min(page, totalPages);\n  const pageItems = filtered.slice(\n    (currentPage - 1) * PAGE_SIZE,\n    currentPage * PAGE_SIZE\n  );\n\n  const chips = useMemo(() => {\n    const items: { id: string; label: string }[] = [];\n    if (query.trim()) items.push({ id: 'search', label: `Search: ${query.trim()}` });\n    categories.forEach(category =>\n      items.push({ id: `cat:${category}`, label: `Category: ${category}` })\n    );\n    if (priceFiltered)\n      items.push({\n        id: 'price',\n        label: `Price: $${priceRange[0]} – $${priceRange[1]}`,\n      });\n    sizes.forEach(size => items.push({ id: `size:${size}`, label: `Size: ${size}` }));\n    if (inStockOnly) items.push({ id: 'instock', label: 'In stock only' });\n    return items;\n  }, [query, categories, priceFiltered, priceRange, sizes, inStockOnly]);\n\n  const removeChips = (keys: Set<Key>) => {\n    keys.forEach(rawKey => {\n      const key = String(rawKey);\n      if (key === 'search') setQuery('');\n      else if (key === 'price') setPriceRange([PRICE_MIN, PRICE_MAX]);\n      else if (key === 'instock') setInStockOnly(false);\n      else if (key.startsWith('cat:'))\n        setCategories(prev => prev.filter(c => c !== key.slice(4)));\n      else if (key.startsWith('size:'))\n        setSizes(prev => prev.filter(s => s !== key.slice(5)));\n    });\n  };\n\n  const resetFilters = () => {\n    setCategories([]);\n    setPriceRange([PRICE_MIN, PRICE_MAX]);\n    setSizes([]);\n    setInStockOnly(false);\n  };\n\n  const clearAll = () => {\n    setQuery('');\n    resetFilters();\n  };\n\n  return (\n    <Stack space={6}>\n      <Inline space={4} alignY=\"center\" alignX=\"between\">\n        <Stack space={2}>\n          <Headline level={1}>Merchandise Store</Headline>\n          <Text color=\"muted-foreground\">\n            Browse our collection of branded merchandise.\n          </Text>\n        </Stack>\n        <Badge variant=\"primary\">{`Cart: ${cart}`}</Badge>\n      </Inline>\n\n      <Inline space={4} alignY=\"bottom\">\n        <SearchField\n          label=\"Search\"\n          aria-label=\"Search products by name\"\n          placeholder=\"Search products…\"\n          value={query}\n          onChange={setQuery}\n          width={64}\n        />\n        <Select\n          label=\"Sort by\"\n          aria-label=\"Sort products\"\n          value={sort}\n          onChange={key => setSort(String(key))}\n          width=\"fit\"\n        >\n          {SORT_OPTIONS.map(option => (\n            <Select.Option key={option.id} id={option.id}>\n              {option.label}\n            </Select.Option>\n          ))}\n        </Select>\n        <Drawer.Trigger>\n          <Button variant=\"secondary\">Filters</Button>\n          <Drawer closeButton>\n            <Drawer.Title>Filters</Drawer.Title>\n            <Drawer.Content>\n              <Stack space={6}>\n                <CheckboxGroup\n                  label=\"Category\"\n                  value={categories}\n                  onChange={setCategories}\n                >\n                  {ALL_CATEGORIES.map(category => (\n                    <Checkbox key={category} value={category} label={category} />\n                  ))}\n                </CheckboxGroup>\n                <Slider\n                  label=\"Price range\"\n                  value={priceRange}\n                  onChange={value => setPriceRange(value as number[])}\n                  minValue={PRICE_MIN}\n                  maxValue={PRICE_MAX}\n                  step={5}\n                  thumbLabels={['Minimum', 'Maximum']}\n                  formatOptions={{ style: 'currency', currency: 'USD' }}\n                />\n                <CheckboxGroup label=\"Size\" value={sizes} onChange={setSizes}>\n                  {ALL_SIZES.map(size => (\n                    <Checkbox key={size} value={size} label={size} />\n                  ))}\n                </CheckboxGroup>\n                <Switch\n                  label=\"In stock only\"\n                  selected={inStockOnly}\n                  onChange={setInStockOnly}\n                />\n              </Stack>\n            </Drawer.Content>\n            <Drawer.Actions>\n              <Button variant=\"secondary\" onPress={resetFilters}>\n                Reset\n              </Button>\n              <Button slot=\"close\" variant=\"primary\">\n                Apply Filters\n              </Button>\n            </Drawer.Actions>\n          </Drawer>\n        </Drawer.Trigger>\n      </Inline>\n\n      {chips.length ? (\n        <Tag.Group\n          label=\"Applied filters\"\n          onRemove={removeChips}\n          removeAll\n        >\n          {chips.map(chip => (\n            <Tag key={chip.id} id={chip.id}>\n              {chip.label}\n            </Tag>\n          ))}\n        </Tag.Group>\n      ) : (\n        <Text color=\"muted-foreground\" fontStyle=\"italic\">\n          No filters applied\n        </Text>\n      )}\n\n      {pageItems.length ? (\n        <Tiles tilesWidth=\"260px\" space={4} stretch equalHeight>\n          {pageItems.map(product => (\n            <Card key={product.id} p={4}>\n              <Stack space={3} height=\"100%\">\n                <Inline space={2} alignX=\"between\" alignY=\"center\">\n                  <Headline level={4}>{product.name}</Headline>\n                  <Badge variant={STATUS_VARIANT[product.status]}>\n                    {product.status}\n                  </Badge>\n                </Inline>\n                <Text weight=\"bold\" fontSize=\"lg\">\n                  ${product.price.toFixed(2)}\n                </Text>\n                <Text color=\"muted-foreground\">{product.description}</Text>\n                <Button\n                  variant=\"primary\"\n                  fullWidth\n                  disabled={product.status === 'Sold Out'}\n                  onPress={() => setCart(count => count + 1)}\n                >\n                  Add to Cart\n                </Button>\n              </Stack>\n            </Card>\n          ))}\n        </Tiles>\n      ) : (\n        <EmptyState\n          title=\"No products found\"\n          description=\"Try adjusting your filters or search query.\"\n          action={\n            <Button variant=\"primary\" onPress={clearAll}>\n              Clear all filters\n            </Button>\n          }\n        />\n      )}\n\n      {pageItems.length ? (\n        <Inline space={4} alignY=\"center\" alignX=\"center\">\n          <Text fontSize=\"sm\" color=\"muted-foreground\">\n            Page {currentPage} of {totalPages}\n          </Text>\n          <Pagination\n            totalItems={filtered.length}\n            pageSize={PAGE_SIZE}\n            page={currentPage}\n            onChange={setPage}\n          />\n        </Inline>\n      ) : null}\n    </Stack>\n  );\n};\n\nexport default TestApp;\n",
+  "assertions": {
+    "passed": [
+      {
+        "id": "a-import-marigold",
+        "description": "Imports from @marigold/components",
+        "severity": "required",
+        "passed": true,
+        "evidence": "import from \"@marigold/components\" found"
+      },
+      {
+        "id": "a-search",
+        "description": "SearchField for product search",
+        "severity": "required",
+        "passed": true,
+        "evidence": "<SearchField> found"
+      },
+      {
+        "id": "a-drawer",
+        "description": "Drawer for filter panel",
+        "severity": "required",
+        "passed": true,
+        "evidence": "<Drawer> found"
+      },
+      {
+        "id": "a-checkbox",
+        "description": "Checkbox for filter options",
+        "severity": "required",
+        "passed": true,
+        "evidence": "matched: <Checkbox> found; <CheckboxGroup> found"
+      },
+      {
+        "id": "a-slider",
+        "description": "Slider for price range",
+        "severity": "required",
+        "passed": true,
+        "evidence": "<Slider> found"
+      },
+      {
+        "id": "a-switch",
+        "description": "Switch for availability filter",
+        "severity": "required",
+        "passed": true,
+        "evidence": "<Switch> found"
+      },
+      {
+        "id": "a-tag-group",
+        "description": "Tag.Group for applied filters",
+        "severity": "required",
+        "passed": true,
+        "evidence": "matched: <Tag> found"
+      },
+      {
+        "id": "a-card",
+        "description": "Card for product display",
+        "severity": "required",
+        "passed": true,
+        "evidence": "<Card> found"
+      },
+      {
+        "id": "a-badge",
+        "description": "Badge for product status",
+        "severity": "required",
+        "passed": true,
+        "evidence": "<Badge> found"
+      },
+      {
+        "id": "a-button",
+        "description": "Button for add to cart",
+        "severity": "required",
+        "passed": true,
+        "evidence": "<Button> found"
+      },
+      {
+        "id": "a-pagination",
+        "description": "Pagination component",
+        "severity": "required",
+        "passed": true,
+        "evidence": "<Pagination> found"
+      },
+      {
+        "id": "a-tiles",
+        "description": "Tiles layout for product grid",
+        "severity": "required",
+        "passed": true,
+        "evidence": "<Tiles> found"
+      },
+      {
+        "id": "a-empty-state",
+        "description": "EmptyState when no products match",
+        "severity": "required",
+        "passed": true,
+        "evidence": "<EmptyState> found"
+      },
+      {
+        "id": "a-headline",
+        "description": "Headline for page title",
+        "severity": "required",
+        "passed": true,
+        "evidence": "<Headline> found"
+      },
+      {
+        "id": "a-select",
+        "description": "Select for sort dropdown",
+        "severity": "required",
+        "passed": true,
+        "evidence": "<Select> found"
+      },
+      {
+        "id": "a-no-onclick-on-marigold",
+        "description": "No onClick on Marigold Button",
+        "severity": "recommended",
+        "passed": true,
+        "evidence": "\"/<Button[^>]*onClick/\" correctly absent"
+      }
+    ],
+    "failed": [],
+    "passRate": 1,
+    "requiredPassRate": 1,
+    "weightedPassRate": 1,
+    "total": 16
+  },
+  "validatePackageVersion": "0.0.1",
+  "playwrightVersion": null,
+  "resolvedModelId": "claude-opus-4-8",
+  "claudeCliVersion": "2.1.193 (Claude Code)",
+  "sessionId": "17e83881-b1a6-4410-8e0f-d8c19f211fed"
+}

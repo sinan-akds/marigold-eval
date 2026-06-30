@@ -1,21 +1,18 @@
 import { useState } from 'react';
-import type { DateValue } from '@internationalized/date';
 import {
   Accordion,
-  AppLayout,
   Button,
   Card,
   Checkbox,
-  CheckboxGroup,
   ComboBox,
   DatePicker,
+  Divider,
   FileField,
   Headline,
   Inline,
   Loader,
   NumberField,
   Radio,
-  RadioGroup,
   SectionMessage,
   Select,
   Stack,
@@ -28,11 +25,46 @@ import {
   ToastProvider,
   useToast,
 } from '@marigold/components';
-import type { TimeValue } from '@marigold/components';
 
-// ---------------------------------------------------------------------------
-// Constants
-// ---------------------------------------------------------------------------
+interface FormData {
+  fullName: string;
+  email: string;
+  phone: string;
+  company: string;
+  jobTitle: string;
+  eventDate: any;
+  timeSlot: any;
+  sessionTrack: string;
+  dietary: string;
+  numGuests: number;
+  specialRequests: string;
+  tshirtSize: string;
+  topics: string[];
+  commPrefs: string[];
+  hasAccessibility: boolean;
+  accessibilityDetails: string;
+  agreedToTerms: boolean;
+}
+
+const INITIAL_FORM: FormData = {
+  fullName: '',
+  email: '',
+  phone: '',
+  company: '',
+  jobTitle: '',
+  eventDate: null,
+  timeSlot: null,
+  sessionTrack: '',
+  dietary: '',
+  numGuests: 0,
+  specialRequests: '',
+  tshirtSize: '',
+  topics: [],
+  commPrefs: [],
+  hasAccessibility: false,
+  accessibilityDetails: '',
+  agreedToTerms: false,
+};
 
 const STEP_TITLES = [
   'Personal Information',
@@ -41,620 +73,492 @@ const STEP_TITLES = [
   'Review & Confirm',
 ];
 
-const JOB_TITLE_SUGGESTIONS = [
-  'Developer',
-  'Designer',
-  'Product Manager',
-  'Engineering Manager',
-  'CTO',
-  'Other',
-];
-
-const DIETARY_OPTIONS = ['None', 'Vegetarian', 'Vegan', 'Gluten-Free', 'Kosher', 'Halal'];
-const SESSION_TRACKS = ['Technical', 'Design', 'Business', 'Workshop'];
-const TSHIRT_SIZES = ['XS', 'S', 'M', 'L', 'XL', 'XXL'];
-const TOPIC_SUGGESTIONS = [
-  'AI/ML',
-  'Web Development',
-  'Cloud',
-  'Security',
-  'DevOps',
-  'Mobile',
-  'Data Science',
-];
-const COMM_PREF_OPTIONS = [
-  { value: 'email-updates', label: 'Email updates about the event' },
-  { value: 'sms-reminders', label: 'SMS reminders' },
-  { value: 'post-survey', label: 'Post-event survey' },
-  { value: 'newsletter', label: 'Newsletter subscription' },
-];
-
-// ---------------------------------------------------------------------------
-// Types
-// ---------------------------------------------------------------------------
-
-interface FormState {
-  fullName: string;
-  email: string;
-  phone: string;
-  company: string;
-  jobTitle: string;
-  profilePhoto: File | null;
-  eventDate: DateValue | null;
-  preferredTimeSlot: TimeValue | null;
-  sessionTrack: string;
-  dietaryRequirements: string;
-  numberOfGuests: number;
-  specialRequests: string;
-  tshirtSize: string;
-  topicsOfInterest: (string | number)[];
-  communicationPrefs: string[];
-  hasAccessibilityNeeds: boolean;
-  accessibilityDetails: string;
-  termsAgreed: boolean;
-}
-
-const INITIAL_FORM: FormState = {
-  fullName: '',
-  email: '',
-  phone: '',
-  company: '',
-  jobTitle: '',
-  profilePhoto: null,
-  eventDate: null,
-  preferredTimeSlot: null,
-  sessionTrack: '',
-  dietaryRequirements: '',
-  numberOfGuests: 0,
-  specialRequests: '',
-  tshirtSize: '',
-  topicsOfInterest: [],
-  communicationPrefs: [],
-  hasAccessibilityNeeds: false,
-  accessibilityDetails: '',
-  termsAgreed: false,
-};
-
-// ---------------------------------------------------------------------------
-// Helpers
-// ---------------------------------------------------------------------------
-
-function validateEmail(email: string): boolean {
+function isValidEmail(email: string) {
   return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
 }
 
-function generateConfirmationNumber(): string {
-  const chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
-  const rand = () => chars[Math.floor(Math.random() * chars.length)];
-  return `EVT-${rand()}${rand()}${rand()}${rand()}-${rand()}${rand()}${rand()}${rand()}`;
+function generateConfirmation() {
+  return 'REG-' + String(Math.floor(Math.random() * 900000 + 100000));
 }
 
-function formatDate(d: DateValue | null): string {
-  if (!d) return '—';
-  return `${d.month}/${d.day}/${d.year}`;
-}
-
-function formatTime(t: TimeValue | null): string {
-  if (!t) return '—';
-  const h = t.hour;
-  const m = String(t.minute).padStart(2, '0');
-  const period = h >= 12 ? 'PM' : 'AM';
-  const hour12 = h % 12 === 0 ? 12 : h % 12;
-  return `${hour12}:${m} ${period}`;
-}
-
-// ---------------------------------------------------------------------------
-// Success View
-// ---------------------------------------------------------------------------
-
-interface SuccessViewProps {
-  form: FormState;
-  confirmationNumber: string;
-  onReset: () => void;
-}
-
-function SuccessView({ form, confirmationNumber, onReset }: SuccessViewProps) {
-  return (
-    <Stack space={6}>
-      <SectionMessage variant="success">
-        <SectionMessage.Title>Registration confirmed!</SectionMessage.Title>
-        <SectionMessage.Content>
-          Your registration has been successfully submitted. Check your email for details.
-        </SectionMessage.Content>
-      </SectionMessage>
-      <Card>
-        <Stack space={4}>
-          <Headline level={3}>Registration Summary</Headline>
-          <Stack space={2}>
-            <Inline space={2}>
-              <Text weight="bold">Name:</Text>
-              <Text>{form.fullName}</Text>
-            </Inline>
-            <Inline space={2}>
-              <Text weight="bold">Email:</Text>
-              <Text>{form.email}</Text>
-            </Inline>
-            <Inline space={2}>
-              <Text weight="bold">Event Date:</Text>
-              <Text>{formatDate(form.eventDate)}</Text>
-            </Inline>
-            <Inline space={2}>
-              <Text weight="bold">Confirmation Number:</Text>
-              <Text>{confirmationNumber}</Text>
-            </Inline>
-          </Stack>
-          <Button variant="primary" onPress={onReset}>
-            Register Another
-          </Button>
-        </Stack>
-      </Card>
-    </Stack>
-  );
-}
-
-// ---------------------------------------------------------------------------
-// Step 1 — Personal Information
-// ---------------------------------------------------------------------------
-
-interface Step1Props {
-  form: FormState;
+// ── Step 1 ────────────────────────────────────────────────────────────────────
+function Step1({
+  form,
+  errors,
+  update,
+}: {
+  form: FormData;
   errors: Record<string, string>;
-  photoPreviewUrl: string | null;
-  onChange: <K extends keyof FormState>(key: K, value: FormState[K]) => void;
-  onPhotoCapture: (url: string) => void;
-}
-
-function Step1({ form, errors, photoPreviewUrl, onChange, onPhotoCapture }: Step1Props) {
+  update: (key: keyof FormData, value: any) => void;
+}) {
   return (
     <Stack space={4}>
-      <TextField
-        label="Full Name"
-        required
-        value={form.fullName}
-        onChange={(v) => onChange('fullName', v)}
-        error={!!errors.fullName}
-        errorMessage={errors.fullName}
-      />
-      <TextField
-        label="Email"
-        type="email"
-        required
-        value={form.email}
-        onChange={(v) => onChange('email', v)}
-        error={!!errors.email}
-        errorMessage={errors.email}
-      />
-      <TextField
-        label="Phone Number"
-        type="tel"
-        value={form.phone}
-        onChange={(v) => onChange('phone', v)}
-      />
-      <TextField
-        label="Company / Organization"
-        value={form.company}
-        onChange={(v) => onChange('company', v)}
-      />
-      <ComboBox
-        label="Job Title"
-        allowsCustomValue
-        value={form.jobTitle}
-        onChange={(v) => onChange('jobTitle', v)}
-      >
-        {JOB_TITLE_SUGGESTIONS.map((t) => (
-          <ComboBox.Option key={t} id={t}>
-            {t}
-          </ComboBox.Option>
-        ))}
-      </ComboBox>
-      <FileField
-        label="Profile Photo"
-        accept={['image/*']}
-        onDrop={async (e) => {
-          const fileItems = e.items.filter((item: any) => item.kind === 'file');
-          if (fileItems.length > 0) {
-            const file = await (fileItems[0] as any).getFile();
-            onChange('profilePhoto', file);
-            onPhotoCapture(URL.createObjectURL(file));
-          }
-        }}
-      />
-      {photoPreviewUrl && (
-        <img
-          src={photoPreviewUrl}
-          alt="Profile photo preview"
-          style={{
-            width: 80,
-            height: 80,
-            objectFit: 'cover',
-            borderRadius: '50%',
-            display: 'block',
-          }}
-        />
-      )}
       <SectionMessage variant="info">
         <SectionMessage.Content>
           Your information will only be used for this event.
         </SectionMessage.Content>
       </SectionMessage>
+
+      <TextField
+        label="Full Name"
+        required
+        value={form.fullName}
+        onChange={v => update('fullName', v)}
+        error={!!errors.fullName}
+        errorMessage={errors.fullName}
+      />
+
+      <TextField
+        label="Email"
+        type="email"
+        required
+        value={form.email}
+        onChange={v => update('email', v)}
+        error={!!errors.email}
+        errorMessage={errors.email}
+      />
+
+      <TextField
+        label="Phone Number"
+        type="tel"
+        value={form.phone}
+        onChange={v => update('phone', v)}
+      />
+
+      <TextField
+        label="Company / Organization"
+        value={form.company}
+        onChange={v => update('company', v)}
+      />
+
+      <ComboBox
+        label="Job Title"
+        allowsCustomValue
+        value={form.jobTitle}
+        onChange={v => update('jobTitle', v)}
+        menuTrigger="focus"
+      >
+        <ComboBox.Option id="Developer">Developer</ComboBox.Option>
+        <ComboBox.Option id="Designer">Designer</ComboBox.Option>
+        <ComboBox.Option id="Product Manager">Product Manager</ComboBox.Option>
+        <ComboBox.Option id="Engineering Manager">
+          Engineering Manager
+        </ComboBox.Option>
+        <ComboBox.Option id="CTO">CTO</ComboBox.Option>
+        <ComboBox.Option id="Other">Other</ComboBox.Option>
+      </ComboBox>
+
+      <FileField
+        label="Profile Photo"
+        accept={['image/*']}
+      />
     </Stack>
   );
 }
 
-// ---------------------------------------------------------------------------
-// Step 2 — Event Details
-// ---------------------------------------------------------------------------
-
-interface Step2Props {
-  form: FormState;
+// ── Step 2 ────────────────────────────────────────────────────────────────────
+function Step2({
+  form,
+  errors,
+  update,
+}: {
+  form: FormData;
   errors: Record<string, string>;
-  onChange: <K extends keyof FormState>(key: K, value: FormState[K]) => void;
-}
-
-function Step2({ form, errors, onChange }: Step2Props) {
+  update: (key: keyof FormData, value: any) => void;
+}) {
   return (
     <Stack space={4}>
       <DatePicker
         label="Event Date"
         required
         value={form.eventDate}
-        onChange={(v) => onChange('eventDate', v)}
+        onChange={d => update('eventDate', d)}
         error={!!errors.eventDate}
         errorMessage={errors.eventDate}
       />
+
       <TimeField
         label="Preferred Time Slot"
-        value={form.preferredTimeSlot}
-        onChange={(v) => onChange('preferredTimeSlot', v)}
+        value={form.timeSlot}
+        onChange={t => update('timeSlot', t)}
       />
-      <RadioGroup
+
+      <Radio.Group
         label="Session Track"
         value={form.sessionTrack}
-        onChange={(v) => onChange('sessionTrack', v)}
+        onChange={v => update('sessionTrack', v)}
       >
-        {SESSION_TRACKS.map((track) => (
-          <Radio key={track} value={track}>
-            {track}
-          </Radio>
-        ))}
-      </RadioGroup>
+        <Radio value="Technical">Technical</Radio>
+        <Radio value="Design">Design</Radio>
+        <Radio value="Business">Business</Radio>
+        <Radio value="Workshop">Workshop</Radio>
+      </Radio.Group>
+
       <ComboBox
         label="Dietary Requirements"
         allowsCustomValue
+        value={form.dietary}
+        onChange={v => update('dietary', v)}
         menuTrigger="focus"
-        value={form.dietaryRequirements}
-        onChange={(v) => onChange('dietaryRequirements', v)}
       >
-        {DIETARY_OPTIONS.map((d) => (
-          <ComboBox.Option key={d} id={d}>
-            {d}
-          </ComboBox.Option>
-        ))}
+        <ComboBox.Option id="None">None</ComboBox.Option>
+        <ComboBox.Option id="Vegetarian">Vegetarian</ComboBox.Option>
+        <ComboBox.Option id="Vegan">Vegan</ComboBox.Option>
+        <ComboBox.Option id="Gluten-Free">Gluten-Free</ComboBox.Option>
+        <ComboBox.Option id="Kosher">Kosher</ComboBox.Option>
+        <ComboBox.Option id="Halal">Halal</ComboBox.Option>
       </ComboBox>
+
       <NumberField
         label="Number of Guests"
+        value={form.numGuests}
+        onChange={v => update('numGuests', v)}
         minValue={0}
         maxValue={5}
-        value={form.numberOfGuests}
-        onChange={(v) => onChange('numberOfGuests', v)}
         width="1/4"
       />
+
       <TextArea
         label="Special Requests"
         value={form.specialRequests}
-        onChange={(v) => onChange('specialRequests', v)}
-        rows={4}
+        onChange={v => update('specialRequests', v)}
       />
     </Stack>
   );
 }
 
-// ---------------------------------------------------------------------------
-// Step 3 — Preferences
-// ---------------------------------------------------------------------------
-
-interface Step3Props {
-  form: FormState;
-  onChange: <K extends keyof FormState>(key: K, value: FormState[K]) => void;
-}
-
-function Step3({ form, onChange }: Step3Props) {
+// ── Step 3 ────────────────────────────────────────────────────────────────────
+function Step3({
+  form,
+  update,
+}: {
+  form: FormData;
+  update: (key: keyof FormData, value: any) => void;
+}) {
   return (
     <Stack space={4}>
       <Select
         label="T-Shirt Size"
-        selectedKey={form.tshirtSize || null}
-        onSelectionChange={(k) => onChange('tshirtSize', String(k))}
         placeholder="Select a size"
+        selectedKey={form.tshirtSize || null}
+        onSelectionChange={key => update('tshirtSize', String(key))}
       >
-        {TSHIRT_SIZES.map((s) => (
-          <Select.Option key={s} id={s}>
-            {s}
-          </Select.Option>
-        ))}
+        <Select.Option id="XS">XS</Select.Option>
+        <Select.Option id="S">S</Select.Option>
+        <Select.Option id="M">M</Select.Option>
+        <Select.Option id="L">L</Select.Option>
+        <Select.Option id="XL">XL</Select.Option>
+        <Select.Option id="XXL">XXL</Select.Option>
       </Select>
+
       <TagField
         label="Topics of Interest"
-        value={form.topicsOfInterest}
-        onChange={(keys) => onChange('topicsOfInterest', keys)}
+        value={form.topics as any}
+        onChange={(keys: any) => update('topics', Array.from(keys) as string[])}
       >
-        {TOPIC_SUGGESTIONS.map((t) => (
-          <TagField.Option key={t} id={t}>
-            {t}
-          </TagField.Option>
-        ))}
+        <TagField.Option id="AI/ML">AI/ML</TagField.Option>
+        <TagField.Option id="Web Development">Web Development</TagField.Option>
+        <TagField.Option id="Cloud">Cloud</TagField.Option>
+        <TagField.Option id="Security">Security</TagField.Option>
+        <TagField.Option id="DevOps">DevOps</TagField.Option>
+        <TagField.Option id="Mobile">Mobile</TagField.Option>
+        <TagField.Option id="Data Science">Data Science</TagField.Option>
       </TagField>
-      <CheckboxGroup
+
+      <Checkbox.Group
         label="Communication Preferences"
-        value={form.communicationPrefs}
-        onChange={(v) => onChange('communicationPrefs', v)}
+        value={form.commPrefs}
+        onChange={values => update('commPrefs', values)}
       >
-        {COMM_PREF_OPTIONS.map((p) => (
-          <Checkbox key={p.value} value={p.value} label={p.label} />
-        ))}
-      </CheckboxGroup>
+        <Checkbox value="email-updates" label="Email updates about the event" />
+        <Checkbox value="sms-reminders" label="SMS reminders" />
+        <Checkbox value="post-survey" label="Post-event survey" />
+        <Checkbox value="newsletter" label="Newsletter subscription" />
+      </Checkbox.Group>
+
       <Switch
         label="I have accessibility requirements"
-        selected={form.hasAccessibilityNeeds}
-        onChange={(v: boolean) => onChange('hasAccessibilityNeeds', v)}
+        selected={form.hasAccessibility}
+        onChange={checked => update('hasAccessibility', checked)}
       />
-      {form.hasAccessibilityNeeds && (
+
+      {form.hasAccessibility && (
         <TextArea
           label="Accessibility Details"
           value={form.accessibilityDetails}
-          onChange={(v) => onChange('accessibilityDetails', v)}
-          rows={3}
-          description="Please describe your accessibility needs."
+          onChange={v => update('accessibilityDetails', v)}
         />
       )}
     </Stack>
   );
 }
 
-// ---------------------------------------------------------------------------
-// Step 4 — Review & Confirm
-// ---------------------------------------------------------------------------
+// ── Step 4 (Review) ───────────────────────────────────────────────────────────
+const COMM_LABELS: Record<string, string> = {
+  'email-updates': 'Email updates about the event',
+  'sms-reminders': 'SMS reminders',
+  'post-survey': 'Post-event survey',
+  newsletter: 'Newsletter subscription',
+};
 
-interface Step4Props {
-  form: FormState;
-  errors: Record<string, string>;
-  onChange: <K extends keyof FormState>(key: K, value: FormState[K]) => void;
+function ReviewRow({ label, value }: { label: string; value: string }) {
+  return (
+    <Inline space={2}>
+      <Text weight="bold">{label}</Text>
+      <Text>{value}</Text>
+    </Inline>
+  );
 }
 
-function Step4({ form, errors, onChange }: Step4Props) {
-  const commLabels = form.communicationPrefs
-    .map((v) => COMM_PREF_OPTIONS.find((o) => o.value === v)?.label ?? v)
-    .join(', ');
-
+function Step4({
+  form,
+  errors,
+  update,
+}: {
+  form: FormData;
+  errors: Record<string, string>;
+  update: (key: keyof FormData, value: any) => void;
+}) {
   return (
     <Stack space={6}>
-      <Accordion variant="card">
-        <Accordion.Item id="personal">
+      <Accordion>
+        <Accordion.Item>
           <Accordion.Header>Personal Information</Accordion.Header>
           <Accordion.Content>
             <Stack space={2}>
-              <Inline space={2}>
-                <Text weight="bold">Name:</Text>
-                <Text>{form.fullName || '—'}</Text>
-              </Inline>
-              <Inline space={2}>
-                <Text weight="bold">Email:</Text>
-                <Text>{form.email || '—'}</Text>
-              </Inline>
-              <Inline space={2}>
-                <Text weight="bold">Phone:</Text>
-                <Text>{form.phone || '—'}</Text>
-              </Inline>
-              <Inline space={2}>
-                <Text weight="bold">Company:</Text>
-                <Text>{form.company || '—'}</Text>
-              </Inline>
-              <Inline space={2}>
-                <Text weight="bold">Job Title:</Text>
-                <Text>{form.jobTitle || '—'}</Text>
-              </Inline>
+              <ReviewRow label="Full Name:" value={form.fullName || '—'} />
+              <ReviewRow label="Email:" value={form.email || '—'} />
+              <ReviewRow label="Phone:" value={form.phone || '—'} />
+              <ReviewRow label="Company:" value={form.company || '—'} />
+              <ReviewRow label="Job Title:" value={form.jobTitle || '—'} />
             </Stack>
           </Accordion.Content>
         </Accordion.Item>
-        <Accordion.Item id="event">
+
+        <Accordion.Item>
           <Accordion.Header>Event Details</Accordion.Header>
           <Accordion.Content>
             <Stack space={2}>
-              <Inline space={2}>
-                <Text weight="bold">Date:</Text>
-                <Text>{formatDate(form.eventDate)}</Text>
-              </Inline>
-              <Inline space={2}>
-                <Text weight="bold">Time:</Text>
-                <Text>{formatTime(form.preferredTimeSlot)}</Text>
-              </Inline>
-              <Inline space={2}>
-                <Text weight="bold">Track:</Text>
-                <Text>{form.sessionTrack || '—'}</Text>
-              </Inline>
-              <Inline space={2}>
-                <Text weight="bold">Dietary:</Text>
-                <Text>{form.dietaryRequirements || '—'}</Text>
-              </Inline>
-              <Inline space={2}>
-                <Text weight="bold">Guests:</Text>
-                <Text>{String(form.numberOfGuests)}</Text>
-              </Inline>
+              <ReviewRow
+                label="Event Date:"
+                value={form.eventDate ? String(form.eventDate) : '—'}
+              />
+              <ReviewRow
+                label="Time Slot:"
+                value={form.timeSlot ? String(form.timeSlot) : '—'}
+              />
+              <ReviewRow
+                label="Session Track:"
+                value={form.sessionTrack || '—'}
+              />
+              <ReviewRow
+                label="Dietary Requirements:"
+                value={form.dietary || '—'}
+              />
+              <ReviewRow
+                label="Number of Guests:"
+                value={String(form.numGuests)}
+              />
+              {form.specialRequests && (
+                <Stack space={1}>
+                  <Text weight="bold">Special Requests:</Text>
+                  <Text>{form.specialRequests}</Text>
+                </Stack>
+              )}
             </Stack>
           </Accordion.Content>
         </Accordion.Item>
-        <Accordion.Item id="preferences">
+
+        <Accordion.Item>
           <Accordion.Header>Preferences</Accordion.Header>
           <Accordion.Content>
             <Stack space={2}>
-              <Inline space={2}>
-                <Text weight="bold">T-Shirt Size:</Text>
-                <Text>{form.tshirtSize || '—'}</Text>
-              </Inline>
-              <Inline space={2}>
-                <Text weight="bold">Topics:</Text>
+              <ReviewRow label="T-Shirt Size:" value={form.tshirtSize || '—'} />
+              <Stack space={1}>
+                <Text weight="bold">Topics of Interest:</Text>
                 <Text>
-                  {form.topicsOfInterest.length > 0
-                    ? form.topicsOfInterest.join(', ')
-                    : '—'}
+                  {form.topics.length > 0 ? form.topics.join(', ') : '—'}
                 </Text>
-              </Inline>
-              <Inline space={2}>
-                <Text weight="bold">Communication:</Text>
-                <Text>{commLabels || '—'}</Text>
-              </Inline>
+              </Stack>
+              <Stack space={1}>
+                <Text weight="bold">Communication Preferences:</Text>
+                <Text>
+                  {form.commPrefs.length > 0
+                    ? form.commPrefs
+                        .map(p => COMM_LABELS[p] ?? p)
+                        .join(', ')
+                    : 'None selected'}
+                </Text>
+              </Stack>
+              {form.hasAccessibility && (
+                <Stack space={1}>
+                  <Text weight="bold">Accessibility Needs:</Text>
+                  <Text>{form.accessibilityDetails || '—'}</Text>
+                </Stack>
+              )}
             </Stack>
           </Accordion.Content>
         </Accordion.Item>
       </Accordion>
 
+      <Divider />
+
       <Checkbox
         label="I agree to the terms and conditions"
         required
-        checked={form.termsAgreed}
-        onChange={(v: boolean) => onChange('termsAgreed', v)}
-        error={!!errors.termsAgreed}
+        checked={form.agreedToTerms}
+        onChange={checked => update('agreedToTerms', checked as boolean)}
+        error={!!errors.agreedToTerms}
       />
-      {errors.termsAgreed && <Text>{errors.termsAgreed}</Text>}
     </Stack>
   );
 }
 
-// ---------------------------------------------------------------------------
-// Main Registration Form
-// ---------------------------------------------------------------------------
-
+// ── Registration Form ─────────────────────────────────────────────────────────
 function RegistrationForm() {
   const { addToast } = useToast();
-
   const [step, setStep] = useState(1);
-  const [form, setForm] = useState<FormState>(INITIAL_FORM);
+  const [form, setForm] = useState<FormData>(INITIAL_FORM);
   const [errors, setErrors] = useState<Record<string, string>>({});
-  const [photoPreviewUrl, setPhotoPreviewUrl] = useState<string | null>(null);
-  const [isSubmitting, setIsSubmitting] = useState(false);
-  const [isSubmitted, setIsSubmitted] = useState(false);
+  const [submitting, setSubmitting] = useState(false);
+  const [submitted, setSubmitted] = useState(false);
   const [confirmationNumber, setConfirmationNumber] = useState('');
 
-  function updateForm<K extends keyof FormState>(key: K, value: FormState[K]) {
-    setForm((prev) => ({ ...prev, [key]: value }));
-    if (errors[key]) {
-      setErrors((prev) => {
+  const update = (key: keyof FormData, value: any) => {
+    setForm(prev => ({ ...prev, [key]: value }));
+    setErrors(prev => {
+      if (key in prev) {
         const next = { ...prev };
-        delete next[key];
+        delete next[key as string];
         return next;
-      });
-    }
-  }
+      }
+      return prev;
+    });
+  };
 
-  function validateStep(s: number): Record<string, string> {
+  const validate = (stepNum: number): boolean => {
     const errs: Record<string, string> = {};
-    if (s === 1) {
-      if (!form.fullName.trim()) errs.fullName = 'Full name is required.';
-      if (!form.email.trim()) errs.email = 'Email address is required.';
-      else if (!validateEmail(form.email)) errs.email = 'Please enter a valid email address.';
+    if (stepNum === 1) {
+      if (!form.fullName.trim()) errs.fullName = 'Full name is required';
+      if (!form.email.trim()) {
+        errs.email = 'Email is required';
+      } else if (!isValidEmail(form.email)) {
+        errs.email = 'Please enter a valid email address';
+      }
     }
-    if (s === 2) {
-      if (!form.eventDate) errs.eventDate = 'Event date is required.';
+    if (stepNum === 2) {
+      if (!form.eventDate) errs.eventDate = 'Event date is required';
     }
-    return errs;
-  }
-
-  function handleNext() {
-    const errs = validateStep(step);
-    if (Object.keys(errs).length > 0) {
-      setErrors(errs);
-      return;
+    if (stepNum === 4) {
+      if (!form.agreedToTerms)
+        errs.agreedToTerms = 'You must agree to the terms and conditions';
     }
-    setErrors({});
-    setStep((s) => s + 1);
-  }
+    setErrors(errs);
+    return Object.keys(errs).length === 0;
+  };
 
-  function handleBack() {
-    setErrors({});
-    setStep((s) => s - 1);
-  }
+  const handleNext = () => {
+    if (validate(step)) setStep(s => s + 1);
+  };
 
-  async function handleSubmit() {
-    if (!form.termsAgreed) {
-      setErrors({ termsAgreed: 'You must agree to the terms and conditions.' });
-      return;
-    }
-    setErrors({});
-    setIsSubmitting(true);
-    await new Promise((resolve) => setTimeout(resolve, 1000));
-    const confNum = generateConfirmationNumber();
-    setConfirmationNumber(confNum);
-    setIsSubmitting(false);
-    setIsSubmitted(true);
-    addToast({ title: 'Registration submitted successfully', variant: 'success' });
-  }
+  const handleBack = () => setStep(s => s - 1);
 
-  function handleReset() {
+  const handleSubmit = async () => {
+    if (!validate(4)) return;
+    setSubmitting(true);
+    await new Promise(res => setTimeout(res, 1000));
+    const conf = generateConfirmation();
+    setConfirmationNumber(conf);
+    setSubmitting(false);
+    setSubmitted(true);
+    addToast({
+      title: 'Registration submitted successfully',
+      variant: 'success',
+      timeout: 5000,
+    });
+  };
+
+  const handleReset = () => {
     setForm(INITIAL_FORM);
-    setPhotoPreviewUrl(null);
     setErrors({});
     setStep(1);
-    setIsSubmitted(false);
+    setSubmitted(false);
     setConfirmationNumber('');
-  }
+  };
 
-  if (isSubmitting) {
+  if (submitting) {
     return (
       <Card>
         <Stack space={6} alignX="center">
-          <Text>Submitting your registration…</Text>
           <Loader />
+          <Text>Submitting your registration…</Text>
         </Stack>
       </Card>
     );
   }
 
-  if (isSubmitted) {
+  if (submitted) {
     return (
-      <SuccessView
-        form={form}
-        confirmationNumber={confirmationNumber}
-        onReset={handleReset}
-      />
+      <Stack space={6}>
+        <SectionMessage variant="success">
+          <SectionMessage.Title>Registration confirmed!</SectionMessage.Title>
+          <SectionMessage.Content>
+            Thank you for registering. Your spot has been secured.
+          </SectionMessage.Content>
+        </SectionMessage>
+
+        <Card>
+          <Stack space={4}>
+            <Headline level={3}>Registration Summary</Headline>
+            <Divider />
+            <Stack space={2}>
+              <ReviewRow label="Name:" value={form.fullName} />
+              <ReviewRow label="Email:" value={form.email} />
+              <ReviewRow
+                label="Event Date:"
+                value={form.eventDate ? String(form.eventDate) : '—'}
+              />
+              <ReviewRow label="Confirmation #:" value={confirmationNumber} />
+            </Stack>
+            <Divider />
+            <Button variant="primary" onPress={handleReset}>
+              Register Another
+            </Button>
+          </Stack>
+        </Card>
+      </Stack>
     );
   }
 
   return (
     <Card>
       <Stack space={6}>
-        {/* Step header */}
         <Stack space={1}>
-          <Text>
-            Step {step} of {STEP_TITLES.length}
-          </Text>
-          <Headline level={2}>
-            {STEP_TITLES[step - 1]}
-          </Headline>
+          <Text>Step {step} of 4 — {STEP_TITLES[step - 1]}</Text>
+          <Headline level={1}>{STEP_TITLES[step - 1]}</Headline>
         </Stack>
 
-        {/* Step content */}
+        <Divider />
+
         {step === 1 && (
-          <Step1
-            form={form}
-            errors={errors}
-            photoPreviewUrl={photoPreviewUrl}
-            onChange={updateForm}
-            onPhotoCapture={setPhotoPreviewUrl}
-          />
+          <Step1 form={form} errors={errors} update={update} />
         )}
         {step === 2 && (
-          <Step2 form={form} errors={errors} onChange={updateForm} />
+          <Step2 form={form} errors={errors} update={update} />
         )}
-        {step === 3 && (
-          <Step3 form={form} onChange={updateForm} />
-        )}
+        {step === 3 && <Step3 form={form} update={update} />}
         {step === 4 && (
-          <Step4 form={form} errors={errors} onChange={updateForm} />
+          <Step4 form={form} errors={errors} update={update} />
         )}
 
-        {/* Navigation */}
-        <Inline space={4} alignX="right">
-          <Button variant="secondary" onPress={handleBack} disabled={step === 1}>
+        <Divider />
+
+        <Inline space={4}>
+          <Button
+            variant="secondary"
+            disabled={step === 1}
+            onPress={handleBack}
+          >
             Back
           </Button>
           {step < 4 ? (
@@ -664,8 +568,8 @@ function RegistrationForm() {
           ) : (
             <Button
               variant="primary"
+              disabled={!form.agreedToTerms}
               onPress={handleSubmit}
-              disabled={!form.termsAgreed}
             >
               Submit Registration
             </Button>
@@ -676,22 +580,12 @@ function RegistrationForm() {
   );
 }
 
-// ---------------------------------------------------------------------------
-// Root export
-// ---------------------------------------------------------------------------
-
+// ── Default Export ────────────────────────────────────────────────────────────
 export default function TestApp() {
   return (
     <>
       <ToastProvider position="bottom-right" />
-      <AppLayout>
-        <AppLayout.Main>
-          <Stack space={6}>
-            <Headline level={1}>Event Registration</Headline>
-            <RegistrationForm />
-          </Stack>
-        </AppLayout.Main>
-      </AppLayout>
+      <RegistrationForm />
     </>
   );
 }

@@ -2,30 +2,32 @@
 
 import { useState } from 'react';
 import {
-  Button,
   Card,
-  Stack,
-  Inline,
   TextField,
-  Select,
-  DatePicker,
+  DateField,
   TimeField,
-  FileField,
-  NumberField,
+  Select,
+  ComboBox,
   TextArea,
   Checkbox,
   Switch,
-  Accordion,
-  SectionMessage,
+  FileField,
+  TagField,
+  Button,
+  Inline,
+  Stack,
+  Inset,
   Headline,
   Text,
-  Autocomplete,
-  ComboBox,
-  TagField,
+  SectionMessage,
+  Loader,
+  Accordion,
+  ToastProvider,
   useToast,
 } from '@marigold/components';
+import { parseDate, parseTime } from '@internationalized/date';
 
-interface RegistrationData {
+interface FormData {
   // Step 1
   fullName: string;
   email: string;
@@ -33,329 +35,449 @@ interface RegistrationData {
   company: string;
   jobTitle: string;
   profilePhoto: File | null;
-
   // Step 2
-  eventDate: any;
-  timeSlot: any;
+  eventDate: string;
+  preferredTime: string;
   sessionTrack: string;
   dietaryRequirements: string[];
-  numGuests: number;
+  numberOfGuests: number;
   specialRequests: string;
-
   // Step 3
   tShirtSize: string;
-  topics: string[];
-  communicationPrefs: string[];
-  hasAccessibilityNeeds: boolean;
+  topicsOfInterest: (string | number)[];
+  emailUpdates: boolean;
+  smsReminders: boolean;
+  postEventSurvey: boolean;
+  newsletterSubscription: boolean;
+  accessibilityNeeds: boolean;
   accessibilityDetails: string;
 }
 
-const INITIAL_DATA: RegistrationData = {
-  fullName: '',
-  email: '',
-  phone: '',
-  company: '',
-  jobTitle: '',
-  profilePhoto: null,
-  eventDate: null,
-  timeSlot: null,
-  sessionTrack: '',
-  dietaryRequirements: [],
-  numGuests: 0,
-  specialRequests: '',
-  tShirtSize: '',
-  topics: [],
-  communicationPrefs: [],
-  hasAccessibilityNeeds: false,
-  accessibilityDetails: '',
-};
+const jobTitleOptions = [
+  { id: 'developer', name: 'Developer' },
+  { id: 'designer', name: 'Designer' },
+  { id: 'product-manager', name: 'Product Manager' },
+  { id: 'engineering-manager', name: 'Engineering Manager' },
+  { id: 'cto', name: 'CTO' },
+  { id: 'other', name: 'Other' },
+];
 
-export default function TestApp() {
-  const [step, setStep] = useState(1);
-  const [data, setData] = useState<RegistrationData>(INITIAL_DATA);
-  const [errors, setErrors] = useState<Record<string, string>>({});
-  const [submitted, setSubmitted] = useState(false);
-  const [loading, setLoading] = useState(false);
-  const [termsAccepted, setTermsAccepted] = useState(false);
+const topicOptions = [
+  { id: 'ai-ml', name: 'AI/ML' },
+  { id: 'web-dev', name: 'Web Development' },
+  { id: 'cloud', name: 'Cloud' },
+  { id: 'security', name: 'Security' },
+  { id: 'devops', name: 'DevOps' },
+  { id: 'mobile', name: 'Mobile' },
+  { id: 'data-science', name: 'Data Science' },
+];
+
+const dietaryOptions = [
+  { id: 'none', name: 'None' },
+  { id: 'vegetarian', name: 'Vegetarian' },
+  { id: 'vegan', name: 'Vegan' },
+  { id: 'gluten-free', name: 'Gluten-Free' },
+  { id: 'kosher', name: 'Kosher' },
+  { id: 'halal', name: 'Halal' },
+];
+
+const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+const TestAppInner = () => {
   const { addToast } = useToast();
+  const [step, setStep] = useState(1);
+  const [formData, setFormData] = useState<FormData>({
+    fullName: '',
+    email: '',
+    phone: '',
+    company: '',
+    jobTitle: '',
+    profilePhoto: null,
+    eventDate: '',
+    preferredTime: '',
+    sessionTrack: '',
+    dietaryRequirements: [],
+    numberOfGuests: 0,
+    specialRequests: '',
+    tShirtSize: '',
+    topicsOfInterest: [],
+    emailUpdates: false,
+    smsReminders: false,
+    postEventSurvey: false,
+    newsletterSubscription: false,
+    accessibilityNeeds: false,
+    accessibilityDetails: '',
+  });
 
-  const updateData = (field: keyof RegistrationData, value: any) => {
-    setData(prev => ({ ...prev, [field]: value }));
-    if (errors[field]) {
+  const [submitted, setSubmitted] = useState(false);
+  const [submitting, setSubmitting] = useState(false);
+  const [termsAgreed, setTermsAgreed] = useState(false);
+  const [photoPreview, setPhotoPreview] = useState<string | null>(null);
+  const [errors, setErrors] = useState<Record<string, string>>({});
+  const [confirmationNumber, setConfirmationNumber] = useState('');
+
+  const updateFormData = (key: keyof FormData, value: any) => {
+    setFormData(prev => ({ ...prev, [key]: value }));
+    if (errors[key]) {
       setErrors(prev => {
         const newErrors = { ...prev };
-        delete newErrors[field];
+        delete newErrors[key];
         return newErrors;
       });
     }
   };
 
-  const validateEmail = (email: string): boolean => {
-    return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
-  };
-
   const validateStep1 = (): boolean => {
     const newErrors: Record<string, string> = {};
-
-    if (!data.fullName.trim()) newErrors.fullName = 'Full name is required';
-    if (!data.email.trim()) newErrors.email = 'Email is required';
-    else if (!validateEmail(data.email)) newErrors.email = 'Please enter a valid email';
-
+    if (!formData.fullName.trim()) {
+      newErrors.fullName = 'Full name is required';
+    }
+    if (!formData.email.trim()) {
+      newErrors.email = 'Email is required';
+    } else if (!emailRegex.test(formData.email)) {
+      newErrors.email = 'Please enter a valid email address';
+    }
     setErrors(newErrors);
     return Object.keys(newErrors).length === 0;
   };
 
   const validateStep2 = (): boolean => {
     const newErrors: Record<string, string> = {};
-
-    if (!data.eventDate) newErrors.eventDate = 'Event date is required';
-    if (!data.sessionTrack) newErrors.sessionTrack = 'Session track is required';
-
+    if (!formData.eventDate) {
+      newErrors.eventDate = 'Event date is required';
+    }
     setErrors(newErrors);
     return Object.keys(newErrors).length === 0;
   };
 
-  const canProceed = (): boolean => {
-    if (step === 1) return validateStep1();
-    if (step === 2) return validateStep2();
+  const validateStep3 = (): boolean => {
+    setErrors({});
     return true;
   };
 
-  const handleNext = () => {
-    if (canProceed()) {
+  const validateStep4 = (): boolean => {
+    return termsAgreed;
+  };
+
+  const handleNextStep = () => {
+    let isValid = false;
+    if (step === 1) isValid = validateStep1();
+    if (step === 2) isValid = validateStep2();
+    if (step === 3) isValid = validateStep3();
+
+    if (isValid) {
       setStep(step + 1);
-      window.scrollTo(0, 0);
     }
   };
 
-  const handleBack = () => {
-    setStep(step - 1);
-    window.scrollTo(0, 0);
+  const handlePreviousStep = () => {
+    if (step > 1) setStep(step - 1);
   };
 
   const handleSubmit = async () => {
-    if (!termsAccepted) {
-      addToast({
-        title: 'Please accept the terms and conditions',
-        variant: 'warning',
-      });
-      return;
-    }
-    setLoading(true);
-    try {
-      await new Promise(resolve => setTimeout(resolve, 1000));
-      setSubmitted(true);
-      addToast({
-        title: 'Registration submitted successfully',
-        variant: 'success',
-      });
-    } finally {
-      setLoading(false);
-    }
+    if (!validateStep4()) return;
+
+    setSubmitting(true);
+    await new Promise(resolve => setTimeout(resolve, 1000));
+
+    const confirmNum = Math.random().toString(36).substring(2, 10).toUpperCase();
+    setConfirmationNumber(confirmNum);
+    setSubmitted(true);
+    setSubmitting(false);
+
+    addToast({
+      title: 'Registration submitted successfully',
+      variant: 'success',
+    });
   };
 
-  const handleReset = () => {
+  const handleRegisterAnother = () => {
     setStep(1);
-    setData(INITIAL_DATA);
-    setErrors({});
+    setFormData({
+      fullName: '',
+      email: '',
+      phone: '',
+      company: '',
+      jobTitle: '',
+      profilePhoto: null,
+      eventDate: '',
+      preferredTime: '',
+      sessionTrack: '',
+      dietaryRequirements: [],
+      numberOfGuests: 0,
+      specialRequests: '',
+      tShirtSize: '',
+      topicsOfInterest: [],
+      emailUpdates: false,
+      smsReminders: false,
+      postEventSurvey: false,
+      newsletterSubscription: false,
+      accessibilityNeeds: false,
+      accessibilityDetails: '',
+    });
     setSubmitted(false);
-    setTermsAccepted(false);
+    setTermsAgreed(false);
+    setPhotoPreview(null);
+    setErrors({});
   };
 
   if (submitted) {
-    const confirmationNumber = Math.random().toString(36).substring(2, 9).toUpperCase();
-
     return (
-      <div className="flex items-center justify-center min-h-screen bg-gray-100 p-4">
-        <Card variant="default">
-          <Stack space={4} alignX="center">
-            <SectionMessage variant="success">
-              <SectionMessage.Title>Registration confirmed!</SectionMessage.Title>
-              <SectionMessage.Content>
-                Thank you for registering for our event.
-              </SectionMessage.Content>
-            </SectionMessage>
+      <div className="min-h-screen bg-bg-surface-default flex items-center justify-center p-4">
+        <Card>
+          <Inset space={8}>
+            <Stack space={6}>
+              {submitting ? (
+                <>
+                  <Loader size="large" />
+                  <Text>Processing your registration...</Text>
+                </>
+              ) : (
+                <Stack space={4}>
+                  <SectionMessage variant="success">
+                    <SectionMessage.Title>
+                      Registration confirmed!
+                    </SectionMessage.Title>
+                    <SectionMessage.Content>
+                      Your event registration has been successfully submitted.
+                    </SectionMessage.Content>
+                  </SectionMessage>
 
-            <Stack space={2} alignX="center">
-              <Headline level="5">Confirmation Details</Headline>
-              <Card variant="default">
-                <Stack space={2}>
-                  <div>
-                    <Text weight="bold">Name:</Text>
-                    <Text>{data.fullName}</Text>
-                  </div>
-                  <div>
-                    <Text weight="bold">Email:</Text>
-                    <Text>{data.email}</Text>
-                  </div>
-                  <div>
-                    <Text weight="bold">Event Date:</Text>
-                    <Text>
-                      {data.eventDate
-                        ? `${data.eventDate.day}/${data.eventDate.month}/${data.eventDate.year}`
-                        : 'N/A'}
-                    </Text>
-                  </div>
-                  <div>
-                    <Text weight="bold">Confirmation Number:</Text>
-                    <Text>{confirmationNumber}</Text>
-                  </div>
+                  <Card>
+                    <Inset space={6}>
+                      <Stack space={4}>
+                        <Headline level={3}>Registration Summary</Headline>
+                        <Stack space={2}>
+                          <Inline>
+                            <Text weight="bold">Name:</Text>
+                            <Text>{formData.fullName}</Text>
+                          </Inline>
+                          <Inline>
+                            <Text weight="bold">Email:</Text>
+                            <Text>{formData.email}</Text>
+                          </Inline>
+                          <Inline>
+                            <Text weight="bold">Event Date:</Text>
+                            <Text>{formData.eventDate}</Text>
+                          </Inline>
+                          <Inline>
+                            <Text weight="bold">Confirmation #:</Text>
+                            <Text>{confirmationNumber}</Text>
+                          </Inline>
+                        </Stack>
+                      </Stack>
+                    </Inset>
+                  </Card>
+
+                  <Button
+                    onPress={handleRegisterAnother}
+                    variant="primary"
+                  >
+                    Register Another
+                  </Button>
                 </Stack>
-              </Card>
+              )}
             </Stack>
-
-            <Button variant="primary" onPress={handleReset}>
-              Register Another
-            </Button>
-          </Stack>
+          </Inset>
         </Card>
       </div>
     );
   }
 
-  return (
-    <div className="flex items-center justify-center min-h-screen bg-gray-100 p-4">
-      <Card variant="default">
-        <Stack space={4}>
-          {/* Step indicator */}
-          <div>
-            <Text size="small">Step {step} of 4</Text>
-            <Headline level="4">
-              {step === 1 && 'Personal Information'}
-              {step === 2 && 'Event Details'}
-              {step === 3 && 'Preferences'}
-              {step === 4 && 'Review & Confirm'}
-            </Headline>
-          </div>
+  const stepTitles = [
+    'Personal Information',
+    'Event Details',
+    'Preferences',
+    'Review & Confirm',
+  ];
 
-          {/* Step content */}
-          <Stack space={4}>
+  return (
+    <div className="min-h-screen bg-bg-surface-default flex items-center justify-center p-4">
+      <Card>
+        <Inset space={8}>
+          <Stack space={6}>
+            <Stack space={2}>
+              <Headline level={2}>
+                Step {step} of 4 — {stepTitles[step - 1]}
+              </Headline>
+            </Stack>
+
+            {/* Step 1: Personal Information */}
             {step === 1 && (
-              <>
+              <Stack space={4}>
                 <SectionMessage variant="info">
-                  <SectionMessage.Title>Privacy Notice</SectionMessage.Title>
                   <SectionMessage.Content>
                     Your information will only be used for this event.
                   </SectionMessage.Content>
                 </SectionMessage>
 
-                <Stack space={2} alignX="left">
-                  <TextField
-                    label="Full Name"
-                    required
-                    value={data.fullName}
-                    onChange={val => updateData('fullName', val)}
-                    error={!!errors.fullName}
-                    errorMessage={errors.fullName}
+                <TextField
+                  label="Full Name"
+                  name="fullName"
+                  value={formData.fullName}
+                  onChange={value => updateFormData('fullName', value)}
+                  error={!!errors.fullName}
+                  errorMessage={errors.fullName}
+                  required
+                  width="full"
+                />
+
+                <TextField
+                  label="Email"
+                  name="email"
+                  type="email"
+                  value={formData.email}
+                  onChange={value => updateFormData('email', value)}
+                  error={!!errors.email}
+                  errorMessage={errors.email}
+                  required
+                  width="full"
+                />
+
+                <TextField
+                  label="Phone Number"
+                  name="phone"
+                  type="tel"
+                  value={formData.phone}
+                  onChange={value => updateFormData('phone', value)}
+                  width="full"
+                />
+
+                <TextField
+                  label="Company / Organization"
+                  name="company"
+                  value={formData.company}
+                  onChange={value => updateFormData('company', value)}
+                  width="full"
+                />
+
+                <ComboBox
+                  label="Job Title"
+                  name="jobTitle"
+                  selectedKey={formData.jobTitle || undefined}
+                  onSelectionChange={key =>
+                    updateFormData('jobTitle', key || '')
+                  }
+                  width="full"
+                >
+                  {jobTitleOptions.map(option => (
+                    <ComboBox.Option key={option.id} id={option.id}>
+                      {option.name}
+                    </ComboBox.Option>
+                  ))}
+                </ComboBox>
+
+                <FileField
+                  label="Profile Photo"
+                  name="profilePhoto"
+                  accept={['image/*']}
+                  width="full"
+                />
+
+                {photoPreview && (
+                  <img
+                    src={photoPreview}
+                    alt="Profile preview"
+                    className="w-24 h-24 rounded-lg object-cover"
                   />
-                  <TextField
-                    label="Email"
-                    type="email"
-                    required
-                    value={data.email}
-                    onChange={val => updateData('email', val)}
-                    error={!!errors.email}
-                    errorMessage={errors.email}
-                  />
-                  <TextField
-                    label="Phone Number"
-                    value={data.phone}
-                    onChange={val => updateData('phone', val)}
-                  />
-                  <TextField
-                    label="Company / Organization"
-                    value={data.company}
-                    onChange={val => updateData('company', val)}
-                  />
-                  <Autocomplete
-                    label="Job Title"
-                    value={data.jobTitle}
-                    onChange={val => updateData('jobTitle', val)}
-                  >
-                    <Autocomplete.Option id="developer">Developer</Autocomplete.Option>
-                    <Autocomplete.Option id="designer">Designer</Autocomplete.Option>
-                    <Autocomplete.Option id="pm">Product Manager</Autocomplete.Option>
-                    <Autocomplete.Option id="em">Engineering Manager</Autocomplete.Option>
-                    <Autocomplete.Option id="cto">CTO</Autocomplete.Option>
-                    <Autocomplete.Option id="other">Other</Autocomplete.Option>
-                  </Autocomplete>
-                  <FileField
-                    label="Profile Photo"
-                    accept={['image/*']}
-                  />
-                </Stack>
-              </>
+                )}
+              </Stack>
             )}
 
+            {/* Step 2: Event Details */}
             {step === 2 && (
-              <Stack space={2} alignX="left">
-                <DatePicker
+              <Stack space={4}>
+                <DateField
                   label="Event Date"
-                  required
-                  value={data.eventDate}
-                  onChange={val => updateData('eventDate', val)}
+                  name="eventDate"
+                  value={formData.eventDate ? parseDate(formData.eventDate) : undefined}
+                  onChange={value => updateFormData('eventDate', value ? value.toString() : '')}
                   error={!!errors.eventDate}
                   errorMessage={errors.eventDate}
+                  required
+                  width="full"
                 />
+
                 <TimeField
                   label="Preferred Time Slot"
-                  value={data.timeSlot}
-                  onChange={val => updateData('timeSlot', val)}
+                  name="preferredTime"
+                  value={formData.preferredTime ? parseTime(formData.preferredTime) : undefined}
+                  onChange={value => updateFormData('preferredTime', value ? value.toString() : '')}
+                  width="full"
                 />
+
                 <Select
                   label="Session Track"
-                  required
-                  selectedKey={data.sessionTrack}
-                  onSelectionChange={key => updateData('sessionTrack', key)}
-                  error={!!errors.sessionTrack}
-                  errorMessage={errors.sessionTrack}
+                  name="sessionTrack"
+                  selectedKey={formData.sessionTrack || undefined}
+                  onSelectionChange={key =>
+                    updateFormData('sessionTrack', key || '')
+                  }
+                  width="full"
                 >
                   <Select.Option id="technical">Technical</Select.Option>
                   <Select.Option id="design">Design</Select.Option>
                   <Select.Option id="business">Business</Select.Option>
                   <Select.Option id="workshop">Workshop</Select.Option>
                 </Select>
+
                 <ComboBox
                   label="Dietary Requirements"
-                  selectedKey={data.dietaryRequirements[0] || ''}
+                  name="dietaryRequirements"
+                  selectedKey={
+                    formData.dietaryRequirements[0] || undefined
+                  }
                   onSelectionChange={key => {
                     if (key) {
-                      updateData('dietaryRequirements', [String(key)]);
+                      updateFormData('dietaryRequirements', [key]);
                     }
                   }}
-                  allowsCustomValue
-                  value={data.dietaryRequirements[0] || ''}
-                  onChange={val => updateData('dietaryRequirements', val ? [val] : [])}
+                  width="full"
                 >
-                  <ComboBox.Option id="none">None</ComboBox.Option>
-                  <ComboBox.Option id="vegetarian">Vegetarian</ComboBox.Option>
-                  <ComboBox.Option id="vegan">Vegan</ComboBox.Option>
-                  <ComboBox.Option id="glutenfree">Gluten-Free</ComboBox.Option>
-                  <ComboBox.Option id="kosher">Kosher</ComboBox.Option>
-                  <ComboBox.Option id="halal">Halal</ComboBox.Option>
+                  {dietaryOptions.map(option => (
+                    <ComboBox.Option key={option.id} id={option.id}>
+                      {option.name}
+                    </ComboBox.Option>
+                  ))}
                 </ComboBox>
-                <NumberField
+
+                <TextField
                   label="Number of Guests"
-                  value={data.numGuests}
-                  onChange={val => updateData('numGuests', val)}
-                  minValue={0}
-                  maxValue={5}
+                  name="numberOfGuests"
+                  type="number"
+                  inputMode="numeric"
+                  value={formData.numberOfGuests.toString()}
+                  onChange={value => {
+                    const num = Math.min(
+                      5,
+                      Math.max(0, parseInt(value) || 0)
+                    );
+                    updateFormData('numberOfGuests', num);
+                  }}
+                  width="full"
                 />
+
                 <TextArea
                   label="Special Requests"
-                  value={data.specialRequests}
-                  onChange={val => updateData('specialRequests', val)}
-                  rows={3}
+                  name="specialRequests"
+                  value={formData.specialRequests}
+                  onChange={value => updateFormData('specialRequests', value)}
+                  width="full"
                 />
               </Stack>
             )}
 
+            {/* Step 3: Preferences */}
             {step === 3 && (
-              <Stack space={2} alignX="left">
+              <Stack space={4}>
                 <Select
                   label="T-Shirt Size"
-                  selectedKey={data.tShirtSize}
-                  onSelectionChange={key => updateData('tShirtSize', key)}
+                  name="tShirtSize"
+                  selectedKey={formData.tShirtSize || undefined}
+                  onSelectionChange={key =>
+                    updateFormData('tShirtSize', key || '')
+                  }
+                  width="full"
                 >
                   <Select.Option id="xs">XS</Select.Option>
                   <Select.Option id="s">S</Select.Option>
@@ -367,64 +489,97 @@ export default function TestApp() {
 
                 <TagField
                   label="Topics of Interest"
-                  value={data.topics}
-                  onSelectionChange={(keys: any) => {
-                    if (keys) {
-                      updateData('topics', Array.from(keys as string[]));
-                    }
-                  }}
+                  name="topicsOfInterest"
+                  value={formData.topicsOfInterest}
+                  onChange={keys => updateFormData('topicsOfInterest', keys)}
+                  width="full"
                 >
-                  <TagField.Option id="aiml">AI/ML</TagField.Option>
-                  <TagField.Option id="web">Web Development</TagField.Option>
-                  <TagField.Option id="cloud">Cloud</TagField.Option>
-                  <TagField.Option id="security">Security</TagField.Option>
-                  <TagField.Option id="devops">DevOps</TagField.Option>
-                  <TagField.Option id="mobile">Mobile</TagField.Option>
-                  <TagField.Option id="datascience">Data Science</TagField.Option>
+                  {topicOptions.map(option => (
+                    <TagField.Option key={option.id} id={option.id}>
+                      {option.name}
+                    </TagField.Option>
+                  ))}
                 </TagField>
 
                 <Stack space={2} alignX="left">
-                  <Checkbox.Group
-                    label="Communication Preferences"
-                    value={data.communicationPrefs}
-                    onChange={prefs => updateData('communicationPrefs', prefs)}
-                  >
-                    <Checkbox value="email" label="Email updates about the event" />
-                    <Checkbox value="sms" label="SMS reminders" />
-                    <Checkbox value="survey" label="Post-event survey" />
-                    <Checkbox value="newsletter" label="Newsletter subscription" />
-                  </Checkbox.Group>
+                  <Text weight="bold">Communication Preferences</Text>
+                  <Checkbox
+                    label="Email updates about the event"
+                    checked={formData.emailUpdates}
+                    onChange={value => updateFormData('emailUpdates', value)}
+                  />
+                  <Checkbox
+                    label="SMS reminders"
+                    checked={formData.smsReminders}
+                    onChange={value => updateFormData('smsReminders', value)}
+                  />
+                  <Checkbox
+                    label="Post-event survey"
+                    checked={formData.postEventSurvey}
+                    onChange={value => updateFormData('postEventSurvey', value)}
+                  />
+                  <Checkbox
+                    label="Newsletter subscription"
+                    checked={formData.newsletterSubscription}
+                    onChange={value =>
+                      updateFormData('newsletterSubscription', value)
+                    }
+                  />
                 </Stack>
 
-                <Switch
-                  label="I have accessibility requirements"
-                  selected={data.hasAccessibilityNeeds}
-                  onChange={checked => updateData('hasAccessibilityNeeds', checked)}
-                />
-
-                {data.hasAccessibilityNeeds && (
-                  <TextArea
-                    label="Accessibility Details"
-                    value={data.accessibilityDetails}
-                    onChange={val => updateData('accessibilityDetails', val)}
-                    rows={3}
+                <Stack space={2}>
+                  <Switch
+                    label="I have accessibility requirements"
+                    selected={formData.accessibilityNeeds}
+                    onChange={value => updateFormData('accessibilityNeeds', value)}
                   />
-                )}
+                  {formData.accessibilityNeeds && (
+                    <TextArea
+                      label="Accessibility Details"
+                      name="accessibilityDetails"
+                      value={formData.accessibilityDetails}
+                      onChange={value =>
+                        updateFormData('accessibilityDetails', value)
+                      }
+                      width="full"
+                    />
+                  )}
+                </Stack>
               </Stack>
             )}
 
+            {/* Step 4: Review & Confirm */}
             {step === 4 && (
-              <Stack space={3}>
+              <Stack space={4}>
                 <Accordion>
                   <Accordion.Item>
                     <Accordion.Header>Personal Information</Accordion.Header>
                     <Accordion.Content>
-                      <Stack space={1}>
-                        <div><Text weight="bold">Name:</Text> {data.fullName}</div>
-                        <div><Text weight="bold">Email:</Text> {data.email}</div>
-                        {data.phone && <div><Text weight="bold">Phone:</Text> {data.phone}</div>}
-                        {data.company && <div><Text weight="bold">Company:</Text> {data.company}</div>}
-                        {data.jobTitle && <div><Text weight="bold">Job Title:</Text> {data.jobTitle}</div>}
+                      <Stack space={2}>
+                        <Inline>
+                          <Text weight="bold">Full Name:</Text>
+                          <Text>{formData.fullName}</Text>
+                        </Inline>
+                        <Inline>
+                          <Text weight="bold">Email:</Text>
+                          <Text>{formData.email}</Text>
+                        </Inline>
+                        <Inline>
+                          <Text weight="bold">Phone:</Text>
+                          <Text>{formData.phone || 'Not provided'}</Text>
+                        </Inline>
+                        <Inline>
+                          <Text weight="bold">Company:</Text>
+                          <Text>{formData.company || 'Not provided'}</Text>
+                        </Inline>
+                        <Inline>
+                          <Text weight="bold">Job Title:</Text>
+                          <Text>
+                            {jobTitleOptions.find(
+                              o => o.id === formData.jobTitle
+                            )?.name || 'Not provided'}
+                          </Text>
+                        </Inline>
                       </Stack>
                     </Accordion.Content>
                   </Accordion.Item>
@@ -432,30 +587,47 @@ export default function TestApp() {
                   <Accordion.Item>
                     <Accordion.Header>Event Details</Accordion.Header>
                     <Accordion.Content>
-                      <Stack space={1}>
-                        <div>
-                          <Text weight="bold">Date:</Text>{' '}
-                          {data.eventDate
-                            ? `${data.eventDate.day}/${data.eventDate.month}/${data.eventDate.year}`
-                            : 'N/A'}
-                        </div>
-                        {data.timeSlot && (
-                          <div>
-                            <Text weight="bold">Time:</Text>{' '}
-                            {data.timeSlot?.toString() || 'Not specified'}
-                          </div>
-                        )}
-                        <div><Text weight="bold">Track:</Text> {data.sessionTrack}</div>
-                        {data.dietaryRequirements.length > 0 && (
-                          <div>
-                            <Text weight="bold">Dietary:</Text> {data.dietaryRequirements.join(', ')}
-                          </div>
-                        )}
-                        <div><Text weight="bold">Guests:</Text> {data.numGuests}</div>
-                        {data.specialRequests && (
-                          <div>
-                            <Text weight="bold">Requests:</Text> {data.specialRequests}
-                          </div>
+                      <Stack space={2}>
+                        <Inline>
+                          <Text weight="bold">Event Date:</Text>
+                          <Text>{formData.eventDate}</Text>
+                        </Inline>
+                        <Inline>
+                          <Text weight="bold">Preferred Time:</Text>
+                          <Text>{formData.preferredTime || 'Not provided'}</Text>
+                        </Inline>
+                        <Inline>
+                          <Text weight="bold">Session Track:</Text>
+                          <Text>
+                            {formData.sessionTrack
+                              ?.charAt(0)
+                              .toUpperCase() +
+                              formData.sessionTrack?.slice(1) ||
+                              'Not provided'}
+                          </Text>
+                        </Inline>
+                        <Inline>
+                          <Text weight="bold">Dietary Requirements:</Text>
+                          <Text>
+                            {formData.dietaryRequirements.length > 0
+                              ? dietaryOptions
+                                  .filter(o =>
+                                    formData.dietaryRequirements.includes(o.id)
+                                  )
+                                  .map(o => o.name)
+                                  .join(', ')
+                              : 'Not provided'}
+                          </Text>
+                        </Inline>
+                        <Inline>
+                          <Text weight="bold">Number of Guests:</Text>
+                          <Text>{formData.numberOfGuests}</Text>
+                        </Inline>
+                        {formData.specialRequests && (
+                          <Inline>
+                            <Text weight="bold">Special Requests:</Text>
+                            <Text>{formData.specialRequests}</Text>
+                          </Inline>
                         )}
                       </Stack>
                     </Accordion.Content>
@@ -464,59 +636,100 @@ export default function TestApp() {
                   <Accordion.Item>
                     <Accordion.Header>Preferences</Accordion.Header>
                     <Accordion.Content>
-                      <Stack space={1}>
-                        <div><Text weight="bold">T-Shirt Size:</Text> {data.tShirtSize || 'Not selected'}</div>
-                        {data.topics.length > 0 && (
-                          <div>
-                            <Text weight="bold">Topics:</Text> {data.topics.join(', ')}
-                          </div>
-                        )}
-                        {data.communicationPrefs.length > 0 && (
-                          <div>
-                            <Text weight="bold">Communication:</Text> {data.communicationPrefs.join(', ')}
-                          </div>
-                        )}
-                        {data.hasAccessibilityNeeds && (
-                          <div>
-                            <Text weight="bold">Accessibility:</Text> {data.accessibilityDetails}
-                          </div>
+                      <Stack space={2}>
+                        <Inline>
+                          <Text weight="bold">T-Shirt Size:</Text>
+                          <Text>
+                            {formData.tShirtSize?.toUpperCase() ||
+                              'Not selected'}
+                          </Text>
+                        </Inline>
+                        <Inline>
+                          <Text weight="bold">Topics of Interest:</Text>
+                          <Text>
+                            {formData.topicsOfInterest.length > 0
+                              ? topicOptions
+                                  .filter(o =>
+                                    formData.topicsOfInterest.includes(o.id)
+                                  )
+                                  .map(o => o.name)
+                                  .join(', ')
+                              : 'Not selected'}
+                          </Text>
+                        </Inline>
+                        <Stack space={1}>
+                          <Text weight="bold">Communication Preferences:</Text>
+                          <Stack space={1}>
+                            {formData.emailUpdates && (
+                              <Text>• Email updates about the event</Text>
+                            )}
+                            {formData.smsReminders && (
+                              <Text>• SMS reminders</Text>
+                            )}
+                            {formData.postEventSurvey && (
+                              <Text>• Post-event survey</Text>
+                            )}
+                            {formData.newsletterSubscription && (
+                              <Text>• Newsletter subscription</Text>
+                            )}
+                          </Stack>
+                        </Stack>
+                        {formData.accessibilityNeeds && (
+                          <Inline>
+                            <Text weight="bold">Accessibility Details:</Text>
+                            <Text>{formData.accessibilityDetails}</Text>
+                          </Inline>
                         )}
                       </Stack>
                     </Accordion.Content>
                   </Accordion.Item>
                 </Accordion>
 
-                <Checkbox.Group value={termsAccepted ? ['terms'] : []} onChange={v => setTermsAccepted(v.length > 0)}>
-                  <Checkbox value="terms" label="I agree to the terms and conditions" />
-                </Checkbox.Group>
+                <Checkbox
+                  label="I agree to the terms and conditions"
+                  checked={termsAgreed}
+                  onChange={setTermsAgreed}
+                  required
+                />
               </Stack>
             )}
-          </Stack>
 
-          {/* Navigation buttons */}
-          <Inline space={2} alignX="right">
-            <Button
-              disabled={step === 1}
-              onPress={handleBack}
-            >
-              Back
-            </Button>
-            {step < 4 ? (
-              <Button variant="primary" onPress={handleNext}>
-                Next
-              </Button>
-            ) : (
+            {/* Navigation */}
+            <Inline space={2} alignX="right">
               <Button
-                variant="primary"
-                onPress={handleSubmit}
-                loading={loading}
+                onPress={handlePreviousStep}
+                disabled={step === 1}
+                variant="secondary"
               >
-                Submit Registration
+                Back
               </Button>
-            )}
-          </Inline>
-        </Stack>
+              {step < 4 ? (
+                <Button onPress={handleNextStep} variant="primary">
+                  Next
+                </Button>
+              ) : (
+                <Button
+                  onPress={handleSubmit}
+                  variant="primary"
+                  disabled={!termsAgreed}
+                  loading={submitting}
+                >
+                  Submit Registration
+                </Button>
+              )}
+            </Inline>
+          </Stack>
+        </Inset>
       </Card>
     </div>
   );
-}
+};
+
+const TestApp = () => (
+  <>
+    <ToastProvider />
+    <TestAppInner />
+  </>
+);
+
+export default TestApp;

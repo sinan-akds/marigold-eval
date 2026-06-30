@@ -1,319 +1,305 @@
 import { useState } from 'react';
 import {
+  AppLayout,
   Button,
   Card,
   Columns,
   Form,
   Headline,
+  Inline,
+  Inset,
   NumberField,
   SectionMessage,
   Stack,
-  Text,
   TextField,
-  ToastProvider,
-  useToast,
+  Text,
+  Badge,
 } from '@marigold/components';
 
-type TicketCategory = {
+interface Ticket {
   id: string;
   name: string;
   price: number;
   description: string;
+  quantity: number;
   maxQuantity: number;
-  status: 'available' | 'limited' | 'sold_out';
-};
-
-const TICKET_CATEGORIES: TicketCategory[] = [
-  {
-    id: 'early-bird',
-    name: 'Early Bird',
-    price: 49,
-    description: 'Limited availability',
-    maxQuantity: 12,
-    status: 'limited',
-  },
-  {
-    id: 'regular',
-    name: 'Regular',
-    price: 79,
-    description: 'Standard admission',
-    maxQuantity: 999,
-    status: 'available',
-  },
-  {
-    id: 'vip',
-    name: 'VIP',
-    price: 149,
-    description: 'Premium experience',
-    maxQuantity: 0,
-    status: 'sold_out',
-  },
-];
-
-interface FormData {
-  fullName: string;
-  email: string;
-  phoneNumber: string;
+  isSoldOut: boolean;
 }
 
-const TicketShop = () => {
-  const [quantities, setQuantities] = useState<Record<string, number>>({
-    'early-bird': 0,
-    regular: 0,
-    vip: 0,
-  });
+const TestApp = () => {
+  const [tickets, setTickets] = useState<Ticket[]>([
+    {
+      id: 'early-bird',
+      name: 'Early Bird',
+      price: 49,
+      description: 'Only 12 left',
+      quantity: 0,
+      maxQuantity: 12,
+      isSoldOut: false,
+    },
+    {
+      id: 'regular',
+      name: 'Regular',
+      price: 79,
+      description: 'Available',
+      quantity: 0,
+      maxQuantity: 999,
+      isSoldOut: false,
+    },
+    {
+      id: 'vip',
+      name: 'VIP',
+      price: 149,
+      description: 'Sold Out',
+      quantity: 0,
+      maxQuantity: 0,
+      isSoldOut: true,
+    },
+  ]);
 
-  const [formData, setFormData] = useState<FormData>({
-    fullName: '',
-    email: '',
-    phoneNumber: '',
-  });
+  const [fullName, setFullName] = useState('');
+  const [email, setEmail] = useState('');
+  const [phone, setPhone] = useState('');
+  const [submitted, setSubmitted] = useState(false);
+  const [submitSuccess, setSubmitSuccess] = useState(false);
+  const [formErrors, setFormErrors] = useState<string[]>([]);
 
-  const [showSuccess, setShowSuccess] = useState(false);
-  const [showWarning, setShowWarning] = useState(false);
-  const { addToast } = useToast();
-
-  const updateQuantity = (categoryId: string, value: number) => {
-    const category = TICKET_CATEGORIES.find(c => c.id === categoryId);
-    if (category && value >= 0 && value <= category.maxQuantity) {
-      setQuantities(prev => ({
-        ...prev,
-        [categoryId]: value,
-      }));
-      setShowWarning(false);
-    }
+  const updateTicketQuantity = (ticketId: string, newQuantity: number) => {
+    setTickets(
+      tickets.map(ticket =>
+        ticket.id === ticketId ? { ...ticket, quantity: newQuantity } : ticket
+      )
+    );
+    setSubmitted(false);
   };
 
-  const calculateSubtotal = (categoryId: string): number => {
-    const category = TICKET_CATEGORIES.find(c => c.id === categoryId);
-    return (category?.price || 0) * (quantities[categoryId] || 0);
+  const calculateSubtotal = (ticket: Ticket): number => {
+    return ticket.quantity * ticket.price;
   };
 
-  const calculateTotal = (): number => {
-    return TICKET_CATEGORIES.reduce((sum, category) => {
-      return sum + calculateSubtotal(category.id);
-    }, 0);
-  };
-
-  const getTotalTickets = (): number => {
-    return Object.values(quantities).reduce((sum, q) => sum + q, 0);
-  };
+  const totalTickets = tickets.reduce((sum, ticket) => sum + ticket.quantity, 0);
+  const grandTotal = tickets.reduce(
+    (sum, ticket) => sum + calculateSubtotal(ticket),
+    0
+  );
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    setShowWarning(false);
-    setShowSuccess(false);
 
-    const totalTickets = getTotalTickets();
-    const hasRequiredFields = formData.fullName.trim() && formData.email.trim();
+    const errors: string[] = [];
 
+    // Validate tickets selected
     if (totalTickets === 0) {
-      setShowWarning(true);
-      return;
+      errors.push('Please select at least one ticket');
     }
 
-    if (!hasRequiredFields) {
-      setShowWarning(true);
-      return;
+    // Validate required fields
+    if (!fullName.trim()) {
+      errors.push('Full Name is required');
     }
 
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    if (!emailRegex.test(formData.email)) {
-      setShowWarning(true);
-      return;
+    if (!email.trim()) {
+      errors.push('Email is required');
+    } else {
+      // Basic email validation
+      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      if (!emailRegex.test(email)) {
+        errors.push('Please enter a valid email address');
+      }
     }
 
-    setShowSuccess(true);
-    addToast({
-      title: 'Order Confirmed',
-      description: `Your tickets for Summer Music Festival 2026 have been booked!`,
-      variant: 'success',
-      timeout: 5000,
-    });
+    setFormErrors(errors);
 
-    setQuantities({
-      'early-bird': 0,
-      regular: 0,
-      vip: 0,
-    });
-    setFormData({
-      fullName: '',
-      email: '',
-      phoneNumber: '',
-    });
-
-    setTimeout(() => setShowSuccess(false), 3000);
+    if (errors.length === 0) {
+      setSubmitSuccess(true);
+      setSubmitted(true);
+    }
   };
 
   return (
-    <>
-      <ToastProvider position="bottom-right" />
-      <Stack space="section">
-        <Stack space="related">
-          <Headline level="1">Summer Music Festival 2026</Headline>
-          <Stack space="tight">
-            <Text>
-              <Text weight="bold">July 15-17, 2026</Text>
-            </Text>
-            <Text>
-              <Text weight="bold">Stadtpark Freiburg</Text>
-            </Text>
-            <Text>Three days of live music featuring local and international artists.</Text>
-          </Stack>
-        </Stack>
+    <AppLayout>
+      <AppLayout.Main>
+        <Inset space="square-relaxed">
+          <Stack space={6}>
+            {/* Event Header */}
+            <Stack space={3}>
+              <Headline level={1}>Summer Music Festival 2026</Headline>
+              <Stack space={1}>
+                <Text>
+                  <Text as="span" weight="bold">Date:</Text> July 15-17, 2026
+                </Text>
+                <Text>
+                  <Text as="span" weight="bold">Venue:</Text> Stadtpark Freiburg
+                </Text>
+                <Text>
+                  Three days of live music featuring local and international
+                  artists.
+                </Text>
+              </Stack>
+            </Stack>
 
-        <Stack space="related">
-          <Headline level="2">Select Tickets</Headline>
-          <Columns columns={[1, 1, 1]} space="related" collapseAt="40em">
-            {TICKET_CATEGORIES.map(category => (
-              <Card key={category.id} p="square-regular">
-                <Stack space="related">
-                  <Stack space="tight">
-                    <Headline level="3">{category.name}</Headline>
-                    <Text weight="bold">${category.price}</Text>
-                    <Text size="sm">{category.description}</Text>
-                  </Stack>
+            {/* Ticket Categories */}
+            <Stack space={3}>
+              <Headline level={2}>Tickets</Headline>
+              <Columns
+                columns={[1, 1, 1]}
+                space={3}
+                collapseAt="48em"
+              >
+                {tickets.map(ticket => (
+                  <Card key={ticket.id} stretch>
+                    <Inset space="square-regular">
+                      <Stack space={3}>
+                        <Stack space={1}>
+                          <Headline level={3}>{ticket.name}</Headline>
+                          <Text weight="bold" fontSize="lg">
+                            ${ticket.price}
+                          </Text>
+                          <Text>{ticket.description}</Text>
+                        </Stack>
 
-                  {category.status === 'limited' && (
-                    <Text size="sm" color="destructive">
-                      Only {category.maxQuantity} left
-                    </Text>
-                  )}
+                        {ticket.isSoldOut && (
+                          <Badge variant="error">Sold Out</Badge>
+                        )}
 
-                  {category.status === 'sold_out' && (
-                    <Stack space="tight">
-                      <Text weight="bold" color="destructive">
-                        Sold Out
-                      </Text>
-                      <NumberField
-                        label="Quantity"
-                        value={0}
-                        minValue={0}
-                        disabled
-                        hideStepper
-                        width="fit"
-                      />
+                        <NumberField
+                          label="Quantity"
+                          value={ticket.quantity}
+                          onChange={newValue =>
+                            updateTicketQuantity(ticket.id, newValue as number)
+                          }
+                          minValue={0}
+                          maxValue={ticket.maxQuantity}
+                          disabled={ticket.isSoldOut}
+                          hideStepper={false}
+                          width="full"
+                        />
+                      </Stack>
+                    </Inset>
+                  </Card>
+                ))}
+              </Columns>
+            </Stack>
+
+            {/* Buyer Information */}
+            <Stack space={3}>
+              <Headline level={2}>Buyer Information</Headline>
+              <Form onSubmit={handleSubmit}>
+              <Stack space={4}>
+                <TextField
+                  label="Full Name"
+                  required
+                  value={fullName}
+                  onChange={setFullName}
+                  width="full"
+                />
+
+                <TextField
+                  label="Email"
+                  type="email"
+                  required
+                  value={email}
+                  onChange={setEmail}
+                  width="full"
+                />
+
+                <TextField
+                  label="Phone Number"
+                  type="tel"
+                  value={phone}
+                  onChange={setPhone}
+                  width="full"
+                />
+
+                {/* Order Summary */}
+                <Stack space={3}>
+                  <Headline level={3}>Order Summary</Headline>
+
+                  {totalTickets === 0 ? (
+                    <Text color="text-base-disabled">No tickets selected</Text>
+                  ) : (
+                    <Stack space={2}>
+                      {tickets.map(ticket => {
+                        if (ticket.quantity > 0) {
+                          const subtotal = calculateSubtotal(ticket);
+                          return (
+                            <Inline
+                              key={ticket.id}
+                              alignX="between"
+                              alignY="center"
+                            >
+                              <Text>
+                                {ticket.name} × {ticket.quantity}
+                              </Text>
+                              <Text>
+                                ${subtotal.toFixed(2)}
+                              </Text>
+                            </Inline>
+                          );
+                        }
+                        return null;
+                      })}
+                      <Inline alignX="between" alignY="center">
+                        <Text weight="bold" fontSize="lg">
+                          Total
+                        </Text>
+                        <Text weight="bold" fontSize="lg">
+                          ${grandTotal.toFixed(2)}
+                        </Text>
+                      </Inline>
                     </Stack>
                   )}
-
-                  {category.status !== 'sold_out' && (
-                    <NumberField
-                      label="Quantity"
-                      value={quantities[category.id]}
-                      onChange={value => updateQuantity(category.id, value)}
-                      minValue={0}
-                      maxValue={category.maxQuantity}
-                      width="fit"
-                    />
-                  )}
                 </Stack>
-              </Card>
-            ))}
-          </Columns>
-        </Stack>
 
-        <Stack space="related">
-          <Headline level="2">Buyer Information</Headline>
-          <Form onSubmit={handleSubmit}>
-            <Stack space="related">
-              {showWarning && (
-                <SectionMessage variant="error">
-                  <SectionMessage.Title>Unable to Complete Order</SectionMessage.Title>
-                  <SectionMessage.Content>
-                    {getTotalTickets() === 0 && 'Please select at least one ticket.'}
-                    {getTotalTickets() > 0 && !formData.fullName.trim() && 'Full Name is required.'}
-                    {getTotalTickets() > 0 &&
-                      formData.fullName.trim() &&
-                      !formData.email.trim() &&
-                      'Email is required.'}
-                    {getTotalTickets() > 0 &&
-                      formData.fullName.trim() &&
-                      formData.email.trim() &&
-                      !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email) &&
-                      'Please enter a valid email address.'}
-                  </SectionMessage.Content>
-                </SectionMessage>
-              )}
+                {/* Error Messages */}
+                {submitted && !submitSuccess && formErrors.length > 0 && (
+                  <SectionMessage variant="error">
+                    <SectionMessage.Title>
+                      Cannot proceed with purchase
+                    </SectionMessage.Title>
+                    <SectionMessage.Content>
+                      <Stack space={1}>
+                        {formErrors.map((error, index) => (
+                          <Text key={index}>• {error}</Text>
+                        ))}
+                      </Stack>
+                    </SectionMessage.Content>
+                  </SectionMessage>
+                )}
 
-              {showSuccess && (
-                <SectionMessage variant="success">
-                  <SectionMessage.Title>Order Confirmed!</SectionMessage.Title>
-                  <SectionMessage.Content>
-                    Thank you for purchasing tickets for Summer Music Festival 2026. A confirmation
-                    email will be sent to {formData.email}.
-                  </SectionMessage.Content>
-                </SectionMessage>
-              )}
+                {/* Success Message */}
+                {submitSuccess && (
+                  <SectionMessage variant="success">
+                    <SectionMessage.Title>
+                      Order Confirmed!
+                    </SectionMessage.Title>
+                    <SectionMessage.Content>
+                      <Text>
+                        Thank you for your purchase! Your order for{' '}
+                        {totalTickets} ticket{totalTickets !== 1 ? 's' : ''} has
+                        been confirmed. A confirmation email has been sent to{' '}
+                        <Text as="span" weight="bold">{email}</Text>.
+                      </Text>
+                    </SectionMessage.Content>
+                  </SectionMessage>
+                )}
 
-              <TextField
-                label="Full Name"
-                required
-                value={formData.fullName}
-                onChange={value => setFormData(prev => ({ ...prev, fullName: value }))}
-                width="1/2"
-              />
-
-              <TextField
-                label="Email"
-                type="email"
-                required
-                value={formData.email}
-                onChange={value => setFormData(prev => ({ ...prev, email: value }))}
-                width="1/2"
-              />
-
-              <TextField
-                label="Phone Number"
-                value={formData.phoneNumber}
-                onChange={value => setFormData(prev => ({ ...prev, phoneNumber: value }))}
-                width="1/2"
-              />
-            </Stack>
-          </Form>
-        </Stack>
-
-        <Card p="square-regular" variant="primary">
-          <Stack space="related">
-            <Headline level="3">Order Summary</Headline>
-
-            <Stack space="tight">
-              {TICKET_CATEGORIES.map(category => {
-                const qty = quantities[category.id];
-                const subtotal = calculateSubtotal(category.id);
-
-                if (qty === 0) return null;
-
-                return (
-                  <Columns key={category.id} columns={[2, 'fit', 'fit']} space="related">
-                    <Text>
-                      {category.name} × {qty}
-                    </Text>
-                    <Text>${subtotal.toFixed(2)}</Text>
-                  </Columns>
-                );
-              })}
-            </Stack>
-
-            {getTotalTickets() > 0 && (
-              <>
-                <Text weight="bold" size="lg">
-                  Total: ${calculateTotal().toFixed(2)}
-                </Text>
-
-                <Button variant="primary" type="submit">
+                {/* Submit Button */}
+                <Button
+                  variant="primary"
+                  type="submit"
+                  fullWidth
+                >
                   Purchase Tickets
                 </Button>
-              </>
-            )}
-
-            {getTotalTickets() === 0 && (
-              <Text variant="muted">Select tickets to see summary</Text>
-            )}
+              </Stack>
+              </Form>
+            </Stack>
           </Stack>
-        </Card>
-      </Stack>
-    </>
+        </Inset>
+      </AppLayout.Main>
+    </AppLayout>
   );
 };
 
-export default TicketShop;
+export default TestApp;

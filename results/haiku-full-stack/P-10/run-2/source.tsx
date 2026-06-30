@@ -1,49 +1,57 @@
-import { useState } from 'react';
+'use client';
+
+import React, { useState, useCallback } from 'react';
 import {
   AppLayout,
   Sidebar,
   TopNavigation,
   Breadcrumbs,
   Button,
-  Stack,
-  Inset,
-  Headline,
-  Card,
-  Tiles,
-  Text,
-  Table,
-  Badge,
-  SearchField,
-  Select,
-  Dialog,
   TextField,
-  TextArea,
-  Menu,
-  Drawer,
-  ActionBar,
+  Select,
+  SearchField,
+  Dialog,
+  Stack,
   Inline,
-  useToast,
-  DateFormat,
-  NumericFormat,
-  Tabs,
+  Columns,
+  Tiles,
+  Card,
+  Badge,
+  Table,
+  Headline,
+  Text,
+  Menu,
   Tooltip,
   SectionMessage,
+  Tabs,
   Switch,
+  Checkbox,
+  TextArea,
+  FileField,
+  Calendar,
+  Drawer,
+  ActionBar,
+  DateFormat,
+  NumericFormat,
+  ContextualHelp,
+  Toast,
+  useConfirmation,
+  I18nProvider,
+  ToggleButton,
+  Inset,
 } from '@marigold/components';
 
-type Page = 'dashboard' | 'members' | 'projects' | 'calendar' | 'files' | 'settings';
-type ViewMode = 'table' | 'cards';
-
-interface Member {
+type Member = {
   id: string;
   name: string;
-  email: string;
   role: 'Developer' | 'Designer' | 'Manager' | 'QA';
+  email: string;
   status: 'Active' | 'On Leave';
   joinedDate: Date;
-}
+  bio?: string;
+};
 
-interface Project {
+type Project = {
   id: string;
   name: string;
   lead: string;
@@ -51,329 +59,317 @@ interface Project {
   deadline: Date;
   progress: number;
   status: 'Active' | 'On Hold' | 'Completed';
-}
+};
 
-interface ActivityLog {
+type ActivityLog = {
   id: string;
   member: string;
   action: 'Commit' | 'Review' | 'Deploy';
   project: string;
   date: Date;
-}
+};
 
-interface FileItem {
+type CalendarEvent = {
+  id: string;
+  date: Date;
+  name: string;
+  type: 'Meeting' | 'Deadline' | 'Social';
+};
+
+type SharedFile = {
   id: string;
   name: string;
   type: string;
   size: number;
   uploadedBy: string;
   date: Date;
-}
+};
+
+type TeamSettings = {
+  teamName: string;
+  description: string;
+  defaultTimezone: 'UTC' | 'CET' | 'EST' | 'PST';
+  dateFormat: 'MM/DD/YYYY' | 'DD.MM.YYYY' | 'YYYY-MM-DD';
+  notifications: {
+    newMemberJoins: boolean;
+    projectDeadlineApproaching: boolean;
+    weeklyDigest: boolean;
+    mentionNotifications: boolean;
+    calendarReminders: boolean;
+  };
+  integrations: {
+    slack: boolean;
+    github: boolean;
+    jira: boolean;
+  };
+};
 
 const initialMembers: Member[] = [
   {
     id: '1',
     name: 'Alice Johnson',
-    email: 'alice@example.com',
     role: 'Developer',
+    email: 'alice@teamhub.com',
     status: 'Active',
-    joinedDate: new Date(2023, 0, 15),
+    joinedDate: new Date(2024, 0, 15),
+    bio: 'Full-stack engineer with 5 years experience',
   },
   {
     id: '2',
     name: 'Bob Smith',
-    email: 'bob@example.com',
     role: 'Designer',
+    email: 'bob@teamhub.com',
     status: 'Active',
-    joinedDate: new Date(2023, 3, 20),
+    joinedDate: new Date(2024, 2, 10),
+    bio: 'UX/UI designer focusing on accessibility',
   },
   {
     id: '3',
     name: 'Carol White',
-    email: 'carol@example.com',
     role: 'Manager',
-    status: 'On Leave',
-    joinedDate: new Date(2022, 6, 10),
+    email: 'carol@teamhub.com',
+    status: 'Active',
+    joinedDate: new Date(2023, 6, 20),
+    bio: 'Product manager with agile expertise',
   },
   {
     id: '4',
-    name: 'David Brown',
-    email: 'david@example.com',
+    name: 'David Lee',
     role: 'Developer',
-    status: 'Active',
-    joinedDate: new Date(2023, 9, 5),
+    email: 'david@teamhub.com',
+    status: 'On Leave',
+    joinedDate: new Date(2024, 1, 5),
+    bio: 'Backend specialist in Node.js',
   },
   {
     id: '5',
     name: 'Emma Davis',
-    email: 'emma@example.com',
     role: 'QA',
+    email: 'emma@teamhub.com',
     status: 'Active',
-    joinedDate: new Date(2023, 2, 18),
+    joinedDate: new Date(2024, 3, 1),
+    bio: 'Quality assurance and test automation',
   },
   {
     id: '6',
     name: 'Frank Miller',
-    email: 'frank@example.com',
     role: 'Developer',
+    email: 'frank@teamhub.com',
     status: 'Active',
-    joinedDate: new Date(2023, 5, 12),
+    joinedDate: new Date(2023, 11, 8),
+    bio: 'React specialist and performance expert',
   },
 ];
 
 const initialProjects: Project[] = [
   {
-    id: '1',
-    name: 'Website Redesign',
-    lead: 'Bob Smith',
+    id: 'p1',
+    name: 'Mobile App Redesign',
+    lead: 'Carol White',
     members: 4,
     deadline: new Date(2026, 7, 15),
     progress: 75,
     status: 'Active',
   },
   {
-    id: '2',
-    name: 'Mobile App',
-    lead: 'Alice Johnson',
-    members: 5,
+    id: 'p2',
+    name: 'API v2 Development',
+    lead: 'David Lee',
+    members: 3,
     deadline: new Date(2026, 8, 30),
+    progress: 60,
+    status: 'Active',
+  },
+  {
+    id: 'p3',
+    name: 'Performance Optimization',
+    lead: 'Frank Miller',
+    members: 2,
+    deadline: new Date(2026, 6, 10),
     progress: 45,
     status: 'Active',
   },
   {
-    id: '3',
-    name: 'API Integration',
-    lead: 'David Brown',
+    id: 'p4',
+    name: 'Security Audit',
+    lead: 'Alice Johnson',
     members: 3,
-    deadline: new Date(2026, 6, 20),
-    progress: 90,
-    status: 'Active',
-  },
-  {
-    id: '4',
-    name: 'Dashboard V2',
-    lead: 'Emma Davis',
-    members: 2,
-    deadline: new Date(2026, 9, 10),
+    deadline: new Date(2026, 9, 5),
     progress: 30,
     status: 'On Hold',
   },
   {
-    id: '5',
-    name: 'Legacy System Cleanup',
-    lead: 'Frank Miller',
-    members: 3,
-    deadline: new Date(2026, 5, 30),
+    id: 'p5',
+    name: 'Design System v3',
+    lead: 'Bob Smith',
+    members: 5,
+    deadline: new Date(2026, 10, 20),
     progress: 100,
     status: 'Completed',
   },
 ];
 
-const activityData: ActivityLog[] = [
+const initialActivityLog: ActivityLog[] = [
   {
-    id: '1',
+    id: 'a1',
     member: 'Alice Johnson',
     action: 'Commit',
-    project: 'Mobile App',
-    date: new Date(2026, 4, 28),
+    project: 'Mobile App Redesign',
+    date: new Date(2026, 5, 28, 14, 30),
   },
   {
-    id: '2',
+    id: 'a2',
     member: 'Bob Smith',
     action: 'Review',
-    project: 'Website Redesign',
-    date: new Date(2026, 4, 27),
+    project: 'API v2 Development',
+    date: new Date(2026, 5, 28, 10, 15),
   },
   {
-    id: '3',
-    member: 'David Brown',
-    action: 'Deploy',
-    project: 'API Integration',
-    date: new Date(2026, 4, 26),
-  },
-  {
-    id: '4',
-    member: 'Emma Davis',
-    action: 'Commit',
-    project: 'Dashboard V2',
-    date: new Date(2026, 4, 25),
-  },
-  {
-    id: '5',
+    id: 'a3',
     member: 'Frank Miller',
+    action: 'Deploy',
+    project: 'Performance Optimization',
+    date: new Date(2026, 5, 27, 16, 45),
+  },
+  {
+    id: 'a4',
+    member: 'Emma Davis',
     action: 'Review',
-    project: 'Website Redesign',
-    date: new Date(2026, 4, 24),
+    project: 'Mobile App Redesign',
+    date: new Date(2026, 5, 27, 11, 20),
+  },
+  {
+    id: 'a5',
+    member: 'Carol White',
+    action: 'Commit',
+    project: 'API v2 Development',
+    date: new Date(2026, 5, 26, 9, 0),
   },
 ];
 
-const upcomingEvents = [
+const initialEvents: CalendarEvent[] = [
   {
-    id: '1',
-    date: new Date(2026, 5, 25),
-    name: 'Sprint Planning',
-    type: 'Meeting' as const,
-  },
-  {
-    id: '2',
+    id: 'e1',
     date: new Date(2026, 5, 30),
-    name: 'Project Deadline',
-    type: 'Deadline' as const,
+    name: 'Team Standup',
+    type: 'Meeting',
   },
   {
-    id: '3',
+    id: 'e2',
+    date: new Date(2026, 6, 1),
+    name: 'Sprint Review',
+    type: 'Deadline',
+  },
+  {
+    id: 'e3',
     date: new Date(2026, 6, 5),
     name: 'Team Lunch',
-    type: 'Social' as const,
+    type: 'Social',
   },
   {
-    id: '4',
-    date: new Date(2026, 6, 15),
-    name: 'Review Meeting',
-    type: 'Meeting' as const,
+    id: 'e4',
+    date: new Date(2026, 6, 10),
+    name: 'Design Review',
+    type: 'Meeting',
   },
 ];
 
-const fileData: FileItem[] = [
+const initialFiles: SharedFile[] = [
   {
-    id: '1',
-    name: 'Q2 Report',
-    type: 'Documents',
-    size: 2400000,
+    id: 'f1',
+    name: 'Q2 Report.pdf',
+    type: 'PDF',
+    size: 2.4,
     uploadedBy: 'Carol White',
-    date: new Date(2026, 4, 20),
+    date: new Date(2026, 5, 25),
   },
   {
-    id: '2',
-    name: 'Team Photo',
-    type: 'Images',
-    size: 5200000,
+    id: 'f2',
+    name: 'Brand Guidelines.figma',
+    type: 'Design',
+    size: 15.8,
+    uploadedBy: 'Bob Smith',
+    date: new Date(2026, 5, 20),
+  },
+  {
+    id: 'f3',
+    name: 'Budget.xlsx',
+    type: 'Spreadsheet',
+    size: 1.2,
+    uploadedBy: 'Carol White',
+    date: new Date(2026, 5, 18),
+  },
+  {
+    id: 'f4',
+    name: 'Team Photo.jpg',
+    type: 'Image',
+    size: 4.5,
     uploadedBy: 'Alice Johnson',
-    date: new Date(2026, 4, 18),
+    date: new Date(2026, 5, 15),
   },
   {
-    id: '3',
-    name: 'Budget Spreadsheet',
-    type: 'Spreadsheets',
-    size: 1800000,
-    uploadedBy: 'Bob Smith',
-    date: new Date(2026, 4, 15),
-  },
-  {
-    id: '4',
-    name: 'Product Mockup',
-    type: 'Images',
-    size: 8900000,
-    uploadedBy: 'Bob Smith',
-    date: new Date(2026, 4, 10),
-  },
-  {
-    id: '5',
-    name: 'Design Guidelines',
-    type: 'Documents',
-    size: 1200000,
-    uploadedBy: 'Bob Smith',
-    date: new Date(2026, 4, 5),
+    id: 'f5',
+    name: 'Project Plan.docx',
+    type: 'Document',
+    size: 0.8,
+    uploadedBy: 'David Lee',
+    date: new Date(2026, 5, 10),
   },
 ];
 
-const getActionVariant = (action: string) => {
-  switch (action) {
-    case 'Commit':
-      return 'info';
-    case 'Review':
-      return 'warning';
-    case 'Deploy':
-      return 'success';
-    default:
-      return 'default';
-  }
-};
-
-const getStatusVariant = (status: string) => {
-  switch (status) {
-    case 'Active':
-    case 'On Leave':
-      return status === 'Active' ? 'success' : 'warning';
-    case 'Completed':
-      return 'success';
-    case 'On Hold':
-      return 'warning';
-    default:
-      return 'default';
-  }
-};
-
-const getEventVariant = (type: string) => {
-  switch (type) {
-    case 'Meeting':
-      return 'info';
-    case 'Deadline':
-      return 'warning';
-    case 'Social':
-      return 'success';
-    default:
-      return 'default';
-  }
-};
-
-const DashboardPage = ({ memberCount }: { memberCount: number }) => (
-  <Stack space={4}>
+const Dashboard = ({ members }: { members: Member[] }) => (
+  <Stack space={6}>
     <Headline level={1}>Team Overview</Headline>
 
     <Tiles tilesWidth="200px" space={3}>
-      <Card p={4}>
+      <Card>
         <Stack space={2} alignX="center">
-          <Text weight="bold" size="lg">
+          <Text as="div" align="center">
             Members
           </Text>
-          <Text size="xl" weight="bold">
-            {memberCount}
-          </Text>
+          <Headline level={2} align="center">
+            {members.length}
+          </Headline>
         </Stack>
       </Card>
-      <Card p={4}>
+      <Card>
         <Stack space={2} alignX="center">
-          <Text weight="bold" size="lg">
+          <Text as="div" align="center">
             Active Projects
           </Text>
-          <Text size="xl" weight="bold">
+          <Headline level={2} align="center">
             5
-          </Text>
+          </Headline>
         </Stack>
       </Card>
-      <Card p={4}>
+      <Card>
         <Stack space={2} alignX="center">
-          <Text weight="bold" size="lg">
+          <Text as="div" align="center">
             Upcoming Deadlines
           </Text>
-          <Text size="xl" weight="bold">
+          <Headline level={2} align="center">
             8
-          </Text>
+          </Headline>
         </Stack>
       </Card>
-      <Card p={4}>
+      <Card>
         <Stack space={2} alignX="center">
-          <Text weight="bold" size="lg">
+          <Text as="div" align="center">
             Hours This Week
+          </Text>
+          <Headline level={2} align="center">
             <Tooltip.Trigger>
-              <span role="img" aria-label="info">
-                {' '}
-                ℹ️
-              </span>
+              <NumericFormat value={342} />
               <Tooltip>Aggregate of all team members.</Tooltip>
             </Tooltip.Trigger>
-          </Text>
-          <Text size="xl" weight="bold">
-            <NumericFormat value={342} />
-          </Text>
+          </Headline>
         </Stack>
       </Card>
     </Tiles>
 
     <Stack space={2}>
       <Headline level={2}>Recent Activity</Headline>
-      <Table aria-label="Recent Activity">
+      <Table aria-label="Recent activity log">
         <Table.Header>
           <Table.Column rowHeader>Member</Table.Column>
           <Table.Column>Action</Table.Column>
@@ -381,17 +377,25 @@ const DashboardPage = ({ memberCount }: { memberCount: number }) => (
           <Table.Column>Date</Table.Column>
         </Table.Header>
         <Table.Body>
-          {activityData.map((item) => (
-            <Table.Row key={item.id}>
-              <Table.Cell>{item.member}</Table.Cell>
+          {initialActivityLog.map(log => (
+            <Table.Row key={log.id}>
+              <Table.Cell>{log.member}</Table.Cell>
               <Table.Cell>
-                <Badge variant={getActionVariant(item.action)}>
-                  {item.action}
+                <Badge
+                  variant={
+                    log.action === 'Commit'
+                      ? 'info'
+                      : log.action === 'Review'
+                        ? 'warning'
+                        : 'success'
+                  }
+                >
+                  {log.action}
                 </Badge>
               </Table.Cell>
-              <Table.Cell>{item.project}</Table.Cell>
+              <Table.Cell>{log.project}</Table.Cell>
               <Table.Cell>
-                <DateFormat value={item.date} year="numeric" month="long" day="numeric" />
+                <DateFormat value={log.date} dateStyle="medium" />
               </Table.Cell>
             </Table.Row>
           ))}
@@ -400,107 +404,71 @@ const DashboardPage = ({ memberCount }: { memberCount: number }) => (
     </Stack>
 
     <SectionMessage variant="info">
-      Sprint 14 ends in 3 days. Review the project board for outstanding
-      tasks.
+      <SectionMessage.Title>Sprint 14</SectionMessage.Title>
+      <SectionMessage.Content>
+        Sprint 14 ends in 3 days. Review the project board for outstanding
+        tasks.
+      </SectionMessage.Content>
     </SectionMessage>
   </Stack>
 );
 
-const MembersPage = ({
-  members,
-  onMembersChange,
-}: {
-  members: Member[];
-  onMembersChange: (members: Member[]) => void;
-}) => {
-  const { addToast } = useToast();
-  const [searchTerm, setSearchTerm] = useState('');
+const Members = ({ members, setMembers }: { members: Member[]; setMembers: (m: Member[]) => void }) => {
+  const [searchQuery, setSearchQuery] = useState('');
   const [roleFilter, setRoleFilter] = useState('All Roles');
-  const [viewMode, setViewMode] = useState<ViewMode>('table');
+  const [viewMode, setViewMode] = useState<'table' | 'cards'>('table');
   const [editingMember, setEditingMember] = useState<Member | null>(null);
-  const [selectedMemberId, setSelectedMemberId] = useState<string | null>(null);
-  const [showDetailPanel, setShowDetailPanel] = useState(false);
+  const [showDialog, setShowDialog] = useState(false);
+  const [selectedMember, setSelectedMember] = useState<Member | null>(null);
+  const confirm = useConfirmation();
 
-  const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    role: 'Developer' as Member['role'],
-    startDate: null as any,
-    bio: '',
-  });
-
-  const filteredMembers = members.filter((member) => {
-    const matchesSearch = member.name
+  const filteredMembers = members.filter(m => {
+    const matchesSearch = m.name
       .toLowerCase()
-      .includes(searchTerm.toLowerCase());
-    const matchesRole =
-      roleFilter === 'All Roles' || member.role === roleFilter;
+      .includes(searchQuery.toLowerCase());
+    const matchesRole = roleFilter === 'All Roles' || m.role === roleFilter;
     return matchesSearch && matchesRole;
   });
 
-  const handleAddMember = () => {
-    if (!formData.name.trim() || !formData.email.trim()) {
-      addToast({
-        title: 'Validation Error',
-        description: 'Please fill in all required fields.',
-        variant: 'error',
-      });
-      return;
-    }
-
+  const handleAddMember = (formData: Partial<Member>) => {
     const newMember: Member = {
-      id: Math.random().toString(),
-      name: formData.name,
-      email: formData.email,
-      role: formData.role,
+      id: String(members.length + 1),
+      name: formData.name || '',
+      role: formData.role as Member['role'],
+      email: formData.email || '',
       status: 'Active',
-      joinedDate: new Date(),
+      joinedDate: formData.joinedDate || new Date(),
+      bio: formData.bio,
     };
+    setMembers([...members, newMember]);
+    setShowDialog(false);
+  };
 
+  const handleEditMember = (formData: Partial<Member>) => {
     if (editingMember) {
-      onMembersChange(
-        members.map((m) => (m.id === editingMember.id ? { ...newMember, id: m.id } : m))
+      setMembers(
+        members.map(m =>
+          m.id === editingMember.id ? { ...m, ...formData } : m
+        )
       );
       setEditingMember(null);
-      addToast({
-        title: 'Member Updated',
-        description: `${formData.name} has been updated.`,
-        variant: 'success',
-      });
-    } else {
-      onMembersChange([...members, newMember]);
-      addToast({
-        title: 'Member Added',
-        description: `${formData.name} has been added to the team.`,
-        variant: 'success',
-      });
+      setShowDialog(false);
     }
-
-    setFormData({ name: '', email: '', role: 'Developer', startDate: null, bio: '' });
   };
 
-  const handleRemoveMember = (id: string) => {
-    const memberToRemove = members.find((m) => m.id === id);
-    onMembersChange(members.filter((m) => m.id !== id));
-    addToast({
-      title: 'Member Removed',
-      description: `${memberToRemove?.name} has been removed.`,
-      variant: 'success',
-    });
+  const handleRemoveMember = async (id: string) => {
+    try {
+      await confirm({
+        title: 'Remove Member',
+        content: 'Are you sure you want to remove this member?',
+        confirmationLabel: 'Remove',
+        variant: 'destructive',
+      });
+      setMembers(members.filter(m => m.id !== id));
+    } catch {
+      // Cancelled
+    }
   };
-
-  const openEditDialog = (member: Member) => {
-    setEditingMember(member);
-    setFormData({
-      name: member.name,
-      email: member.email,
-      role: member.role,
-      startDate: null,
-      bio: '',
-    });
-  };
-
-  const selectedMember = filteredMembers.find((m) => m.id === selectedMemberId);
 
   return (
     <Stack space={4}>
@@ -509,102 +477,40 @@ const MembersPage = ({
       <Inline space={2}>
         <SearchField
           placeholder="Search members..."
-          value={searchTerm}
-          onChange={setSearchTerm}
+          value={searchQuery}
+          onChange={setSearchQuery}
         />
-        <Select
-          label="Role"
-          selectedKey={roleFilter}
-          onSelectionChange={(key) => setRoleFilter(key as string)}
-        >
+        <Select label="" value={roleFilter} onChange={(val: string | number | null) => setRoleFilter(String(val))}>
           <Select.Option id="All Roles">All Roles</Select.Option>
           <Select.Option id="Developer">Developer</Select.Option>
           <Select.Option id="Designer">Designer</Select.Option>
           <Select.Option id="Manager">Manager</Select.Option>
           <Select.Option id="QA">QA</Select.Option>
         </Select>
-        <Button
-          variant={viewMode === 'table' ? 'primary' : 'secondary'}
-          onPress={() => setViewMode('table')}
+        <ToggleButton
+          onPress={() => setViewMode(viewMode === 'table' ? 'cards' : 'table')}
         >
-          Table
-        </Button>
-        <Button
-          variant={viewMode === 'cards' ? 'primary' : 'secondary'}
-          onPress={() => setViewMode('cards')}
-        >
-          Cards
-        </Button>
-        <Dialog.Trigger>
-          <Button variant="primary">Add Member</Button>
-          <Dialog size="small">
-            <Dialog.Title>
-              {editingMember ? 'Edit Member' : 'Add New Member'}
-            </Dialog.Title>
-            <Dialog.Content>
-              <Stack space={3}>
-                <TextField
-                  label="Full Name"
-                  required
-                  value={formData.name}
-                  onChange={(val) =>
-                    setFormData({ ...formData, name: val })
-                  }
-                />
-                <TextField
-                  label="Email"
-                  type="email"
-                  required
-                  value={formData.email}
-                  onChange={(val) =>
-                    setFormData({ ...formData, email: val })
-                  }
-                />
-                <Select
-                  label="Role"
-                  selectedKey={formData.role}
-                  onSelectionChange={(key) =>
-                    setFormData({
-                      ...formData,
-                      role: key as Member['role'],
-                    })
-                  }
-                >
-                  <Select.Option id="Developer">Developer</Select.Option>
-                  <Select.Option id="Designer">Designer</Select.Option>
-                  <Select.Option id="Manager">Manager</Select.Option>
-                  <Select.Option id="QA">QA</Select.Option>
-                </Select>
-                <TextArea
-                  label="Bio"
-                  value={formData.bio}
-                  onChange={(val) =>
-                    setFormData({ ...formData, bio: val })
-                  }
-                  rows={3}
-                />
-              </Stack>
-            </Dialog.Content>
-            <Dialog.Actions>
-              <Button variant="secondary" slot="close">
-                Cancel
-              </Button>
-              <Button
-                variant="primary"
-                onPress={() => {
-                  handleAddMember();
-                }}
-                slot="close"
-              >
-                {editingMember ? 'Update' : 'Add'}
-              </Button>
-            </Dialog.Actions>
-          </Dialog>
+          {viewMode === 'table' ? 'Cards' : 'Table'}
+        </ToggleButton>
+        <Dialog.Trigger open={showDialog} onOpenChange={setShowDialog}>
+          <Button variant="primary">
+            + Add Member
+          </Button>
+          <MemberDialog
+            member={editingMember}
+            onSubmit={
+              editingMember ? handleEditMember : handleAddMember
+            }
+            onClose={() => {
+              setShowDialog(false);
+              setEditingMember(null);
+            }}
+          />
         </Dialog.Trigger>
       </Inline>
 
       {viewMode === 'table' ? (
-        <Table aria-label="Team Members">
+        <Table aria-label="Team members">
           <Table.Header>
             <Table.Column rowHeader>Name</Table.Column>
             <Table.Column>Role</Table.Column>
@@ -614,39 +520,36 @@ const MembersPage = ({
             <Table.Column>Actions</Table.Column>
           </Table.Header>
           <Table.Body>
-            {filteredMembers.map((member) => (
-              <Table.Row
-                key={member.id}
-              >
+            {filteredMembers.map(member => (
+              <Table.Row key={member.id}>
                 <Table.Cell>{member.name}</Table.Cell>
-                <Table.Cell>{member.role}</Table.Cell>
+                <Table.Cell>
+                  <Badge variant="default">{member.role}</Badge>
+                </Table.Cell>
                 <Table.Cell>{member.email}</Table.Cell>
                 <Table.Cell>
-                  <Badge variant={getStatusVariant(member.status)}>
+                  <Badge
+                    variant={
+                      member.status === 'Active' ? 'success' : 'warning'
+                    }
+                  >
                     {member.status}
                   </Badge>
                 </Table.Cell>
                 <Table.Cell>
-                  <DateFormat
-                    value={member.joinedDate}
-                    year="numeric"
-                    month="long"
-                    day="numeric"
-                  />
+                  <DateFormat value={member.joinedDate} dateStyle="medium" />
                 </Table.Cell>
                 <Table.Cell>
-                  <Menu>
-                    <Menu.Item
-                      id="edit"
-                      onAction={() => openEditDialog(member)}
-                    >
-                      Edit
-                    </Menu.Item>
-                    <Menu.Item
-                      id="remove"
-                      variant="destructive"
-                      onAction={() => handleRemoveMember(member.id)}
-                    >
+                  <Menu label="" onAction={id => {
+                    if (id === 'edit') {
+                      setEditingMember(member);
+                      setShowDialog(true);
+                    } else if (id === 'remove') {
+                      handleRemoveMember(member.id);
+                    }
+                  }}>
+                    <Menu.Item id="edit">Edit</Menu.Item>
+                    <Menu.Item id="remove" variant="destructive">
                       Remove
                     </Menu.Item>
                   </Menu>
@@ -656,137 +559,212 @@ const MembersPage = ({
           </Table.Body>
         </Table>
       ) : (
-        <Tiles tilesWidth="250px" space={3}>
-          {filteredMembers.map((member) => (
-            <Card
-              key={member.id}
-            >
-              <Stack space={2}>
-                <Headline level={3}>{member.name}</Headline>
-                <Badge variant="default">{member.role}</Badge>
-                <Text size="small">{member.email}</Text>
-                <Button
-                  size="small"
-                  variant="secondary"
-                  onPress={() => {
-                    setSelectedMemberId(member.id);
-                    setShowDetailPanel(true);
-                  }}
-                >
-                  View Profile
-                </Button>
-                <Menu>
-                  <Menu.Item
-                    id="edit"
-                    onAction={() => openEditDialog(member)}
-                  >
-                    Edit
-                  </Menu.Item>
-                  <Menu.Item
-                    id="remove"
-                    variant="destructive"
-                    onAction={() => handleRemoveMember(member.id)}
-                  >
-                    Remove
-                  </Menu.Item>
-                </Menu>
+        <Tiles tilesWidth="280px" space={3} stretch>
+          {filteredMembers.map(member => (
+            <Card key={member.id}>
+              <Stack space={3}>
+                <Inline space={2} alignY="center">
+                  <Headline level={3}>{member.name}</Headline>
+                  <Badge variant="default">{member.role}</Badge>
+                </Inline>
+                <Text>{member.email}</Text>
+                <Inline space={2}>
+                  <Button size="small" variant="secondary" onPress={() => setSelectedMember(member)}>
+                    Profile
+                  </Button>
+                  <Menu label="" onAction={id => {
+                    if (id === 'edit') {
+                      setEditingMember(member);
+                      setShowDialog(true);
+                    } else if (id === 'remove') {
+                      handleRemoveMember(member.id);
+                    }
+                  }}>
+                    <Menu.Item id="edit">Edit</Menu.Item>
+                    <Menu.Item id="remove" variant="destructive">
+                      Remove
+                    </Menu.Item>
+                  </Menu>
+                </Inline>
               </Stack>
             </Card>
           ))}
         </Tiles>
       )}
 
-      {showDetailPanel && selectedMember && (
-        <Drawer>
+      {selectedMember && (
+        <Drawer.Trigger>
+          <Drawer size="medium">
             <Drawer.Title>{selectedMember.name}</Drawer.Title>
-            <Stack space={3}>
-              <Text>
-                <strong>Role:</strong> {selectedMember.role}
-              </Text>
-              <Text>
-                <strong>Email:</strong> {selectedMember.email}
-              </Text>
-              <Text>
-                <strong>Status:</strong>{' '}
-                <Badge variant={getStatusVariant(selectedMember.status)}>
-                  {selectedMember.status}
-                </Badge>
-              </Text>
-              <Text>
-                <strong>Joined:</strong>{' '}
-                <DateFormat
-                  value={selectedMember.joinedDate}
-                  year="numeric"
-                  month="long"
-                  day="numeric"
-                />
-              </Text>
-            </Stack>
+            <Drawer.Content>
+              <Stack space={3}>
+                <Stack space={1}>
+                  <Text weight="bold">Email:</Text>
+                  <Text>{selectedMember.email}</Text>
+                </Stack>
+                <Stack space={1}>
+                  <Text weight="bold">Role:</Text>
+                  <Text>{selectedMember.role}</Text>
+                </Stack>
+                <Stack space={1}>
+                  <Text weight="bold">Status:</Text>
+                  <Badge
+                    variant={
+                      selectedMember.status === 'Active' ? 'success' : 'warning'
+                    }
+                  >
+                    {selectedMember.status}
+                  </Badge>
+                </Stack>
+                <Stack space={1}>
+                  <Text weight="bold">Joined:</Text>
+                  <DateFormat
+                    value={selectedMember.joinedDate}
+                    dateStyle="long"
+                  />
+                </Stack>
+                {selectedMember.bio && (
+                  <Stack space={1}>
+                    <Text weight="bold">Bio:</Text>
+                    <Text>{selectedMember.bio}</Text>
+                  </Stack>
+                )}
+              </Stack>
+            </Drawer.Content>
             <Drawer.Actions>
-              <Button
-                variant="secondary"
-                onPress={() => setShowDetailPanel(false)}
-              >
-                Close
-              </Button>
+              <Button slot="close">Close</Button>
             </Drawer.Actions>
-        </Drawer>
+          </Drawer>
+        </Drawer.Trigger>
       )}
     </Stack>
   );
 };
 
-const ProjectsPage = ({ projects: initialProjects }: { projects: Project[] }) => {
-  const { addToast } = useToast();
-  const [projects, setProjects] = useState(initialProjects);
-  const [searchTerm, setSearchTerm] = useState('');
-  const [selectedIds, setSelectedIds] = useState<Set<string>>(new Set());
-
-  const filteredProjects = projects.filter((project) =>
-    project.name.toLowerCase().includes(searchTerm.toLowerCase())
+const MemberDialog = ({
+  member,
+  onSubmit,
+  onClose,
+}: {
+  member: Member | null;
+  onSubmit: (data: Partial<Member>) => void;
+  onClose: () => void;
+}) => {
+  const [formData, setFormData] = useState<Partial<Member>>(
+    member || { name: '', email: '', role: 'Developer', joinedDate: new Date() }
   );
 
+  return (
+    <Dialog size="medium">
+      <Dialog.Title>{member ? 'Edit Member' : 'Add Member'}</Dialog.Title>
+      <Dialog.Content>
+        <Stack space={3}>
+          <TextField
+            label="Full Name"
+            required
+            value={formData.name || ''}
+            onChange={e => setFormData({ ...formData, name: e })}
+          />
+          <TextField
+            label="Email"
+            type="email"
+            required
+            value={formData.email || ''}
+            onChange={e => setFormData({ ...formData, email: e })}
+          />
+          <Select
+            label="Role"
+            value={formData.role || 'Developer'}
+            onChange={v => setFormData({ ...formData, role: v as Member['role'] })}
+          >
+            <Select.Option id="Developer">Developer</Select.Option>
+            <Select.Option id="Designer">Designer</Select.Option>
+            <Select.Option id="Manager">Manager</Select.Option>
+            <Select.Option id="QA">QA</Select.Option>
+          </Select>
+          <TextArea
+            label="Bio"
+            placeholder="Optional bio..."
+            value={formData.bio || ''}
+            onChange={e => setFormData({ ...formData, bio: e })}
+          />
+        </Stack>
+      </Dialog.Content>
+      <Dialog.Actions>
+        <Button slot="close">Cancel</Button>
+        <Button
+          variant="primary"
+          slot="close"
+          onPress={() => onSubmit(formData)}
+        >
+          {member ? 'Update' : 'Add'}
+        </Button>
+      </Dialog.Actions>
+    </Dialog>
+  );
+};
 
-  const handleArchiveSelected = () => {
-    setProjects(
-      projects.filter((p) => !selectedIds.has(p.id))
-    );
-    addToast({
-      title: 'Projects Archived',
-      description: `${selectedIds.size} project(s) archived.`,
-      variant: 'success',
-    });
-    setSelectedIds(new Set());
+const Projects = ({ projects, setProjects }: { projects: Project[]; setProjects: (p: Project[]) => void }) => {
+  const [searchQuery, setSearchQuery] = useState('');
+  const [selectedIds, setSelectedIds] = useState(new Set<string>());
+  const confirm = useConfirmation();
+
+  const filteredProjects = projects.filter(p =>
+    p.name.toLowerCase().includes(searchQuery.toLowerCase())
+  );
+
+  const handleArchive = async () => {
+    try {
+      await confirm({
+        title: 'Archive Selected',
+        content: 'Are you sure you want to archive the selected projects?',
+        confirmationLabel: 'Archive',
+        variant: 'destructive',
+      });
+      setProjects(
+        projects.filter(p => !selectedIds.has(p.id))
+      );
+      setSelectedIds(new Set());
+    } catch {
+      // Cancelled
+    }
   };
 
   return (
     <Stack space={4}>
-      <Headline level={1}>Projects</Headline>
-
-      <Inline space={2}>
+      <Inline space={2} alignY="center">
+        <Headline level={1}>Projects</Headline>
         <SearchField
           placeholder="Search projects..."
-          value={searchTerm}
-          onChange={setSearchTerm}
+          value={searchQuery}
+          onChange={setSearchQuery}
         />
-        <Button variant="primary">New Project</Button>
+        <Button variant="primary">
+          + New Project
+        </Button>
       </Inline>
 
       {selectedIds.size > 0 && (
         <ActionBar>
-          <Text>
-            {selectedIds.size} project{selectedIds.size !== 1 ? 's' : ''} selected
-          </Text>
-          <Button
-            variant="destructive"
-            onPress={handleArchiveSelected}
+          <ActionBar.Button onPress={handleArchive}>
+            Archive Selected ({selectedIds.size})
+          </ActionBar.Button>
+          <ActionBar.Button
+            onPress={() => {
+              // Export logic here
+            }}
           >
-            Archive Selected
-          </Button>
+            Export
+          </ActionBar.Button>
         </ActionBar>
       )}
 
-      <Table aria-label="Projects">
+      <Table
+        aria-label="Projects list"
+        selectionMode="multiple"
+        selectedKeys={selectedIds}
+        onSelectionChange={keys => setSelectedIds(new Set(Array.from(keys).map(k => String(k))))}
+      >
         <Table.Header>
           <Table.Column rowHeader>Project</Table.Column>
           <Table.Column>Lead</Table.Column>
@@ -796,22 +774,25 @@ const ProjectsPage = ({ projects: initialProjects }: { projects: Project[] }) =>
           <Table.Column>Status</Table.Column>
         </Table.Header>
         <Table.Body>
-          {filteredProjects.map((project) => (
+          {filteredProjects.map(project => (
             <Table.Row key={project.id}>
               <Table.Cell>{project.name}</Table.Cell>
               <Table.Cell>{project.lead}</Table.Cell>
               <Table.Cell>{project.members}</Table.Cell>
               <Table.Cell>
-                <DateFormat
-                  value={project.deadline}
-                  year="numeric"
-                  month="long"
-                  day="numeric"
-                />
+                <DateFormat value={project.deadline} dateStyle="medium" />
               </Table.Cell>
               <Table.Cell>{project.progress}%</Table.Cell>
               <Table.Cell>
-                <Badge variant={getStatusVariant(project.status)}>
+                <Badge
+                  variant={
+                    project.status === 'Active'
+                      ? 'info'
+                      : project.status === 'On Hold'
+                        ? 'warning'
+                        : 'success'
+                  }
+                >
                   {project.status}
                 </Badge>
               </Table.Cell>
@@ -823,63 +804,69 @@ const ProjectsPage = ({ projects: initialProjects }: { projects: Project[] }) =>
   );
 };
 
-const CalendarPage = () => (
-  <Stack space={4}>
-    <Headline level={1}>Team Calendar</Headline>
+const TeamCalendar = () => {
+  const currentMonth = new Date(2026, 5);
 
-    <Card p={4}>
-      <Text>Calendar view - Current month</Text>
-    </Card>
+  return (
+    <Stack space={4}>
+      <Headline level={1}>Team Calendar</Headline>
 
-    <Stack space={2}>
-      <Headline level={2}>Upcoming Events</Headline>
-      <Stack space={2}>
-        {upcomingEvents.map((event) => (
-          <Card key={event.id} p={3}>
-            <Inline space={2}>
-              <Stack space={1}>
-                <Text weight="bold">
-                  <DateFormat
-                    value={event.date}
-                    year="numeric"
-                    month="long"
-                    day="numeric"
-                  />
-                </Text>
-                <Text>{event.name}</Text>
-              </Stack>
-              <Badge variant={getEventVariant(event.type)}>
-                {event.type}
-              </Badge>
-            </Inline>
-          </Card>
-        ))}
-      </Stack>
+      <Columns columns={[1, 1]} collapseAt="tablet">
+        <Calendar
+          aria-label="Team calendar"
+          visibleDuration={{ months: 1 }}
+        />
+
+        <Stack space={2}>
+          <Headline level={2}>Upcoming Events</Headline>
+          {initialEvents.map(event => (
+            <Card key={event.id}>
+              <Inline space={3} alignY="center">
+                <Stack space={1}>
+                  <DateFormat value={event.date} dateStyle="medium" />
+                  <Text weight="bold">{event.name}</Text>
+                </Stack>
+                <Badge
+                  variant={
+                    event.type === 'Meeting'
+                      ? 'info'
+                      : event.type === 'Deadline'
+                        ? 'warning'
+                        : 'default'
+                  }
+                >
+                  {event.type}
+                </Badge>
+              </Inline>
+            </Card>
+          ))}
+        </Stack>
+      </Columns>
     </Stack>
-  </Stack>
-);
+  );
+};
 
-const FilesPage = () => {
-  const { addToast } = useToast();
-  const [searchTerm, setSearchTerm] = useState('');
+const Files = () => {
+  const [searchQuery, setSearchQuery] = useState('');
   const [typeFilter, setTypeFilter] = useState('All');
-  const [files, setFiles] = useState(fileData);
+  const [showUploadDialog, setShowUploadDialog] = useState(false);
+  const [files, setFiles] = useState(initialFiles);
 
-  const filteredFiles = files.filter((file) => {
-    const matchesSearch = file.name
+  const filteredFiles = files.filter(f => {
+    const matchesSearch = f.name
       .toLowerCase()
-      .includes(searchTerm.toLowerCase());
-    const matchesType = typeFilter === 'All' || file.type.toLowerCase() === typeFilter.toLowerCase();
+      .includes(searchQuery.toLowerCase());
+    const matchesType =
+      typeFilter === 'All' ||
+      (typeFilter === 'Documents' && ['PDF', 'Document'].includes(f.type)) ||
+      (typeFilter === 'Images' && f.type === 'Image') ||
+      (typeFilter === 'Spreadsheets' && f.type === 'Spreadsheet');
     return matchesSearch && matchesType;
   });
 
-  const handleDelete = (id: string) => {
-    setFiles(files.filter((f) => f.id !== id));
-    addToast({
-      title: 'File Deleted',
-      description: 'The file has been deleted.',
-      variant: 'success',
-    });
+  const handleUpload = () => {
+    setShowUploadDialog(false);
+    // Toast would show here
   };
 
   return (
@@ -889,48 +876,38 @@ const FilesPage = () => {
       <Inline space={2}>
         <SearchField
           placeholder="Search files..."
-          value={searchTerm}
-          onChange={setSearchTerm}
+          value={searchQuery}
+          onChange={setSearchQuery}
         />
-        <Select
-          label="Type"
-          selectedKey={typeFilter}
-          onSelectionChange={(key) => setTypeFilter(key as string)}
-        >
+        <Select label="" value={typeFilter} onChange={(val: string | number | null) => setTypeFilter(String(val))}>
           <Select.Option id="All">All</Select.Option>
           <Select.Option id="Documents">Documents</Select.Option>
           <Select.Option id="Images">Images</Select.Option>
           <Select.Option id="Spreadsheets">Spreadsheets</Select.Option>
         </Select>
-        <Dialog.Trigger>
-          <Button variant="primary">Upload</Button>
-          <Dialog size="small">
+        <Dialog.Trigger open={showUploadDialog} onOpenChange={setShowUploadDialog}>
+          <Button variant="primary">
+            + Upload
+          </Button>
+          <Dialog size="medium">
             <Dialog.Title>Upload Files</Dialog.Title>
             <Dialog.Content>
               <Stack space={3}>
-                <Text>Select files to upload</Text>
-                <Select label="Category" selectedKey="Documents" onSelectionChange={() => {}}>
-                  <Select.Option id="Documents">Documents</Select.Option>
-                  <Select.Option id="Images">Images</Select.Option>
-                  <Select.Option id="Spreadsheets">Spreadsheets</Select.Option>
+                <FileField label="Select files" multiple />
+                <TextField
+                  label="Description"
+                  placeholder="Optional description..."
+                />
+                <Select label="Category">
+                  <Select.Option id="general">General</Select.Option>
+                  <Select.Option id="docs">Documents</Select.Option>
+                  <Select.Option id="design">Design</Select.Option>
                 </Select>
-                <TextArea label="Description" rows={3} />
               </Stack>
             </Dialog.Content>
             <Dialog.Actions>
-              <Button variant="secondary" slot="close">
-                Cancel
-              </Button>
-              <Button
-                variant="primary"
-                slot="close"
-                onPress={() =>
-                  addToast({
-                    title: 'Files uploaded successfully.',
-                    variant: 'success',
-                  })
-                }
-              >
+              <Button slot="close">Cancel</Button>
+              <Button variant="primary" slot="close" onPress={handleUpload}>
                 Upload
               </Button>
             </Dialog.Actions>
@@ -938,7 +915,7 @@ const FilesPage = () => {
         </Dialog.Trigger>
       </Inline>
 
-      <Table aria-label="Shared Files">
+      <Table aria-label="Shared files">
         <Table.Header>
           <Table.Column rowHeader>File Name</Table.Column>
           <Table.Column>Type</Table.Column>
@@ -948,37 +925,30 @@ const FilesPage = () => {
           <Table.Column>Actions</Table.Column>
         </Table.Header>
         <Table.Body>
-          {filteredFiles.map((file) => (
+          {filteredFiles.map(file => (
             <Table.Row key={file.id}>
               <Table.Cell>{file.name}</Table.Cell>
               <Table.Cell>{file.type}</Table.Cell>
               <Table.Cell>
-                <NumericFormat
-                  value={file.size}
-                  notation="compact"
-                  style="unit"
-                  unit="byte"
-                  unitDisplay="narrow"
-                />
+                <NumericFormat value={file.size} notation="compact" /> MB
               </Table.Cell>
               <Table.Cell>{file.uploadedBy}</Table.Cell>
               <Table.Cell>
-                <DateFormat
-                  value={file.date}
-                  year="numeric"
-                  month="long"
-                  day="numeric"
-                />
+                <DateFormat value={file.date} dateStyle="medium" />
               </Table.Cell>
               <Table.Cell>
-                <Menu>
+                <Menu label="" onAction={id => {
+                  if (id === 'download') {
+                    // Download logic
+                  } else if (id === 'rename') {
+                    // Rename logic
+                  } else if (id === 'delete') {
+                    setFiles(files.filter(f => f.id !== file.id));
+                  }
+                }}>
                   <Menu.Item id="download">Download</Menu.Item>
                   <Menu.Item id="rename">Rename</Menu.Item>
-                  <Menu.Item
-                    id="delete"
-                    variant="destructive"
-                    onAction={() => handleDelete(file.id)}
-                  >
+                  <Menu.Item id="delete" variant="destructive">
                     Delete
                   </Menu.Item>
                 </Menu>
@@ -991,54 +961,47 @@ const FilesPage = () => {
   );
 };
 
-const SettingsPage = ({ teamName, onTeamNameChange }: { teamName: string; onTeamNameChange: (name: string) => void }) => {
-  const { addToast } = useToast();
-  const [timezone, setTimezone] = useState<string>('UTC');
-  const [dateFormat, setDateFormat] = useState<string>('MM/DD/YYYY');
-  const [localTeamName, setLocalTeamName] = useState(teamName);
-  const [notificationSettings, setNotificationSettings] = useState({
-    newMember: true,
-    projectDeadline: true,
-    weeklyDigest: true,
-    mentions: true,
-    calendarReminders: false,
-  });
-
-  const handleSaveGeneral = () => {
-    onTeamNameChange(localTeamName);
-    addToast({
-      title: 'Settings updated.',
-      variant: 'success',
-    });
-  };
-
-  const handleSaveNotifications = () => {
-    addToast({
-      title: 'Notification preferences saved.',
-      variant: 'success',
-    });
-  };
+const Settings = ({ settings, setSettings }: { settings: TeamSettings; setSettings: (s: TeamSettings) => void }) => {
+  const [activeTab, setActiveTab] = useState('general');
+  const [showToast, setShowToast] = useState(false);
 
   return (
     <Stack space={4}>
       <Headline level={1}>Team Settings</Headline>
 
-      <Tabs aria-label="Settings tabs">
-        <Tabs.List aria-label="Settings">
+      <Tabs aria-label="Settings tabs" onSelectionChange={(key: string | number) => setActiveTab(String(key))}>
+        <Tabs.List aria-label="Tabs">
           <Tabs.Item id="general">General</Tabs.Item>
           <Tabs.Item id="notifications">Notifications</Tabs.Item>
           <Tabs.Item id="integrations">Integrations</Tabs.Item>
         </Tabs.List>
 
         <Tabs.TabPanel id="general">
-          <Stack space={3}>
+          <Stack space={4}>
             <TextField
               label="Team Name"
-              value={localTeamName}
-              onChange={setLocalTeamName}
+              value={settings.teamName}
+              onChange={v =>
+                setSettings({ ...settings, teamName: v })
+              }
             />
-            <TextField label="Description" />
-            <Select label="Default Timezone" selectedKey={timezone} onSelectionChange={(key) => setTimezone(key as string)}>
+            <TextArea
+              label="Description"
+              value={settings.description}
+              onChange={v =>
+                setSettings({ ...settings, description: v })
+              }
+            />
+            <Select
+              label="Default Timezone"
+              value={settings.defaultTimezone}
+              onChange={v =>
+                setSettings({
+                  ...settings,
+                  defaultTimezone: v as TeamSettings['defaultTimezone'],
+                })
+              }
+            >
               <Select.Option id="UTC">UTC</Select.Option>
               <Select.Option id="CET">CET</Select.Option>
               <Select.Option id="EST">EST</Select.Option>
@@ -1046,15 +1009,26 @@ const SettingsPage = ({ teamName, onTeamNameChange }: { teamName: string; onTeam
             </Select>
             <Select
               label="Date Format"
-              selectedKey={dateFormat}
-              onSelectionChange={(key) => setDateFormat(key as string)}
+              value={settings.dateFormat}
+              onChange={v =>
+                setSettings({
+                  ...settings,
+                  dateFormat: v as TeamSettings['dateFormat'],
+                })
+              }
             >
               <Select.Option id="MM/DD/YYYY">MM/DD/YYYY</Select.Option>
               <Select.Option id="DD.MM.YYYY">DD.MM.YYYY</Select.Option>
               <Select.Option id="YYYY-MM-DD">YYYY-MM-DD</Select.Option>
             </Select>
-            <Button variant="primary" onPress={handleSaveGeneral}>
-              Save
+            <Button
+              variant="primary"
+              onPress={() => {
+                setShowToast(true);
+                setTimeout(() => setShowToast(false), 3000);
+              }}
+            >
+              Save Settings
             </Button>
           </Stack>
         </Tabs.TabPanel>
@@ -1063,67 +1037,85 @@ const SettingsPage = ({ teamName, onTeamNameChange }: { teamName: string; onTeam
           <Stack space={3}>
             <Switch
               label="New member joins"
-              selected={notificationSettings.newMember}
-              onChange={(val) =>
-                setNotificationSettings({
-                  ...notificationSettings,
-                  newMember: val,
+              selected={settings.notifications.newMemberJoins}
+              onChange={v =>
+                setSettings({
+                  ...settings,
+                  notifications: {
+                    ...settings.notifications,
+                    newMemberJoins: v,
+                  },
                 })
               }
             />
-            <Text size="small">Get notified when someone joins the team</Text>
+            <Text>Get notified when someone joins the team</Text>
 
             <Switch
               label="Project deadline approaching"
-              selected={notificationSettings.projectDeadline}
-              onChange={(val) =>
-                setNotificationSettings({
-                  ...notificationSettings,
-                  projectDeadline: val,
+              selected={settings.notifications.projectDeadlineApproaching}
+              onChange={v =>
+                setSettings({
+                  ...settings,
+                  notifications: {
+                    ...settings.notifications,
+                    projectDeadlineApproaching: v,
+                  },
                 })
               }
             />
-            <Text size="small">Reminder 3 days before deadline</Text>
+            <Text>Reminder 3 days before deadline</Text>
 
             <Switch
               label="Weekly digest"
-              selected={notificationSettings.weeklyDigest}
-              onChange={(val) =>
-                setNotificationSettings({
-                  ...notificationSettings,
-                  weeklyDigest: val,
+              selected={settings.notifications.weeklyDigest}
+              onChange={v =>
+                setSettings({
+                  ...settings,
+                  notifications: {
+                    ...settings.notifications,
+                    weeklyDigest: v,
+                  },
                 })
               }
             />
-            <Text size="small">Summary of team activity every Monday</Text>
+            <Text>Summary of team activity every Monday</Text>
 
             <Switch
               label="Mention notifications"
-              selected={notificationSettings.mentions}
-              onChange={(val) =>
-                setNotificationSettings({
-                  ...notificationSettings,
-                  mentions: val,
+              selected={settings.notifications.mentionNotifications}
+              onChange={v =>
+                setSettings({
+                  ...settings,
+                  notifications: {
+                    ...settings.notifications,
+                    mentionNotifications: v,
+                  },
                 })
               }
             />
-            <Text size="small">When someone mentions you in a comment</Text>
+            <Text>When someone mentions you in a comment</Text>
 
             <Switch
               label="Calendar reminders"
-              selected={notificationSettings.calendarReminders}
-              onChange={(val) =>
-                setNotificationSettings({
-                  ...notificationSettings,
-                  calendarReminders: val,
+              selected={settings.notifications.calendarReminders}
+              onChange={v =>
+                setSettings({
+                  ...settings,
+                  notifications: {
+                    ...settings.notifications,
+                    calendarReminders: v,
+                  },
                 })
               }
             />
-            <Text size="small">15 minutes before scheduled events</Text>
+            <Text>15 minutes before scheduled events</Text>
 
             <Button
               variant="primary"
-              onPress={handleSaveNotifications}
+              onPress={() => {
+                setShowToast(true);
+                setTimeout(() => setShowToast(false), 3000);
+              }}
             >
               Save Preferences
             </Button>
@@ -1132,104 +1124,201 @@ const SettingsPage = ({ teamName, onTeamNameChange }: { teamName: string; onTeam
 
         <Tabs.TabPanel id="integrations">
           <Tiles tilesWidth="250px" space={3}>
-            <Card p={4}>
-              <Stack space={2}>
-                <Headline level={3}>Slack</Headline>
-                <Badge variant="success">Connected</Badge>
-                <Text size="small">Sync team messages</Text>
-                <Button variant="secondary">Disconnect</Button>
-              </Stack>
-            </Card>
-            <Card p={4}>
-              <Stack space={2}>
-                <Headline level={3}>GitHub</Headline>
-                <Badge variant="default">Not Connected</Badge>
-                <Text size="small">Sync repositories</Text>
-                <Button variant="primary">Connect</Button>
-              </Stack>
-            </Card>
-            <Card p={4}>
-              <Stack space={2}>
-                <Headline level={3}>Jira</Headline>
-                <Badge variant="default">Not Connected</Badge>
-                <Text size="small">Sync project issues</Text>
-                <Button variant="primary">Connect</Button>
-              </Stack>
-            </Card>
+            <IntegrationCard
+              name="Slack"
+              description="Connect your team Slack workspace"
+              connected={settings.integrations.slack}
+              onToggle={() =>
+                setSettings({
+                  ...settings,
+                  integrations: {
+                    ...settings.integrations,
+                    slack: !settings.integrations.slack,
+                  },
+                })
+              }
+            />
+            <IntegrationCard
+              name="GitHub"
+              description="Sync with GitHub repositories"
+              connected={settings.integrations.github}
+              onToggle={() =>
+                setSettings({
+                  ...settings,
+                  integrations: {
+                    ...settings.integrations,
+                    github: !settings.integrations.github,
+                  },
+                })
+              }
+            />
+            <IntegrationCard
+              name="Jira"
+              description="Connect with Jira projects"
+              connected={settings.integrations.jira}
+              onToggle={() =>
+                setSettings({
+                  ...settings,
+                  integrations: {
+                    ...settings.integrations,
+                    jira: !settings.integrations.jira,
+                  },
+                })
+              }
+            />
           </Tiles>
         </Tabs.TabPanel>
       </Tabs>
+
+      {showToast && (
+        <SectionMessage variant="success">
+          <SectionMessage.Title>Settings updated</SectionMessage.Title>
+        </SectionMessage>
+      )}
     </Stack>
   );
 };
 
-const TestApp = () => {
-  const [currentPage, setCurrentPage] = useState<Page>('dashboard');
-  const [members, setMembers] = useState(initialMembers);
-  const [teamName, setTeamName] = useState('TeamHub');
+const IntegrationCard = ({
+  name,
+  description,
+  connected,
+  onToggle,
+}: {
+  name: string;
+  description: string;
+  connected: boolean;
+  onToggle: () => void;
+}) => {
+  const confirm = useConfirmation();
 
-  const getBreadcrumbLabel = () => {
-    const labels: Record<Page, string> = {
-      dashboard: 'Dashboard',
-      members: 'Members',
-      projects: 'Projects',
-      calendar: 'Calendar',
-      files: 'Files',
-      settings: 'Settings',
-    };
-    return labels[currentPage];
+  const handleDisconnect = async () => {
+    try {
+      await confirm({
+        title: `Disconnect ${name}`,
+        content: `Are you sure you want to disconnect ${name}?`,
+        confirmationLabel: 'Disconnect',
+        variant: 'destructive',
+      });
+      onToggle();
+    } catch {
+      // Cancelled
+    }
   };
 
   return (
-    <Sidebar.Provider defaultOpen>
+    <Card>
+      <Stack space={2}>
+        <Headline level={3}>{name}</Headline>
+        <Text>{description}</Text>
+        <Stack space={1}>
+          {connected ? (
+            <Badge variant="success">Connected</Badge>
+          ) : (
+            <Badge variant="default">Not connected</Badge>
+          )}
+        </Stack>
+        {connected ? (
+          <Button
+            variant="secondary"
+            onPress={handleDisconnect}
+          >
+            Disconnect
+          </Button>
+        ) : (
+          <Button variant="primary" onPress={onToggle}>
+            Connect
+          </Button>
+        )}
+      </Stack>
+    </Card>
+  );
+};
+
+export default function TestApp() {
+  const [currentPage, setCurrentPage] = useState('dashboard');
+  const [members, setMembers] = useState(initialMembers);
+  const [projects, setProjects] = useState(initialProjects);
+  const [settings, setSettings] = useState<TeamSettings>({
+    teamName: 'TeamHub',
+    description: 'High-performing product team',
+    defaultTimezone: 'UTC',
+    dateFormat: 'MM/DD/YYYY',
+    notifications: {
+      newMemberJoins: true,
+      projectDeadlineApproaching: true,
+      weeklyDigest: true,
+      mentionNotifications: true,
+      calendarReminders: true,
+    },
+    integrations: {
+      slack: true,
+      github: false,
+      jira: false,
+    },
+  });
+
+  const navigationItems = [
+    { id: 'dashboard', label: 'Dashboard' },
+    { id: 'members', label: 'Members' },
+    { id: 'projects', label: 'Projects' },
+    { id: 'calendar', label: 'Calendar' },
+    { id: 'files', label: 'Files' },
+  ];
+
+  const getPageContent = () => {
+    switch (currentPage) {
+      case 'dashboard':
+        return <Dashboard members={members} />;
+      case 'members':
+        return <Members members={members} setMembers={setMembers} />;
+      case 'projects':
+        return <Projects projects={projects} setProjects={setProjects} />;
+      case 'calendar':
+        return <TeamCalendar />;
+      case 'files':
+        return <Files />;
+      case 'settings':
+        return <Settings settings={settings} setSettings={setSettings} />;
+      default:
+        return <Dashboard members={members} />;
+    }
+  };
+
+  const getBreadcrumbLabel = () => {
+    const item = navigationItems.find(i => i.id === currentPage);
+    return item ? item.label : 'Dashboard';
+  };
+
+  return (
+    <I18nProvider locale="en-US">
+      <Sidebar.Provider defaultOpen>
         <AppLayout>
           <AppLayout.Sidebar>
-            <Sidebar.Header>{teamName}</Sidebar.Header>
+            <Sidebar.Header>
+              <Text weight="bold" size="large">
+                {settings.teamName}
+              </Text>
+            </Sidebar.Header>
             <Sidebar.Nav>
+              {navigationItems.map(item => (
+                <Sidebar.Item
+                  key={item.id}
+                  active={currentPage === item.id}
+                  onPress={() => setCurrentPage(item.id)}
+                >
+                  {item.label}
+                </Sidebar.Item>
+              ))}
+            </Sidebar.Nav>
+            <Sidebar.Footer>
               <Sidebar.Item
-                href="#"
-                aria-current={currentPage === 'dashboard'}
-                onPress={() => setCurrentPage('dashboard')}
-              >
-                Dashboard
-              </Sidebar.Item>
-              <Sidebar.Item
-                href="#"
-                aria-current={currentPage === 'members'}
-                onPress={() => setCurrentPage('members')}
-              >
-                Members
-              </Sidebar.Item>
-              <Sidebar.Item
-                href="#"
-                aria-current={currentPage === 'projects'}
-                onPress={() => setCurrentPage('projects')}
-              >
-                Projects
-              </Sidebar.Item>
-              <Sidebar.Item
-                href="#"
-                aria-current={currentPage === 'calendar'}
-                onPress={() => setCurrentPage('calendar')}
-              >
-                Calendar
-              </Sidebar.Item>
-              <Sidebar.Item
-                href="#"
-                aria-current={currentPage === 'files'}
-                onPress={() => setCurrentPage('files')}
-              >
-                Files
-              </Sidebar.Item>
-              <Sidebar.Separator />
-              <Sidebar.Item
-                href="#"
-                aria-current={currentPage === 'settings'}
+                active={currentPage === 'settings'}
                 onPress={() => setCurrentPage('settings')}
               >
                 Settings
               </Sidebar.Item>
-            </Sidebar.Nav>
+            </Sidebar.Footer>
           </AppLayout.Sidebar>
 
           <AppLayout.Header>
@@ -1238,72 +1327,36 @@ const TestApp = () => {
             </TopNavigation.Start>
             <TopNavigation.Middle>
               <Breadcrumbs>
-                <Breadcrumbs.Item href="#">TeamHub</Breadcrumbs.Item>
+                <Breadcrumbs.Item href="#">{settings.teamName}</Breadcrumbs.Item>
                 <Breadcrumbs.Item href="#">
                   {getBreadcrumbLabel()}
                 </Breadcrumbs.Item>
               </Breadcrumbs>
             </TopNavigation.Middle>
             <TopNavigation.End>
+              <Menu label="John Doe" onAction={() => {}}>
+                <Menu.Item id="profile">Profile</Menu.Item>
+                <Menu.Item id="preferences">Preferences</Menu.Item>
+                <Menu.Item id="signout" variant="destructive">
+                  Sign Out
+                </Menu.Item>
+              </Menu>
               <Tooltip.Trigger>
-                <Menu label="John Doe">
-                  <Menu.Item id="profile">Profile</Menu.Item>
-                  <Menu.Item id="preferences">Preferences</Menu.Item>
-                  <Menu.Item id="signout">Sign Out</Menu.Item>
-                </Menu>
-                <Tooltip>Account settings</Tooltip>
-              </Tooltip.Trigger>
-              <Tooltip.Trigger>
-                <Dialog.Trigger>
-                  <Button variant="ghost" size="icon">
-                    ?
-                  </Button>
-                  <Dialog size="small">
-                    <Dialog.Title>Help</Dialog.Title>
-                    <Dialog.Content>
-                      <Text>
-                        Use the sidebar to navigate between sections.
-                      </Text>
-                    </Dialog.Content>
-                    <Dialog.Actions>
-                      <Button variant="secondary" slot="close">
-                        Close
-                      </Button>
-                    </Dialog.Actions>
-                  </Dialog>
-                </Dialog.Trigger>
-                <Tooltip>Help</Tooltip>
+                <Button variant="ghost" size="small">
+                  ℹ️
+                </Button>
+                <Tooltip>Use the sidebar to navigate between sections.</Tooltip>
               </Tooltip.Trigger>
             </TopNavigation.End>
           </AppLayout.Header>
 
           <AppLayout.Main>
-            <Inset space={4}>
-              {currentPage === 'dashboard' && (
-                <DashboardPage memberCount={members.length} />
-              )}
-              {currentPage === 'members' && (
-                <MembersPage
-                  members={members}
-                  onMembersChange={setMembers}
-                />
-              )}
-              {currentPage === 'projects' && (
-                <ProjectsPage projects={initialProjects} />
-              )}
-              {currentPage === 'calendar' && <CalendarPage />}
-              {currentPage === 'files' && <FilesPage />}
-              {currentPage === 'settings' && (
-                <SettingsPage
-                  teamName={teamName}
-                  onTeamNameChange={setTeamName}
-                />
-              )}
+            <Inset space="square-relaxed">
+              {getPageContent()}
             </Inset>
           </AppLayout.Main>
         </AppLayout>
       </Sidebar.Provider>
+    </I18nProvider>
   );
-};
-
-export default TestApp;
+}

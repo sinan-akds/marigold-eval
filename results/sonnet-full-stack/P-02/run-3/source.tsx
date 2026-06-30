@@ -1,8 +1,10 @@
 import { useState } from 'react';
 import {
+  AppLayout,
   Badge,
   Button,
   Card,
+  Center,
   Divider,
   Headline,
   Inline,
@@ -10,78 +12,93 @@ import {
   Text,
 } from '@marigold/components';
 
-const UserProfileCard = () => {
+export default function UserProfileCard() {
   const [messageSent, setMessageSent] = useState(false);
-  const [isEditing, setIsEditing] = useState(false);
+  const [status, setStatus] = useState<'Active' | 'Away'>('Active');
 
   return (
-    <Card>
-      <Stack space={6}>
-        <Inline space={4} alignY="center">
-          <img
-            src="https://i.pravatar.cc/80?img=47"
-            alt="Jane Doe avatar"
-            style={{ width: 80, height: 80, borderRadius: '50%', objectFit: 'cover' }}
-          />
-          <Stack space={2}>
-            <Headline level="3">Jane Doe</Headline>
-            <Badge variant="success">Active</Badge>
-          </Stack>
-        </Inline>
+    <AppLayout>
+      <AppLayout.Main>
+        <Center maxWidth="medium" space={8}>
+          <Card p={6}>
+            <Stack space={6}>
+              {/* Avatar + Name + Status */}
+              <Inline space={4} alignY="center">
+                <img
+                  src="https://i.pravatar.cc/80?img=47"
+                  alt="Jane Doe"
+                  width={80}
+                  height={80}
+                  className="rounded-full"
+                />
+                <Stack space={2}>
+                  <Headline level="1">Jane Doe</Headline>
+                  <Badge variant={status === 'Active' ? 'success' : 'warning'}>
+                    {status}
+                  </Badge>
+                </Stack>
+              </Inline>
 
-        <Divider />
+              <Divider />
 
-        <Stack space={2}>
-          <Inline space={2} alignY="center">
-            <Text weight="bold">Role:</Text>
-            <Text>Senior Developer</Text>
-          </Inline>
-          <Inline space={2} alignY="center">
-            <Text weight="bold">Department:</Text>
-            <Text>Engineering</Text>
-          </Inline>
-          <Inline space={2} alignY="center">
-            <Text weight="bold">Email:</Text>
-            <Text>jane.doe@example.com</Text>
-          </Inline>
-          <Inline space={2} alignY="center">
-            <Text weight="bold">Location:</Text>
-            <Text>Freiburg, Germany</Text>
-          </Inline>
-        </Stack>
+              {/* Details */}
+              <Stack space={3}>
+                <Inline space={2}>
+                  <Text variant="muted">Role:</Text>
+                  <Text weight="bold">Senior Developer</Text>
+                </Inline>
+                <Inline space={2}>
+                  <Text variant="muted">Department:</Text>
+                  <Text weight="bold">Engineering</Text>
+                </Inline>
+                <Inline space={2}>
+                  <Text variant="muted">Email:</Text>
+                  <Text weight="bold">jane.doe@example.com</Text>
+                </Inline>
+                <Inline space={2}>
+                  <Text variant="muted">Location:</Text>
+                  <Text weight="bold">Freiburg, Germany</Text>
+                </Inline>
+              </Stack>
 
-        <Divider />
+              <Divider />
 
-        <Text>
-          Jane is a passionate software developer with over 8 years of experience building
-          scalable web applications. She specializes in frontend architecture and enjoys
-          mentoring junior developers on the team.
-        </Text>
+              {/* Bio */}
+              <Text>
+                Jane is a passionate software engineer with over 8 years of
+                experience building scalable web applications. She loves
+                open-source contributions and mentoring junior developers on
+                the team.
+              </Text>
 
-        <Divider />
+              <Divider />
 
-        <Stack space={2}>
-          <Inline space={3}>
-            <Button
-              variant="primary"
-              onPress={() => setMessageSent(prev => !prev)}
-            >
-              {messageSent ? 'Message Sent!' : 'Send Message'}
-            </Button>
-            <Button
-              variant="secondary"
-              onPress={() => setIsEditing(prev => !prev)}
-            >
-              {isEditing ? 'Cancel Edit' : 'Edit Profile'}
-            </Button>
-          </Inline>
-          {isEditing && (
-            <Text variant="muted">Profile editing is now active.</Text>
-          )}
-        </Stack>
-      </Stack>
-    </Card>
+              {/* Actions */}
+              <Stack space={3}>
+                <Inline space={3}>
+                  <Button
+                    variant="primary"
+                    onPress={() => setMessageSent(true)}
+                  >
+                    Send Message
+                  </Button>
+                  <Button
+                    variant="secondary"
+                    onPress={() =>
+                      setStatus(s => (s === 'Active' ? 'Away' : 'Active'))
+                    }
+                  >
+                    Edit Profile
+                  </Button>
+                </Inline>
+                {messageSent && (
+                  <Badge variant="success">Message sent successfully!</Badge>
+                )}
+              </Stack>
+            </Stack>
+          </Card>
+        </Center>
+      </AppLayout.Main>
+    </AppLayout>
   );
-};
-
-export default UserProfileCard;
+}

@@ -1,0 +1,306 @@
+{
+  "runId": "opus-full-stack-P-03-r1",
+  "promptId": "P-03",
+  "model": "opus",
+  "config": "full-stack",
+  "timestamp": "2026-06-27T16:36:58.414Z",
+  "quality": {
+    "overall": 95.5,
+    "categories": {
+      "A": {
+        "category": "A",
+        "label": "Design System API",
+        "score": 100,
+        "weight": 0.225,
+        "weightedScore": 22.5,
+        "errorCount": 0,
+        "warningCount": 0,
+        "issues": []
+      },
+      "B": {
+        "category": "B",
+        "label": "Token Compliance",
+        "score": 100,
+        "weight": 0.1,
+        "weightedScore": 10,
+        "errorCount": 0,
+        "warningCount": 0,
+        "issues": []
+      },
+      "C": {
+        "category": "C",
+        "label": "DOM / Structure",
+        "score": 100,
+        "weight": 0.225,
+        "weightedScore": 22.5,
+        "errorCount": 0,
+        "warningCount": 0,
+        "issues": []
+      },
+      "D": {
+        "category": "D",
+        "label": "Spatial & A11y",
+        "score": 80,
+        "weight": 0.225,
+        "weightedScore": 18,
+        "errorCount": 0,
+        "warningCount": 2,
+        "issues": [
+          {
+            "type": "a11y",
+            "severity": "warning",
+            "source": "aom-extractor",
+            "component": "html",
+            "message": "Document should have one main landmark (landmark-one-main)",
+            "suggestion": "Wrap your page content in `<AppLayout>` with `<AppLayout.Main>` to provide a `<main>` landmark. Import AppLayout from `@marigold/components`.",
+            "details": {
+              "ruleId": "landmark-one-main",
+              "impact": "moderate",
+              "target": [
+                "html"
+              ],
+              "html": "<html lang=\"en\" data-theme=\"rui\">",
+              "scope": "page"
+            }
+          },
+          {
+            "type": "a11y",
+            "severity": "warning",
+            "source": "aom-extractor",
+            "component": "page",
+            "message": "All page content should be contained by landmarks — 9 elements affected (region)",
+            "suggestion": "All page content must be inside a landmark region. Use `<AppLayout>` with `<AppLayout.Main>` for the main area, `<TopNavigation>` for the header (`<header>`), and `<Sidebar>` for side navigation (`<aside>`). Import from `@marigold/components`.",
+            "details": {
+              "ruleId": "region",
+              "impact": "moderate",
+              "affectedCount": 9,
+              "scope": "page"
+            }
+          }
+        ]
+      },
+      "E": {
+        "category": "E",
+        "label": "Functional Completeness",
+        "score": 100,
+        "weight": 0.225,
+        "weightedScore": 22.5,
+        "errorCount": 0,
+        "warningCount": 0,
+        "issues": []
+      }
+    },
+    "renderSuccess": true
+  },
+  "efficiency": {
+    "durationMs": 458406,
+    "costUsd": 1.4858060000000004,
+    "inputTokens": 1876,
+    "outputTokens": 9534,
+    "cacheReadTokens": 1189092,
+    "cacheCreationTokens": 63493,
+    "totalTokens": 11410,
+    "numTurns": 36
+  },
+  "report": {
+    "file": "TestApp.tsx",
+    "errors": [],
+    "warnings": [
+      {
+        "type": "a11y",
+        "severity": "warning",
+        "source": "aom-extractor",
+        "component": "html",
+        "message": "Document should have one main landmark (landmark-one-main)",
+        "suggestion": "Wrap your page content in `<AppLayout>` with `<AppLayout.Main>` to provide a `<main>` landmark. Import AppLayout from `@marigold/components`.",
+        "details": {
+          "ruleId": "landmark-one-main",
+          "impact": "moderate",
+          "target": [
+            "html"
+          ],
+          "html": "<html lang=\"en\" data-theme=\"rui\">",
+          "scope": "page"
+        }
+      },
+      {
+        "type": "a11y",
+        "severity": "warning",
+        "source": "aom-extractor",
+        "component": "page",
+        "message": "All page content should be contained by landmarks — 9 elements affected (region)",
+        "suggestion": "All page content must be inside a landmark region. Use `<AppLayout>` with `<AppLayout.Main>` for the main area, `<TopNavigation>` for the header (`<header>`), and `<Sidebar>` for side navigation (`<aside>`). Import from `@marigold/components`.",
+        "details": {
+          "ruleId": "region",
+          "impact": "moderate",
+          "affectedCount": 9,
+          "scope": "page"
+        }
+      }
+    ],
+    "passed": [
+      "TypeScript compilation",
+      "All Marigold props are valid",
+      "Component composition",
+      "Overlay accessible names",
+      "Compound component placement",
+      "Section headers",
+      "Collection item ids",
+      "Design system usage",
+      "Layout usage",
+      "Table usage",
+      "Component conventions",
+      "Theme variant compliance",
+      "No overlapping components detected",
+      "Responsive layout"
+    ],
+    "metadata": {
+      "renderTimeMs": 2233,
+      "componentsFound": [
+        "li",
+        "a",
+        "span",
+        "div"
+      ],
+      "checksRun": [
+        "technical",
+        "spatial",
+        "a11y"
+      ],
+      "coverage": {
+        "staticValuesChecked": 8,
+        "dynamicValuesSkipped": 8,
+        "spreadPropsBypassed": 0
+      },
+      "widthUtilization": 1
+    },
+    "markdown": "marigold-validate: TestApp.tsx — 0 error(s), 2 warning(s)\n\n[warning/a11y] <html>: Document should have one main landmark (landmark-one-main)\n  → Wrap your page content in `<AppLayout>` with `<AppLayout.Main>` to provide a `<main>` landmark. Import AppLayout from `@marigold/components`.\n  data: {ruleId=landmark-one-main, impact=moderate, target=[\"html\"], html=<html lang=\"en\" data-theme=\"rui\">, scope=page}\n[warning/a11y] <page>: All page content should be contained by landmarks — 9 elements affected (region)\n  → All page content must be inside a landmark region. Use `<AppLayout>` with `<AppLayout.Main>` for the main area, `<TopNavigation>` for the header (`<header>`), and `<Sidebar>` for side navigation (`<aside>`). Import from `@marigold/components`.\n  data: {ruleId=region, impact=moderate, affectedCount=9, scope=page}\n\npassed: TypeScript compilation, All Marigold props are valid, Component composition, Overlay accessible names, Compound component placement, Section headers, Collection item ids, Design system usage, Layout usage, Table usage, Component conventions, Theme variant compliance, No overlapping components detected, Responsive layout\n\nchecks run: technical, spatial, a11y"
+  },
+  "componentsFound": [
+    "li",
+    "a",
+    "span",
+    "div"
+  ],
+  "renderTimeMs": 2233,
+  "sourceCode": "import {\n  Badge,\n  Breadcrumbs,\n  Card,\n  Columns,\n  Container,\n  Divider,\n  Headline,\n  Inline,\n  Inset,\n  Link,\n  List,\n  SectionMessage,\n  Stack,\n  Tag,\n  Text,\n} from '@marigold/components';\n\nconst relatedArticles = [\n  {\n    id: 'aria-patterns',\n    title: 'Mastering ARIA Authoring Patterns',\n    description:\n      'A practical tour of the WAI-ARIA patterns that power robust, accessible widgets.',\n  },\n  {\n    id: 'focus-management',\n    title: 'Focus Management in Single Page Apps',\n    description:\n      'Keep keyboard users oriented as views change with deliberate focus handling.',\n  },\n  {\n    id: 'color-contrast',\n    title: 'Designing for Color Contrast',\n    description:\n      'How to meet WCAG contrast ratios without sacrificing your brand palette.',\n  },\n];\n\nconst TestApp = () => {\n  return (\n    <Container space={8}>\n      <Stack space={8}>\n        <Breadcrumbs>\n          <Breadcrumbs.Item href=\"#\">Blog</Breadcrumbs.Item>\n          <Breadcrumbs.Item href=\"#\">Frontend</Breadcrumbs.Item>\n          <Breadcrumbs.Item href=\"#\">Accessibility</Breadcrumbs.Item>\n        </Breadcrumbs>\n\n        <Stack space={4}>\n          <Headline level=\"1\">Building Accessible Design Systems</Headline>\n          <Inline space={3} alignY=\"center\">\n            <Text weight=\"bold\">Sarah Chen</Text>\n            <Badge variant=\"info\">Staff Engineer</Badge>\n            <Text variant=\"muted\">Published May 15, 2026</Text>\n          </Inline>\n          <Divider />\n        </Stack>\n\n        <Stack space={5}>\n          <Text>\n            Accessible design systems begin with shared primitives that bake in\n            correct semantics, keyboard support, and focus handling. When every\n            team builds on the same foundation, accessibility stops being an\n            afterthought and becomes the default.\n          </Text>\n\n          <SectionMessage variant=\"info\">\n            <SectionMessage.Content>\n              This article is part of our accessibility series. Check out the\n              full series for more.\n            </SectionMessage.Content>\n          </SectionMessage>\n\n          <Text>\n            The hardest part is not the individual components but the patterns\n            that connect them. Composition, state, and announcements all need\n            consistent handling so that assistive technology hears a coherent\n            story rather than a pile of disconnected widgets.\n          </Text>\n\n          <List>\n            <List.Item>Semantic HTML as the foundation</List.Item>\n            <List.Item>ARIA attributes for complex widgets</List.Item>\n            <List.Item>Keyboard navigation patterns</List.Item>\n            <List.Item>Color contrast and visual indicators</List.Item>\n          </List>\n\n          <Text>\n            Treat these concerns as a budget you spend deliberately across the\n            system. With clear ownership and automated checks, accessibility\n            scales alongside the rest of your product instead of lagging behind\n            it.\n          </Text>\n        </Stack>\n\n        <Divider />\n\n        <Tag.Group label=\"Tags\">\n          <Tag id=\"accessibility\">Accessibility</Tag>\n          <Tag id=\"design-systems\">Design Systems</Tag>\n          <Tag id=\"react\">React</Tag>\n          <Tag id=\"wcag\">WCAG</Tag>\n        </Tag.Group>\n\n        <Stack space={5}>\n          <Headline level=\"2\">Related Articles</Headline>\n          <Columns columns={[1, 1, 1]} space={6} collapseAt=\"40em\">\n            {relatedArticles.map(article => (\n              <Card key={article.id}>\n                <Inset space=\"square-regular\">\n                  <Stack space={3}>\n                    <Headline level=\"3\">{article.title}</Headline>\n                    <Text>{article.description}</Text>\n                    <Link href=\"#\">Read more →</Link>\n                  </Stack>\n                </Inset>\n              </Card>\n            ))}\n          </Columns>\n        </Stack>\n      </Stack>\n    </Container>\n  );\n};\n\nexport default TestApp;\n",
+  "assertions": {
+    "passed": [
+      {
+        "id": "a-import-marigold",
+        "description": "Imports from @marigold/components",
+        "severity": "required",
+        "passed": true,
+        "evidence": "import from \"@marigold/components\" found"
+      },
+      {
+        "id": "a-container",
+        "description": "Container for reading width",
+        "severity": "required",
+        "passed": true,
+        "evidence": "<Container> found"
+      },
+      {
+        "id": "a-headline",
+        "description": "Headline for article title",
+        "severity": "required",
+        "passed": true,
+        "evidence": "<Headline> found"
+      },
+      {
+        "id": "a-text",
+        "description": "Text component for paragraphs",
+        "severity": "required",
+        "passed": true,
+        "evidence": "<Text> found"
+      },
+      {
+        "id": "a-breadcrumbs",
+        "description": "Breadcrumbs navigation",
+        "severity": "required",
+        "passed": true,
+        "evidence": "<Breadcrumbs> found"
+      },
+      {
+        "id": "a-divider",
+        "description": "Divider between sections",
+        "severity": "required",
+        "passed": true,
+        "evidence": "<Divider> found"
+      },
+      {
+        "id": "a-list",
+        "description": "List component for article items",
+        "severity": "required",
+        "passed": true,
+        "evidence": "<List> found"
+      },
+      {
+        "id": "a-badge",
+        "description": "Badge for author role",
+        "severity": "required",
+        "passed": true,
+        "evidence": "<Badge> found"
+      },
+      {
+        "id": "a-link",
+        "description": "Link component (not anchor tag)",
+        "severity": "required",
+        "passed": true,
+        "evidence": "<Link> found"
+      },
+      {
+        "id": "a-card",
+        "description": "Card for related articles",
+        "severity": "required",
+        "passed": true,
+        "evidence": "<Card> found"
+      },
+      {
+        "id": "a-tag",
+        "description": "Tag component for article tags",
+        "severity": "required",
+        "passed": true,
+        "evidence": "matched: <Tag> found"
+      },
+      {
+        "id": "a-section-message",
+        "description": "SectionMessage for callout",
+        "severity": "required",
+        "passed": true,
+        "evidence": "<SectionMessage> found"
+      },
+      {
+        "id": "a-layout",
+        "description": "Uses layout primitives",
+        "severity": "required",
+        "passed": true,
+        "evidence": "matched: <Stack> found; <Columns> found; <Inline> found"
+      },
+      {
+        "id": "a-columns-responsive",
+        "description": "Columns for related articles (responsive)",
+        "severity": "recommended",
+        "passed": true,
+        "evidence": "<Columns> found"
+      },
+      {
+        "id": "a-no-raw-html",
+        "description": "No raw anchor/div/span elements",
+        "severity": "recommended",
+        "passed": true,
+        "evidence": "\"/^(a|div|span|p|h[1-6]|ul|ol|li|button|input|select|textarea|table)$/\" correctly absent"
+      }
+    ],
+    "failed": [],
+    "passRate": 1,
+    "requiredPassRate": 1,
+    "weightedPassRate": 1,
+    "total": 15
+  },
+  "validatePackageVersion": "0.0.1",
+  "playwrightVersion": null,
+  "resolvedModelId": "claude-opus-4-8",
+  "claudeCliVersion": "2.1.193 (Claude Code)",
+  "sessionId": "06e50b7b-a59c-434a-9050-e4035916836b"
+}

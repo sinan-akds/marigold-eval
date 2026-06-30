@@ -1,5 +1,4 @@
-import { useState } from 'react';
-import type { DateValue } from '@internationalized/date';
+import { useMemo, useState } from 'react';
 import {
   Accordion,
   ActionMenu,
@@ -9,13 +8,12 @@ import {
   Columns,
   DatePicker,
   Dialog,
-  Divider,
+  Drawer,
   Headline,
   Inline,
-  Scrollable,
   SectionMessage,
   Select,
-  Split,
+  Scrollable,
   Stack,
   Table,
   Tabs,
@@ -23,6 +21,20 @@ import {
   TextArea,
   TextField,
 } from '@marigold/components';
+import type { DateValue } from '@internationalized/date';
+
+type BookingStatus = 'Confirmed' | 'Pending' | 'Cancelled';
+
+interface Booking {
+  id: string;
+  customer: string;
+  email: string;
+  venue: string;
+  date: string;
+  timeSlot: string;
+  status: BookingStatus;
+  notes: string;
+}
 
 const VENUES = [
   'Main Hall',
@@ -39,224 +51,259 @@ const TIME_SLOTS = [
   '18:00-21:00',
 ] as const;
 
-const TODAY = '2026-06-25';
-const WEEK_DATES = [
-  '2026-06-22',
-  '2026-06-23',
-  '2026-06-24',
-  '2026-06-25',
-  '2026-06-26',
-  '2026-06-27',
-  '2026-06-28',
-];
-
-type Status = 'Confirmed' | 'Pending' | 'Cancelled';
-
-interface Booking {
-  id: string;
-  customer: string;
-  email: string;
-  venue: string;
-  date: string;
-  timeSlot: string;
-  status: Status;
-  notes?: string;
-}
-
 const INITIAL_BOOKINGS: Booking[] = [
-  {
-    id: 'BKG-001',
-    customer: 'Alice Johnson',
-    email: 'alice@example.com',
-    venue: 'Main Hall',
-    date: '2026-06-25',
-    timeSlot: '09:00-12:00',
-    status: 'Confirmed',
-    notes: 'Anniversary celebration, needs catering setup',
-  },
-  {
-    id: 'BKG-002',
-    customer: 'Bob Martinez',
-    email: 'bob@example.com',
-    venue: 'Conference Room A',
-    date: '2026-06-25',
-    timeSlot: '12:00-15:00',
-    status: 'Pending',
-    notes: 'Quarterly review meeting',
-  },
-  {
-    id: 'BKG-003',
-    customer: 'Carol White',
-    email: 'carol@example.com',
-    venue: 'Rooftop Terrace',
-    date: '2026-06-26',
-    timeSlot: '15:00-18:00',
-    status: 'Confirmed',
-  },
-  {
-    id: 'BKG-004',
-    customer: 'David Lee',
-    email: 'david@example.com',
-    venue: 'Workshop Studio',
-    date: '2026-06-27',
-    timeSlot: '18:00-21:00',
-    status: 'Cancelled',
-    notes: 'Team building event — cancelled due to scheduling conflict',
-  },
-  {
-    id: 'BKG-005',
-    customer: 'Emma Brown',
-    email: 'emma@example.com',
-    venue: 'Conference Room B',
-    date: '2026-06-28',
-    timeSlot: '09:00-12:00',
-    status: 'Pending',
-    notes: 'Product launch preparation',
-  },
-  {
-    id: 'BKG-006',
-    customer: 'Frank Chen',
-    email: 'frank@example.com',
-    venue: 'Main Hall',
-    date: '2026-06-25',
-    timeSlot: '15:00-18:00',
-    status: 'Confirmed',
-    notes: 'Corporate dinner event',
-  },
-  {
-    id: 'BKG-007',
-    customer: 'Grace Kim',
-    email: 'grace@example.com',
-    venue: 'Main Hall',
-    date: '2026-06-25',
-    timeSlot: '12:00-15:00',
-    status: 'Pending',
-  },
+  { id: 'BK-001', customer: 'Alice Johnson', email: 'alice@example.com', venue: 'Main Hall', date: '2026-06-28', timeSlot: '09:00-12:00', status: 'Confirmed', notes: 'Setup required for conference' },
+  { id: 'BK-002', customer: 'Bob Smith', email: 'bob@example.com', venue: 'Conference Room A', date: '2026-06-28', timeSlot: '12:00-15:00', status: 'Pending', notes: 'Awaiting deposit payment' },
+  { id: 'BK-003', customer: 'Carol White', email: 'carol@example.com', venue: 'Rooftop Terrace', date: '2026-06-29', timeSlot: '18:00-21:00', status: 'Confirmed', notes: 'Evening cocktail event' },
+  { id: 'BK-004', customer: 'David Brown', email: 'david@example.com', venue: 'Workshop Studio', date: '2026-06-30', timeSlot: '09:00-12:00', status: 'Cancelled', notes: 'Cancelled by customer request' },
+  { id: 'BK-005', customer: 'Eva Martinez', email: 'eva@example.com', venue: 'Conference Room B', date: '2026-06-28', timeSlot: '15:00-18:00', status: 'Pending', notes: 'Waiting for final headcount' },
+  { id: 'BK-006', customer: 'Frank Wilson', email: 'frank@example.com', venue: 'Main Hall', date: '2026-07-01', timeSlot: '12:00-15:00', status: 'Confirmed', notes: 'VIP corporate event' },
+  { id: 'BK-007', customer: 'Grace Lee', email: 'grace@example.com', venue: 'Rooftop Terrace', date: '2026-06-28', timeSlot: '09:00-12:00', status: 'Confirmed', notes: 'Morning yoga session' },
 ];
 
-function statusVariant(status: Status): 'success' | 'warning' | 'default' {
+const getBadgeVariant = (status: BookingStatus): 'success' | 'warning' | 'default' => {
   if (status === 'Confirmed') return 'success';
   if (status === 'Pending') return 'warning';
   return 'default';
+};
+
+const dateValueToString = (v: DateValue): string =>
+  `${v.year}-${String(v.month).padStart(2, '0')}-${String(v.day).padStart(2, '0')}`;
+
+const getTodayString = () => {
+  const now = new Date();
+  const y = now.getFullYear();
+  const m = String(now.getMonth() + 1).padStart(2, '0');
+  const d = String(now.getDate()).padStart(2, '0');
+  return `${y}-${m}-${d}`;
+};
+
+const getWeekRange = () => {
+  const now = new Date();
+  const day = now.getDay();
+  const diffToMonday = day === 0 ? -6 : 1 - day;
+  const monday = new Date(now);
+  monday.setDate(now.getDate() + diffToMonday);
+  const sunday = new Date(monday);
+  sunday.setDate(monday.getDate() + 6);
+  const fmt = (d: Date) => {
+    const y = d.getFullYear();
+    const mo = String(d.getMonth() + 1).padStart(2, '0');
+    const dd = String(d.getDate()).padStart(2, '0');
+    return `${y}-${mo}-${dd}`;
+  };
+  return { start: fmt(monday), end: fmt(sunday) };
+};
+
+let nextBookingId = 8;
+
+interface FormState {
+  customerName: string;
+  customerEmail: string;
+  venue: string;
+  date: DateValue | null;
+  timeSlot: string;
+  notes: string;
+  editingId: string | null;
 }
 
-function formatDate(dateStr: string): string {
-  const [year, month, day] = dateStr.split('-');
-  return `${day}/${month}/${year}`;
+const EMPTY_FORM: FormState = {
+  customerName: '',
+  customerEmail: '',
+  venue: 'Main Hall',
+  date: null,
+  timeSlot: '09:00-12:00',
+  notes: '',
+  editingId: null,
+};
+
+interface BookingTableProps {
+  bookings: Booking[];
+  onViewDetails: (b: Booking) => void;
+  onEdit: (b: Booking) => void;
+  onCancel: (id: string) => void;
 }
 
-function dateValueToString(dv: DateValue): string {
-  return `${dv.year}-${String(dv.month).padStart(2, '0')}-${String(dv.day).padStart(2, '0')}`;
-}
+const BookingTable = ({ bookings, onViewDetails, onEdit, onCancel }: BookingTableProps) => (
+  <Scrollable>
+    <Table aria-label="Bookings table">
+      <Table.Header>
+        <Table.Column rowHeader>Booking ID</Table.Column>
+        <Table.Column>Customer</Table.Column>
+        <Table.Column>Venue</Table.Column>
+        <Table.Column>Date</Table.Column>
+        <Table.Column>Time Slot</Table.Column>
+        <Table.Column>Status</Table.Column>
+        <Table.Column>Actions</Table.Column>
+      </Table.Header>
+      <Table.Body>
+        {bookings.map(booking => (
+          <Table.Row key={booking.id} id={booking.id}>
+            <Table.Cell>{booking.id}</Table.Cell>
+            <Table.Cell>{booking.customer}</Table.Cell>
+            <Table.Cell>{booking.venue}</Table.Cell>
+            <Table.Cell>{booking.date}</Table.Cell>
+            <Table.Cell>{booking.timeSlot}</Table.Cell>
+            <Table.Cell>
+              <Badge variant={getBadgeVariant(booking.status)}>
+                {booking.status}
+              </Badge>
+            </Table.Cell>
+            <Table.Cell>
+              <ActionMenu
+                onAction={key => {
+                  if (key === 'view') onViewDetails(booking);
+                  else if (key === 'edit') onEdit(booking);
+                  else if (key === 'cancel') onCancel(booking.id);
+                }}
+              >
+                <ActionMenu.Item id="view">View Details</ActionMenu.Item>
+                <ActionMenu.Item id="edit">Edit</ActionMenu.Item>
+                <ActionMenu.Item id="cancel">Cancel Booking</ActionMenu.Item>
+              </ActionMenu>
+            </Table.Cell>
+          </Table.Row>
+        ))}
+      </Table.Body>
+    </Table>
+  </Scrollable>
+);
 
-export default function TestApp() {
+const TestApp = () => {
   const [bookings, setBookings] = useState<Booking[]>(INITIAL_BOOKINGS);
-  const [activeTab, setActiveTab] = useState<string>('all');
 
   const [filterDate, setFilterDate] = useState<DateValue | null>(null);
-  const [filterVenueText, setFilterVenueText] = useState('');
+  const [filterVenue, setFilterVenue] = useState('');
   const [filterStatus, setFilterStatus] = useState('all');
+  const [autocompleteKey, setAutocompleteKey] = useState(0);
 
-  const [selectedBooking, setSelectedBooking] = useState<Booking | null>(null);
-  const [newBookingOpen, setNewBookingOpen] = useState(false);
+  const [activeTab, setActiveTab] = useState('all');
 
-  const [formName, setFormName] = useState('');
-  const [formEmail, setFormEmail] = useState('');
-  const [formVenue, setFormVenue] = useState('');
-  const [formDate, setFormDate] = useState<DateValue | null>(null);
-  const [formTimeSlot, setFormTimeSlot] = useState('');
-  const [formNotes, setFormNotes] = useState('');
+  const [dialogOpen, setDialogOpen] = useState(false);
+  const [formState, setFormState] = useState<FormState>(EMPTY_FORM);
 
-  const resetForm = () => {
-    setFormName('');
-    setFormEmail('');
-    setFormVenue('');
-    setFormDate(null);
-    setFormTimeSlot('');
-    setFormNotes('');
-  };
+  const [drawerOpen, setDrawerOpen] = useState(false);
+  const [detailBooking, setDetailBooking] = useState<Booking | null>(null);
+
+  const todayStr = getTodayString();
+  const weekRange = getWeekRange();
+
+  const filteredBookings = useMemo(() => {
+    return bookings.filter(b => {
+      if (activeTab === 'today' && b.date !== todayStr) return false;
+      if (activeTab === 'this-week' && (b.date < weekRange.start || b.date > weekRange.end)) return false;
+      if (filterDate && b.date !== dateValueToString(filterDate)) return false;
+      if (filterVenue && !b.venue.toLowerCase().includes(filterVenue.toLowerCase())) return false;
+      if (filterStatus !== 'all' && b.status.toLowerCase() !== filterStatus) return false;
+      return true;
+    });
+  }, [bookings, activeTab, filterDate, filterVenue, filterStatus, todayStr, weekRange]);
 
   const clearFilters = () => {
     setFilterDate(null);
-    setFilterVenueText('');
+    setFilterVenue('');
     setFilterStatus('all');
+    setAutocompleteKey(k => k + 1);
   };
 
-  const filteredBookings = bookings.filter(b => {
-    if (activeTab === 'today' && b.date !== TODAY) return false;
-    if (activeTab === 'week' && !WEEK_DATES.includes(b.date)) return false;
-    if (filterDate && b.date !== dateValueToString(filterDate)) return false;
-    if (
-      filterVenueText &&
-      !b.venue.toLowerCase().includes(filterVenueText.toLowerCase())
-    )
-      return false;
-    if (filterStatus !== 'all' && b.status.toLowerCase() !== filterStatus)
-      return false;
-    return true;
-  });
+  const openNewBooking = () => {
+    setFormState(EMPTY_FORM);
+    setDialogOpen(true);
+  };
 
-  const mainHallTodayCount = bookings.filter(
-    b =>
-      b.venue === 'Main Hall' && b.date === TODAY && b.status !== 'Cancelled'
-  ).length;
-  const mainHallRemaining = TIME_SLOTS.length - mainHallTodayCount;
-  const showCapacityAlert = mainHallRemaining <= 2;
+  const openEdit = (b: Booking) => {
+    setFormState({
+      customerName: b.customer,
+      customerEmail: b.email,
+      venue: b.venue,
+      date: null,
+      timeSlot: b.timeSlot,
+      notes: b.notes,
+      editingId: b.id,
+    });
+    setDialogOpen(true);
+  };
 
-  const handleMenuAction = (action: string, booking: Booking) => {
-    if (action === 'view') {
-      setSelectedBooking(booking);
-    } else if (action === 'cancel') {
-      const updated = { ...booking, status: 'Cancelled' as Status };
-      setBookings(prev => prev.map(b => (b.id === booking.id ? updated : b)));
-      if (selectedBooking?.id === booking.id) {
-        setSelectedBooking(updated);
-      }
+  const openDetail = (b: Booking) => {
+    setDetailBooking(b);
+    setDrawerOpen(true);
+  };
+
+  const cancelBooking = (id: string) => {
+    setBookings(prev =>
+      prev.map(b => b.id === id ? { ...b, status: 'Cancelled' as BookingStatus } : b)
+    );
+  };
+
+  const submitBooking = (close: () => void) => {
+    if (!formState.customerName.trim()) return;
+    if (formState.editingId) {
+      setBookings(prev =>
+        prev.map(b =>
+          b.id === formState.editingId
+            ? {
+                ...b,
+                customer: formState.customerName,
+                email: formState.customerEmail,
+                venue: formState.venue,
+                date: formState.date ? dateValueToString(formState.date) : b.date,
+                timeSlot: formState.timeSlot,
+                notes: formState.notes,
+              }
+            : b
+        )
+      );
+    } else {
+      setBookings(prev => [
+        ...prev,
+        {
+          id: `BK-${String(nextBookingId++).padStart(3, '0')}`,
+          customer: formState.customerName,
+          email: formState.customerEmail,
+          venue: formState.venue,
+          date: formState.date ? dateValueToString(formState.date) : todayStr,
+          timeSlot: formState.timeSlot,
+          status: 'Pending',
+          notes: formState.notes,
+        },
+      ]);
     }
-  };
-
-  const handleCreateBooking = (close: () => void) => {
-    if (!formName.trim()) return;
-    const newBooking: Booking = {
-      id: `BKG-${String(bookings.length + 1).padStart(3, '0')}`,
-      customer: formName,
-      email: formEmail,
-      venue: formVenue || VENUES[0],
-      date: formDate ? dateValueToString(formDate) : TODAY,
-      timeSlot: formTimeSlot || TIME_SLOTS[0],
-      status: 'Pending',
-      notes: formNotes || undefined,
-    };
-    setBookings(prev => [...prev, newBooking]);
-    resetForm();
     close();
   };
 
+  const mainHallToday = bookings.filter(
+    b => b.venue === 'Main Hall' && b.date === todayStr && b.status !== 'Cancelled'
+  ).length;
+  const HALL_CAPACITY = 4;
+  const remaining = HALL_CAPACITY - mainHallToday;
+  const showAlert = remaining <= 2 && remaining >= 0;
+
+  const tableProps: BookingTableProps = {
+    bookings: filteredBookings,
+    onViewDetails: openDetail,
+    onEdit: openEdit,
+    onCancel: cancelBooking,
+  };
+
   return (
-    <Stack space={4}>
-      <Inline alignY="center" space={4}>
-        <Headline level="1">Booking Management</Headline>
-        <Split />
-        <Button variant="primary" onPress={() => setNewBookingOpen(true)}>
+    <Stack space={6}>
+      <Inline alignX="between" alignY="center">
+        <Headline level={1}>Booking Management</Headline>
+        <Button variant="primary" onPress={openNewBooking}>
           New Booking
         </Button>
       </Inline>
 
-      <Divider />
-
-      <Inline space={3} alignY="input">
+      <Columns space={3} columns={[1, 1, 1, 'fit']} collapseAt="768px">
         <DatePicker
           label="Date"
-          width="fit"
-          value={filterDate ?? undefined}
-          onChange={val => setFilterDate(val)}
+          value={filterDate}
+          onChange={v => setFilterDate(v)}
         />
         <Autocomplete
+          key={autocompleteKey}
           label="Venue"
-          width={48}
-          menuTrigger="focus"
-          value={filterVenueText}
-          onChange={val => setFilterVenueText(val)}
+          onChange={setFilterVenue}
         >
           {VENUES.map(v => (
             <Autocomplete.Option key={v} id={v}>
@@ -266,9 +313,8 @@ export default function TestApp() {
         </Autocomplete>
         <Select
           label="Status"
-          width={40}
           selectedKey={filterStatus}
-          onSelectionChange={key => setFilterStatus(String(key))}
+          onSelectionChange={key => setFilterStatus(key as string)}
         >
           <Select.Option id="all">All</Select.Option>
           <Select.Option id="confirmed">Confirmed</Select.Option>
@@ -278,70 +324,69 @@ export default function TestApp() {
         <Button variant="secondary" onPress={clearFilters}>
           Clear Filters
         </Button>
-      </Inline>
+      </Columns>
 
-      {showCapacityAlert && (
+      {showAlert && (
         <SectionMessage variant="warning">
           <SectionMessage.Title>Venue Nearly Full</SectionMessage.Title>
           <SectionMessage.Content>
-            Main Hall has only {mainHallRemaining} slot
-            {mainHallRemaining !== 1 ? 's' : ''} remaining for today.
+            Main Hall has only {remaining} slot{remaining !== 1 ? 's' : ''} remaining for today.
           </SectionMessage.Content>
         </SectionMessage>
       )}
 
-      {selectedBooking ? (
-        <Columns columns={[3, 1]} space={4} collapseAt="60em">
-          <BookingTabs
-            activeTab={activeTab}
-            onTabChange={setActiveTab}
-            bookings={filteredBookings}
-            onAction={handleMenuAction}
-          />
-          <DetailPanel
-            booking={selectedBooking}
-            onClose={() => setSelectedBooking(null)}
-          />
-        </Columns>
-      ) : (
-        <BookingTabs
-          activeTab={activeTab}
-          onTabChange={setActiveTab}
-          bookings={filteredBookings}
-          onAction={handleMenuAction}
-        />
-      )}
+      <Tabs
+        aria-label="Booking views"
+        selectedKey={activeTab}
+        onSelectionChange={key => setActiveTab(key as string)}
+      >
+        <Tabs.List aria-label="Booking view tabs">
+          <Tabs.Item id="all">All Bookings</Tabs.Item>
+          <Tabs.Item id="today">Today</Tabs.Item>
+          <Tabs.Item id="this-week">This Week</Tabs.Item>
+        </Tabs.List>
+        <Tabs.TabPanel id="all">
+          <BookingTable {...tableProps} />
+        </Tabs.TabPanel>
+        <Tabs.TabPanel id="today">
+          <BookingTable {...tableProps} />
+        </Tabs.TabPanel>
+        <Tabs.TabPanel id="this-week">
+          <BookingTable {...tableProps} />
+        </Tabs.TabPanel>
+      </Tabs>
 
       <Dialog
+        open={dialogOpen}
+        onOpenChange={setDialogOpen}
         size="medium"
-        open={newBookingOpen}
-        onOpenChange={open => {
-          setNewBookingOpen(open);
-          if (!open) resetForm();
-        }}
         closeButton
       >
         {({ close }) => (
           <>
-            <Dialog.Title>New Booking</Dialog.Title>
+            <Dialog.Title>
+              {formState.editingId ? 'Edit Booking' : 'New Booking'}
+            </Dialog.Title>
             <Dialog.Content>
               <Stack space={4}>
                 <TextField
                   label="Customer Name"
-                  value={formName}
-                  onChange={setFormName}
+                  value={formState.customerName}
+                  onChange={v => setFormState(p => ({ ...p, customerName: v }))}
                   required
                 />
                 <TextField
                   label="Customer Email"
                   type="email"
-                  value={formEmail}
-                  onChange={setFormEmail}
+                  value={formState.customerEmail}
+                  onChange={v => setFormState(p => ({ ...p, customerEmail: v }))}
                 />
                 <Select
                   label="Venue"
-                  selectedKey={formVenue || undefined}
-                  onSelectionChange={key => setFormVenue(String(key))}
+                  selectedKey={formState.venue}
+                  onSelectionChange={key =>
+                    setFormState(p => ({ ...p, venue: key as string }))
+                  }
                 >
                   {VENUES.map(v => (
                     <Select.Option key={v} id={v}>
@@ -351,13 +396,15 @@ export default function TestApp() {
                 </Select>
                 <DatePicker
                   label="Date"
-                  value={formDate ?? undefined}
-                  onChange={val => setFormDate(val)}
+                  value={formState.date}
+                  onChange={v => setFormState(p => ({ ...p, date: v }))}
                 />
                 <Select
                   label="Time Slot"
-                  selectedKey={formTimeSlot || undefined}
-                  onSelectionChange={key => setFormTimeSlot(String(key))}
+                  selectedKey={formState.timeSlot}
+                  onSelectionChange={key =>
+                    setFormState(p => ({ ...p, timeSlot: key as string }))
+                  }
                 >
                   {TIME_SLOTS.map(t => (
                     <Select.Option key={t} id={t}>
@@ -367,9 +414,8 @@ export default function TestApp() {
                 </Select>
                 <TextArea
                   label="Notes"
-                  value={formNotes}
-                  onChange={setFormNotes}
-                  rows={3}
+                  value={formState.notes}
+                  onChange={v => setFormState(p => ({ ...p, notes: v }))}
                 />
               </Stack>
             </Dialog.Content>
@@ -377,213 +423,97 @@ export default function TestApp() {
               <Button variant="secondary" onPress={close}>
                 Cancel
               </Button>
-              <Button
-                variant="primary"
-                onPress={() => handleCreateBooking(close)}
-              >
-                Create Booking
+              <Button variant="primary" onPress={() => submitBooking(close)}>
+                {formState.editingId ? 'Save Changes' : 'Create Booking'}
               </Button>
             </Dialog.Actions>
           </>
         )}
       </Dialog>
-    </Stack>
-  );
-}
 
-interface BookingTabsProps {
-  activeTab: string;
-  onTabChange: (tab: string) => void;
-  bookings: Booking[];
-  onAction: (action: string, booking: Booking) => void;
-}
+      <Drawer.Trigger open={drawerOpen} onOpenChange={setDrawerOpen}>
+        <Drawer size="medium" closeButton>
+          {detailBooking ? (
+            <>
+              <Drawer.Title>Booking {detailBooking.id}</Drawer.Title>
+              <Drawer.Content>
+                <Stack space={5}>
+                  <Inline space={2} alignY="center">
+                    <Text weight="bold">Status:</Text>
+                    <Badge variant={getBadgeVariant(detailBooking.status)}>
+                      {detailBooking.status}
+                    </Badge>
+                  </Inline>
 
-function BookingTabs({
-  activeTab,
-  onTabChange,
-  bookings,
-  onAction,
-}: BookingTabsProps) {
-  return (
-    <Tabs
-      aria-label="Booking views"
-      selectedKey={activeTab}
-      onSelectionChange={key => onTabChange(String(key))}
-    >
-      <Tabs.List aria-label="Booking views">
-        <Tabs.Item id="all">All Bookings</Tabs.Item>
-        <Tabs.Item id="today">Today</Tabs.Item>
-        <Tabs.Item id="week">This Week</Tabs.Item>
-      </Tabs.List>
-      <Tabs.TabPanel id="all">
-        <BookingTable bookings={bookings} onAction={onAction} />
-      </Tabs.TabPanel>
-      <Tabs.TabPanel id="today">
-        <BookingTable bookings={bookings} onAction={onAction} />
-      </Tabs.TabPanel>
-      <Tabs.TabPanel id="week">
-        <BookingTable bookings={bookings} onAction={onAction} />
-      </Tabs.TabPanel>
-    </Tabs>
-  );
-}
+                  <Stack space={2}>
+                    <Text weight="bold">Customer Information</Text>
+                    <Stack space={1}>
+                      <Inline space={1}>
+                        <Text weight="bold">Name:</Text>
+                        <Text>{detailBooking.customer}</Text>
+                      </Inline>
+                      <Inline space={1}>
+                        <Text weight="bold">Email:</Text>
+                        <Text>{detailBooking.email}</Text>
+                      </Inline>
+                    </Stack>
+                  </Stack>
 
-interface BookingTableProps {
-  bookings: Booking[];
-  onAction: (action: string, booking: Booking) => void;
-}
+                  <Stack space={2}>
+                    <Text weight="bold">Venue &amp; Schedule</Text>
+                    <Stack space={1}>
+                      <Inline space={1}>
+                        <Text weight="bold">Venue:</Text>
+                        <Text>{detailBooking.venue}</Text>
+                      </Inline>
+                      <Inline space={1}>
+                        <Text weight="bold">Date:</Text>
+                        <Text>{detailBooking.date}</Text>
+                      </Inline>
+                      <Inline space={1}>
+                        <Text weight="bold">Time:</Text>
+                        <Text>{detailBooking.timeSlot}</Text>
+                      </Inline>
+                    </Stack>
+                  </Stack>
 
-function BookingTable({ bookings, onAction }: BookingTableProps) {
-  if (bookings.length === 0) {
-    return (
-      <SectionMessage>
-        <SectionMessage.Title>No bookings found</SectionMessage.Title>
-        <SectionMessage.Content>
-          No bookings match your current filters.
-        </SectionMessage.Content>
-      </SectionMessage>
-    );
-  }
+                  <Stack space={2}>
+                    <Text weight="bold">Notes</Text>
+                    <Text>{detailBooking.notes || 'No notes provided.'}</Text>
+                  </Stack>
 
-  return (
-    <Scrollable>
-      <Table aria-label="Bookings">
-        <Table.Header>
-          <Table.Column rowHeader>Booking ID</Table.Column>
-          <Table.Column>Customer</Table.Column>
-          <Table.Column>Venue</Table.Column>
-          <Table.Column>Date</Table.Column>
-          <Table.Column>Time Slot</Table.Column>
-          <Table.Column>Status</Table.Column>
-          <Table.Column>Actions</Table.Column>
-        </Table.Header>
-        <Table.Body>
-          {bookings.map(booking => (
-            <Table.Row key={booking.id} id={booking.id}>
-              <Table.Cell>{booking.id}</Table.Cell>
-              <Table.Cell>
-                <Stack space={1}>
-                  <Text weight="bold">{booking.customer}</Text>
-                  <Text fontSize="xs" color="foreground-muted">
-                    {booking.email}
-                  </Text>
+                  <Accordion allowsMultipleExpanded>
+                    <Accordion.Item id="payment">
+                      <Accordion.Header>Payment History</Accordion.Header>
+                      <Accordion.Content>
+                        <Stack space={2}>
+                          <Text>Deposit €500 — Paid on 2026-06-15</Text>
+                          <Text>Balance €1,500 — Due on 2026-07-01</Text>
+                        </Stack>
+                      </Accordion.Content>
+                    </Accordion.Item>
+                    <Accordion.Item id="comms">
+                      <Accordion.Header>Communication Log</Accordion.Header>
+                      <Accordion.Content>
+                        <Stack space={2}>
+                          <Text>Email: Booking confirmation — 2026-06-10</Text>
+                          <Text>Call: Venue details discussed — 2026-06-12</Text>
+                          <Text>Email: Payment reminder — 2026-06-20</Text>
+                        </Stack>
+                      </Accordion.Content>
+                    </Accordion.Item>
+                  </Accordion>
                 </Stack>
-              </Table.Cell>
-              <Table.Cell>{booking.venue}</Table.Cell>
-              <Table.Cell>{formatDate(booking.date)}</Table.Cell>
-              <Table.Cell>{booking.timeSlot}</Table.Cell>
-              <Table.Cell>
-                <Badge variant={statusVariant(booking.status)}>
-                  {booking.status}
-                </Badge>
-              </Table.Cell>
-              <Table.Cell>
-                <ActionMenu>
-                  <ActionMenu.Item
-                    id="view"
-                    onAction={() => onAction('view', booking)}
-                  >
-                    View Details
-                  </ActionMenu.Item>
-                  <ActionMenu.Item
-                    id="edit"
-                    onAction={() => onAction('edit', booking)}
-                  >
-                    Edit
-                  </ActionMenu.Item>
-                  <ActionMenu.Item
-                    id="cancel"
-                    variant="destructive"
-                    onAction={() => onAction('cancel', booking)}
-                  >
-                    Cancel Booking
-                  </ActionMenu.Item>
-                </ActionMenu>
-              </Table.Cell>
-            </Table.Row>
-          ))}
-        </Table.Body>
-      </Table>
-    </Scrollable>
-  );
-}
-
-interface DetailPanelProps {
-  booking: Booking;
-  onClose: () => void;
-}
-
-function DetailPanel({ booking, onClose }: DetailPanelProps) {
-  return (
-    <Stack space={3}>
-      <Inline alignY="center" space={2}>
-        <Headline level="3">Booking Details</Headline>
-        <Split />
-        <Button variant="ghost" size="icon" onPress={onClose}>
-          ✕
-        </Button>
-      </Inline>
-
-      <Divider />
-
-      <Inline space={2} alignY="center">
-        <Text weight="bold">{booking.id}</Text>
-        <Badge variant={statusVariant(booking.status)}>{booking.status}</Badge>
-      </Inline>
-
-      <Divider />
-
-      <Stack space={1}>
-        <Text weight="bold">Customer</Text>
-        <Text>{booking.customer}</Text>
-        <Text color="foreground-muted">{booking.email}</Text>
-      </Stack>
-
-      <Divider />
-
-      <Stack space={1}>
-        <Text weight="bold">Venue &amp; Schedule</Text>
-        <Text>{booking.venue}</Text>
-        <Text color="foreground-muted">
-          {formatDate(booking.date)} · {booking.timeSlot}
-        </Text>
-      </Stack>
-
-      {booking.notes && (
-        <>
-          <Divider />
-          <Stack space={1}>
-            <Text weight="bold">Notes</Text>
-            <Text>{booking.notes}</Text>
-          </Stack>
-        </>
-      )}
-
-      <Divider />
-
-      <Accordion allowsMultipleExpanded>
-        <Accordion.Item id="payment">
-          <Accordion.Header>Payment History</Accordion.Header>
-          <Accordion.Content>
-            <Stack space={2}>
-              <Text color="foreground-muted">No payment records on file.</Text>
-              <Text fontSize="sm">Deposit: Pending</Text>
-              <Text fontSize="sm">Balance due: —</Text>
-            </Stack>
-          </Accordion.Content>
-        </Accordion.Item>
-        <Accordion.Item id="communication">
-          <Accordion.Header>Communication Log</Accordion.Header>
-          <Accordion.Content>
-            <Stack space={2}>
-              <Text color="foreground-muted">No messages logged yet.</Text>
-              <Text fontSize="sm">
-                Confirmation email sent on booking creation.
-              </Text>
-            </Stack>
-          </Accordion.Content>
-        </Accordion.Item>
-      </Accordion>
+              </Drawer.Content>
+              <Drawer.Actions>
+                <Button slot="close">Close</Button>
+              </Drawer.Actions>
+            </>
+          ) : null}
+        </Drawer>
+      </Drawer.Trigger>
     </Stack>
   );
-}
+};
+
+export default TestApp;

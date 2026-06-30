@@ -3,36 +3,19 @@
   "promptId": "P-03",
   "model": "haiku",
   "config": "full-stack",
-  "timestamp": "2026-06-22T15:24:32.691Z",
+  "timestamp": "2026-06-28T02:22:49.405Z",
   "quality": {
-    "overall": 87.12,
+    "overall": 98.33,
     "categories": {
       "A": {
         "category": "A",
         "label": "Design System API",
-        "score": 85.86,
+        "score": 100,
         "weight": 0.225,
-        "weightedScore": 19.32,
+        "weightedScore": 22.5,
         "errorCount": 0,
-        "warningCount": 1,
-        "issues": [
-          {
-            "type": "technical",
-            "severity": "warning",
-            "source": "design-system-usage",
-            "component": "nav",
-            "message": "Raw <nav> used instead of a Marigold component.",
-            "suggestion": "Raw <nav> used instead of a Marigold navigation component. Search the Marigold docs for navigation alternatives.",
-            "location": {
-              "file": "TestApp.tsx",
-              "line": 21,
-              "column": 9
-            },
-            "details": {
-              "htmlElement": "nav"
-            }
-          }
-        ]
+        "warningCount": 0,
+        "issues": []
       },
       "B": {
         "category": "B",
@@ -57,81 +40,19 @@
       "D": {
         "category": "D",
         "label": "Spatial & A11y",
-        "score": 71.72,
+        "score": 100,
         "weight": 0.225,
-        "weightedScore": 16.14,
+        "weightedScore": 22.5,
         "errorCount": 0,
-        "warningCount": 4,
-        "issues": [
-          {
-            "type": "a11y",
-            "severity": "warning",
-            "source": "aom-extractor",
-            "component": ".flex-\\(--columnSize\\).basis-\\[calc\\(\\(var\\(--collapseAt\\)-100\\%\\)\\*999\\)\\]:nth-child(1) > .w-fit.p-4.shadow-elevation-raised > .items-stretch.flex-col.gap-y-\\(--space\\) > h4",
-            "message": "Heading levels should only increase by one (heading-order)",
-            "suggestion": "Use `<Headline level={N}>` with sequential levels (1, 2, 3…). Do not skip heading levels. Import Headline from `@marigold/components`.",
-            "details": {
-              "ruleId": "heading-order",
-              "impact": "moderate",
-              "target": [
-                ".flex-\\(--columnSize\\).basis-\\[calc\\(\\(var\\(--collapseAt\\)-100\\%\\)\\*999\\)\\]:nth-child(1) > .w-fit.p-4.shadow-elevation-raised > .items-stretch.flex-col.gap-y-\\(--space\\) > h4"
-              ],
-              "html": "<h4 class=\"text-lg font-semibold max-w-(--maxHeadlineWidth) text-left\">Accessible Color Contrast Ratios</h4>",
-              "scope": "page"
-            }
-          },
-          {
-            "type": "a11y",
-            "severity": "warning",
-            "source": "aom-extractor",
-            "component": "html",
-            "message": "Document should have one main landmark (landmark-one-main)",
-            "suggestion": "Wrap your page content in `<AppLayout>` with `<AppLayout.Main>` to provide a `<main>` landmark. Import AppLayout from `@marigold/components`.",
-            "details": {
-              "ruleId": "landmark-one-main",
-              "impact": "moderate",
-              "target": [
-                "html"
-              ],
-              "html": "<html lang=\"en\" data-theme=\"rui\">",
-              "scope": "page"
-            }
-          },
-          {
-            "type": "a11y",
-            "severity": "warning",
-            "source": "aom-extractor",
-            "component": "page",
-            "message": "All page content should be contained by landmarks — 9 elements affected (region)",
-            "suggestion": "All page content must be inside a landmark region. Use `<AppLayout>` with `<AppLayout.Main>` for the main area, `<TopNavigation>` for the header (`<header>`), and `<Sidebar>` for side navigation (`<aside>`). Import from `@marigold/components`.",
-            "details": {
-              "ruleId": "region",
-              "impact": "moderate",
-              "affectedCount": 9,
-              "scope": "page"
-            }
-          },
-          {
-            "type": "a11y",
-            "severity": "warning",
-            "source": "keyboard-a11y",
-            "component": "button",
-            "message": "Interactive element <button> (button) is not reachable via Tab key.",
-            "suggestion": "Ensure the element is focusable. Marigold interactive components are focusable by default — check if a parent has tabindex=\"-1\" or focus is trapped.",
-            "details": {
-              "selector": "body:nth-child(2) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > nav:nth-child(1) > div:nth-child(1) > ol:nth-child(3) > li:nth-child(1) > button:nth-child(1)",
-              "role": "button",
-              "scope": "page"
-            }
-          }
-        ]
+        "warningCount": 0,
+        "issues": []
       },
       "E": {
         "category": "E",
         "label": "Functional Completeness",
-        "score": 85.19,
+        "score": 92.59,
         "weight": 0.225,
-        "weightedScore": 19.17,
+        "weightedScore": 20.83,
         "errorCount": 0,
         "warningCount": 0,
         "issues": []
@@ -140,97 +61,19 @@
     "renderSuccess": true
   },
   "efficiency": {
-    "durationMs": 229884,
-    "costUsd": 0.6554579000000004,
-    "inputTokens": 109,
-    "outputTokens": 12764,
-    "cacheReadTokens": 2312529,
-    "cacheCreationTokens": 175732,
-    "totalTokens": 12873,
-    "numTurns": 57
+    "durationMs": 150035,
+    "costUsd": 0.3330182999999999,
+    "inputTokens": 84,
+    "outputTokens": 7857,
+    "cacheReadTokens": 1276303,
+    "cacheCreationTokens": 82534,
+    "totalTokens": 7941,
+    "numTurns": 40
   },
   "report": {
     "file": "TestApp.tsx",
     "errors": [],
-    "warnings": [
-      {
-        "type": "technical",
-        "severity": "warning",
-        "source": "design-system-usage",
-        "component": "nav",
-        "message": "Raw <nav> used instead of a Marigold component.",
-        "suggestion": "Raw <nav> used instead of a Marigold navigation component. Search the Marigold docs for navigation alternatives.",
-        "location": {
-          "file": "TestApp.tsx",
-          "line": 21,
-          "column": 9
-        },
-        "details": {
-          "htmlElement": "nav"
-        }
-      },
-      {
-        "type": "a11y",
-        "severity": "warning",
-        "source": "aom-extractor",
-        "component": ".flex-\\(--columnSize\\).basis-\\[calc\\(\\(var\\(--collapseAt\\)-100\\%\\)\\*999\\)\\]:nth-child(1) > .w-fit.p-4.shadow-elevation-raised > .items-stretch.flex-col.gap-y-\\(--space\\) > h4",
-        "message": "Heading levels should only increase by one (heading-order)",
-        "suggestion": "Use `<Headline level={N}>` with sequential levels (1, 2, 3…). Do not skip heading levels. Import Headline from `@marigold/components`.",
-        "details": {
-          "ruleId": "heading-order",
-          "impact": "moderate",
-          "target": [
-            ".flex-\\(--columnSize\\).basis-\\[calc\\(\\(var\\(--collapseAt\\)-100\\%\\)\\*999\\)\\]:nth-child(1) > .w-fit.p-4.shadow-elevation-raised > .items-stretch.flex-col.gap-y-\\(--space\\) > h4"
-          ],
-          "html": "<h4 class=\"text-lg font-semibold max-w-(--maxHeadlineWidth) text-left\">Accessible Color Contrast Ratios</h4>",
-          "scope": "page"
-        }
-      },
-      {
-        "type": "a11y",
-        "severity": "warning",
-        "source": "aom-extractor",
-        "component": "html",
-        "message": "Document should have one main landmark (landmark-one-main)",
-        "suggestion": "Wrap your page content in `<AppLayout>` with `<AppLayout.Main>` to provide a `<main>` landmark. Import AppLayout from `@marigold/components`.",
-        "details": {
-          "ruleId": "landmark-one-main",
-          "impact": "moderate",
-          "target": [
-            "html"
-          ],
-          "html": "<html lang=\"en\" data-theme=\"rui\">",
-          "scope": "page"
-        }
-      },
-      {
-        "type": "a11y",
-        "severity": "warning",
-        "source": "aom-extractor",
-        "component": "page",
-        "message": "All page content should be contained by landmarks — 9 elements affected (region)",
-        "suggestion": "All page content must be inside a landmark region. Use `<AppLayout>` with `<AppLayout.Main>` for the main area, `<TopNavigation>` for the header (`<header>`), and `<Sidebar>` for side navigation (`<aside>`). Import from `@marigold/components`.",
-        "details": {
-          "ruleId": "region",
-          "impact": "moderate",
-          "affectedCount": 9,
-          "scope": "page"
-        }
-      },
-      {
-        "type": "a11y",
-        "severity": "warning",
-        "source": "keyboard-a11y",
-        "component": "button",
-        "message": "Interactive element <button> (button) is not reachable via Tab key.",
-        "suggestion": "Ensure the element is focusable. Marigold interactive components are focusable by default — check if a parent has tabindex=\"-1\" or focus is trapped.",
-        "details": {
-          "selector": "body:nth-child(2) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > nav:nth-child(1) > div:nth-child(1) > ol:nth-child(3) > li:nth-child(1) > button:nth-child(1)",
-          "role": "button",
-          "scope": "page"
-        }
-      }
-    ],
+    "warnings": [],
     "passed": [
       "TypeScript compilation",
       "All Marigold props are valid",
@@ -239,20 +82,21 @@
       "Compound component placement",
       "Section headers",
       "Collection item ids",
+      "Design system usage",
       "Layout usage",
       "Table usage",
       "Component conventions",
       "Theme variant compliance",
       "No overlapping components detected",
-      "Responsive layout"
+      "Responsive layout",
+      "Accessibility checks"
     ],
     "metadata": {
-      "renderTimeMs": 1485,
+      "renderTimeMs": 2407,
       "componentsFound": [
         "li",
-        "button",
-        "span",
-        "a"
+        "a",
+        "span"
       ],
       "checksRun": [
         "technical",
@@ -260,22 +104,21 @@
         "a11y"
       ],
       "coverage": {
-        "staticValuesChecked": 2,
-        "dynamicValuesSkipped": 16,
+        "staticValuesChecked": 21,
+        "dynamicValuesSkipped": 0,
         "spreadPropsBypassed": 0
       },
       "widthUtilization": 1
     },
-    "markdown": "marigold-validate: TestApp.tsx — 0 error(s), 5 warning(s)\n\n[warning/technical] <nav>: Raw <nav> used instead of a Marigold component. (TestApp.tsx:21:9)\n  → Raw <nav> used instead of a Marigold navigation component. Search the Marigold docs for navigation alternatives.\n  data: {htmlElement=nav}\n[warning/a11y] <.flex-\\(--columnSize\\).basis-\\[calc\\(\\(var\\(--collapseAt\\)-100\\%\\)\\*999\\)\\]:nth-child(1) > .w-fit.p-4.shadow-elevation-raised > .items-stretch.flex-col.gap-y-\\(--space\\) > h4>: Heading levels should only increase by one (heading-order)\n  → Use `<Headline level={N}>` with sequential levels (1, 2, 3…). Do not skip heading levels. Import Headline from `@marigold/components`.\n  data: {ruleId=heading-order, impact=moderate, target=[\".flex-\\\\(--columnSize\\\\).basis-\\\\[calc\\\\(\\\\(var\\\\(--collapseAt\\\\)-100\\\\%\\\\)\\\\*999\\\\)\\\\]:nth-child(1) > .w-fit.p-4.sha…, html=<h4 class=\"text-lg font-semibold max-w-(--maxHeadlineWidth) text-left\">Access..., scope=page}\n[warning/a11y] <button>: Interactive element <button> (button) is not reachable via Tab key.\n  → Ensure the element is focusable. Marigold interactive components are focusable by default — check if a parent has tabindex=\"-1\" or focus is trapped.\n  data: {selector=body:nth-child(2) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > ..., role=button, scope=page}\n[warning/a11y] <html>: Document should have one main landmark (landmark-one-main)\n  → Wrap your page content in `<AppLayout>` with `<AppLayout.Main>` to provide a `<main>` landmark. Import AppLayout from `@marigold/components`.\n  data: {ruleId=landmark-one-main, impact=moderate, target=[\"html\"], html=<html lang=\"en\" data-theme=\"rui\">, scope=page}\n[warning/a11y] <page>: All page content should be contained by landmarks — 9 elements affected (region)\n  → All page content must be inside a landmark region. Use `<AppLayout>` with `<AppLayout.Main>` for the main area, `<TopNavigation>` for the header (`<header>`), and `<Sidebar>` for side navigation (`<aside>`). Import from `@marigold/components`.\n  data: {ruleId=region, impact=moderate, affectedCount=9, scope=page}\n\npassed: TypeScript compilation, All Marigold props are valid, Component composition, Overlay accessible names, Compound component placement, Section headers, Collection item ids, Layout usage, Table usage, Component conventions, Theme variant compliance, No overlapping components detected, Responsive layout\n\nchecks run: technical, spatial, a11y"
+    "markdown": "marigold-validate: TestApp.tsx — ok\n\npassed: TypeScript compilation, All Marigold props are valid, Component composition, Overlay accessible names, Compound component placement, Section headers, Collection item ids, Design system usage, Layout usage, Table usage, Component conventions, Theme variant compliance, No overlapping components detected, Responsive layout, Accessibility checks\n\nchecks run: technical, spatial, a11y"
   },
   "componentsFound": [
     "li",
-    "button",
-    "span",
-    "a"
+    "a",
+    "span"
   ],
-  "renderTimeMs": 1485,
-  "sourceCode": "import {\n  Badge,\n  Breadcrumbs,\n  Card,\n  Center,\n  Columns,\n  Divider,\n  Headline,\n  Inline,\n  Link,\n  List,\n  SectionMessage,\n  Stack,\n  Text,\n} from '@marigold/components';\n\nconst TestApp = () => {\n  return (\n    <Center maxWidth=\"xxlarge\" space={8}>\n        {/* Breadcrumb Navigation */}\n        <nav aria-label=\"Breadcrumbs\">\n          <Breadcrumbs>\n            <Breadcrumbs.Item href=\"#\">Blog</Breadcrumbs.Item>\n            <Breadcrumbs.Item href=\"#\">Frontend</Breadcrumbs.Item>\n            <Breadcrumbs.Item href=\"#\">Accessibility</Breadcrumbs.Item>\n          </Breadcrumbs>\n        </nav>\n\n        {/* Article Header */}\n        <Stack space={4}>\n          <Headline level={1}>Building Accessible Design Systems</Headline>\n\n          {/* Article Metadata Row */}\n          <Inline space={4} alignY=\"center\">\n            <Text weight=\"bold\">Sarah Chen</Text>\n            <Badge>Staff Engineer</Badge>\n            <Text>Published May 15, 2026</Text>\n          </Inline>\n\n          <Divider />\n        </Stack>\n\n        {/* Article Body */}\n        <Stack space={6}>\n          {/* First Paragraph */}\n          <Text>\n            Accessible design systems form the backbone of inclusive digital\n            experiences. When we prioritize accessibility from the ground up, we\n            create products that serve everyone, regardless of their abilities or\n            circumstances. By establishing patterns and components that inherently\n            support assistive technologies, we reduce friction and empower teams\n            to build responsibly.\n          </Text>\n\n          {/* Info Callout */}\n          <SectionMessage>\n            <SectionMessage.Title>Accessibility Series</SectionMessage.Title>\n            <SectionMessage.Content>\n              This article is part of our accessibility series. Check out the\n              full series for more.\n            </SectionMessage.Content>\n          </SectionMessage>\n\n          {/* Second Paragraph */}\n          <Text>\n            The journey to accessibility is not a one-time effort but an\n            ongoing commitment. It requires understanding how people interact\n            with our designs, testing with real users, and iterating based on\n            feedback. Good accessibility practices often improve the overall\n            user experience for everyone, making interfaces clearer, more\n            predictable, and easier to navigate.\n          </Text>\n\n          {/* Key Points List */}\n          <List>\n            <List.Item>Semantic HTML as the foundation</List.Item>\n            <List.Item>ARIA attributes for complex widgets</List.Item>\n            <List.Item>Keyboard navigation patterns</List.Item>\n            <List.Item>Color contrast and visual indicators</List.Item>\n          </List>\n\n          {/* Final Paragraph */}\n          <Text>\n            Building with accessibility in mind is not a limitation—it is an\n            opportunity to create better, more thoughtful products. Teams that\n            embrace accessibility principles find they have fewer bugs, better\n            user satisfaction, and reach a wider audience. Start small, measure\n            your progress, and celebrate the impact you are making.\n          </Text>\n        </Stack>\n\n        {/* Tags Section */}\n        <Stack space={4}>\n          <Divider />\n          <Inline space={3}>\n            <Badge>Accessibility</Badge>\n            <Badge>Design Systems</Badge>\n            <Badge>React</Badge>\n            <Badge>WCAG</Badge>\n          </Inline>\n        </Stack>\n\n        {/* Related Articles Section */}\n        <Stack space={4}>\n          <Headline level={2}>Related Articles</Headline>\n\n          <Columns\n            columns={[1, 1, 1]}\n            space={4}\n            collapseAt=\"48em\"\n          >\n            {/* Card 1 */}\n            <Card>\n              <Stack space={3}>\n                <Headline level={4}>\n                  Accessible Color Contrast Ratios\n                </Headline>\n                <Text>\n                  Learn how to choose color combinations that meet WCAG\n                  standards while maintaining your design aesthetic.\n                </Text>\n                <Link href=\"#\">Read more →</Link>\n              </Stack>\n            </Card>\n\n            {/* Card 2 */}\n            <Card>\n              <Stack space={3}>\n                <Headline level={4}>\n                  Keyboard Navigation Patterns\n                </Headline>\n                <Text>\n                  Master the essential keyboard interactions that make your\n                  interface usable for all users.\n                </Text>\n                <Link href=\"#\">Read more →</Link>\n              </Stack>\n            </Card>\n\n            {/* Card 3 */}\n            <Card>\n              <Stack space={3}>\n                <Headline level={4}>\n                  Testing with Assistive Technologies\n                </Headline>\n                <Text>\n                  Explore tools and techniques for validating your design with\n                  screen readers and other assistive tools.\n                </Text>\n                <Link href=\"#\">Read more →</Link>\n              </Stack>\n            </Card>\n          </Columns>\n        </Stack>\n      </Center>\n  );\n};\n\nexport default TestApp;\n",
+  "renderTimeMs": 2407,
+  "sourceCode": "import {\n  AppLayout,\n  Breadcrumbs,\n  Container,\n  Stack,\n  Headline,\n  Text,\n  Badge,\n  Inline,\n  Divider,\n  SectionMessage,\n  List,\n  Card,\n  Columns,\n  Link,\n} from '@marigold/components';\n\nconst TestApp = () => {\n  return (\n    <AppLayout>\n      <AppLayout.Main>\n        <Container>\n          <Stack space=\"section\">\n        {/* Breadcrumb Navigation */}\n        <Breadcrumbs>\n          <Breadcrumbs.Item href=\"#blog\">Blog</Breadcrumbs.Item>\n          <Breadcrumbs.Item href=\"#frontend\">Frontend</Breadcrumbs.Item>\n          <Breadcrumbs.Item href=\"#accessibility\">Accessibility</Breadcrumbs.Item>\n        </Breadcrumbs>\n\n        {/* Article Header */}\n        <Stack space=\"related\">\n          <Headline level=\"1\">Building Accessible Design Systems</Headline>\n\n          <Inline space=\"regular\" alignY=\"center\">\n            <Text weight=\"medium\">Sarah Chen</Text>\n            <Badge variant=\"info\">Staff Engineer</Badge>\n            <Text variant=\"muted\">Published May 15, 2026</Text>\n          </Inline>\n\n          <Divider />\n        </Stack>\n\n        {/* Article Body */}\n        <Stack space=\"section\">\n          {/* First Paragraph */}\n          <Text>\n            Accessible design is not an afterthought—it's a fundamental principle that should be embedded from the very beginning of your design system. When you prioritize accessibility, you create inclusive experiences that benefit everyone, from users with disabilities to those in challenging environments. This article explores the key practices that make design systems truly accessible.\n          </Text>\n\n          {/* Info Callout */}\n          <SectionMessage variant=\"info\">\n            <SectionMessage.Title>Part of our accessibility series</SectionMessage.Title>\n            <SectionMessage.Content>\n              This article is part of our accessibility series. Check out the full series for more.\n            </SectionMessage.Content>\n          </SectionMessage>\n\n          {/* Second Paragraph */}\n          <Text>\n            Building an accessible design system requires collaboration between designers, developers, and accessibility specialists. It's not just about WCAG compliance; it's about creating a culture where accessibility is valued and integrated into every decision. The components you build should be flexible enough to adapt to different user needs while maintaining a consistent experience.\n          </Text>\n\n          {/* Key Points List */}\n          <List>\n            <List.Item>Semantic HTML as the foundation</List.Item>\n            <List.Item>ARIA attributes for complex widgets</List.Item>\n            <List.Item>Keyboard navigation patterns</List.Item>\n            <List.Item>Color contrast and visual indicators</List.Item>\n          </List>\n\n          {/* Final Paragraph */}\n          <Text>\n            As we continue to evolve our understanding of digital accessibility, remember that the best design systems are those that serve all users equally. Invest in accessibility testing, involve users with disabilities in your design process, and keep learning from the community. The effort you put in today will create a more inclusive web for everyone tomorrow.\n          </Text>\n        </Stack>\n\n        {/* Tags Section */}\n        <Stack space=\"related\">\n          <Divider />\n          <Inline space=\"tight\">\n            <Badge>Accessibility</Badge>\n            <Badge>Design Systems</Badge>\n            <Badge>React</Badge>\n            <Badge>WCAG</Badge>\n          </Inline>\n        </Stack>\n\n        {/* Related Articles */}\n        <Stack space=\"related\">\n          <Headline level=\"2\">Related Articles</Headline>\n\n          <Columns\n            columns={[1, 1, 1]}\n            space=\"section\"\n            collapseAt=\"40em\"\n          >\n            {/* Article Card 1 */}\n            <Card>\n              <Stack space=\"related\">\n                <Headline level=\"3\">Semantic HTML Best Practices</Headline>\n                <Text>Learn how to structure your HTML documents to improve accessibility and SEO for your web applications.</Text>\n                <Link href=\"#semantic-html\">Read more →</Link>\n              </Stack>\n            </Card>\n\n            {/* Article Card 2 */}\n            <Card>\n              <Stack space=\"related\">\n                <Headline level=\"3\">ARIA Attributes Demystified</Headline>\n                <Text>A comprehensive guide to using ARIA attributes correctly to enhance your component's accessibility features.</Text>\n                <Link href=\"#aria-guide\">Read more →</Link>\n              </Stack>\n            </Card>\n\n            {/* Article Card 3 */}\n            <Card>\n              <Stack space=\"related\">\n                <Headline level=\"3\">Testing for Accessibility</Headline>\n                <Text>Discover the tools and techniques needed to thoroughly test your design system for accessibility compliance.</Text>\n                <Link href=\"#testing-guide\">Read more →</Link>\n              </Stack>\n            </Card>\n          </Columns>\n        </Stack>\n      </Stack>\n        </Container>\n      </AppLayout.Main>\n    </AppLayout>\n  );\n};\n\nexport default TestApp;\n",
   "assertions": {
     "passed": [
       {
@@ -284,6 +127,13 @@
         "severity": "required",
         "passed": true,
         "evidence": "import from \"@marigold/components\" found"
+      },
+      {
+        "id": "a-container",
+        "description": "Container for reading width",
+        "severity": "required",
+        "passed": true,
+        "evidence": "<Container> found"
       },
       {
         "id": "a-headline",
@@ -372,13 +222,6 @@
     ],
     "failed": [
       {
-        "id": "a-container",
-        "description": "Container for reading width",
-        "severity": "required",
-        "passed": false,
-        "evidence": "<Container> not found"
-      },
-      {
         "id": "a-tag",
         "description": "Tag component for article tags",
         "severity": "required",
@@ -386,14 +229,14 @@
         "evidence": "none matched: <Tag> not found; <TagGroup> not found"
       }
     ],
-    "passRate": 0.8667,
-    "requiredPassRate": 0.8462,
-    "weightedPassRate": 0.8519,
+    "passRate": 0.9333,
+    "requiredPassRate": 0.9231,
+    "weightedPassRate": 0.9259,
     "total": 15
   },
   "validatePackageVersion": "0.0.1",
   "playwrightVersion": null,
   "resolvedModelId": "claude-haiku-4-5",
-  "claudeCliVersion": "2.1.185 (Claude Code)",
-  "sessionId": "16ca13d6-b5a2-49f7-a699-2e7200ccf642"
+  "claudeCliVersion": "2.1.193 (Claude Code)",
+  "sessionId": "e1f6f336-64be-4f86-b37b-5235c7118da5"
 }

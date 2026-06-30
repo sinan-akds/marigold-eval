@@ -1,9 +1,10 @@
 import {
+  AppLayout,
   Badge,
   Breadcrumbs,
   Card,
-  Center,
   Columns,
+  Container,
   Divider,
   Headline,
   Inline,
@@ -16,7 +17,9 @@ import {
 
 const TestApp = () => {
   return (
-    <Center maxWidth="large" space={8}>
+    <AppLayout>
+      <AppLayout.Main>
+        <Container space={6}>
       <Stack space={8}>
         <Breadcrumbs>
           <Breadcrumbs.Item href="#">Blog</Breadcrumbs.Item>
@@ -24,103 +27,96 @@ const TestApp = () => {
           <Breadcrumbs.Item href="#">Accessibility</Breadcrumbs.Item>
         </Breadcrumbs>
 
-        <Stack space={6}>
-          {/* Article header */}
-          <Stack space={4}>
-            <Headline level="1">Building Accessible Design Systems</Headline>
-            <Inline space={3}>
-              <Text>Sarah Chen</Text>
-              <Badge variant="info">Staff Engineer</Badge>
-              <Text variant="muted">Published May 15, 2026</Text>
-            </Inline>
-            <Divider />
-          </Stack>
-
-          {/* Article body */}
-          <Stack space={6}>
-            <Text as="p">
-              Design systems serve as the backbone of modern product
-              development, providing teams with a shared language of components,
-              patterns, and guidelines. When built with accessibility in mind
-              from the start, they ensure that every product is inclusive and
-              usable by all people, regardless of ability or assistive
-              technology.
-            </Text>
-
-            <SectionMessage variant="info">
-              <SectionMessage.Title>Accessibility Series</SectionMessage.Title>
-              <SectionMessage.Content>
-                This article is part of our accessibility series. Check out the
-                full series for more.
-              </SectionMessage.Content>
-            </SectionMessage>
-
-            <Text as="p">
-              Accessibility is not an afterthought — it must be baked into
-              every token, every component, and every pattern from the very
-              beginning. Teams that treat it as a retroactive concern often face
-              costly rewrites, fragmented user experiences, and products that
-              fail compliance requirements.
-            </Text>
-
-            <List>
-              <List.Item>Semantic HTML as the foundation</List.Item>
-              <List.Item>ARIA attributes for complex widgets</List.Item>
-              <List.Item>Keyboard navigation patterns</List.Item>
-              <List.Item>Color contrast and visual indicators</List.Item>
-            </List>
-
-            <Text as="p">
-              By prioritizing accessibility at the design system level,
-              organizations empower every product team to ship inclusive
-              experiences by default. The investment pays dividends in reach,
-              compliance, and trust — proving that great design and inclusive
-              design are never in conflict.
-            </Text>
-          </Stack>
-
-          {/* Tags */}
-          <Stack space={4}>
-            <Divider />
-            <Inline space={2}>
-              <Badge>Accessibility</Badge>
-              <Badge>Design Systems</Badge>
-              <Badge>React</Badge>
-              <Badge>WCAG</Badge>
-            </Inline>
-          </Stack>
+        <Stack space={4}>
+          <Headline level="1">Building Accessible Design Systems</Headline>
+          <Inline space={3} alignY="center">
+            <Text>Sarah Chen</Text>
+            <Badge variant="info">Staff Engineer</Badge>
+            <Text>Published May 15, 2026</Text>
+          </Inline>
+          <Divider />
         </Stack>
 
-        {/* Related articles */}
+        <Stack space={5}>
+          <Text>
+            Accessibility in design systems is not an afterthought but a
+            foundational requirement. When we build components that work for
+            everyone, we create better experiences across the board. A
+            well-designed system considers keyboard navigation, screen reader
+            support, and visual contrast from the very start.
+          </Text>
+
+          <SectionMessage variant="info">
+            <SectionMessage.Title>Accessibility Series</SectionMessage.Title>
+            <SectionMessage.Content>
+              This article is part of our accessibility series. Check out the
+              full series for more.
+            </SectionMessage.Content>
+          </SectionMessage>
+
+          <Text>
+            Implementing accessibility requires both technical knowledge and
+            empathy for users with different needs. From semantic HTML to ARIA
+            roles, every detail contributes to a more inclusive product. Teams
+            that prioritize accessibility from day one avoid costly retrofits
+            down the line.
+          </Text>
+
+          <List>
+            <List.Item>Semantic HTML as the foundation</List.Item>
+            <List.Item>ARIA attributes for complex widgets</List.Item>
+            <List.Item>Keyboard navigation patterns</List.Item>
+            <List.Item>Color contrast and visual indicators</List.Item>
+          </List>
+
+          <Text>
+            By following these principles consistently, design systems become
+            force multipliers for accessibility across your entire organization.
+            Each accessible component you build benefits every product and team
+            that adopts the system. Investing at the system level is the
+            highest-leverage way to improve inclusion at scale.
+          </Text>
+        </Stack>
+
+        <Stack space={4}>
+          <Divider />
+          <Inline space={2}>
+            <Badge>Accessibility</Badge>
+            <Badge>Design Systems</Badge>
+            <Badge>React</Badge>
+            <Badge>WCAG</Badge>
+          </Inline>
+        </Stack>
+
         <Stack space={4}>
           <Headline level="2">Related Articles</Headline>
           <Columns columns={[1, 1, 1]} space={4} collapseAt="40em">
-            <Card p={4}>
+            <Card>
               <Stack space={3}>
-                <Headline level="3">Color Contrast in Practice</Headline>
+                <Headline level="3">Color Contrast in Modern UIs</Headline>
                 <Text>
-                  A hands-on guide to meeting WCAG color contrast requirements
-                  across light and dark themes.
+                  Learn how to apply WCAG contrast ratios effectively across
+                  your component library.
                 </Text>
                 <Link href="#">Read more →</Link>
               </Stack>
             </Card>
-            <Card p={4}>
+            <Card>
               <Stack space={3}>
                 <Headline level="3">Keyboard Navigation Patterns</Headline>
                 <Text>
-                  Explore proven patterns for making complex interactive widgets
-                  fully keyboard accessible.
+                  Explore common interaction models for keyboard users and how
+                  to implement them well.
                 </Text>
                 <Link href="#">Read more →</Link>
               </Stack>
             </Card>
-            <Card p={4}>
+            <Card>
               <Stack space={3}>
-                <Headline level="3">Semantic HTML Fundamentals</Headline>
+                <Headline level="3">ARIA Roles and Attributes</Headline>
                 <Text>
-                  Learn how the right HTML elements form a solid accessible
-                  foundation for any design system.
+                  A practical guide to using ARIA to make complex widgets
+                  understandable to assistive technologies.
                 </Text>
                 <Link href="#">Read more →</Link>
               </Stack>
@@ -128,7 +124,9 @@ const TestApp = () => {
           </Columns>
         </Stack>
       </Stack>
-    </Center>
+        </Container>
+      </AppLayout.Main>
+    </AppLayout>
   );
 };
 

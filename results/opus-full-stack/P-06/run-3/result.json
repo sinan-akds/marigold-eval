@@ -1,0 +1,509 @@
+{
+  "runId": "opus-full-stack-P-06-r3",
+  "promptId": "P-06",
+  "model": "opus",
+  "config": "full-stack",
+  "timestamp": "2026-06-27T18:40:23.337Z",
+  "quality": {
+    "overall": 89.52,
+    "categories": {
+      "A": {
+        "category": "A",
+        "label": "Design System API",
+        "score": 100,
+        "weight": 0.225,
+        "weightedScore": 22.5,
+        "errorCount": 0,
+        "warningCount": 0,
+        "issues": []
+      },
+      "B": {
+        "category": "B",
+        "label": "Token Compliance",
+        "score": 100,
+        "weight": 0.1,
+        "weightedScore": 10,
+        "errorCount": 0,
+        "warningCount": 0,
+        "issues": []
+      },
+      "C": {
+        "category": "C",
+        "label": "DOM / Structure",
+        "score": 100,
+        "weight": 0.225,
+        "weightedScore": 22.5,
+        "errorCount": 0,
+        "warningCount": 0,
+        "issues": []
+      },
+      "D": {
+        "category": "D",
+        "label": "Spatial & A11y",
+        "score": 60,
+        "weight": 0.225,
+        "weightedScore": 13.5,
+        "errorCount": 0,
+        "warningCount": 8,
+        "issues": [
+          {
+            "type": "spatial",
+            "severity": "warning",
+            "source": "overflow-detector",
+            "component": "body:nth-child(2) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div:nth-child(5) > div:nth-child(2) > div:nth-child(2) > div:nth-child(1) > div:nth-child(1)",
+            "message": "Flex container children are wrapping to 2 rows (2 children, container 262px wide, content 312px wide).",
+            "suggestion": "Consider using <Columns collapseAt=\"...\"> for responsive multi-column layout, or <Stack> for vertical arrangement.",
+            "details": {
+              "containerSelector": "body:nth-child(2) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div:nth-child(5) > div:nth-child(2) > div:nth-child(2) > div:nth-child(1) > div:nth-child(1)",
+              "rowCount": 2,
+              "childCount": 2,
+              "containerWidth": 262,
+              "totalChildrenWidth": 312,
+              "isAutoFitGrid": false,
+              "hasZeroWidthChild": false,
+              "scope": "page"
+            }
+          },
+          {
+            "type": "spatial",
+            "severity": "warning",
+            "source": "overflow-detector",
+            "component": "body:nth-child(2) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div:nth-child(5) > div:nth-child(2) > div:nth-child(3) > div:nth-child(1) > div:nth-child(1)",
+            "message": "Flex container children are wrapping to 2 rows (2 children, container 262px wide, content 278px wide).",
+            "suggestion": "Consider using <Columns collapseAt=\"...\"> for responsive multi-column layout, or <Stack> for vertical arrangement.",
+            "details": {
+              "containerSelector": "body:nth-child(2) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div:nth-child(5) > div:nth-child(2) > div:nth-child(3) > div:nth-child(1) > div:nth-child(1)",
+              "rowCount": 2,
+              "childCount": 2,
+              "containerWidth": 262,
+              "totalChildrenWidth": 278,
+              "isAutoFitGrid": false,
+              "hasZeroWidthChild": false,
+              "scope": "page"
+            }
+          },
+          {
+            "type": "spatial",
+            "severity": "warning",
+            "source": "overflow-detector",
+            "component": "body:nth-child(2) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div:nth-child(5) > div:nth-child(2) > div:nth-child(4) > div:nth-child(1) > div:nth-child(1)",
+            "message": "Flex container children are wrapping to 2 rows (2 children, container 262px wide, content 299px wide).",
+            "suggestion": "Consider using <Columns collapseAt=\"...\"> for responsive multi-column layout, or <Stack> for vertical arrangement.",
+            "details": {
+              "containerSelector": "body:nth-child(2) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div:nth-child(5) > div:nth-child(2) > div:nth-child(4) > div:nth-child(1) > div:nth-child(1)",
+              "rowCount": 2,
+              "childCount": 2,
+              "containerWidth": 262,
+              "totalChildrenWidth": 299,
+              "isAutoFitGrid": false,
+              "hasZeroWidthChild": false,
+              "scope": "page"
+            }
+          },
+          {
+            "type": "spatial",
+            "severity": "warning",
+            "source": "overflow-detector",
+            "component": "body:nth-child(2) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div:nth-child(5) > div:nth-child(2) > div:nth-child(6) > div:nth-child(1) > div:nth-child(1)",
+            "message": "Flex container children are wrapping to 2 rows (2 children, container 262px wide, content 294px wide).",
+            "suggestion": "Consider using <Columns collapseAt=\"...\"> for responsive multi-column layout, or <Stack> for vertical arrangement.",
+            "details": {
+              "containerSelector": "body:nth-child(2) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div:nth-child(5) > div:nth-child(2) > div:nth-child(6) > div:nth-child(1) > div:nth-child(1)",
+              "rowCount": 2,
+              "childCount": 2,
+              "containerWidth": 262,
+              "totalChildrenWidth": 294,
+              "isAutoFitGrid": false,
+              "hasZeroWidthChild": false,
+              "scope": "page"
+            }
+          },
+          {
+            "type": "a11y",
+            "severity": "warning",
+            "source": "aom-extractor",
+            "component": "html",
+            "message": "Document should have one main landmark (landmark-one-main)",
+            "suggestion": "Wrap your page content in `<AppLayout>` with `<AppLayout.Main>` to provide a `<main>` landmark. Import AppLayout from `@marigold/components`.",
+            "details": {
+              "ruleId": "landmark-one-main",
+              "impact": "moderate",
+              "target": [
+                "html"
+              ],
+              "html": "<html lang=\"en\" data-theme=\"rui\">",
+              "scope": "page"
+            }
+          },
+          {
+            "type": "a11y",
+            "severity": "warning",
+            "source": "aom-extractor",
+            "component": "page",
+            "message": "All page content should be contained by landmarks — 31 elements affected (region)",
+            "suggestion": "All page content must be inside a landmark region. Use `<AppLayout>` with `<AppLayout.Main>` for the main area, `<TopNavigation>` for the header (`<header>`), and `<Sidebar>` for side navigation (`<aside>`). Import from `@marigold/components`.",
+            "details": {
+              "ruleId": "region",
+              "impact": "moderate",
+              "affectedCount": 31,
+              "scope": "page"
+            }
+          },
+          {
+            "type": "a11y",
+            "severity": "warning",
+            "source": "keyboard-a11y",
+            "component": "input",
+            "message": "Interactive element <input> (input) is not reachable via Tab key.",
+            "suggestion": "Ensure the element is focusable. Marigold interactive components are focusable by default — check if a parent has tabindex=\"-1\" or focus is trapped.",
+            "details": {
+              "selector": "body:nth-child(2) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div:nth-child(2) > div:nth-child(1) > div:nth-child(1) > div:nth-child(2) > input:nth-child(1)",
+              "role": "input",
+              "scope": "page"
+            }
+          },
+          {
+            "type": "a11y",
+            "severity": "warning",
+            "source": "keyboard-a11y",
+            "component": "button",
+            "message": "Interactive element <button> (button) is not reachable via Tab key.",
+            "suggestion": "Ensure the element is focusable. Marigold interactive components are focusable by default — check if a parent has tabindex=\"-1\" or focus is trapped.",
+            "details": {
+              "selector": "body:nth-child(2) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div:nth-child(2) > div:nth-child(2) > div:nth-child(2) > button:nth-child(2)",
+              "role": "button",
+              "scope": "page"
+            }
+          }
+        ]
+      },
+      "E": {
+        "category": "E",
+        "label": "Functional Completeness",
+        "score": 93.44,
+        "weight": 0.225,
+        "weightedScore": 21.02,
+        "errorCount": 0,
+        "warningCount": 0,
+        "issues": []
+      }
+    },
+    "renderSuccess": true
+  },
+  "efficiency": {
+    "durationMs": 787450,
+    "costUsd": 2.795131,
+    "inputTokens": 2019,
+    "outputTokens": 28815,
+    "cacheReadTokens": 2185352,
+    "cacheCreationTokens": 94296,
+    "totalTokens": 30834,
+    "numTurns": 43
+  },
+  "report": {
+    "file": "TestApp.tsx",
+    "errors": [],
+    "warnings": [
+      {
+        "type": "spatial",
+        "severity": "warning",
+        "source": "overflow-detector",
+        "component": "body:nth-child(2) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div:nth-child(5) > div:nth-child(2) > div:nth-child(2) > div:nth-child(1) > div:nth-child(1)",
+        "message": "Flex container children are wrapping to 2 rows (2 children, container 262px wide, content 312px wide).",
+        "suggestion": "Consider using <Columns collapseAt=\"...\"> for responsive multi-column layout, or <Stack> for vertical arrangement.",
+        "details": {
+          "containerSelector": "body:nth-child(2) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div:nth-child(5) > div:nth-child(2) > div:nth-child(2) > div:nth-child(1) > div:nth-child(1)",
+          "rowCount": 2,
+          "childCount": 2,
+          "containerWidth": 262,
+          "totalChildrenWidth": 312,
+          "isAutoFitGrid": false,
+          "hasZeroWidthChild": false,
+          "scope": "page"
+        }
+      },
+      {
+        "type": "spatial",
+        "severity": "warning",
+        "source": "overflow-detector",
+        "component": "body:nth-child(2) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div:nth-child(5) > div:nth-child(2) > div:nth-child(3) > div:nth-child(1) > div:nth-child(1)",
+        "message": "Flex container children are wrapping to 2 rows (2 children, container 262px wide, content 278px wide).",
+        "suggestion": "Consider using <Columns collapseAt=\"...\"> for responsive multi-column layout, or <Stack> for vertical arrangement.",
+        "details": {
+          "containerSelector": "body:nth-child(2) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div:nth-child(5) > div:nth-child(2) > div:nth-child(3) > div:nth-child(1) > div:nth-child(1)",
+          "rowCount": 2,
+          "childCount": 2,
+          "containerWidth": 262,
+          "totalChildrenWidth": 278,
+          "isAutoFitGrid": false,
+          "hasZeroWidthChild": false,
+          "scope": "page"
+        }
+      },
+      {
+        "type": "spatial",
+        "severity": "warning",
+        "source": "overflow-detector",
+        "component": "body:nth-child(2) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div:nth-child(5) > div:nth-child(2) > div:nth-child(4) > div:nth-child(1) > div:nth-child(1)",
+        "message": "Flex container children are wrapping to 2 rows (2 children, container 262px wide, content 299px wide).",
+        "suggestion": "Consider using <Columns collapseAt=\"...\"> for responsive multi-column layout, or <Stack> for vertical arrangement.",
+        "details": {
+          "containerSelector": "body:nth-child(2) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div:nth-child(5) > div:nth-child(2) > div:nth-child(4) > div:nth-child(1) > div:nth-child(1)",
+          "rowCount": 2,
+          "childCount": 2,
+          "containerWidth": 262,
+          "totalChildrenWidth": 299,
+          "isAutoFitGrid": false,
+          "hasZeroWidthChild": false,
+          "scope": "page"
+        }
+      },
+      {
+        "type": "spatial",
+        "severity": "warning",
+        "source": "overflow-detector",
+        "component": "body:nth-child(2) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div:nth-child(5) > div:nth-child(2) > div:nth-child(6) > div:nth-child(1) > div:nth-child(1)",
+        "message": "Flex container children are wrapping to 2 rows (2 children, container 262px wide, content 294px wide).",
+        "suggestion": "Consider using <Columns collapseAt=\"...\"> for responsive multi-column layout, or <Stack> for vertical arrangement.",
+        "details": {
+          "containerSelector": "body:nth-child(2) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div:nth-child(5) > div:nth-child(2) > div:nth-child(6) > div:nth-child(1) > div:nth-child(1)",
+          "rowCount": 2,
+          "childCount": 2,
+          "containerWidth": 262,
+          "totalChildrenWidth": 294,
+          "isAutoFitGrid": false,
+          "hasZeroWidthChild": false,
+          "scope": "page"
+        }
+      },
+      {
+        "type": "a11y",
+        "severity": "warning",
+        "source": "aom-extractor",
+        "component": "html",
+        "message": "Document should have one main landmark (landmark-one-main)",
+        "suggestion": "Wrap your page content in `<AppLayout>` with `<AppLayout.Main>` to provide a `<main>` landmark. Import AppLayout from `@marigold/components`.",
+        "details": {
+          "ruleId": "landmark-one-main",
+          "impact": "moderate",
+          "target": [
+            "html"
+          ],
+          "html": "<html lang=\"en\" data-theme=\"rui\">",
+          "scope": "page"
+        }
+      },
+      {
+        "type": "a11y",
+        "severity": "warning",
+        "source": "aom-extractor",
+        "component": "page",
+        "message": "All page content should be contained by landmarks — 31 elements affected (region)",
+        "suggestion": "All page content must be inside a landmark region. Use `<AppLayout>` with `<AppLayout.Main>` for the main area, `<TopNavigation>` for the header (`<header>`), and `<Sidebar>` for side navigation (`<aside>`). Import from `@marigold/components`.",
+        "details": {
+          "ruleId": "region",
+          "impact": "moderate",
+          "affectedCount": 31,
+          "scope": "page"
+        }
+      },
+      {
+        "type": "a11y",
+        "severity": "warning",
+        "source": "keyboard-a11y",
+        "component": "input",
+        "message": "Interactive element <input> (input) is not reachable via Tab key.",
+        "suggestion": "Ensure the element is focusable. Marigold interactive components are focusable by default — check if a parent has tabindex=\"-1\" or focus is trapped.",
+        "details": {
+          "selector": "body:nth-child(2) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div:nth-child(2) > div:nth-child(1) > div:nth-child(1) > div:nth-child(2) > input:nth-child(1)",
+          "role": "input",
+          "scope": "page"
+        }
+      },
+      {
+        "type": "a11y",
+        "severity": "warning",
+        "source": "keyboard-a11y",
+        "component": "button",
+        "message": "Interactive element <button> (button) is not reachable via Tab key.",
+        "suggestion": "Ensure the element is focusable. Marigold interactive components are focusable by default — check if a parent has tabindex=\"-1\" or focus is trapped.",
+        "details": {
+          "selector": "body:nth-child(2) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div:nth-child(2) > div:nth-child(2) > div:nth-child(2) > button:nth-child(2)",
+          "role": "button",
+          "scope": "page"
+        }
+      }
+    ],
+    "passed": [
+      "TypeScript compilation",
+      "All Marigold props are valid",
+      "Component composition",
+      "Overlay accessible names",
+      "Compound component placement",
+      "Section headers",
+      "Collection item ids",
+      "Design system usage",
+      "Layout usage",
+      "Table usage",
+      "Component conventions",
+      "Theme variant compliance",
+      "Responsive layout"
+    ],
+    "metadata": {
+      "renderTimeMs": 1435,
+      "componentsFound": [
+        "div",
+        "input",
+        "button",
+        "span"
+      ],
+      "checksRun": [
+        "technical",
+        "spatial",
+        "a11y"
+      ],
+      "coverage": {
+        "staticValuesChecked": 17,
+        "dynamicValuesSkipped": 15,
+        "spreadPropsBypassed": 0
+      },
+      "widthUtilization": 0.98125
+    },
+    "markdown": "marigold-validate: TestApp.tsx — 0 error(s), 8 warning(s)\n\n[warning/spatial] <body:nth-child(2) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div:nth-child(5) > div:nth-child(2) > div:nth-child(2) > div:nth-child(1) > div:nth-child(1)>: Flex container children are wrapping to 2 rows (2 children, container 262px wide, content 312px wide).\n  → Consider using <Columns collapseAt=\"...\"> for responsive multi-column layout, or <Stack> for vertical arrangement.\n  data: {containerSelector=body:nth-child(2) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > ..., rowCount=2, childCount=2, containerWidth=262, totalChildrenWidth=312, isAutoFitGrid=false, hasZeroWidthChild=false, scope=page}\n[warning/spatial] <body:nth-child(2) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div:nth-child(5) > div:nth-child(2) > div:nth-child(3) > div:nth-child(1) > div:nth-child(1)>: Flex container children are wrapping to 2 rows (2 children, container 262px wide, content 278px wide).\n  → Consider using <Columns collapseAt=\"...\"> for responsive multi-column layout, or <Stack> for vertical arrangement.\n  data: {containerSelector=body:nth-child(2) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > ..., rowCount=2, childCount=2, containerWidth=262, totalChildrenWidth=278, isAutoFitGrid=false, hasZeroWidthChild=false, scope=page}\n[warning/spatial] <body:nth-child(2) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div:nth-child(5) > div:nth-child(2) > div:nth-child(4) > div:nth-child(1) > div:nth-child(1)>: Flex container children are wrapping to 2 rows (2 children, container 262px wide, content 299px wide).\n  → Consider using <Columns collapseAt=\"...\"> for responsive multi-column layout, or <Stack> for vertical arrangement.\n  data: {containerSelector=body:nth-child(2) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > ..., rowCount=2, childCount=2, containerWidth=262, totalChildrenWidth=299, isAutoFitGrid=false, hasZeroWidthChild=false, scope=page}\n[warning/spatial] <body:nth-child(2) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div:nth-child(5) > div:nth-child(2) > div:nth-child(6) > div:nth-child(1) > div:nth-child(1)>: Flex container children are wrapping to 2 rows (2 children, container 262px wide, content 294px wide).\n  → Consider using <Columns collapseAt=\"...\"> for responsive multi-column layout, or <Stack> for vertical arrangement.\n  data: {containerSelector=body:nth-child(2) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > ..., rowCount=2, childCount=2, containerWidth=262, totalChildrenWidth=294, isAutoFitGrid=false, hasZeroWidthChild=false, scope=page}\n[warning/a11y] <button>: Interactive element <button> (button) is not reachable via Tab key.\n  → Ensure the element is focusable. Marigold interactive components are focusable by default — check if a parent has tabindex=\"-1\" or focus is trapped.\n  data: {selector=body:nth-child(2) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > ..., role=button, scope=page}\n[warning/a11y] <html>: Document should have one main landmark (landmark-one-main)\n  → Wrap your page content in `<AppLayout>` with `<AppLayout.Main>` to provide a `<main>` landmark. Import AppLayout from `@marigold/components`.\n  data: {ruleId=landmark-one-main, impact=moderate, target=[\"html\"], html=<html lang=\"en\" data-theme=\"rui\">, scope=page}\n[warning/a11y] <input>: Interactive element <input> (input) is not reachable via Tab key.\n  → Ensure the element is focusable. Marigold interactive components are focusable by default — check if a parent has tabindex=\"-1\" or focus is trapped.\n  data: {selector=body:nth-child(2) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > ..., role=input, scope=page}\n[warning/a11y] <page>: All page content should be contained by landmarks — 31 elements affected (region)\n  → All page content must be inside a landmark region. Use `<AppLayout>` with `<AppLayout.Main>` for the main area, `<TopNavigation>` for the header (`<header>`), and `<Sidebar>` for side navigation (`<aside>`). Import from `@marigold/components`.\n  data: {ruleId=region, impact=moderate, affectedCount=31, scope=page}\n\npassed: TypeScript compilation, All Marigold props are valid, Component composition, Overlay accessible names, Compound component placement, Section headers, Collection item ids, Design system usage, Layout usage, Table usage, Component conventions, Theme variant compliance, Responsive layout\n\nchecks run: technical, spatial, a11y"
+  },
+  "componentsFound": [
+    "div",
+    "input",
+    "button",
+    "span"
+  ],
+  "renderTimeMs": 1435,
+  "sourceCode": "import { useMemo, useState } from 'react';\nimport {\n  Badge,\n  Button,\n  Card,\n  Checkbox,\n  Columns,\n  Drawer,\n  EmptyState,\n  Headline,\n  Inline,\n  Inset,\n  SearchField,\n  Select,\n  Slider,\n  Stack,\n  Switch,\n  Tag,\n  Text,\n  Tiles,\n} from '@marigold/components';\n\ntype Status = 'New' | 'Sale' | 'Sold Out';\n\ninterface Product {\n  id: string;\n  name: string;\n  price: number;\n  status: Status;\n  description: string;\n  category: string;\n  sizes: string[];\n  created: number;\n  popularity: number;\n}\n\nconst CATEGORY_LABELS: Record<string, string> = {\n  tshirts: 'T-Shirts',\n  hoodies: 'Hoodies',\n  accessories: 'Accessories',\n  posters: 'Posters',\n  stickers: 'Stickers',\n};\n\nconst SORT_LABELS: Record<string, string> = {\n  newest: 'Newest',\n  'price-asc': 'Price: Low to High',\n  'price-desc': 'Price: High to Low',\n  popular: 'Most Popular',\n};\n\nconst APPAREL_SIZES = ['XS', 'S', 'M', 'L', 'XL'];\n\nconst PRODUCTS: Product[] = [\n  {\n    id: 'p1',\n    name: 'Classic Logo Tee',\n    price: 24.99,\n    status: 'New',\n    description: 'Soft cotton tee with our embroidered brand logo on the chest.',\n    category: 'tshirts',\n    sizes: APPAREL_SIZES,\n    created: 8,\n    popularity: 70,\n  },\n  {\n    id: 'p2',\n    name: 'Premium Pullover Hoodie',\n    price: 59.99,\n    status: 'Sale',\n    description: 'Heavyweight fleece hoodie with a cozy lined hood and kangaroo pocket.',\n    category: 'hoodies',\n    sizes: ['S', 'M', 'L', 'XL'],\n    created: 7,\n    popularity: 95,\n  },\n  {\n    id: 'p3',\n    name: 'Enamel Sticker Pack',\n    price: 9.99,\n    status: 'New',\n    description: 'A set of five weatherproof vinyl stickers featuring our mascots.',\n    category: 'stickers',\n    sizes: [],\n    created: 6,\n    popularity: 40,\n  },\n  {\n    id: 'p4',\n    name: 'Vintage Tour Poster',\n    price: 19.99,\n    status: 'Sold Out',\n    description: 'Limited edition screen-printed poster on heavy matte stock.',\n    category: 'posters',\n    sizes: [],\n    created: 5,\n    popularity: 60,\n  },\n  {\n    id: 'p5',\n    name: 'Canvas Tote Bag',\n    price: 14.99,\n    status: 'New',\n    description: 'Durable everyday tote with reinforced handles and a roomy interior.',\n    category: 'accessories',\n    sizes: [],\n    created: 4,\n    popularity: 55,\n  },\n  {\n    id: 'p6',\n    name: 'Zip-Up Tech Hoodie',\n    price: 64.99,\n    status: 'Sold Out',\n    description: 'Full-zip hoodie in a breathable performance blend for active days.',\n    category: 'hoodies',\n    sizes: ['S', 'M', 'L', 'XL'],\n    created: 3,\n    popularity: 80,\n  },\n  {\n    id: 'p7',\n    name: 'Graphic Print Tee',\n    price: 29.99,\n    status: 'Sale',\n    description: 'Bold all-over print tee designed in collaboration with local artists.',\n    category: 'tshirts',\n    sizes: APPAREL_SIZES,\n    created: 2,\n    popularity: 88,\n  },\n  {\n    id: 'p8',\n    name: 'Snapback Cap',\n    price: 22.99,\n    status: 'New',\n    description: 'Structured six-panel cap with an adjustable snap closure.',\n    category: 'accessories',\n    sizes: [],\n    created: 1,\n    popularity: 50,\n  },\n];\n\nconst TOTAL_PAGES = 3;\nconst DEFAULT_PRICE: [number, number] = [0, 100];\n\nconst statusVariant = (status: Status) => {\n  switch (status) {\n    case 'New':\n      return 'info';\n    case 'Sale':\n      return 'warning';\n    case 'Sold Out':\n      return 'error';\n  }\n};\n\nconst TestApp = () => {\n  const [search, setSearch] = useState('');\n  const [sort, setSort] = useState('newest');\n  const [categories, setCategories] = useState<string[]>([]);\n  const [sizes, setSizes] = useState<string[]>([]);\n  const [priceRange, setPriceRange] = useState<[number, number]>(DEFAULT_PRICE);\n  const [inStockOnly, setInStockOnly] = useState(false);\n  const [page, setPage] = useState(1);\n  const [cartCount, setCartCount] = useState(0);\n\n  const isPriceDefault =\n    priceRange[0] === DEFAULT_PRICE[0] && priceRange[1] === DEFAULT_PRICE[1];\n\n  const visibleProducts = useMemo(() => {\n    const filtered = PRODUCTS.filter(product => {\n      if (search && !product.name.toLowerCase().includes(search.toLowerCase())) {\n        return false;\n      }\n      if (categories.length > 0 && !categories.includes(product.category)) {\n        return false;\n      }\n      if (sizes.length > 0 && !product.sizes.some(s => sizes.includes(s))) {\n        return false;\n      }\n      if (product.price < priceRange[0] || product.price > priceRange[1]) {\n        return false;\n      }\n      if (inStockOnly && product.status === 'Sold Out') {\n        return false;\n      }\n      return true;\n    });\n\n    const sorted = [...filtered];\n    switch (sort) {\n      case 'price-asc':\n        sorted.sort((a, b) => a.price - b.price);\n        break;\n      case 'price-desc':\n        sorted.sort((a, b) => b.price - a.price);\n        break;\n      case 'popular':\n        sorted.sort((a, b) => b.popularity - a.popularity);\n        break;\n      default:\n        sorted.sort((a, b) => b.created - a.created);\n        break;\n    }\n    return sorted;\n  }, [search, sort, categories, sizes, priceRange, inStockOnly]);\n\n  const appliedChips = useMemo(() => {\n    const chips: { id: string; label: string }[] = [];\n    if (search) {\n      chips.push({ id: 'search', label: `Search: \"${search}\"` });\n    }\n    if (sort !== 'newest') {\n      chips.push({ id: 'sort', label: `Sort: ${SORT_LABELS[sort]}` });\n    }\n    categories.forEach(c =>\n      chips.push({ id: `cat:${c}`, label: `Category: ${CATEGORY_LABELS[c]}` })\n    );\n    sizes.forEach(s => chips.push({ id: `size:${s}`, label: `Size: ${s}` }));\n    if (!isPriceDefault) {\n      chips.push({\n        id: 'price',\n        label: `Price: $${priceRange[0]} – $${priceRange[1]}`,\n      });\n    }\n    if (inStockOnly) {\n      chips.push({ id: 'instock', label: 'In stock only' });\n    }\n    return chips;\n  }, [search, sort, categories, sizes, priceRange, inStockOnly, isPriceDefault]);\n\n  const removeChips = (keys: Set<React.Key>) => {\n    keys.forEach(key => {\n      const id = String(key);\n      if (id === 'search') setSearch('');\n      else if (id === 'sort') setSort('newest');\n      else if (id === 'price') setPriceRange(DEFAULT_PRICE);\n      else if (id === 'instock') setInStockOnly(false);\n      else if (id.startsWith('cat:'))\n        setCategories(prev => prev.filter(c => c !== id.slice(4)));\n      else if (id.startsWith('size:'))\n        setSizes(prev => prev.filter(s => s !== id.slice(5)));\n    });\n    setPage(1);\n  };\n\n  const clearAll = () => {\n    setSearch('');\n    setSort('newest');\n    setCategories([]);\n    setSizes([]);\n    setPriceRange(DEFAULT_PRICE);\n    setInStockOnly(false);\n    setPage(1);\n  };\n\n  return (\n    <Inset space={6}>\n      <Stack space={6}>\n        {/* Header */}\n        <Inline alignX=\"between\" alignY=\"center\" space={4}>\n          <Stack space={1}>\n            <Headline level={1}>Merchandise Store</Headline>\n            <Text color=\"text-secondary\">\n              Browse our collection of branded merchandise.\n            </Text>\n          </Stack>\n          <Badge>{`Cart: ${cartCount}`}</Badge>\n        </Inline>\n\n        {/* Toolbar */}\n        <Columns columns={[1, 'fit', 'fit']} space={4} collapseAt=\"48em\">\n          <SearchField\n            label=\"Search\"\n            aria-label=\"Search products by name\"\n            placeholder=\"Search products by name\"\n            value={search}\n            onChange={value => {\n              setSearch(value);\n              setPage(1);\n            }}\n            onClear={() => setSearch('')}\n          />\n          <Select\n            label=\"Sort by\"\n            selectedKey={sort}\n            onSelectionChange={key => setSort(String(key))}\n            width=\"fit\"\n          >\n            <Select.Option id=\"newest\">Newest</Select.Option>\n            <Select.Option id=\"price-asc\">Price: Low to High</Select.Option>\n            <Select.Option id=\"price-desc\">Price: High to Low</Select.Option>\n            <Select.Option id=\"popular\">Most Popular</Select.Option>\n          </Select>\n            <Drawer.Trigger>\n              <Button variant=\"secondary\">Filters</Button>\n              <Drawer closeButton>\n                <Drawer.Title>Filters</Drawer.Title>\n                <Drawer.Content>\n                  <Stack space={6}>\n                    <Checkbox.Group\n                      label=\"Category\"\n                      value={categories}\n                      onChange={value => {\n                        setCategories(value);\n                        setPage(1);\n                      }}\n                    >\n                      <Checkbox value=\"tshirts\" label=\"T-Shirts\" />\n                      <Checkbox value=\"hoodies\" label=\"Hoodies\" />\n                      <Checkbox value=\"accessories\" label=\"Accessories\" />\n                      <Checkbox value=\"posters\" label=\"Posters\" />\n                      <Checkbox value=\"stickers\" label=\"Stickers\" />\n                    </Checkbox.Group>\n\n                    <Slider\n                      label=\"Price range\"\n                      value={priceRange}\n                      onChange={value => {\n                        setPriceRange(value as [number, number]);\n                        setPage(1);\n                      }}\n                      minValue={0}\n                      maxValue={100}\n                      step={5}\n                      thumbLabels={['Minimum price', 'Maximum price']}\n                      formatOptions={{ style: 'currency', currency: 'USD' }}\n                    />\n\n                    <Checkbox.Group\n                      label=\"Size\"\n                      value={sizes}\n                      onChange={value => {\n                        setSizes(value);\n                        setPage(1);\n                      }}\n                    >\n                      {APPAREL_SIZES.map(size => (\n                        <Checkbox key={size} value={size} label={size} />\n                      ))}\n                    </Checkbox.Group>\n\n                    <Switch\n                      label=\"In stock only\"\n                      selected={inStockOnly}\n                      onChange={value => {\n                        setInStockOnly(value);\n                        setPage(1);\n                      }}\n                    />\n                  </Stack>\n                </Drawer.Content>\n                <Drawer.Actions>\n                  <Button variant=\"secondary\" onPress={clearAll}>\n                    Reset\n                  </Button>\n                  <Button slot=\"close\" variant=\"primary\">\n                    Apply Filters\n                  </Button>\n                </Drawer.Actions>\n              </Drawer>\n            </Drawer.Trigger>\n        </Columns>\n\n        {/* Applied filters */}\n        <Tag.Group\n          label=\"Applied filters\"\n          onRemove={removeChips}\n          removeAll={appliedChips.length > 0}\n          emptyState={() => (\n            <Text color=\"text-secondary\" fontStyle=\"italic\">\n              No filters applied\n            </Text>\n          )}\n        >\n          {appliedChips.map(chip => (\n            <Tag key={chip.id} id={chip.id}>\n              {chip.label}\n            </Tag>\n          ))}\n        </Tag.Group>\n\n        {/* Product grid or empty state */}\n        {visibleProducts.length === 0 ? (\n          <EmptyState\n            title=\"No products found\"\n            description=\"Try adjusting your filters or search query.\"\n            action={\n              <Button variant=\"primary\" onPress={clearAll}>\n                Clear all filters\n              </Button>\n            }\n          />\n        ) : (\n          <Stack space={6}>\n            <Headline level={2}>\n              {`${visibleProducts.length} product${\n                visibleProducts.length === 1 ? '' : 's'\n              }`}\n            </Headline>\n            <Tiles tilesWidth=\"240px\" space={4} stretch equalHeight>\n              {visibleProducts.map(product => (\n                <Card key={product.id} p={4}>\n                  <Stack space={3}>\n                    <Inline alignX=\"between\" alignY=\"center\" space={2}>\n                      <Headline level={3}>{product.name}</Headline>\n                      <Badge variant={statusVariant(product.status)}>\n                        {product.status}\n                      </Badge>\n                    </Inline>\n                    <Text weight=\"bold\" fontSize=\"lg\">\n                      {`$${product.price.toFixed(2)}`}\n                    </Text>\n                    <Text color=\"text-secondary\">{product.description}</Text>\n                    <Button\n                      variant=\"primary\"\n                      fullWidth\n                      disabled={product.status === 'Sold Out'}\n                      onPress={() => setCartCount(count => count + 1)}\n                    >\n                      Add to Cart\n                    </Button>\n                  </Stack>\n                </Card>\n              ))}\n            </Tiles>\n\n            {/* Pagination */}\n            <Inline alignX=\"center\" alignY=\"center\" space={4}>\n              <Button\n                variant=\"secondary\"\n                disabled={page === 1}\n                onPress={() => setPage(p => Math.max(1, p - 1))}\n              >\n                Previous\n              </Button>\n              <Text>{`Page ${page} of ${TOTAL_PAGES}`}</Text>\n              <Button\n                variant=\"secondary\"\n                disabled={page === TOTAL_PAGES}\n                onPress={() => setPage(p => Math.min(TOTAL_PAGES, p + 1))}\n              >\n                Next\n              </Button>\n            </Inline>\n          </Stack>\n        )}\n      </Stack>\n    </Inset>\n  );\n};\n\nexport default TestApp;\n",
+  "assertions": {
+    "passed": [
+      {
+        "id": "a-import-marigold",
+        "description": "Imports from @marigold/components",
+        "severity": "required",
+        "passed": true,
+        "evidence": "import from \"@marigold/components\" found"
+      },
+      {
+        "id": "a-search",
+        "description": "SearchField for product search",
+        "severity": "required",
+        "passed": true,
+        "evidence": "<SearchField> found"
+      },
+      {
+        "id": "a-drawer",
+        "description": "Drawer for filter panel",
+        "severity": "required",
+        "passed": true,
+        "evidence": "<Drawer> found"
+      },
+      {
+        "id": "a-checkbox",
+        "description": "Checkbox for filter options",
+        "severity": "required",
+        "passed": true,
+        "evidence": "matched: <Checkbox> found"
+      },
+      {
+        "id": "a-slider",
+        "description": "Slider for price range",
+        "severity": "required",
+        "passed": true,
+        "evidence": "<Slider> found"
+      },
+      {
+        "id": "a-switch",
+        "description": "Switch for availability filter",
+        "severity": "required",
+        "passed": true,
+        "evidence": "<Switch> found"
+      },
+      {
+        "id": "a-tag-group",
+        "description": "Tag.Group for applied filters",
+        "severity": "required",
+        "passed": true,
+        "evidence": "matched: <Tag> found"
+      },
+      {
+        "id": "a-card",
+        "description": "Card for product display",
+        "severity": "required",
+        "passed": true,
+        "evidence": "<Card> found"
+      },
+      {
+        "id": "a-badge",
+        "description": "Badge for product status",
+        "severity": "required",
+        "passed": true,
+        "evidence": "<Badge> found"
+      },
+      {
+        "id": "a-button",
+        "description": "Button for add to cart",
+        "severity": "required",
+        "passed": true,
+        "evidence": "<Button> found"
+      },
+      {
+        "id": "a-tiles",
+        "description": "Tiles layout for product grid",
+        "severity": "required",
+        "passed": true,
+        "evidence": "<Tiles> found"
+      },
+      {
+        "id": "a-empty-state",
+        "description": "EmptyState when no products match",
+        "severity": "required",
+        "passed": true,
+        "evidence": "<EmptyState> found"
+      },
+      {
+        "id": "a-headline",
+        "description": "Headline for page title",
+        "severity": "required",
+        "passed": true,
+        "evidence": "<Headline> found"
+      },
+      {
+        "id": "a-select",
+        "description": "Select for sort dropdown",
+        "severity": "required",
+        "passed": true,
+        "evidence": "<Select> found"
+      },
+      {
+        "id": "a-no-onclick-on-marigold",
+        "description": "No onClick on Marigold Button",
+        "severity": "recommended",
+        "passed": true,
+        "evidence": "\"/<Button[^>]*onClick/\" correctly absent"
+      }
+    ],
+    "failed": [
+      {
+        "id": "a-pagination",
+        "description": "Pagination component",
+        "severity": "required",
+        "passed": false,
+        "evidence": "<Pagination> not found"
+      }
+    ],
+    "passRate": 0.9375,
+    "requiredPassRate": 0.9333,
+    "weightedPassRate": 0.9344,
+    "total": 16
+  },
+  "validatePackageVersion": "0.0.1",
+  "playwrightVersion": null,
+  "resolvedModelId": "claude-opus-4-8",
+  "claudeCliVersion": "2.1.193 (Claude Code)",
+  "sessionId": "903adf20-ea13-4a5d-ad04-a8496d3e8e20"
+}

@@ -4,65 +4,71 @@ import {
   Button,
   Checkbox,
   Headline,
+  Inset,
   Radio,
   Select,
+  SectionMessage,
   Stack,
   Switch,
-  Text,
   TextArea,
   TextField,
-  ToastProvider,
-  useToast,
+  Text,
 } from '@marigold/components';
 
-const SettingsPage = () => {
-  const { addToast } = useToast();
+type Visibility = 'public' | 'team-only' | 'private';
 
+const SettingsPage = () => {
   // Profile
   const [displayName, setDisplayName] = useState('');
   const [email, setEmail] = useState('');
   const [bio, setBio] = useState('');
+  const [profileSaved, setProfileSaved] = useState(false);
 
   // Appearance
   const [theme, setTheme] = useState('system');
-  const [language, setLanguage] = useState<string>('en');
+  const [language, setLanguage] = useState('english');
   const [compactMode, setCompactMode] = useState(false);
 
   // Notifications
-  const [notifChecked, setNotifChecked] = useState<string[]>([]);
-  const [notifSound, setNotifSound] = useState<string>('default');
+  const [notifPrefs, setNotifPrefs] = useState<string[]>([]);
+  const [notifSound, setNotifSound] = useState('default');
+  const [notifSaved, setNotifSaved] = useState(false);
 
   // Privacy
-  const [visibility, setVisibility] = useState('public');
-  const [onlineStatus, setOnlineStatus] = useState(false);
-  const [searchEngines, setSearchEngines] = useState(false);
-
-  const searchEnginesDisabled = visibility !== 'public';
-
-  const handleVisibilityChange = (val: string) => {
-    setVisibility(val);
-    if (val !== 'public') {
-      setSearchEngines(false);
-    }
-  };
+  const [visibility, setVisibility] = useState<Visibility>('public');
+  const [showOnline, setShowOnline] = useState(false);
+  const [allowSearch, setAllowSearch] = useState(false);
+  const [privacySaved, setPrivacySaved] = useState(false);
 
   return (
-    <Stack space={6}>
-      <Headline level={2}>Settings</Headline>
-      <Accordion allowsMultipleExpanded defaultExpandedKeys={['profile']}>
+    <Inset space={6}>
+      <Stack space={6}>
+        <Headline level={1}>Settings</Headline>
+      <Accordion>
         <Accordion.Item id="profile">
           <Accordion.Header>Profile</Accordion.Header>
           <Accordion.Content>
             <Stack space={4}>
+              {profileSaved && (
+                <SectionMessage
+                  closeButton
+                  onCloseChange={() => setProfileSaved(false)}
+                >
+                  <SectionMessage.Title>Profile saved!</SectionMessage.Title>
+                  <SectionMessage.Content>
+                    Your profile has been updated successfully.
+                  </SectionMessage.Content>
+                </SectionMessage>
+              )}
               <TextField
                 label="Display Name"
+                required
                 value={displayName}
                 onChange={setDisplayName}
-                required
               />
               <TextField
-                type="email"
                 label="Email Address"
+                type="email"
                 value={email}
                 onChange={setEmail}
               />
@@ -70,14 +76,9 @@ const SettingsPage = () => {
                 label="Bio"
                 value={bio}
                 onChange={setBio}
-                rows={4}
+                description="Optional. Tell others a bit about yourself."
               />
-              <Button
-                variant="primary"
-                onPress={() =>
-                  addToast({ title: 'Profile saved successfully', variant: 'success' })
-                }
-              >
+              <Button variant="primary" onPress={() => setProfileSaved(true)}>
                 Save Profile
               </Button>
             </Stack>
@@ -96,11 +97,11 @@ const SettingsPage = () => {
               <Select
                 label="Language"
                 selectedKey={language}
-                onSelectionChange={key => setLanguage(String(key))}
+                onChange={(key) => setLanguage(String(key))}
               >
-                <Select.Option id="en">English</Select.Option>
-                <Select.Option id="de">German</Select.Option>
-                <Select.Option id="fr">French</Select.Option>
+                <Select.Option id="english">English</Select.Option>
+                <Select.Option id="german">German</Select.Option>
+                <Select.Option id="french">French</Select.Option>
               </Select>
               <Stack space={1}>
                 <Switch
@@ -108,7 +109,7 @@ const SettingsPage = () => {
                   selected={compactMode}
                   onChange={setCompactMode}
                 />
-                <Text size="sm" variant="muted">Reduce spacing and font size for denser layouts</Text>
+                <Text>Reduce spacing and font size for denser layouts</Text>
               </Stack>
             </Stack>
           </Accordion.Content>
@@ -118,34 +119,51 @@ const SettingsPage = () => {
           <Accordion.Header>Notifications</Accordion.Header>
           <Accordion.Content>
             <Stack space={4}>
+              {notifSaved && (
+                <SectionMessage
+                  closeButton
+                  onCloseChange={() => setNotifSaved(false)}
+                >
+                  <SectionMessage.Title>
+                    Notification preferences saved!
+                  </SectionMessage.Title>
+                  <SectionMessage.Content>
+                    Your notification preferences have been updated.
+                  </SectionMessage.Content>
+                </SectionMessage>
+              )}
               <Checkbox.Group
                 label="Notification Preferences"
-                value={notifChecked}
-                onChange={setNotifChecked}
+                value={notifPrefs}
+                onChange={setNotifPrefs}
               >
-                <Checkbox value="email-messages" label="Email notifications for new messages" />
-                <Checkbox value="push-mentions" label="Push notifications for mentions" />
-                <Checkbox value="weekly-digest" label="Weekly activity digest" />
-                <Checkbox value="marketing" label="Marketing and promotional emails" />
+                <Checkbox
+                  value="email-messages"
+                  label="Email notifications for new messages"
+                />
+                <Checkbox
+                  value="push-mentions"
+                  label="Push notifications for mentions"
+                />
+                <Checkbox
+                  value="weekly-digest"
+                  label="Weekly activity digest"
+                />
+                <Checkbox
+                  value="marketing"
+                  label="Marketing and promotional emails"
+                />
               </Checkbox.Group>
               <Select
                 label="Notification Sound"
                 selectedKey={notifSound}
-                onSelectionChange={key => setNotifSound(String(key))}
+                onChange={(key) => setNotifSound(String(key))}
               >
                 <Select.Option id="default">Default</Select.Option>
                 <Select.Option id="chime">Chime</Select.Option>
                 <Select.Option id="none">None</Select.Option>
               </Select>
-              <Button
-                variant="primary"
-                onPress={() =>
-                  addToast({
-                    title: 'Notification preferences saved',
-                    variant: 'success',
-                  })
-                }
-              >
+              <Button variant="primary" onPress={() => setNotifSaved(true)}>
                 Save Notification Preferences
               </Button>
             </Stack>
@@ -156,50 +174,52 @@ const SettingsPage = () => {
           <Accordion.Header>Privacy</Accordion.Header>
           <Accordion.Content>
             <Stack space={4}>
+              {privacySaved && (
+                <SectionMessage
+                  closeButton
+                  onCloseChange={() => setPrivacySaved(false)}
+                >
+                  <SectionMessage.Title>
+                    Privacy settings saved!
+                  </SectionMessage.Title>
+                  <SectionMessage.Content>
+                    Your privacy settings have been updated.
+                  </SectionMessage.Content>
+                </SectionMessage>
+              )}
               <Radio.Group
                 label="Profile Visibility"
                 value={visibility}
-                onChange={handleVisibilityChange}
+                onChange={(v) => setVisibility(v as Visibility)}
               >
                 <Radio value="public">Public</Radio>
-                <Radio value="team">Team Only</Radio>
+                <Radio value="team-only">Team Only</Radio>
                 <Radio value="private">Private</Radio>
               </Radio.Group>
               <Switch
                 label="Show Online Status"
-                selected={onlineStatus}
-                onChange={setOnlineStatus}
+                selected={showOnline}
+                onChange={setShowOnline}
               />
               <Stack space={1}>
                 <Switch
                   label="Allow Search Engines"
-                  selected={searchEngines}
-                  onChange={setSearchEngines}
-                  disabled={searchEnginesDisabled}
+                  selected={allowSearch}
+                  onChange={setAllowSearch}
+                  disabled={visibility !== 'public'}
                 />
-                <Text size="sm" variant="muted">Let search engines index your public profile</Text>
+                <Text>Let search engines index your public profile</Text>
               </Stack>
-              <Button
-                variant="primary"
-                onPress={() =>
-                  addToast({ title: 'Privacy settings saved', variant: 'success' })
-                }
-              >
+              <Button variant="primary" onPress={() => setPrivacySaved(true)}>
                 Save Privacy Settings
               </Button>
             </Stack>
           </Accordion.Content>
         </Accordion.Item>
       </Accordion>
-    </Stack>
+      </Stack>
+    </Inset>
   );
 };
 
-const TestApp = () => (
-  <>
-    <ToastProvider position="bottom-right" />
-    <SettingsPage />
-  </>
-);
-
-export default TestApp;
+export default SettingsPage;

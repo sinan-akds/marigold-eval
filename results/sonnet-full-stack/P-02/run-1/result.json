@@ -3,9 +3,9 @@
   "promptId": "P-02",
   "model": "sonnet",
   "config": "full-stack",
-  "timestamp": "2026-06-23T10:49:34.626Z",
+  "timestamp": "2026-06-28T15:31:56.322Z",
   "quality": {
-    "overall": 85.74,
+    "overall": 93.64,
     "categories": {
       "A": {
         "category": "A",
@@ -21,17 +21,15 @@
             "severity": "warning",
             "source": "design-system-usage",
             "component": "img",
-            "message": "Inline style on <img> bypasses the design system (width, height, borderRadius, objectFit).",
+            "message": "Inline style on <img> bypasses the design system (borderRadius, objectFit).",
             "suggestion": "Use Marigold layout components (Stack, Columns, Inset, Container) and theme tokens instead of inline styles.",
             "location": {
               "file": "TestApp.tsx",
-              "line": 46,
+              "line": 32,
               "column": 19
             },
             "details": {
               "cssProperties": [
-                "width",
-                "height",
                 "borderRadius",
                 "objectFit"
               ]
@@ -52,85 +50,32 @@
       "C": {
         "category": "C",
         "label": "DOM / Structure",
-        "score": 75.25,
+        "score": 100,
         "weight": 0.225,
-        "weightedScore": 16.93,
+        "weightedScore": 22.5,
         "errorCount": 0,
-        "warningCount": 1,
-        "issues": [
-          {
-            "type": "technical",
-            "severity": "warning",
-            "source": "layout-usage",
-            "component": "Stack",
-            "message": "<Stack> wraps a single child. A flow layout earns its place only with two or more children; with one child it adds a wrapper that does nothing.",
-            "suggestion": "Render the child directly instead of wrapping it in <Stack>. For single-child spacing use Inset, Center, Breakout or Aspect.",
-            "location": {
-              "file": "TestApp.tsx",
-              "line": 37,
-              "column": 7
-            },
-            "details": {
-              "layout": "Stack",
-              "childCount": 1
-            }
-          }
-        ]
+        "warningCount": 0,
+        "issues": []
       },
       "D": {
         "category": "D",
         "label": "Spatial & A11y",
-        "score": 75.51,
+        "score": 85.86,
         "weight": 0.225,
-        "weightedScore": 16.99,
+        "weightedScore": 19.32,
         "errorCount": 0,
-        "warningCount": 3,
+        "warningCount": 1,
         "issues": [
           {
-            "type": "a11y",
+            "type": "spatial",
             "severity": "warning",
-            "source": "aom-extractor",
-            "component": "html",
-            "message": "Document should have one main landmark (landmark-one-main)",
-            "suggestion": "Wrap your page content in `<AppLayout>` with `<AppLayout.Main>` to provide a `<main>` landmark. Import AppLayout from `@marigold/components`.",
-            "details": {
-              "ruleId": "landmark-one-main",
-              "impact": "moderate",
-              "target": [
-                "html"
-              ],
-              "html": "<html lang=\"en\" data-theme=\"rui\">",
-              "scope": "page"
-            }
-          },
-          {
-            "type": "a11y",
-            "severity": "warning",
-            "source": "aom-extractor",
-            "component": "html",
-            "message": "Page should contain a level-one heading (page-has-heading-one)",
-            "suggestion": "Add a `<Headline level={1}>` component for the page title — it renders an `<h1>`. Import Headline from `@marigold/components`.",
-            "details": {
-              "ruleId": "page-has-heading-one",
-              "impact": "moderate",
-              "target": [
-                "html"
-              ],
-              "html": "<html lang=\"en\" data-theme=\"rui\">",
-              "scope": "page"
-            }
-          },
-          {
-            "type": "a11y",
-            "severity": "warning",
-            "source": "aom-extractor",
+            "source": "responsive-checker",
             "component": "page",
-            "message": "All page content should be contained by landmarks — 3 elements affected (region)",
-            "suggestion": "All page content must be inside a landmark region. Use `<AppLayout>` with `<AppLayout.Main>` for the main area, `<TopNavigation>` for the header (`<header>`), and `<Sidebar>` for side navigation (`<aside>`). Import from `@marigold/components`.",
+            "message": "Content uses only 20% of the desktop width (1280px): it stays in a narrow, mobile-shaped band instead of adapting to the available space.",
+            "suggestion": "Let the layout grow with the viewport using Marigold responsive primitives — <Columns collapseAt=\"...\"> for multi-column areas, AppLayout for the shell, Stack/Inline for flow — instead of a fixed-width container. (Intentionally centred max-width reading columns are fine and may trip this; treat it as a relative signal.)",
             "details": {
-              "ruleId": "region",
-              "impact": "moderate",
-              "affectedCount": 3,
+              "widthUtilization": 0.20078125,
+              "contentElements": 16,
               "scope": "page"
             }
           }
@@ -150,14 +95,14 @@
     "renderSuccess": true
   },
   "efficiency": {
-    "durationMs": 251924,
-    "costUsd": 0.8932542000000001,
-    "inputTokens": 44,
-    "outputTokens": 11259,
-    "cacheReadTokens": 1443514,
-    "cacheCreationTokens": 46525,
-    "totalTokens": 11303,
-    "numTurns": 40
+    "durationMs": 346004,
+    "costUsd": 0.6560626,
+    "inputTokens": 32,
+    "outputTokens": 9708,
+    "cacheReadTokens": 972312,
+    "cacheCreationTokens": 34436,
+    "totalTokens": 9740,
+    "numTurns": 31
   },
   "report": {
     "file": "TestApp.tsx",
@@ -168,84 +113,30 @@
         "severity": "warning",
         "source": "design-system-usage",
         "component": "img",
-        "message": "Inline style on <img> bypasses the design system (width, height, borderRadius, objectFit).",
+        "message": "Inline style on <img> bypasses the design system (borderRadius, objectFit).",
         "suggestion": "Use Marigold layout components (Stack, Columns, Inset, Container) and theme tokens instead of inline styles.",
         "location": {
           "file": "TestApp.tsx",
-          "line": 46,
+          "line": 32,
           "column": 19
         },
         "details": {
           "cssProperties": [
-            "width",
-            "height",
             "borderRadius",
             "objectFit"
           ]
         }
       },
       {
-        "type": "technical",
+        "type": "spatial",
         "severity": "warning",
-        "source": "layout-usage",
-        "component": "Stack",
-        "message": "<Stack> wraps a single child. A flow layout earns its place only with two or more children; with one child it adds a wrapper that does nothing.",
-        "suggestion": "Render the child directly instead of wrapping it in <Stack>. For single-child spacing use Inset, Center, Breakout or Aspect.",
-        "location": {
-          "file": "TestApp.tsx",
-          "line": 37,
-          "column": 7
-        },
-        "details": {
-          "layout": "Stack",
-          "childCount": 1
-        }
-      },
-      {
-        "type": "a11y",
-        "severity": "warning",
-        "source": "aom-extractor",
-        "component": "html",
-        "message": "Document should have one main landmark (landmark-one-main)",
-        "suggestion": "Wrap your page content in `<AppLayout>` with `<AppLayout.Main>` to provide a `<main>` landmark. Import AppLayout from `@marigold/components`.",
-        "details": {
-          "ruleId": "landmark-one-main",
-          "impact": "moderate",
-          "target": [
-            "html"
-          ],
-          "html": "<html lang=\"en\" data-theme=\"rui\">",
-          "scope": "page"
-        }
-      },
-      {
-        "type": "a11y",
-        "severity": "warning",
-        "source": "aom-extractor",
-        "component": "html",
-        "message": "Page should contain a level-one heading (page-has-heading-one)",
-        "suggestion": "Add a `<Headline level={1}>` component for the page title — it renders an `<h1>`. Import Headline from `@marigold/components`.",
-        "details": {
-          "ruleId": "page-has-heading-one",
-          "impact": "moderate",
-          "target": [
-            "html"
-          ],
-          "html": "<html lang=\"en\" data-theme=\"rui\">",
-          "scope": "page"
-        }
-      },
-      {
-        "type": "a11y",
-        "severity": "warning",
-        "source": "aom-extractor",
+        "source": "responsive-checker",
         "component": "page",
-        "message": "All page content should be contained by landmarks — 3 elements affected (region)",
-        "suggestion": "All page content must be inside a landmark region. Use `<AppLayout>` with `<AppLayout.Main>` for the main area, `<TopNavigation>` for the header (`<header>`), and `<Sidebar>` for side navigation (`<aside>`). Import from `@marigold/components`.",
+        "message": "Content uses only 20% of the desktop width (1280px): it stays in a narrow, mobile-shaped band instead of adapting to the available space.",
+        "suggestion": "Let the layout grow with the viewport using Marigold responsive primitives — <Columns collapseAt=\"...\"> for multi-column areas, AppLayout for the shell, Stack/Inline for flow — instead of a fixed-width container. (Intentionally centred max-width reading columns are fine and may trip this; treat it as a relative signal.)",
         "details": {
-          "ruleId": "region",
-          "impact": "moderate",
-          "affectedCount": 3,
+          "widthUtilization": 0.20078125,
+          "contentElements": 16,
           "scope": "page"
         }
       }
@@ -258,14 +149,15 @@
       "Compound component placement",
       "Section headers",
       "Collection item ids",
+      "Layout usage",
       "Table usage",
       "Component conventions",
       "Theme variant compliance",
       "No overlapping components detected",
-      "Responsive layout"
+      "Accessibility checks"
     ],
     "metadata": {
-      "renderTimeMs": 1869,
+      "renderTimeMs": 1741,
       "componentsFound": [
         "button"
       ],
@@ -275,19 +167,19 @@
         "a11y"
       ],
       "coverage": {
-        "staticValuesChecked": 7,
-        "dynamicValuesSkipped": 9,
+        "staticValuesChecked": 16,
+        "dynamicValuesSkipped": 13,
         "spreadPropsBypassed": 0
       },
-      "widthUtilization": 0.9359375
+      "widthUtilization": 0.20078125
     },
-    "markdown": "marigold-validate: TestApp.tsx — 0 error(s), 5 warning(s)\n\n[warning/technical] <img>: Inline style on <img> bypasses the design system (width, height, borderRadius, objectFit). (TestApp.tsx:46:19)\n  → Use Marigold layout components (Stack, Columns, Inset, Container) and theme tokens instead of inline styles.\n  data: {cssProperties=[\"width\",\"height\",\"borderRadius\",\"objectFit\"]}\n[warning/technical] <Stack>: <Stack> wraps a single child. A flow layout earns its place only with two or more children; with one child it adds a wrapper that does nothing. (TestApp.tsx:37:7)\n  → Render the child directly instead of wrapping it in <Stack>. For single-child spacing use Inset, Center, Breakout or Aspect.\n  data: {layout=Stack, childCount=1}\n[warning/a11y] <html>: Document should have one main landmark (landmark-one-main)\n  → Wrap your page content in `<AppLayout>` with `<AppLayout.Main>` to provide a `<main>` landmark. Import AppLayout from `@marigold/components`.\n  data: {ruleId=landmark-one-main, impact=moderate, target=[\"html\"], html=<html lang=\"en\" data-theme=\"rui\">, scope=page}\n[warning/a11y] <html>: Page should contain a level-one heading (page-has-heading-one)\n  → Add a `<Headline level={1}>` component for the page title — it renders an `<h1>`. Import Headline from `@marigold/components`.\n  data: {ruleId=page-has-heading-one, impact=moderate, target=[\"html\"], html=<html lang=\"en\" data-theme=\"rui\">, scope=page}\n[warning/a11y] <page>: All page content should be contained by landmarks — 3 elements affected (region)\n  → All page content must be inside a landmark region. Use `<AppLayout>` with `<AppLayout.Main>` for the main area, `<TopNavigation>` for the header (`<header>`), and `<Sidebar>` for side navigation (`<aside>`). Import from `@marigold/components`.\n  data: {ruleId=region, impact=moderate, affectedCount=3, scope=page}\n\npassed: TypeScript compilation, All Marigold props are valid, Component composition, Overlay accessible names, Compound component placement, Section headers, Collection item ids, Table usage, Component conventions, Theme variant compliance, No overlapping components detected, Responsive layout\n\nchecks run: technical, spatial, a11y"
+    "markdown": "marigold-validate: TestApp.tsx — 0 error(s), 2 warning(s)\n\n[warning/technical] <img>: Inline style on <img> bypasses the design system (borderRadius, objectFit). (TestApp.tsx:32:19)\n  → Use Marigold layout components (Stack, Columns, Inset, Container) and theme tokens instead of inline styles.\n  data: {cssProperties=[\"borderRadius\",\"objectFit\"]}\n[warning/spatial] <page>: Content uses only 20% of the desktop width (1280px): it stays in a narrow, mobile-shaped band instead of adapting to the available space.\n  → Let the layout grow with the viewport using Marigold responsive primitives — <Columns collapseAt=\"...\"> for multi-column areas, AppLayout for the shell, Stack/Inline for flow — instead of a fixed-width container. (Intentionally centred max-width reading columns are fine and may trip this; treat it as a relative signal.)\n  data: {widthUtilization=0.20078125, contentElements=16, scope=page}\n\npassed: TypeScript compilation, All Marigold props are valid, Component composition, Overlay accessible names, Compound component placement, Section headers, Collection item ids, Layout usage, Table usage, Component conventions, Theme variant compliance, No overlapping components detected, Accessibility checks\n\nchecks run: technical, spatial, a11y"
   },
   "componentsFound": [
     "button"
   ],
-  "renderTimeMs": 1869,
-  "sourceCode": "import { useState } from 'react';\nimport {\n  Badge,\n  Button,\n  Card,\n  Center,\n  Divider,\n  Headline,\n  Inline,\n  Inset,\n  Stack,\n  Text,\n} from '@marigold/components';\n\nconst details = [\n  { label: 'Role', value: 'Senior Developer' },\n  { label: 'Department', value: 'Engineering' },\n  { label: 'Email', value: 'jane.doe@example.com' },\n  { label: 'Location', value: 'Freiburg, Germany' },\n];\n\nconst TestApp = () => {\n  const [status, setStatus] = useState<'Active' | 'Away'>('Active');\n  const [message, setMessage] = useState('');\n\n  const handleSendMessage = () => {\n    setMessage('Message sent to Jane Doe!');\n    setTimeout(() => setMessage(''), 3000);\n  };\n\n  const handleEditProfile = () => {\n    setStatus(s => (s === 'Active' ? 'Away' : 'Active'));\n  };\n\n  return (\n    <Center>\n      <Stack space={4}>\n        <Card>\n          <Inset space={6}>\n            <Stack space={4}>\n              {/* Avatar + Name + Status */}\n              <Inline space={4} alignY=\"center\">\n                <img\n                  src=\"https://i.pravatar.cc/150?img=5\"\n                  alt=\"Jane Doe\"\n                  style={{\n                    width: 80,\n                    height: 80,\n                    borderRadius: '50%',\n                    objectFit: 'cover',\n                  }}\n                />\n                <Stack space={2}>\n                  <Headline level=\"2\">Jane Doe</Headline>\n                  <Badge variant={status === 'Active' ? 'success' : 'warning'}>\n                    {status}\n                  </Badge>\n                </Stack>\n              </Inline>\n\n              <Divider />\n\n              {/* Details */}\n              <Stack space={2}>\n                {details.map(({ label, value }) => (\n                  <Inline key={label} space={2}>\n                    <Text variant=\"muted\">{label}:</Text>\n                    <Text weight=\"medium\">{value}</Text>\n                  </Inline>\n                ))}\n              </Stack>\n\n              <Divider />\n\n              {/* Bio */}\n              <Text>\n                Jane is a passionate engineer who loves building elegant\n                solutions to complex problems. With over eight years of\n                experience in full-stack development, she brings both technical\n                depth and creative thinking to every project she takes on.\n              </Text>\n\n              <Divider />\n\n              {/* Actions */}\n              <Stack space={2}>\n                <Inline space={3}>\n                  <Button variant=\"primary\" onPress={handleSendMessage}>\n                    Send Message\n                  </Button>\n                  <Button variant=\"ghost\" onPress={handleEditProfile}>\n                    Edit Profile\n                  </Button>\n                </Inline>\n                {message && <Text variant=\"muted\">{message}</Text>}\n              </Stack>\n            </Stack>\n          </Inset>\n        </Card>\n      </Stack>\n    </Center>\n  );\n};\n\nexport default TestApp;\n",
+  "renderTimeMs": 1741,
+  "sourceCode": "import { useState } from 'react';\nimport {\n  AppLayout,\n  Badge,\n  Button,\n  Card,\n  Center,\n  Divider,\n  Headline,\n  Inline,\n  Stack,\n  Text,\n} from '@marigold/components';\n\nexport default function TestApp() {\n  const [status, setStatus] = useState<'Active' | 'Away'>('Active');\n  const [feedback, setFeedback] = useState('');\n\n  return (\n    <AppLayout>\n      <AppLayout.Main>\n        <Center maxWidth=\"medium\" space={4}>\n          <Card>\n            <Stack space={4}>\n              {/* Avatar + Name + Status */}\n              <Inline space={4} alignY=\"center\">\n                <img\n                  src=\"https://i.pravatar.cc/150?img=47\"\n                  alt=\"Jane Doe\"\n                  width={80}\n                  height={80}\n                  style={{ borderRadius: '50%', objectFit: 'cover' }}\n                />\n                <Stack space={2}>\n                  <Headline level=\"1\">Jane Doe</Headline>\n                  <Inline space={2} alignY=\"center\">\n                    <Badge variant={status === 'Active' ? 'success' : 'warning'}>\n                      {status}\n                    </Badge>\n                    <Button\n                      variant=\"ghost\"\n                      size=\"small\"\n                      onPress={() =>\n                        setStatus(s => (s === 'Active' ? 'Away' : 'Active'))\n                      }\n                    >\n                      Toggle\n                    </Button>\n                  </Inline>\n                </Stack>\n              </Inline>\n\n              <Divider />\n\n              {/* Details */}\n              <Stack space={2}>\n                <Inline space={2}>\n                  <Text weight=\"bold\">Role:</Text>\n                  <Text variant=\"muted\">Senior Developer</Text>\n                </Inline>\n                <Inline space={2}>\n                  <Text weight=\"bold\">Department:</Text>\n                  <Text variant=\"muted\">Engineering</Text>\n                </Inline>\n                <Inline space={2}>\n                  <Text weight=\"bold\">Email:</Text>\n                  <Text variant=\"muted\">jane.doe@example.com</Text>\n                </Inline>\n                <Inline space={2}>\n                  <Text weight=\"bold\">Location:</Text>\n                  <Text variant=\"muted\">Freiburg, Germany</Text>\n                </Inline>\n              </Stack>\n\n              <Divider />\n\n              {/* Bio */}\n              <Text>\n                Jane is a passionate senior developer with over 8 years of experience\n                building scalable web applications. She champions clean code practices and\n                mentors junior developers on the team. Outside of work, she enjoys hiking\n                in the Black Forest and contributing to open-source projects.\n              </Text>\n\n              <Divider />\n\n              {/* Actions */}\n              <Stack space={2}>\n                <Inline space={3}>\n                  <Button\n                    variant=\"primary\"\n                    onPress={() => setFeedback('Message sent to Jane!')}\n                  >\n                    Send Message\n                  </Button>\n                  <Button\n                    variant=\"secondary\"\n                    onPress={() => setFeedback('Opening profile editor...')}\n                  >\n                    Edit Profile\n                  </Button>\n                </Inline>\n                {feedback && <Text variant=\"muted\">{feedback}</Text>}\n              </Stack>\n            </Stack>\n          </Card>\n        </Center>\n      </AppLayout.Main>\n    </AppLayout>\n  );\n}\n",
   "assertions": {
     "passed": [
       {
@@ -370,6 +262,6 @@
   "validatePackageVersion": "0.0.1",
   "playwrightVersion": null,
   "resolvedModelId": "claude-sonnet-4-6",
-  "claudeCliVersion": "2.1.185 (Claude Code)",
-  "sessionId": "ae766ffe-0fdd-40e3-b466-fe8d58dfde11"
+  "claudeCliVersion": "2.1.193 (Claude Code)",
+  "sessionId": "fe17e3a6-a21e-4ca9-8910-a0a7862b4a7f"
 }

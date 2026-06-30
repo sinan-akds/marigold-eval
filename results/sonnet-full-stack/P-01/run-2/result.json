@@ -3,9 +3,9 @@
   "promptId": "P-01",
   "model": "sonnet",
   "config": "full-stack",
-  "timestamp": "2026-06-23T10:34:40.962Z",
+  "timestamp": "2026-06-28T15:03:30.759Z",
   "quality": {
-    "overall": 93.64,
+    "overall": 96.82,
     "categories": {
       "A": {
         "category": "A",
@@ -40,60 +40,12 @@
       "D": {
         "category": "D",
         "label": "Spatial & A11y",
-        "score": 71.72,
+        "score": 85.86,
         "weight": 0.225,
-        "weightedScore": 16.14,
+        "weightedScore": 19.32,
         "errorCount": 0,
-        "warningCount": 4,
+        "warningCount": 1,
         "issues": [
-          {
-            "type": "a11y",
-            "severity": "warning",
-            "source": "aom-extractor",
-            "component": "html",
-            "message": "Document should have one main landmark (landmark-one-main)",
-            "suggestion": "Wrap your page content in `<AppLayout>` with `<AppLayout.Main>` to provide a `<main>` landmark. Import AppLayout from `@marigold/components`.",
-            "details": {
-              "ruleId": "landmark-one-main",
-              "impact": "moderate",
-              "target": [
-                "html"
-              ],
-              "html": "<html lang=\"en\" data-theme=\"rui\">",
-              "scope": "page"
-            }
-          },
-          {
-            "type": "a11y",
-            "severity": "warning",
-            "source": "aom-extractor",
-            "component": "html",
-            "message": "Page should contain a level-one heading (page-has-heading-one)",
-            "suggestion": "Add a `<Headline level={1}>` component for the page title — it renders an `<h1>`. Import Headline from `@marigold/components`.",
-            "details": {
-              "ruleId": "page-has-heading-one",
-              "impact": "moderate",
-              "target": [
-                "html"
-              ],
-              "html": "<html lang=\"en\" data-theme=\"rui\">",
-              "scope": "page"
-            }
-          },
-          {
-            "type": "a11y",
-            "severity": "warning",
-            "source": "aom-extractor",
-            "component": "page",
-            "message": "All page content should be contained by landmarks — 5 elements affected (region)",
-            "suggestion": "All page content must be inside a landmark region. Use `<AppLayout>` with `<AppLayout.Main>` for the main area, `<TopNavigation>` for the header (`<header>`), and `<Sidebar>` for side navigation (`<aside>`). Import from `@marigold/components`.",
-            "details": {
-              "ruleId": "region",
-              "impact": "moderate",
-              "affectedCount": 5,
-              "scope": "page"
-            }
-          },
           {
             "type": "a11y",
             "severity": "warning",
@@ -102,7 +54,7 @@
             "message": "Interactive element <input> (input) is not reachable via Tab key.",
             "suggestion": "Ensure the element is focusable. Marigold interactive components are focusable by default — check if a parent has tabindex=\"-1\" or focus is trapped.",
             "details": {
-              "selector": "body:nth-child(2) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > form:nth-child(2) > div:nth-child(1) > div:nth-child(1) > div:nth-child(2) > input:nth-child(1)",
+              "selector": "body:nth-child(2) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > main:nth-child(1) > div:nth-child(1) > div:nth-child(1) > form:nth-child(1) > div:nth-child(1) > div:nth-child(2) > div:nth-child(2) > input:nth-child(1)",
               "role": "input",
               "scope": "page"
             }
@@ -123,14 +75,14 @@
     "renderSuccess": true
   },
   "efficiency": {
-    "durationMs": 395196,
-    "costUsd": 1.2319906999999994,
-    "inputTokens": 54,
-    "outputTokens": 15388,
-    "cacheReadTokens": 2089498,
-    "cacheCreationTokens": 56462,
-    "totalTokens": 15442,
-    "numTurns": 46
+    "durationMs": 1333316,
+    "costUsd": 2.6568416999999998,
+    "inputTokens": 76,
+    "outputTokens": 43040,
+    "cacheReadTokens": 4763999,
+    "cacheCreationTokens": 93705,
+    "totalTokens": 43116,
+    "numTurns": 78
   },
   "report": {
     "file": "TestApp.tsx",
@@ -139,60 +91,12 @@
       {
         "type": "a11y",
         "severity": "warning",
-        "source": "aom-extractor",
-        "component": "html",
-        "message": "Document should have one main landmark (landmark-one-main)",
-        "suggestion": "Wrap your page content in `<AppLayout>` with `<AppLayout.Main>` to provide a `<main>` landmark. Import AppLayout from `@marigold/components`.",
-        "details": {
-          "ruleId": "landmark-one-main",
-          "impact": "moderate",
-          "target": [
-            "html"
-          ],
-          "html": "<html lang=\"en\" data-theme=\"rui\">",
-          "scope": "page"
-        }
-      },
-      {
-        "type": "a11y",
-        "severity": "warning",
-        "source": "aom-extractor",
-        "component": "html",
-        "message": "Page should contain a level-one heading (page-has-heading-one)",
-        "suggestion": "Add a `<Headline level={1}>` component for the page title — it renders an `<h1>`. Import Headline from `@marigold/components`.",
-        "details": {
-          "ruleId": "page-has-heading-one",
-          "impact": "moderate",
-          "target": [
-            "html"
-          ],
-          "html": "<html lang=\"en\" data-theme=\"rui\">",
-          "scope": "page"
-        }
-      },
-      {
-        "type": "a11y",
-        "severity": "warning",
-        "source": "aom-extractor",
-        "component": "page",
-        "message": "All page content should be contained by landmarks — 5 elements affected (region)",
-        "suggestion": "All page content must be inside a landmark region. Use `<AppLayout>` with `<AppLayout.Main>` for the main area, `<TopNavigation>` for the header (`<header>`), and `<Sidebar>` for side navigation (`<aside>`). Import from `@marigold/components`.",
-        "details": {
-          "ruleId": "region",
-          "impact": "moderate",
-          "affectedCount": 5,
-          "scope": "page"
-        }
-      },
-      {
-        "type": "a11y",
-        "severity": "warning",
         "source": "keyboard-a11y",
         "component": "input",
         "message": "Interactive element <input> (input) is not reachable via Tab key.",
         "suggestion": "Ensure the element is focusable. Marigold interactive components are focusable by default — check if a parent has tabindex=\"-1\" or focus is trapped.",
         "details": {
-          "selector": "body:nth-child(2) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > form:nth-child(2) > div:nth-child(1) > div:nth-child(1) > div:nth-child(2) > input:nth-child(1)",
+          "selector": "body:nth-child(2) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > main:nth-child(1) > div:nth-child(1) > div:nth-child(1) > form:nth-child(1) > div:nth-child(1) > div:nth-child(2) > div:nth-child(2) > input:nth-child(1)",
           "role": "input",
           "scope": "page"
         }
@@ -215,7 +119,7 @@
       "Responsive layout"
     ],
     "metadata": {
-      "renderTimeMs": 1584,
+      "renderTimeMs": 1685,
       "componentsFound": [
         "div",
         "input",
@@ -229,13 +133,13 @@
         "a11y"
       ],
       "coverage": {
-        "staticValuesChecked": 3,
-        "dynamicValuesSkipped": 5,
+        "staticValuesChecked": 5,
+        "dynamicValuesSkipped": 1,
         "spreadPropsBypassed": 0
       },
       "widthUtilization": null
     },
-    "markdown": "marigold-validate: TestApp.tsx — 0 error(s), 4 warning(s)\n\n[warning/a11y] <html>: Document should have one main landmark (landmark-one-main)\n  → Wrap your page content in `<AppLayout>` with `<AppLayout.Main>` to provide a `<main>` landmark. Import AppLayout from `@marigold/components`.\n  data: {ruleId=landmark-one-main, impact=moderate, target=[\"html\"], html=<html lang=\"en\" data-theme=\"rui\">, scope=page}\n[warning/a11y] <html>: Page should contain a level-one heading (page-has-heading-one)\n  → Add a `<Headline level={1}>` component for the page title — it renders an `<h1>`. Import Headline from `@marigold/components`.\n  data: {ruleId=page-has-heading-one, impact=moderate, target=[\"html\"], html=<html lang=\"en\" data-theme=\"rui\">, scope=page}\n[warning/a11y] <input>: Interactive element <input> (input) is not reachable via Tab key.\n  → Ensure the element is focusable. Marigold interactive components are focusable by default — check if a parent has tabindex=\"-1\" or focus is trapped.\n  data: {selector=body:nth-child(2) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > ..., role=input, scope=page}\n[warning/a11y] <page>: All page content should be contained by landmarks — 5 elements affected (region)\n  → All page content must be inside a landmark region. Use `<AppLayout>` with `<AppLayout.Main>` for the main area, `<TopNavigation>` for the header (`<header>`), and `<Sidebar>` for side navigation (`<aside>`). Import from `@marigold/components`.\n  data: {ruleId=region, impact=moderate, affectedCount=5, scope=page}\n\npassed: TypeScript compilation, All Marigold props are valid, Component composition, Overlay accessible names, Compound component placement, Section headers, Collection item ids, Design system usage, Layout usage, Table usage, Component conventions, Theme variant compliance, No overlapping components detected, Responsive layout\n\nchecks run: technical, spatial, a11y"
+    "markdown": "marigold-validate: TestApp.tsx — 0 error(s), 1 warning(s)\n\n[warning/a11y] <input>: Interactive element <input> (input) is not reachable via Tab key.\n  → Ensure the element is focusable. Marigold interactive components are focusable by default — check if a parent has tabindex=\"-1\" or focus is trapped.\n  data: {selector=body:nth-child(2) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > ..., role=input, scope=page}\n\npassed: TypeScript compilation, All Marigold props are valid, Component composition, Overlay accessible names, Compound component placement, Section headers, Collection item ids, Design system usage, Layout usage, Table usage, Component conventions, Theme variant compliance, No overlapping components detected, Responsive layout\n\nchecks run: technical, spatial, a11y"
   },
   "componentsFound": [
     "div",
@@ -244,8 +148,8 @@
     "span",
     "textarea"
   ],
-  "renderTimeMs": 1584,
-  "sourceCode": "import { useState } from 'react';\nimport {\n  Button,\n  Form,\n  Headline,\n  SectionMessage,\n  Select,\n  Stack,\n  TextArea,\n  TextField,\n} from '@marigold/components';\n\ntype Errors = {\n  name?: string;\n  email?: string;\n};\n\nconst isValidEmail = (email: string) =>\n  /^[^\\s@]+@[^\\s@]+\\.[^\\s@]+$/.test(email.trim());\n\nconst ContactForm = () => {\n  const [name, setName] = useState('');\n  const [email, setEmail] = useState('');\n  const [subject, setSubject] = useState('');\n  const [message, setMessage] = useState('');\n  const [errors, setErrors] = useState<Errors>({});\n  const [success, setSuccess] = useState(false);\n\n  const validate = (): Errors => {\n    const errs: Errors = {};\n    if (!name.trim()) errs.name = 'Name is required.';\n    if (!email.trim()) {\n      errs.email = 'Email is required.';\n    } else if (!isValidEmail(email)) {\n      errs.email = 'Please enter a valid email address.';\n    }\n    return errs;\n  };\n\n  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {\n    e.preventDefault();\n    const errs = validate();\n    setErrors(errs);\n    if (Object.keys(errs).length === 0) {\n      setSuccess(true);\n    }\n  };\n\n  if (success) {\n    return (\n      <Stack space={6}>\n        <Headline level={2}>Contact Us</Headline>\n        <SectionMessage variant=\"success\">\n          <SectionMessage.Title>Message sent successfully!</SectionMessage.Title>\n          <SectionMessage.Content>\n            Thank you for contacting us. We'll get back to you as soon as\n            possible.\n          </SectionMessage.Content>\n        </SectionMessage>\n      </Stack>\n    );\n  }\n\n  return (\n    <Stack space={6}>\n      <Headline level={2}>Contact Us</Headline>\n      <Form onSubmit={handleSubmit}>\n        <Stack space={4}>\n          <TextField\n            label=\"Name\"\n            value={name}\n            onChange={setName}\n            error={!!errors.name}\n            errorMessage={errors.name}\n          />\n          <TextField\n            label=\"Email\"\n            value={email}\n            onChange={setEmail}\n            error={!!errors.email}\n            errorMessage={errors.email}\n          />\n          <Select\n            label=\"Subject\"\n            placeholder=\"Choose a subject\"\n            selectedKey={subject || null}\n            onSelectionChange={key => setSubject(String(key))}\n          >\n            <Select.Option id=\"general\">General</Select.Option>\n            <Select.Option id=\"support\">Support</Select.Option>\n            <Select.Option id=\"feedback\">Feedback</Select.Option>\n          </Select>\n          <TextArea\n            label=\"Message\"\n            value={message}\n            onChange={setMessage}\n            rows={5}\n          />\n          <Button variant=\"primary\" type=\"submit\">\n            Send Message\n          </Button>\n        </Stack>\n      </Form>\n    </Stack>\n  );\n};\n\nexport default ContactForm;\n",
+  "renderTimeMs": 1685,
+  "sourceCode": "import { useState } from 'react';\nimport {\n  AppLayout,\n  Button,\n  Container,\n  Form,\n  Headline,\n  Inset,\n  SectionMessage,\n  Select,\n  Stack,\n  TextArea,\n  TextField,\n} from '@marigold/components';\n\nconst isValidEmail = (val: string) => /^[^\\s@]+@[^\\s@]+\\.[^\\s@]+$/.test(val);\n\nconst ContactForm = () => {\n  const [name, setName] = useState('');\n  const [email, setEmail] = useState('');\n  const [subject, setSubject] = useState<string>('');\n  const [message, setMessage] = useState('');\n  const [nameError, setNameError] = useState('');\n  const [emailError, setEmailError] = useState('');\n  const [messageError, setMessageError] = useState('');\n  const [submitted, setSubmitted] = useState(false);\n\n  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {\n    e.preventDefault();\n    let valid = true;\n\n    if (!name.trim()) {\n      setNameError('Name is required.');\n      valid = false;\n    } else {\n      setNameError('');\n    }\n\n    if (!email.trim()) {\n      setEmailError('Email is required.');\n      valid = false;\n    } else if (!isValidEmail(email)) {\n      setEmailError('Please enter a valid email address.');\n      valid = false;\n    } else {\n      setEmailError('');\n    }\n\n    if (!message.trim()) {\n      setMessageError('Message is required.');\n      valid = false;\n    } else {\n      setMessageError('');\n    }\n\n    if (valid) {\n      setSubmitted(true);\n    }\n  };\n\n  if (submitted) {\n    return (\n      <AppLayout>\n        <AppLayout.Main>\n          <Container>\n            <Inset space={8}>\n              <SectionMessage variant=\"success\">\n                <SectionMessage.Title>Message sent!</SectionMessage.Title>\n                <SectionMessage.Content>\n                  Thank you for reaching out. We'll get back to you as soon as\n                  possible.\n                </SectionMessage.Content>\n              </SectionMessage>\n            </Inset>\n          </Container>\n        </AppLayout.Main>\n      </AppLayout>\n    );\n  }\n\n  return (\n    <AppLayout>\n      <AppLayout.Main>\n        <Container>\n          <Inset space={8}>\n            <Form onSubmit={handleSubmit}>\n              <Stack space={4}>\n                <Headline level=\"1\">Contact Us</Headline>\n                <TextField\n                  label=\"Name\"\n                  name=\"name\"\n                  value={name}\n                  onChange={val => {\n                    setName(val);\n                    if (nameError) setNameError('');\n                  }}\n                  error={!!nameError}\n                  errorMessage={nameError}\n                />\n                <TextField\n                  label=\"Email\"\n                  name=\"email\"\n                  type=\"text\"\n                  value={email}\n                  onChange={val => {\n                    setEmail(val);\n                    if (emailError) setEmailError('');\n                  }}\n                  error={!!emailError}\n                  errorMessage={emailError}\n                />\n                <Select\n                  label=\"Subject\"\n                  selectedKey={subject}\n                  onSelectionChange={key => setSubject(key as string)}\n                >\n                  <Select.Option id=\"general\">General</Select.Option>\n                  <Select.Option id=\"support\">Support</Select.Option>\n                  <Select.Option id=\"feedback\">Feedback</Select.Option>\n                </Select>\n                <TextArea\n                  label=\"Message\"\n                  name=\"message\"\n                  value={message}\n                  onChange={val => {\n                    setMessage(val);\n                    if (messageError) setMessageError('');\n                  }}\n                  rows={5}\n                  error={!!messageError}\n                  errorMessage={messageError}\n                />\n                <Button variant=\"primary\" type=\"submit\">\n                  Send Message\n                </Button>\n              </Stack>\n            </Form>\n          </Inset>\n        </Container>\n      </AppLayout.Main>\n    </AppLayout>\n  );\n};\n\nexport default ContactForm;\n",
   "assertions": {
     "passed": [
       {
@@ -314,6 +218,6 @@
   "validatePackageVersion": "0.0.1",
   "playwrightVersion": null,
   "resolvedModelId": "claude-sonnet-4-6",
-  "claudeCliVersion": "2.1.185 (Claude Code)",
-  "sessionId": "c5b2c992-867f-4931-9767-52478a25c44c"
+  "claudeCliVersion": "2.1.193 (Claude Code)",
+  "sessionId": "64dba7d9-d7d0-4d1c-be75-ff69081cdf03"
 }

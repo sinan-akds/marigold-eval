@@ -1,83 +1,95 @@
 import { useState } from 'react';
-import { Stack, Inline, Button, Badge, Headline, Text, Inset } from '@marigold/components';
+import {
+  Card,
+  Stack,
+  Inline,
+  Badge,
+  Button,
+  Text,
+  Headline,
+  Center,
+  Columns,
+} from '@marigold/components';
 
 const TestApp = () => {
-  const [messageAction, setMessageAction] = useState(false);
-  const [editAction, setEditAction] = useState(false);
+  const [messageAlert, setMessageAlert] = useState(false);
+  const [editAlert, setEditAlert] = useState(false);
+
+  const handleSendMessage = () => {
+    setMessageAlert(true);
+    setTimeout(() => setMessageAlert(false), 2000);
+  };
+
+  const handleEditProfile = () => {
+    setEditAlert(true);
+    setTimeout(() => setEditAlert(false), 2000);
+  };
 
   return (
-    <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', minHeight: '100vh', padding: '20px' }}>
-      <Inset space="square-relaxed">
+    <Center maxWidth="xlarge">
+      <Card>
         <Stack space="group">
-          {/* Header with Avatar and Status */}
-          <Inline space="regular" alignY="center">
+          <Inline space="group" alignY="center">
             <img
-              src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=200&h=200&fit=crop"
+              src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=150&h=150&fit=crop"
               alt="Jane Doe"
-              style={{ width: '80px', height: '80px', borderRadius: '8px', objectFit: 'cover', flexShrink: 0 }}
+              className="w-20 h-20 rounded-full object-cover flex-shrink-0"
             />
-            <Stack space="related" stretch>
-              <Headline size="level-4">Jane Doe</Headline>
+            <Stack space="tight">
+              <Headline size="level-3">Jane Doe</Headline>
               <Badge variant="success">Active</Badge>
             </Stack>
           </Inline>
 
-          {/* Details Section */}
-          <Stack space="related">
-            <div>
-              <Text weight="medium" size="xs" variant="muted">Role</Text>
+          <Stack space="tight">
+            <Columns columns={['fit', 1]} space="group">
+              <Text weight="bold">Role:</Text>
               <Text>Senior Developer</Text>
-            </div>
-            <div>
-              <Text weight="medium" size="xs" variant="muted">Department</Text>
+            </Columns>
+            <Columns columns={['fit', 1]} space="group">
+              <Text weight="bold">Department:</Text>
               <Text>Engineering</Text>
-            </div>
-            <div>
-              <Text weight="medium" size="xs" variant="muted">Email</Text>
+            </Columns>
+            <Columns columns={['fit', 1]} space="group">
+              <Text weight="bold">Email:</Text>
               <Text>jane.doe@example.com</Text>
-            </div>
-            <div>
-              <Text weight="medium" size="xs" variant="muted">Location</Text>
+            </Columns>
+            <Columns columns={['fit', 1]} space="group">
+              <Text weight="bold">Location:</Text>
               <Text>Freiburg, Germany</Text>
-            </div>
+            </Columns>
           </Stack>
 
-          {/* Bio Section */}
-          <Text variant="muted">
-            Jane is a talented senior developer with 8+ years of experience building scalable applications.
-            She specializes in frontend architecture and loves mentoring junior team members.
+          <Text variant="muted" size="sm">
+            Jane is a passionate senior developer with 8+ years of experience in
+            full-stack development. She specializes in building scalable web
+            applications and mentoring junior developers. In her free time, she
+            enjoys contributing to open-source projects and attending tech
+            conferences.
           </Text>
 
-          {/* Action Buttons */}
-          <Inline space="related" alignY="center">
-            <Button
-              variant="primary"
-              onPress={() => setMessageAction(!messageAction)}
-            >
+          <Inline space="group" alignX="left">
+            <Button variant="primary" onPress={handleSendMessage}>
               Send Message
             </Button>
-            <Button
-              variant="secondary"
-              onPress={() => setEditAction(!editAction)}
-            >
+            <Button variant="secondary" onPress={handleEditProfile}>
               Edit Profile
             </Button>
           </Inline>
 
-          {/* Action Feedback */}
-          {messageAction && (
-            <Text color="success">
-              Message action triggered!
+          {messageAlert && (
+            <Text color="success" size="sm">
+              Message sent successfully!
             </Text>
           )}
-          {editAction && (
-            <Text color="success">
-              Edit profile action triggered!
+          {editAlert && (
+            <Text color="info" size="sm">
+              Profile edit mode activated.
             </Text>
           )}
         </Stack>
-      </Inset>
-    </div>
+      </Card>
+    </Center>
   );
 };
 

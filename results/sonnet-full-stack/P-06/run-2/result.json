@@ -3,9 +3,9 @@
   "promptId": "P-06",
   "model": "sonnet",
   "config": "full-stack",
-  "timestamp": "2026-06-25T11:11:36.712Z",
+  "timestamp": "2026-06-28T17:43:25.493Z",
   "quality": {
-    "overall": 95.5,
+    "overall": 94.02,
     "categories": {
       "A": {
         "category": "A",
@@ -54,7 +54,7 @@
             "message": "Interactive element <input> (input) is not reachable via Tab key.",
             "suggestion": "Ensure the element is focusable. Marigold interactive components are focusable by default — check if a parent has tabindex=\"-1\" or focus is trapped.",
             "details": {
-              "selector": "body:nth-child(2) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > main:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div:nth-child(2) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > input:nth-child(1)",
+              "selector": "body:nth-child(2) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > main:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div:nth-child(2) > div:nth-child(1) > div:nth-child(1) > div:nth-child(2) > input:nth-child(1)",
               "role": "input",
               "scope": "page"
             }
@@ -67,7 +67,7 @@
             "message": "Interactive element <button> (button) is not reachable via Tab key.",
             "suggestion": "Ensure the element is focusable. Marigold interactive components are focusable by default — check if a parent has tabindex=\"-1\" or focus is trapped.",
             "details": {
-              "selector": "body:nth-child(2) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > main:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div:nth-child(2) > div:nth-child(2) > div:nth-child(2) > button:nth-child(1)",
+              "selector": "body:nth-child(2) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > main:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div:nth-child(2) > div:nth-child(2) > div:nth-child(2) > button:nth-child(2)",
               "role": "button",
               "scope": "page"
             }
@@ -77,9 +77,9 @@
       "E": {
         "category": "E",
         "label": "Functional Completeness",
-        "score": 100,
+        "score": 93.44,
         "weight": 0.225,
-        "weightedScore": 22.5,
+        "weightedScore": 21.02,
         "errorCount": 0,
         "warningCount": 0,
         "issues": []
@@ -88,14 +88,14 @@
     "renderSuccess": true
   },
   "efficiency": {
-    "durationMs": 1109663,
-    "costUsd": 2.1739145,
-    "inputTokens": 41,
-    "outputTokens": 57163,
-    "cacheReadTokens": 2404155,
-    "cacheCreationTokens": 96998,
-    "totalTokens": 57204,
-    "numTurns": 44
+    "durationMs": 1078435,
+    "costUsd": 2.4849943,
+    "inputTokens": 48,
+    "outputTokens": 52650,
+    "cacheReadTokens": 3534521,
+    "cacheCreationTokens": 104126,
+    "totalTokens": 52698,
+    "numTurns": 52
   },
   "report": {
     "file": "TestApp.tsx",
@@ -109,7 +109,7 @@
         "message": "Interactive element <input> (input) is not reachable via Tab key.",
         "suggestion": "Ensure the element is focusable. Marigold interactive components are focusable by default — check if a parent has tabindex=\"-1\" or focus is trapped.",
         "details": {
-          "selector": "body:nth-child(2) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > main:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div:nth-child(2) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > input:nth-child(1)",
+          "selector": "body:nth-child(2) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > main:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div:nth-child(2) > div:nth-child(1) > div:nth-child(1) > div:nth-child(2) > input:nth-child(1)",
           "role": "input",
           "scope": "page"
         }
@@ -122,7 +122,7 @@
         "message": "Interactive element <button> (button) is not reachable via Tab key.",
         "suggestion": "Ensure the element is focusable. Marigold interactive components are focusable by default — check if a parent has tabindex=\"-1\" or focus is trapped.",
         "details": {
-          "selector": "body:nth-child(2) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > main:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div:nth-child(2) > div:nth-child(2) > div:nth-child(2) > button:nth-child(1)",
+          "selector": "body:nth-child(2) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > main:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div:nth-child(2) > div:nth-child(2) > div:nth-child(2) > button:nth-child(2)",
           "role": "button",
           "scope": "page"
         }
@@ -145,7 +145,7 @@
       "Responsive layout"
     ],
     "metadata": {
-      "renderTimeMs": 1668,
+      "renderTimeMs": 2078,
       "componentsFound": [
         "div",
         "input",
@@ -158,8 +158,8 @@
         "a11y"
       ],
       "coverage": {
-        "staticValuesChecked": 10,
-        "dynamicValuesSkipped": 12,
+        "staticValuesChecked": 13,
+        "dynamicValuesSkipped": 13,
         "spreadPropsBypassed": 0
       },
       "widthUtilization": 0.98125
@@ -172,8 +172,8 @@
     "button",
     "span"
   ],
-  "renderTimeMs": 1668,
-  "sourceCode": "import { useState } from 'react';\nimport {\n  AppLayout,\n  Badge,\n  Button,\n  Card,\n  Checkbox,\n  CheckboxGroup,\n  Columns,\n  Drawer,\n  EmptyState,\n  Headline,\n  Inset,\n  Pagination,\n  SearchField,\n  Select,\n  Slider,\n  Stack,\n  Switch,\n  Tag,\n  Text,\n  Tiles,\n  VisuallyHidden,\n} from '@marigold/components';\n\ninterface Product {\n  id: string;\n  name: string;\n  price: number;\n  status: 'new' | 'sale' | 'sold-out';\n  description: string;\n  category: string;\n  sizes: string[];\n  addedAt: number;\n  popularity: number;\n}\n\nconst PRODUCTS: Product[] = [\n  {\n    id: '1',\n    name: 'Classic Logo Tee',\n    price: 24.99,\n    status: 'new',\n    description: 'A comfortable cotton tee with our classic embroidered logo.',\n    category: 'T-Shirts',\n    sizes: ['S', 'M', 'L', 'XL'],\n    addedAt: 8,\n    popularity: 85,\n  },\n  {\n    id: '2',\n    name: 'Branded Hoodie',\n    price: 49.99,\n    status: 'sale',\n    description: 'Stay cozy in this premium fleece hoodie with embroidered logo.',\n    category: 'Hoodies',\n    sizes: ['M', 'L', 'XL'],\n    addedAt: 7,\n    popularity: 92,\n  },\n  {\n    id: '3',\n    name: 'Logo Cap',\n    price: 19.99,\n    status: 'new',\n    description: 'Adjustable snapback cap with an embossed brand logo.',\n    category: 'Accessories',\n    sizes: ['M'],\n    addedAt: 6,\n    popularity: 78,\n  },\n  {\n    id: '4',\n    name: 'Tour Poster',\n    price: 12.99,\n    status: 'new',\n    description: 'Exclusive A2 glossy poster from our latest design collection.',\n    category: 'Posters',\n    sizes: ['M'],\n    addedAt: 5,\n    popularity: 65,\n  },\n  {\n    id: '5',\n    name: 'Sticker Pack',\n    price: 7.99,\n    status: 'sale',\n    description: 'Set of 10 die-cut vinyl stickers in assorted fun designs.',\n    category: 'Stickers',\n    sizes: ['XS'],\n    addedAt: 4,\n    popularity: 70,\n  },\n  {\n    id: '6',\n    name: 'Vintage Wash Tee',\n    price: 29.99,\n    status: 'new',\n    description: 'Soft vintage-wash cotton tee with a retro graphic print.',\n    category: 'T-Shirts',\n    sizes: ['XS', 'S', 'M', 'L'],\n    addedAt: 3,\n    popularity: 88,\n  },\n  {\n    id: '7',\n    name: 'Zip-Up Hoodie',\n    price: 59.99,\n    status: 'sold-out',\n    description: 'Full-zip heavyweight hoodie perfect for colder days.',\n    category: 'Hoodies',\n    sizes: ['L', 'XL'],\n    addedAt: 2,\n    popularity: 95,\n  },\n  {\n    id: '8',\n    name: 'Enamel Pin Set',\n    price: 14.99,\n    status: 'sold-out',\n    description: 'Set of 3 collectible enamel pins with gold plating finish.',\n    category: 'Accessories',\n    sizes: ['XS'],\n    addedAt: 1,\n    popularity: 80,\n  },\n];\n\nconst PAGE_SIZE = 3;\n\nfunction getBadgeVariant(status: Product['status']) {\n  if (status === 'new') return 'info' as const;\n  if (status === 'sale') return 'warning' as const;\n  return 'error' as const;\n}\n\nfunction getStatusLabel(status: Product['status']) {\n  if (status === 'new') return 'New';\n  if (status === 'sale') return 'Sale';\n  return 'Sold Out';\n}\n\nexport default function MerchandiseStore() {\n  const [searchQuery, setSearchQuery] = useState('');\n  const [sortBy, setSortBy] = useState('newest');\n  const [selectedCategories, setSelectedCategories] = useState<string[]>([]);\n  const [priceMax, setPriceMax] = useState(100);\n  const [selectedSizes, setSelectedSizes] = useState<string[]>([]);\n  const [inStockOnly, setInStockOnly] = useState(false);\n  const [currentPage, setCurrentPage] = useState(1);\n\n  const filteredProducts = PRODUCTS.filter(p => {\n    if (searchQuery && !p.name.toLowerCase().includes(searchQuery.toLowerCase())) return false;\n    if (selectedCategories.length > 0 && !selectedCategories.includes(p.category)) return false;\n    if (p.price > priceMax) return false;\n    if (selectedSizes.length > 0 && !p.sizes.some(s => selectedSizes.includes(s))) return false;\n    if (inStockOnly && p.status === 'sold-out') return false;\n    return true;\n  });\n\n  const sortedProducts = [...filteredProducts].sort((a, b) => {\n    if (sortBy === 'price-low') return a.price - b.price;\n    if (sortBy === 'price-high') return b.price - a.price;\n    if (sortBy === 'popular') return b.popularity - a.popularity;\n    return b.addedAt - a.addedAt;\n  });\n\n  const totalPages = Math.max(1, Math.ceil(filteredProducts.length / PAGE_SIZE));\n  const safePage = Math.min(currentPage, totalPages);\n  const paginatedProducts = sortedProducts.slice(\n    (safePage - 1) * PAGE_SIZE,\n    safePage * PAGE_SIZE\n  );\n\n  const filterChips = [\n    ...selectedCategories.map(c => ({ id: `cat-${c}`, label: `Category: ${c}` })),\n    ...(priceMax < 100 ? [{ id: 'price', label: `Max price: $${priceMax}` }] : []),\n    ...selectedSizes.map(s => ({ id: `size-${s}`, label: `Size: ${s}` })),\n    ...(inStockOnly ? [{ id: 'instock', label: 'In stock only' }] : []),\n  ];\n\n  const handleRemoveChip = (keys: Set<string | number>) => {\n    let newCategories = [...selectedCategories];\n    let newSizes = [...selectedSizes];\n    let newPriceMax = priceMax;\n    let newInStockOnly = inStockOnly;\n\n    keys.forEach(key => {\n      const k = String(key);\n      if (k === 'price') newPriceMax = 100;\n      else if (k === 'instock') newInStockOnly = false;\n      else if (k.startsWith('cat-')) newCategories = newCategories.filter(c => c !== k.slice(4));\n      else if (k.startsWith('size-')) newSizes = newSizes.filter(s => s !== k.slice(5));\n    });\n\n    setSelectedCategories(newCategories);\n    setSelectedSizes(newSizes);\n    setPriceMax(newPriceMax);\n    setInStockOnly(newInStockOnly);\n    setCurrentPage(1);\n  };\n\n  const clearAllFilters = () => {\n    setSelectedCategories([]);\n    setPriceMax(100);\n    setSelectedSizes([]);\n    setInStockOnly(false);\n    setSearchQuery('');\n    setCurrentPage(1);\n  };\n\n  const handleSearchChange = (val: string) => {\n    setSearchQuery(val);\n    setCurrentPage(1);\n  };\n\n  const handleSortChange = (val: string | number | null) => {\n    if (val !== null) setSortBy(String(val));\n    setCurrentPage(1);\n  };\n\n  const handleCategoriesChange = (val: string[]) => {\n    setSelectedCategories(val);\n    setCurrentPage(1);\n  };\n\n  const handleSizesChange = (val: string[]) => {\n    setSelectedSizes(val);\n    setCurrentPage(1);\n  };\n\n  const handlePriceMaxChange = (val: number | number[]) => {\n    setPriceMax(Array.isArray(val) ? val[0] : val);\n    setCurrentPage(1);\n  };\n\n  const handleInStockOnlyChange = (val: boolean) => {\n    setInStockOnly(val);\n    setCurrentPage(1);\n  };\n\n  return (\n    <AppLayout>\n      <AppLayout.Main>\n        <Inset space={6}>\n          <Stack space={6}>\n            {/* Header */}\n            <Stack space={2}>\n              <Headline level={1}>Merchandise Store</Headline>\n              <Text>Browse our collection of branded merchandise.</Text>\n            </Stack>\n\n            {/* Toolbar */}\n            <Columns columns={[1, 'fit', 'fit']} space={3} collapseAt=\"30em\">\n              <SearchField\n                aria-label=\"Search products\"\n                placeholder=\"Search products...\"\n                value={searchQuery}\n                onChange={handleSearchChange}\n              />\n              <Select\n                aria-label=\"Sort by\"\n                value={sortBy}\n                onChange={handleSortChange}\n                width=\"fit\"\n              >\n                <Select.Option id=\"newest\">Newest</Select.Option>\n                <Select.Option id=\"price-low\">Price: Low to High</Select.Option>\n                <Select.Option id=\"price-high\">Price: High to Low</Select.Option>\n                <Select.Option id=\"popular\">Most Popular</Select.Option>\n              </Select>\n              <Drawer.Trigger>\n                <Button variant=\"secondary\">Filters</Button>\n                <Drawer closeButton size=\"medium\">\n                  <Drawer.Title>Filters</Drawer.Title>\n                  <Drawer.Content>\n                    <Stack space={6}>\n                      <CheckboxGroup\n                        label=\"Category\"\n                        value={selectedCategories}\n                        onChange={handleCategoriesChange}\n                      >\n                        <Checkbox value=\"T-Shirts\" label=\"T-Shirts\" />\n                        <Checkbox value=\"Hoodies\" label=\"Hoodies\" />\n                        <Checkbox value=\"Accessories\" label=\"Accessories\" />\n                        <Checkbox value=\"Posters\" label=\"Posters\" />\n                        <Checkbox value=\"Stickers\" label=\"Stickers\" />\n                      </CheckboxGroup>\n\n                      <Slider\n                        label=\"Max price\"\n                        minValue={0}\n                        maxValue={100}\n                        value={priceMax}\n                        onChange={handlePriceMaxChange}\n                        formatOptions={{ style: 'currency', currency: 'USD' }}\n                      />\n\n                      <CheckboxGroup\n                        label=\"Size\"\n                        value={selectedSizes}\n                        onChange={handleSizesChange}\n                      >\n                        <Checkbox value=\"XS\" label=\"XS\" />\n                        <Checkbox value=\"S\" label=\"S\" />\n                        <Checkbox value=\"M\" label=\"M\" />\n                        <Checkbox value=\"L\" label=\"L\" />\n                        <Checkbox value=\"XL\" label=\"XL\" />\n                      </CheckboxGroup>\n\n                      <Switch\n                        label=\"In stock only\"\n                        selected={inStockOnly}\n                        onChange={handleInStockOnlyChange}\n                      />\n                    </Stack>\n                  </Drawer.Content>\n                  <Drawer.Actions>\n                    <Button onPress={clearAllFilters}>Reset</Button>\n                    <Button\n                      slot=\"close\"\n                      variant=\"primary\"\n                      onPress={() => setCurrentPage(1)}\n                    >\n                      Apply Filters\n                    </Button>\n                  </Drawer.Actions>\n                </Drawer>\n              </Drawer.Trigger>\n            </Columns>\n\n            {/* Applied filter chips */}\n            <Tag.Group\n              label=\"Applied filters\"\n              onRemove={handleRemoveChip}\n              removeAll={filterChips.length > 0}\n              emptyState={() => (\n                <Text color=\"foreground-muted\" fontStyle=\"italic\">\n                  No filters applied\n                </Text>\n              )}\n            >\n              {filterChips.map(chip => (\n                <Tag key={chip.id} id={chip.id}>\n                  {chip.label}\n                </Tag>\n              ))}\n            </Tag.Group>\n\n            {/* Section heading for screen readers */}\n            <VisuallyHidden>\n              <Headline level={2}>Products</Headline>\n            </VisuallyHidden>\n\n            {/* Product grid or empty state */}\n            {paginatedProducts.length === 0 ? (\n              <EmptyState\n                title=\"No products found\"\n                description=\"Try adjusting your filters or search query.\"\n                action={\n                  <Button variant=\"primary\" onPress={clearAllFilters}>\n                    Clear all filters\n                  </Button>\n                }\n              />\n            ) : (\n              <Tiles tilesWidth=\"280px\" space={4} stretch equalHeight>\n                {paginatedProducts.map(product => (\n                  <Card key={product.id} p={4}>\n                    <Stack space={3}>\n                      <Badge variant={getBadgeVariant(product.status)}>\n                        {getStatusLabel(product.status)}\n                      </Badge>\n                      <Headline level={3}>{product.name}</Headline>\n                      <Text weight=\"bold\">${product.price.toFixed(2)}</Text>\n                      <Text fontSize=\"sm\">{product.description}</Text>\n                      <Button\n                        variant=\"primary\"\n                        disabled={product.status === 'sold-out'}\n                        onPress={() => {}}\n                      >\n                        Add to Cart\n                      </Button>\n                    </Stack>\n                  </Card>\n                ))}\n              </Tiles>\n            )}\n\n            {/* Pagination */}\n            {filteredProducts.length > 0 && (\n              <Stack space={2} alignX=\"center\">\n                <Text>\n                  Page {safePage} of {totalPages}\n                </Text>\n                <Pagination\n                  totalItems={filteredProducts.length}\n                  pageSize={PAGE_SIZE}\n                  page={safePage}\n                  onChange={setCurrentPage}\n                />\n              </Stack>\n            )}\n          </Stack>\n        </Inset>\n      </AppLayout.Main>\n    </AppLayout>\n  );\n}\n",
+  "renderTimeMs": 2078,
+  "sourceCode": "import { useEffect, useMemo, useState } from 'react';\nimport {\n  AppLayout,\n  Badge,\n  Button,\n  Card,\n  Checkbox,\n  Columns,\n  Drawer,\n  Headline,\n  Inline,\n  Inset,\n  Pagination,\n  SearchField,\n  Select,\n  Slider,\n  Split,\n  Stack,\n  Switch,\n  Tag,\n  Text,\n  Tiles,\n} from '@marigold/components';\n\ninterface Product {\n  id: string;\n  name: string;\n  price: number;\n  category: string;\n  status: 'New' | 'Sale' | 'Sold Out';\n  sizes: string[];\n  description: string;\n  inStock: boolean;\n}\n\nconst PRODUCTS: Product[] = [\n  {\n    id: '1',\n    name: 'Classic Logo Tee',\n    price: 24.99,\n    category: 'T-Shirts',\n    status: 'New',\n    sizes: ['XS', 'S', 'M', 'L', 'XL'],\n    description: 'A timeless tee featuring our iconic brand logo on premium cotton.',\n    inStock: true,\n  },\n  {\n    id: '2',\n    name: 'Comfort Hoodie',\n    price: 54.99,\n    category: 'Hoodies',\n    status: 'Sale',\n    sizes: ['S', 'M', 'L', 'XL'],\n    description: 'Cozy pullover hoodie perfect for cooler days and casual wear.',\n    inStock: true,\n  },\n  {\n    id: '3',\n    name: 'Logo Snapback',\n    price: 19.99,\n    category: 'Accessories',\n    status: 'New',\n    sizes: [],\n    description: 'Adjustable snapback cap with embroidered logo on the front panel.',\n    inStock: true,\n  },\n  {\n    id: '4',\n    name: 'Brand Poster',\n    price: 12.99,\n    category: 'Posters',\n    status: 'Sale',\n    sizes: [],\n    description: 'High-quality 24×36 in offset print perfect for any wall space.',\n    inStock: true,\n  },\n  {\n    id: '5',\n    name: 'Sticker Pack',\n    price: 7.99,\n    category: 'Stickers',\n    status: 'New',\n    sizes: [],\n    description: 'Pack of 10 premium vinyl die-cut stickers for any surface.',\n    inStock: true,\n  },\n  {\n    id: '6',\n    name: 'Vintage Hoodie',\n    price: 64.99,\n    category: 'Hoodies',\n    status: 'Sold Out',\n    sizes: ['M', 'L'],\n    description: 'Limited edition vintage-wash hoodie with a relaxed, lived-in fit.',\n    inStock: false,\n  },\n  {\n    id: '7',\n    name: 'Graphic Tee',\n    price: 29.99,\n    category: 'T-Shirts',\n    status: 'Sale',\n    sizes: ['XS', 'S', 'M', 'L', 'XL'],\n    description: 'Bold graphic print on a premium soft-touch cotton blend.',\n    inStock: true,\n  },\n  {\n    id: '8',\n    name: 'Enamel Pin Set',\n    price: 14.99,\n    category: 'Accessories',\n    status: 'Sold Out',\n    sizes: [],\n    description: 'Set of 3 collectible hard enamel pins with gold-plated finish.',\n    inStock: false,\n  },\n];\n\nconst PAGE_SIZE = 3;\n\nconst badgeVariant = (status: Product['status']) => {\n  if (status === 'New') return 'info' as const;\n  if (status === 'Sale') return 'success' as const;\n  return 'error' as const;\n};\n\nexport default function TestApp() {\n  const [searchQuery, setSearchQuery] = useState('');\n  const [sortBy, setSortBy] = useState('newest');\n  const [selectedCategories, setSelectedCategories] = useState<string[]>([]);\n  const [priceRange, setPriceRange] = useState<number[]>([0, 100]);\n  const [selectedSizes, setSelectedSizes] = useState<string[]>([]);\n  const [inStockOnly, setInStockOnly] = useState(false);\n  const [currentPage, setCurrentPage] = useState(1);\n\n  useEffect(() => {\n    setCurrentPage(1);\n  }, [searchQuery, sortBy, selectedCategories, priceRange, selectedSizes, inStockOnly]);\n\n  const filteredAndSorted = useMemo(() => {\n    const result = PRODUCTS.filter(p => {\n      if (searchQuery && !p.name.toLowerCase().includes(searchQuery.toLowerCase()))\n        return false;\n      if (selectedCategories.length > 0 && !selectedCategories.includes(p.category))\n        return false;\n      if (p.price < priceRange[0] || p.price > priceRange[1]) return false;\n      if (\n        selectedSizes.length > 0 &&\n        p.sizes.length > 0 &&\n        !selectedSizes.some(s => p.sizes.includes(s))\n      )\n        return false;\n      if (inStockOnly && !p.inStock) return false;\n      return true;\n    });\n\n    switch (sortBy) {\n      case 'price-low':\n        return [...result].sort((a, b) => a.price - b.price);\n      case 'price-high':\n        return [...result].sort((a, b) => b.price - a.price);\n      case 'popular':\n        return [...result].sort((a, b) => parseInt(b.id) - parseInt(a.id));\n      default:\n        return result;\n    }\n  }, [searchQuery, selectedCategories, priceRange, selectedSizes, inStockOnly, sortBy]);\n\n  const totalPages = Math.max(1, Math.ceil(filteredAndSorted.length / PAGE_SIZE));\n  const safePage = Math.min(currentPage, totalPages);\n  const pagedProducts = filteredAndSorted.slice(\n    (safePage - 1) * PAGE_SIZE,\n    safePage * PAGE_SIZE\n  );\n\n  const activeFilterChips = useMemo(() => {\n    const chips: Array<{ id: string; label: string }> = [];\n    selectedCategories.forEach(c =>\n      chips.push({ id: `cat:${c}`, label: `Category: ${c}` })\n    );\n    if (priceRange[0] !== 0 || priceRange[1] !== 100) {\n      chips.push({\n        id: 'price',\n        label: `Price: $${priceRange[0]}–$${priceRange[1]}`,\n      });\n    }\n    selectedSizes.forEach(s => chips.push({ id: `size:${s}`, label: `Size: ${s}` }));\n    if (inStockOnly) chips.push({ id: 'stock', label: 'In stock only' });\n    return chips;\n  }, [selectedCategories, priceRange, selectedSizes, inStockOnly]);\n\n  const handleRemoveFilter = (keys: Set<string | number>) => {\n    for (const key of keys) {\n      const k = String(key);\n      if (k.startsWith('cat:')) {\n        const cat = k.slice(4);\n        setSelectedCategories(prev => prev.filter(c => c !== cat));\n      } else if (k === 'price') {\n        setPriceRange([0, 100]);\n      } else if (k.startsWith('size:')) {\n        const size = k.slice(5);\n        setSelectedSizes(prev => prev.filter(s => s !== size));\n      } else if (k === 'stock') {\n        setInStockOnly(false);\n      }\n    }\n  };\n\n  const clearAllFilters = () => {\n    setSearchQuery('');\n    setSelectedCategories([]);\n    setPriceRange([0, 100]);\n    setSelectedSizes([]);\n    setInStockOnly(false);\n  };\n\n  const resetFilters = () => {\n    setSelectedCategories([]);\n    setPriceRange([0, 100]);\n    setSelectedSizes([]);\n    setInStockOnly(false);\n  };\n\n  const emptyFilterState = () => (\n    <Text fontSize=\"sm\" fontStyle=\"italic\">\n      No filters applied.\n    </Text>\n  );\n\n  return (\n    <AppLayout>\n      <AppLayout.Main>\n        <Inset space={6}>\n    <Stack space={8}>\n      {/* Page header */}\n      <Stack space={2}>\n        <Headline level={1}>Merchandise Store</Headline>\n        <Text>Browse our collection of branded merchandise.</Text>\n      </Stack>\n\n      {/* Toolbar */}\n      <Columns columns={[1, 'fit', 'fit']} space={4} collapseAt=\"30em\">\n        <SearchField\n          label=\"Search\"\n          placeholder=\"Search by name...\"\n          value={searchQuery}\n          onChange={setSearchQuery}\n        />\n        <Select\n          label=\"Sort by\"\n          value={sortBy}\n          onChange={val => setSortBy(String(val))}\n          width=\"fit\"\n        >\n          <Select.Option id=\"newest\">Newest</Select.Option>\n          <Select.Option id=\"price-low\">Price: Low to High</Select.Option>\n          <Select.Option id=\"price-high\">Price: High to Low</Select.Option>\n          <Select.Option id=\"popular\">Most Popular</Select.Option>\n        </Select>\n        <Drawer.Trigger>\n          <Button variant=\"secondary\">Filters</Button>\n          <Drawer closeButton>\n            <Drawer.Title>Filters</Drawer.Title>\n            <Drawer.Content>\n              <Stack space={6}>\n                <Checkbox.Group\n                  label=\"Category\"\n                  value={selectedCategories}\n                  onChange={setSelectedCategories}\n                >\n                  <Checkbox value=\"T-Shirts\" label=\"T-Shirts\" />\n                  <Checkbox value=\"Hoodies\" label=\"Hoodies\" />\n                  <Checkbox value=\"Accessories\" label=\"Accessories\" />\n                  <Checkbox value=\"Posters\" label=\"Posters\" />\n                  <Checkbox value=\"Stickers\" label=\"Stickers\" />\n                </Checkbox.Group>\n\n                <Slider\n                  label=\"Price range\"\n                  value={priceRange}\n                  onChange={val => setPriceRange(Array.isArray(val) ? val : [0, val])}\n                  minValue={0}\n                  maxValue={100}\n                  step={5}\n                  thumbLabels={['min', 'max']}\n                  formatOptions={{ style: 'currency', currency: 'USD' }}\n                />\n\n                <Checkbox.Group\n                  label=\"Size\"\n                  value={selectedSizes}\n                  onChange={setSelectedSizes}\n                >\n                  <Checkbox value=\"XS\" label=\"XS\" />\n                  <Checkbox value=\"S\" label=\"S\" />\n                  <Checkbox value=\"M\" label=\"M\" />\n                  <Checkbox value=\"L\" label=\"L\" />\n                  <Checkbox value=\"XL\" label=\"XL\" />\n                </Checkbox.Group>\n\n                <Switch\n                  label=\"In stock only\"\n                  selected={inStockOnly}\n                  onChange={setInStockOnly}\n                />\n              </Stack>\n            </Drawer.Content>\n            <Drawer.Actions>\n              <Button variant=\"ghost\" onPress={resetFilters}>\n                Reset\n              </Button>\n              <Button slot=\"close\" variant=\"primary\">\n                Apply Filters\n              </Button>\n            </Drawer.Actions>\n          </Drawer>\n        </Drawer.Trigger>\n      </Columns>\n\n      {/* Applied filter chips */}\n      <Tag.Group\n        label=\"Applied filters\"\n        onRemove={handleRemoveFilter}\n        removeAll={activeFilterChips.length > 0}\n        emptyState={emptyFilterState}\n      >\n        {activeFilterChips.map(({ id, label }) => (\n          <Tag key={id} id={id}>\n            {label}\n          </Tag>\n        ))}\n      </Tag.Group>\n\n      {/* Product grid or empty state */}\n      {filteredAndSorted.length === 0 ? (\n        <Stack space={4} alignX=\"center\">\n          <Headline level={2}>No products found</Headline>\n          <Text>Try adjusting your filters or search query.</Text>\n          <Button variant=\"secondary\" onPress={clearAllFilters}>\n            Clear all filters\n          </Button>\n        </Stack>\n      ) : (\n        <Stack space={6}>\n          <Tiles tilesWidth=\"280px\" space={4} stretch equalHeight>\n            {pagedProducts.map(product => (\n              <Card key={product.id} p={4}>\n                <Stack space={3}>\n                  <Badge variant={badgeVariant(product.status)}>\n                    {product.status}\n                  </Badge>\n                  <Headline level={2}>{product.name}</Headline>\n                  <Text weight=\"bold\">${product.price.toFixed(2)}</Text>\n                  <Text fontSize=\"sm\">{product.description}</Text>\n                  <Button\n                    variant=\"primary\"\n                    disabled={!product.inStock}\n                    onPress={() => {}}\n                  >\n                    Add to Cart\n                  </Button>\n                </Stack>\n              </Card>\n            ))}\n          </Tiles>\n\n          {/* Pagination */}\n          <Inline alignY=\"center\">\n            <Text fontSize=\"sm\">\n              Page {safePage} of {totalPages}\n            </Text>\n            <Split />\n            <Pagination\n              totalItems={filteredAndSorted.length}\n              pageSize={PAGE_SIZE}\n              page={safePage}\n              onChange={setCurrentPage}\n            />\n          </Inline>\n        </Stack>\n      )}\n    </Stack>\n        </Inset>\n      </AppLayout.Main>\n    </AppLayout>\n  );\n}\n",
   "assertions": {
     "passed": [
       {
@@ -202,7 +202,7 @@
         "description": "Checkbox for filter options",
         "severity": "required",
         "passed": true,
-        "evidence": "matched: <Checkbox> found; <CheckboxGroup> found"
+        "evidence": "matched: <Checkbox> found"
       },
       {
         "id": "a-slider",
@@ -261,13 +261,6 @@
         "evidence": "<Tiles> found"
       },
       {
-        "id": "a-empty-state",
-        "description": "EmptyState when no products match",
-        "severity": "required",
-        "passed": true,
-        "evidence": "<EmptyState> found"
-      },
-      {
         "id": "a-headline",
         "description": "Headline for page title",
         "severity": "required",
@@ -289,15 +282,23 @@
         "evidence": "\"/<Button[^>]*onClick/\" correctly absent"
       }
     ],
-    "failed": [],
-    "passRate": 1,
-    "requiredPassRate": 1,
-    "weightedPassRate": 1,
+    "failed": [
+      {
+        "id": "a-empty-state",
+        "description": "EmptyState when no products match",
+        "severity": "required",
+        "passed": false,
+        "evidence": "<EmptyState> not found"
+      }
+    ],
+    "passRate": 0.9375,
+    "requiredPassRate": 0.9333,
+    "weightedPassRate": 0.9344,
     "total": 16
   },
   "validatePackageVersion": "0.0.1",
   "playwrightVersion": null,
   "resolvedModelId": "claude-sonnet-4-6",
-  "claudeCliVersion": "2.1.185 (Claude Code)",
-  "sessionId": "005c28d7-ead3-4b5a-8faa-fe6ca675f47e"
+  "claudeCliVersion": "2.1.193 (Claude Code)",
+  "sessionId": "facfe8e7-5d89-46b8-8038-8d7f88a616fd"
 }

@@ -3,48 +3,26 @@
   "promptId": "P-02",
   "model": "sonnet",
   "config": "full-stack",
-  "timestamp": "2026-06-23T10:57:52.332Z",
+  "timestamp": "2026-06-28T15:45:49.408Z",
   "quality": {
-    "overall": 56.44,
+    "overall": 96.82,
     "categories": {
       "A": {
         "category": "A",
         "label": "Design System API",
-        "score": 85.86,
+        "score": 100,
         "weight": 0.225,
-        "weightedScore": 19.32,
+        "weightedScore": 22.5,
         "errorCount": 0,
-        "warningCount": 1,
-        "issues": [
-          {
-            "type": "technical",
-            "severity": "warning",
-            "source": "design-system-usage",
-            "component": "img",
-            "message": "Inline style on <img> bypasses the design system (width, height, borderRadius, objectFit).",
-            "suggestion": "Use Marigold layout components (Stack, Columns, Inset, Container) and theme tokens instead of inline styles.",
-            "location": {
-              "file": "TestApp.tsx",
-              "line": 24,
-              "column": 13
-            },
-            "details": {
-              "cssProperties": [
-                "width",
-                "height",
-                "borderRadius",
-                "objectFit"
-              ]
-            }
-          }
-        ]
+        "warningCount": 0,
+        "issues": []
       },
       "B": {
         "category": "B",
         "label": "Token Compliance",
-        "score": 0,
+        "score": 100,
         "weight": 0.1,
-        "weightedScore": 0,
+        "weightedScore": 10,
         "errorCount": 0,
         "warningCount": 0,
         "issues": []
@@ -52,31 +30,36 @@
       "C": {
         "category": "C",
         "label": "DOM / Structure",
-        "score": 65,
+        "score": 100,
         "weight": 0.225,
-        "weightedScore": 14.63,
-        "errorCount": 1,
+        "weightedScore": 22.5,
+        "errorCount": 0,
         "warningCount": 0,
-        "issues": [
-          {
-            "type": "technical",
-            "severity": "error",
-            "source": "runtime",
-            "component": "Renderer",
-            "message": "Headless render failed: page.goto: Timeout 30000ms exceeded.\nCall log:\n  - navigating to \"http://127.0.0.1:37187/\", waiting until \"networkidle\"\n",
-            "suggestion": "Ensure Playwright Chromium is installed (`npx playwright install chromium`) and that the file exports a default React component."
-          }
-        ]
+        "issues": []
       },
       "D": {
         "category": "D",
         "label": "Spatial & A11y",
-        "score": 0,
+        "score": 85.86,
         "weight": 0.225,
-        "weightedScore": 0,
+        "weightedScore": 19.32,
         "errorCount": 0,
-        "warningCount": 0,
-        "issues": []
+        "warningCount": 1,
+        "issues": [
+          {
+            "type": "spatial",
+            "severity": "warning",
+            "source": "responsive-checker",
+            "component": "page",
+            "message": "Content uses only 21% of the desktop width (1280px): it stays in a narrow, mobile-shaped band instead of adapting to the available space.",
+            "suggestion": "Let the layout grow with the viewport using Marigold responsive primitives — <Columns collapseAt=\"...\"> for multi-column areas, AppLayout for the shell, Stack/Inline for flow — instead of a fixed-width container. (Intentionally centred max-width reading columns are fine and may trip this; treat it as a relative signal.)",
+            "details": {
+              "widthUtilization": 0.2125,
+              "contentElements": 14,
+              "scope": "page"
+            }
+          }
+        ]
       },
       "E": {
         "category": "E",
@@ -89,50 +72,33 @@
         "issues": []
       }
     },
-    "renderSuccess": false
+    "renderSuccess": true
   },
   "efficiency": {
-    "durationMs": 161703,
-    "costUsd": 0.6255488,
-    "inputTokens": 33,
-    "outputTokens": 7432,
-    "cacheReadTokens": 1009676,
-    "cacheCreationTokens": 35046,
-    "totalTokens": 7465,
-    "numTurns": 31
+    "durationMs": 595235,
+    "costUsd": 1.2298843999999998,
+    "inputTokens": 51,
+    "outputTokens": 17153,
+    "cacheReadTokens": 2200978,
+    "cacheCreationTokens": 51892,
+    "totalTokens": 17204,
+    "numTurns": 50
   },
   "report": {
     "file": "TestApp.tsx",
-    "errors": [
-      {
-        "type": "technical",
-        "severity": "error",
-        "source": "runtime",
-        "component": "Renderer",
-        "message": "Headless render failed: page.goto: Timeout 30000ms exceeded.\nCall log:\n  - navigating to \"http://127.0.0.1:37187/\", waiting until \"networkidle\"\n",
-        "suggestion": "Ensure Playwright Chromium is installed (`npx playwright install chromium`) and that the file exports a default React component."
-      }
-    ],
+    "errors": [],
     "warnings": [
       {
-        "type": "technical",
+        "type": "spatial",
         "severity": "warning",
-        "source": "design-system-usage",
-        "component": "img",
-        "message": "Inline style on <img> bypasses the design system (width, height, borderRadius, objectFit).",
-        "suggestion": "Use Marigold layout components (Stack, Columns, Inset, Container) and theme tokens instead of inline styles.",
-        "location": {
-          "file": "TestApp.tsx",
-          "line": 24,
-          "column": 13
-        },
+        "source": "responsive-checker",
+        "component": "page",
+        "message": "Content uses only 21% of the desktop width (1280px): it stays in a narrow, mobile-shaped band instead of adapting to the available space.",
+        "suggestion": "Let the layout grow with the viewport using Marigold responsive primitives — <Columns collapseAt=\"...\"> for multi-column areas, AppLayout for the shell, Stack/Inline for flow — instead of a fixed-width container. (Intentionally centred max-width reading columns are fine and may trip this; treat it as a relative signal.)",
         "details": {
-          "cssProperties": [
-            "width",
-            "height",
-            "borderRadius",
-            "objectFit"
-          ]
+          "widthUtilization": 0.2125,
+          "contentElements": 14,
+          "scope": "page"
         }
       }
     ],
@@ -144,31 +110,38 @@
       "Compound component placement",
       "Section headers",
       "Collection item ids",
+      "Design system usage",
       "Layout usage",
       "Table usage",
       "Component conventions",
-      "Theme variant compliance"
+      "Theme variant compliance",
+      "No overlapping components detected",
+      "Accessibility checks"
     ],
     "metadata": {
-      "renderTimeMs": 0,
-      "componentsFound": [],
+      "renderTimeMs": 1654,
+      "componentsFound": [
+        "button"
+      ],
       "checksRun": [
         "technical",
         "spatial",
         "a11y"
       ],
       "coverage": {
-        "staticValuesChecked": 14,
-        "dynamicValuesSkipped": 10,
+        "staticValuesChecked": 13,
+        "dynamicValuesSkipped": 13,
         "spreadPropsBypassed": 0
       },
-      "widthUtilization": null
+      "widthUtilization": 0.2125
     },
-    "markdown": "marigold-validate: TestApp.tsx — 1 error(s), 1 warning(s)\n\n[error/technical] <Renderer>: Headless render failed: page.goto: Timeout 30000ms exceeded.\nCall log:\n  - navigating to \"http://127.0.0.1:37187/\", waiting until \"networkidle\"\n\n  → Ensure Playwright Chromium is installed (`npx playwright install chromium`) and that the file exports a default React component.\n[warning/technical] <img>: Inline style on <img> bypasses the design system (width, height, borderRadius, objectFit). (TestApp.tsx:24:13)\n  → Use Marigold layout components (Stack, Columns, Inset, Container) and theme tokens instead of inline styles.\n  data: {cssProperties=[\"width\",\"height\",\"borderRadius\",\"objectFit\"]}\n\npassed: TypeScript compilation, All Marigold props are valid, Component composition, Overlay accessible names, Compound component placement, Section headers, Collection item ids, Layout usage, Table usage, Component conventions, Theme variant compliance\n\nchecks run: technical, spatial, a11y"
+    "markdown": "marigold-validate: TestApp.tsx — 0 error(s), 1 warning(s)\n\n[warning/spatial] <page>: Content uses only 21% of the desktop width (1280px): it stays in a narrow, mobile-shaped band instead of adapting to the available space.\n  → Let the layout grow with the viewport using Marigold responsive primitives — <Columns collapseAt=\"...\"> for multi-column areas, AppLayout for the shell, Stack/Inline for flow — instead of a fixed-width container. (Intentionally centred max-width reading columns are fine and may trip this; treat it as a relative signal.)\n  data: {widthUtilization=0.2125, contentElements=14, scope=page}\n\npassed: TypeScript compilation, All Marigold props are valid, Component composition, Overlay accessible names, Compound component placement, Section headers, Collection item ids, Design system usage, Layout usage, Table usage, Component conventions, Theme variant compliance, No overlapping components detected, Accessibility checks\n\nchecks run: technical, spatial, a11y"
   },
-  "componentsFound": [],
-  "renderTimeMs": 0,
-  "sourceCode": "import { useState } from 'react';\nimport {\n  Badge,\n  Button,\n  Card,\n  Divider,\n  Headline,\n  Inline,\n  Stack,\n  Text,\n} from '@marigold/components';\n\nconst UserProfileCard = () => {\n  const [messageSent, setMessageSent] = useState(false);\n  const [isEditing, setIsEditing] = useState(false);\n\n  return (\n    <Card>\n      <Stack space={6}>\n        <Inline space={4} alignY=\"center\">\n          <img\n            src=\"https://i.pravatar.cc/80?img=47\"\n            alt=\"Jane Doe avatar\"\n            style={{ width: 80, height: 80, borderRadius: '50%', objectFit: 'cover' }}\n          />\n          <Stack space={2}>\n            <Headline level=\"3\">Jane Doe</Headline>\n            <Badge variant=\"success\">Active</Badge>\n          </Stack>\n        </Inline>\n\n        <Divider />\n\n        <Stack space={2}>\n          <Inline space={2} alignY=\"center\">\n            <Text weight=\"bold\">Role:</Text>\n            <Text>Senior Developer</Text>\n          </Inline>\n          <Inline space={2} alignY=\"center\">\n            <Text weight=\"bold\">Department:</Text>\n            <Text>Engineering</Text>\n          </Inline>\n          <Inline space={2} alignY=\"center\">\n            <Text weight=\"bold\">Email:</Text>\n            <Text>jane.doe@example.com</Text>\n          </Inline>\n          <Inline space={2} alignY=\"center\">\n            <Text weight=\"bold\">Location:</Text>\n            <Text>Freiburg, Germany</Text>\n          </Inline>\n        </Stack>\n\n        <Divider />\n\n        <Text>\n          Jane is a passionate software developer with over 8 years of experience building\n          scalable web applications. She specializes in frontend architecture and enjoys\n          mentoring junior developers on the team.\n        </Text>\n\n        <Divider />\n\n        <Stack space={2}>\n          <Inline space={3}>\n            <Button\n              variant=\"primary\"\n              onPress={() => setMessageSent(prev => !prev)}\n            >\n              {messageSent ? 'Message Sent!' : 'Send Message'}\n            </Button>\n            <Button\n              variant=\"secondary\"\n              onPress={() => setIsEditing(prev => !prev)}\n            >\n              {isEditing ? 'Cancel Edit' : 'Edit Profile'}\n            </Button>\n          </Inline>\n          {isEditing && (\n            <Text variant=\"muted\">Profile editing is now active.</Text>\n          )}\n        </Stack>\n      </Stack>\n    </Card>\n  );\n};\n\nexport default UserProfileCard;\n",
+  "componentsFound": [
+    "button"
+  ],
+  "renderTimeMs": 1654,
+  "sourceCode": "import { useState } from 'react';\nimport {\n  AppLayout,\n  Badge,\n  Button,\n  Card,\n  Center,\n  Divider,\n  Headline,\n  Inline,\n  Stack,\n  Text,\n} from '@marigold/components';\n\nexport default function UserProfileCard() {\n  const [messageSent, setMessageSent] = useState(false);\n  const [status, setStatus] = useState<'Active' | 'Away'>('Active');\n\n  return (\n    <AppLayout>\n      <AppLayout.Main>\n        <Center maxWidth=\"medium\" space={8}>\n          <Card p={6}>\n            <Stack space={6}>\n              {/* Avatar + Name + Status */}\n              <Inline space={4} alignY=\"center\">\n                <img\n                  src=\"https://i.pravatar.cc/80?img=47\"\n                  alt=\"Jane Doe\"\n                  width={80}\n                  height={80}\n                  className=\"rounded-full\"\n                />\n                <Stack space={2}>\n                  <Headline level=\"1\">Jane Doe</Headline>\n                  <Badge variant={status === 'Active' ? 'success' : 'warning'}>\n                    {status}\n                  </Badge>\n                </Stack>\n              </Inline>\n\n              <Divider />\n\n              {/* Details */}\n              <Stack space={3}>\n                <Inline space={2}>\n                  <Text variant=\"muted\">Role:</Text>\n                  <Text weight=\"bold\">Senior Developer</Text>\n                </Inline>\n                <Inline space={2}>\n                  <Text variant=\"muted\">Department:</Text>\n                  <Text weight=\"bold\">Engineering</Text>\n                </Inline>\n                <Inline space={2}>\n                  <Text variant=\"muted\">Email:</Text>\n                  <Text weight=\"bold\">jane.doe@example.com</Text>\n                </Inline>\n                <Inline space={2}>\n                  <Text variant=\"muted\">Location:</Text>\n                  <Text weight=\"bold\">Freiburg, Germany</Text>\n                </Inline>\n              </Stack>\n\n              <Divider />\n\n              {/* Bio */}\n              <Text>\n                Jane is a passionate software engineer with over 8 years of\n                experience building scalable web applications. She loves\n                open-source contributions and mentoring junior developers on\n                the team.\n              </Text>\n\n              <Divider />\n\n              {/* Actions */}\n              <Stack space={3}>\n                <Inline space={3}>\n                  <Button\n                    variant=\"primary\"\n                    onPress={() => setMessageSent(true)}\n                  >\n                    Send Message\n                  </Button>\n                  <Button\n                    variant=\"secondary\"\n                    onPress={() =>\n                      setStatus(s => (s === 'Active' ? 'Away' : 'Active'))\n                    }\n                  >\n                    Edit Profile\n                  </Button>\n                </Inline>\n                {messageSent && (\n                  <Badge variant=\"success\">Message sent successfully!</Badge>\n                )}\n              </Stack>\n            </Stack>\n          </Card>\n        </Center>\n      </AppLayout.Main>\n    </AppLayout>\n  );\n}\n",
   "assertions": {
     "passed": [
       {
@@ -251,6 +224,6 @@
   "validatePackageVersion": "0.0.1",
   "playwrightVersion": null,
   "resolvedModelId": "claude-sonnet-4-6",
-  "claudeCliVersion": "2.1.185 (Claude Code)",
-  "sessionId": "616fd205-61a3-4d3a-85d7-5578162c3560"
+  "claudeCliVersion": "2.1.193 (Claude Code)",
+  "sessionId": "4300049a-9bd3-4ffc-b44b-1f2434ed2db0"
 }

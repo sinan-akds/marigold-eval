@@ -1,0 +1,317 @@
+{
+  "runId": "opus-mcp-stack-P-04-r2",
+  "promptId": "P-04",
+  "model": "opus",
+  "config": "mcp-stack",
+  "timestamp": "2026-06-27T08:44:36.718Z",
+  "quality": {
+    "overall": 94.49,
+    "categories": {
+      "A": {
+        "category": "A",
+        "label": "Design System API",
+        "score": 100,
+        "weight": 0.225,
+        "weightedScore": 22.5,
+        "errorCount": 0,
+        "warningCount": 0,
+        "issues": []
+      },
+      "B": {
+        "category": "B",
+        "label": "Token Compliance",
+        "score": 100,
+        "weight": 0.1,
+        "weightedScore": 10,
+        "errorCount": 0,
+        "warningCount": 0,
+        "issues": []
+      },
+      "C": {
+        "category": "C",
+        "label": "DOM / Structure",
+        "score": 100,
+        "weight": 0.225,
+        "weightedScore": 22.5,
+        "errorCount": 0,
+        "warningCount": 0,
+        "issues": []
+      },
+      "D": {
+        "category": "D",
+        "label": "Spatial & A11y",
+        "score": 75.51,
+        "weight": 0.225,
+        "weightedScore": 16.99,
+        "errorCount": 0,
+        "warningCount": 3,
+        "issues": [
+          {
+            "type": "a11y",
+            "severity": "warning",
+            "source": "aom-extractor",
+            "component": "h4:nth-child(1)",
+            "message": "Heading levels should only increase by one (heading-order)",
+            "suggestion": "Use `<Headline level={N}>` with sequential levels (1, 2, 3…). Do not skip heading levels. Import Headline from `@marigold/components`.",
+            "details": {
+              "ruleId": "heading-order",
+              "impact": "moderate",
+              "target": [
+                "h4:nth-child(1)"
+              ],
+              "html": "<h4 class=\"text-lg font-semibold max-w-(--maxHeadlineWidth) text-left\">Total</h4>",
+              "scope": "page"
+            }
+          },
+          {
+            "type": "a11y",
+            "severity": "warning",
+            "source": "aom-extractor",
+            "component": "html",
+            "message": "Document should have one main landmark (landmark-one-main)",
+            "suggestion": "Wrap your page content in `<AppLayout>` with `<AppLayout.Main>` to provide a `<main>` landmark. Import AppLayout from `@marigold/components`.",
+            "details": {
+              "ruleId": "landmark-one-main",
+              "impact": "moderate",
+              "target": [
+                "html"
+              ],
+              "html": "<html lang=\"en\" data-theme=\"rui\">",
+              "scope": "page"
+            }
+          },
+          {
+            "type": "a11y",
+            "severity": "warning",
+            "source": "aom-extractor",
+            "component": "page",
+            "message": "All page content should be contained by landmarks — 20 elements affected (region)",
+            "suggestion": "All page content must be inside a landmark region. Use `<AppLayout>` with `<AppLayout.Main>` for the main area, `<TopNavigation>` for the header (`<header>`), and `<Sidebar>` for side navigation (`<aside>`). Import from `@marigold/components`.",
+            "details": {
+              "ruleId": "region",
+              "impact": "moderate",
+              "affectedCount": 20,
+              "scope": "page"
+            }
+          }
+        ]
+      },
+      "E": {
+        "category": "E",
+        "label": "Functional Completeness",
+        "score": 100,
+        "weight": 0.225,
+        "weightedScore": 22.5,
+        "errorCount": 0,
+        "warningCount": 0,
+        "issues": []
+      }
+    },
+    "renderSuccess": true
+  },
+  "efficiency": {
+    "durationMs": 803538,
+    "costUsd": 3.7124414999999975,
+    "inputTokens": 4231,
+    "outputTokens": 27742,
+    "cacheReadTokens": 4209585,
+    "cacheCreationTokens": 88447,
+    "totalTokens": 31973,
+    "numTurns": 69
+  },
+  "report": {
+    "file": "TestApp.tsx",
+    "errors": [],
+    "warnings": [
+      {
+        "type": "a11y",
+        "severity": "warning",
+        "source": "aom-extractor",
+        "component": "h4:nth-child(1)",
+        "message": "Heading levels should only increase by one (heading-order)",
+        "suggestion": "Use `<Headline level={N}>` with sequential levels (1, 2, 3…). Do not skip heading levels. Import Headline from `@marigold/components`.",
+        "details": {
+          "ruleId": "heading-order",
+          "impact": "moderate",
+          "target": [
+            "h4:nth-child(1)"
+          ],
+          "html": "<h4 class=\"text-lg font-semibold max-w-(--maxHeadlineWidth) text-left\">Total</h4>",
+          "scope": "page"
+        }
+      },
+      {
+        "type": "a11y",
+        "severity": "warning",
+        "source": "aom-extractor",
+        "component": "html",
+        "message": "Document should have one main landmark (landmark-one-main)",
+        "suggestion": "Wrap your page content in `<AppLayout>` with `<AppLayout.Main>` to provide a `<main>` landmark. Import AppLayout from `@marigold/components`.",
+        "details": {
+          "ruleId": "landmark-one-main",
+          "impact": "moderate",
+          "target": [
+            "html"
+          ],
+          "html": "<html lang=\"en\" data-theme=\"rui\">",
+          "scope": "page"
+        }
+      },
+      {
+        "type": "a11y",
+        "severity": "warning",
+        "source": "aom-extractor",
+        "component": "page",
+        "message": "All page content should be contained by landmarks — 20 elements affected (region)",
+        "suggestion": "All page content must be inside a landmark region. Use `<AppLayout>` with `<AppLayout.Main>` for the main area, `<TopNavigation>` for the header (`<header>`), and `<Sidebar>` for side navigation (`<aside>`). Import from `@marigold/components`.",
+        "details": {
+          "ruleId": "region",
+          "impact": "moderate",
+          "affectedCount": 20,
+          "scope": "page"
+        }
+      }
+    ],
+    "passed": [
+      "TypeScript compilation",
+      "All Marigold props are valid",
+      "Component composition",
+      "Overlay accessible names",
+      "Compound component placement",
+      "Section headers",
+      "Collection item ids",
+      "Design system usage",
+      "Layout usage",
+      "Table usage",
+      "Component conventions",
+      "Theme variant compliance",
+      "No overlapping components detected",
+      "Responsive layout"
+    ],
+    "metadata": {
+      "renderTimeMs": 1625,
+      "componentsFound": [
+        "div",
+        "button",
+        "input"
+      ],
+      "checksRun": [
+        "technical",
+        "spatial",
+        "a11y"
+      ],
+      "coverage": {
+        "staticValuesChecked": 28,
+        "dynamicValuesSkipped": 14,
+        "spreadPropsBypassed": 0
+      },
+      "widthUtilization": 0.95
+    },
+    "markdown": "marigold-validate: TestApp.tsx — 0 error(s), 3 warning(s)\n\n[warning/a11y] <h4:nth-child(1)>: Heading levels should only increase by one (heading-order)\n  → Use `<Headline level={N}>` with sequential levels (1, 2, 3…). Do not skip heading levels. Import Headline from `@marigold/components`.\n  data: {ruleId=heading-order, impact=moderate, target=[\"h4:nth-child(1)\"], html=<h4 class=\"text-lg font-semibold max-w-(--maxHeadlineWidth) text-left\">Total<..., scope=page}\n[warning/a11y] <html>: Document should have one main landmark (landmark-one-main)\n  → Wrap your page content in `<AppLayout>` with `<AppLayout.Main>` to provide a `<main>` landmark. Import AppLayout from `@marigold/components`.\n  data: {ruleId=landmark-one-main, impact=moderate, target=[\"html\"], html=<html lang=\"en\" data-theme=\"rui\">, scope=page}\n[warning/a11y] <page>: All page content should be contained by landmarks — 20 elements affected (region)\n  → All page content must be inside a landmark region. Use `<AppLayout>` with `<AppLayout.Main>` for the main area, `<TopNavigation>` for the header (`<header>`), and `<Sidebar>` for side navigation (`<aside>`). Import from `@marigold/components`.\n  data: {ruleId=region, impact=moderate, affectedCount=20, scope=page}\n\npassed: TypeScript compilation, All Marigold props are valid, Component composition, Overlay accessible names, Compound component placement, Section headers, Collection item ids, Design system usage, Layout usage, Table usage, Component conventions, Theme variant compliance, No overlapping components detected, Responsive layout\n\nchecks run: technical, spatial, a11y"
+  },
+  "componentsFound": [
+    "div",
+    "button",
+    "input"
+  ],
+  "renderTimeMs": 1625,
+  "sourceCode": "import { useState } from 'react';\nimport {\n  Badge,\n  Button,\n  Card,\n  Columns,\n  Divider,\n  Form,\n  Headline,\n  Inline,\n  Inset,\n  NumberField,\n  SectionMessage,\n  Stack,\n  Text,\n  TextField,\n} from '@marigold/components';\n\ntype TicketId = 'early' | 'regular' | 'vip';\n\ninterface TicketCategory {\n  id: TicketId;\n  name: string;\n  price: number;\n  description: string;\n  maxValue?: number;\n  note?: string;\n  soldOut?: boolean;\n}\n\nconst TICKETS: TicketCategory[] = [\n  {\n    id: 'early',\n    name: 'Early Bird',\n    price: 49,\n    description: 'Discounted admission for the first wave of fans.',\n    maxValue: 12,\n    note: 'Only 12 left',\n  },\n  {\n    id: 'regular',\n    name: 'Regular',\n    price: 79,\n    description: 'Standard three-day festival admission.',\n  },\n  {\n    id: 'vip',\n    name: 'VIP',\n    price: 149,\n    description: 'Premium access with backstage perks and lounge entry.',\n    soldOut: true,\n  },\n];\n\nconst formatPrice = (amount: number) => `$${amount}`;\n\ntype Feedback = { type: 'success' | 'warning'; title: string; message: string };\n\nconst TestApp = () => {\n  const [quantities, setQuantities] = useState<Record<TicketId, number>>({\n    early: 0,\n    regular: 0,\n    vip: 0,\n  });\n  const [feedback, setFeedback] = useState<Feedback | null>(null);\n\n  const updateQuantity = (id: TicketId, value: number) => {\n    setQuantities(prev => ({\n      ...prev,\n      [id]: Number.isNaN(value) ? 0 : value,\n    }));\n    setFeedback(null);\n  };\n\n  const selected = TICKETS.filter(ticket => quantities[ticket.id] > 0);\n  const totalQuantity = selected.reduce(\n    (sum, ticket) => sum + quantities[ticket.id],\n    0\n  );\n  const grandTotal = selected.reduce(\n    (sum, ticket) => sum + ticket.price * quantities[ticket.id],\n    0\n  );\n\n  const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {\n    event.preventDefault();\n\n    if (totalQuantity < 1) {\n      setFeedback({\n        type: 'warning',\n        title: 'No tickets selected',\n        message:\n          'Please choose at least one ticket before completing your purchase.',\n      });\n      return;\n    }\n\n    const data = Object.fromEntries(\n      new FormData(event.currentTarget)\n    ) as Record<string, string>;\n\n    setFeedback({\n      type: 'success',\n      title: 'Order confirmed!',\n      message: `Thank you, ${data.fullName}. Your order of ${totalQuantity} ticket${\n        totalQuantity > 1 ? 's' : ''\n      } for ${formatPrice(\n        grandTotal\n      )} is confirmed. A confirmation has been sent to ${data.email}.`,\n    });\n  };\n\n  return (\n    <Inset space={8}>\n      <Stack space={10}>\n        {/* Event information */}\n        <Stack space={2}>\n          <Headline level=\"1\">Summer Music Festival 2026</Headline>\n          <Inline space={4} alignY=\"center\">\n            <Badge variant=\"info\">July 15–17, 2026</Badge>\n            <Text weight=\"medium\">Stadtpark Freiburg</Text>\n          </Inline>\n          <Text variant=\"muted\">\n            Three days of live music featuring local and international artists.\n          </Text>\n        </Stack>\n\n        {/* Ticket categories */}\n        <Stack space={4}>\n          <Headline level=\"2\">Choose your tickets</Headline>\n          <Columns columns={[1, 1, 1]} space={4} collapseAt=\"48em\">\n            {TICKETS.map(ticket => (\n              <Card key={ticket.id}>\n                <Inset space={5}>\n                  <Stack space={4}>\n                    <Inline space={3} alignX=\"between\" alignY=\"center\">\n                      <Headline level=\"3\">{ticket.name}</Headline>\n                      {ticket.soldOut ? (\n                        <Badge variant=\"error\">Sold Out</Badge>\n                      ) : ticket.note ? (\n                        <Badge variant=\"warning\">{ticket.note}</Badge>\n                      ) : (\n                        <Badge variant=\"success\">Available</Badge>\n                      )}\n                    </Inline>\n                    <Headline level=\"4\">{formatPrice(ticket.price)}</Headline>\n                    <Text variant=\"muted\">{ticket.description}</Text>\n                    <NumberField\n                      label=\"Quantity\"\n                      minValue={0}\n                      maxValue={ticket.maxValue}\n                      value={quantities[ticket.id]}\n                      onChange={value => updateQuantity(ticket.id, value)}\n                      disabled={ticket.soldOut}\n                    />\n                  </Stack>\n                </Inset>\n              </Card>\n            ))}\n          </Columns>\n        </Stack>\n\n        {/* Buyer information + order summary */}\n        <Form onSubmit={handleSubmit}>\n          <Columns columns={[1, 1]} space={8} collapseAt=\"48em\">\n            <Stack space={4}>\n              <Headline level=\"2\">Buyer information</Headline>\n              <TextField\n                label=\"Full Name\"\n                name=\"fullName\"\n                required\n                description=\"Required.\"\n              />\n              <TextField\n                label=\"Email\"\n                name=\"email\"\n                type=\"email\"\n                required\n                description=\"We'll send your tickets here.\"\n              />\n              <TextField\n                label=\"Phone Number\"\n                name=\"phone\"\n                type=\"tel\"\n                description=\"Optional.\"\n              />\n            </Stack>\n\n            <Stack space={4}>\n              <Headline level=\"2\">Order summary</Headline>\n              <Card>\n                <Inset space={5}>\n                  <Stack space={3}>\n                    {selected.length > 0 ? (\n                      selected.map(ticket => (\n                        <Inline\n                          key={ticket.id}\n                          space={3}\n                          alignX=\"between\"\n                          alignY=\"center\"\n                        >\n                          <Text>\n                            {ticket.name} × {quantities[ticket.id]}\n                          </Text>\n                          <Text weight=\"medium\">\n                            {formatPrice(ticket.price * quantities[ticket.id])}\n                          </Text>\n                        </Inline>\n                      ))\n                    ) : (\n                      <Text variant=\"muted\">No tickets selected yet.</Text>\n                    )}\n                    <Divider />\n                    <Inline space={3} alignX=\"between\" alignY=\"center\">\n                      <Headline level=\"4\">Total</Headline>\n                      <Headline level=\"4\">{formatPrice(grandTotal)}</Headline>\n                    </Inline>\n                  </Stack>\n                </Inset>\n              </Card>\n              <Button variant=\"primary\" type=\"submit\" fullWidth>\n                Purchase Tickets\n              </Button>\n              {feedback ? (\n                <SectionMessage variant={feedback.type}>\n                  <SectionMessage.Title>{feedback.title}</SectionMessage.Title>\n                  <SectionMessage.Content>\n                    {feedback.message}\n                  </SectionMessage.Content>\n                </SectionMessage>\n              ) : null}\n            </Stack>\n          </Columns>\n        </Form>\n      </Stack>\n    </Inset>\n  );\n};\n\nexport default TestApp;\n",
+  "assertions": {
+    "passed": [
+      {
+        "id": "a-import-marigold",
+        "description": "Imports from @marigold/components",
+        "severity": "required",
+        "passed": true,
+        "evidence": "import from \"@marigold/components\" found"
+      },
+      {
+        "id": "a-has-button",
+        "description": "Button component present",
+        "severity": "required",
+        "passed": true,
+        "evidence": "<Button> found"
+      },
+      {
+        "id": "a-has-form-input",
+        "description": "Uses at least one form input component",
+        "severity": "required",
+        "passed": true,
+        "evidence": "matched: <TextField> found; <NumberField> found"
+      },
+      {
+        "id": "a-has-layout-primitive",
+        "description": "Uses at least one layout component",
+        "severity": "required",
+        "passed": true,
+        "evidence": "matched: <Stack> found; <Card> found; <Columns> found; <Inline> found"
+      },
+      {
+        "id": "a-price-indicator",
+        "description": "Shows pricing information",
+        "severity": "recommended",
+        "passed": true,
+        "evidence": "pattern \"/\\$|€|price|cost|total|amount/i\" found"
+      },
+      {
+        "id": "a-has-quantity-mechanism",
+        "description": "Has a mechanism for selecting ticket quantity",
+        "severity": "required",
+        "passed": true,
+        "evidence": "matched: <NumberField> found; pattern \"/quantity|qty|amount|count|tickets?\\s*:/i\" found"
+      },
+      {
+        "id": "a-has-feedback-mechanism",
+        "description": "Has user feedback mechanism",
+        "severity": "required",
+        "passed": true,
+        "evidence": "matched: <SectionMessage> found; pattern \"/error|success|confirm/i\" found"
+      },
+      {
+        "id": "a-no-onclick-on-marigold",
+        "description": "No onClick on Marigold Button components",
+        "severity": "recommended",
+        "passed": true,
+        "evidence": "\"/<Button[^>]*onClick/\" correctly absent"
+      },
+      {
+        "id": "a-has-headline",
+        "description": "Headline for event name",
+        "severity": "required",
+        "passed": true,
+        "evidence": "<Headline> found"
+      },
+      {
+        "id": "a-has-form",
+        "description": "Form component wrapping buyer info",
+        "severity": "required",
+        "passed": true,
+        "evidence": "<Form> found"
+      },
+      {
+        "id": "a-sold-out-state",
+        "description": "Sold-out state indicated",
+        "severity": "required",
+        "passed": true,
+        "evidence": "matched: pattern \"/sold.?out|unavailable|disabled/i\" found; <Badge> found"
+      },
+      {
+        "id": "a-card",
+        "description": "Ticket category cards",
+        "severity": "required",
+        "passed": true,
+        "evidence": "<Card> found"
+      }
+    ],
+    "failed": [],
+    "passRate": 1,
+    "requiredPassRate": 1,
+    "weightedPassRate": 1,
+    "total": 12
+  },
+  "validatePackageVersion": "0.0.1",
+  "playwrightVersion": null,
+  "resolvedModelId": "claude-opus-4-8",
+  "claudeCliVersion": "2.1.193 (Claude Code)",
+  "sessionId": "21eb1e82-7f7a-43ae-9c6c-23839c6b0a29"
+}

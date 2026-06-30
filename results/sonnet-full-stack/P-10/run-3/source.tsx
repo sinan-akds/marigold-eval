@@ -1,45 +1,45 @@
-import React, { useState, useMemo } from 'react';
+import { useState } from 'react';
+import { CalendarDate, type DateValue } from '@internationalized/date';
 import {
-  ActionBar,
-  ActionMenu,
   AppLayout,
-  Badge,
-  Breadcrumbs,
-  Button,
-  Calendar,
-  Card,
-  ConfirmationProvider,
-  ContextualHelp,
-  DatePicker,
-  Dialog,
-  FileField,
-  Headline,
-  Inline,
-  Inset,
-  Menu,
-  RouterProvider,
-  SearchField,
-  SectionMessage,
-  Select,
   Sidebar,
-  Stack,
-  Switch,
-  Table,
-  Tabs,
-  Text,
-  TextArea,
-  TextField,
-  Tiles,
-  ToastProvider,
-  ToggleButton,
-  Tooltip,
   TopNavigation,
+  RouterProvider,
+  Breadcrumbs,
+  Menu,
+  ActionMenu,
+  Tooltip,
+  ContextualHelp,
+  Dialog,
+  ConfirmationProvider,
   useConfirmation,
+  Table,
+  Badge,
+  Card,
+  Stack,
+  Inline,
+  Columns,
+  Tiles,
+  Headline,
+  Text,
+  TextField,
+  TextArea,
+  Select,
+  SearchField,
+  DateField,
+  Switch,
+  Tabs,
+  Button,
+  SectionMessage,
+  NumericFormat,
+  Inset,
+  ToastProvider,
   useToast,
+  Calendar,
+  Divider,
 } from '@marigold/components';
 
-// --- Types ---
-
+// ---- Types ----
 interface Member {
   id: string;
   name: string;
@@ -47,9 +47,8 @@ interface Member {
   email: string;
   status: 'Active' | 'On Leave';
   joined: string;
-  bio?: string;
+  bio: string;
 }
-
 interface Project {
   id: string;
   name: string;
@@ -59,474 +58,281 @@ interface Project {
   progress: number;
   status: 'Active' | 'On Hold' | 'Completed';
 }
-
 interface FileItem {
   id: string;
   name: string;
-  type: 'Documents' | 'Images' | 'Spreadsheets';
+  type: string;
   size: number;
   uploadedBy: string;
   date: string;
 }
+interface ActivityRow {
+  id: string;
+  member: string;
+  action: 'Commit' | 'Review' | 'Deploy';
+  project: string;
+  date: string;
+}
 
-// --- Initial Data ---
-
+// ---- Initial Data ----
 const INITIAL_MEMBERS: Member[] = [
-  { id: '1', name: 'Alice Johnson', role: 'Developer', email: 'alice@teamhub.io', status: 'Active', joined: '2023-01-15', bio: 'Full-stack developer with 5 years of experience building scalable web apps.' },
-  { id: '2', name: 'Bob Smith', role: 'Designer', email: 'bob@teamhub.io', status: 'Active', joined: '2023-03-20', bio: 'UI/UX designer passionate about intuitive user experiences.' },
-  { id: '3', name: 'Carol White', role: 'Manager', email: 'carol@teamhub.io', status: 'Active', joined: '2022-11-08', bio: 'Project manager with 10 years of experience in agile teams.' },
-  { id: '4', name: 'David Brown', role: 'Developer', email: 'david@teamhub.io', status: 'On Leave', joined: '2023-06-01', bio: 'Backend developer specializing in APIs and microservices.' },
-  { id: '5', name: 'Eve Davis', role: 'QA', email: 'eve@teamhub.io', status: 'Active', joined: '2024-01-10', bio: 'QA engineer focused on test automation and quality processes.' },
-  { id: '6', name: 'Frank Miller', role: 'Designer', email: 'frank@teamhub.io', status: 'Active', joined: '2023-09-15', bio: 'Graphic designer with expertise in brand identity and visual systems.' },
+  { id: '1', name: 'Alice Johnson', role: 'Developer', email: 'alice@teamhub.io', status: 'Active', joined: '2023-03-15', bio: 'Full-stack developer with 5 years of experience.' },
+  { id: '2', name: 'Bob Smith', role: 'Designer', email: 'bob@teamhub.io', status: 'Active', joined: '2023-05-20', bio: 'UI/UX designer passionate about accessibility.' },
+  { id: '3', name: 'Carol Williams', role: 'Manager', email: 'carol@teamhub.io', status: 'Active', joined: '2022-11-10', bio: 'Engineering manager with 10+ years of experience.' },
+  { id: '4', name: 'David Lee', role: 'Developer', email: 'david@teamhub.io', status: 'On Leave', joined: '2024-01-08', bio: 'Backend developer specializing in distributed systems.' },
+  { id: '5', name: 'Eva Martinez', role: 'QA', email: 'eva@teamhub.io', status: 'Active', joined: '2023-09-01', bio: 'QA engineer focused on automated testing.' },
+  { id: '6', name: 'Frank Chen', role: 'Developer', email: 'frank@teamhub.io', status: 'Active', joined: '2024-02-14', bio: 'Frontend developer with React expertise.' },
 ];
 
 const INITIAL_PROJECTS: Project[] = [
-  { id: '1', name: 'Website Redesign', lead: 'Alice Johnson', members: 4, deadline: '2026-08-15', progress: 75, status: 'Active' },
-  { id: '2', name: 'Mobile App v2', lead: 'Carol White', members: 6, deadline: '2026-09-30', progress: 40, status: 'Active' },
-  { id: '3', name: 'API Migration', lead: 'David Brown', members: 3, deadline: '2026-07-20', progress: 55, status: 'On Hold' },
-  { id: '4', name: 'Design System', lead: 'Bob Smith', members: 5, deadline: '2026-10-01', progress: 60, status: 'Active' },
-  { id: '5', name: 'Analytics Dashboard', lead: 'Frank Miller', members: 2, deadline: '2026-06-30', progress: 100, status: 'Completed' },
+  { id: '1', name: 'Alpha Redesign', lead: 'Carol Williams', members: 4, deadline: '2026-07-30', progress: 75, status: 'Active' },
+  { id: '2', name: 'Beta API', lead: 'Alice Johnson', members: 3, deadline: '2026-08-15', progress: 45, status: 'Active' },
+  { id: '3', name: 'Gamma Dashboard', lead: 'Frank Chen', members: 5, deadline: '2026-06-30', progress: 90, status: 'On Hold' },
+  { id: '4', name: 'Delta Mobile', lead: 'Bob Smith', members: 2, deadline: '2026-09-01', progress: 20, status: 'Active' },
+  { id: '5', name: 'Epsilon Legacy', lead: 'David Lee', members: 3, deadline: '2026-05-01', progress: 100, status: 'Completed' },
 ];
 
 const INITIAL_FILES: FileItem[] = [
-  { id: '1', name: 'Q2 Report.pdf', type: 'Documents', size: 2.4 * 1024 * 1024, uploadedBy: 'Carol White', date: '2026-06-15' },
-  { id: '2', name: 'Brand Guidelines.pdf', type: 'Documents', size: 5.1 * 1024 * 1024, uploadedBy: 'Bob Smith', date: '2026-06-10' },
-  { id: '3', name: 'Team Photo.jpg', type: 'Images', size: 3.8 * 1024 * 1024, uploadedBy: 'Frank Miller', date: '2026-06-05' },
-  { id: '4', name: 'Budget 2026.xlsx', type: 'Spreadsheets', size: 1.2 * 1024 * 1024, uploadedBy: 'Carol White', date: '2026-05-28' },
-  { id: '5', name: 'Sprint Planning.xlsx', type: 'Spreadsheets', size: 0.8 * 1024 * 1024, uploadedBy: 'Alice Johnson', date: '2026-05-20' },
+  { id: '1', name: 'Design Specs.pdf', type: 'Documents', size: 2400000, uploadedBy: 'Bob Smith', date: '2026-05-15' },
+  { id: '2', name: 'Team Photo.png', type: 'Images', size: 5100000, uploadedBy: 'Carol Williams', date: '2026-05-20' },
+  { id: '3', name: 'Q2 Report.xlsx', type: 'Spreadsheets', size: 870000, uploadedBy: 'Alice Johnson', date: '2026-06-01' },
+  { id: '4', name: 'API Documentation.pdf', type: 'Documents', size: 1300000, uploadedBy: 'Frank Chen', date: '2026-06-10' },
+  { id: '5', name: 'Budget 2026.xlsx', type: 'Spreadsheets', size: 430000, uploadedBy: 'Carol Williams', date: '2026-06-15' },
 ];
 
-const RECENT_ACTIVITY = [
-  { id: '1', member: 'Alice Johnson', action: 'Commit', project: 'Website Redesign', date: '2026-05-28' },
-  { id: '2', member: 'Bob Smith', action: 'Review', project: 'Design System', date: '2026-06-01' },
-  { id: '3', member: 'Carol White', action: 'Deploy', project: 'Mobile App v2', date: '2026-06-10' },
-  { id: '4', member: 'David Brown', action: 'Commit', project: 'API Migration', date: '2026-06-15' },
-  { id: '5', member: 'Eve Davis', action: 'Review', project: 'Website Redesign', date: '2026-06-20' },
+const ACTIVITY: ActivityRow[] = [
+  { id: '1', member: 'Alice Johnson', action: 'Commit', project: 'Alpha Redesign', date: '2026-05-28' },
+  { id: '2', member: 'Bob Smith', action: 'Review', project: 'Beta API', date: '2026-06-01' },
+  { id: '3', member: 'Carol Williams', action: 'Deploy', project: 'Alpha Redesign', date: '2026-06-05' },
+  { id: '4', member: 'David Lee', action: 'Commit', project: 'Gamma Dashboard', date: '2026-06-10' },
+  { id: '5', member: 'Eva Martinez', action: 'Review', project: 'Beta API', date: '2026-06-15' },
 ];
 
-const CALENDAR_EVENTS = [
-  { id: '1', date: '2026-06-28', name: 'Sprint Review', type: 'Meeting' as const },
-  { id: '2', date: '2026-06-30', name: 'Q2 Deliverable', type: 'Deadline' as const },
-  { id: '3', date: '2026-07-04', name: 'Team BBQ', type: 'Social' as const },
-  { id: '4', date: '2026-07-10', name: 'Product Demo', type: 'Meeting' as const },
+const EVENTS = [
+  { id: '1', date: '2026-07-02', name: 'Sprint Planning', type: 'Meeting' as const },
+  { id: '2', date: '2026-07-10', name: 'Project Beta Deadline', type: 'Deadline' as const },
+  { id: '3', date: '2026-07-15', name: 'Team Lunch', type: 'Social' as const },
+  { id: '4', date: '2026-07-22', name: 'Q3 Review', type: 'Meeting' as const },
 ];
 
-// --- Helpers ---
+// ---- Helpers ----
+function formatDate(dateStr: string): string {
+  const d = new Date(dateStr + 'T00:00:00');
+  return d.toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' });
+}
 
-const formatDate = (dateStr: string) =>
-  new Date(dateStr).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' });
-
-const formatFileSize = (bytes: number) => {
-  if (bytes >= 1024 * 1024) return `${(bytes / (1024 * 1024)).toFixed(1)} MB`;
-  if (bytes >= 1024) return `${(bytes / 1024).toFixed(1)} KB`;
+function formatFileSize(bytes: number): string {
+  if (bytes >= 1_000_000) return `${(bytes / 1_000_000).toLocaleString('en-US', { maximumFractionDigits: 1 })} MB`;
+  if (bytes >= 1_000) return `${(bytes / 1_000).toLocaleString('en-US', { maximumFractionDigits: 0 })} KB`;
   return `${bytes} B`;
-};
-
-const actionVariant = (action: string): 'info' | 'warning' | 'success' => {
-  if (action === 'Commit') return 'info';
-  if (action === 'Review') return 'warning';
-  return 'success';
-};
-
-const eventVariant = (type: string): 'info' | 'error' | 'success' => {
-  if (type === 'Meeting') return 'info';
-  if (type === 'Deadline') return 'error';
-  return 'success';
-};
-
-const projectStatusVariant = (status: string): 'success' | 'warning' | 'info' => {
-  if (status === 'Active') return 'success';
-  if (status === 'On Hold') return 'warning';
-  return 'info';
-};
-
-let nextId = 100;
-const genId = () => String(++nextId);
-
-// --- Member Form Dialog ---
-
-interface MemberFormProps {
-  open: boolean;
-  onOpenChange: (open: boolean) => void;
-  initial?: Member | null;
-  onSubmit: (data: Omit<Member, 'id'>) => void;
 }
 
-const MemberFormDialog = ({ open, onOpenChange, initial, onSubmit }: MemberFormProps) => {
-  const [name, setName] = useState(initial?.name ?? '');
-  const [email, setEmail] = useState(initial?.email ?? '');
-  const [role, setRole] = useState(initial?.role ?? 'Developer');
-  const [startDate, setStartDate] = useState(initial?.joined ?? '');
-  const [bio, setBio] = useState(initial?.bio ?? '');
-
-  React.useEffect(() => {
-    setName(initial?.name ?? '');
-    setEmail(initial?.email ?? '');
-    setRole(initial?.role ?? 'Developer');
-    setStartDate(initial?.joined ?? '');
-    setBio(initial?.bio ?? '');
-  }, [initial, open]);
-
-  const handleSubmit = () => {
-    if (!name.trim() || !email.trim()) return;
-    onSubmit({
-      name: name.trim(),
-      email: email.trim(),
-      role,
-      status: initial?.status ?? 'Active',
-      joined: startDate || new Date().toISOString().split('T')[0],
-      bio: bio.trim(),
-    });
-    onOpenChange(false);
-  };
-
-  return (
-    <Dialog open={open} onOpenChange={onOpenChange} size="small" closeButton>
-      <Dialog.Title>{initial ? 'Edit Member' : 'Add Member'}</Dialog.Title>
-      <Dialog.Content>
-        <Stack space={3}>
-          <TextField
-            label="Full Name"
-            required
-            value={name}
-            onChange={setName}
-            placeholder="Enter full name"
-          />
-          <TextField
-            label="Email"
-            required
-            type="email"
-            value={email}
-            onChange={setEmail}
-            placeholder="Enter email address"
-          />
-          <Select
-            label="Role"
-            selectedKey={role}
-            onChange={(key) => setRole(key as string)}
-          >
-            <Select.Option id="Developer">Developer</Select.Option>
-            <Select.Option id="Designer">Designer</Select.Option>
-            <Select.Option id="Manager">Manager</Select.Option>
-            <Select.Option id="QA">QA</Select.Option>
-          </Select>
-          <DatePicker
-            label="Start Date"
-            onChange={(date) => {
-              if (date) {
-                const d = date as { year: number; month: number; day: number };
-                setStartDate(
-                  `${d.year}-${String(d.month).padStart(2, '0')}-${String(d.day).padStart(2, '0')}`
-                );
-              }
-            }}
-          />
-          <TextArea
-            label="Bio"
-            value={bio}
-            onChange={setBio}
-            placeholder="Short bio..."
-          />
-        </Stack>
-      </Dialog.Content>
-      <Dialog.Actions>
-        <Button variant="secondary" onPress={() => onOpenChange(false)}>
-          Cancel
-        </Button>
-        <Button variant="primary" onPress={handleSubmit}>
-          {initial ? 'Save Changes' : 'Add'}
-        </Button>
-      </Dialog.Actions>
-    </Dialog>
-  );
-};
-
-// --- File Upload Dialog ---
-
-interface FileUploadDialogProps {
-  open: boolean;
-  onOpenChange: (open: boolean) => void;
-  onUpload: (files: FileItem[]) => void;
+function dateValueToStr(dv: DateValue | null): string {
+  if (!dv) return new Date().toISOString().split('T')[0];
+  return `${dv.year}-${String(dv.month).padStart(2, '0')}-${String(dv.day).padStart(2, '0')}`;
 }
 
-const FileUploadDialog = ({ open, onOpenChange, onUpload }: FileUploadDialogProps) => {
-  const [description, setDescription] = useState('');
-  const [category, setCategory] = useState('Documents');
-  const { addToast } = useToast();
-
-  const handleUpload = () => {
-    const newFile: FileItem = {
-      id: genId(),
-      name: 'Uploaded File.pdf',
-      type: category as FileItem['type'],
-      size: 1.5 * 1024 * 1024,
-      uploadedBy: 'John Doe',
-      date: new Date().toISOString().split('T')[0],
-    };
-    onUpload([newFile]);
-    onOpenChange(false);
-    setDescription('');
-    setCategory('Documents');
-    addToast({ title: 'Files uploaded successfully.', variant: 'success' });
-  };
-
-  return (
-    <Dialog open={open} onOpenChange={onOpenChange} size="small" closeButton>
-      <Dialog.Title>Upload Files</Dialog.Title>
-      <Dialog.Content>
-        <Stack space={3}>
-          <FileField label="Select Files" multiple />
-          <TextArea
-            label="Description"
-            value={description}
-            onChange={setDescription}
-            placeholder="Optional description..."
-          />
-          <Select
-            label="Category"
-            selectedKey={category}
-            onChange={(key) => setCategory(key as string)}
-          >
-            <Select.Option id="Documents">Documents</Select.Option>
-            <Select.Option id="Images">Images</Select.Option>
-            <Select.Option id="Spreadsheets">Spreadsheets</Select.Option>
-          </Select>
-        </Stack>
-      </Dialog.Content>
-      <Dialog.Actions>
-        <Button variant="secondary" onPress={() => onOpenChange(false)}>
-          Cancel
-        </Button>
-        <Button variant="primary" onPress={handleUpload}>
-          Upload
-        </Button>
-      </Dialog.Actions>
-    </Dialog>
-  );
+const PAGE_TITLES: Record<string, string> = {
+  dashboard: 'Dashboard',
+  members: 'Members',
+  projects: 'Projects',
+  calendar: 'Calendar',
+  files: 'Files',
+  settings: 'Settings',
 };
 
-// --- Member Detail Dialog ---
-
-interface MemberDetailDialogProps {
-  member: Member | null;
-  onClose: () => void;
-}
-
-const MemberDetailDialog = ({ member, onClose }: MemberDetailDialogProps) => (
-  <Dialog open={!!member} onOpenChange={(open) => !open && onClose()} size="small" closeButton>
-    <Dialog.Title>{member?.name ?? ''}</Dialog.Title>
-    <Dialog.Content>
-      <Stack space={3}>
-        <Inline space={2} alignY="center">
-          <Text weight="bold">Role:</Text>
-          {member && <Badge variant="info">{member.role}</Badge>}
-        </Inline>
-        <Inline space={2} alignY="center">
-          <Text weight="bold">Email:</Text>
-          <Text>{member?.email}</Text>
-        </Inline>
-        <Inline space={2} alignY="center">
-          <Text weight="bold">Status:</Text>
-          {member && (
-            <Badge variant={member.status === 'Active' ? 'success' : 'warning'}>
-              {member.status}
-            </Badge>
-          )}
-        </Inline>
-        <Inline space={2} alignY="center">
-          <Text weight="bold">Joined:</Text>
-          <Text>{member ? formatDate(member.joined) : ''}</Text>
-        </Inline>
-        {member?.bio && (
-          <Stack space={1}>
-            <Text weight="bold">Bio:</Text>
-            <Text>{member.bio}</Text>
-          </Stack>
-        )}
-      </Stack>
-    </Dialog.Content>
-    <Dialog.Actions>
-      <Button onPress={onClose}>Close</Button>
-    </Dialog.Actions>
-  </Dialog>
-);
-
-// --- App Content ---
-
-const AppContent = () => {
-  const [currentPage, setCurrentPage] = useState('/dashboard');
-  const [members, setMembers] = useState<Member[]>(INITIAL_MEMBERS);
-  const [projects, setProjects] = useState<Project[]>(INITIAL_PROJECTS);
-  const [files, setFiles] = useState<FileItem[]>(INITIAL_FILES);
-  const [viewMode, setViewMode] = useState<'table' | 'card'>('table');
-  const [teamName, setTeamName] = useState('TeamHub');
-
-  // Member dialogs
-  const [addMemberOpen, setAddMemberOpen] = useState(false);
-  const [editMember, setEditMember] = useState<Member | null>(null);
-  const [detailMember, setDetailMember] = useState<Member | null>(null);
-
-  // Members filters
-  const [memberSearch, setMemberSearch] = useState('');
-  const [roleFilter, setRoleFilter] = useState('All Roles');
-
-  // Projects
-  const [projectSearch, setProjectSearch] = useState('');
-  const [newProjectOpen, setNewProjectOpen] = useState(false);
-
-  // Files
-  const [fileSearch, setFileSearch] = useState('');
-  const [fileTypeFilter, setFileTypeFilter] = useState('All');
-  const [uploadOpen, setUploadOpen] = useState(false);
-
-  // Settings
-  const [settingsTeamName, setSettingsTeamName] = useState(teamName);
-  const [settingsDesc, setSettingsDesc] = useState('A collaborative team workspace.');
-  const [settingsTz, setSettingsTz] = useState('UTC');
-  const [settingsDateFmt, setSettingsDateFmt] = useState('MM/DD/YYYY');
-  const [notifSettings, setNotifSettings] = useState({
-    newMember: true,
-    deadline: true,
-    digest: false,
-    mention: true,
-    calendar: false,
-  });
-  const [integrations, setIntegrations] = useState({
-    slack: true,
-    github: false,
-    jira: false,
-  });
-  const [settingsSaved, setSettingsSaved] = useState(false);
-  const [notifSaved, setNotifSaved] = useState(false);
-
+// ---- Main App ----
+function TeamHubInner() {
   const { addToast } = useToast();
   const confirm = useConfirmation();
 
-  const pageNames: Record<string, string> = {
-    '/dashboard': 'Dashboard',
-    '/members': 'Members',
-    '/projects': 'Projects',
-    '/calendar': 'Calendar',
-    '/files': 'Files',
-    '/settings': 'Settings',
+  // Navigation
+  const [currentPage, setCurrentPage] = useState('dashboard');
+  const navigate = (href: string) => {
+    const page = href.replace(/^\//, '') || 'dashboard';
+    setCurrentPage(page);
   };
 
-  // Filtered members
-  const filteredMembers = useMemo(() => {
-    return members.filter((m) => {
-      const matchSearch = m.name.toLowerCase().includes(memberSearch.toLowerCase());
-      const matchRole = roleFilter === 'All Roles' || m.role === roleFilter;
-      return matchSearch && matchRole;
-    });
-  }, [members, memberSearch, roleFilter]);
+  // Members state
+  const [members, setMembers] = useState<Member[]>(INITIAL_MEMBERS);
+  const [memberView, setMemberView] = useState<'table' | 'card'>('table');
+  const [memberSearch, setMemberSearch] = useState('');
+  const [memberRole, setMemberRole] = useState('all');
+  const [selectedMember, setSelectedMember] = useState<Member | null>(null);
+  const [memberFormOpen, setMemberFormOpen] = useState(false);
+  const [editMember, setEditMember] = useState<Member | null>(null);
+  const [mfName, setMfName] = useState('');
+  const [mfEmail, setMfEmail] = useState('');
+  const [mfRole, setMfRole] = useState('Developer');
+  const [mfDate, setMfDate] = useState<DateValue | null>(null);
+  const [mfBio, setMfBio] = useState('');
 
-  // Filtered projects
-  const filteredProjects = useMemo(() => {
-    return projects.filter((p) =>
-      p.name.toLowerCase().includes(projectSearch.toLowerCase())
-    );
-  }, [projects, projectSearch]);
+  // Projects state
+  const [projects, setProjects] = useState<Project[]>(INITIAL_PROJECTS);
+  const [projectSearch, setProjectSearch] = useState('');
+  const [selectedProjects, setSelectedProjects] = useState<Set<string>>(new Set());
 
-  // Filtered files
-  const filteredFiles = useMemo(() => {
-    return files.filter((f) => {
-      const matchSearch = f.name.toLowerCase().includes(fileSearch.toLowerCase());
-      const matchType = fileTypeFilter === 'All' || f.type === fileTypeFilter;
-      return matchSearch && matchType;
-    });
-  }, [files, fileSearch, fileTypeFilter]);
+  // Files state
+  const [files, setFiles] = useState<FileItem[]>(INITIAL_FILES);
+  const [fileSearch, setFileSearch] = useState('');
+  const [fileType, setFileType] = useState('All');
+  const [uploadOpen, setUploadOpen] = useState(false);
+  const [uploadDesc, setUploadDesc] = useState('');
+  const [uploadCategory, setUploadCategory] = useState('Documents');
 
-  const handleAddMember = (data: Omit<Member, 'id'>) => {
-    const newMember: Member = { ...data, id: genId() };
-    setMembers((prev) => [...prev, newMember]);
-  };
+  // Settings state
+  const [teamName, setTeamName] = useState('TeamHub');
+  const [teamDesc, setTeamDesc] = useState('A collaborative workspace for engineering teams.');
+  const [timezone, setTimezone] = useState('UTC');
+  const [dateFormat, setDateFormat] = useState('MM/DD/YYYY');
+  const [notifs, setNotifs] = useState({
+    newMember: true, projectDeadline: true, weeklyDigest: false, mentions: true, calendarReminders: true,
+  });
+  const [integrations, setIntegrations] = useState({
+    slack: true, github: false, jira: false,
+  });
 
-  const handleEditMember = (data: Omit<Member, 'id'>) => {
-    if (!editMember) return;
-    setMembers((prev) =>
-      prev.map((m) => (m.id === editMember.id ? { ...data, id: m.id } : m))
-    );
+  // Filtered data
+  const filteredMembers = members.filter(m => {
+    const matchSearch = m.name.toLowerCase().includes(memberSearch.toLowerCase());
+    const matchRole = memberRole === 'all' || m.role === memberRole;
+    return matchSearch && matchRole;
+  });
+
+  const filteredProjects = projects.filter(p =>
+    p.name.toLowerCase().includes(projectSearch.toLowerCase())
+  );
+
+  const filteredFiles = files.filter(f => {
+    const matchSearch = f.name.toLowerCase().includes(fileSearch.toLowerCase());
+    const matchType = fileType === 'All' || f.type === fileType;
+    return matchSearch && matchType;
+  });
+
+  // Member form open
+  const openAddMember = () => {
     setEditMember(null);
+    setMfName(''); setMfEmail(''); setMfRole('Developer'); setMfDate(null); setMfBio('');
+    setMemberFormOpen(true);
+  };
+  const openEditMember = (m: Member) => {
+    setEditMember(m);
+    setMfName(m.name); setMfEmail(m.email); setMfRole(m.role);
+    const [y, mo, d] = m.joined.split('-').map(Number);
+    setMfDate(new CalendarDate(y, mo, d));
+    setMfBio(m.bio);
+    setMemberFormOpen(true);
+  };
+  const saveMember = () => {
+    if (!mfName.trim() || !mfEmail.trim()) return;
+    if (editMember) {
+      setMembers(prev => prev.map(m => m.id === editMember.id
+        ? { ...m, name: mfName, email: mfEmail, role: mfRole, joined: dateValueToStr(mfDate), bio: mfBio }
+        : m));
+      if (selectedMember?.id === editMember.id) {
+        setSelectedMember({ ...editMember, name: mfName, email: mfEmail, role: mfRole, joined: dateValueToStr(mfDate), bio: mfBio });
+      }
+    } else {
+      const newMember: Member = {
+        id: String(Date.now()), name: mfName, email: mfEmail, role: mfRole,
+        status: 'Active', joined: dateValueToStr(mfDate), bio: mfBio,
+      };
+      setMembers(prev => [...prev, newMember]);
+    }
+    setMemberFormOpen(false);
+  };
+  const removeMember = async (id: string) => {
+    try {
+      await confirm({ variant: 'destructive', title: 'Remove Member', content: 'Are you sure you want to remove this member? This action cannot be undone.', confirmationLabel: 'Remove' });
+      setMembers(prev => prev.filter(m => m.id !== id));
+      if (selectedMember?.id === id) setSelectedMember(null);
+    } catch { /* cancelled */ }
   };
 
-  const handleRemoveMember = async (member: Member) => {
-    try {
-      await confirm({
-        variant: 'destructive',
-        title: 'Remove Member',
-        content: `Are you sure you want to remove ${member.name} from the team?`,
-        confirmationLabel: 'Remove',
-      });
-      setMembers((prev) => prev.filter((m) => m.id !== member.id));
-    } catch {
-      // cancelled
+  const archiveSelected = () => {
+    setProjects(prev => prev.filter(p => !selectedProjects.has(p.id)));
+    setSelectedProjects(new Set());
+  };
+
+  const handleIntegrationToggle = async (key: 'slack' | 'github' | 'jira') => {
+    if (integrations[key]) {
+      try {
+        await confirm({ variant: 'destructive', title: `Disconnect ${key.charAt(0).toUpperCase() + key.slice(1)}`, content: `Are you sure you want to disconnect ${key}?`, confirmationLabel: 'Disconnect' });
+        setIntegrations(prev => ({ ...prev, [key]: false }));
+      } catch { /* cancelled */ }
+    } else {
+      setIntegrations(prev => ({ ...prev, [key]: true }));
+      addToast({ title: `${key.charAt(0).toUpperCase() + key.slice(1)} connected`, variant: 'success' });
     }
   };
 
-  const handleDisconnect = async (service: string) => {
-    try {
-      await confirm({
-        variant: 'destructive',
-        title: `Disconnect ${service}`,
-        content: `Are you sure you want to disconnect ${service}?`,
-        confirmationLabel: 'Disconnect',
-      });
-      setIntegrations((prev) => ({ ...prev, [service.toLowerCase()]: false }));
-    } catch {
-      // cancelled
-    }
+  const actionBadge = (action: 'Commit' | 'Review' | 'Deploy') => {
+    const map = { Commit: 'info', Review: 'warning', Deploy: 'success' } as const;
+    return <Badge variant={map[action]}>{action}</Badge>;
   };
 
-  const handleSaveSettings = () => {
-    setTeamName(settingsTeamName);
-    setSettingsSaved(true);
-    setTimeout(() => setSettingsSaved(false), 3000);
+  const statusBadge = (status: 'Active' | 'On Leave') =>
+    <Badge variant={status === 'Active' ? 'success' : 'warning'}>{status}</Badge>;
+
+  const projectStatusBadge = (status: 'Active' | 'On Hold' | 'Completed') => {
+    const map = { Active: 'success', 'On Hold': 'warning', Completed: 'info' } as const;
+    return <Badge variant={map[status]}>{status}</Badge>;
   };
 
-  const handleSaveNotifications = () => {
-    setNotifSaved(true);
-    setTimeout(() => setNotifSaved(false), 3000);
+  const eventTypeBadge = (type: 'Meeting' | 'Deadline' | 'Social') => {
+    const map = { Meeting: 'info', Deadline: 'warning', Social: 'success' } as const;
+    return <Badge variant={map[type]}>{type}</Badge>;
   };
 
-  // --- Dashboard Page ---
-  const DashboardPage = (
+  // ---- Render Pages ----
+  const renderDashboard = () => (
     <Stack space={6}>
       <Headline level={1}>Team Overview</Headline>
-      <Inline space={4} alignX="between">
-        <Card p={4}>
-          <Stack space={2}>
-            <Text weight="bold" size="sm">Members</Text>
-            <Text size="xl" weight="bold">{members.length}</Text>
-          </Stack>
+      <Columns columns={[1, 1, 1, 1]} space={4} collapseAt="40em">
+        <Card>
+          <Inset spaceX={4} spaceY={3}>
+            <Stack space={1}>
+              <Text weight="bold">Members</Text>
+              <Headline level={2}>{members.length}</Headline>
+              <Text size="sm" color="secondary">Total team members</Text>
+            </Stack>
+          </Inset>
         </Card>
-        <Card p={4}>
-          <Stack space={2}>
-            <Text weight="bold" size="sm">Active Projects</Text>
-            <Text size="xl" weight="bold">5</Text>
-          </Stack>
+        <Card>
+          <Inset spaceX={4} spaceY={3}>
+            <Stack space={1}>
+              <Text weight="bold">Active Projects</Text>
+              <Headline level={2}><NumericFormat value={5} /></Headline>
+              <Text size="sm" color="secondary">Currently running</Text>
+            </Stack>
+          </Inset>
         </Card>
-        <Card p={4}>
-          <Stack space={2}>
-            <Text weight="bold" size="sm">Upcoming Deadlines</Text>
-            <Text size="xl" weight="bold">8</Text>
-          </Stack>
+        <Card>
+          <Inset spaceX={4} spaceY={3}>
+            <Stack space={1}>
+              <Text weight="bold">Upcoming Deadlines</Text>
+              <Headline level={2}><NumericFormat value={8} /></Headline>
+              <Text size="sm" color="secondary">In the next 30 days</Text>
+            </Stack>
+          </Inset>
         </Card>
         <Tooltip.Trigger>
-          <Card p={4}>
-            <Stack space={2}>
-              <Text weight="bold" size="sm">Hours This Week</Text>
-              <Text size="xl" weight="bold">
-                {(342).toLocaleString()}
-              </Text>
-            </Stack>
+          <Card>
+            <Inset spaceX={4} spaceY={3}>
+              <Stack space={1}>
+                <Text weight="bold">Hours This Week</Text>
+                <Headline level={2}><NumericFormat value={342} /></Headline>
+                <Text size="sm" color="secondary">Team total</Text>
+              </Stack>
+            </Inset>
           </Card>
           <Tooltip>Aggregate of all team members.</Tooltip>
         </Tooltip.Trigger>
-      </Inline>
+      </Columns>
 
       <Stack space={3}>
         <Headline level={2}>Recent Activity</Headline>
-        <Table aria-label="Recent Activity" selectionMode="none">
+        <Table aria-label="Recent Activity">
           <Table.Header>
             <Table.Column rowHeader>Member</Table.Column>
             <Table.Column>Action</Table.Column>
@@ -534,12 +340,10 @@ const AppContent = () => {
             <Table.Column>Date</Table.Column>
           </Table.Header>
           <Table.Body>
-            {RECENT_ACTIVITY.map((row) => (
-              <Table.Row key={row.id} id={row.id}>
+            {ACTIVITY.map(row => (
+              <Table.Row key={row.id}>
                 <Table.Cell>{row.member}</Table.Cell>
-                <Table.Cell>
-                  <Badge variant={actionVariant(row.action)}>{row.action}</Badge>
-                </Table.Cell>
+                <Table.Cell>{actionBadge(row.action)}</Table.Cell>
                 <Table.Cell>{row.project}</Table.Cell>
                 <Table.Cell>{formatDate(row.date)}</Table.Cell>
               </Table.Row>
@@ -557,175 +361,176 @@ const AppContent = () => {
     </Stack>
   );
 
-  // --- Members Page ---
-  const MembersPage = (
-    <Stack space={4}>
-      <Headline level={1}>Team Members</Headline>
-      <Inline space={3} alignY="center">
-        <SearchField
-          aria-label="Search members"
-          placeholder="Search by name…"
-          value={memberSearch}
-          onChange={setMemberSearch}
-        />
-        <Select
-          aria-label="Filter by role"
-          selectedKey={roleFilter}
-          onChange={(key) => setRoleFilter(key as string)}
-        >
-          <Select.Option id="All Roles">All Roles</Select.Option>
-          <Select.Option id="Developer">Developer</Select.Option>
-          <Select.Option id="Designer">Designer</Select.Option>
-          <Select.Option id="Manager">Manager</Select.Option>
-          <Select.Option id="QA">QA</Select.Option>
-        </Select>
-        <ToggleButton.Group
-          selectionMode="single"
-          selectedKeys={new Set([viewMode])}
-          onSelectionChange={(keys) => {
-            if (typeof keys === 'object') {
-              const arr = [...(keys as Set<string>)];
-              if (arr.length > 0) setViewMode(arr[0] as 'table' | 'card');
-            }
-          }}
-        >
-          <ToggleButton id="table">Table</ToggleButton>
-          <ToggleButton id="card">Cards</ToggleButton>
-        </ToggleButton.Group>
-        <Button variant="primary" onPress={() => setAddMemberOpen(true)}>
-          Add Member
-        </Button>
-      </Inline>
-
-      {viewMode === 'table' ? (
-        <Table aria-label="Team Members" selectionMode="none">
-          <Table.Header>
-            <Table.Column rowHeader>Name</Table.Column>
-            <Table.Column>Role</Table.Column>
-            <Table.Column>Email</Table.Column>
-            <Table.Column>Status</Table.Column>
-            <Table.Column>Joined</Table.Column>
-            <Table.Column>Actions</Table.Column>
-          </Table.Header>
-          <Table.Body>
-            {filteredMembers.map((member) => (
-              <Table.Row key={member.id} id={member.id}>
-                <Table.Cell>
-                  <Button variant="ghost" onPress={() => setDetailMember(member)}>
-                    {member.name}
-                  </Button>
-                </Table.Cell>
-                <Table.Cell>{member.role}</Table.Cell>
-                <Table.Cell>{member.email}</Table.Cell>
-                <Table.Cell>
-                  <Badge variant={member.status === 'Active' ? 'success' : 'warning'}>
-                    {member.status}
-                  </Badge>
-                </Table.Cell>
-                <Table.Cell>{formatDate(member.joined)}</Table.Cell>
-                <Table.Cell>
-                  <ActionMenu>
-                    <ActionMenu.Item id="edit" onAction={() => setEditMember(member)}>
-                      Edit
-                    </ActionMenu.Item>
-                    <ActionMenu.Item
-                      id="remove"
-                      variant="destructive"
-                      onAction={() => handleRemoveMember(member)}
-                    >
-                      Remove
-                    </ActionMenu.Item>
-                  </ActionMenu>
-                </Table.Cell>
-              </Table.Row>
-            ))}
-          </Table.Body>
-        </Table>
-      ) : (
-        <Tiles tilesWidth="280px" space={4}>
-          {filteredMembers.map((member) => (
-            <Card key={member.id} p={4}>
-              <Stack space={3}>
-                <Headline level="4">{member.name}</Headline>
-                <Badge variant="info">{member.role}</Badge>
-                <Text size="sm">{member.email}</Text>
-                <Inline space={2}>
-                  <Button size="small" onPress={() => {}} aria-label={`Message ${member.name}`}>
-                    Message
-                  </Button>
-                  <Button
-                    size="small"
-                    variant="secondary"
-                    onPress={() => setDetailMember(member)}
-                    aria-label={`Profile of ${member.name}`}
-                  >
-                    Profile
-                  </Button>
-                </Inline>
-              </Stack>
-            </Card>
-          ))}
-        </Tiles>
+  const renderMemberForm = () => (
+    <Dialog open={memberFormOpen} onOpenChange={setMemberFormOpen} closeButton size="small">
+      {({ close }) => (
+        <>
+          <Dialog.Title>{editMember ? 'Edit Member' : 'Add Member'}</Dialog.Title>
+          <Dialog.Content>
+            <Stack space={4}>
+              <TextField label="Full Name" value={mfName} onChange={setMfName} required />
+              <TextField label="Email" value={mfEmail} onChange={setMfEmail} required type="email" />
+              <Select label="Role" selectedKey={mfRole} onSelectionChange={k => setMfRole(k as string)}>
+                <Select.Option key="Developer" id="Developer">Developer</Select.Option>
+                <Select.Option key="Designer" id="Designer">Designer</Select.Option>
+                <Select.Option key="Manager" id="Manager">Manager</Select.Option>
+                <Select.Option key="QA" id="QA">QA</Select.Option>
+              </Select>
+              <DateField label="Start Date" value={mfDate} onChange={setMfDate} />
+              <TextArea label="Bio" value={mfBio} onChange={setMfBio} rows={3} />
+            </Stack>
+          </Dialog.Content>
+          <Dialog.Actions>
+            <Button variant="secondary" onPress={close}>Cancel</Button>
+            <Button variant="primary" onPress={() => { saveMember(); close(); }}>
+              {editMember ? 'Save' : 'Add'}
+            </Button>
+          </Dialog.Actions>
+        </>
       )}
-
-      <MemberFormDialog
-        open={addMemberOpen}
-        onOpenChange={setAddMemberOpen}
-        onSubmit={handleAddMember}
-      />
-      <MemberFormDialog
-        open={!!editMember}
-        onOpenChange={(open) => { if (!open) setEditMember(null); }}
-        initial={editMember}
-        onSubmit={handleEditMember}
-      />
-      <MemberDetailDialog member={detailMember} onClose={() => setDetailMember(null)} />
-    </Stack>
+    </Dialog>
   );
 
-  // --- Projects Page ---
-  const [selectedProjectKeys, setSelectedProjectKeys] = useState<Set<string>>(new Set());
+  const renderMembers = () => {
+    const detailPanel = selectedMember ? (
+      <Card>
+        <Inset spaceX={4} spaceY={4}>
+          <Stack space={4}>
+            <Inline alignX="between" alignY="center" space={2}>
+              <Headline level={3}>{selectedMember.name}</Headline>
+              <Button variant="ghost" size="small" onPress={() => setSelectedMember(null)}>✕</Button>
+            </Inline>
+            <Stack space={2}>
+              <Inline space={2}><Text weight="bold">Role:</Text><Text>{selectedMember.role}</Text></Inline>
+              <Inline space={2}><Text weight="bold">Email:</Text><Text>{selectedMember.email}</Text></Inline>
+              <Inline space={2}><Text weight="bold">Status:</Text>{statusBadge(selectedMember.status)}</Inline>
+              <Inline space={2}><Text weight="bold">Joined:</Text><Text>{formatDate(selectedMember.joined)}</Text></Inline>
+              {selectedMember.bio && (
+                <Stack space={1}>
+                  <Text weight="bold">Bio:</Text>
+                  <Text>{selectedMember.bio}</Text>
+                </Stack>
+              )}
+            </Stack>
+            <Inline space={2}>
+              <Button variant="secondary" size="small" onPress={() => openEditMember(selectedMember)}>Edit</Button>
+              <Button variant="destructive" size="small" onPress={() => removeMember(selectedMember.id)}>Remove</Button>
+            </Inline>
+          </Stack>
+        </Inset>
+      </Card>
+    ) : null;
 
-  const handleArchiveSelected = () => {
-    setProjects((prev) => prev.filter((p) => !selectedProjectKeys.has(p.id)));
-    setSelectedProjectKeys(new Set());
+    return (
+      <Stack space={4}>
+        <Inline alignX="between" alignY="center" space={4}>
+          <Headline level={1}>Team Members</Headline>
+          <Button variant="primary" onPress={openAddMember}>Add Member</Button>
+        </Inline>
+
+        <Inline space={3} alignY="center">
+          <SearchField aria-label="Search members" value={memberSearch} onChange={setMemberSearch} placeholder="Search by name…" />
+          <Select aria-label="Filter by role" selectedKey={memberRole} onSelectionChange={k => setMemberRole(k as string)} width="fit">
+            <Select.Option key="all" id="all">All Roles</Select.Option>
+            <Select.Option key="Developer" id="Developer">Developer</Select.Option>
+            <Select.Option key="Designer" id="Designer">Designer</Select.Option>
+            <Select.Option key="Manager" id="Manager">Manager</Select.Option>
+            <Select.Option key="QA" id="QA">QA</Select.Option>
+          </Select>
+          <Inline space={2}>
+            <Button variant={memberView === 'table' ? 'primary' : 'secondary'} size="small" onPress={() => setMemberView('table')}>Table</Button>
+            <Button variant={memberView === 'card' ? 'primary' : 'secondary'} size="small" onPress={() => setMemberView('card')}>Cards</Button>
+          </Inline>
+        </Inline>
+
+        {renderMemberForm()}
+
+        <Columns columns={selectedMember ? [3, 1] : [1]} space={4} collapseAt="60em">
+          <Stack space={2}>
+            {memberView === 'table' ? (
+              <Table aria-label="Team Members" selectionMode="none">
+                <Table.Header>
+                  <Table.Column rowHeader>Name</Table.Column>
+                  <Table.Column>Role</Table.Column>
+                  <Table.Column>Email</Table.Column>
+                  <Table.Column>Status</Table.Column>
+                  <Table.Column>Joined</Table.Column>
+                  <Table.Column>Actions</Table.Column>
+                </Table.Header>
+                <Table.Body>
+                  {filteredMembers.map(m => (
+                    <Table.Row key={m.id} onAction={() => setSelectedMember(m)}>
+                      <Table.Cell>{m.name}</Table.Cell>
+                      <Table.Cell>{m.role}</Table.Cell>
+                      <Table.Cell>{m.email}</Table.Cell>
+                      <Table.Cell>{statusBadge(m.status)}</Table.Cell>
+                      <Table.Cell>{formatDate(m.joined)}</Table.Cell>
+                      <Table.Cell>
+                        <ActionMenu>
+                          <ActionMenu.Item id="edit" onAction={() => openEditMember(m)}>Edit</ActionMenu.Item>
+                          <ActionMenu.Item id="remove" onAction={() => removeMember(m.id)}>Remove</ActionMenu.Item>
+                        </ActionMenu>
+                      </Table.Cell>
+                    </Table.Row>
+                  ))}
+                </Table.Body>
+              </Table>
+            ) : (
+              <Tiles tilesWidth="280px" space={4} stretch>
+                {filteredMembers.map(m => (
+                  <Card key={m.id}>
+                    <Inset spaceX={4} spaceY={4}>
+                      <Stack space={3}>
+                        <Stack space={1}>
+                          <Text weight="bold">{m.name}</Text>
+                          <Badge variant="info">{m.role}</Badge>
+                          <Text size="sm">{m.email}</Text>
+                        </Stack>
+                        <Inline space={2}>
+                          <Button variant="secondary" size="small" onPress={() => setSelectedMember(m)}>Profile</Button>
+                          <Button variant="ghost" size="small" onPress={() => addToast({ title: `Message sent to ${m.name}`, variant: 'success' })}>Message</Button>
+                        </Inline>
+                      </Stack>
+                    </Inset>
+                  </Card>
+                ))}
+              </Tiles>
+            )}
+          </Stack>
+          {detailPanel}
+        </Columns>
+      </Stack>
+    );
   };
 
-  const ProjectsPage = (
+  const renderProjects = () => (
     <Stack space={4}>
-      <Headline level={1}>Projects</Headline>
-      <Inline space={3} alignY="center">
-        <SearchField
-          aria-label="Search projects"
-          placeholder="Search projects…"
-          value={projectSearch}
-          onChange={setProjectSearch}
-        />
-        <Button variant="primary" onPress={() => setNewProjectOpen(true)}>
-          New Project
-        </Button>
+      <Inline alignX="between" alignY="center" space={4}>
+        <Headline level={1}>Projects</Headline>
+        <Button variant="primary" onPress={() => addToast({ title: 'New Project dialog coming soon', variant: 'info' })}>New Project</Button>
       </Inline>
+
+      <SearchField aria-label="Search projects" value={projectSearch} onChange={setProjectSearch} placeholder="Search projects…" />
+
+      {selectedProjects.size > 0 && (
+        <Inline space={3} alignY="center">
+          <Text weight="bold">{selectedProjects.size} selected</Text>
+          <Button variant="destructive" size="small" onPress={archiveSelected}>Archive Selected</Button>
+          <Button variant="secondary" size="small" onPress={() => { setSelectedProjects(new Set()); addToast({ title: 'Export started', variant: 'info' }); }}>Export</Button>
+        </Inline>
+      )}
 
       <Table
         aria-label="Projects"
         selectionMode="multiple"
-        onSelectionChange={(keys) => {
+        selectedKeys={selectedProjects}
+        onSelectionChange={keys => {
           if (keys === 'all') {
-            setSelectedProjectKeys(new Set(filteredProjects.map((p) => p.id)));
+            setSelectedProjects(new Set(filteredProjects.map(p => p.id)));
           } else {
-            setSelectedProjectKeys(new Set(keys as Iterable<string>));
+            setSelectedProjects(new Set(keys as Iterable<string>));
           }
         }}
-        actionBar={() => (
-          <ActionBar>
-            <ActionBar.Button onPress={handleArchiveSelected}>
-              Archive Selected
-            </ActionBar.Button>
-            <ActionBar.Button onPress={() => addToast({ title: 'Exporting selected projects…', variant: 'info' })}>
-              Export
-            </ActionBar.Button>
-          </ActionBar>
-        )}
       >
         <Table.Header>
           <Table.Column rowHeader>Project</Table.Column>
@@ -736,65 +541,37 @@ const AppContent = () => {
           <Table.Column>Status</Table.Column>
         </Table.Header>
         <Table.Body>
-          {filteredProjects.map((project) => (
-            <Table.Row key={project.id} id={project.id}>
-              <Table.Cell>{project.name}</Table.Cell>
-              <Table.Cell>{project.lead}</Table.Cell>
-              <Table.Cell>{project.members}</Table.Cell>
-              <Table.Cell>{formatDate(project.deadline)}</Table.Cell>
-              <Table.Cell>{project.progress}%</Table.Cell>
-              <Table.Cell>
-                <Badge variant={projectStatusVariant(project.status)}>
-                  {project.status}
-                </Badge>
-              </Table.Cell>
+          {filteredProjects.map(p => (
+            <Table.Row key={p.id}>
+              <Table.Cell>{p.name}</Table.Cell>
+              <Table.Cell>{p.lead}</Table.Cell>
+              <Table.Cell><NumericFormat value={p.members} /></Table.Cell>
+              <Table.Cell>{formatDate(p.deadline)}</Table.Cell>
+              <Table.Cell>{p.progress}%</Table.Cell>
+              <Table.Cell>{projectStatusBadge(p.status)}</Table.Cell>
             </Table.Row>
           ))}
         </Table.Body>
       </Table>
-
-      <Dialog open={newProjectOpen} onOpenChange={setNewProjectOpen} size="small" closeButton>
-        <Dialog.Title>New Project</Dialog.Title>
-        <Dialog.Content>
-          <Stack space={3}>
-            <TextField label="Project Name" required placeholder="Enter project name" />
-            <TextField label="Lead" placeholder="Project lead" />
-            <DatePicker label="Deadline" />
-          </Stack>
-        </Dialog.Content>
-        <Dialog.Actions>
-          <Button variant="secondary" onPress={() => setNewProjectOpen(false)}>
-            Cancel
-          </Button>
-          <Button
-            variant="primary"
-            onPress={() => {
-              setNewProjectOpen(false);
-              addToast({ title: 'Project created.', variant: 'success' });
-            }}
-          >
-            Create
-          </Button>
-        </Dialog.Actions>
-      </Dialog>
     </Stack>
   );
 
-  // --- Calendar Page ---
-  const CalendarPage = (
+  const renderCalendar = () => (
     <Stack space={6}>
       <Headline level={1}>Team Calendar</Headline>
       <Calendar aria-label="Team Calendar" />
       <Stack space={3}>
         <Headline level={2}>Upcoming Events</Headline>
         <Stack space={2}>
-          {CALENDAR_EVENTS.map((event) => (
-            <Card key={event.id} p={3}>
-              <Inline space={4} alignY="center">
-                <Text weight="bold">{formatDate(event.date)}</Text>
-                <Text>{event.name}</Text>
-                <Badge variant={eventVariant(event.type)}>{event.type}</Badge>
-              </Inline>
+          {EVENTS.map(ev => (
+            <Card key={ev.id}>
+              <Inset spaceX={4} spaceY={3}>
+                <Inline space={4} alignY="center">
+                  <Text weight="bold" size="sm">{formatDate(ev.date)}</Text>
+                  <Text>{ev.name}</Text>
+                  {eventTypeBadge(ev.type)}
+                </Inline>
+              </Inset>
             </Card>
           ))}
         </Stack>
@@ -802,33 +579,54 @@ const AppContent = () => {
     </Stack>
   );
 
-  // --- Files Page ---
-  const FilesPage = (
+  const renderFiles = () => (
     <Stack space={4}>
-      <Headline level={1}>Shared Files</Headline>
-      <Inline space={3} alignY="center">
-        <SearchField
-          aria-label="Search files"
-          placeholder="Search files…"
-          value={fileSearch}
-          onChange={setFileSearch}
-        />
-        <Select
-          aria-label="Filter by type"
-          selectedKey={fileTypeFilter}
-          onChange={(key) => setFileTypeFilter(key as string)}
-        >
-          <Select.Option id="All">All</Select.Option>
-          <Select.Option id="Documents">Documents</Select.Option>
-          <Select.Option id="Images">Images</Select.Option>
-          <Select.Option id="Spreadsheets">Spreadsheets</Select.Option>
-        </Select>
-        <Button variant="primary" onPress={() => setUploadOpen(true)}>
-          Upload
-        </Button>
+      <Inline alignX="between" alignY="center" space={4}>
+        <Headline level={1}>Shared Files</Headline>
+        <Button variant="primary" onPress={() => setUploadOpen(true)}>Upload</Button>
       </Inline>
 
-      <Table aria-label="Shared Files" selectionMode="none">
+      <Inline space={3} alignY="center">
+        <SearchField aria-label="Search files" value={fileSearch} onChange={setFileSearch} placeholder="Search files…" />
+        <Select aria-label="Filter by type" selectedKey={fileType} onSelectionChange={k => setFileType(k as string)} width="fit">
+          <Select.Option key="All" id="All">All</Select.Option>
+          <Select.Option key="Documents" id="Documents">Documents</Select.Option>
+          <Select.Option key="Images" id="Images">Images</Select.Option>
+          <Select.Option key="Spreadsheets" id="Spreadsheets">Spreadsheets</Select.Option>
+        </Select>
+      </Inline>
+
+      <Dialog open={uploadOpen} onOpenChange={setUploadOpen} closeButton size="small">
+        {({ close }) => (
+          <>
+            <Dialog.Title>Upload Files</Dialog.Title>
+            <Dialog.Content>
+              <Stack space={4}>
+                <TextArea label="Description" value={uploadDesc} onChange={setUploadDesc} rows={3} />
+                <Select label="Category" selectedKey={uploadCategory} onSelectionChange={k => setUploadCategory(k as string)}>
+                  <Select.Option key="Documents" id="Documents">Documents</Select.Option>
+                  <Select.Option key="Images" id="Images">Images</Select.Option>
+                  <Select.Option key="Spreadsheets" id="Spreadsheets">Spreadsheets</Select.Option>
+                </Select>
+              </Stack>
+            </Dialog.Content>
+            <Dialog.Actions>
+              <Button variant="secondary" onPress={close}>Cancel</Button>
+              <Button variant="primary" onPress={() => {
+                setFiles(prev => [...prev, {
+                  id: String(Date.now()), name: `New File.${uploadCategory === 'Images' ? 'png' : uploadCategory === 'Spreadsheets' ? 'xlsx' : 'pdf'}`,
+                  type: uploadCategory, size: 1024000, uploadedBy: 'John Doe', date: new Date().toISOString().split('T')[0],
+                }]);
+                setUploadDesc(''); setUploadOpen(false);
+                addToast({ title: 'Files uploaded successfully.', variant: 'success' });
+                close();
+              }}>Upload</Button>
+            </Dialog.Actions>
+          </>
+        )}
+      </Dialog>
+
+      <Table aria-label="Shared Files">
         <Table.Header>
           <Table.Column rowHeader>File Name</Table.Column>
           <Table.Column>Type</Table.Column>
@@ -838,57 +636,37 @@ const AppContent = () => {
           <Table.Column>Actions</Table.Column>
         </Table.Header>
         <Table.Body>
-          {filteredFiles.map((file) => (
-            <Table.Row key={file.id} id={file.id}>
-              <Table.Cell>{file.name}</Table.Cell>
-              <Table.Cell>{file.type}</Table.Cell>
-              <Table.Cell>{formatFileSize(file.size)}</Table.Cell>
-              <Table.Cell>{file.uploadedBy}</Table.Cell>
-              <Table.Cell>{formatDate(file.date)}</Table.Cell>
+          {filteredFiles.map(f => (
+            <Table.Row key={f.id}>
+              <Table.Cell>{f.name}</Table.Cell>
+              <Table.Cell>{f.type}</Table.Cell>
+              <Table.Cell>{formatFileSize(f.size)}</Table.Cell>
+              <Table.Cell>{f.uploadedBy}</Table.Cell>
+              <Table.Cell>{formatDate(f.date)}</Table.Cell>
               <Table.Cell>
-                <ActionMenu>
-                  <ActionMenu.Item id="download" onAction={() => addToast({ title: `Downloading ${file.name}…`, variant: 'info' })}>
-                    Download
-                  </ActionMenu.Item>
-                  <ActionMenu.Item id="rename" onAction={() => addToast({ title: 'Rename feature coming soon.', variant: 'info' })}>
-                    Rename
-                  </ActionMenu.Item>
-                  <ActionMenu.Item
-                    id="delete"
-                    variant="destructive"
-                    onAction={async () => {
-                      try {
-                        await confirm({
-                          variant: 'destructive',
-                          title: 'Delete File',
-                          content: `Delete "${file.name}"? This cannot be undone.`,
-                          confirmationLabel: 'Delete',
-                        });
-                        setFiles((prev) => prev.filter((f) => f.id !== file.id));
-                      } catch {
-                        // cancelled
-                      }
-                    }}
-                  >
-                    Delete
-                  </ActionMenu.Item>
+                <ActionMenu onAction={async (key) => {
+                  if (key === 'download') addToast({ title: `Downloading ${f.name}`, variant: 'info' });
+                  else if (key === 'rename') addToast({ title: `Rename ${f.name}`, variant: 'info' });
+                  else if (key === 'delete') {
+                    try {
+                      await confirm({ variant: 'destructive', title: 'Delete File', content: `Delete "${f.name}"? This cannot be undone.`, confirmationLabel: 'Delete' });
+                      setFiles(prev => prev.filter(x => x.id !== f.id));
+                    } catch { /* cancelled */ }
+                  }
+                }}>
+                  <ActionMenu.Item id="download">Download</ActionMenu.Item>
+                  <ActionMenu.Item id="rename">Rename</ActionMenu.Item>
+                  <ActionMenu.Item id="delete">Delete</ActionMenu.Item>
                 </ActionMenu>
               </Table.Cell>
             </Table.Row>
           ))}
         </Table.Body>
       </Table>
-
-      <FileUploadDialog
-        open={uploadOpen}
-        onOpenChange={setUploadOpen}
-        onUpload={(newFiles) => setFiles((prev) => [...prev, ...newFiles])}
-      />
     </Stack>
   );
 
-  // --- Settings Page ---
-  const SettingsPage = (
+  const renderSettings = () => (
     <Stack space={4}>
       <Headline level={1}>Team Settings</Headline>
       <Tabs aria-label="Settings">
@@ -900,174 +678,94 @@ const AppContent = () => {
 
         <Tabs.TabPanel id="general">
           <Stack space={4}>
-            {settingsSaved && (
-              <SectionMessage variant="success">
-                <SectionMessage.Title>Settings updated.</SectionMessage.Title>
-              </SectionMessage>
-            )}
-            <TextField
-              label="Team Name"
-              value={settingsTeamName}
-              onChange={setSettingsTeamName}
-            />
-            <TextArea
-              label="Description"
-              value={settingsDesc}
-              onChange={setSettingsDesc}
-            />
-            <Select
-              label="Default Timezone"
-              selectedKey={settingsTz}
-              onChange={(key) => setSettingsTz(key as string)}
-            >
-              <Select.Option id="UTC">UTC</Select.Option>
-              <Select.Option id="CET">CET</Select.Option>
-              <Select.Option id="EST">EST</Select.Option>
-              <Select.Option id="PST">PST</Select.Option>
+            <TextField label="Team Name" value={teamName} onChange={setTeamName} />
+            <TextArea label="Description" value={teamDesc} onChange={setTeamDesc} rows={3} />
+            <Select label="Default Timezone" selectedKey={timezone} onSelectionChange={k => setTimezone(k as string)} width="fit">
+              <Select.Option key="UTC" id="UTC">UTC</Select.Option>
+              <Select.Option key="CET" id="CET">CET</Select.Option>
+              <Select.Option key="EST" id="EST">EST</Select.Option>
+              <Select.Option key="PST" id="PST">PST</Select.Option>
             </Select>
-            <Select
-              label="Date Format"
-              selectedKey={settingsDateFmt}
-              onChange={(key) => setSettingsDateFmt(key as string)}
-            >
-              <Select.Option id="MM/DD/YYYY">MM/DD/YYYY</Select.Option>
-              <Select.Option id="DD.MM.YYYY">DD.MM.YYYY</Select.Option>
-              <Select.Option id="YYYY-MM-DD">YYYY-MM-DD</Select.Option>
+            <Select label="Date Format" selectedKey={dateFormat} onSelectionChange={k => setDateFormat(k as string)} width="fit">
+              <Select.Option key="MM/DD/YYYY" id="MM/DD/YYYY">MM/DD/YYYY</Select.Option>
+              <Select.Option key="DD.MM.YYYY" id="DD.MM.YYYY">DD.MM.YYYY</Select.Option>
+              <Select.Option key="YYYY-MM-DD" id="YYYY-MM-DD">YYYY-MM-DD</Select.Option>
             </Select>
-            <Button variant="primary" onPress={handleSaveSettings}>
-              Save
-            </Button>
+            <Button variant="primary" onPress={() => addToast({ title: 'Settings updated.', variant: 'success' })}>Save</Button>
           </Stack>
         </Tabs.TabPanel>
 
         <Tabs.TabPanel id="notifications">
           <Stack space={4}>
-            {notifSaved && (
-              <SectionMessage variant="success">
-                <SectionMessage.Title>Preferences saved.</SectionMessage.Title>
-              </SectionMessage>
-            )}
-            <Card p={4}>
-              <Stack space={4}>
+            {([
+              { k: 'newMember' as const, label: 'New member joins', desc: 'Get notified when someone joins the team' },
+              { k: 'projectDeadline' as const, label: 'Project deadline approaching', desc: 'Reminder 3 days before deadline' },
+              { k: 'weeklyDigest' as const, label: 'Weekly digest', desc: 'Summary of team activity every Monday' },
+              { k: 'mentions' as const, label: 'Mention notifications', desc: 'When someone mentions you in a comment' },
+              { k: 'calendarReminders' as const, label: 'Calendar reminders', desc: '15 minutes before scheduled events' },
+            ]).map(({ k, label, desc }) => (
+              <Inline key={k} space={4} alignY="top" alignX="between">
                 <Stack space={1}>
-                  <Switch
-                    label="New member joins"
-                    selected={notifSettings.newMember}
-                    onChange={(v) => setNotifSettings((n) => ({ ...n, newMember: v }))}
-                  />
-                  <Text size="sm" color="secondary">Get notified when someone joins the team</Text>
+                  <Text weight="bold">{label}</Text>
+                  <Text size="sm">{desc}</Text>
                 </Stack>
-                <Stack space={1}>
-                  <Switch
-                    label="Project deadline approaching"
-                    selected={notifSettings.deadline}
-                    onChange={(v) => setNotifSettings((n) => ({ ...n, deadline: v }))}
-                  />
-                  <Text size="sm" color="secondary">Reminder 3 days before deadline</Text>
-                </Stack>
-                <Stack space={1}>
-                  <Switch
-                    label="Weekly digest"
-                    selected={notifSettings.digest}
-                    onChange={(v) => setNotifSettings((n) => ({ ...n, digest: v }))}
-                  />
-                  <Text size="sm" color="secondary">Summary of team activity every Monday</Text>
-                </Stack>
-                <Stack space={1}>
-                  <Switch
-                    label="Mention notifications"
-                    selected={notifSettings.mention}
-                    onChange={(v) => setNotifSettings((n) => ({ ...n, mention: v }))}
-                  />
-                  <Text size="sm" color="secondary">When someone mentions you in a comment</Text>
-                </Stack>
-                <Stack space={1}>
-                  <Switch
-                    label="Calendar reminders"
-                    selected={notifSettings.calendar}
-                    onChange={(v) => setNotifSettings((n) => ({ ...n, calendar: v }))}
-                  />
-                  <Text size="sm" color="secondary">15 minutes before scheduled events</Text>
-                </Stack>
-              </Stack>
-            </Card>
-            <Button variant="primary" onPress={handleSaveNotifications}>
-              Save Preferences
-            </Button>
+                <Switch label={label} selected={notifs[k]} onChange={v => setNotifs(p => ({ ...p, [k]: v }))} />
+              </Inline>
+            ))}
+            <Button variant="primary" onPress={() => addToast({ title: 'Preferences saved.', variant: 'success' })}>Save Preferences</Button>
           </Stack>
         </Tabs.TabPanel>
 
         <Tabs.TabPanel id="integrations">
-          <Tiles tilesWidth="240px" space={4}>
-            <Card p={4}>
-              <Stack space={3}>
-                <Inline space={2} alignY="center">
-                  <Headline level="4">Slack</Headline>
-                  <Badge variant="success">Connected</Badge>
-                </Inline>
-                <Text size="sm">Team messaging and notifications integration.</Text>
-                <Button
-                  variant="secondary"
-                  onPress={() => handleDisconnect('Slack')}
-                >
-                  Disconnect
-                </Button>
-              </Stack>
-            </Card>
-            <Card p={4}>
-              <Stack space={3}>
-                <Inline space={2} alignY="center">
-                  <Headline level="4">GitHub</Headline>
-                  <Badge>Not Connected</Badge>
-                </Inline>
-                <Text size="sm">Source control and code review integration.</Text>
-                <Button
-                  variant="primary"
-                  onPress={() => setIntegrations((i) => ({ ...i, github: true }))}
-                >
-                  Connect
-                </Button>
-              </Stack>
-            </Card>
-            <Card p={4}>
-              <Stack space={3}>
-                <Inline space={2} alignY="center">
-                  <Headline level="4">Jira</Headline>
-                  <Badge>Not Connected</Badge>
-                </Inline>
-                <Text size="sm">Project tracking and issue management.</Text>
-                <Button
-                  variant="primary"
-                  onPress={() => setIntegrations((i) => ({ ...i, jira: true }))}
-                >
-                  Connect
-                </Button>
-              </Stack>
-            </Card>
+          <Tiles tilesWidth="280px" space={4} stretch>
+            {([
+              { key: 'slack' as const, name: 'Slack', desc: 'Team communication and notifications.' },
+              { key: 'github' as const, name: 'GitHub', desc: 'Code repository and version control.' },
+              { key: 'jira' as const, name: 'Jira', desc: 'Issue tracking and project management.' },
+            ]).map(({ key, name, desc }) => (
+              <Card key={key}>
+                <Inset spaceX={4} spaceY={4}>
+                  <Stack space={3}>
+                    <Inline space={2} alignY="center">
+                      <Text weight="bold">{name}</Text>
+                      <Badge variant={integrations[key] ? 'success' : 'default'}>{integrations[key] ? 'Connected' : 'Not Connected'}</Badge>
+                    </Inline>
+                    <Text size="sm">{desc}</Text>
+                    <Button
+                      variant={integrations[key] ? 'destructive' : 'primary'}
+                      size="small"
+                      onPress={() => handleIntegrationToggle(key)}
+                    >
+                      {integrations[key] ? 'Disconnect' : 'Connect'}
+                    </Button>
+                  </Stack>
+                </Inset>
+              </Card>
+            ))}
           </Tiles>
         </Tabs.TabPanel>
       </Tabs>
     </Stack>
   );
 
-  const currentPageContent = {
-    '/dashboard': DashboardPage,
-    '/members': MembersPage,
-    '/projects': ProjectsPage,
-    '/calendar': CalendarPage,
-    '/files': FilesPage,
-    '/settings': SettingsPage,
-  }[currentPage] ?? DashboardPage;
+  const pageContent: Record<string, () => JSX.Element> = {
+    dashboard: renderDashboard,
+    members: renderMembers,
+    projects: renderProjects,
+    calendar: renderCalendar,
+    files: renderFiles,
+    settings: renderSettings,
+  };
 
   return (
-    <RouterProvider navigate={setCurrentPage}>
+    <RouterProvider navigate={navigate}>
       <Sidebar.Provider defaultOpen>
         <AppLayout>
           <AppLayout.Sidebar>
             <Sidebar.Header>
               <Text weight="bold">{teamName}</Text>
             </Sidebar.Header>
-            <Sidebar.Nav current={currentPage}>
+            <Sidebar.Nav current={`/${currentPage}`}>
               <Sidebar.Item href="/dashboard">Dashboard</Sidebar.Item>
               <Sidebar.Item href="/members">Members</Sidebar.Item>
               <Sidebar.Item href="/projects">Projects</Sidebar.Item>
@@ -1085,9 +783,7 @@ const AppContent = () => {
             <TopNavigation.Middle>
               <Breadcrumbs>
                 <Breadcrumbs.Item href="/dashboard">{teamName}</Breadcrumbs.Item>
-                <Breadcrumbs.Item href={currentPage}>
-                  {pageNames[currentPage]}
-                </Breadcrumbs.Item>
+                <Breadcrumbs.Item href={`/${currentPage}`}>{PAGE_TITLES[currentPage] ?? currentPage}</Breadcrumbs.Item>
               </Breadcrumbs>
             </TopNavigation.Middle>
             <TopNavigation.End>
@@ -1095,17 +791,15 @@ const AppContent = () => {
                 <Tooltip.Trigger>
                   <Menu
                     label="John Doe"
-                    onAction={(key) => {
-                      if (key === 'signout') {
-                        addToast({ title: 'Signed out.', variant: 'info' });
-                      }
+                    onAction={key => {
+                      if (key === 'signout') addToast({ title: 'Signed out', variant: 'info' });
+                      else if (key === 'profile') addToast({ title: 'Profile opened', variant: 'info' });
+                      else if (key === 'preferences') addToast({ title: 'Preferences opened', variant: 'info' });
                     }}
                   >
                     <Menu.Item id="profile">Profile</Menu.Item>
                     <Menu.Item id="preferences">Preferences</Menu.Item>
-                    <Menu.Item id="signout" variant="destructive">
-                      Sign Out
-                    </Menu.Item>
+                    <Menu.Item id="signout">Sign Out</Menu.Item>
                   </Menu>
                   <Tooltip>Account settings</Tooltip>
                 </Tooltip.Trigger>
@@ -1120,20 +814,20 @@ const AppContent = () => {
           </AppLayout.Header>
 
           <AppLayout.Main>
-            <Inset space={6}>{currentPageContent}</Inset>
+            <Inset spaceX={6} spaceY={6}>
+              {(pageContent[currentPage] ?? renderDashboard)()}
+            </Inset>
           </AppLayout.Main>
         </AppLayout>
       </Sidebar.Provider>
     </RouterProvider>
   );
-};
+}
 
 const TestApp = () => (
   <ConfirmationProvider>
-    <>
-      <ToastProvider position="bottom-right" />
-      <AppContent />
-    </>
+    <ToastProvider position="bottom-right" />
+    <TeamHubInner />
   </ConfirmationProvider>
 );
 

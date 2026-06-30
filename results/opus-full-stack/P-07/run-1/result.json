@@ -1,0 +1,642 @@
+{
+  "runId": "opus-full-stack-P-07-r1",
+  "promptId": "P-07",
+  "model": "opus",
+  "config": "full-stack",
+  "timestamp": "2026-06-27T18:53:45.894Z",
+  "quality": {
+    "overall": 87,
+    "categories": {
+      "A": {
+        "category": "A",
+        "label": "Design System API",
+        "score": 100,
+        "weight": 0.225,
+        "weightedScore": 22.5,
+        "errorCount": 0,
+        "warningCount": 0,
+        "issues": []
+      },
+      "B": {
+        "category": "B",
+        "label": "Token Compliance",
+        "score": 89.39,
+        "weight": 0.1,
+        "weightedScore": 8.94,
+        "errorCount": 0,
+        "warningCount": 1,
+        "issues": [
+          {
+            "type": "style",
+            "severity": "warning",
+            "source": "token-compliance",
+            "component": "thead",
+            "message": "Computed background-color value \"oklab(0.999994 0.0000455678 0.0000200868 / 0.9)\" on <thead> (“Booking IDCustomerVenueDateTime SlotStat”) does not map to a known design token.",
+            "suggestion": "If this is intentional, ignore the warning. Otherwise, use a Marigold variant or a theme-rui token instead of a hard-coded value.",
+            "details": {
+              "property": "background-color",
+              "value": "oklab(0.999994 0.0000455678 0.0000200868 / 0.9)",
+              "selector": "body:nth-child(2) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div:nth-child(5) > div:nth-child(2) > div:nth-child(1) > div:nth-child(1) > table:nth-child(3) > thead:nth-child(1)",
+              "fingerprint": "Booking IDCustomerVenueDateTime SlotStat",
+              "scope": "page"
+            }
+          }
+        ]
+      },
+      "C": {
+        "category": "C",
+        "label": "DOM / Structure",
+        "score": 100,
+        "weight": 0.225,
+        "weightedScore": 22.5,
+        "errorCount": 0,
+        "warningCount": 0,
+        "issues": []
+      },
+      "D": {
+        "category": "D",
+        "label": "Spatial & A11y",
+        "score": 53.1,
+        "weight": 0.225,
+        "weightedScore": 11.95,
+        "errorCount": 0,
+        "warningCount": 11,
+        "issues": [
+          {
+            "type": "a11y",
+            "severity": "warning",
+            "source": "responsive-checker",
+            "component": "select",
+            "message": "Touch target too small at mobile (375px): select elements are 104x18px (3 instances) (minimum 24x24px per WCAG 2.5.8).",
+            "suggestion": "Increase the clickable area. Marigold interactive components have built-in minimum sizes — check if custom styling reduces the target.",
+            "details": {
+              "breakpoint": "mobile",
+              "tag": "select",
+              "count": 3,
+              "minWidth": 104,
+              "minHeight": 18,
+              "scope": "page"
+            }
+          },
+          {
+            "type": "a11y",
+            "severity": "warning",
+            "source": "responsive-checker",
+            "component": "input",
+            "message": "Touch target too small at mobile (375px): input elements are 132x20px (minimum 24x24px per WCAG 2.5.8).",
+            "suggestion": "Increase the clickable area. Marigold interactive components have built-in minimum sizes — check if custom styling reduces the target.",
+            "details": {
+              "breakpoint": "mobile",
+              "tag": "input",
+              "count": 1,
+              "minWidth": 132,
+              "minHeight": 20,
+              "scope": "page"
+            }
+          },
+          {
+            "type": "a11y",
+            "severity": "warning",
+            "source": "aom-extractor",
+            "component": "html",
+            "message": "Document should have one main landmark (landmark-one-main)",
+            "suggestion": "Wrap your page content in `<AppLayout>` with `<AppLayout.Main>` to provide a `<main>` landmark. Import AppLayout from `@marigold/components`.",
+            "details": {
+              "ruleId": "landmark-one-main",
+              "impact": "moderate",
+              "target": [
+                "html"
+              ],
+              "html": "<html lang=\"en\" data-theme=\"rui\">",
+              "scope": "page"
+            }
+          },
+          {
+            "type": "a11y",
+            "severity": "warning",
+            "source": "aom-extractor",
+            "component": "page",
+            "message": "All page content should be contained by landmarks — 8 elements affected (region)",
+            "suggestion": "All page content must be inside a landmark region. Use `<AppLayout>` with `<AppLayout.Main>` for the main area, `<TopNavigation>` for the header (`<header>`), and `<Sidebar>` for side navigation (`<aside>`). Import from `@marigold/components`.",
+            "details": {
+              "ruleId": "region",
+              "impact": "moderate",
+              "affectedCount": 8,
+              "scope": "page"
+            }
+          },
+          {
+            "type": "a11y",
+            "severity": "warning",
+            "source": "aom-extractor",
+            "component": "#react-aria6509711894-_r_50_",
+            "message": "Buttons must have discernible text (button-name) (in a revealed overlay)",
+            "suggestion": "https://dequeuniversity.com/rules/axe/4.11/button-name?application=playwright",
+            "details": {
+              "ruleId": "button-name",
+              "impact": "critical",
+              "target": [
+                "#react-aria6509711894-_r_50_"
+              ],
+              "html": "<button class=\"flex items-center ju...\" data-rac=\"\" type=\"button\" tabindex=\"0\" data-react-aria-pres...=\"true\" id=\"react-aria6509711894...\">",
+              "scope": "page"
+            }
+          },
+          {
+            "type": "a11y",
+            "severity": "warning",
+            "source": "keyboard-a11y",
+            "component": "button",
+            "message": "Interactive element <button> (button) is not reachable via Tab key.",
+            "suggestion": "Ensure the element is focusable. Marigold interactive components are focusable by default — check if a parent has tabindex=\"-1\" or focus is trapped.",
+            "details": {
+              "selector": "body:nth-child(2) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > button:nth-child(2)",
+              "role": "button",
+              "scope": "page"
+            }
+          },
+          {
+            "type": "a11y",
+            "severity": "warning",
+            "source": "keyboard-a11y",
+            "component": "span",
+            "message": "Interactive element <span> (spinbutton) is not reachable via Tab key.",
+            "suggestion": "Ensure the element is focusable. Marigold interactive components are focusable by default — check if a parent has tabindex=\"-1\" or focus is trapped.",
+            "details": {
+              "selector": "body:nth-child(2) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div:nth-child(2) > div:nth-child(1) > div:nth-child(2) > div:nth-child(1) > span:nth-child(1)",
+              "role": "spinbutton",
+              "scope": "page"
+            }
+          },
+          {
+            "type": "a11y",
+            "severity": "warning",
+            "source": "keyboard-a11y",
+            "component": "input",
+            "message": "Interactive element <input> (combobox) is not reachable via Tab key.",
+            "suggestion": "Ensure the element is focusable. Marigold interactive components are focusable by default — check if a parent has tabindex=\"-1\" or focus is trapped.",
+            "details": {
+              "selector": "body:nth-child(2) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div:nth-child(2) > div:nth-child(4) > div:nth-child(2) > input:nth-child(1)",
+              "role": "combobox",
+              "scope": "page"
+            }
+          },
+          {
+            "type": "a11y",
+            "severity": "warning",
+            "source": "keyboard-a11y",
+            "component": "div",
+            "message": "Interactive element <div> (tab) is not reachable via Tab key.",
+            "suggestion": "Ensure the element is focusable. Marigold interactive components are focusable by default — check if a parent has tabindex=\"-1\" or focus is trapped.",
+            "details": {
+              "selector": "body:nth-child(2) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div:nth-child(5) > div:nth-child(1) > div:nth-child(1)",
+              "role": "tab",
+              "scope": "page"
+            }
+          },
+          {
+            "type": "a11y",
+            "severity": "warning",
+            "source": "keyboard-a11y",
+            "component": "tablist",
+            "message": "Arrow key navigation does not work within [role=\"tablist\"] (3 members).",
+            "suggestion": "Composite widgets (tabs, radio groups, menus, listboxes) should support Arrow key navigation between members per WAI-ARIA Authoring Practices.",
+            "details": {
+              "selector": "body:nth-child(2) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div:nth-child(5) > div:nth-child(1)",
+              "role": "tablist",
+              "memberCount": 3,
+              "scope": "page"
+            }
+          },
+          {
+            "type": "a11y",
+            "severity": "warning",
+            "source": "keyboard-a11y",
+            "component": "body:nth-child(2) > div:nth-child(4) > div:nth-child(1) > section:nth-child(1) > button:nth-child(1)",
+            "message": "Keyboard trap detected — focus cycles through 12 elements without reaching the rest of the page (WCAG 2.1.2).",
+            "suggestion": "Ensure focus can leave this container via Tab, or provide an Escape key handler to close it.",
+            "details": {
+              "cycleLength": 12,
+              "totalFocusable": 28,
+              "escapable": false,
+              "scope": "page"
+            }
+          }
+        ]
+      },
+      "E": {
+        "category": "E",
+        "label": "Functional Completeness",
+        "score": 93.85,
+        "weight": 0.225,
+        "weightedScore": 21.12,
+        "errorCount": 0,
+        "warningCount": 0,
+        "issues": []
+      }
+    },
+    "renderSuccess": true
+  },
+  "efficiency": {
+    "durationMs": 726267,
+    "costUsd": 4.4334495,
+    "inputTokens": 2299,
+    "outputTokens": 36989,
+    "cacheReadTokens": 4255703,
+    "cacheCreationTokens": 135994,
+    "totalTokens": 39288,
+    "numTurns": 56
+  },
+  "report": {
+    "file": "TestApp.tsx",
+    "errors": [],
+    "warnings": [
+      {
+        "type": "style",
+        "severity": "warning",
+        "source": "token-compliance",
+        "component": "thead",
+        "message": "Computed background-color value \"oklab(0.999994 0.0000455678 0.0000200868 / 0.9)\" on <thead> (“Booking IDCustomerVenueDateTime SlotStat”) does not map to a known design token.",
+        "suggestion": "If this is intentional, ignore the warning. Otherwise, use a Marigold variant or a theme-rui token instead of a hard-coded value.",
+        "details": {
+          "property": "background-color",
+          "value": "oklab(0.999994 0.0000455678 0.0000200868 / 0.9)",
+          "selector": "body:nth-child(2) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div:nth-child(5) > div:nth-child(2) > div:nth-child(1) > div:nth-child(1) > table:nth-child(3) > thead:nth-child(1)",
+          "fingerprint": "Booking IDCustomerVenueDateTime SlotStat",
+          "scope": "page"
+        }
+      },
+      {
+        "type": "a11y",
+        "severity": "warning",
+        "source": "responsive-checker",
+        "component": "select",
+        "message": "Touch target too small at mobile (375px): select elements are 104x18px (3 instances) (minimum 24x24px per WCAG 2.5.8).",
+        "suggestion": "Increase the clickable area. Marigold interactive components have built-in minimum sizes — check if custom styling reduces the target.",
+        "details": {
+          "breakpoint": "mobile",
+          "tag": "select",
+          "count": 3,
+          "minWidth": 104,
+          "minHeight": 18,
+          "scope": "page"
+        }
+      },
+      {
+        "type": "a11y",
+        "severity": "warning",
+        "source": "responsive-checker",
+        "component": "input",
+        "message": "Touch target too small at mobile (375px): input elements are 132x20px (minimum 24x24px per WCAG 2.5.8).",
+        "suggestion": "Increase the clickable area. Marigold interactive components have built-in minimum sizes — check if custom styling reduces the target.",
+        "details": {
+          "breakpoint": "mobile",
+          "tag": "input",
+          "count": 1,
+          "minWidth": 132,
+          "minHeight": 20,
+          "scope": "page"
+        }
+      },
+      {
+        "type": "a11y",
+        "severity": "warning",
+        "source": "aom-extractor",
+        "component": "html",
+        "message": "Document should have one main landmark (landmark-one-main)",
+        "suggestion": "Wrap your page content in `<AppLayout>` with `<AppLayout.Main>` to provide a `<main>` landmark. Import AppLayout from `@marigold/components`.",
+        "details": {
+          "ruleId": "landmark-one-main",
+          "impact": "moderate",
+          "target": [
+            "html"
+          ],
+          "html": "<html lang=\"en\" data-theme=\"rui\">",
+          "scope": "page"
+        }
+      },
+      {
+        "type": "a11y",
+        "severity": "warning",
+        "source": "aom-extractor",
+        "component": "page",
+        "message": "All page content should be contained by landmarks — 8 elements affected (region)",
+        "suggestion": "All page content must be inside a landmark region. Use `<AppLayout>` with `<AppLayout.Main>` for the main area, `<TopNavigation>` for the header (`<header>`), and `<Sidebar>` for side navigation (`<aside>`). Import from `@marigold/components`.",
+        "details": {
+          "ruleId": "region",
+          "impact": "moderate",
+          "affectedCount": 8,
+          "scope": "page"
+        }
+      },
+      {
+        "type": "a11y",
+        "severity": "warning",
+        "source": "aom-extractor",
+        "component": "#react-aria6509711894-_r_50_",
+        "message": "Buttons must have discernible text (button-name) (in a revealed overlay)",
+        "suggestion": "https://dequeuniversity.com/rules/axe/4.11/button-name?application=playwright",
+        "details": {
+          "ruleId": "button-name",
+          "impact": "critical",
+          "target": [
+            "#react-aria6509711894-_r_50_"
+          ],
+          "html": "<button class=\"flex items-center ju...\" data-rac=\"\" type=\"button\" tabindex=\"0\" data-react-aria-pres...=\"true\" id=\"react-aria6509711894...\">",
+          "scope": "page"
+        }
+      },
+      {
+        "type": "a11y",
+        "severity": "warning",
+        "source": "keyboard-a11y",
+        "component": "button",
+        "message": "Interactive element <button> (button) is not reachable via Tab key.",
+        "suggestion": "Ensure the element is focusable. Marigold interactive components are focusable by default — check if a parent has tabindex=\"-1\" or focus is trapped.",
+        "details": {
+          "selector": "body:nth-child(2) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > button:nth-child(2)",
+          "role": "button",
+          "scope": "page"
+        }
+      },
+      {
+        "type": "a11y",
+        "severity": "warning",
+        "source": "keyboard-a11y",
+        "component": "span",
+        "message": "Interactive element <span> (spinbutton) is not reachable via Tab key.",
+        "suggestion": "Ensure the element is focusable. Marigold interactive components are focusable by default — check if a parent has tabindex=\"-1\" or focus is trapped.",
+        "details": {
+          "selector": "body:nth-child(2) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div:nth-child(2) > div:nth-child(1) > div:nth-child(2) > div:nth-child(1) > span:nth-child(1)",
+          "role": "spinbutton",
+          "scope": "page"
+        }
+      },
+      {
+        "type": "a11y",
+        "severity": "warning",
+        "source": "keyboard-a11y",
+        "component": "input",
+        "message": "Interactive element <input> (combobox) is not reachable via Tab key.",
+        "suggestion": "Ensure the element is focusable. Marigold interactive components are focusable by default — check if a parent has tabindex=\"-1\" or focus is trapped.",
+        "details": {
+          "selector": "body:nth-child(2) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div:nth-child(2) > div:nth-child(4) > div:nth-child(2) > input:nth-child(1)",
+          "role": "combobox",
+          "scope": "page"
+        }
+      },
+      {
+        "type": "a11y",
+        "severity": "warning",
+        "source": "keyboard-a11y",
+        "component": "div",
+        "message": "Interactive element <div> (tab) is not reachable via Tab key.",
+        "suggestion": "Ensure the element is focusable. Marigold interactive components are focusable by default — check if a parent has tabindex=\"-1\" or focus is trapped.",
+        "details": {
+          "selector": "body:nth-child(2) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div:nth-child(5) > div:nth-child(1) > div:nth-child(1)",
+          "role": "tab",
+          "scope": "page"
+        }
+      },
+      {
+        "type": "a11y",
+        "severity": "warning",
+        "source": "keyboard-a11y",
+        "component": "tablist",
+        "message": "Arrow key navigation does not work within [role=\"tablist\"] (3 members).",
+        "suggestion": "Composite widgets (tabs, radio groups, menus, listboxes) should support Arrow key navigation between members per WAI-ARIA Authoring Practices.",
+        "details": {
+          "selector": "body:nth-child(2) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div:nth-child(5) > div:nth-child(1)",
+          "role": "tablist",
+          "memberCount": 3,
+          "scope": "page"
+        }
+      },
+      {
+        "type": "a11y",
+        "severity": "warning",
+        "source": "keyboard-a11y",
+        "component": "body:nth-child(2) > div:nth-child(4) > div:nth-child(1) > section:nth-child(1) > button:nth-child(1)",
+        "message": "Keyboard trap detected — focus cycles through 12 elements without reaching the rest of the page (WCAG 2.1.2).",
+        "suggestion": "Ensure focus can leave this container via Tab, or provide an Escape key handler to close it.",
+        "details": {
+          "cycleLength": 12,
+          "totalFocusable": 28,
+          "escapable": false,
+          "scope": "page"
+        }
+      }
+    ],
+    "passed": [
+      "TypeScript compilation",
+      "All Marigold props are valid",
+      "Component composition",
+      "Overlay accessible names",
+      "Compound component placement",
+      "Section headers",
+      "Collection item ids",
+      "Design system usage",
+      "Layout usage",
+      "Table usage",
+      "Component conventions",
+      "Theme variant compliance",
+      "No overlapping components detected"
+    ],
+    "metadata": {
+      "renderTimeMs": 1646,
+      "componentsFound": [
+        "button",
+        "div",
+        "span",
+        "input",
+        "table",
+        "thead",
+        "th",
+        "tbody",
+        "tr",
+        "td"
+      ],
+      "checksRun": [
+        "technical",
+        "spatial",
+        "a11y"
+      ],
+      "coverage": {
+        "staticValuesChecked": 25,
+        "dynamicValuesSkipped": 15,
+        "spreadPropsBypassed": 0
+      },
+      "widthUtilization": 1
+    },
+    "markdown": "marigold-validate: TestApp.tsx — 0 error(s), 12 warning(s)\n\n[warning/style] <thead>: Computed background-color value \"oklab(0.999994 0.0000455678 0.0000200868 / 0.9)\" on <thead> (“Booking IDCustomerVenueDateTime SlotStat”) does not map to a known design token.\n  → If this is intentional, ignore the warning. Otherwise, use a Marigold variant or a theme-rui token instead of a hard-coded value.\n  data: {property=background-color, value=oklab(0.999994 0.0000455678 0.0000200868 / 0.9), selector=body:nth-child(2) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > ..., fingerprint=Booking IDCustomerVenueDateTime SlotStat, scope=page}\n[warning/a11y] <#react-aria6509711894-_r_50_>: Buttons must have discernible text (button-name) (in a revealed overlay)\n  → https://dequeuniversity.com/rules/axe/4.11/button-name?application=playwright\n  data: {ruleId=button-name, impact=critical, target=[\"#react-aria6509711894-_r_50_\"], html=<button class=\"flex items-center ju...\" data-rac=\"\" type=\"button\" tabindex=\"0..., scope=page}\n[warning/a11y] <body:nth-child(2) > div:nth-child(4) > div:nth-child(1) > section:nth-child(1) > button:nth-child(1)>: Keyboard trap detected — focus cycles through 12 elements without reaching the rest of the page (WCAG 2.1.2).\n  → Ensure focus can leave this container via Tab, or provide an Escape key handler to close it.\n  data: {cycleLength=12, totalFocusable=28, escapable=false, scope=page}\n[warning/a11y] <button>: Interactive element <button> (button) is not reachable via Tab key.\n  → Ensure the element is focusable. Marigold interactive components are focusable by default — check if a parent has tabindex=\"-1\" or focus is trapped.\n  data: {selector=body:nth-child(2) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > ..., role=button, scope=page}\n[warning/a11y] <div>: Interactive element <div> (tab) is not reachable via Tab key.\n  → Ensure the element is focusable. Marigold interactive components are focusable by default — check if a parent has tabindex=\"-1\" or focus is trapped.\n  data: {selector=body:nth-child(2) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > ..., role=tab, scope=page}\n[warning/a11y] <html>: Document should have one main landmark (landmark-one-main)\n  → Wrap your page content in `<AppLayout>` with `<AppLayout.Main>` to provide a `<main>` landmark. Import AppLayout from `@marigold/components`.\n  data: {ruleId=landmark-one-main, impact=moderate, target=[\"html\"], html=<html lang=\"en\" data-theme=\"rui\">, scope=page}\n[warning/a11y] <input>: Touch target too small at mobile (375px): input elements are 132x20px (minimum 24x24px per WCAG 2.5.8).\n  → Increase the clickable area. Marigold interactive components have built-in minimum sizes — check if custom styling reduces the target.\n  data: {breakpoint=mobile, tag=input, count=1, minWidth=132, minHeight=20, scope=page}\n[warning/a11y] <input>: Interactive element <input> (combobox) is not reachable via Tab key.\n  → Ensure the element is focusable. Marigold interactive components are focusable by default — check if a parent has tabindex=\"-1\" or focus is trapped.\n  data: {selector=body:nth-child(2) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > ..., role=combobox, scope=page}\n[warning/a11y] <page>: All page content should be contained by landmarks — 8 elements affected (region)\n  → All page content must be inside a landmark region. Use `<AppLayout>` with `<AppLayout.Main>` for the main area, `<TopNavigation>` for the header (`<header>`), and `<Sidebar>` for side navigation (`<aside>`). Import from `@marigold/components`.\n  data: {ruleId=region, impact=moderate, affectedCount=8, scope=page}\n[warning/a11y] <select>: Touch target too small at mobile (375px): select elements are 104x18px (3 instances) (minimum 24x24px per WCAG 2.5.8).\n  → Increase the clickable area. Marigold interactive components have built-in minimum sizes — check if custom styling reduces the target.\n  data: {breakpoint=mobile, tag=select, count=3, minWidth=104, minHeight=18, scope=page}\n[warning/a11y] <span>: Interactive element <span> (spinbutton) is not reachable via Tab key.\n  → Ensure the element is focusable. Marigold interactive components are focusable by default — check if a parent has tabindex=\"-1\" or focus is trapped.\n  data: {selector=body:nth-child(2) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > ..., role=spinbutton, scope=page}\n[warning/a11y] <tablist>: Arrow key navigation does not work within [role=\"tablist\"] (3 members).\n  → Composite widgets (tabs, radio groups, menus, listboxes) should support Arrow key navigation between members per WAI-ARIA Authoring Practices.\n  data: {selector=body:nth-child(2) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > ..., role=tablist, memberCount=3, scope=page}\n\npassed: TypeScript compilation, All Marigold props are valid, Component composition, Overlay accessible names, Compound component placement, Section headers, Collection item ids, Design system usage, Layout usage, Table usage, Component conventions, Theme variant compliance, No overlapping components detected\n\nchecks run: technical, spatial, a11y"
+  },
+  "componentsFound": [
+    "button",
+    "div",
+    "span",
+    "input",
+    "table",
+    "thead",
+    "th",
+    "tbody",
+    "tr",
+    "td"
+  ],
+  "renderTimeMs": 1646,
+  "sourceCode": "import { useState } from 'react';\nimport {\n  getLocalTimeZone,\n  parseDate,\n  today,\n} from '@internationalized/date';\nimport type { DateValue } from '@internationalized/date';\nimport {\n  Accordion,\n  ActionMenu,\n  Autocomplete,\n  Badge,\n  Button,\n  DatePicker,\n  Dialog,\n  Drawer,\n  Form,\n  Headline,\n  Inline,\n  Scrollable,\n  SectionMessage,\n  Select,\n  Stack,\n  Table,\n  Tabs,\n  Text,\n  TextArea,\n  TextField,\n} from '@marigold/components';\n\nconst VENUES = [\n  'Main Hall',\n  'Conference Room A',\n  'Conference Room B',\n  'Rooftop Terrace',\n  'Workshop Studio',\n];\n\nconst TIME_SLOTS = [\n  '09:00-12:00',\n  '12:00-15:00',\n  '15:00-18:00',\n  '18:00-21:00',\n];\n\ntype Status = 'Confirmed' | 'Pending' | 'Cancelled';\n\ninterface Booking {\n  id: string;\n  customer: string;\n  email: string;\n  venue: string;\n  date: DateValue;\n  timeSlot: string;\n  status: Status;\n  notes: string;\n}\n\nconst tz = getLocalTimeZone();\nconst TODAY = today(tz);\n\nconst STATUS_VARIANT: Record<Status, 'success' | 'warning' | 'default'> = {\n  Confirmed: 'success',\n  Pending: 'warning',\n  Cancelled: 'default',\n};\n\nconst INITIAL_BOOKINGS: Booking[] = [\n  {\n    id: 'BK-1001',\n    customer: 'Alice Johnson',\n    email: 'alice@example.com',\n    venue: 'Main Hall',\n    date: TODAY,\n    timeSlot: '09:00-12:00',\n    status: 'Confirmed',\n    notes: 'Annual shareholder meeting. Requires projector and microphone.',\n  },\n  {\n    id: 'BK-1002',\n    customer: 'Bob Smith',\n    email: 'bob@example.com',\n    venue: 'Conference Room A',\n    date: TODAY,\n    timeSlot: '12:00-15:00',\n    status: 'Pending',\n    notes: 'Awaiting deposit confirmation.',\n  },\n  {\n    id: 'BK-1003',\n    customer: 'Carla Mendes',\n    email: 'carla@example.com',\n    venue: 'Rooftop Terrace',\n    date: TODAY.add({ days: 2 }),\n    timeSlot: '18:00-21:00',\n    status: 'Confirmed',\n    notes: 'Evening reception, catering arranged.',\n  },\n  {\n    id: 'BK-1004',\n    customer: 'David Lee',\n    email: 'david@example.com',\n    venue: 'Workshop Studio',\n    date: TODAY.add({ days: 4 }),\n    timeSlot: '15:00-18:00',\n    status: 'Cancelled',\n    notes: 'Cancelled by customer due to scheduling conflict.',\n  },\n  {\n    id: 'BK-1005',\n    customer: 'Emma Wilson',\n    email: 'emma@example.com',\n    venue: 'Conference Room B',\n    date: TODAY.add({ days: 12 }),\n    timeSlot: '09:00-12:00',\n    status: 'Pending',\n    notes: 'Tentative hold for product workshop.',\n  },\n  {\n    id: 'BK-1006',\n    customer: 'Frank Müller',\n    email: 'frank@example.com',\n    venue: 'Main Hall',\n    date: TODAY.add({ days: 20 }),\n    timeSlot: '12:00-15:00',\n    status: 'Confirmed',\n    notes: 'Corporate gala dinner.',\n  },\n];\n\nconst formatDate = (date: DateValue) =>\n  date.toDate(tz).toLocaleDateString('en-US', {\n    year: 'numeric',\n    month: 'short',\n    day: 'numeric',\n  });\n\nconst TestApp = () => {\n  const [bookings, setBookings] = useState<Booking[]>(INITIAL_BOOKINGS);\n\n  // Filter state\n  const [dateFilter, setDateFilter] = useState<DateValue | null>(null);\n  const [venueQuery, setVenueQuery] = useState('');\n  const [statusFilter, setStatusFilter] = useState('all');\n\n  // Overlay state\n  const [detailBooking, setDetailBooking] = useState<Booking | null>(null);\n  const [editBooking, setEditBooking] = useState<Booking | null>(null);\n\n  const clearFilters = () => {\n    setDateFilter(null);\n    setVenueQuery('');\n    setStatusFilter('all');\n  };\n\n  const filterByTab = (tab: string) =>\n    bookings.filter(booking => {\n      // Tab filter\n      if (tab === 'today' && booking.date.compare(TODAY) !== 0) {\n        return false;\n      }\n      if (tab === 'week') {\n        const diff = booking.date.compare(TODAY);\n        if (diff < 0 || diff > 6) {\n          return false;\n        }\n      }\n      // Date filter\n      if (dateFilter && booking.date.compare(dateFilter) !== 0) {\n        return false;\n      }\n      // Venue filter\n      if (\n        venueQuery.trim() !== '' &&\n        !booking.venue.toLowerCase().includes(venueQuery.trim().toLowerCase())\n      ) {\n        return false;\n      }\n      // Status filter\n      if (statusFilter !== 'all' && booking.status !== statusFilter) {\n        return false;\n      }\n      return true;\n    });\n\n  const cancelBooking = (id: string) =>\n    setBookings(prev =>\n      prev.map(b => (b.id === id ? { ...b, status: 'Cancelled' } : b))\n    );\n\n  const addBooking = (booking: Booking) =>\n    setBookings(prev => [...prev, booking]);\n\n  const saveEdit = (updated: Booking) =>\n    setBookings(prev => prev.map(b => (b.id === updated.id ? updated : b)));\n\n  const renderTable = (tab: string) => {\n    const rows = filterByTab(tab);\n    return (\n      <Scrollable>\n      <Table aria-label=\"Bookings\" variant=\"rounded\">\n        <Table.Header>\n          <Table.Column rowHeader>Booking ID</Table.Column>\n          <Table.Column>Customer</Table.Column>\n          <Table.Column>Venue</Table.Column>\n          <Table.Column>Date</Table.Column>\n          <Table.Column>Time Slot</Table.Column>\n          <Table.Column>Status</Table.Column>\n          <Table.Column>Actions</Table.Column>\n        </Table.Header>\n        <Table.Body>\n          {rows.map(booking => (\n            <Table.Row key={booking.id} id={booking.id}>\n              <Table.Cell>{booking.id}</Table.Cell>\n              <Table.Cell>{booking.customer}</Table.Cell>\n              <Table.Cell>{booking.venue}</Table.Cell>\n              <Table.Cell>{formatDate(booking.date)}</Table.Cell>\n              <Table.Cell>{booking.timeSlot}</Table.Cell>\n              <Table.Cell>\n                <Badge variant={STATUS_VARIANT[booking.status]}>\n                  {booking.status}\n                </Badge>\n              </Table.Cell>\n              <Table.Cell>\n                <ActionMenu aria-label={`Actions for ${booking.id}`}>\n                  <ActionMenu.Item\n                    id=\"view\"\n                    onAction={() => setDetailBooking(booking)}\n                  >\n                    View Details\n                  </ActionMenu.Item>\n                  <ActionMenu.Item\n                    id=\"edit\"\n                    onAction={() => setEditBooking(booking)}\n                  >\n                    Edit\n                  </ActionMenu.Item>\n                  <ActionMenu.Item\n                    id=\"cancel\"\n                    variant=\"destructive\"\n                    onAction={() => cancelBooking(booking.id)}\n                  >\n                    Cancel Booking\n                  </ActionMenu.Item>\n                </ActionMenu>\n              </Table.Cell>\n            </Table.Row>\n          ))}\n        </Table.Body>\n      </Table>\n      </Scrollable>\n    );\n  };\n\n  return (\n    <Stack space={6}>\n      <Inline space={4} alignX=\"between\" alignY=\"center\">\n        <Headline level=\"1\">Booking Management</Headline>\n        <NewBookingDialog\n          onCreate={addBooking}\n          existingCount={bookings.length}\n        />\n      </Inline>\n\n      {/* Filter bar */}\n      <Inline space={4} alignY=\"bottom\">\n        <DatePicker\n          label=\"Date\"\n          value={dateFilter}\n          onChange={setDateFilter}\n          width={48}\n        />\n        <Autocomplete\n          label=\"Venue\"\n          value={venueQuery}\n          onChange={setVenueQuery}\n          onSubmit={(key: string | number | null) => {\n            if (key != null) {\n              setVenueQuery(String(key));\n            }\n          }}\n          width={64}\n        >\n          {VENUES.map(venue => (\n            <Autocomplete.Option key={venue} id={venue}>\n              {venue}\n            </Autocomplete.Option>\n          ))}\n        </Autocomplete>\n        <Select\n          label=\"Status\"\n          selectedKey={statusFilter}\n          onSelectionChange={key => setStatusFilter(String(key))}\n          width={48}\n        >\n          <Select.Option id=\"all\">All</Select.Option>\n          <Select.Option id=\"Confirmed\">Confirmed</Select.Option>\n          <Select.Option id=\"Pending\">Pending</Select.Option>\n          <Select.Option id=\"Cancelled\">Cancelled</Select.Option>\n        </Select>\n        <Button variant=\"secondary\" onPress={clearFilters}>\n          Clear Filters\n        </Button>\n      </Inline>\n\n      {/* Capacity alert */}\n      <SectionMessage variant=\"warning\">\n        <SectionMessage.Title>Capacity warning</SectionMessage.Title>\n        <SectionMessage.Content>\n          Main Hall has only 2 slots remaining for today.\n        </SectionMessage.Content>\n      </SectionMessage>\n\n      {/* Tabs + table */}\n      <Tabs aria-label=\"Booking views\" defaultSelectedKey=\"all\">\n        <Tabs.List aria-label=\"Booking views\">\n          <Tabs.Item id=\"all\">All Bookings</Tabs.Item>\n          <Tabs.Item id=\"today\">Today</Tabs.Item>\n          <Tabs.Item id=\"week\">This Week</Tabs.Item>\n        </Tabs.List>\n        <Tabs.TabPanel id=\"all\">{renderTable('all')}</Tabs.TabPanel>\n        <Tabs.TabPanel id=\"today\">{renderTable('today')}</Tabs.TabPanel>\n        <Tabs.TabPanel id=\"week\">{renderTable('week')}</Tabs.TabPanel>\n      </Tabs>\n\n      {/* Detail panel */}\n      <Drawer.Trigger\n        open={detailBooking != null}\n        onOpenChange={open => {\n          if (!open) {\n            setDetailBooking(null);\n          }\n        }}\n      >\n        <Drawer closeButton>\n        <Drawer.Title>Booking Details</Drawer.Title>\n        <Drawer.Content>\n          {detailBooking ? (\n            <Stack space={5}>\n              <Inline space={3} alignY=\"center\">\n                <Headline level=\"3\">{detailBooking.id}</Headline>\n                <Badge variant={STATUS_VARIANT[detailBooking.status]}>\n                  {detailBooking.status}\n                </Badge>\n              </Inline>\n\n              <Stack space={1}>\n                <Text weight=\"bold\">Customer</Text>\n                <Text>{detailBooking.customer}</Text>\n                <Text variant=\"muted\">{detailBooking.email}</Text>\n              </Stack>\n\n              <Stack space={1}>\n                <Text weight=\"bold\">Venue &amp; Schedule</Text>\n                <Text>{detailBooking.venue}</Text>\n                <Text variant=\"muted\">\n                  {formatDate(detailBooking.date)} · {detailBooking.timeSlot}\n                </Text>\n              </Stack>\n\n              <Stack space={1}>\n                <Text weight=\"bold\">Notes</Text>\n                <Text>{detailBooking.notes || 'No notes provided.'}</Text>\n              </Stack>\n\n              <Accordion allowsMultipleExpanded>\n                <Accordion.Item id=\"payment\">\n                  <Accordion.Header>Payment History</Accordion.Header>\n                  <Accordion.Content>\n                    <Text>\n                      No payments recorded yet. Invoice will be generated once\n                      the booking is confirmed.\n                    </Text>\n                  </Accordion.Content>\n                </Accordion.Item>\n                <Accordion.Item id=\"communication\">\n                  <Accordion.Header>Communication Log</Accordion.Header>\n                  <Accordion.Content>\n                    <Text>\n                      No messages exchanged yet. Customer correspondence will\n                      appear here.\n                    </Text>\n                  </Accordion.Content>\n                </Accordion.Item>\n              </Accordion>\n            </Stack>\n          ) : null}\n        </Drawer.Content>\n        <Drawer.Actions>\n          <Button slot=\"close\">Close</Button>\n        </Drawer.Actions>\n        </Drawer>\n      </Drawer.Trigger>\n\n      {/* Edit dialog */}\n      {editBooking ? (\n        <EditBookingDialog\n          booking={editBooking}\n          onClose={() => setEditBooking(null)}\n          onSave={saveEdit}\n        />\n      ) : null}\n    </Stack>\n  );\n};\n\ninterface NewBookingDialogProps {\n  onCreate: (booking: Booking) => void;\n  existingCount: number;\n}\n\nconst NewBookingDialog = ({ onCreate, existingCount }: NewBookingDialogProps) => (\n  <Dialog.Trigger>\n    <Button variant=\"primary\">New Booking</Button>\n    <Dialog size=\"medium\" closeButton>\n      {({ close }: { close: () => void }) => (\n        <>\n          <Dialog.Title>New Booking</Dialog.Title>\n          <Dialog.Content>\n            <Form\n              id=\"new-booking-form\"\n              onSubmit={event => {\n                event.preventDefault();\n                const data = Object.fromEntries(\n                  new FormData(event.currentTarget)\n                ) as Record<string, string>;\n\n                let date: DateValue = TODAY;\n                if (data.date) {\n                  try {\n                    date = parseDate(data.date);\n                  } catch {\n                    date = TODAY;\n                  }\n                }\n\n                onCreate({\n                  id: `BK-${1001 + existingCount}`,\n                  customer: data.customer ?? '',\n                  email: data.email ?? '',\n                  venue: data.venue || VENUES[0],\n                  date,\n                  timeSlot: data.timeSlot || TIME_SLOTS[0],\n                  status: 'Pending',\n                  notes: data.notes ?? '',\n                });\n                close();\n              }}\n            >\n              <Stack space={4}>\n                <TextField label=\"Customer Name\" name=\"customer\" required />\n                <TextField label=\"Customer Email\" name=\"email\" type=\"email\" />\n                <Select label=\"Venue\" name=\"venue\" defaultSelectedKey={VENUES[0]}>\n                  {VENUES.map(venue => (\n                    <Select.Option key={venue} id={venue}>\n                      {venue}\n                    </Select.Option>\n                  ))}\n                </Select>\n                <DatePicker label=\"Date\" name=\"date\" />\n                <Select\n                  label=\"Time Slot\"\n                  name=\"timeSlot\"\n                  defaultSelectedKey={TIME_SLOTS[0]}\n                >\n                  {TIME_SLOTS.map(slot => (\n                    <Select.Option key={slot} id={slot}>\n                      {slot}\n                    </Select.Option>\n                  ))}\n                </Select>\n                <TextArea label=\"Notes\" name=\"notes\" rows={3} />\n              </Stack>\n            </Form>\n          </Dialog.Content>\n          <Dialog.Actions>\n            <Button variant=\"secondary\" onPress={close}>\n              Cancel\n            </Button>\n            <Button variant=\"primary\" type=\"submit\" form=\"new-booking-form\">\n              Create Booking\n            </Button>\n          </Dialog.Actions>\n        </>\n      )}\n    </Dialog>\n  </Dialog.Trigger>\n);\n\ninterface EditBookingDialogProps {\n  booking: Booking;\n  onClose: () => void;\n  onSave: (booking: Booking) => void;\n}\n\nconst EditBookingDialog = ({\n  booking,\n  onClose,\n  onSave,\n}: EditBookingDialogProps) => {\n  const [customer, setCustomer] = useState(booking.customer);\n  const [status, setStatus] = useState<string>(booking.status);\n\n  return (\n    <Dialog\n      size=\"small\"\n      closeButton\n      open\n      onOpenChange={open => {\n        if (!open) {\n          onClose();\n        }\n      }}\n    >\n      <Dialog.Title>Edit Booking {booking.id}</Dialog.Title>\n      <Dialog.Content>\n        <Form\n          id=\"edit-booking-form\"\n          onSubmit={event => {\n            event.preventDefault();\n            onSave({ ...booking, customer, status: status as Status });\n            onClose();\n          }}\n        >\n          <Stack space={4}>\n            <TextField\n              label=\"Customer Name\"\n              value={customer}\n              onChange={setCustomer}\n              required\n            />\n            <Select\n              label=\"Status\"\n              selectedKey={status}\n              onSelectionChange={key => setStatus(String(key))}\n            >\n              <Select.Option id=\"Confirmed\">Confirmed</Select.Option>\n              <Select.Option id=\"Pending\">Pending</Select.Option>\n              <Select.Option id=\"Cancelled\">Cancelled</Select.Option>\n            </Select>\n          </Stack>\n        </Form>\n      </Dialog.Content>\n      <Dialog.Actions>\n        <Button variant=\"secondary\" onPress={onClose}>\n          Cancel\n        </Button>\n        <Button variant=\"primary\" type=\"submit\" form=\"edit-booking-form\">\n          Save Changes\n        </Button>\n      </Dialog.Actions>\n    </Dialog>\n  );\n};\n\nexport default TestApp;\n",
+  "assertions": {
+    "passed": [
+      {
+        "id": "a-import-marigold",
+        "description": "Imports from @marigold/components",
+        "severity": "required",
+        "passed": true,
+        "evidence": "import from \"@marigold/components\" found"
+      },
+      {
+        "id": "a-table",
+        "description": "Table component for bookings",
+        "severity": "required",
+        "passed": true,
+        "evidence": "<Table> found"
+      },
+      {
+        "id": "a-table-header",
+        "description": "Table.Header sub-component",
+        "severity": "required",
+        "passed": true,
+        "evidence": "<Table.Header> found"
+      },
+      {
+        "id": "a-table-body",
+        "description": "Table.Body sub-component",
+        "severity": "required",
+        "passed": true,
+        "evidence": "<Table.Body> found"
+      },
+      {
+        "id": "a-date-picker",
+        "description": "DatePicker for date filtering",
+        "severity": "required",
+        "passed": true,
+        "evidence": "<DatePicker> found"
+      },
+      {
+        "id": "a-combobox",
+        "description": "ComboBox or SearchField for venue search",
+        "severity": "required",
+        "passed": true,
+        "evidence": "matched: <Autocomplete> found"
+      },
+      {
+        "id": "a-dialog",
+        "description": "Dialog for create booking form",
+        "severity": "required",
+        "passed": true,
+        "evidence": "<Dialog> found"
+      },
+      {
+        "id": "a-tabs",
+        "description": "Tabs for booking views",
+        "severity": "required",
+        "passed": true,
+        "evidence": "<Tabs> found"
+      },
+      {
+        "id": "a-badge",
+        "description": "Badge for booking status",
+        "severity": "required",
+        "passed": true,
+        "evidence": "<Badge> found"
+      },
+      {
+        "id": "a-button",
+        "description": "Button component",
+        "severity": "required",
+        "passed": true,
+        "evidence": "<Button> found"
+      },
+      {
+        "id": "a-select",
+        "description": "Select for status filter / form dropdowns",
+        "severity": "required",
+        "passed": true,
+        "evidence": "<Select> found"
+      },
+      {
+        "id": "a-text-field",
+        "description": "TextField in booking form",
+        "severity": "required",
+        "passed": true,
+        "evidence": "<TextField> found"
+      },
+      {
+        "id": "a-drawer",
+        "description": "Drawer for booking detail view",
+        "severity": "recommended",
+        "passed": true,
+        "evidence": "<Drawer> found"
+      },
+      {
+        "id": "a-accordion",
+        "description": "Accordion for detail sections",
+        "severity": "recommended",
+        "passed": true,
+        "evidence": "<Accordion> found"
+      },
+      {
+        "id": "a-section-message",
+        "description": "SectionMessage for capacity alerts",
+        "severity": "required",
+        "passed": true,
+        "evidence": "<SectionMessage> found"
+      },
+      {
+        "id": "a-headline",
+        "description": "Headline for page title",
+        "severity": "recommended",
+        "passed": true,
+        "evidence": "<Headline> found"
+      },
+      {
+        "id": "a-no-onclick-on-marigold",
+        "description": "No onClick on Marigold Button components",
+        "severity": "recommended",
+        "passed": true,
+        "evidence": "\"/<Button[^>]*onClick/\" correctly absent"
+      },
+      {
+        "id": "a-form",
+        "description": "Form component in create dialog",
+        "severity": "required",
+        "passed": true,
+        "evidence": "<Form> found"
+      },
+      {
+        "id": "a-textarea",
+        "description": "TextArea for booking notes",
+        "severity": "recommended",
+        "passed": true,
+        "evidence": "<TextArea> found"
+      }
+    ],
+    "failed": [
+      {
+        "id": "a-menu",
+        "description": "Menu for row actions",
+        "severity": "required",
+        "passed": false,
+        "evidence": "<Menu> not found"
+      }
+    ],
+    "passRate": 0.95,
+    "requiredPassRate": 0.9333,
+    "weightedPassRate": 0.9385,
+    "total": 20
+  },
+  "validatePackageVersion": "0.0.1",
+  "playwrightVersion": null,
+  "resolvedModelId": "claude-opus-4-8",
+  "claudeCliVersion": "2.1.193 (Claude Code)",
+  "sessionId": "fc4a406e-2b7f-431a-8291-c81fcf6bbdb1"
+}

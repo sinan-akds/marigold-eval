@@ -1,41 +1,30 @@
-'use client';
-
-import { useState } from 'react';
+import { useState, useMemo } from 'react';
 import {
-  Autocomplete,
-  Badge,
   Button,
+  Stack,
+  Inline,
+  Columns,
+  TextField,
+  DatePicker,
+  Select,
+  Autocomplete,
+  Table,
+  Badge,
   Dialog,
   Drawer,
-  Form,
-  Inline,
-  Inset,
-  Select,
+  Menu,
+  ActionMenu,
+  TextArea,
+  Accordion,
   SectionMessage,
-  Stack,
-  Table,
   Tabs,
   Text,
-  TextField,
-  TextArea,
-  DatePicker,
-  Accordion,
-  Menu,
+  Headline,
+  Scrollable,
+  AppLayout,
+  Container,
 } from '@marigold/components';
 import { parseDate } from '@internationalized/date';
-
-interface Booking {
-  id: string;
-  customer: string;
-  email: string;
-  venue: string;
-  date: string;
-  timeSlot: string;
-  status: 'Confirmed' | 'Pending' | 'Cancelled';
-  notes: string;
-  paymentHistory: string[];
-  communicationLog: string[];
-}
 
 const VENUES = [
   'Main Hall',
@@ -47,663 +36,495 @@ const VENUES = [
 
 const TIME_SLOTS = ['09:00-12:00', '12:00-15:00', '15:00-18:00', '18:00-21:00'];
 
+type BookingStatus = 'Confirmed' | 'Pending' | 'Cancelled';
+
+interface Booking {
+  id: string;
+  customer: string;
+  email: string;
+  venue: string;
+  date: string;
+  timeSlot: string;
+  status: BookingStatus;
+  notes: string;
+}
+
 const SAMPLE_BOOKINGS: Booking[] = [
   {
     id: 'BK-001',
     customer: 'John Smith',
     email: 'john@example.com',
     venue: 'Main Hall',
-    date: '2026-06-25',
+    date: '2026-06-28',
     timeSlot: '09:00-12:00',
     status: 'Confirmed',
-    notes: 'Wedding reception setup needed',
-    paymentHistory: ['$5000 paid on 2026-06-01'],
-    communicationLog: ['Confirmed on 2026-06-15', 'Reminder sent on 2026-06-22'],
+    notes: 'Wedding reception',
   },
   {
     id: 'BK-002',
-    customer: 'Alice Johnson',
-    email: 'alice@example.com',
+    customer: 'Sarah Johnson',
+    email: 'sarah@example.com',
     venue: 'Conference Room A',
-    date: '2026-06-23',
+    date: '2026-06-28',
     timeSlot: '14:00-17:00',
     status: 'Pending',
-    notes: 'Board meeting - catering needed',
-    paymentHistory: ['Awaiting payment'],
-    communicationLog: ['Booking requested on 2026-06-20'],
+    notes: 'Client meeting',
   },
   {
     id: 'BK-003',
-    customer: 'Robert Brown',
-    email: 'robert@example.com',
+    customer: 'Mike Davis',
+    email: 'mike@example.com',
     venue: 'Workshop Studio',
-    date: '2026-06-24',
-    timeSlot: '10:00-13:00',
+    date: '2026-06-28',
+    timeSlot: '12:00-15:00',
     status: 'Confirmed',
-    notes: 'Art workshop - materials provided',
-    paymentHistory: ['$1500 paid on 2026-06-10'],
-    communicationLog: [
-      'Confirmed on 2026-06-12',
-      'Materials list sent on 2026-06-18',
-    ],
+    notes: 'Team training',
   },
   {
     id: 'BK-004',
-    customer: 'Sarah Davis',
-    email: 'sarah@example.com',
+    customer: 'Emma Wilson',
+    email: 'emma@example.com',
     venue: 'Rooftop Terrace',
-    date: '2026-06-20',
+    date: '2026-06-27',
     timeSlot: '18:00-21:00',
     status: 'Cancelled',
-    notes: 'Weather-related cancellation',
-    paymentHistory: ['$3000 refunded on 2026-06-22'],
-    communicationLog: [
-      'Booking cancelled on 2026-06-22',
-      'Refund processed',
-    ],
+    notes: 'Corporate event',
   },
   {
     id: 'BK-005',
-    customer: 'Michael Wilson',
-    email: 'michael@example.com',
+    customer: 'David Brown',
+    email: 'david@example.com',
     venue: 'Conference Room B',
-    date: '2026-06-26',
+    date: '2026-06-29',
     timeSlot: '09:00-12:00',
-    status: 'Confirmed',
-    notes: 'Annual conference - 200+ attendees',
-    paymentHistory: ['$8000 paid on 2026-06-05'],
-    communicationLog: [
-      'Confirmed on 2026-06-08',
-      'Final attendee count received on 2026-06-21',
-    ],
+    status: 'Pending',
+    notes: 'Seminar',
   },
   {
     id: 'BK-006',
-    customer: 'Emma Martinez',
-    email: 'emma@example.com',
+    customer: 'Lisa Anderson',
+    email: 'lisa@example.com',
     venue: 'Main Hall',
-    date: '2026-06-22',
+    date: '2026-06-30',
     timeSlot: '15:00-18:00',
-    status: 'Pending',
-    notes: 'Corporate event - special requests pending',
-    paymentHistory: ['$2000 paid on 2026-06-15'],
-    communicationLog: ['Booking confirmed on 2026-06-18'],
+    status: 'Confirmed',
+    notes: 'Annual dinner',
   },
 ];
 
-const getStatusVariant = (status: string) => {
-  switch (status) {
-    case 'Confirmed':
-      return 'success';
-    case 'Pending':
-      return 'warning';
-    case 'Cancelled':
-      return 'default';
-    default:
-      return 'default';
-  }
-};
-
-const formatDate = (dateStr: string) => {
-  const date = new Date(dateStr);
-  return date.toLocaleDateString('en-US', {
-    year: 'numeric',
-    month: 'short',
-    day: 'numeric',
-  });
-};
-
-const isToday = (dateStr: string) => {
-  const today = new Date();
-  const bookingDate = new Date(dateStr);
-  return (
-    today.getFullYear() === bookingDate.getFullYear() &&
-    today.getMonth() === bookingDate.getMonth() &&
-    today.getDate() === bookingDate.getDate()
-  );
-};
-
-const isThisWeek = (dateStr: string) => {
-  const today = new Date();
-  const bookingDate = new Date(dateStr);
-  const currentDay = today.getDay();
-  const distance = bookingDate.getTime() - today.getTime();
-  const daysAhead = Math.ceil(distance / (1000 * 60 * 60 * 24));
-  const dayOfWeek = bookingDate.getDay();
-
-  return (
-    daysAhead >= 0 &&
-    daysAhead <= 6 - currentDay &&
-    dayOfWeek >= currentDay
-  );
-};
-
 const TestApp = () => {
   const [bookings, setBookings] = useState<Booking[]>(SAMPLE_BOOKINGS);
-  const [filterDate, setFilterDate] = useState<string | null>(null);
-  const [filterVenue, setFilterVenue] = useState<string | null>(null);
+  const [filterDate, setFilterDate] = useState<any>(null);
+  const [filterVenue, setFilterVenue] = useState<string>('');
   const [filterStatus, setFilterStatus] = useState<string>('All');
-  const [activeTab, setActiveTab] = useState('all');
+  const [activeTab, setActiveTab] = useState<string>('all');
   const [selectedBooking, setSelectedBooking] = useState<Booking | null>(null);
-  const [showDetailPanel, setShowDetailPanel] = useState(false);
-  const [newBookingData, setNewBookingData] = useState({
-    customer: '',
-    email: '',
+  const [detailDrawerOpen, setDetailDrawerOpen] = useState(false);
+  const [showNewBookingDialog, setShowNewBookingDialog] = useState(false);
+
+  const [formData, setFormData] = useState({
+    customerName: '',
+    customerEmail: '',
     venue: '',
     date: null as any,
     timeSlot: '',
     notes: '',
   });
 
-  const filteredBookings = bookings.filter(booking => {
-    let matches = true;
+  const today = new Date();
+  const todayStr = `${today.getFullYear()}-${String(today.getMonth() + 1).padStart(2, '0')}-${String(today.getDate()).padStart(2, '0')}`;
+  const weekAgoStr = new Date(today.getTime() - 7 * 24 * 60 * 60 * 1000);
+  const weekAgoFormatted = `${weekAgoStr.getFullYear()}-${String(weekAgoStr.getMonth() + 1).padStart(2, '0')}-${String(weekAgoStr.getDate()).padStart(2, '0')}`;
+
+  const filteredBookings = useMemo(() => {
+    let result = bookings;
 
     if (activeTab === 'today') {
-      matches = matches && isToday(booking.date);
+      result = result.filter(b => b.date === todayStr);
     } else if (activeTab === 'week') {
-      matches = matches && isThisWeek(booking.date);
+      result = result.filter(b => {
+        const bookingDate = new Date(b.date);
+        return bookingDate >= weekAgoStr && bookingDate <= today;
+      });
     }
 
     if (filterDate) {
-      matches = matches && booking.date === filterDate;
+      const filterDateStr = `${filterDate.year}-${String(filterDate.month).padStart(2, '0')}-${String(filterDate.day).padStart(2, '0')}`;
+      result = result.filter(b => b.date === filterDateStr);
     }
 
     if (filterVenue) {
-      matches = matches && booking.venue === filterVenue;
+      result = result.filter(b => b.venue.toLowerCase().includes(filterVenue.toLowerCase()));
     }
 
     if (filterStatus !== 'All') {
-      matches = matches && booking.status === filterStatus;
+      result = result.filter(b => b.status === filterStatus);
     }
 
-    return matches;
-  });
+    return result;
+  }, [bookings, filterDate, filterVenue, filterStatus, activeTab]);
 
-  const handleCreateBooking = (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-    const formData = new FormData(e.currentTarget);
-    const newBooking: Booking = {
-      id: `BK-${String(bookings.length + 1).padStart(3, '0')}`,
-      customer: formData.get('customer') as string,
-      email: formData.get('email') as string,
-      venue: formData.get('venue') as string,
-      date: newBookingData.date
-        ? `${newBookingData.date.year}-${String(newBookingData.date.month).padStart(2, '0')}-${String(newBookingData.date.day).padStart(2, '0')}`
-        : new Date().toISOString().split('T')[0],
-      timeSlot: formData.get('timeSlot') as string,
-      status: 'Pending',
-      notes: formData.get('notes') as string,
-      paymentHistory: ['Awaiting payment'],
-      communicationLog: [
-        `Booking created on ${new Date().toLocaleDateString()}`,
-      ],
-    };
-    setBookings([...bookings, newBooking]);
-    setNewBookingData({
-      customer: '',
-      email: '',
+  const handleClearFilters = () => {
+    setFilterDate(null);
+    setFilterVenue('');
+    setFilterStatus('All');
+    setActiveTab('all');
+  };
+
+  const handleOpenNewBooking = () => {
+    setFormData({
+      customerName: '',
+      customerEmail: '',
       venue: '',
       date: null,
       timeSlot: '',
       notes: '',
     });
+    setShowNewBookingDialog(true);
   };
 
-  const handleClearFilters = () => {
-    setFilterDate(null);
-    setFilterVenue(null);
-    setFilterStatus('All');
+  const handleCreateBooking = () => {
+    if (formData.customerName && formData.venue && formData.date && formData.timeSlot) {
+      const newBooking: Booking = {
+        id: `BK-${String(bookings.length + 1).padStart(3, '0')}`,
+        customer: formData.customerName,
+        email: formData.customerEmail,
+        venue: formData.venue,
+        date: `${formData.date.year}-${String(formData.date.month).padStart(2, '0')}-${String(formData.date.day).padStart(2, '0')}`,
+        timeSlot: formData.timeSlot,
+        status: 'Pending',
+        notes: formData.notes,
+      };
+      setBookings([...bookings, newBooking]);
+      setShowNewBookingDialog(false);
+    }
+  };
+
+  const handleViewDetails = (booking: Booking) => {
+    setSelectedBooking(booking);
+    setDetailDrawerOpen(true);
+  };
+
+  const handleEditBooking = (booking: Booking) => {
+    alert(`Edit booking: ${booking.id}`);
   };
 
   const handleCancelBooking = (bookingId: string) => {
-    setBookings(
-      bookings.map(b =>
-        b.id === bookingId ? { ...b, status: 'Cancelled' as const } : b
-      )
-    );
-    setShowDetailPanel(false);
+    setBookings(bookings.map(b =>
+      b.id === bookingId ? { ...b, status: 'Cancelled' } : b
+    ));
   };
 
-  const venueCapacity: { [key: string]: number } = {
-    'Main Hall': 2,
-    'Conference Room A': 5,
-    'Conference Room B': 3,
-    'Rooftop Terrace': 1,
-    'Workshop Studio': 4,
-  };
-
-  const checkCapacity = () => {
-    const today = new Date().toISOString().split('T')[0];
-    for (const venue of VENUES) {
-      const todayBookings = bookings.filter(
-        b => b.venue === venue && b.date === today && b.status !== 'Cancelled'
-      );
-      if (todayBookings.length >= venueCapacity[venue]) {
-        return venue;
-      }
+  const getStatusVariant = (status: BookingStatus) => {
+    switch (status) {
+      case 'Confirmed':
+        return 'success';
+      case 'Pending':
+        return 'warning';
+      case 'Cancelled':
+        return 'default';
+      default:
+        return 'default';
     }
-    return null;
   };
 
-  const nearFullVenue = checkCapacity();
+  const capacityAlerts = useMemo(() => {
+    const mainHallBookings = filteredBookings.filter(
+      b => b.venue === 'Main Hall' && b.date === todayStr && b.status !== 'Cancelled'
+    ).length;
+    const maxCapacity = 6;
+    const remaining = maxCapacity - mainHallBookings;
+
+    if (remaining <= 2 && remaining > 0) {
+      return [
+        {
+          venue: 'Main Hall',
+          remaining,
+        },
+      ];
+    }
+    return [];
+  }, [filteredBookings]);
 
   return (
-    <Stack space={6}>
-      <Inset space={6}>
-        <Stack space={6}>
-          <Text weight="bold" size="large">
-            Booking Management
-          </Text>
+    <AppLayout>
+      <AppLayout.Main>
+        <Stack space={4}>
+          <Headline level="1">Booking Management</Headline>
 
-          {nearFullVenue && (
-            <SectionMessage variant="warning" closeButton>
-              <SectionMessage.Title>Venue Capacity Alert</SectionMessage.Title>
-              <SectionMessage.Content>
-                {nearFullVenue} has only {venueCapacity[nearFullVenue] - bookings.filter(b => b.venue === nearFullVenue && b.date === new Date().toISOString().split('T')[0] && b.status !== 'Cancelled').length} slots remaining for today.
-              </SectionMessage.Content>
-            </SectionMessage>
-          )}
+      {capacityAlerts.length > 0 && capacityAlerts.map(alert => (
+        <SectionMessage key={alert.venue} variant="warning">
+          <SectionMessage.Title>Capacity Alert</SectionMessage.Title>
+          <SectionMessage.Content>
+            {alert.venue} has only {alert.remaining} slot{alert.remaining !== 1 ? 's' : ''} remaining for today.
+          </SectionMessage.Content>
+        </SectionMessage>
+      ))}
 
-          <Inline space={2}>
-            <Dialog.Trigger>
-              <Button variant="primary">New Booking</Button>
-              <Dialog size="small">
-                <Dialog.Title>Create New Booking</Dialog.Title>
-                <Dialog.Content>
-                  <Form onSubmit={handleCreateBooking}>
-                    <Stack space={4} alignX="left">
-                      <TextField
-                        label="Customer Name"
-                        name="customer"
-                        required
-                        autoFocus
-                      />
-                      <TextField
-                        label="Customer Email"
-                        name="email"
-                        type="email"
-                      />
-                      <Select
-                        label="Venue"
-                        name="venue"
-                        required
-                        onSelectionChange={(key) =>
-                          setNewBookingData({
-                            ...newBookingData,
-                            venue: key as string,
-                          })
-                        }
-                      >
-                        {VENUES.map(venue => (
-                          <Select.Option key={venue} id={venue}>
-                            {venue}
-                          </Select.Option>
-                        ))}
-                      </Select>
-                      <DatePicker
-                        label="Date"
-                        value={newBookingData.date}
-                        onChange={date =>
-                          setNewBookingData({ ...newBookingData, date })
-                        }
-                      />
-                      <Select
-                        label="Time Slot"
-                        name="timeSlot"
-                        required
-                        onSelectionChange={(key) =>
-                          setNewBookingData({
-                            ...newBookingData,
-                            timeSlot: key as string,
-                          })
-                        }
-                      >
-                        {TIME_SLOTS.map(slot => (
-                          <Select.Option key={slot} id={slot}>
-                            {slot}
-                          </Select.Option>
-                        ))}
-                      </Select>
-                      <TextArea
-                        label="Notes"
-                        name="notes"
-                        description="Optional booking notes"
-                      />
-                      <Inline space={2} alignX="right">
-                        <Button variant="secondary" slot="close">
-                          Cancel
-                        </Button>
-                        <Button variant="primary" type="submit" slot="close">
-                          Create Booking
-                        </Button>
-                      </Inline>
-                    </Stack>
-                  </Form>
-                </Dialog.Content>
-              </Dialog>
-            </Dialog.Trigger>
-          </Inline>
-
-          <Stack space={4}>
-            <Text weight="bold">Filters</Text>
-            <Inline space={2}>
-              <DatePicker
-                label="Date"
-                value={filterDate ? parseDate(filterDate) : null}
-                onChange={(date) =>
-                  setFilterDate(
-                    date
-                      ? `${date.year}-${String(date.month).padStart(2, '0')}-${String(date.day).padStart(2, '0')}`
-                      : null
-                  )
-                }
-              />
-              <Autocomplete
-                label="Venue"
-                placeholder="Search venues..."
-                onSelectionChange={(key) =>
-                  setFilterVenue(key as string | null)
-                }
-              >
-                {VENUES.map(venue => (
-                  <Autocomplete.Option key={venue} id={venue}>
-                    {venue}
-                  </Autocomplete.Option>
-                ))}
-              </Autocomplete>
-              <Select
-                label="Status"
-                onSelectionChange={(key) => setFilterStatus(key as string)}
-              >
-                <Select.Option id="All">All</Select.Option>
-                <Select.Option id="Confirmed">Confirmed</Select.Option>
-                <Select.Option id="Pending">Pending</Select.Option>
-                <Select.Option id="Cancelled">Cancelled</Select.Option>
-              </Select>
-              <Button variant="secondary" onPress={handleClearFilters}>
-                Clear Filters
-              </Button>
-            </Inline>
-          </Stack>
-
-          <Tabs aria-label="booking-tabs" selectedKey={activeTab} onSelectionChange={(key) => setActiveTab(key as string)}>
-            <Tabs.List aria-label="Booking views">
-              <Tabs.Item id="all">All Bookings</Tabs.Item>
-              <Tabs.Item id="today">Today</Tabs.Item>
-              <Tabs.Item id="week">This Week</Tabs.Item>
-            </Tabs.List>
-
-            <Tabs.TabPanel id="all">
-              <Stack space={4}>
-                <Table aria-label="Bookings table">
-                  <Table.Header>
-                    <Table.Column>Booking ID</Table.Column>
-                    <Table.Column>Customer</Table.Column>
-                    <Table.Column>Venue</Table.Column>
-                    <Table.Column>Date</Table.Column>
-                    <Table.Column>Time Slot</Table.Column>
-                    <Table.Column>Status</Table.Column>
-                    <Table.Column>Actions</Table.Column>
-                  </Table.Header>
-                  <Table.Body items={filteredBookings}>
-                    {filteredBookings.map(booking => (
-                      <Table.Row key={booking.id}>
-                        <Table.Cell>{booking.id}</Table.Cell>
-                        <Table.Cell>{booking.customer}</Table.Cell>
-                        <Table.Cell>{booking.venue}</Table.Cell>
-                        <Table.Cell>{formatDate(booking.date)}</Table.Cell>
-                        <Table.Cell>{booking.timeSlot}</Table.Cell>
-                        <Table.Cell>
-                          <Badge variant={getStatusVariant(booking.status)}>
-                            {booking.status}
-                          </Badge>
-                        </Table.Cell>
-                        <Table.Cell>
-                          <Menu label="..." size="small">
-                            <Menu.Item
-                              id="view"
-                              onAction={() => {
-                                setSelectedBooking(booking);
-                                setShowDetailPanel(true);
-                              }}
-                            >
-                              View Details
-                            </Menu.Item>
-                            <Menu.Item id="edit">Edit</Menu.Item>
-                            <Menu.Item
-                              id="cancel"
-                              variant="destructive"
-                              onAction={() => handleCancelBooking(booking.id)}
-                            >
-                              Cancel Booking
-                            </Menu.Item>
-                          </Menu>
-                        </Table.Cell>
-                      </Table.Row>
-                    ))}
-                  </Table.Body>
-                </Table>
-              </Stack>
-            </Tabs.TabPanel>
-
-            <Tabs.TabPanel id="today">
-              <Stack space={4}>
-                <Table aria-label="Today's bookings table">
-                  <Table.Header>
-                    <Table.Column>Booking ID</Table.Column>
-                    <Table.Column>Customer</Table.Column>
-                    <Table.Column>Venue</Table.Column>
-                    <Table.Column>Date</Table.Column>
-                    <Table.Column>Time Slot</Table.Column>
-                    <Table.Column>Status</Table.Column>
-                    <Table.Column>Actions</Table.Column>
-                  </Table.Header>
-                  <Table.Body items={filteredBookings}>
-                    {filteredBookings.map(booking => (
-                      <Table.Row key={booking.id}>
-                        <Table.Cell>{booking.id}</Table.Cell>
-                        <Table.Cell>{booking.customer}</Table.Cell>
-                        <Table.Cell>{booking.venue}</Table.Cell>
-                        <Table.Cell>{formatDate(booking.date)}</Table.Cell>
-                        <Table.Cell>{booking.timeSlot}</Table.Cell>
-                        <Table.Cell>
-                          <Badge variant={getStatusVariant(booking.status)}>
-                            {booking.status}
-                          </Badge>
-                        </Table.Cell>
-                        <Table.Cell>
-                          <Menu label="..." size="small">
-                            <Menu.Item
-                              id="view"
-                              onAction={() => {
-                                setSelectedBooking(booking);
-                                setShowDetailPanel(true);
-                              }}
-                            >
-                              View Details
-                            </Menu.Item>
-                            <Menu.Item id="edit">Edit</Menu.Item>
-                            <Menu.Item
-                              id="cancel"
-                              variant="destructive"
-                              onAction={() => handleCancelBooking(booking.id)}
-                            >
-                              Cancel Booking
-                            </Menu.Item>
-                          </Menu>
-                        </Table.Cell>
-                      </Table.Row>
-                    ))}
-                  </Table.Body>
-                </Table>
-              </Stack>
-            </Tabs.TabPanel>
-
-            <Tabs.TabPanel id="week">
-              <Stack space={4}>
-                <Table aria-label="This week's bookings table">
-                  <Table.Header>
-                    <Table.Column>Booking ID</Table.Column>
-                    <Table.Column>Customer</Table.Column>
-                    <Table.Column>Venue</Table.Column>
-                    <Table.Column>Date</Table.Column>
-                    <Table.Column>Time Slot</Table.Column>
-                    <Table.Column>Status</Table.Column>
-                    <Table.Column>Actions</Table.Column>
-                  </Table.Header>
-                  <Table.Body items={filteredBookings}>
-                    {filteredBookings.map(booking => (
-                      <Table.Row key={booking.id}>
-                        <Table.Cell>{booking.id}</Table.Cell>
-                        <Table.Cell>{booking.customer}</Table.Cell>
-                        <Table.Cell>{booking.venue}</Table.Cell>
-                        <Table.Cell>{formatDate(booking.date)}</Table.Cell>
-                        <Table.Cell>{booking.timeSlot}</Table.Cell>
-                        <Table.Cell>
-                          <Badge variant={getStatusVariant(booking.status)}>
-                            {booking.status}
-                          </Badge>
-                        </Table.Cell>
-                        <Table.Cell>
-                          <Menu label="..." size="small">
-                            <Menu.Item
-                              id="view"
-                              onAction={() => {
-                                setSelectedBooking(booking);
-                                setShowDetailPanel(true);
-                              }}
-                            >
-                              View Details
-                            </Menu.Item>
-                            <Menu.Item id="edit">Edit</Menu.Item>
-                            <Menu.Item
-                              id="cancel"
-                              variant="destructive"
-                              onAction={() => handleCancelBooking(booking.id)}
-                            >
-                              Cancel Booking
-                            </Menu.Item>
-                          </Menu>
-                        </Table.Cell>
-                      </Table.Row>
-                    ))}
-                  </Table.Body>
-                </Table>
-              </Stack>
-            </Tabs.TabPanel>
-          </Tabs>
-        </Stack>
-      </Inset>
-
-      {showDetailPanel && selectedBooking && (
-        <Drawer.Trigger
-          defaultOpen={true}
-          onOpenChange={(open) => {
-            if (!open) setShowDetailPanel(false);
-          }}
+      <Columns columns={[2, 2, 2, 'fit']} space={3} collapseAt="48em">
+        <DatePicker
+          label="Date"
+          value={filterDate}
+          onChange={setFilterDate}
+          width={40}
+        />
+        <Autocomplete
+          label="Venue"
+          value={filterVenue}
+          onChange={setFilterVenue}
+          menuTrigger="focus"
         >
-          <div />
-          <Drawer>
-            <Stack space={6}>
-              <Stack space={2}>
-                <Text weight="bold">Booking Details</Text>
-                <Inline space={2}>
-                  <Text>
-                    <strong>ID:</strong> {selectedBooking.id}
-                  </Text>
-                  <Badge variant={getStatusVariant(selectedBooking.status)}>
-                    {selectedBooking.status}
-                  </Badge>
-                </Inline>
-              </Stack>
+          {VENUES.map(venue => (
+            <Autocomplete.Option key={venue} id={venue}>
+              {venue}
+            </Autocomplete.Option>
+          ))}
+        </Autocomplete>
+        <Select
+          label="Status"
+          selectedKey={filterStatus}
+          onSelectionChange={key => setFilterStatus(String(key))}
+        >
+          <Select.Option id="All">All</Select.Option>
+          <Select.Option id="Confirmed">Confirmed</Select.Option>
+          <Select.Option id="Pending">Pending</Select.Option>
+          <Select.Option id="Cancelled">Cancelled</Select.Option>
+        </Select>
+        <Button
+          variant="secondary"
+          onPress={handleClearFilters}
+        >
+          Clear Filters
+        </Button>
+      </Columns>
 
-              <Stack space={4}>
-                <Stack space={1}>
-                  <Text weight="bold">Customer Information</Text>
-                  <Text>
-                    <strong>Name:</strong> {selectedBooking.customer}
-                  </Text>
-                  <Text>
-                    <strong>Email:</strong> {selectedBooking.email}
-                  </Text>
-                </Stack>
+      <Inline space={3} alignY="input" alignX="between">
+        <Tabs
+          aria-label="booking-tabs"
+          selectedKey={activeTab}
+          onSelectionChange={key => setActiveTab(String(key))}
+        >
+          <Tabs.List aria-label="Booking views">
+            <Tabs.Item id="all">All Bookings</Tabs.Item>
+            <Tabs.Item id="today">Today</Tabs.Item>
+            <Tabs.Item id="week">This Week</Tabs.Item>
+          </Tabs.List>
+        </Tabs>
+        <Button
+          variant="primary"
+          onPress={handleOpenNewBooking}
+        >
+          New Booking
+        </Button>
+      </Inline>
 
-                <Stack space={1}>
-                  <Text weight="bold">Booking Details</Text>
-                  <Text>
-                    <strong>Venue:</strong> {selectedBooking.venue}
-                  </Text>
-                  <Text>
-                    <strong>Date:</strong> {formatDate(selectedBooking.date)}
-                  </Text>
-                  <Text>
-                    <strong>Time Slot:</strong> {selectedBooking.timeSlot}
-                  </Text>
-                </Stack>
-
-                {selectedBooking.notes && (
-                  <Stack space={1}>
-                    <Text weight="bold">Notes</Text>
-                    <Text>{selectedBooking.notes}</Text>
-                  </Stack>
+          <Scrollable>
+            <Table aria-label="Bookings table">
+              <Table.Header>
+                <Table.Column rowHeader>Booking ID</Table.Column>
+                <Table.Column>Customer</Table.Column>
+                <Table.Column>Venue</Table.Column>
+                <Table.Column>Date</Table.Column>
+                <Table.Column>Time Slot</Table.Column>
+                <Table.Column>Status</Table.Column>
+                <Table.Column>Actions</Table.Column>
+              </Table.Header>
+              <Table.Body items={filteredBookings}>
+                {booking => (
+                  <Table.Row key={booking.id}>
+                    <Table.Cell>{booking.id}</Table.Cell>
+                    <Table.Cell>{booking.customer}</Table.Cell>
+                    <Table.Cell>{booking.venue}</Table.Cell>
+                    <Table.Cell>{booking.date}</Table.Cell>
+                    <Table.Cell>{booking.timeSlot}</Table.Cell>
+                    <Table.Cell>
+                      <Badge variant={getStatusVariant(booking.status)}>
+                        {booking.status}
+                      </Badge>
+                    </Table.Cell>
+                    <Table.Cell>
+                      <Menu label="Actions" onAction={action => {
+                        if (action === `view-${booking.id}`) handleViewDetails(booking);
+                        else if (action === `edit-${booking.id}`) handleEditBooking(booking);
+                        else if (action === `cancel-${booking.id}`) handleCancelBooking(booking.id);
+                      }}>
+                        <Menu.Item id={`view-${booking.id}`}>
+                          View Details
+                        </Menu.Item>
+                        <Menu.Item id={`edit-${booking.id}`}>
+                          Edit
+                        </Menu.Item>
+                        <Menu.Item id={`cancel-${booking.id}`} variant="destructive">
+                          Cancel Booking
+                        </Menu.Item>
+                      </Menu>
+                    </Table.Cell>
+                  </Table.Row>
                 )}
+              </Table.Body>
+            </Table>
+          </Scrollable>
 
-                <Accordion>
-                  <Accordion.Item id="payment">
-                    <Accordion.Header>
-                      Payment History (
-                      {selectedBooking.paymentHistory.length})
-                    </Accordion.Header>
-                    <Accordion.Content>
-                      <Stack space={2}>
-                        {selectedBooking.paymentHistory.map(
-                          (payment, idx) => (
-                            <Text key={idx}>{payment}</Text>
-                          )
-                        )}
-                      </Stack>
-                    </Accordion.Content>
-                  </Accordion.Item>
-                  <Accordion.Item id="communication">
-                    <Accordion.Header>
-                      Communication Log (
-                      {selectedBooking.communicationLog.length})
-                    </Accordion.Header>
-                    <Accordion.Content>
-                      <Stack space={2}>
-                        {selectedBooking.communicationLog.map((log, idx) => (
-                          <Text key={idx}>{log}</Text>
-                        ))}
-                      </Stack>
-                    </Accordion.Content>
-                  </Accordion.Item>
-                </Accordion>
+      <Dialog
+        size="small"
+        open={showNewBookingDialog}
+        onOpenChange={setShowNewBookingDialog}
+        closeButton
+      >
+        <Dialog.Title>Create New Booking</Dialog.Title>
+        <Dialog.Content>
+          <Stack space={3}>
+            <TextField
+              label="Customer Name"
+              required
+              value={formData.customerName}
+              onChange={value => setFormData({ ...formData, customerName: value })}
+              placeholder="Enter customer name"
+            />
+            <TextField
+              label="Customer Email"
+              type="email"
+              value={formData.customerEmail}
+              onChange={value => setFormData({ ...formData, customerEmail: value })}
+              placeholder="Enter email address"
+            />
+            <Select
+              label="Venue"
+              required
+              selectedKey={formData.venue}
+              onSelectionChange={key => setFormData({ ...formData, venue: String(key) })}
+            >
+              {VENUES.map(venue => (
+                <Select.Option key={venue} id={venue}>
+                  {venue}
+                </Select.Option>
+              ))}
+            </Select>
+            <DatePicker
+              label="Date"
+              required
+              value={formData.date}
+              onChange={value => setFormData({ ...formData, date: value })}
+            />
+            <Select
+              label="Time Slot"
+              required
+              selectedKey={formData.timeSlot}
+              onSelectionChange={key => setFormData({ ...formData, timeSlot: String(key) })}
+            >
+              {TIME_SLOTS.map(slot => (
+                <Select.Option key={slot} id={slot}>
+                  {slot}
+                </Select.Option>
+              ))}
+            </Select>
+            <TextArea
+              label="Notes"
+              value={formData.notes}
+              onChange={value => setFormData({ ...formData, notes: value })}
+              placeholder="Optional notes about the booking"
+              rows={4}
+            />
+          </Stack>
+        </Dialog.Content>
+        <Dialog.Actions>
+          <Button variant="secondary" slot="close">
+            Cancel
+          </Button>
+          <Button
+            variant="primary"
+            onPress={handleCreateBooking}
+          >
+            Create Booking
+          </Button>
+        </Dialog.Actions>
+      </Dialog>
 
-                <Inline space={2} alignX="between">
-                  <Button
-                    variant="secondary"
-                    onPress={() => setShowDetailPanel(false)}
-                  >
-                    Close
-                  </Button>
-                  {selectedBooking.status !== 'Cancelled' && (
-                    <Button
-                      variant="destructive"
-                      onPress={() => {
-                        handleCancelBooking(selectedBooking.id);
-                        setShowDetailPanel(false);
-                      }}
-                    >
-                      Cancel Booking
-                    </Button>
-                  )}
-                </Inline>
+      <Drawer size="medium" open={detailDrawerOpen} closeButton>
+        <Drawer.Title>
+          {selectedBooking ? `Booking ${selectedBooking.id}` : 'Details'}
+        </Drawer.Title>
+        <Drawer.Content>
+          {selectedBooking && (
+            <Stack space={4}>
+              <Inline space={2} alignY="center">
+                <Headline level="4">Status:</Headline>
+                <Badge variant={getStatusVariant(selectedBooking.status)}>
+                  {selectedBooking.status}
+                </Badge>
+              </Inline>
+
+              <Stack space={2}>
+                <Headline level="4">Customer Information</Headline>
+                <Stack space={1}>
+                  <Text>
+                    <Text weight="bold">Name:</Text> {selectedBooking.customer}
+                  </Text>
+                  <Text>
+                    <Text weight="bold">Email:</Text> {selectedBooking.email}
+                  </Text>
+                </Stack>
               </Stack>
+
+              <Stack space={2}>
+                <Headline level="4">Booking Details</Headline>
+                <Stack space={1}>
+                  <Text>
+                    <Text weight="bold">Venue:</Text> {selectedBooking.venue}
+                  </Text>
+                  <Text>
+                    <Text weight="bold">Date:</Text> {selectedBooking.date}
+                  </Text>
+                  <Text>
+                    <Text weight="bold">Time Slot:</Text> {selectedBooking.timeSlot}
+                  </Text>
+                </Stack>
+              </Stack>
+
+              {selectedBooking.notes && (
+                <Stack space={2}>
+                  <Headline level="4">Notes</Headline>
+                  <Text>{selectedBooking.notes}</Text>
+                </Stack>
+              )}
+
+              <Accordion>
+                <Accordion.Item id="payment">
+                  <Accordion.Header>Payment History</Accordion.Header>
+                  <Accordion.Content>
+                    <Stack space={2}>
+                      <Text>Payment Date: 2026-06-20</Text>
+                      <Text>Amount: €500.00</Text>
+                      <Text>Status: Completed</Text>
+                    </Stack>
+                  </Accordion.Content>
+                </Accordion.Item>
+                <Accordion.Item id="communication">
+                  <Accordion.Header>Communication Log</Accordion.Header>
+                  <Accordion.Content>
+                    <Stack space={2}>
+                      <Text>2026-06-21: Booking confirmation sent</Text>
+                      <Text>2026-06-22: Customer confirmed attendance</Text>
+                      <Text>2026-06-25: Reminder email sent</Text>
+                    </Stack>
+                  </Accordion.Content>
+                </Accordion.Item>
+              </Accordion>
             </Stack>
-          </Drawer>
-        </Drawer.Trigger>
-      )}
-    </Stack>
+          )}
+        </Drawer.Content>
+        <Drawer.Actions>
+          <Button
+            variant="secondary"
+            onPress={() => setDetailDrawerOpen(false)}
+          >
+            Close
+          </Button>
+        </Drawer.Actions>
+      </Drawer>
+        </Stack>
+      </AppLayout.Main>
+    </AppLayout>
   );
 };
 

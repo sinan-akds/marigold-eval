@@ -1,38 +1,76 @@
 import { useState } from 'react';
 import {
   Accordion,
+  AppLayout,
   Button,
   Checkbox,
+  Headline,
   Inline,
   Radio,
   Select,
   Stack,
   Switch,
   Text,
-  TextArea,
   TextField,
+  TextArea,
 } from '@marigold/components';
 
+type ProfileSettings = {
+  displayName: string;
+  email: string;
+  bio: string;
+};
+
+type AppearanceSettings = {
+  theme: string;
+  language: string;
+  compactMode: boolean;
+};
+
+type NotificationSettings = {
+  emailMessages: boolean;
+  pushMentions: boolean;
+  weeklyDigest: boolean;
+  marketingEmails: boolean;
+  notificationSound: string;
+};
+
+type PrivacySettings = {
+  profileVisibility: string;
+  showOnlineStatus: boolean;
+  allowSearchEngines: boolean;
+};
+
 const TestApp = () => {
-  const [displayName, setDisplayName] = useState('');
-  const [email, setEmail] = useState('');
-  const [bio, setBio] = useState('');
+  const [profileData, setProfileData] = useState<ProfileSettings>({
+    displayName: 'John Doe',
+    email: 'john@example.com',
+    bio: '',
+  });
+
+  const [appearanceData, setAppearanceData] = useState<AppearanceSettings>({
+    theme: 'system',
+    language: 'english',
+    compactMode: false,
+  });
+
+  const [notificationData, setNotificationData] = useState<NotificationSettings>({
+    emailMessages: true,
+    pushMentions: true,
+    weeklyDigest: false,
+    marketingEmails: false,
+    notificationSound: 'default',
+  });
+
+  const [privacyData, setPrivacyData] = useState<PrivacySettings>({
+    profileVisibility: 'public',
+    showOnlineStatus: true,
+    allowSearchEngines: true,
+  });
+
   const [profileSaved, setProfileSaved] = useState(false);
-
-  const [theme, setTheme] = useState('system');
-  const [language, setLanguage] = useState('english');
-  const [compactMode, setCompactMode] = useState(false);
-
-  const [notifications, setNotifications] = useState<string[]>([]);
-  const [notificationSound, setNotificationSound] = useState('default');
-  const [notificationsSaved, setNotificationsSaved] = useState(false);
-
-  const [profileVisibility, setProfileVisibility] = useState('public');
-  const [showOnlineStatus, setShowOnlineStatus] = useState(false);
-  const [allowSearchEngines, setAllowSearchEngines] = useState(false);
+  const [notificationSaved, setNotificationSaved] = useState(false);
   const [privacySaved, setPrivacySaved] = useState(false);
-
-  const isSearchEnginesDisabled = profileVisibility !== 'public';
 
   const handleSaveProfile = () => {
     setProfileSaved(true);
@@ -40,8 +78,8 @@ const TestApp = () => {
   };
 
   const handleSaveNotifications = () => {
-    setNotificationsSaved(true);
-    setTimeout(() => setNotificationsSaved(false), 2000);
+    setNotificationSaved(true);
+    setTimeout(() => setNotificationSaved(false), 2000);
   };
 
   const handleSavePrivacy = () => {
@@ -50,37 +88,51 @@ const TestApp = () => {
   };
 
   return (
-    <Stack space={6} alignX="left">
-      <Accordion>
+    <AppLayout>
+      <AppLayout.Main>
+        <Stack space={4}>
+          <Headline level="1">Settings</Headline>
+
+          <Accordion>
         {/* Profile Section */}
         <Accordion.Item>
           <Accordion.Header>Profile</Accordion.Header>
           <Accordion.Content>
-            <Stack space={4} alignX="left">
+            <Stack space={3}>
               <TextField
                 label="Display Name"
                 required
-                value={displayName}
-                onChange={setDisplayName}
+                value={profileData.displayName}
+                onChange={(value) =>
+                  setProfileData({ ...profileData, displayName: value })
+                }
               />
+
               <TextField
                 label="Email Address"
                 type="email"
-                value={email}
-                onChange={setEmail}
+                value={profileData.email}
+                onChange={(value) =>
+                  setProfileData({ ...profileData, email: value })
+                }
               />
+
               <TextArea
                 label="Bio"
-                value={bio}
-                onChange={setBio}
+                value={profileData.bio}
+                onChange={(value) =>
+                  setProfileData({ ...profileData, bio: value })
+                }
                 rows={4}
               />
-              <Inline>
-                <Button variant="primary" onPress={handleSaveProfile}>
-                  Save Profile
-                </Button>
-                {profileSaved && <Text>Profile saved successfully!</Text>}
-              </Inline>
+
+              {profileSaved && (
+                <Text color="success">Profile saved successfully!</Text>
+              )}
+
+              <Button variant="primary" onPress={handleSaveProfile}>
+                Save Profile
+              </Button>
             </Stack>
           </Accordion.Content>
         </Accordion.Item>
@@ -89,11 +141,13 @@ const TestApp = () => {
         <Accordion.Item>
           <Accordion.Header>Appearance</Accordion.Header>
           <Accordion.Content>
-            <Stack space={4} alignX="left">
+            <Stack space={3}>
               <Radio.Group
                 label="Theme"
-                value={theme}
-                onChange={setTheme}
+                value={appearanceData.theme}
+                onChange={(value) =>
+                  setAppearanceData({ ...appearanceData, theme: value })
+                }
               >
                 <Radio value="light">Light</Radio>
                 <Radio value="dark">Dark</Radio>
@@ -102,21 +156,30 @@ const TestApp = () => {
 
               <Select
                 label="Language"
-                selectedKey={language}
-                onSelectionChange={(key) => setLanguage(key as string)}
+                selectedKey={appearanceData.language}
+                onSelectionChange={(value) =>
+                  setAppearanceData({
+                    ...appearanceData,
+                    language: value as string,
+                  })
+                }
               >
                 <Select.Option id="english">English</Select.Option>
                 <Select.Option id="german">German</Select.Option>
                 <Select.Option id="french">French</Select.Option>
               </Select>
 
-              <Stack space={1}>
+              <Stack space={1} alignX="left">
                 <Switch
                   label="Compact Mode"
-                  onChange={setCompactMode}
-                  selected={compactMode}
+                  selected={appearanceData.compactMode}
+                  onChange={(selected) =>
+                    setAppearanceData({ ...appearanceData, compactMode: selected })
+                  }
                 />
-                <Text size="sm">Reduce spacing and font size for denser layouts</Text>
+                <Text size="sm">
+                  Reduce spacing and font size for denser layouts
+                </Text>
               </Stack>
             </Stack>
           </Accordion.Content>
@@ -126,33 +189,72 @@ const TestApp = () => {
         <Accordion.Item>
           <Accordion.Header>Notifications</Accordion.Header>
           <Accordion.Content>
-            <Stack space={4} alignX="left">
-              <Checkbox.Group
-                value={notifications}
-                onChange={setNotifications}
-              >
-                <Checkbox value="emailNotif" label="Email notifications for new messages" />
-                <Checkbox value="pushNotif" label="Push notifications for mentions" />
-                <Checkbox value="weeklyDigest" label="Weekly activity digest" />
-                <Checkbox value="marketing" label="Marketing and promotional emails" />
-              </Checkbox.Group>
+            <Stack space={3}>
+              <Stack space={2}>
+                <Checkbox
+                  label="Email notifications for new messages"
+                  checked={notificationData.emailMessages}
+                  onChange={(checked) =>
+                    setNotificationData({
+                      ...notificationData,
+                      emailMessages: checked,
+                    })
+                  }
+                />
+                <Checkbox
+                  label="Push notifications for mentions"
+                  checked={notificationData.pushMentions}
+                  onChange={(checked) =>
+                    setNotificationData({
+                      ...notificationData,
+                      pushMentions: checked,
+                    })
+                  }
+                />
+                <Checkbox
+                  label="Weekly activity digest"
+                  checked={notificationData.weeklyDigest}
+                  onChange={(checked) =>
+                    setNotificationData({
+                      ...notificationData,
+                      weeklyDigest: checked,
+                    })
+                  }
+                />
+                <Checkbox
+                  label="Marketing and promotional emails"
+                  checked={notificationData.marketingEmails}
+                  onChange={(checked) =>
+                    setNotificationData({
+                      ...notificationData,
+                      marketingEmails: checked,
+                    })
+                  }
+                />
+              </Stack>
 
               <Select
                 label="Notification Sound"
-                selectedKey={notificationSound}
-                onSelectionChange={(key) => setNotificationSound(key as string)}
+                selectedKey={notificationData.notificationSound}
+                onSelectionChange={(value) =>
+                  setNotificationData({
+                    ...notificationData,
+                    notificationSound: value as string,
+                  })
+                }
               >
                 <Select.Option id="default">Default</Select.Option>
                 <Select.Option id="chime">Chime</Select.Option>
                 <Select.Option id="none">None</Select.Option>
               </Select>
 
-              <Inline>
-                <Button variant="primary" onPress={handleSaveNotifications}>
-                  Save Notification Preferences
-                </Button>
-                {notificationsSaved && <Text>Preferences saved successfully!</Text>}
-              </Inline>
+              {notificationSaved && (
+                <Text color="success">Notification preferences saved!</Text>
+              )}
+
+              <Button variant="primary" onPress={handleSaveNotifications}>
+                Save Notification Preferences
+              </Button>
             </Stack>
           </Accordion.Content>
         </Accordion.Item>
@@ -161,11 +263,13 @@ const TestApp = () => {
         <Accordion.Item>
           <Accordion.Header>Privacy</Accordion.Header>
           <Accordion.Content>
-            <Stack space={4} alignX="left">
+            <Stack space={3}>
               <Radio.Group
                 label="Profile Visibility"
-                value={profileVisibility}
-                onChange={setProfileVisibility}
+                value={privacyData.profileVisibility}
+                onChange={(value) =>
+                  setPrivacyData({ ...privacyData, profileVisibility: value })
+                }
               >
                 <Radio value="public">Public</Radio>
                 <Radio value="team">Team Only</Radio>
@@ -174,31 +278,43 @@ const TestApp = () => {
 
               <Switch
                 label="Show Online Status"
-                onChange={setShowOnlineStatus}
-                selected={showOnlineStatus}
+                selected={privacyData.showOnlineStatus}
+                onChange={(selected) =>
+                  setPrivacyData({ ...privacyData, showOnlineStatus: selected })
+                }
               />
 
-              <Stack space={1}>
+              <Stack space={1} alignX="left">
                 <Switch
                   label="Allow Search Engines"
-                  onChange={setAllowSearchEngines}
-                  selected={allowSearchEngines}
-                  disabled={isSearchEnginesDisabled}
+                  selected={privacyData.allowSearchEngines}
+                  onChange={(selected) =>
+                    setPrivacyData({
+                      ...privacyData,
+                      allowSearchEngines: selected,
+                    })
+                  }
+                  disabled={privacyData.profileVisibility !== 'public'}
                 />
-                <Text size="sm">Let search engines index your public profile</Text>
+                <Text size="sm">
+                  Let search engines index your public profile
+                </Text>
               </Stack>
 
-              <Inline>
-                <Button variant="primary" onPress={handleSavePrivacy}>
-                  Save Privacy Settings
-                </Button>
-                {privacySaved && <Text>Privacy settings saved successfully!</Text>}
-              </Inline>
+              {privacySaved && (
+                <Text color="success">Privacy settings saved!</Text>
+              )}
+
+              <Button variant="primary" onPress={handleSavePrivacy}>
+                Save Privacy Settings
+              </Button>
             </Stack>
           </Accordion.Content>
         </Accordion.Item>
       </Accordion>
-    </Stack>
+        </Stack>
+      </AppLayout.Main>
+    </AppLayout>
   );
 };
 

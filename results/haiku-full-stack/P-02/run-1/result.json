@@ -3,9 +3,9 @@
   "promptId": "P-02",
   "model": "haiku",
   "config": "full-stack",
-  "timestamp": "2026-06-21T11:31:17.436Z",
+  "timestamp": "2026-06-28T01:55:45.843Z",
   "quality": {
-    "overall": 88.94,
+    "overall": 96.82,
     "categories": {
       "A": {
         "category": "A",
@@ -30,47 +30,12 @@
       "C": {
         "category": "C",
         "label": "DOM / Structure",
-        "score": 65,
+        "score": 100,
         "weight": 0.225,
-        "weightedScore": 14.63,
+        "weightedScore": 22.5,
         "errorCount": 0,
-        "warningCount": 2,
-        "issues": [
-          {
-            "type": "technical",
-            "severity": "warning",
-            "source": "layout-usage",
-            "component": "Stack",
-            "message": "<Stack> wraps a single child. A flow layout earns its place only with two or more children; with one child it adds a wrapper that does nothing.",
-            "suggestion": "Render the child directly instead of wrapping it in <Stack>. For single-child spacing use Inset, Center, Breakout or Aspect.",
-            "location": {
-              "file": "TestApp.tsx",
-              "line": 32,
-              "column": 9
-            },
-            "details": {
-              "layout": "Stack",
-              "childCount": 1
-            }
-          },
-          {
-            "type": "technical",
-            "severity": "warning",
-            "source": "layout-usage",
-            "component": "Stack",
-            "message": "<Stack> wraps a single child. A flow layout earns its place only with two or more children; with one child it adds a wrapper that does nothing.",
-            "suggestion": "Render the child directly instead of wrapping it in <Stack>. For single-child spacing use Inset, Center, Breakout or Aspect.",
-            "location": {
-              "file": "TestApp.tsx",
-              "line": 72,
-              "column": 17
-            },
-            "details": {
-              "layout": "Stack",
-              "childCount": 1
-            }
-          }
-        ]
+        "warningCount": 0,
+        "issues": []
       },
       "D": {
         "category": "D",
@@ -86,11 +51,11 @@
             "severity": "warning",
             "source": "responsive-checker",
             "component": "page",
-            "message": "Content uses only 23% of the desktop width (1280px): it stays in a narrow, mobile-shaped band instead of adapting to the available space.",
+            "message": "Content uses only 26% of the desktop width (1280px): it stays in a narrow, mobile-shaped band instead of adapting to the available space.",
             "suggestion": "Let the layout grow with the viewport using Marigold responsive primitives — <Columns collapseAt=\"...\"> for multi-column areas, AppLayout for the shell, Stack/Inline for flow — instead of a fixed-width container. (Intentionally centred max-width reading columns are fine and may trip this; treat it as a relative signal.)",
             "details": {
-              "widthUtilization": 0.22734375,
-              "contentElements": 13,
+              "widthUtilization": 0.26171875,
+              "contentElements": 15,
               "scope": "page"
             }
           }
@@ -110,63 +75,29 @@
     "renderSuccess": true
   },
   "efficiency": {
-    "durationMs": 338650,
-    "costUsd": 0.7539662,
-    "inputTokens": 84,
-    "outputTokens": 16485,
-    "cacheReadTokens": 4352982,
-    "cacheCreationTokens": 117679,
-    "totalTokens": 16569,
-    "numTurns": 79
+    "durationMs": 311158,
+    "costUsd": 0.5181407,
+    "inputTokens": 127,
+    "outputTokens": 9787,
+    "cacheReadTokens": 1701317,
+    "cacheCreationTokens": 149073,
+    "totalTokens": 9914,
+    "numTurns": 44
   },
   "report": {
     "file": "TestApp.tsx",
     "errors": [],
     "warnings": [
       {
-        "type": "technical",
-        "severity": "warning",
-        "source": "layout-usage",
-        "component": "Stack",
-        "message": "<Stack> wraps a single child. A flow layout earns its place only with two or more children; with one child it adds a wrapper that does nothing.",
-        "suggestion": "Render the child directly instead of wrapping it in <Stack>. For single-child spacing use Inset, Center, Breakout or Aspect.",
-        "location": {
-          "file": "TestApp.tsx",
-          "line": 32,
-          "column": 9
-        },
-        "details": {
-          "layout": "Stack",
-          "childCount": 1
-        }
-      },
-      {
-        "type": "technical",
-        "severity": "warning",
-        "source": "layout-usage",
-        "component": "Stack",
-        "message": "<Stack> wraps a single child. A flow layout earns its place only with two or more children; with one child it adds a wrapper that does nothing.",
-        "suggestion": "Render the child directly instead of wrapping it in <Stack>. For single-child spacing use Inset, Center, Breakout or Aspect.",
-        "location": {
-          "file": "TestApp.tsx",
-          "line": 72,
-          "column": 17
-        },
-        "details": {
-          "layout": "Stack",
-          "childCount": 1
-        }
-      },
-      {
         "type": "spatial",
         "severity": "warning",
         "source": "responsive-checker",
         "component": "page",
-        "message": "Content uses only 23% of the desktop width (1280px): it stays in a narrow, mobile-shaped band instead of adapting to the available space.",
+        "message": "Content uses only 26% of the desktop width (1280px): it stays in a narrow, mobile-shaped band instead of adapting to the available space.",
         "suggestion": "Let the layout grow with the viewport using Marigold responsive primitives — <Columns collapseAt=\"...\"> for multi-column areas, AppLayout for the shell, Stack/Inline for flow — instead of a fixed-width container. (Intentionally centred max-width reading columns are fine and may trip this; treat it as a relative signal.)",
         "details": {
-          "widthUtilization": 0.22734375,
-          "contentElements": 13,
+          "widthUtilization": 0.26171875,
+          "contentElements": 15,
           "scope": "page"
         }
       }
@@ -180,6 +111,7 @@
       "Section headers",
       "Collection item ids",
       "Design system usage",
+      "Layout usage",
       "Table usage",
       "Component conventions",
       "Theme variant compliance",
@@ -187,7 +119,7 @@
       "Accessibility checks"
     ],
     "metadata": {
-      "renderTimeMs": 1608,
+      "renderTimeMs": 2421,
       "componentsFound": [
         "button"
       ],
@@ -197,19 +129,19 @@
         "a11y"
       ],
       "coverage": {
-        "staticValuesChecked": 16,
-        "dynamicValuesSkipped": 11,
+        "staticValuesChecked": 25,
+        "dynamicValuesSkipped": 10,
         "spreadPropsBypassed": 0
       },
-      "widthUtilization": 0.22734375
+      "widthUtilization": 0.26171875
     },
-    "markdown": "marigold-validate: TestApp.tsx — 0 error(s), 3 warning(s)\n\n[warning/technical] <Stack>: <Stack> wraps a single child. A flow layout earns its place only with two or more children; with one child it adds a wrapper that does nothing. (TestApp.tsx:32:9)\n  → Render the child directly instead of wrapping it in <Stack>. For single-child spacing use Inset, Center, Breakout or Aspect.\n  data: {layout=Stack, childCount=1}\n[warning/technical] <Stack>: <Stack> wraps a single child. A flow layout earns its place only with two or more children; with one child it adds a wrapper that does nothing. (TestApp.tsx:72:17)\n  → Render the child directly instead of wrapping it in <Stack>. For single-child spacing use Inset, Center, Breakout or Aspect.\n  data: {layout=Stack, childCount=1}\n[warning/spatial] <page>: Content uses only 23% of the desktop width (1280px): it stays in a narrow, mobile-shaped band instead of adapting to the available space.\n  → Let the layout grow with the viewport using Marigold responsive primitives — <Columns collapseAt=\"...\"> for multi-column areas, AppLayout for the shell, Stack/Inline for flow — instead of a fixed-width container. (Intentionally centred max-width reading columns are fine and may trip this; treat it as a relative signal.)\n  data: {widthUtilization=0.22734375, contentElements=13, scope=page}\n\npassed: TypeScript compilation, All Marigold props are valid, Component composition, Overlay accessible names, Compound component placement, Section headers, Collection item ids, Design system usage, Table usage, Component conventions, Theme variant compliance, No overlapping components detected, Accessibility checks\n\nchecks run: technical, spatial, a11y"
+    "markdown": "marigold-validate: TestApp.tsx — 0 error(s), 1 warning(s)\n\n[warning/spatial] <page>: Content uses only 26% of the desktop width (1280px): it stays in a narrow, mobile-shaped band instead of adapting to the available space.\n  → Let the layout grow with the viewport using Marigold responsive primitives — <Columns collapseAt=\"...\"> for multi-column areas, AppLayout for the shell, Stack/Inline for flow — instead of a fixed-width container. (Intentionally centred max-width reading columns are fine and may trip this; treat it as a relative signal.)\n  data: {widthUtilization=0.26171875, contentElements=15, scope=page}\n\npassed: TypeScript compilation, All Marigold props are valid, Component composition, Overlay accessible names, Compound component placement, Section headers, Collection item ids, Design system usage, Layout usage, Table usage, Component conventions, Theme variant compliance, No overlapping components detected, Accessibility checks\n\nchecks run: technical, spatial, a11y"
   },
   "componentsFound": [
     "button"
   ],
-  "renderTimeMs": 1608,
-  "sourceCode": "import { useState } from 'react';\nimport {\n  Card,\n  Stack,\n  Inline,\n  Badge,\n  Button,\n  Headline,\n  Text,\n  AppLayout,\n  Aspect,\n  Inset,\n} from '@marigold/components';\n\nconst TestApp = () => {\n  const [messageAlert, setMessageAlert] = useState('');\n  const [editAlert, setEditAlert] = useState('');\n\n  const handleSendMessage = () => {\n    setMessageAlert('Message sent to jane.doe@example.com');\n    setTimeout(() => setMessageAlert(''), 3000);\n  };\n\n  const handleEditProfile = () => {\n    setEditAlert('Edit profile initiated');\n    setTimeout(() => setEditAlert(''), 3000);\n  };\n\n  return (\n    <AppLayout>\n      <AppLayout.Main>\n        <Stack space={16}>\n          <Card>\n            <Inset spaceX=\"padding-regular\" spaceY=\"padding-regular\">\n              <Stack space={12}>\n                {/* Header with avatar and name */}\n                <Inline space={12} alignY=\"center\">\n                <Aspect ratio=\"square\" maxWidth=\"80px\">\n                  <img\n                    src=\"https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=128&h=128&fit=crop\"\n                    alt=\"Jane Doe\"\n                    className=\"object-cover\"\n                  />\n                </Aspect>\n                <Stack space={4}>\n                  <Headline size=\"level-3\">Jane Doe</Headline>\n                  <Badge variant=\"success\">Active</Badge>\n                </Stack>\n                </Inline>\n\n                {/* Details section */}\n                <Stack space={8}>\n                  <Inline space={12} alignY=\"top\">\n                    <Text weight=\"medium\">Role:</Text>\n                    <Text>Senior Developer</Text>\n                  </Inline>\n                  <Inline space={12} alignY=\"top\">\n                    <Text weight=\"medium\">Department:</Text>\n                    <Text>Engineering</Text>\n                  </Inline>\n                  <Inline space={12} alignY=\"top\">\n                    <Text weight=\"medium\">Email:</Text>\n                    <Text>jane.doe@example.com</Text>\n                  </Inline>\n                  <Inline space={12} alignY=\"top\">\n                    <Text weight=\"medium\">Location:</Text>\n                    <Text>Freiburg, Germany</Text>\n                  </Inline>\n                </Stack>\n\n                {/* Bio section */}\n                <Stack space={4}>\n                  <Text>\n                    Jane is a passionate senior developer with 8 years of experience\n                    in full-stack web development. She specializes in React and Node.js,\n                    and leads the frontend infrastructure team. When not coding, she\n                    enjoys mentoring junior developers and contributing to open source.\n                  </Text>\n                </Stack>\n\n                {/* Actions */}\n                <Stack space={8}>\n                  <Button variant=\"primary\" onPress={handleSendMessage} fullWidth>\n                    Send Message\n                  </Button>\n                  <Button variant=\"secondary\" onPress={handleEditProfile} fullWidth>\n                    Edit Profile\n                  </Button>\n                </Stack>\n\n                {/* Alert messages */}\n                {messageAlert && (\n                  <Text color=\"success\">\n                    {messageAlert}\n                  </Text>\n                )}\n                {editAlert && (\n                  <Text color=\"success\">\n                    {editAlert}\n                  </Text>\n                )}\n              </Stack>\n            </Inset>\n          </Card>\n        </Stack>\n      </AppLayout.Main>\n    </AppLayout>\n  );\n};\n\nexport default TestApp;\n",
+  "renderTimeMs": 2421,
+  "sourceCode": "import { useState } from 'react';\nimport { Card, Badge, Button, Stack, Inline, Headline, Text, Center, Aspect, AppLayout } from '@marigold/components';\n\nconst TestApp = () => {\n  const [status, setStatus] = useState<'Active' | 'Away'>('Active');\n\n  const handleSendMessage = () => {\n    alert('Message sent to Jane Doe');\n  };\n\n  const handleEditProfile = () => {\n    alert('Edit profile clicked');\n  };\n\n  const toggleStatus = () => {\n    setStatus(status === 'Active' ? 'Away' : 'Active');\n  };\n\n  return (\n    <AppLayout>\n      <AppLayout.Main>\n        <Center maxWidth=\"xlarge\">\n          <Card>\n            <Stack space={6}>\n              {/* Header with Avatar and Name */}\n              <Inline space={4} alignY=\"center\">\n                <Aspect ratio=\"square\" maxWidth=\"80px\">\n                  <img\n                    src=\"https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=400&h=400&fit=crop\"\n                    alt=\"Jane Doe\"\n                    className=\"object-cover rounded-xs\"\n                  />\n                </Aspect>\n            <Stack space={2}>\n              <Headline size=\"level-3\">Jane Doe</Headline>\n              <Badge variant={status === 'Active' ? 'success' : 'warning'}>\n                {status}\n              </Badge>\n            </Stack>\n          </Inline>\n\n          {/* Details Section */}\n          <Stack space={2}>\n            <Inline space={2} alignY=\"center\">\n              <Text weight=\"bold\" size=\"sm\">Role:</Text>\n              <Text size=\"sm\">Senior Developer</Text>\n            </Inline>\n            <Inline space={2} alignY=\"center\">\n              <Text weight=\"bold\" size=\"sm\">Department:</Text>\n              <Text size=\"sm\">Engineering</Text>\n            </Inline>\n            <Inline space={2} alignY=\"center\">\n              <Text weight=\"bold\" size=\"sm\">Email:</Text>\n              <Text size=\"sm\">jane.doe@example.com</Text>\n            </Inline>\n            <Inline space={2} alignY=\"center\">\n              <Text weight=\"bold\" size=\"sm\">Location:</Text>\n              <Text size=\"sm\">Freiburg, Germany</Text>\n            </Inline>\n          </Stack>\n\n          {/* Bio Section */}\n          <Text variant=\"muted\">\n            Jane is a talented senior developer with 8+ years of experience building scalable web applications.\n            She specializes in React and TypeScript, and enjoys mentoring junior developers on the team.\n          </Text>\n\n          {/* Actions Section */}\n          <Inline space={2} alignX=\"between\">\n            <Button variant=\"primary\" onPress={handleSendMessage}>\n              Send Message\n            </Button>\n            <Button variant=\"secondary\" onPress={handleEditProfile}>\n              Edit Profile\n            </Button>\n          </Inline>\n\n          {/* Status Toggle for Demo */}\n          <Button variant=\"ghost\" onPress={toggleStatus} size=\"small\">\n            Toggle Status ({status})\n          </Button>\n            </Stack>\n          </Card>\n        </Center>\n      </AppLayout.Main>\n    </AppLayout>\n  );\n};\n\nexport default TestApp;\n",
   "assertions": {
     "passed": [
       {
@@ -292,6 +224,6 @@
   "validatePackageVersion": "0.0.1",
   "playwrightVersion": null,
   "resolvedModelId": "claude-haiku-4-5",
-  "claudeCliVersion": "2.1.185 (Claude Code)",
-  "sessionId": "08615277-ee3d-4f56-adf0-a5fb03c2b16c"
+  "claudeCliVersion": "2.1.193 (Claude Code)",
+  "sessionId": "c16fe1e6-c02a-4261-9dde-52010eec621a"
 }

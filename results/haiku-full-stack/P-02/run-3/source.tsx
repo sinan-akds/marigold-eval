@@ -1,91 +1,71 @@
-import { useState } from 'react';
-import {
-  Card,
-  Stack,
-  Inline,
-  Headline,
-  Text,
-  Button,
-  Badge,
-} from '@marigold/components';
+import { Card, Stack, Inline, Headline, Text, Badge, Button, Aspect } from '@marigold/components';
 
 const TestApp = () => {
-  const [sendMessageClicked, setSendMessageClicked] = useState(false);
-  const [editProfileClicked, setEditProfileClicked] = useState(false);
-
   const handleSendMessage = () => {
-    setSendMessageClicked(true);
-    setTimeout(() => setSendMessageClicked(false), 2000);
+    alert('Send Message clicked');
   };
 
   const handleEditProfile = () => {
-    setEditProfileClicked(true);
-    setTimeout(() => setEditProfileClicked(false), 2000);
+    alert('Edit Profile clicked');
   };
 
   return (
-    <Card p="square-regular">
-      <Stack space={6}>
-        {/* Avatar + Name */}
-        <Inline space={4} alignY="center">
-          <img
-            src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=150&h=150&fit=crop"
-            alt="Jane Doe"
-            style={{
-              width: '80px',
-              height: '80px',
-              borderRadius: '50%',
-              objectFit: 'cover',
-            }}
-          />
-          <Headline level="3">Jane Doe</Headline>
+    <Card>
+      <Stack space={5}>
+        {/* Header with Avatar and Name */}
+        <Inline space={5} alignY="center">
+          <Aspect ratio="square">
+            <img
+              src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=100&h=100&fit=crop"
+              alt="Jane Doe"
+              style={{
+                width: '100%',
+                height: '100%',
+                borderRadius: '50%',
+                objectFit: 'cover',
+              }}
+            />
+          </Aspect>
+          <Stack space={2}>
+            <Headline level="2">Jane Doe</Headline>
+            <Badge>Active</Badge>
+          </Stack>
         </Inline>
 
-        {/* Status */}
-        <Inline space={2}>
-          <Badge variant="success">Active</Badge>
-        </Inline>
-
-        {/* Details */}
+        {/* Details Section */}
         <Stack space={3}>
-          <Stack space={1}>
-            <Text weight="medium" variant="muted">
-              Role
-            </Text>
+          <Inline space={3}>
+            <Text weight="bold">Role:</Text>
             <Text>Senior Developer</Text>
-          </Stack>
-          <Stack space={1}>
-            <Text weight="medium" variant="muted">
-              Department
-            </Text>
+          </Inline>
+          <Inline space={3}>
+            <Text weight="bold">Department:</Text>
             <Text>Engineering</Text>
-          </Stack>
-          <Stack space={1}>
-            <Text weight="medium" variant="muted">
-              Email
-            </Text>
+          </Inline>
+          <Inline space={3}>
+            <Text weight="bold">Email:</Text>
             <Text>jane.doe@example.com</Text>
-          </Stack>
-          <Stack space={1}>
-            <Text weight="medium" variant="muted">
-              Location
-            </Text>
+          </Inline>
+          <Inline space={3}>
+            <Text weight="bold">Location:</Text>
             <Text>Freiburg, Germany</Text>
-          </Stack>
+          </Inline>
         </Stack>
 
         {/* Bio */}
         <Text>
-          Jane is a passionate developer with a keen eye for detail. She leads our engineering team with innovative thinking and strong technical expertise.
+          Jane is a Senior Developer with over 10 years of experience in full-stack
+          development. She specializes in React and TypeScript, and is passionate
+          about building accessible and user-friendly applications.
         </Text>
 
-        {/* Actions */}
-        <Inline space={3} alignX="left">
-          <Button variant="primary" onPress={handleSendMessage}>
-            {sendMessageClicked ? 'Message sent!' : 'Send Message'}
+        {/* Action Buttons */}
+        <Inline space={3}>
+          <Button onPress={handleSendMessage} variant="primary">
+            Send Message
           </Button>
-          <Button variant="secondary" onPress={handleEditProfile}>
-            {editProfileClicked ? 'Saved!' : 'Edit Profile'}
+          <Button onPress={handleEditProfile} variant="secondary">
+            Edit Profile
           </Button>
         </Inline>
       </Stack>

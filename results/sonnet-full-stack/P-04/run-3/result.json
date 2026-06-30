@@ -3,9 +3,9 @@
   "promptId": "P-04",
   "model": "sonnet",
   "config": "full-stack",
-  "timestamp": "2026-06-23T11:36:19.442Z",
+  "timestamp": "2026-06-28T16:34:33.672Z",
   "quality": {
-    "overall": 87.79,
+    "overall": 100,
     "categories": {
       "A": {
         "category": "A",
@@ -30,79 +30,29 @@
       "C": {
         "category": "C",
         "label": "DOM / Structure",
-        "score": 75.25,
+        "score": 100,
         "weight": 0.225,
-        "weightedScore": 16.93,
+        "weightedScore": 22.5,
         "errorCount": 0,
-        "warningCount": 1,
-        "issues": [
-          {
-            "type": "technical",
-            "severity": "warning",
-            "source": "layout-usage",
-            "component": "Stack",
-            "message": "<Stack> wraps a single child. A flow layout earns its place only with two or more children; with one child it adds a wrapper that does nothing.",
-            "suggestion": "Render the child directly instead of wrapping it in <Stack>. For single-child spacing use Inset, Center, Breakout or Aspect.",
-            "location": {
-              "file": "TestApp.tsx",
-              "line": 95,
-              "column": 7
-            },
-            "details": {
-              "layout": "Stack",
-              "childCount": 1
-            }
-          }
-        ]
+        "warningCount": 0,
+        "issues": []
       },
       "D": {
         "category": "D",
         "label": "Spatial & A11y",
-        "score": 80,
+        "score": 100,
         "weight": 0.225,
-        "weightedScore": 18,
+        "weightedScore": 22.5,
         "errorCount": 0,
-        "warningCount": 2,
-        "issues": [
-          {
-            "type": "a11y",
-            "severity": "warning",
-            "source": "aom-extractor",
-            "component": "html",
-            "message": "Document should have one main landmark (landmark-one-main)",
-            "suggestion": "Wrap your page content in `<AppLayout>` with `<AppLayout.Main>` to provide a `<main>` landmark. Import AppLayout from `@marigold/components`.",
-            "details": {
-              "ruleId": "landmark-one-main",
-              "impact": "moderate",
-              "target": [
-                "html"
-              ],
-              "html": "<html lang=\"en\" data-theme=\"rui\">",
-              "scope": "page"
-            }
-          },
-          {
-            "type": "a11y",
-            "severity": "warning",
-            "source": "aom-extractor",
-            "component": "page",
-            "message": "All page content should be contained by landmarks — 20 elements affected (region)",
-            "suggestion": "All page content must be inside a landmark region. Use `<AppLayout>` with `<AppLayout.Main>` for the main area, `<TopNavigation>` for the header (`<header>`), and `<Sidebar>` for side navigation (`<aside>`). Import from `@marigold/components`.",
-            "details": {
-              "ruleId": "region",
-              "impact": "moderate",
-              "affectedCount": 20,
-              "scope": "page"
-            }
-          }
-        ]
+        "warningCount": 0,
+        "issues": []
       },
       "E": {
         "category": "E",
         "label": "Functional Completeness",
-        "score": 90.48,
+        "score": 100,
         "weight": 0.225,
-        "weightedScore": 20.36,
+        "weightedScore": 22.5,
         "errorCount": 0,
         "warningCount": 0,
         "issues": []
@@ -111,68 +61,19 @@
     "renderSuccess": true
   },
   "efficiency": {
-    "durationMs": 393263,
-    "costUsd": 1.4510469,
-    "inputTokens": 57,
-    "outputTokens": 17077,
-    "cacheReadTokens": 2691583,
-    "cacheCreationTokens": 64383,
-    "totalTokens": 17134,
-    "numTurns": 52
+    "durationMs": 579373,
+    "costUsd": 1.2483344,
+    "inputTokens": 34,
+    "outputTokens": 26595,
+    "cacheReadTokens": 1566658,
+    "cacheCreationTokens": 63057,
+    "totalTokens": 26629,
+    "numTurns": 37
   },
   "report": {
     "file": "TestApp.tsx",
     "errors": [],
-    "warnings": [
-      {
-        "type": "technical",
-        "severity": "warning",
-        "source": "layout-usage",
-        "component": "Stack",
-        "message": "<Stack> wraps a single child. A flow layout earns its place only with two or more children; with one child it adds a wrapper that does nothing.",
-        "suggestion": "Render the child directly instead of wrapping it in <Stack>. For single-child spacing use Inset, Center, Breakout or Aspect.",
-        "location": {
-          "file": "TestApp.tsx",
-          "line": 95,
-          "column": 7
-        },
-        "details": {
-          "layout": "Stack",
-          "childCount": 1
-        }
-      },
-      {
-        "type": "a11y",
-        "severity": "warning",
-        "source": "aom-extractor",
-        "component": "html",
-        "message": "Document should have one main landmark (landmark-one-main)",
-        "suggestion": "Wrap your page content in `<AppLayout>` with `<AppLayout.Main>` to provide a `<main>` landmark. Import AppLayout from `@marigold/components`.",
-        "details": {
-          "ruleId": "landmark-one-main",
-          "impact": "moderate",
-          "target": [
-            "html"
-          ],
-          "html": "<html lang=\"en\" data-theme=\"rui\">",
-          "scope": "page"
-        }
-      },
-      {
-        "type": "a11y",
-        "severity": "warning",
-        "source": "aom-extractor",
-        "component": "page",
-        "message": "All page content should be contained by landmarks — 20 elements affected (region)",
-        "suggestion": "All page content must be inside a landmark region. Use `<AppLayout>` with `<AppLayout.Main>` for the main area, `<TopNavigation>` for the header (`<header>`), and `<Sidebar>` for side navigation (`<aside>`). Import from `@marigold/components`.",
-        "details": {
-          "ruleId": "region",
-          "impact": "moderate",
-          "affectedCount": 20,
-          "scope": "page"
-        }
-      }
-    ],
+    "warnings": [],
     "passed": [
       "TypeScript compilation",
       "All Marigold props are valid",
@@ -182,14 +83,16 @@
       "Section headers",
       "Collection item ids",
       "Design system usage",
+      "Layout usage",
       "Table usage",
       "Component conventions",
       "Theme variant compliance",
       "No overlapping components detected",
-      "Responsive layout"
+      "Responsive layout",
+      "Accessibility checks"
     ],
     "metadata": {
-      "renderTimeMs": 1542,
+      "renderTimeMs": 2110,
       "componentsFound": [
         "div",
         "button",
@@ -201,21 +104,21 @@
         "a11y"
       ],
       "coverage": {
-        "staticValuesChecked": 15,
-        "dynamicValuesSkipped": 21,
+        "staticValuesChecked": 23,
+        "dynamicValuesSkipped": 20,
         "spreadPropsBypassed": 0
       },
-      "widthUtilization": 0.9875
+      "widthUtilization": 0.92578125
     },
-    "markdown": "marigold-validate: TestApp.tsx — 0 error(s), 3 warning(s)\n\n[warning/technical] <Stack>: <Stack> wraps a single child. A flow layout earns its place only with two or more children; with one child it adds a wrapper that does nothing. (TestApp.tsx:95:7)\n  → Render the child directly instead of wrapping it in <Stack>. For single-child spacing use Inset, Center, Breakout or Aspect.\n  data: {layout=Stack, childCount=1}\n[warning/a11y] <html>: Document should have one main landmark (landmark-one-main)\n  → Wrap your page content in `<AppLayout>` with `<AppLayout.Main>` to provide a `<main>` landmark. Import AppLayout from `@marigold/components`.\n  data: {ruleId=landmark-one-main, impact=moderate, target=[\"html\"], html=<html lang=\"en\" data-theme=\"rui\">, scope=page}\n[warning/a11y] <page>: All page content should be contained by landmarks — 20 elements affected (region)\n  → All page content must be inside a landmark region. Use `<AppLayout>` with `<AppLayout.Main>` for the main area, `<TopNavigation>` for the header (`<header>`), and `<Sidebar>` for side navigation (`<aside>`). Import from `@marigold/components`.\n  data: {ruleId=region, impact=moderate, affectedCount=20, scope=page}\n\npassed: TypeScript compilation, All Marigold props are valid, Component composition, Overlay accessible names, Compound component placement, Section headers, Collection item ids, Design system usage, Table usage, Component conventions, Theme variant compliance, No overlapping components detected, Responsive layout\n\nchecks run: technical, spatial, a11y"
+    "markdown": "marigold-validate: TestApp.tsx — ok\n\npassed: TypeScript compilation, All Marigold props are valid, Component composition, Overlay accessible names, Compound component placement, Section headers, Collection item ids, Design system usage, Layout usage, Table usage, Component conventions, Theme variant compliance, No overlapping components detected, Responsive layout, Accessibility checks\n\nchecks run: technical, spatial, a11y"
   },
   "componentsFound": [
     "div",
     "button",
     "input"
   ],
-  "renderTimeMs": 1542,
-  "sourceCode": "import { useState } from 'react';\nimport {\n  Badge,\n  Button,\n  Card,\n  Columns,\n  Divider,\n  Headline,\n  Inline,\n  NumberField,\n  SectionMessage,\n  Stack,\n  Text,\n  TextField,\n} from '@marigold/components';\n\ntype TicketId = 'earlyBird' | 'regular' | 'vip';\ntype TicketStatus = 'available' | 'limited' | 'soldOut';\n\ninterface TicketCategory {\n  id: TicketId;\n  name: string;\n  price: number;\n  description: string;\n  status: TicketStatus;\n  maxQty: number;\n  limitText?: string;\n}\n\nconst TICKETS: TicketCategory[] = [\n  {\n    id: 'earlyBird',\n    name: 'Early Bird',\n    price: 49,\n    description: 'Limited availability — grab yours early!',\n    status: 'limited',\n    maxQty: 12,\n    limitText: 'Only 12 left',\n  },\n  {\n    id: 'regular',\n    name: 'Regular',\n    price: 79,\n    description: 'Standard festival access for all three days.',\n    status: 'available',\n    maxQty: 99,\n  },\n  {\n    id: 'vip',\n    name: 'VIP',\n    price: 149,\n    description: 'Premium experience with backstage access.',\n    status: 'soldOut',\n    maxQty: 0,\n  },\n];\n\nconst isValidEmail = (email: string) =>\n  /^[^\\s@]+@[^\\s@]+\\.[^\\s@]+$/.test(email);\n\nconst TestApp = () => {\n  const [quantities, setQuantities] = useState<Record<TicketId, number>>({\n    earlyBird: 0,\n    regular: 0,\n    vip: 0,\n  });\n  const [name, setName] = useState('');\n  const [email, setEmail] = useState('');\n  const [phone, setPhone] = useState('');\n  const [submitted, setSubmitted] = useState(false);\n  const [orderStatus, setOrderStatus] = useState<'idle' | 'success' | 'error'>('idle');\n\n  const selectedTickets = TICKETS.filter(t => quantities[t.id] > 0);\n  const totalTickets = Object.values(quantities).reduce((a, b) => a + b, 0);\n  const grandTotal = TICKETS.reduce(\n    (total, t) => total + quantities[t.id] * t.price,\n    0\n  );\n\n  const noTicketsSelected = totalTickets === 0;\n  const nameError = submitted && !name.trim();\n  const emailError = submitted && (!email.trim() || !isValidEmail(email));\n\n  const handlePurchase = () => {\n    setSubmitted(true);\n    if (noTicketsSelected || !name.trim() || !email.trim() || !isValidEmail(email)) {\n      setOrderStatus('error');\n      return;\n    }\n    setOrderStatus('success');\n  };\n\n  if (orderStatus === 'success') {\n    return (\n      <Stack space={6}>\n        <SectionMessage variant=\"success\">\n          <SectionMessage.Title>Order Confirmed!</SectionMessage.Title>\n          <SectionMessage.Content>\n            <Stack space={2}>\n              <Text>\n                Thank you, {name}! Your tickets for Summer Music Festival 2026\n                have been booked.\n              </Text>\n              <Text>A confirmation will be sent to {email}.</Text>\n              <Stack space={1}>\n                {selectedTickets.map(t => (\n                  <Text key={t.id}>\n                    {t.name} x {quantities[t.id]} — ${t.price * quantities[t.id]}\n                  </Text>\n                ))}\n              </Stack>\n              <Text weight=\"bold\">Total: ${grandTotal}</Text>\n            </Stack>\n          </SectionMessage.Content>\n        </SectionMessage>\n      </Stack>\n    );\n  }\n\n  return (\n    <Stack space={6}>\n      {/* Event Header */}\n      <Card>\n        <Stack space={3}>\n          <Headline level={1}>Summer Music Festival 2026</Headline>\n          <Inline space={4}>\n            <Text>July 15-17, 2026</Text>\n            <Text>Stadtpark Freiburg</Text>\n          </Inline>\n          <Text>\n            Three days of live music featuring local and international artists.\n          </Text>\n        </Stack>\n      </Card>\n\n      {/* Ticket Categories */}\n      <Stack space={3}>\n        <Headline level={2}>Tickets</Headline>\n        <Columns columns={[1, 1, 1]} space={4} collapseAt=\"40em\">\n          {TICKETS.map(ticket => (\n            <Card key={ticket.id}>\n              <Stack space={3}>\n                <Inline space={2} alignY=\"center\">\n                  <Headline level={3}>{ticket.name}</Headline>\n                  {ticket.status === 'soldOut' && (\n                    <Badge variant=\"error\">Sold Out</Badge>\n                  )}\n                  {ticket.status === 'limited' && ticket.limitText && (\n                    <Badge variant=\"warning\">{ticket.limitText}</Badge>\n                  )}\n                </Inline>\n                <Text weight=\"bold\">${ticket.price}</Text>\n                <Text>{ticket.description}</Text>\n                <NumberField\n                  label=\"Quantity\"\n                  value={quantities[ticket.id]}\n                  onChange={(val: number) =>\n                    setQuantities(prev => ({\n                      ...prev,\n                      [ticket.id]: Number.isFinite(val) ? val : 0,\n                    }))\n                  }\n                  minValue={0}\n                  maxValue={ticket.maxQty}\n                  disabled={ticket.status === 'soldOut'}\n                  width=\"1/2\"\n                />\n              </Stack>\n            </Card>\n          ))}\n        </Columns>\n      </Stack>\n\n      {/* Buyer Information */}\n      <Card>\n        <Stack space={4}>\n          <Headline level={2}>Buyer Information</Headline>\n          <TextField\n            label=\"Full Name\"\n            value={name}\n            onChange={setName}\n            required\n            error={nameError}\n            errorMessage=\"Full name is required.\"\n          />\n          <TextField\n            label=\"Email\"\n            type=\"email\"\n            value={email}\n            onChange={setEmail}\n            required\n            error={emailError}\n            errorMessage=\"A valid email address is required.\"\n          />\n          <TextField\n            label=\"Phone Number\"\n            value={phone}\n            onChange={setPhone}\n          />\n        </Stack>\n      </Card>\n\n      {/* Order Summary */}\n      <Card>\n        <Stack space={4}>\n          <Headline level={2}>Order Summary</Headline>\n          {selectedTickets.length === 0 ? (\n            <Text variant=\"muted\">No tickets selected yet.</Text>\n          ) : (\n            <Stack space={2}>\n              {selectedTickets.map(ticket => (\n                <Inline key={ticket.id} alignX=\"between\" space={2}>\n                  <Text>\n                    {ticket.name} x {quantities[ticket.id]}\n                  </Text>\n                  <Text weight=\"bold\">\n                    ${ticket.price * quantities[ticket.id]}\n                  </Text>\n                </Inline>\n              ))}\n              <Divider />\n              <Inline alignX=\"between\" space={2}>\n                <Text weight=\"bold\">Grand Total</Text>\n                <Headline level={3}>${grandTotal}</Headline>\n              </Inline>\n            </Stack>\n          )}\n\n          {submitted && orderStatus === 'error' && (\n            <SectionMessage variant=\"error\">\n              <SectionMessage.Title>Cannot Complete Purchase</SectionMessage.Title>\n              <SectionMessage.Content>\n                {noTicketsSelected\n                  ? 'Please select at least one ticket before purchasing.'\n                  : 'Please fill in all required buyer information correctly.'}\n              </SectionMessage.Content>\n            </SectionMessage>\n          )}\n\n          <Button variant=\"primary\" onPress={handlePurchase}>\n            Purchase Tickets\n          </Button>\n        </Stack>\n      </Card>\n    </Stack>\n  );\n};\n\nexport default TestApp;\n",
+  "renderTimeMs": 2110,
+  "sourceCode": "import { useState } from 'react';\nimport {\n  AppLayout,\n  Badge,\n  Button,\n  Card,\n  Columns,\n  Divider,\n  Form,\n  Headline,\n  Inline,\n  Inset,\n  NumberField,\n  SectionMessage,\n  Split,\n  Stack,\n  Text,\n  TextField,\n} from '@marigold/components';\n\ntype TicketId = 'early-bird' | 'regular' | 'vip';\n\ninterface Ticket {\n  id: TicketId;\n  name: string;\n  price: number;\n  description: string;\n  maxQuantity: number;\n  soldOut: boolean;\n  limitNote: string | null;\n}\n\nconst TICKETS: Ticket[] = [\n  {\n    id: 'early-bird',\n    name: 'Early Bird',\n    price: 49,\n    description: 'Limited availability — grab yours before they run out!',\n    maxQuantity: 12,\n    soldOut: false,\n    limitNote: 'Only 12 left',\n  },\n  {\n    id: 'regular',\n    name: 'Regular',\n    price: 79,\n    description: 'Standard admission for all three festival days.',\n    maxQuantity: 20,\n    soldOut: false,\n    limitNote: null,\n  },\n  {\n    id: 'vip',\n    name: 'VIP',\n    price: 149,\n    description: 'Premium experience with backstage access and VIP lounge.',\n    maxQuantity: 0,\n    soldOut: true,\n    limitNote: null,\n  },\n];\n\nconst TestApp = () => {\n  const [quantities, setQuantities] = useState<Record<TicketId, number>>({\n    'early-bird': 0,\n    regular: 0,\n    vip: 0,\n  });\n  const [name, setName] = useState('');\n  const [email, setEmail] = useState('');\n  const [phone, setPhone] = useState('');\n  const [submitted, setSubmitted] = useState(false);\n  const [ticketError, setTicketError] = useState('');\n  const [nameError, setNameError] = useState('');\n  const [emailError, setEmailError] = useState('');\n\n  const totalTickets = Object.values(quantities).reduce((a, b) => a + b, 0);\n  const grandTotal = TICKETS.reduce(\n    (sum, t) => sum + quantities[t.id] * t.price,\n    0\n  );\n  const selectedTickets = TICKETS.filter(t => quantities[t.id] > 0);\n\n  const updateQuantity = (id: TicketId, value: number) => {\n    setQuantities(prev => ({ ...prev, [id]: isNaN(value) ? 0 : value }));\n  };\n\n  const handlePurchase = () => {\n    let valid = true;\n\n    if (totalTickets === 0) {\n      setTicketError('Please select at least one ticket before purchasing.');\n      valid = false;\n    } else {\n      setTicketError('');\n    }\n\n    if (!name.trim()) {\n      setNameError('Full name is required.');\n      valid = false;\n    } else {\n      setNameError('');\n    }\n\n    if (!email.trim()) {\n      setEmailError('Email address is required.');\n      valid = false;\n    } else if (!/^[^\\s@]+@[^\\s@]+\\.[^\\s@]+$/.test(email.trim())) {\n      setEmailError('Please enter a valid email address.');\n      valid = false;\n    } else {\n      setEmailError('');\n    }\n\n    if (!valid) return;\n\n    setSubmitted(true);\n  };\n\n  if (submitted) {\n    return (\n      <AppLayout>\n        <AppLayout.Main>\n          <Inset space={8}>\n            <Stack space={6}>\n              <Headline level={1}>Summer Music Festival 2026</Headline>\n              <SectionMessage variant=\"success\">\n                <SectionMessage.Title>Order Confirmed!</SectionMessage.Title>\n                <SectionMessage.Content>\n                  Thank you, {name}! Your tickets for Summer Music Festival 2026\n                  have been confirmed. A confirmation receipt will be sent to{' '}\n                  {email}.\n                </SectionMessage.Content>\n              </SectionMessage>\n              <Button\n                variant=\"secondary\"\n                onPress={() => {\n                  setSubmitted(false);\n                  setQuantities({ 'early-bird': 0, regular: 0, vip: 0 });\n                  setName('');\n                  setEmail('');\n                  setPhone('');\n                }}\n              >\n                Back to Shop\n              </Button>\n            </Stack>\n          </Inset>\n        </AppLayout.Main>\n      </AppLayout>\n    );\n  }\n\n  return (\n    <AppLayout>\n      <AppLayout.Main>\n        <Inset space={8}>\n          <Stack space={8}>\n        {/* Event Info */}\n        <Stack space={2}>\n          <Headline level={1}>Summer Music Festival 2026</Headline>\n          <Inline space={3}>\n            <Text>July 15–17, 2026</Text>\n            <Text>·</Text>\n            <Text>Stadtpark Freiburg</Text>\n          </Inline>\n          <Text variant=\"muted\">\n            Three days of live music featuring local and international artists.\n          </Text>\n        </Stack>\n\n        <Divider />\n\n        {/* Ticket Categories */}\n        <Stack space={4}>\n          <Headline level={2}>Select Tickets</Headline>\n          <Columns columns={[1, 1, 1]} space={4} collapseAt=\"50em\">\n            {TICKETS.map(ticket => (\n              <Card key={ticket.id}>\n                <Inset spaceX=\"padding-regular\" spaceY=\"padding-snug\">\n                  <Stack space={3}>\n                    <Inline space={2}>\n                      <Headline level={3}>{ticket.name}</Headline>\n                      {ticket.soldOut ? (\n                        <Badge variant=\"error\">Sold Out</Badge>\n                      ) : ticket.limitNote ? (\n                        <Badge variant=\"warning\">{ticket.limitNote}</Badge>\n                      ) : null}\n                    </Inline>\n                    <Text weight=\"bold\" size=\"xl\">\n                      ${ticket.price}\n                    </Text>\n                    <Text variant=\"muted\">{ticket.description}</Text>\n                    <NumberField\n                      label=\"Quantity\"\n                      value={quantities[ticket.id]}\n                      onChange={val => updateQuantity(ticket.id, val)}\n                      minValue={0}\n                      maxValue={ticket.soldOut ? 0 : ticket.maxQuantity}\n                      disabled={ticket.soldOut}\n                      width=\"1/3\"\n                    />\n                  </Stack>\n                </Inset>\n              </Card>\n            ))}\n          </Columns>\n        </Stack>\n\n        <Divider />\n\n        {/* Buyer Info */}\n        <Stack space={4}>\n          <Headline level={2}>Your Information</Headline>\n          <Form onSubmit={e => e.preventDefault()}>\n            <Stack space={4}>\n              <TextField\n                label=\"Full Name\"\n                value={name}\n                onChange={setName}\n                required\n                error={!!nameError}\n                errorMessage={nameError}\n              />\n              <TextField\n                label=\"Email\"\n                type=\"email\"\n                value={email}\n                onChange={setEmail}\n                required\n                error={!!emailError}\n                errorMessage={emailError}\n              />\n              <TextField\n                label=\"Phone Number\"\n                type=\"tel\"\n                value={phone}\n                onChange={setPhone}\n              />\n            </Stack>\n          </Form>\n        </Stack>\n\n        <Divider />\n\n        {/* Order Summary */}\n        <Stack space={4}>\n          <Headline level={2}>Order Summary</Headline>\n          <Card>\n            <Inset spaceX=\"padding-regular\" spaceY=\"padding-snug\">\n              <Stack space={3}>\n                {selectedTickets.length === 0 ? (\n                  <Text variant=\"muted\">No tickets selected yet.</Text>\n                ) : (\n                  selectedTickets.map(ticket => (\n                    <Inline key={ticket.id} space={4}>\n                      <Text>\n                        {ticket.name} × {quantities[ticket.id]}\n                      </Text>\n                      <Split />\n                      <Text weight=\"bold\">\n                        ${quantities[ticket.id] * ticket.price}\n                      </Text>\n                    </Inline>\n                  ))\n                )}\n                <Divider />\n                <Inline space={4}>\n                  <Text weight=\"bold\" size=\"lg\">\n                    Grand Total\n                  </Text>\n                  <Split />\n                  <Text weight=\"bold\" size=\"lg\">\n                    ${grandTotal}\n                  </Text>\n                </Inline>\n              </Stack>\n            </Inset>\n          </Card>\n\n          {ticketError && (\n            <SectionMessage variant=\"warning\">\n              <SectionMessage.Title>No tickets selected</SectionMessage.Title>\n              <SectionMessage.Content>{ticketError}</SectionMessage.Content>\n            </SectionMessage>\n          )}\n\n          <Button variant=\"primary\" onPress={handlePurchase} fullWidth>\n            Purchase Tickets\n          </Button>\n        </Stack>\n      </Stack>\n        </Inset>\n      </AppLayout.Main>\n    </AppLayout>\n  );\n};\n\nexport default TestApp;\n",
   "assertions": {
     "passed": [
       {
@@ -282,6 +185,13 @@
         "evidence": "<Headline> found"
       },
       {
+        "id": "a-has-form",
+        "description": "Form component wrapping buyer info",
+        "severity": "required",
+        "passed": true,
+        "evidence": "<Form> found"
+      },
+      {
         "id": "a-sold-out-state",
         "description": "Sold-out state indicated",
         "severity": "required",
@@ -296,23 +206,15 @@
         "evidence": "<Card> found"
       }
     ],
-    "failed": [
-      {
-        "id": "a-has-form",
-        "description": "Form component wrapping buyer info",
-        "severity": "required",
-        "passed": false,
-        "evidence": "<Form> not found"
-      }
-    ],
-    "passRate": 0.9167,
-    "requiredPassRate": 0.9,
-    "weightedPassRate": 0.9048,
+    "failed": [],
+    "passRate": 1,
+    "requiredPassRate": 1,
+    "weightedPassRate": 1,
     "total": 12
   },
   "validatePackageVersion": "0.0.1",
   "playwrightVersion": null,
   "resolvedModelId": "claude-sonnet-4-6",
-  "claudeCliVersion": "2.1.185 (Claude Code)",
-  "sessionId": "7f2937ce-9eb4-427c-9ec9-64e13932aabd"
+  "claudeCliVersion": "2.1.193 (Claude Code)",
+  "sessionId": "281dd969-ebba-4d9c-863b-196bbe1e3fb7"
 }

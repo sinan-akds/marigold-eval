@@ -3,7 +3,7 @@
   "promptId": "P-01",
   "model": "sonnet",
   "config": "full-stack",
-  "timestamp": "2026-06-23T10:41:28.439Z",
+  "timestamp": "2026-06-28T15:26:02.542Z",
   "quality": {
     "overall": 94.49,
     "categories": {
@@ -106,14 +106,14 @@
     "renderSuccess": true
   },
   "efficiency": {
-    "durationMs": 473805,
-    "costUsd": 1.6111857000000003,
-    "inputTokens": 64,
-    "outputTokens": 22835,
-    "cacheReadTokens": 2889899,
-    "cacheCreationTokens": 65538,
-    "totalTokens": 22899,
-    "numTurns": 57
+    "durationMs": 334787,
+    "costUsd": 0.7656491999999999,
+    "inputTokens": 36,
+    "outputTokens": 9270,
+    "cacheReadTokens": 1281814,
+    "cacheCreationTokens": 40202,
+    "totalTokens": 9306,
+    "numTurns": 33
   },
   "report": {
     "file": "TestApp.tsx",
@@ -181,7 +181,7 @@
       "Responsive layout"
     ],
     "metadata": {
-      "renderTimeMs": 1522,
+      "renderTimeMs": 1617,
       "componentsFound": [
         "div",
         "input",
@@ -210,8 +210,8 @@
     "span",
     "textarea"
   ],
-  "renderTimeMs": 1522,
-  "sourceCode": "import { useState } from 'react';\nimport {\n  Button,\n  Form,\n  Headline,\n  Inset,\n  SectionMessage,\n  Select,\n  Stack,\n  TextArea,\n  TextField,\n} from '@marigold/components';\n\ninterface FormErrors {\n  name?: string;\n  email?: string;\n}\n\nconst isValidEmail = (value: string) =>\n  /^[^\\s@]+@[^\\s@]+\\.[^\\s@]+$/.test(value);\n\nconst ContactForm = () => {\n  const [name, setName] = useState('');\n  const [email, setEmail] = useState('');\n  const [subject, setSubject] = useState<string>('general');\n  const [message, setMessage] = useState('');\n  const [errors, setErrors] = useState<FormErrors>({});\n  const [submitted, setSubmitted] = useState(false);\n\n  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {\n    e.preventDefault();\n\n    const newErrors: FormErrors = {};\n\n    if (!name.trim()) {\n      newErrors.name = 'Name is required.';\n    }\n\n    if (!email.trim()) {\n      newErrors.email = 'Email address is required.';\n    } else if (!isValidEmail(email)) {\n      newErrors.email = 'Please enter a valid email address.';\n    }\n\n    if (Object.keys(newErrors).length > 0) {\n      setErrors(newErrors);\n      return;\n    }\n\n    setSubmitted(true);\n  };\n\n  if (submitted) {\n    return (\n      <Inset space={8}>\n        <SectionMessage variant=\"success\">\n          <SectionMessage.Title>Message sent!</SectionMessage.Title>\n          <SectionMessage.Content>\n            Thank you for reaching out. We will get back to you shortly.\n          </SectionMessage.Content>\n        </SectionMessage>\n      </Inset>\n    );\n  }\n\n  return (\n    <Inset space={8}>\n      <Stack space={6}>\n        <Headline level={1}>Contact Us</Headline>\n        <Form onSubmit={handleSubmit}>\n          <Stack space={4}>\n            <TextField\n              label=\"Name\"\n              name=\"name\"\n              value={name}\n              onChange={val => {\n                setName(val);\n                if (errors.name) setErrors(prev => ({ ...prev, name: undefined }));\n              }}\n              error={!!errors.name}\n              errorMessage={errors.name}\n            />\n            <TextField\n              label=\"Email\"\n              name=\"email\"\n              type=\"email\"\n              value={email}\n              onChange={val => {\n                setEmail(val);\n                if (errors.email) setErrors(prev => ({ ...prev, email: undefined }));\n              }}\n              error={!!errors.email}\n              errorMessage={errors.email}\n            />\n            <Select\n              label=\"Subject\"\n              name=\"subject\"\n              selectedKey={subject}\n              onSelectionChange={key => setSubject(key as string)}\n            >\n              <Select.Option id=\"general\">General</Select.Option>\n              <Select.Option id=\"support\">Support</Select.Option>\n              <Select.Option id=\"feedback\">Feedback</Select.Option>\n            </Select>\n            <TextArea\n              label=\"Message\"\n              name=\"message\"\n              value={message}\n              onChange={setMessage}\n              rows={5}\n            />\n            <Button variant=\"primary\" type=\"submit\">\n              Send Message\n            </Button>\n          </Stack>\n        </Form>\n      </Stack>\n    </Inset>\n  );\n};\n\nexport default ContactForm;\n",
+  "renderTimeMs": 1617,
+  "sourceCode": "import { useState } from 'react';\nimport {\n  Button,\n  Form,\n  Headline,\n  Inset,\n  SectionMessage,\n  Select,\n  Stack,\n  TextArea,\n  TextField,\n} from '@marigold/components';\n\nconst EMAIL_RE = /^[^\\s@]+@[^\\s@]+\\.[^\\s@]+$/;\n\nconst ContactForm = () => {\n  const [name, setName] = useState('');\n  const [email, setEmail] = useState('');\n  const [subject, setSubject] = useState<string>('');\n  const [message, setMessage] = useState('');\n  const [errors, setErrors] = useState<Record<string, string>>({});\n  const [submitted, setSubmitted] = useState(false);\n\n  const validate = (): Record<string, string> => {\n    const e: Record<string, string> = {};\n    if (!name.trim()) e.name = 'Name is required.';\n    if (!email.trim()) {\n      e.email = 'Email is required.';\n    } else if (!EMAIL_RE.test(email)) {\n      e.email = 'Please enter a valid email address.';\n    }\n    if (!message.trim()) e.message = 'Message is required.';\n    return e;\n  };\n\n  const handleSubmit = (e: React.FormEvent) => {\n    e.preventDefault();\n    const newErrors = validate();\n    if (Object.keys(newErrors).length > 0) {\n      setErrors(newErrors);\n      return;\n    }\n    setErrors({});\n    setSubmitted(true);\n  };\n\n  if (submitted) {\n    return (\n      <Inset space={8}>\n        <SectionMessage variant=\"success\">\n          <SectionMessage.Title>Message sent!</SectionMessage.Title>\n          <SectionMessage.Content>\n            Thank you for reaching out. We will get back to you shortly.\n          </SectionMessage.Content>\n        </SectionMessage>\n      </Inset>\n    );\n  }\n\n  return (\n    <Inset space={8}>\n      <Stack space={6}>\n        <Headline level={1}>Contact Us</Headline>\n        <Form onSubmit={handleSubmit}>\n          <Stack space={4}>\n            <TextField\n              label=\"Name\"\n              value={name}\n              onChange={setName}\n              required\n              error={!!errors.name}\n              errorMessage={errors.name}\n            />\n            <TextField\n              label=\"Email\"\n              type=\"email\"\n              value={email}\n              onChange={setEmail}\n              required\n              error={!!errors.email}\n              errorMessage={errors.email}\n            />\n            <Select\n              label=\"Subject\"\n              placeholder=\"Select a subject\"\n              selectedKey={subject || null}\n              onSelectionChange={key => setSubject(key as string)}\n            >\n              <Select.Option id=\"general\">General</Select.Option>\n              <Select.Option id=\"support\">Support</Select.Option>\n              <Select.Option id=\"feedback\">Feedback</Select.Option>\n            </Select>\n            <TextArea\n              label=\"Message\"\n              value={message}\n              onChange={setMessage}\n              rows={5}\n              error={!!errors.message}\n              errorMessage={errors.message}\n            />\n            <Button variant=\"primary\" type=\"submit\">\n              Send Message\n            </Button>\n          </Stack>\n        </Form>\n      </Stack>\n    </Inset>\n  );\n};\n\nexport default ContactForm;\n",
   "assertions": {
     "passed": [
       {
@@ -280,6 +280,6 @@
   "validatePackageVersion": "0.0.1",
   "playwrightVersion": null,
   "resolvedModelId": "claude-sonnet-4-6",
-  "claudeCliVersion": "2.1.185 (Claude Code)",
-  "sessionId": "2b3877c4-1aa3-4692-ad05-7e490dc514fe"
+  "claudeCliVersion": "2.1.193 (Claude Code)",
+  "sessionId": "bd438b59-42b9-4b76-94bd-bccb37cabd68"
 }

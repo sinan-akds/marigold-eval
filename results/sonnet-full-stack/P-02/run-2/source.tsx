@@ -6,99 +6,91 @@ import {
   Divider,
   Headline,
   Inline,
+  Inset,
   Stack,
   Text,
 } from '@marigold/components';
 
-const TestApp = () => {
-  const [feedbackMsg, setFeedbackMsg] = useState('');
+const UserProfileCard = () => {
+  const [status, setStatus] = useState<'Active' | 'Away'>('Active');
 
-  const showFeedback = (msg: string) => {
-    setFeedbackMsg(msg);
-    setTimeout(() => setFeedbackMsg(''), 3000);
+  const handleSendMessage = () => {
+    alert('Opening message composer for Jane Doe…');
+  };
+
+  const handleEditProfile = () => {
+    alert('Opening profile editor for Jane Doe…');
   };
 
   return (
-    <div style={{ display: 'flex', justifyContent: 'center', padding: '2rem' }}>
-      <div style={{ maxWidth: '480px', width: '100%' }}>
-        <Card>
-          <Stack space={6}>
-            {/* Avatar + Name + Status */}
-            <Inline space={4} alignY="center">
-              <img
-                src="https://i.pravatar.cc/150?img=47"
-                alt="Jane Doe"
-                style={{
-                  borderRadius: '50%',
-                  width: '80px',
-                  height: '80px',
-                  flexShrink: 0,
-                }}
-              />
-              <Stack space={2}>
-                <Headline level="3">Jane Doe</Headline>
-                <Badge variant="success">Active</Badge>
-              </Stack>
-            </Inline>
-
-            <Divider />
-
-            {/* Details */}
-            <Stack space={2}>
-              <Inline space={2}>
-                <Text weight="bold">Role:</Text>
-                <Text>Senior Developer</Text>
-              </Inline>
-              <Inline space={2}>
-                <Text weight="bold">Department:</Text>
-                <Text>Engineering</Text>
-              </Inline>
-              <Inline space={2}>
-                <Text weight="bold">Email:</Text>
-                <Text>jane.doe@example.com</Text>
-              </Inline>
-              <Inline space={2}>
-                <Text weight="bold">Location:</Text>
-                <Text>Freiburg, Germany</Text>
-              </Inline>
+    <Card>
+      <Inset space={6}>
+        <Stack space={4}>
+          {/* Avatar + Name */}
+          <Inline space={4} alignY="center">
+            <img
+              src="https://picsum.photos/seed/janedoe/80/80"
+              alt="Jane Doe"
+              style={{ borderRadius: '50%', width: 80, height: 80, flexShrink: 0 }}
+            />
+            <Stack space={1}>
+              <Headline level="3">Jane Doe</Headline>
+              <Badge
+                variant={status === 'Active' ? 'success' : 'warning'}
+              >
+                {status}
+              </Badge>
             </Stack>
+          </Inline>
 
-            <Divider />
+          <Divider />
 
-            {/* Bio */}
-            <Text>
-              Jane is a seasoned developer with over 8 years of experience
-              building scalable web applications. She is passionate about clean
-              code, developer experience, and mentoring junior engineers.
-              Outside of work, she enjoys hiking in the Black Forest and
-              contributing to open-source projects.
-            </Text>
-
-            <Divider />
-
-            {/* Feedback message */}
-            {feedbackMsg && <Text variant="muted">{feedbackMsg}</Text>}
-
-            {/* Actions */}
-            <Inline space={3}>
-              <Button
-                variant="primary"
-                onPress={() => showFeedback('Message sent to Jane Doe!')}
-              >
-                Send Message
-              </Button>
-              <Button
-                variant="secondary"
-                onPress={() => showFeedback('Opening profile editor…')}
-              >
-                Edit Profile
-              </Button>
+          {/* Details */}
+          <Stack space={2}>
+            <Inline space={2}>
+              <Text variant="muted" weight="bold">Role:</Text>
+              <Text>Senior Developer</Text>
+            </Inline>
+            <Inline space={2}>
+              <Text variant="muted" weight="bold">Department:</Text>
+              <Text>Engineering</Text>
+            </Inline>
+            <Inline space={2}>
+              <Text variant="muted" weight="bold">Email:</Text>
+              <Text>jane.doe@example.com</Text>
+            </Inline>
+            <Inline space={2}>
+              <Text variant="muted" weight="bold">Location:</Text>
+              <Text>Freiburg, Germany</Text>
             </Inline>
           </Stack>
-        </Card>
-      </div>
-    </div>
+
+          <Divider />
+
+          {/* Bio */}
+          <Text>
+            Jane is a passionate senior developer with over 8 years of experience
+            building scalable web applications. She specialises in React and
+            TypeScript and is known for her clear communication and mentoring
+            skills. Outside of work, she enjoys hiking in the Black Forest and
+            contributing to open-source projects.
+          </Text>
+
+          <Divider />
+
+          {/* Actions */}
+          <Inline space={3}>
+            <Button variant="primary" onPress={handleSendMessage}>
+              Send Message
+            </Button>
+            <Button variant="ghost" onPress={handleEditProfile}>
+              Edit Profile
+            </Button>
+          </Inline>
+        </Stack>
+      </Inset>
+    </Card>
   );
 };
 
-export default TestApp;
+export default UserProfileCard;

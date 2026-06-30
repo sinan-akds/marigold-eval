@@ -12,6 +12,7 @@ import numpy as np
 import matplotlib
 matplotlib.use("Agg")
 import matplotlib.pyplot as plt
+import matplotlib.ticker as mticker
 
 ROOT = os.path.dirname(os.path.abspath(__file__))
 RES = os.path.join(ROOT, "results")
@@ -203,6 +204,38 @@ def plot_render_per_prompt():
         save(fig, f"render_perprompt_{m}.png")
 
 
+def plot_errors_per_prompt():
+    for m in PRESENT:
+        if not any(DATA[m][t] for t in TIERS):
+            continue
+        fig, ax = plt.subplots(figsize=(8.4, 4.6))
+        x = np.arange(len(PROMPTS))
+        any_line = False
+        for t in TIERS:
+            ys = []
+            for p in PROMPTS:
+                runs = [r for r in DATA[m][t] if r["prompt"] == p]
+                ys.append(mean([r["nErr"] for r in runs]) if runs else np.nan)
+            if np.all(np.isnan(ys)):
+                continue
+            ax.plot(x, ys, marker="o", color=TIER_COLORS[t], linewidth=2,
+                    label=TIER_LABELS[t])
+            any_line = True
+        if not any_line:
+            plt.close(fig)
+            continue
+        ax.set_xticks(x)
+        ax.set_xticklabels(PROMPTS, rotation=30, ha="right")
+        ax.set_ylabel("Ø Fehler pro Lauf (symlog)")
+        ax.set_yscale("symlog", linthresh=1)
+        ax.set_ylim(bottom=0)
+        ax.set_yticks([0, 1, 3, 10, 30, 100, 300])
+        ax.get_yaxis().set_major_formatter(mticker.ScalarFormatter())
+        ax.set_title(f"Fehler je Prompt — {MODEL_LABELS[m]}")
+        legend_below(ax, *tier_handles(), ncol=3)
+        save(fig, f"errors_perprompt_{m}.png")
+
+
 # Konvergenz
 def plot_convergence():
     it = _safe_load(os.path.join(ROOT, "iteration-data.json"))
@@ -372,6 +405,7 @@ if __name__ == "__main__":
     plot_warnings()
     plot_consistency()
     plot_render_per_prompt()
+    plot_errors_per_prompt()
     plot_convergence()
     plot_complexity()
     plot_render()

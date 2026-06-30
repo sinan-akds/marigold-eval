@@ -3,9 +3,9 @@
   "promptId": "P-05",
   "model": "sonnet",
   "config": "full-stack",
-  "timestamp": "2026-06-25T09:36:07.017Z",
+  "timestamp": "2026-06-28T17:12:33.748Z",
   "quality": {
-    "overall": 89.88,
+    "overall": 86.67,
     "categories": {
       "A": {
         "category": "A",
@@ -40,23 +40,55 @@
       "D": {
         "category": "D",
         "label": "Spatial & A11y",
-        "score": 75.51,
+        "score": 51.01,
         "weight": 0.225,
-        "weightedScore": 16.99,
+        "weightedScore": 11.48,
         "errorCount": 0,
-        "warningCount": 3,
+        "warningCount": 12,
         "issues": [
           {
             "type": "a11y",
             "severity": "warning",
             "source": "responsive-checker",
             "component": "input",
-            "message": "Touch target too small at mobile (375px): input elements are 13x13px (16 instances) (minimum 24x24px per WCAG 2.5.8).",
+            "message": "Touch target too small at mobile (375px): input elements are 13x13px (10 instances) (minimum 24x24px per WCAG 2.5.8).",
             "suggestion": "Increase the clickable area. Marigold interactive components have built-in minimum sizes — check if custom styling reduces the target.",
             "details": {
               "breakpoint": "mobile",
               "tag": "input",
-              "count": 16,
+              "count": 10,
+              "minWidth": 13,
+              "minHeight": 13,
+              "scope": "page"
+            }
+          },
+          {
+            "type": "a11y",
+            "severity": "warning",
+            "source": "responsive-checker",
+            "component": "select",
+            "message": "Touch target too small at mobile (375px): select elements are 79x21px (2 instances) (minimum 24x24px per WCAG 2.5.8).",
+            "suggestion": "Increase the clickable area. Marigold interactive components have built-in minimum sizes — check if custom styling reduces the target.",
+            "details": {
+              "breakpoint": "mobile",
+              "tag": "select",
+              "count": 2,
+              "minWidth": 79,
+              "minHeight": 21,
+              "scope": "page"
+            }
+          },
+          {
+            "type": "a11y",
+            "severity": "warning",
+            "source": "responsive-checker",
+            "component": "switch",
+            "message": "Touch target too small at mobile (375px): switch elements are 13x13px (3 instances) (minimum 24x24px per WCAG 2.5.8).",
+            "suggestion": "Increase the clickable area. Marigold interactive components have built-in minimum sizes — check if custom styling reduces the target.",
+            "details": {
+              "breakpoint": "mobile",
+              "tag": "switch",
+              "count": 3,
               "minWidth": 13,
               "minHeight": 13,
               "scope": "page"
@@ -67,11 +99,11 @@
             "severity": "warning",
             "source": "responsive-checker",
             "component": "page",
-            "message": "Content uses only 24% of the desktop width (1280px): it stays in a narrow, mobile-shaped band instead of adapting to the available space.",
+            "message": "Content uses only 25% of the desktop width (1280px): it stays in a narrow, mobile-shaped band instead of adapting to the available space.",
             "suggestion": "Let the layout grow with the viewport using Marigold responsive primitives — <Columns collapseAt=\"...\"> for multi-column areas, AppLayout for the shell, Stack/Inline for flow — instead of a fixed-width container. (Intentionally centred max-width reading columns are fine and may trip this; treat it as a relative signal.)",
             "details": {
-              "widthUtilization": 0.23515625,
-              "contentElements": 86,
+              "widthUtilization": 0.2453125,
+              "contentElements": 78,
               "scope": "page"
             }
           },
@@ -91,15 +123,111 @@
               "html": "<h3 class=\"react-aria-Heading\">",
               "scope": "page"
             }
+          },
+          {
+            "type": "a11y",
+            "severity": "warning",
+            "source": "aom-extractor",
+            "component": "html",
+            "message": "Document should have one main landmark (landmark-one-main)",
+            "suggestion": "Wrap your page content in `<AppLayout>` with `<AppLayout.Main>` to provide a `<main>` landmark. Import AppLayout from `@marigold/components`.",
+            "details": {
+              "ruleId": "landmark-one-main",
+              "impact": "moderate",
+              "target": [
+                "html"
+              ],
+              "html": "<html lang=\"en\" data-theme=\"rui\">",
+              "scope": "page"
+            }
+          },
+          {
+            "type": "a11y",
+            "severity": "warning",
+            "source": "aom-extractor",
+            "component": "page",
+            "message": "All page content should be contained by landmarks — 1 element affected (region)",
+            "suggestion": "All page content must be inside a landmark region. Use `<AppLayout>` with `<AppLayout.Main>` for the main area, `<TopNavigation>` for the header (`<header>`), and `<Sidebar>` for side navigation (`<aside>`). Import from `@marigold/components`.",
+            "details": {
+              "ruleId": "region",
+              "impact": "moderate",
+              "affectedCount": 1,
+              "scope": "page"
+            }
+          },
+          {
+            "type": "a11y",
+            "severity": "warning",
+            "source": "keyboard-a11y",
+            "component": "input",
+            "message": "Interactive element <input> (input) is not reachable via Tab key.",
+            "suggestion": "Ensure the element is focusable. Marigold interactive components are focusable by default — check if a parent has tabindex=\"-1\" or focus is trapped.",
+            "details": {
+              "selector": "body:nth-child(2) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div:nth-child(2) > div:nth-child(1) > div:nth-child(2) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div:nth-child(2) > input:nth-child(1)",
+              "role": "input",
+              "scope": "page"
+            }
+          },
+          {
+            "type": "a11y",
+            "severity": "warning",
+            "source": "keyboard-a11y",
+            "component": "textarea",
+            "message": "Interactive element <textarea> (textarea) is not reachable via Tab key.",
+            "suggestion": "Ensure the element is focusable. Marigold interactive components are focusable by default — check if a parent has tabindex=\"-1\" or focus is trapped.",
+            "details": {
+              "selector": "body:nth-child(2) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div:nth-child(2) > div:nth-child(1) > div:nth-child(2) > div:nth-child(1) > div:nth-child(1) > div:nth-child(3) > textarea:nth-child(2)",
+              "role": "textarea",
+              "scope": "page"
+            }
+          },
+          {
+            "type": "a11y",
+            "severity": "warning",
+            "source": "keyboard-a11y",
+            "component": "button",
+            "message": "Interactive element <button> (button) is not reachable via Tab key.",
+            "suggestion": "Ensure the element is focusable. Marigold interactive components are focusable by default — check if a parent has tabindex=\"-1\" or focus is trapped.",
+            "details": {
+              "selector": "body:nth-child(2) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div:nth-child(2) > div:nth-child(1) > div:nth-child(2) > div:nth-child(1) > div:nth-child(1) > button:nth-child(4)",
+              "role": "button",
+              "scope": "page"
+            }
+          },
+          {
+            "type": "a11y",
+            "severity": "warning",
+            "source": "keyboard-a11y",
+            "component": "input",
+            "message": "Interactive element <input> (switch) is not reachable via Tab key.",
+            "suggestion": "Ensure the element is focusable. Marigold interactive components are focusable by default — check if a parent has tabindex=\"-1\" or focus is trapped.",
+            "details": {
+              "selector": "body:nth-child(2) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div:nth-child(2) > div:nth-child(2) > div:nth-child(2) > div:nth-child(1) > div:nth-child(1) > div:nth-child(4) > label:nth-child(1) > span:nth-child(1) > input:nth-child(1)",
+              "role": "switch",
+              "scope": "page"
+            }
+          },
+          {
+            "type": "a11y",
+            "severity": "warning",
+            "source": "keyboard-a11y",
+            "component": "button",
+            "message": "Element <button> has no visible focus indicator when focused (WCAG 2.4.7).",
+            "suggestion": "Marigold components provide built-in focus rings via the theme. For custom elements, add an outline or box-shadow on :focus-visible.",
+            "details": {
+              "selector": "body:nth-child(2) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div:nth-child(2) > div:nth-child(4) > div:nth-child(1) > h3:nth-child(1) > button:nth-child(1)",
+              "role": "button",
+              "scope": "page"
+            }
           }
         ]
       },
       "E": {
         "category": "E",
         "label": "Functional Completeness",
-        "score": 79.49,
+        "score": 89.74,
         "weight": 0.225,
-        "weightedScore": 17.89,
+        "weightedScore": 20.19,
         "errorCount": 0,
         "warningCount": 0,
         "issues": []
@@ -108,14 +236,14 @@
     "renderSuccess": true
   },
   "efficiency": {
-    "durationMs": 536486,
-    "costUsd": 1.6164626999999998,
-    "inputTokens": 41,
-    "outputTokens": 28434,
-    "cacheReadTokens": 2223399,
-    "cacheCreationTokens": 84975,
-    "totalTokens": 28475,
-    "numTurns": 44
+    "durationMs": 482128,
+    "costUsd": 1.0593106,
+    "inputTokens": 32,
+    "outputTokens": 17858,
+    "cacheReadTokens": 1284132,
+    "cacheCreationTokens": 67524,
+    "totalTokens": 17890,
+    "numTurns": 32
   },
   "report": {
     "file": "TestApp.tsx",
@@ -126,12 +254,44 @@
         "severity": "warning",
         "source": "responsive-checker",
         "component": "input",
-        "message": "Touch target too small at mobile (375px): input elements are 13x13px (16 instances) (minimum 24x24px per WCAG 2.5.8).",
+        "message": "Touch target too small at mobile (375px): input elements are 13x13px (10 instances) (minimum 24x24px per WCAG 2.5.8).",
         "suggestion": "Increase the clickable area. Marigold interactive components have built-in minimum sizes — check if custom styling reduces the target.",
         "details": {
           "breakpoint": "mobile",
           "tag": "input",
-          "count": 16,
+          "count": 10,
+          "minWidth": 13,
+          "minHeight": 13,
+          "scope": "page"
+        }
+      },
+      {
+        "type": "a11y",
+        "severity": "warning",
+        "source": "responsive-checker",
+        "component": "select",
+        "message": "Touch target too small at mobile (375px): select elements are 79x21px (2 instances) (minimum 24x24px per WCAG 2.5.8).",
+        "suggestion": "Increase the clickable area. Marigold interactive components have built-in minimum sizes — check if custom styling reduces the target.",
+        "details": {
+          "breakpoint": "mobile",
+          "tag": "select",
+          "count": 2,
+          "minWidth": 79,
+          "minHeight": 21,
+          "scope": "page"
+        }
+      },
+      {
+        "type": "a11y",
+        "severity": "warning",
+        "source": "responsive-checker",
+        "component": "switch",
+        "message": "Touch target too small at mobile (375px): switch elements are 13x13px (3 instances) (minimum 24x24px per WCAG 2.5.8).",
+        "suggestion": "Increase the clickable area. Marigold interactive components have built-in minimum sizes — check if custom styling reduces the target.",
+        "details": {
+          "breakpoint": "mobile",
+          "tag": "switch",
+          "count": 3,
           "minWidth": 13,
           "minHeight": 13,
           "scope": "page"
@@ -142,11 +302,11 @@
         "severity": "warning",
         "source": "responsive-checker",
         "component": "page",
-        "message": "Content uses only 24% of the desktop width (1280px): it stays in a narrow, mobile-shaped band instead of adapting to the available space.",
+        "message": "Content uses only 25% of the desktop width (1280px): it stays in a narrow, mobile-shaped band instead of adapting to the available space.",
         "suggestion": "Let the layout grow with the viewport using Marigold responsive primitives — <Columns collapseAt=\"...\"> for multi-column areas, AppLayout for the shell, Stack/Inline for flow — instead of a fixed-width container. (Intentionally centred max-width reading columns are fine and may trip this; treat it as a relative signal.)",
         "details": {
-          "widthUtilization": 0.23515625,
-          "contentElements": 86,
+          "widthUtilization": 0.2453125,
+          "contentElements": 78,
           "scope": "page"
         }
       },
@@ -164,6 +324,102 @@
             ".border-b.last\\:border-b-0.border-border:nth-child(1) > div:nth-child(1) > h3"
           ],
           "html": "<h3 class=\"react-aria-Heading\">",
+          "scope": "page"
+        }
+      },
+      {
+        "type": "a11y",
+        "severity": "warning",
+        "source": "aom-extractor",
+        "component": "html",
+        "message": "Document should have one main landmark (landmark-one-main)",
+        "suggestion": "Wrap your page content in `<AppLayout>` with `<AppLayout.Main>` to provide a `<main>` landmark. Import AppLayout from `@marigold/components`.",
+        "details": {
+          "ruleId": "landmark-one-main",
+          "impact": "moderate",
+          "target": [
+            "html"
+          ],
+          "html": "<html lang=\"en\" data-theme=\"rui\">",
+          "scope": "page"
+        }
+      },
+      {
+        "type": "a11y",
+        "severity": "warning",
+        "source": "aom-extractor",
+        "component": "page",
+        "message": "All page content should be contained by landmarks — 1 element affected (region)",
+        "suggestion": "All page content must be inside a landmark region. Use `<AppLayout>` with `<AppLayout.Main>` for the main area, `<TopNavigation>` for the header (`<header>`), and `<Sidebar>` for side navigation (`<aside>`). Import from `@marigold/components`.",
+        "details": {
+          "ruleId": "region",
+          "impact": "moderate",
+          "affectedCount": 1,
+          "scope": "page"
+        }
+      },
+      {
+        "type": "a11y",
+        "severity": "warning",
+        "source": "keyboard-a11y",
+        "component": "input",
+        "message": "Interactive element <input> (input) is not reachable via Tab key.",
+        "suggestion": "Ensure the element is focusable. Marigold interactive components are focusable by default — check if a parent has tabindex=\"-1\" or focus is trapped.",
+        "details": {
+          "selector": "body:nth-child(2) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div:nth-child(2) > div:nth-child(1) > div:nth-child(2) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div:nth-child(2) > input:nth-child(1)",
+          "role": "input",
+          "scope": "page"
+        }
+      },
+      {
+        "type": "a11y",
+        "severity": "warning",
+        "source": "keyboard-a11y",
+        "component": "textarea",
+        "message": "Interactive element <textarea> (textarea) is not reachable via Tab key.",
+        "suggestion": "Ensure the element is focusable. Marigold interactive components are focusable by default — check if a parent has tabindex=\"-1\" or focus is trapped.",
+        "details": {
+          "selector": "body:nth-child(2) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div:nth-child(2) > div:nth-child(1) > div:nth-child(2) > div:nth-child(1) > div:nth-child(1) > div:nth-child(3) > textarea:nth-child(2)",
+          "role": "textarea",
+          "scope": "page"
+        }
+      },
+      {
+        "type": "a11y",
+        "severity": "warning",
+        "source": "keyboard-a11y",
+        "component": "button",
+        "message": "Interactive element <button> (button) is not reachable via Tab key.",
+        "suggestion": "Ensure the element is focusable. Marigold interactive components are focusable by default — check if a parent has tabindex=\"-1\" or focus is trapped.",
+        "details": {
+          "selector": "body:nth-child(2) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div:nth-child(2) > div:nth-child(1) > div:nth-child(2) > div:nth-child(1) > div:nth-child(1) > button:nth-child(4)",
+          "role": "button",
+          "scope": "page"
+        }
+      },
+      {
+        "type": "a11y",
+        "severity": "warning",
+        "source": "keyboard-a11y",
+        "component": "input",
+        "message": "Interactive element <input> (switch) is not reachable via Tab key.",
+        "suggestion": "Ensure the element is focusable. Marigold interactive components are focusable by default — check if a parent has tabindex=\"-1\" or focus is trapped.",
+        "details": {
+          "selector": "body:nth-child(2) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div:nth-child(2) > div:nth-child(2) > div:nth-child(2) > div:nth-child(1) > div:nth-child(1) > div:nth-child(4) > label:nth-child(1) > span:nth-child(1) > input:nth-child(1)",
+          "role": "switch",
+          "scope": "page"
+        }
+      },
+      {
+        "type": "a11y",
+        "severity": "warning",
+        "source": "keyboard-a11y",
+        "component": "button",
+        "message": "Element <button> has no visible focus indicator when focused (WCAG 2.4.7).",
+        "suggestion": "Marigold components provide built-in focus rings via the theme. For custom elements, add an outline or box-shadow on :focus-visible.",
+        "details": {
+          "selector": "body:nth-child(2) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div:nth-child(2) > div:nth-child(4) > div:nth-child(1) > h3:nth-child(1) > button:nth-child(1)",
+          "role": "button",
           "scope": "page"
         }
       }
@@ -184,13 +440,10 @@
       "No overlapping components detected"
     ],
     "metadata": {
-      "renderTimeMs": 1679,
+      "renderTimeMs": 2211,
       "componentsFound": [
         "div",
-        "button",
-        "input",
-        "textarea",
-        "label"
+        "button"
       ],
       "checksRun": [
         "technical",
@@ -198,23 +451,20 @@
         "a11y"
       ],
       "coverage": {
-        "staticValuesChecked": 4,
+        "staticValuesChecked": 5,
         "dynamicValuesSkipped": 8,
         "spreadPropsBypassed": 0
       },
-      "widthUtilization": 0.23515625
+      "widthUtilization": 0.2453125
     },
-    "markdown": "marigold-validate: TestApp.tsx — 0 error(s), 3 warning(s)\n\n[warning/spatial] <page>: Content uses only 24% of the desktop width (1280px): it stays in a narrow, mobile-shaped band instead of adapting to the available space.\n  → Let the layout grow with the viewport using Marigold responsive primitives — <Columns collapseAt=\"...\"> for multi-column areas, AppLayout for the shell, Stack/Inline for flow — instead of a fixed-width container. (Intentionally centred max-width reading columns are fine and may trip this; treat it as a relative signal.)\n  data: {widthUtilization=0.23515625, contentElements=86, scope=page}\n[warning/a11y] <.border-b.last\\:border-b-0.border-border:nth-child(1) > div:nth-child(1) > h3>: Heading levels should only increase by one (heading-order)\n  → Use `<Headline level={N}>` with sequential levels (1, 2, 3…). Do not skip heading levels. Import Headline from `@marigold/components`.\n  data: {ruleId=heading-order, impact=moderate, target=[\".border-b.last\\\\:border-b-0.border-border:nth-child(1) > div:nth-child(1) > h3\"], html=<h3 class=\"react-aria-Heading\">, scope=page}\n[warning/a11y] <input>: Touch target too small at mobile (375px): input elements are 13x13px (16 instances) (minimum 24x24px per WCAG 2.5.8).\n  → Increase the clickable area. Marigold interactive components have built-in minimum sizes — check if custom styling reduces the target.\n  data: {breakpoint=mobile, tag=input, count=16, minWidth=13, minHeight=13, scope=page}\n\npassed: TypeScript compilation, All Marigold props are valid, Component composition, Overlay accessible names, Compound component placement, Section headers, Collection item ids, Design system usage, Layout usage, Table usage, Component conventions, Theme variant compliance, No overlapping components detected\n\nchecks run: technical, spatial, a11y"
+    "markdown": "marigold-validate: TestApp.tsx — 0 error(s), 12 warning(s)\n\n[warning/spatial] <page>: Content uses only 25% of the desktop width (1280px): it stays in a narrow, mobile-shaped band instead of adapting to the available space.\n  → Let the layout grow with the viewport using Marigold responsive primitives — <Columns collapseAt=\"...\"> for multi-column areas, AppLayout for the shell, Stack/Inline for flow — instead of a fixed-width container. (Intentionally centred max-width reading columns are fine and may trip this; treat it as a relative signal.)\n  data: {widthUtilization=0.2453125, contentElements=78, scope=page}\n[warning/a11y] <.border-b.last\\:border-b-0.border-border:nth-child(1) > div:nth-child(1) > h3>: Heading levels should only increase by one (heading-order)\n  → Use `<Headline level={N}>` with sequential levels (1, 2, 3…). Do not skip heading levels. Import Headline from `@marigold/components`.\n  data: {ruleId=heading-order, impact=moderate, target=[\".border-b.last\\\\:border-b-0.border-border:nth-child(1) > div:nth-child(1) > h3\"], html=<h3 class=\"react-aria-Heading\">, scope=page}\n[warning/a11y] <button>: Interactive element <button> (button) is not reachable via Tab key.\n  → Ensure the element is focusable. Marigold interactive components are focusable by default — check if a parent has tabindex=\"-1\" or focus is trapped.\n  data: {selector=body:nth-child(2) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > ..., role=button, scope=page}\n[warning/a11y] <button>: Element <button> has no visible focus indicator when focused (WCAG 2.4.7).\n  → Marigold components provide built-in focus rings via the theme. For custom elements, add an outline or box-shadow on :focus-visible.\n  data: {selector=body:nth-child(2) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > ..., role=button, scope=page}\n[warning/a11y] <html>: Document should have one main landmark (landmark-one-main)\n  → Wrap your page content in `<AppLayout>` with `<AppLayout.Main>` to provide a `<main>` landmark. Import AppLayout from `@marigold/components`.\n  data: {ruleId=landmark-one-main, impact=moderate, target=[\"html\"], html=<html lang=\"en\" data-theme=\"rui\">, scope=page}\n[warning/a11y] <input>: Touch target too small at mobile (375px): input elements are 13x13px (10 instances) (minimum 24x24px per WCAG 2.5.8).\n  → Increase the clickable area. Marigold interactive components have built-in minimum sizes — check if custom styling reduces the target.\n  data: {breakpoint=mobile, tag=input, count=10, minWidth=13, minHeight=13, scope=page}\n[warning/a11y] <input>: Interactive element <input> (input) is not reachable via Tab key.\n  → Ensure the element is focusable. Marigold interactive components are focusable by default — check if a parent has tabindex=\"-1\" or focus is trapped.\n  data: {selector=body:nth-child(2) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > ..., role=input, scope=page}\n[warning/a11y] <input>: Interactive element <input> (switch) is not reachable via Tab key.\n  → Ensure the element is focusable. Marigold interactive components are focusable by default — check if a parent has tabindex=\"-1\" or focus is trapped.\n  data: {selector=body:nth-child(2) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > ..., role=switch, scope=page}\n[warning/a11y] <page>: All page content should be contained by landmarks — 1 element affected (region)\n  → All page content must be inside a landmark region. Use `<AppLayout>` with `<AppLayout.Main>` for the main area, `<TopNavigation>` for the header (`<header>`), and `<Sidebar>` for side navigation (`<aside>`). Import from `@marigold/components`.\n  data: {ruleId=region, impact=moderate, affectedCount=1, scope=page}\n[warning/a11y] <select>: Touch target too small at mobile (375px): select elements are 79x21px (2 instances) (minimum 24x24px per WCAG 2.5.8).\n  → Increase the clickable area. Marigold interactive components have built-in minimum sizes — check if custom styling reduces the target.\n  data: {breakpoint=mobile, tag=select, count=2, minWidth=79, minHeight=21, scope=page}\n[warning/a11y] <switch>: Touch target too small at mobile (375px): switch elements are 13x13px (3 instances) (minimum 24x24px per WCAG 2.5.8).\n  → Increase the clickable area. Marigold interactive components have built-in minimum sizes — check if custom styling reduces the target.\n  data: {breakpoint=mobile, tag=switch, count=3, minWidth=13, minHeight=13, scope=page}\n[warning/a11y] <textarea>: Interactive element <textarea> (textarea) is not reachable via Tab key.\n  → Ensure the element is focusable. Marigold interactive components are focusable by default — check if a parent has tabindex=\"-1\" or focus is trapped.\n  data: {selector=body:nth-child(2) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > ..., role=textarea, scope=page}\n\npassed: TypeScript compilation, All Marigold props are valid, Component composition, Overlay accessible names, Compound component placement, Section headers, Collection item ids, Design system usage, Layout usage, Table usage, Component conventions, Theme variant compliance, No overlapping components detected\n\nchecks run: technical, spatial, a11y"
   },
   "componentsFound": [
     "div",
-    "button",
-    "input",
-    "textarea",
-    "label"
+    "button"
   ],
-  "renderTimeMs": 1679,
-  "sourceCode": "import { useState } from 'react';\nimport {\n  Accordion,\n  AppLayout,\n  Button,\n  Checkbox,\n  Headline,\n  Radio,\n  SectionMessage,\n  Stack,\n  Switch,\n  Text,\n  TextArea,\n  TextField,\n} from '@marigold/components';\n\nconst SettingsPage = () => {\n  const [displayName, setDisplayName] = useState('');\n  const [email, setEmail] = useState('');\n  const [bio, setBio] = useState('');\n  const [profileSaved, setProfileSaved] = useState(false);\n\n  const [theme, setTheme] = useState('system');\n  const [language, setLanguage] = useState('english');\n  const [compactMode, setCompactMode] = useState(false);\n\n  const [notifTypes, setNotifTypes] = useState<string[]>([]);\n  const [notifSound, setNotifSound] = useState('default');\n  const [notifSaved, setNotifSaved] = useState(false);\n\n  const [visibility, setVisibility] = useState('public');\n  const [showOnline, setShowOnline] = useState(true);\n  const [allowSearch, setAllowSearch] = useState(false);\n  const [privacySaved, setPrivacySaved] = useState(false);\n\n  const saveProfile = () => {\n    setProfileSaved(true);\n    setTimeout(() => setProfileSaved(false), 3000);\n  };\n\n  const saveNotifications = () => {\n    setNotifSaved(true);\n    setTimeout(() => setNotifSaved(false), 3000);\n  };\n\n  const savePrivacy = () => {\n    setPrivacySaved(true);\n    setTimeout(() => setPrivacySaved(false), 3000);\n  };\n\n  return (\n    <AppLayout>\n      <AppLayout.Main>\n        <Stack space={6}>\n          <Headline level={1}>Settings</Headline>\n          <Accordion\n            allowsMultipleExpanded\n            defaultExpandedKeys={[\n              'profile',\n              'appearance',\n              'notifications',\n              'privacy',\n            ]}\n          >\n            <Accordion.Item id=\"profile\">\n              <Accordion.Header>Profile</Accordion.Header>\n              <Accordion.Content>\n                <Stack space={4}>\n                  {profileSaved && (\n                    <SectionMessage>\n                      <SectionMessage.Title>Profile saved</SectionMessage.Title>\n                      <SectionMessage.Content>\n                        Your profile has been updated successfully.\n                      </SectionMessage.Content>\n                    </SectionMessage>\n                  )}\n                  <TextField\n                    label=\"Display Name\"\n                    required\n                    value={displayName}\n                    onChange={setDisplayName}\n                  />\n                  <TextField\n                    label=\"Email Address\"\n                    type=\"email\"\n                    value={email}\n                    onChange={setEmail}\n                  />\n                  <TextArea\n                    label=\"Bio\"\n                    rows={4}\n                    value={bio}\n                    onChange={setBio}\n                  />\n                  <Button variant=\"primary\" onPress={saveProfile}>\n                    Save Profile\n                  </Button>\n                </Stack>\n              </Accordion.Content>\n            </Accordion.Item>\n\n            <Accordion.Item id=\"appearance\">\n              <Accordion.Header>Appearance</Accordion.Header>\n              <Accordion.Content>\n                <Stack space={4}>\n                  <Radio.Group label=\"Theme\" value={theme} onChange={setTheme}>\n                    <Radio value=\"light\">Light</Radio>\n                    <Radio value=\"dark\">Dark</Radio>\n                    <Radio value=\"system\">System Default</Radio>\n                  </Radio.Group>\n                  <Radio.Group\n                    label=\"Language\"\n                    value={language}\n                    onChange={setLanguage}\n                  >\n                    <Radio value=\"english\">English</Radio>\n                    <Radio value=\"german\">German</Radio>\n                    <Radio value=\"french\">French</Radio>\n                  </Radio.Group>\n                  <Stack space={1}>\n                    <Switch\n                      label=\"Compact Mode\"\n                      selected={compactMode}\n                      onChange={setCompactMode}\n                    />\n                    <Text>\n                      Reduce spacing and font size for denser layouts\n                    </Text>\n                  </Stack>\n                </Stack>\n              </Accordion.Content>\n            </Accordion.Item>\n\n            <Accordion.Item id=\"notifications\">\n              <Accordion.Header>Notifications</Accordion.Header>\n              <Accordion.Content>\n                <Stack space={4}>\n                  {notifSaved && (\n                    <SectionMessage>\n                      <SectionMessage.Title>\n                        Notification preferences saved\n                      </SectionMessage.Title>\n                      <SectionMessage.Content>\n                        Your notification settings have been updated.\n                      </SectionMessage.Content>\n                    </SectionMessage>\n                  )}\n                  <Checkbox.Group\n                    label=\"Notification Types\"\n                    value={notifTypes}\n                    onChange={val => setNotifTypes(val)}\n                  >\n                    <Checkbox\n                      value=\"email-messages\"\n                      label=\"Email notifications for new messages\"\n                    />\n                    <Checkbox\n                      value=\"push-mentions\"\n                      label=\"Push notifications for mentions\"\n                    />\n                    <Checkbox\n                      value=\"weekly-digest\"\n                      label=\"Weekly activity digest\"\n                    />\n                    <Checkbox\n                      value=\"marketing\"\n                      label=\"Marketing and promotional emails\"\n                    />\n                  </Checkbox.Group>\n                  <Radio.Group\n                    label=\"Notification Sound\"\n                    value={notifSound}\n                    onChange={setNotifSound}\n                  >\n                    <Radio value=\"default\">Default</Radio>\n                    <Radio value=\"chime\">Chime</Radio>\n                    <Radio value=\"none\">None</Radio>\n                  </Radio.Group>\n                  <Button variant=\"primary\" onPress={saveNotifications}>\n                    Save Notification Preferences\n                  </Button>\n                </Stack>\n              </Accordion.Content>\n            </Accordion.Item>\n\n            <Accordion.Item id=\"privacy\">\n              <Accordion.Header>Privacy</Accordion.Header>\n              <Accordion.Content>\n                <Stack space={4}>\n                  {privacySaved && (\n                    <SectionMessage>\n                      <SectionMessage.Title>\n                        Privacy settings saved\n                      </SectionMessage.Title>\n                      <SectionMessage.Content>\n                        Your privacy settings have been updated.\n                      </SectionMessage.Content>\n                    </SectionMessage>\n                  )}\n                  <Radio.Group\n                    label=\"Profile Visibility\"\n                    value={visibility}\n                    onChange={setVisibility}\n                  >\n                    <Radio value=\"public\">Public</Radio>\n                    <Radio value=\"team-only\">Team Only</Radio>\n                    <Radio value=\"private\">Private</Radio>\n                  </Radio.Group>\n                  <Switch\n                    label=\"Show Online Status\"\n                    selected={showOnline}\n                    onChange={setShowOnline}\n                  />\n                  <Stack space={1}>\n                    <Switch\n                      label=\"Allow Search Engines\"\n                      selected={allowSearch}\n                      onChange={setAllowSearch}\n                      disabled={visibility !== 'public'}\n                    />\n                    <Text>\n                      Let search engines index your public profile\n                    </Text>\n                  </Stack>\n                  <Button variant=\"primary\" onPress={savePrivacy}>\n                    Save Privacy Settings\n                  </Button>\n                </Stack>\n              </Accordion.Content>\n            </Accordion.Item>\n          </Accordion>\n        </Stack>\n      </AppLayout.Main>\n    </AppLayout>\n  );\n};\n\nexport default SettingsPage;\n",
+  "renderTimeMs": 2211,
+  "sourceCode": "import { useState } from 'react';\nimport {\n  Accordion,\n  Button,\n  Checkbox,\n  Headline,\n  Radio,\n  Select,\n  Stack,\n  Switch,\n  Text,\n  TextArea,\n  TextField,\n  ToastProvider,\n  useToast,\n} from '@marigold/components';\n\nfunction ProfileSection() {\n  const { addToast } = useToast();\n  const [displayName, setDisplayName] = useState('');\n  const [email, setEmail] = useState('');\n  const [bio, setBio] = useState('');\n  const [nameError, setNameError] = useState(false);\n  const [emailError, setEmailError] = useState(false);\n\n  const isValidEmail = (val: string) =>\n    val === '' || /^[^\\s@]+@[^\\s@]+\\.[^\\s@]+$/.test(val);\n\n  const handleSave = () => {\n    const nameOk = displayName.trim().length > 0;\n    const emailOk = isValidEmail(email);\n    setNameError(!nameOk);\n    setEmailError(!emailOk);\n    if (nameOk && emailOk) {\n      addToast({ title: 'Profile saved successfully.', variant: 'success', timeout: 3000 });\n    }\n  };\n\n  return (\n    <Stack space={4}>\n      <TextField\n        label=\"Display Name\"\n        value={displayName}\n        onChange={setDisplayName}\n        required\n        error={nameError}\n        errorMessage=\"Display name is required.\"\n      />\n      <TextField\n        label=\"Email Address\"\n        type=\"email\"\n        value={email}\n        onChange={setEmail}\n        error={emailError}\n        errorMessage=\"Please enter a valid email address.\"\n      />\n      <TextArea\n        label=\"Bio\"\n        value={bio}\n        onChange={setBio}\n        rows={4}\n      />\n      <Button variant=\"primary\" onPress={handleSave}>\n        Save Profile\n      </Button>\n    </Stack>\n  );\n}\n\nfunction AppearanceSection() {\n  const [theme, setTheme] = useState('system');\n  const [language, setLanguage] = useState<string>('english');\n  const [compactMode, setCompactMode] = useState(false);\n\n  return (\n    <Stack space={4}>\n      <Radio.Group\n        label=\"Theme\"\n        value={theme}\n        onChange={setTheme}\n      >\n        <Radio value=\"light\">Light</Radio>\n        <Radio value=\"dark\">Dark</Radio>\n        <Radio value=\"system\">System Default</Radio>\n      </Radio.Group>\n      <Select\n        label=\"Language\"\n        selectedKey={language}\n        onSelectionChange={(key) => setLanguage(key as string)}\n      >\n        <Select.Option id=\"english\">English</Select.Option>\n        <Select.Option id=\"german\">German</Select.Option>\n        <Select.Option id=\"french\">French</Select.Option>\n      </Select>\n      <Stack space={1}>\n        <Switch\n          label=\"Compact Mode\"\n          selected={compactMode}\n          onChange={setCompactMode}\n        />\n        <Text>Reduce spacing and font size for denser layouts</Text>\n      </Stack>\n    </Stack>\n  );\n}\n\nfunction NotificationsSection() {\n  const { addToast } = useToast();\n  const [notifications, setNotifications] = useState<string[]>([]);\n  const [sound, setSound] = useState<string>('default');\n\n  const handleSave = () => {\n    addToast({ title: 'Notification preferences saved.', variant: 'success', timeout: 3000 });\n  };\n\n  return (\n    <Stack space={4}>\n      <Checkbox.Group\n        label=\"Notification Types\"\n        value={notifications}\n        onChange={setNotifications}\n      >\n        <Checkbox value=\"email-messages\" label=\"Email notifications for new messages\" />\n        <Checkbox value=\"push-mentions\" label=\"Push notifications for mentions\" />\n        <Checkbox value=\"weekly-digest\" label=\"Weekly activity digest\" />\n        <Checkbox value=\"marketing\" label=\"Marketing and promotional emails\" />\n      </Checkbox.Group>\n      <Select\n        label=\"Notification Sound\"\n        selectedKey={sound}\n        onSelectionChange={(key) => setSound(key as string)}\n      >\n        <Select.Option id=\"default\">Default</Select.Option>\n        <Select.Option id=\"chime\">Chime</Select.Option>\n        <Select.Option id=\"none\">None</Select.Option>\n      </Select>\n      <Button variant=\"primary\" onPress={handleSave}>\n        Save Notification Preferences\n      </Button>\n    </Stack>\n  );\n}\n\nfunction PrivacySection() {\n  const { addToast } = useToast();\n  const [visibility, setVisibility] = useState('public');\n  const [showOnlineStatus, setShowOnlineStatus] = useState(false);\n  const [allowSearchEngines, setAllowSearchEngines] = useState(false);\n\n  const searchEnginesDisabled = visibility !== 'public';\n\n  const handleSave = () => {\n    addToast({ title: 'Privacy settings saved.', variant: 'success', timeout: 3000 });\n  };\n\n  return (\n    <Stack space={4}>\n      <Radio.Group\n        label=\"Profile Visibility\"\n        value={visibility}\n        onChange={setVisibility}\n      >\n        <Radio value=\"public\">Public</Radio>\n        <Radio value=\"team-only\">Team Only</Radio>\n        <Radio value=\"private\">Private</Radio>\n      </Radio.Group>\n      <Switch\n        label=\"Show Online Status\"\n        selected={showOnlineStatus}\n        onChange={setShowOnlineStatus}\n      />\n      <Stack space={1}>\n        <Switch\n          label=\"Allow Search Engines\"\n          selected={allowSearchEngines}\n          onChange={setAllowSearchEngines}\n          disabled={searchEnginesDisabled}\n        />\n        <Text>Let search engines index your public profile</Text>\n      </Stack>\n      <Button variant=\"primary\" onPress={handleSave}>\n        Save Privacy Settings\n      </Button>\n    </Stack>\n  );\n}\n\nconst TestApp = () => {\n  return (\n    <>\n      <ToastProvider position=\"bottom-right\" />\n      <Stack space={6}>\n        <Headline level={1}>Settings</Headline>\n        <Accordion>\n          <Accordion.Item>\n            <Accordion.Header>Profile</Accordion.Header>\n            <Accordion.Content>\n              <ProfileSection />\n            </Accordion.Content>\n          </Accordion.Item>\n          <Accordion.Item>\n            <Accordion.Header>Appearance</Accordion.Header>\n            <Accordion.Content>\n              <AppearanceSection />\n            </Accordion.Content>\n          </Accordion.Item>\n          <Accordion.Item>\n            <Accordion.Header>Notifications</Accordion.Header>\n            <Accordion.Content>\n              <NotificationsSection />\n            </Accordion.Content>\n          </Accordion.Item>\n          <Accordion.Item>\n            <Accordion.Header>Privacy</Accordion.Header>\n            <Accordion.Content>\n              <PrivacySection />\n            </Accordion.Content>\n          </Accordion.Item>\n        </Accordion>\n      </Stack>\n    </>\n  );\n};\n\nexport default TestApp;\n",
   "assertions": {
     "passed": [
       {
@@ -251,6 +501,13 @@
         "severity": "required",
         "passed": true,
         "evidence": "matched: <Radio> found"
+      },
+      {
+        "id": "a-select",
+        "description": "Select dropdown",
+        "severity": "required",
+        "passed": true,
+        "evidence": "<Select> found"
       },
       {
         "id": "a-text-field",
@@ -290,13 +547,6 @@
     ],
     "failed": [
       {
-        "id": "a-select",
-        "description": "Select dropdown",
-        "severity": "required",
-        "passed": false,
-        "evidence": "<Select> not found"
-      },
-      {
         "id": "a-form",
         "description": "Form component wrapping inputs",
         "severity": "required",
@@ -304,14 +554,14 @@
         "evidence": "<Form> not found"
       }
     ],
-    "passRate": 0.8333,
-    "requiredPassRate": 0.7778,
-    "weightedPassRate": 0.7949,
+    "passRate": 0.9167,
+    "requiredPassRate": 0.8889,
+    "weightedPassRate": 0.8974,
     "total": 12
   },
   "validatePackageVersion": "0.0.1",
   "playwrightVersion": null,
   "resolvedModelId": "claude-sonnet-4-6",
-  "claudeCliVersion": "2.1.185 (Claude Code)",
-  "sessionId": "a1db528f-c93e-4e23-9b46-d1f6c3ab8db5"
+  "claudeCliVersion": "2.1.193 (Claude Code)",
+  "sessionId": "3e12b4a9-f60c-42b7-b31d-cf333e3e0fd2"
 }

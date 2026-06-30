@@ -1,38 +1,36 @@
-import { useState } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 import {
   AppLayout,
   Badge,
   Button,
   Card,
   Checkbox,
-  CheckboxGroup,
   Columns,
   Drawer,
-  EmptyState,
   Headline,
+  Inline,
   Inset,
   Pagination,
   SearchField,
   Select,
   Slider,
+  Split,
   Stack,
   Switch,
   Tag,
   Text,
   Tiles,
-  VisuallyHidden,
 } from '@marigold/components';
 
 interface Product {
   id: string;
   name: string;
   price: number;
-  status: 'new' | 'sale' | 'sold-out';
-  description: string;
   category: string;
+  status: 'New' | 'Sale' | 'Sold Out';
   sizes: string[];
-  addedAt: number;
-  popularity: number;
+  description: string;
+  inStock: boolean;
 }
 
 const PRODUCTS: Product[] = [
@@ -40,368 +38,348 @@ const PRODUCTS: Product[] = [
     id: '1',
     name: 'Classic Logo Tee',
     price: 24.99,
-    status: 'new',
-    description: 'A comfortable cotton tee with our classic embroidered logo.',
     category: 'T-Shirts',
-    sizes: ['S', 'M', 'L', 'XL'],
-    addedAt: 8,
-    popularity: 85,
+    status: 'New',
+    sizes: ['XS', 'S', 'M', 'L', 'XL'],
+    description: 'A timeless tee featuring our iconic brand logo on premium cotton.',
+    inStock: true,
   },
   {
     id: '2',
-    name: 'Branded Hoodie',
-    price: 49.99,
-    status: 'sale',
-    description: 'Stay cozy in this premium fleece hoodie with embroidered logo.',
+    name: 'Comfort Hoodie',
+    price: 54.99,
     category: 'Hoodies',
-    sizes: ['M', 'L', 'XL'],
-    addedAt: 7,
-    popularity: 92,
+    status: 'Sale',
+    sizes: ['S', 'M', 'L', 'XL'],
+    description: 'Cozy pullover hoodie perfect for cooler days and casual wear.',
+    inStock: true,
   },
   {
     id: '3',
-    name: 'Logo Cap',
+    name: 'Logo Snapback',
     price: 19.99,
-    status: 'new',
-    description: 'Adjustable snapback cap with an embossed brand logo.',
     category: 'Accessories',
-    sizes: ['M'],
-    addedAt: 6,
-    popularity: 78,
+    status: 'New',
+    sizes: [],
+    description: 'Adjustable snapback cap with embroidered logo on the front panel.',
+    inStock: true,
   },
   {
     id: '4',
-    name: 'Tour Poster',
+    name: 'Brand Poster',
     price: 12.99,
-    status: 'new',
-    description: 'Exclusive A2 glossy poster from our latest design collection.',
     category: 'Posters',
-    sizes: ['M'],
-    addedAt: 5,
-    popularity: 65,
+    status: 'Sale',
+    sizes: [],
+    description: 'High-quality 24×36 in offset print perfect for any wall space.',
+    inStock: true,
   },
   {
     id: '5',
     name: 'Sticker Pack',
     price: 7.99,
-    status: 'sale',
-    description: 'Set of 10 die-cut vinyl stickers in assorted fun designs.',
     category: 'Stickers',
-    sizes: ['XS'],
-    addedAt: 4,
-    popularity: 70,
+    status: 'New',
+    sizes: [],
+    description: 'Pack of 10 premium vinyl die-cut stickers for any surface.',
+    inStock: true,
   },
   {
     id: '6',
-    name: 'Vintage Wash Tee',
-    price: 29.99,
-    status: 'new',
-    description: 'Soft vintage-wash cotton tee with a retro graphic print.',
-    category: 'T-Shirts',
-    sizes: ['XS', 'S', 'M', 'L'],
-    addedAt: 3,
-    popularity: 88,
+    name: 'Vintage Hoodie',
+    price: 64.99,
+    category: 'Hoodies',
+    status: 'Sold Out',
+    sizes: ['M', 'L'],
+    description: 'Limited edition vintage-wash hoodie with a relaxed, lived-in fit.',
+    inStock: false,
   },
   {
     id: '7',
-    name: 'Zip-Up Hoodie',
-    price: 59.99,
-    status: 'sold-out',
-    description: 'Full-zip heavyweight hoodie perfect for colder days.',
-    category: 'Hoodies',
-    sizes: ['L', 'XL'],
-    addedAt: 2,
-    popularity: 95,
+    name: 'Graphic Tee',
+    price: 29.99,
+    category: 'T-Shirts',
+    status: 'Sale',
+    sizes: ['XS', 'S', 'M', 'L', 'XL'],
+    description: 'Bold graphic print on a premium soft-touch cotton blend.',
+    inStock: true,
   },
   {
     id: '8',
     name: 'Enamel Pin Set',
     price: 14.99,
-    status: 'sold-out',
-    description: 'Set of 3 collectible enamel pins with gold plating finish.',
     category: 'Accessories',
-    sizes: ['XS'],
-    addedAt: 1,
-    popularity: 80,
+    status: 'Sold Out',
+    sizes: [],
+    description: 'Set of 3 collectible hard enamel pins with gold-plated finish.',
+    inStock: false,
   },
 ];
 
 const PAGE_SIZE = 3;
 
-function getBadgeVariant(status: Product['status']) {
-  if (status === 'new') return 'info' as const;
-  if (status === 'sale') return 'warning' as const;
+const badgeVariant = (status: Product['status']) => {
+  if (status === 'New') return 'info' as const;
+  if (status === 'Sale') return 'success' as const;
   return 'error' as const;
-}
+};
 
-function getStatusLabel(status: Product['status']) {
-  if (status === 'new') return 'New';
-  if (status === 'sale') return 'Sale';
-  return 'Sold Out';
-}
-
-export default function MerchandiseStore() {
+export default function TestApp() {
   const [searchQuery, setSearchQuery] = useState('');
   const [sortBy, setSortBy] = useState('newest');
   const [selectedCategories, setSelectedCategories] = useState<string[]>([]);
-  const [priceMax, setPriceMax] = useState(100);
+  const [priceRange, setPriceRange] = useState<number[]>([0, 100]);
   const [selectedSizes, setSelectedSizes] = useState<string[]>([]);
   const [inStockOnly, setInStockOnly] = useState(false);
   const [currentPage, setCurrentPage] = useState(1);
 
-  const filteredProducts = PRODUCTS.filter(p => {
-    if (searchQuery && !p.name.toLowerCase().includes(searchQuery.toLowerCase())) return false;
-    if (selectedCategories.length > 0 && !selectedCategories.includes(p.category)) return false;
-    if (p.price > priceMax) return false;
-    if (selectedSizes.length > 0 && !p.sizes.some(s => selectedSizes.includes(s))) return false;
-    if (inStockOnly && p.status === 'sold-out') return false;
-    return true;
-  });
+  useEffect(() => {
+    setCurrentPage(1);
+  }, [searchQuery, sortBy, selectedCategories, priceRange, selectedSizes, inStockOnly]);
 
-  const sortedProducts = [...filteredProducts].sort((a, b) => {
-    if (sortBy === 'price-low') return a.price - b.price;
-    if (sortBy === 'price-high') return b.price - a.price;
-    if (sortBy === 'popular') return b.popularity - a.popularity;
-    return b.addedAt - a.addedAt;
-  });
+  const filteredAndSorted = useMemo(() => {
+    const result = PRODUCTS.filter(p => {
+      if (searchQuery && !p.name.toLowerCase().includes(searchQuery.toLowerCase()))
+        return false;
+      if (selectedCategories.length > 0 && !selectedCategories.includes(p.category))
+        return false;
+      if (p.price < priceRange[0] || p.price > priceRange[1]) return false;
+      if (
+        selectedSizes.length > 0 &&
+        p.sizes.length > 0 &&
+        !selectedSizes.some(s => p.sizes.includes(s))
+      )
+        return false;
+      if (inStockOnly && !p.inStock) return false;
+      return true;
+    });
 
-  const totalPages = Math.max(1, Math.ceil(filteredProducts.length / PAGE_SIZE));
+    switch (sortBy) {
+      case 'price-low':
+        return [...result].sort((a, b) => a.price - b.price);
+      case 'price-high':
+        return [...result].sort((a, b) => b.price - a.price);
+      case 'popular':
+        return [...result].sort((a, b) => parseInt(b.id) - parseInt(a.id));
+      default:
+        return result;
+    }
+  }, [searchQuery, selectedCategories, priceRange, selectedSizes, inStockOnly, sortBy]);
+
+  const totalPages = Math.max(1, Math.ceil(filteredAndSorted.length / PAGE_SIZE));
   const safePage = Math.min(currentPage, totalPages);
-  const paginatedProducts = sortedProducts.slice(
+  const pagedProducts = filteredAndSorted.slice(
     (safePage - 1) * PAGE_SIZE,
     safePage * PAGE_SIZE
   );
 
-  const filterChips = [
-    ...selectedCategories.map(c => ({ id: `cat-${c}`, label: `Category: ${c}` })),
-    ...(priceMax < 100 ? [{ id: 'price', label: `Max price: $${priceMax}` }] : []),
-    ...selectedSizes.map(s => ({ id: `size-${s}`, label: `Size: ${s}` })),
-    ...(inStockOnly ? [{ id: 'instock', label: 'In stock only' }] : []),
-  ];
+  const activeFilterChips = useMemo(() => {
+    const chips: Array<{ id: string; label: string }> = [];
+    selectedCategories.forEach(c =>
+      chips.push({ id: `cat:${c}`, label: `Category: ${c}` })
+    );
+    if (priceRange[0] !== 0 || priceRange[1] !== 100) {
+      chips.push({
+        id: 'price',
+        label: `Price: $${priceRange[0]}–$${priceRange[1]}`,
+      });
+    }
+    selectedSizes.forEach(s => chips.push({ id: `size:${s}`, label: `Size: ${s}` }));
+    if (inStockOnly) chips.push({ id: 'stock', label: 'In stock only' });
+    return chips;
+  }, [selectedCategories, priceRange, selectedSizes, inStockOnly]);
 
-  const handleRemoveChip = (keys: Set<string | number>) => {
-    let newCategories = [...selectedCategories];
-    let newSizes = [...selectedSizes];
-    let newPriceMax = priceMax;
-    let newInStockOnly = inStockOnly;
-
-    keys.forEach(key => {
+  const handleRemoveFilter = (keys: Set<string | number>) => {
+    for (const key of keys) {
       const k = String(key);
-      if (k === 'price') newPriceMax = 100;
-      else if (k === 'instock') newInStockOnly = false;
-      else if (k.startsWith('cat-')) newCategories = newCategories.filter(c => c !== k.slice(4));
-      else if (k.startsWith('size-')) newSizes = newSizes.filter(s => s !== k.slice(5));
-    });
-
-    setSelectedCategories(newCategories);
-    setSelectedSizes(newSizes);
-    setPriceMax(newPriceMax);
-    setInStockOnly(newInStockOnly);
-    setCurrentPage(1);
+      if (k.startsWith('cat:')) {
+        const cat = k.slice(4);
+        setSelectedCategories(prev => prev.filter(c => c !== cat));
+      } else if (k === 'price') {
+        setPriceRange([0, 100]);
+      } else if (k.startsWith('size:')) {
+        const size = k.slice(5);
+        setSelectedSizes(prev => prev.filter(s => s !== size));
+      } else if (k === 'stock') {
+        setInStockOnly(false);
+      }
+    }
   };
 
   const clearAllFilters = () => {
+    setSearchQuery('');
     setSelectedCategories([]);
-    setPriceMax(100);
+    setPriceRange([0, 100]);
     setSelectedSizes([]);
     setInStockOnly(false);
-    setSearchQuery('');
-    setCurrentPage(1);
   };
 
-  const handleSearchChange = (val: string) => {
-    setSearchQuery(val);
-    setCurrentPage(1);
+  const resetFilters = () => {
+    setSelectedCategories([]);
+    setPriceRange([0, 100]);
+    setSelectedSizes([]);
+    setInStockOnly(false);
   };
 
-  const handleSortChange = (val: string | number | null) => {
-    if (val !== null) setSortBy(String(val));
-    setCurrentPage(1);
-  };
-
-  const handleCategoriesChange = (val: string[]) => {
-    setSelectedCategories(val);
-    setCurrentPage(1);
-  };
-
-  const handleSizesChange = (val: string[]) => {
-    setSelectedSizes(val);
-    setCurrentPage(1);
-  };
-
-  const handlePriceMaxChange = (val: number | number[]) => {
-    setPriceMax(Array.isArray(val) ? val[0] : val);
-    setCurrentPage(1);
-  };
-
-  const handleInStockOnlyChange = (val: boolean) => {
-    setInStockOnly(val);
-    setCurrentPage(1);
-  };
+  const emptyFilterState = () => (
+    <Text fontSize="sm" fontStyle="italic">
+      No filters applied.
+    </Text>
+  );
 
   return (
     <AppLayout>
       <AppLayout.Main>
         <Inset space={6}>
-          <Stack space={6}>
-            {/* Header */}
-            <Stack space={2}>
-              <Headline level={1}>Merchandise Store</Headline>
-              <Text>Browse our collection of branded merchandise.</Text>
-            </Stack>
+    <Stack space={8}>
+      {/* Page header */}
+      <Stack space={2}>
+        <Headline level={1}>Merchandise Store</Headline>
+        <Text>Browse our collection of branded merchandise.</Text>
+      </Stack>
 
-            {/* Toolbar */}
-            <Columns columns={[1, 'fit', 'fit']} space={3} collapseAt="30em">
-              <SearchField
-                aria-label="Search products"
-                placeholder="Search products..."
-                value={searchQuery}
-                onChange={handleSearchChange}
-              />
-              <Select
-                aria-label="Sort by"
-                value={sortBy}
-                onChange={handleSortChange}
-                width="fit"
-              >
-                <Select.Option id="newest">Newest</Select.Option>
-                <Select.Option id="price-low">Price: Low to High</Select.Option>
-                <Select.Option id="price-high">Price: High to Low</Select.Option>
-                <Select.Option id="popular">Most Popular</Select.Option>
-              </Select>
-              <Drawer.Trigger>
-                <Button variant="secondary">Filters</Button>
-                <Drawer closeButton size="medium">
-                  <Drawer.Title>Filters</Drawer.Title>
-                  <Drawer.Content>
-                    <Stack space={6}>
-                      <CheckboxGroup
-                        label="Category"
-                        value={selectedCategories}
-                        onChange={handleCategoriesChange}
-                      >
-                        <Checkbox value="T-Shirts" label="T-Shirts" />
-                        <Checkbox value="Hoodies" label="Hoodies" />
-                        <Checkbox value="Accessories" label="Accessories" />
-                        <Checkbox value="Posters" label="Posters" />
-                        <Checkbox value="Stickers" label="Stickers" />
-                      </CheckboxGroup>
+      {/* Toolbar */}
+      <Columns columns={[1, 'fit', 'fit']} space={4} collapseAt="30em">
+        <SearchField
+          label="Search"
+          placeholder="Search by name..."
+          value={searchQuery}
+          onChange={setSearchQuery}
+        />
+        <Select
+          label="Sort by"
+          value={sortBy}
+          onChange={val => setSortBy(String(val))}
+          width="fit"
+        >
+          <Select.Option id="newest">Newest</Select.Option>
+          <Select.Option id="price-low">Price: Low to High</Select.Option>
+          <Select.Option id="price-high">Price: High to Low</Select.Option>
+          <Select.Option id="popular">Most Popular</Select.Option>
+        </Select>
+        <Drawer.Trigger>
+          <Button variant="secondary">Filters</Button>
+          <Drawer closeButton>
+            <Drawer.Title>Filters</Drawer.Title>
+            <Drawer.Content>
+              <Stack space={6}>
+                <Checkbox.Group
+                  label="Category"
+                  value={selectedCategories}
+                  onChange={setSelectedCategories}
+                >
+                  <Checkbox value="T-Shirts" label="T-Shirts" />
+                  <Checkbox value="Hoodies" label="Hoodies" />
+                  <Checkbox value="Accessories" label="Accessories" />
+                  <Checkbox value="Posters" label="Posters" />
+                  <Checkbox value="Stickers" label="Stickers" />
+                </Checkbox.Group>
 
-                      <Slider
-                        label="Max price"
-                        minValue={0}
-                        maxValue={100}
-                        value={priceMax}
-                        onChange={handlePriceMaxChange}
-                        formatOptions={{ style: 'currency', currency: 'USD' }}
-                      />
+                <Slider
+                  label="Price range"
+                  value={priceRange}
+                  onChange={val => setPriceRange(Array.isArray(val) ? val : [0, val])}
+                  minValue={0}
+                  maxValue={100}
+                  step={5}
+                  thumbLabels={['min', 'max']}
+                  formatOptions={{ style: 'currency', currency: 'USD' }}
+                />
 
-                      <CheckboxGroup
-                        label="Size"
-                        value={selectedSizes}
-                        onChange={handleSizesChange}
-                      >
-                        <Checkbox value="XS" label="XS" />
-                        <Checkbox value="S" label="S" />
-                        <Checkbox value="M" label="M" />
-                        <Checkbox value="L" label="L" />
-                        <Checkbox value="XL" label="XL" />
-                      </CheckboxGroup>
+                <Checkbox.Group
+                  label="Size"
+                  value={selectedSizes}
+                  onChange={setSelectedSizes}
+                >
+                  <Checkbox value="XS" label="XS" />
+                  <Checkbox value="S" label="S" />
+                  <Checkbox value="M" label="M" />
+                  <Checkbox value="L" label="L" />
+                  <Checkbox value="XL" label="XL" />
+                </Checkbox.Group>
 
-                      <Switch
-                        label="In stock only"
-                        selected={inStockOnly}
-                        onChange={handleInStockOnlyChange}
-                      />
-                    </Stack>
-                  </Drawer.Content>
-                  <Drawer.Actions>
-                    <Button onPress={clearAllFilters}>Reset</Button>
-                    <Button
-                      slot="close"
-                      variant="primary"
-                      onPress={() => setCurrentPage(1)}
-                    >
-                      Apply Filters
-                    </Button>
-                  </Drawer.Actions>
-                </Drawer>
-              </Drawer.Trigger>
-            </Columns>
-
-            {/* Applied filter chips */}
-            <Tag.Group
-              label="Applied filters"
-              onRemove={handleRemoveChip}
-              removeAll={filterChips.length > 0}
-              emptyState={() => (
-                <Text color="foreground-muted" fontStyle="italic">
-                  No filters applied
-                </Text>
-              )}
-            >
-              {filterChips.map(chip => (
-                <Tag key={chip.id} id={chip.id}>
-                  {chip.label}
-                </Tag>
-              ))}
-            </Tag.Group>
-
-            {/* Section heading for screen readers */}
-            <VisuallyHidden>
-              <Headline level={2}>Products</Headline>
-            </VisuallyHidden>
-
-            {/* Product grid or empty state */}
-            {paginatedProducts.length === 0 ? (
-              <EmptyState
-                title="No products found"
-                description="Try adjusting your filters or search query."
-                action={
-                  <Button variant="primary" onPress={clearAllFilters}>
-                    Clear all filters
-                  </Button>
-                }
-              />
-            ) : (
-              <Tiles tilesWidth="280px" space={4} stretch equalHeight>
-                {paginatedProducts.map(product => (
-                  <Card key={product.id} p={4}>
-                    <Stack space={3}>
-                      <Badge variant={getBadgeVariant(product.status)}>
-                        {getStatusLabel(product.status)}
-                      </Badge>
-                      <Headline level={3}>{product.name}</Headline>
-                      <Text weight="bold">${product.price.toFixed(2)}</Text>
-                      <Text fontSize="sm">{product.description}</Text>
-                      <Button
-                        variant="primary"
-                        disabled={product.status === 'sold-out'}
-                        onPress={() => {}}
-                      >
-                        Add to Cart
-                      </Button>
-                    </Stack>
-                  </Card>
-                ))}
-              </Tiles>
-            )}
-
-            {/* Pagination */}
-            {filteredProducts.length > 0 && (
-              <Stack space={2} alignX="center">
-                <Text>
-                  Page {safePage} of {totalPages}
-                </Text>
-                <Pagination
-                  totalItems={filteredProducts.length}
-                  pageSize={PAGE_SIZE}
-                  page={safePage}
-                  onChange={setCurrentPage}
+                <Switch
+                  label="In stock only"
+                  selected={inStockOnly}
+                  onChange={setInStockOnly}
                 />
               </Stack>
-            )}
-          </Stack>
+            </Drawer.Content>
+            <Drawer.Actions>
+              <Button variant="ghost" onPress={resetFilters}>
+                Reset
+              </Button>
+              <Button slot="close" variant="primary">
+                Apply Filters
+              </Button>
+            </Drawer.Actions>
+          </Drawer>
+        </Drawer.Trigger>
+      </Columns>
+
+      {/* Applied filter chips */}
+      <Tag.Group
+        label="Applied filters"
+        onRemove={handleRemoveFilter}
+        removeAll={activeFilterChips.length > 0}
+        emptyState={emptyFilterState}
+      >
+        {activeFilterChips.map(({ id, label }) => (
+          <Tag key={id} id={id}>
+            {label}
+          </Tag>
+        ))}
+      </Tag.Group>
+
+      {/* Product grid or empty state */}
+      {filteredAndSorted.length === 0 ? (
+        <Stack space={4} alignX="center">
+          <Headline level={2}>No products found</Headline>
+          <Text>Try adjusting your filters or search query.</Text>
+          <Button variant="secondary" onPress={clearAllFilters}>
+            Clear all filters
+          </Button>
+        </Stack>
+      ) : (
+        <Stack space={6}>
+          <Tiles tilesWidth="280px" space={4} stretch equalHeight>
+            {pagedProducts.map(product => (
+              <Card key={product.id} p={4}>
+                <Stack space={3}>
+                  <Badge variant={badgeVariant(product.status)}>
+                    {product.status}
+                  </Badge>
+                  <Headline level={2}>{product.name}</Headline>
+                  <Text weight="bold">${product.price.toFixed(2)}</Text>
+                  <Text fontSize="sm">{product.description}</Text>
+                  <Button
+                    variant="primary"
+                    disabled={!product.inStock}
+                    onPress={() => {}}
+                  >
+                    Add to Cart
+                  </Button>
+                </Stack>
+              </Card>
+            ))}
+          </Tiles>
+
+          {/* Pagination */}
+          <Inline alignY="center">
+            <Text fontSize="sm">
+              Page {safePage} of {totalPages}
+            </Text>
+            <Split />
+            <Pagination
+              totalItems={filteredAndSorted.length}
+              pageSize={PAGE_SIZE}
+              page={safePage}
+              onChange={setCurrentPage}
+            />
+          </Inline>
+        </Stack>
+      )}
+    </Stack>
         </Inset>
       </AppLayout.Main>
     </AppLayout>

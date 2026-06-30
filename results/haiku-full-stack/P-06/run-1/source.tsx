@@ -1,505 +1,547 @@
-import { useState, useMemo, useEffect } from 'react';
+'use client';
+
+import { useState, useMemo } from 'react';
 import {
+  AppLayout,
+  Badge,
+  Button,
+  Card,
+  Checkbox,
+  Container,
+  Drawer,
+  EmptyState,
   Headline,
-  Text,
+  Inline,
+  Pagination,
   SearchField,
   Select,
-  Button,
-  Drawer,
   Slider,
-  Checkbox,
-  Switch,
-  Card,
-  Badge,
   Stack,
-  Inline,
-  Tiles,
+  Switch,
   Tag,
-  EmptyState,
-  Pagination,
-  Container,
+  Text,
+  Tiles,
 } from '@marigold/components';
 
 interface Product {
   id: string;
   name: string;
   price: number;
-  category: string;
-  size: string;
+  category: 'T-Shirts' | 'Hoodies' | 'Accessories' | 'Posters' | 'Stickers';
+  size?: 'XS' | 'S' | 'M' | 'L' | 'XL';
+  status: 'New' | 'Sale' | 'Normal';
   inStock: boolean;
-  status: 'New' | 'Sale' | 'Sold Out';
   description: string;
+  sortOrder: number;
 }
 
-const MOCK_PRODUCTS: Product[] = [
+const mockProducts: Product[] = [
   {
     id: '1',
     name: 'Classic T-Shirt',
-    price: 29.99,
+    price: 19.99,
     category: 'T-Shirts',
     size: 'M',
-    inStock: true,
     status: 'New',
-    description: 'Comfortable cotton tee with premium stitching.',
+    inStock: true,
+    description: 'Comfortable cotton t-shirt perfect for everyday wear.',
+    sortOrder: 1,
   },
   {
     id: '2',
     name: 'Premium Hoodie',
-    price: 79.99,
+    price: 49.99,
     category: 'Hoodies',
     size: 'L',
-    inStock: true,
     status: 'Sale',
-    description: 'Warm and cozy hoodie perfect for any season.',
+    inStock: true,
+    description: 'Soft and warm hoodie ideal for cold weather.',
+    sortOrder: 2,
   },
   {
     id: '3',
-    name: 'Logo Cap',
+    name: 'Baseball Cap',
     price: 24.99,
     category: 'Accessories',
-    size: 'M',
+    status: 'Normal',
     inStock: true,
-    status: 'New',
-    description: 'Adjustable cap with embroidered logo.',
+    description: 'Classic baseball cap with embroidered logo.',
+    sortOrder: 3,
   },
   {
     id: '4',
-    name: 'Art Poster',
-    price: 19.99,
+    name: 'Poster Set',
+    price: 29.99,
     category: 'Posters',
-    size: 'M',
+    status: 'New',
     inStock: false,
-    status: 'Sold Out',
-    description: 'Limited edition art print on premium paper.',
+    description: 'Beautiful poster set featuring exclusive artwork.',
+    sortOrder: 4,
   },
   {
     id: '5',
-    name: 'Vinyl Sticker Pack',
+    name: 'Sticker Pack',
     price: 9.99,
     category: 'Stickers',
-    size: 'M',
+    status: 'Normal',
     inStock: true,
-    status: 'New',
-    description: 'Set of 5 high-quality vinyl stickers.',
+    description: 'Assorted waterproof stickers for any surface.',
+    sortOrder: 5,
   },
   {
     id: '6',
-    name: 'Oversized Tee',
-    price: 34.99,
+    name: 'Vintage T-Shirt',
+    price: 24.99,
     category: 'T-Shirts',
-    size: 'XL',
-    inStock: true,
+    size: 'S',
     status: 'Sale',
-    description: 'Relaxed fit oversized tee with modern design.',
+    inStock: true,
+    description: 'Retro design with vintage color wash.',
+    sortOrder: 6,
   },
   {
     id: '7',
-    name: 'Winter Jacket',
-    price: 149.99,
+    name: 'Crew Neck Sweatshirt',
+    price: 39.99,
     category: 'Hoodies',
-    size: 'L',
+    size: 'XL',
+    status: 'Normal',
     inStock: false,
-    status: 'Sold Out',
-    description: 'Insulated winter jacket for cold weather.',
+    description: 'Heavyweight sweatshirt for maximum comfort.',
+    sortOrder: 7,
   },
   {
     id: '8',
-    name: 'Branded Mug',
-    price: 14.99,
+    name: 'Tote Bag',
+    price: 34.99,
     category: 'Accessories',
-    size: 'M',
-    inStock: true,
     status: 'New',
-    description: 'Ceramic mug with company branding.',
-  },
-  {
-    id: '9',
-    name: 'Crew Neck Sweatshirt',
-    price: 59.99,
-    category: 'T-Shirts',
-    size: 'M',
     inStock: true,
-    status: 'New',
-    description: 'Soft fleece crew neck for everyday comfort.',
-  },
-  {
-    id: '10',
-    name: 'Canvas Tote Bag',
-    price: 39.99,
-    category: 'Accessories',
-    size: 'M',
-    inStock: true,
-    status: 'Sale',
-    description: 'Durable canvas tote perfect for shopping.',
-  },
-  {
-    id: '11',
-    name: 'Retro Poster',
-    price: 24.99,
-    category: 'Posters',
-    size: 'M',
-    inStock: true,
-    status: 'New',
-    description: 'Vintage-inspired retro poster design.',
-  },
-  {
-    id: '12',
-    name: 'T-Shirt Bundle',
-    price: 49.99,
-    category: 'T-Shirts',
-    size: 'S',
-    inStock: true,
-    status: 'Sale',
-    description: 'Pack of 2 premium quality t-shirts.',
+    description: 'Spacious canvas tote bag perfect for shopping.',
+    sortOrder: 8,
   },
 ];
 
-const ITEMS_PER_PAGE = 8;
+type SortBy = 'newest' | 'price-low' | 'price-high' | 'popular';
+
+interface FilterState {
+  categories: Set<string>;
+  priceRange: [number, number];
+  sizes: Set<string>;
+  inStockOnly: boolean;
+}
 
 const TestApp = () => {
   const [searchQuery, setSearchQuery] = useState('');
-  const [sortBy, setSortBy] = useState('newest');
+  const [sortBy, setSortBy] = useState<SortBy>('newest');
+  const [filterDrawerOpen, setFilterDrawerOpen] = useState(false);
   const [currentPage, setCurrentPage] = useState(1);
+  const [filters, setFilters] = useState<FilterState>({
+    categories: new Set(),
+    priceRange: [0, 100],
+    sizes: new Set(),
+    inStockOnly: false,
+  });
+  const [tempFilters, setTempFilters] = useState<FilterState>(filters);
 
-  // Filter state
-  const [selectedCategories, setSelectedCategories] = useState<string[]>([]);
-  const [priceRange, setPriceRange] = useState<[number, number]>([0, 100]);
-  const [selectedSizes, setSelectedSizes] = useState<string[]>([]);
-  const [inStockOnly, setInStockOnly] = useState(false);
+  const itemsPerPage = 8;
 
-  // Calculate active filters
-  const activeFilters = useMemo(() => {
-    const filters: { type: string; label: string; value: string }[] = [];
+  const filteredAndSorted = useMemo(() => {
+    let result = mockProducts.filter(product => {
+      const matchesSearch = product.name
+        .toLowerCase()
+        .includes(searchQuery.toLowerCase());
 
-    selectedCategories.forEach(cat => {
-      filters.push({ type: 'category', label: cat, value: cat });
+      const matchesCategory =
+        filters.categories.size === 0 ||
+        filters.categories.has(product.category);
+
+      const matchesPrice =
+        product.price >= filters.priceRange[0] &&
+        product.price <= filters.priceRange[1];
+
+      const matchesSize =
+        filters.sizes.size === 0 ||
+        !product.size ||
+        filters.sizes.has(product.size);
+
+      const matchesStock =
+        !filters.inStockOnly || product.inStock;
+
+      return (
+        matchesSearch &&
+        matchesCategory &&
+        matchesPrice &&
+        matchesSize &&
+        matchesStock
+      );
     });
 
-    if (priceRange[0] > 0 || priceRange[1] < 100) {
-      filters.push({
-        type: 'price',
-        label: `$${priceRange[0]} - $${priceRange[1]}`,
-        value: `price-${priceRange[0]}-${priceRange[1]}`,
+    if (sortBy === 'newest') {
+      result = [...result].sort((a, b) => b.sortOrder - a.sortOrder);
+    } else if (sortBy === 'price-low') {
+      result = [...result].sort((a, b) => a.price - b.price);
+    } else if (sortBy === 'price-high') {
+      result = [...result].sort((a, b) => b.price - a.price);
+    } else if (sortBy === 'popular') {
+      result = [...result].sort(
+        (a, b) => a.id.localeCompare(b.id)
+      );
+    }
+
+    return result;
+  }, [searchQuery, sortBy, filters]);
+
+  const totalPages = Math.ceil(filteredAndSorted.length / itemsPerPage);
+  const startIndex = (currentPage - 1) * itemsPerPage;
+  const paginatedProducts = filteredAndSorted.slice(
+    startIndex,
+    startIndex + itemsPerPage
+  );
+
+  const hasActiveFilters =
+    filters.categories.size > 0 ||
+    filters.priceRange[0] !== 0 ||
+    filters.priceRange[1] !== 100 ||
+    filters.sizes.size > 0 ||
+    filters.inStockOnly;
+
+  const getActiveFilterChips = () => {
+    const chips: Array<{ id: string; label: string }> = [];
+
+    filters.categories.forEach(cat => {
+      chips.push({ id: `cat-${cat}`, label: cat });
+    });
+
+    if (filters.priceRange[0] !== 0 || filters.priceRange[1] !== 100) {
+      chips.push({
+        id: 'price',
+        label: `$${filters.priceRange[0]} - $${filters.priceRange[1]}`,
       });
     }
 
-    selectedSizes.forEach(size => {
-      filters.push({ type: 'size', label: size, value: size });
+    filters.sizes.forEach(size => {
+      chips.push({ id: `size-${size}`, label: `Size: ${size}` });
     });
 
-    if (inStockOnly) {
-      filters.push({ type: 'inStock', label: 'In stock only', value: 'in-stock-only' });
+    if (filters.inStockOnly) {
+      chips.push({ id: 'stock', label: 'In Stock Only' });
     }
 
-    return filters;
-  }, [selectedCategories, priceRange, selectedSizes, inStockOnly]);
+    return chips;
+  };
 
-  // Filter products
-  const filteredProducts = useMemo(() => {
-    return MOCK_PRODUCTS.filter(product => {
-      // Search filter
-      if (searchQuery && !product.name.toLowerCase().includes(searchQuery.toLowerCase())) {
-        return false;
-      }
+  const removeFilter = (chipId: string) => {
+    if (chipId.startsWith('cat-')) {
+      const cat = chipId.replace('cat-', '');
+      setFilters(prev => {
+        const newCats = new Set(prev.categories);
+        newCats.delete(cat);
+        return { ...prev, categories: newCats };
+      });
+    } else if (chipId.startsWith('size-')) {
+      const size = chipId.replace('size-', '');
+      setFilters(prev => {
+        const newSizes = new Set(prev.sizes);
+        newSizes.delete(size);
+        return { ...prev, sizes: newSizes };
+      });
+    } else if (chipId === 'price') {
+      setFilters(prev => ({ ...prev, priceRange: [0, 100] }));
+    } else if (chipId === 'stock') {
+      setFilters(prev => ({ ...prev, inStockOnly: false }));
+    }
+  };
 
-      // Category filter
-      if (selectedCategories.length > 0 && !selectedCategories.includes(product.category)) {
-        return false;
-      }
-
-      // Price filter
-      if (product.price < priceRange[0] || product.price > priceRange[1]) {
-        return false;
-      }
-
-      // Size filter
-      if (selectedSizes.length > 0 && !selectedSizes.includes(product.size)) {
-        return false;
-      }
-
-      // In stock filter
-      if (inStockOnly && !product.inStock) {
-        return false;
-      }
-
-      return true;
+  const clearAllFilters = () => {
+    setFilters({
+      categories: new Set(),
+      priceRange: [0, 100],
+      sizes: new Set(),
+      inStockOnly: false,
     });
-  }, [searchQuery, selectedCategories, priceRange, selectedSizes, inStockOnly]);
-
-  // Sort products
-  const sortedProducts = useMemo(() => {
-    const sorted = [...filteredProducts];
-
-    switch (sortBy) {
-      case 'newest':
-        return sorted;
-      case 'price-low':
-        return sorted.sort((a, b) => a.price - b.price);
-      case 'price-high':
-        return sorted.sort((a, b) => b.price - a.price);
-      case 'popular':
-        return sorted.reverse();
-      default:
-        return sorted;
-    }
-  }, [filteredProducts, sortBy]);
-
-  // Pagination
-  const totalPages = Math.max(1, Math.ceil(sortedProducts.length / ITEMS_PER_PAGE));
-  const startIdx = (currentPage - 1) * ITEMS_PER_PAGE;
-  const endIdx = startIdx + ITEMS_PER_PAGE;
-  const paginatedProducts = sortedProducts.slice(startIdx, endIdx);
-
-  // Reset page when filters change
-  useEffect(() => {
     setCurrentPage(1);
-  }, [searchQuery, sortBy, selectedCategories, priceRange, selectedSizes, inStockOnly]);
-
-  const handleRemoveFilter = (filterValue: string) => {
-    const filter = activeFilters.find(f => f.value === filterValue);
-    if (!filter) return;
-
-    if (filter.type === 'category') {
-      setSelectedCategories(prev => prev.filter(c => c !== filter.label));
-    } else if (filter.type === 'price') {
-      setPriceRange([0, 100]);
-    } else if (filter.type === 'size') {
-      setSelectedSizes(prev => prev.filter(s => s !== filter.label));
-    } else if (filter.type === 'inStock') {
-      setInStockOnly(false);
-    }
   };
 
-  const handleRemoveFilterTags = (keys: Set<string | number>) => {
-    keys.forEach(key => {
-      handleRemoveFilter(key as string);
+  const toggleCategory = (cat: string) => {
+    setTempFilters(prev => {
+      const newCats = new Set(prev.categories);
+      if (newCats.has(cat)) {
+        newCats.delete(cat);
+      } else {
+        newCats.add(cat);
+      }
+      return { ...prev, categories: newCats };
     });
   };
 
-  const handleClearAllFilters = () => {
-    setSearchQuery('');
-    setSelectedCategories([]);
-    setPriceRange([0, 100]);
-    setSelectedSizes([]);
-    setInStockOnly(false);
+  const toggleSize = (size: string) => {
+    setTempFilters(prev => {
+      const newSizes = new Set(prev.sizes);
+      if (newSizes.has(size)) {
+        newSizes.delete(size);
+      } else {
+        newSizes.add(size);
+      }
+      return { ...prev, sizes: newSizes };
+    });
   };
 
-  const handleResetFilterPanel = () => {
-    setSelectedCategories([]);
-    setPriceRange([0, 100]);
-    setSelectedSizes([]);
-    setInStockOnly(false);
+  const applyFilters = () => {
+    setFilters(tempFilters);
+    setCurrentPage(1);
+    setFilterDrawerOpen(false);
   };
 
-  const getBadgeVariant = (status: string) => {
-    if (status === 'New') return 'info';
-    if (status === 'Sale') return 'warning';
-    if (status === 'Sold Out') return 'error';
-    return 'default';
+  const resetFilters = () => {
+    const resetState: FilterState = {
+      categories: new Set(),
+      priceRange: [0, 100],
+      sizes: new Set(),
+      inStockOnly: false,
+    };
+    setTempFilters(resetState);
   };
 
-  return (
-    <Container>
-      <Stack space={6} alignX="left">
-        {/* Header */}
-        <Stack space={2} alignX="left">
-          <Headline level={1}>Merchandise Store</Headline>
-          <Text>Browse our collection of branded merchandise.</Text>
-        </Stack>
+  const handleDrawerOpen = (isOpen: boolean) => {
+    if (isOpen) {
+      setTempFilters(filters);
+    }
+    setFilterDrawerOpen(isOpen);
+  };
 
-        {/* Toolbar */}
-        <Stack space={3} alignX="left">
-          <Inline space={3} alignY="bottom">
-            <SearchField
-              label="Search products"
-              placeholder="Search by name..."
-              value={searchQuery}
-              onChange={setSearchQuery}
-              width="full"
-            />
-            <Select
-              label="Sort by"
-              selectedKey={sortBy}
-              onSelectionChange={(key) => setSortBy(key as string)}
-              width="fit"
-            >
-              <Select.Option id="newest">Newest</Select.Option>
-              <Select.Option id="price-low">Price: Low to High</Select.Option>
-              <Select.Option id="price-high">Price: High to Low</Select.Option>
-              <Select.Option id="popular">Most Popular</Select.Option>
-            </Select>
-            <Drawer.Trigger>
-              <Button variant="secondary">Filters</Button>
-              <Drawer>
-                <Drawer.Title>Filters</Drawer.Title>
-                <Drawer.Content>
-                  <Stack space={4} alignX="left">
-                    {/* Category */}
-                    <Stack space={2} alignX="left">
-                      <Text weight="bold">Category</Text>
-                      <Checkbox.Group
-                        value={selectedCategories}
-                        onChange={(keys) => setSelectedCategories(keys as string[])}
-                      >
-                        <Checkbox value="T-Shirts" label="T-Shirts" />
-                        <Checkbox value="Hoodies" label="Hoodies" />
-                        <Checkbox value="Accessories" label="Accessories" />
-                        <Checkbox value="Posters" label="Posters" />
-                        <Checkbox value="Stickers" label="Stickers" />
-                      </Checkbox.Group>
-                    </Stack>
+  const activeChips = getActiveFilterChips();
 
-                    {/* Price Range */}
-                    <Stack space={2} alignX="left">
-                      <Text weight="bold">Price Range</Text>
-                      <Slider
-                        label="Price"
-                        minValue={0}
-                        maxValue={100}
-                        step={5}
-                        value={priceRange}
-                        onChange={(value) => setPriceRange(value as [number, number])}
-                        formatOptions={{ style: 'currency', currency: 'USD' }}
-                        thumbLabels={['min', 'max']}
+  const pageContent = (
+    <Stack space={6}>
+      {/* Header */}
+      <Stack space={2}>
+        <Headline level={1}>Merchandise Store</Headline>
+        <Text variant="muted">
+          Browse our collection of branded merchandise.
+        </Text>
+      </Stack>
+
+      {/* Toolbar */}
+      <Inline space={4} alignY="input">
+        <div style={{ flex: 1 }}>
+          <SearchField
+            label="Search"
+            placeholder="Search products..."
+            value={searchQuery}
+            onChange={setSearchQuery}
+          />
+        </div>
+        <Select
+          label="Sort"
+          value={sortBy}
+          onChange={val => setSortBy(val as SortBy)}
+          width="fit"
+        >
+          <Select.Option id="newest">Newest</Select.Option>
+          <Select.Option id="price-low">Price: Low to High</Select.Option>
+          <Select.Option id="price-high">Price: High to Low</Select.Option>
+          <Select.Option id="popular">Most Popular</Select.Option>
+        </Select>
+        <Drawer.Trigger open={filterDrawerOpen} onOpenChange={handleDrawerOpen}>
+          <Button>Filters</Button>
+          <Drawer size="medium" closeButton>
+            <Drawer.Title>Filters</Drawer.Title>
+            <Drawer.Content>
+              <Stack space={6}>
+                {/* Categories */}
+                <Stack space={2}>
+                  <Text weight="medium">Category</Text>
+                  <Stack space={2}>
+                    {[
+                      'T-Shirts',
+                      'Hoodies',
+                      'Accessories',
+                      'Posters',
+                      'Stickers',
+                    ].map(cat => (
+                      <Checkbox
+                        key={cat}
+                        value={cat}
+                        label={cat}
+                        checked={tempFilters.categories.has(cat)}
+                        onChange={() => toggleCategory(cat)}
                       />
-                    </Stack>
-
-                    {/* Size */}
-                    <Stack space={2} alignX="left">
-                      <Text weight="bold">Size</Text>
-                      <Checkbox.Group
-                        value={selectedSizes}
-                        onChange={(keys) => setSelectedSizes(keys as string[])}
-                      >
-                        <Checkbox value="XS" label="XS" />
-                        <Checkbox value="S" label="S" />
-                        <Checkbox value="M" label="M" />
-                        <Checkbox value="L" label="L" />
-                        <Checkbox value="XL" label="XL" />
-                      </Checkbox.Group>
-                    </Stack>
-
-                    {/* Availability */}
-                    <Stack space={2} alignX="left">
-                      <Switch
-                        label="In stock only"
-                        selected={inStockOnly}
-                        onChange={setInStockOnly}
-                      />
-                    </Stack>
-
-                    {/* Actions */}
-                    <Inline space={2}>
-                      <Button
-                        variant="primary"
-                        slot="close"
-                      >
-                        Apply Filters
-                      </Button>
-                      <Button
-                        variant="secondary"
-                        onPress={handleResetFilterPanel}
-                      >
-                        Reset
-                      </Button>
-                    </Inline>
+                    ))}
                   </Stack>
-                </Drawer.Content>
-              </Drawer>
-            </Drawer.Trigger>
-          </Inline>
-        </Stack>
+                </Stack>
 
-        {/* Applied Filters */}
-        <Stack space={2} alignX="left">
-          {activeFilters.length > 0 ? (
-            <Inline space={2} alignY="center">
-              <Text fontSize="sm" color="text-base-muted">
-                Filters:
-              </Text>
-              <Tag.Group
-                onRemove={handleRemoveFilterTags}
-              >
-                {activeFilters.map(filter => (
-                  <Tag key={filter.value} id={filter.value}>
-                    {filter.label}
-                  </Tag>
-                ))}
-              </Tag.Group>
-              <Button
-                variant="tertiary"
-                size="small"
-                onPress={handleClearAllFilters}
-              >
-                Clear all
+                {/* Price Range */}
+                <Stack space={2}>
+                  <Text weight="medium">Price Range</Text>
+                  <Slider
+                    label="Price"
+                    minValue={0}
+                    maxValue={100}
+                    step={1}
+                    value={tempFilters.priceRange}
+                    onChange={val => {
+                      if (Array.isArray(val)) {
+                        setTempFilters(prev => ({
+                          ...prev,
+                          priceRange: val as [number, number],
+                        }));
+                      }
+                    }}
+                    formatOptions={{ style: 'currency', currency: 'USD' }}
+                  />
+                </Stack>
+
+                {/* Sizes */}
+                <Stack space={2}>
+                  <Text weight="medium">Size</Text>
+                  <Stack space={2}>
+                    {['XS', 'S', 'M', 'L', 'XL'].map(size => (
+                      <Checkbox
+                        key={size}
+                        value={size}
+                        label={size}
+                        checked={tempFilters.sizes.has(size)}
+                        onChange={() => toggleSize(size)}
+                      />
+                    ))}
+                  </Stack>
+                </Stack>
+
+                {/* In Stock Only */}
+                <Switch
+                  label="In stock only"
+                  selected={tempFilters.inStockOnly}
+                  onChange={() =>
+                    setTempFilters(prev => ({
+                      ...prev,
+                      inStockOnly: !prev.inStockOnly,
+                    }))
+                  }
+                />
+              </Stack>
+            </Drawer.Content>
+            <Drawer.Actions>
+              <Button variant="secondary" slot="close">
+                Cancel
               </Button>
-            </Inline>
-          ) : (
+              <Button variant="primary" onPress={applyFilters}>
+                Apply Filters
+              </Button>
+              <Button variant="secondary" onPress={resetFilters}>
+                Reset
+              </Button>
+            </Drawer.Actions>
+          </Drawer>
+        </Drawer.Trigger>
+      </Inline>
+
+      {/* Applied Filters */}
+      {hasActiveFilters ? (
+        <Tag.Group
+          label="Applied Filters"
+          onRemove={keys => {
+            keys.forEach(key => removeFilter(key as string));
+          }}
+          emptyState={() => (
             <Text variant="muted" fontSize="sm" fontStyle="italic">
               No filters applied
             </Text>
           )}
-        </Stack>
+        >
+          {activeChips.map(chip => (
+            <Tag key={chip.id} id={chip.id}>
+              {chip.label}
+            </Tag>
+          ))}
+        </Tag.Group>
+      ) : (
+        <Text variant="muted" fontSize="sm" fontStyle="italic">
+          No filters applied
+        </Text>
+      )}
 
-        {/* Product Grid or Empty State */}
-        {paginatedProducts.length > 0 ? (
-          <>
-            <Tiles tilesWidth="250px" space={4} stretch>
-              {paginatedProducts.map(product => (
-                <Card key={product.id} stretch>
-                  <Stack space={3} alignX="left">
-                    <Stack space={1} alignX="left">
-                      <Inline space={2} alignY="top" alignX="between">
-                        <Headline level={4}>{product.name}</Headline>
-                        <Badge variant={getBadgeVariant(product.status)}>
-                          {product.status}
-                        </Badge>
-                      </Inline>
-                      <Text size="lg" weight="bold">
-                        ${product.price.toFixed(2)}
-                      </Text>
-                    </Stack>
-                    <Text size="sm">{product.description}</Text>
-                    <Button
-                      variant="primary"
-                      disabled={!product.inStock}
-                      onPress={() => {
-                        console.log(`Added "${product.name}" to cart`);
-                      }}
+      {/* Products Grid or Empty State */}
+      {filteredAndSorted.length === 0 ? (
+        <EmptyState
+          title="No products found"
+          description="Try adjusting your filters or search query."
+          action={
+            <Button variant="primary" onPress={clearAllFilters}>
+              Clear all filters
+            </Button>
+          }
+        />
+      ) : (
+        <Stack space={4}>
+          <Tiles tilesWidth="250px" space={4} equalHeight>
+            {paginatedProducts.map(product => (
+              <Card key={product.id}>
+                <Stack space={3}>
+                  {/* Status Badge */}
+                  <div style={{ textAlign: 'right' }}>
+                    <Badge
+                      variant={
+                        product.status === 'New'
+                          ? 'info'
+                          : product.status === 'Sale'
+                            ? 'warning'
+                            : 'default'
+                      }
                     >
-                      {product.inStock ? 'Add to Cart' : 'Unavailable'}
-                    </Button>
-                  </Stack>
-                </Card>
-              ))}
-            </Tiles>
+                      {product.inStock ? product.status : 'Sold Out'}
+                    </Badge>
+                  </div>
 
-            {/* Pagination */}
-            <Stack space={3} alignX="center">
-              <Text fontSize="sm">
-                Page {currentPage} of {totalPages}
-              </Text>
-              <Pagination
-                page={currentPage}
-                onChange={setCurrentPage}
-                totalItems={sortedProducts.length}
-                pageSize={ITEMS_PER_PAGE}
-              />
-            </Stack>
-          </>
-        ) : (
-          <EmptyState
-            title="No products found"
-            description="Try adjusting your filters or search query."
-            action={
-              <Button variant="primary" onPress={handleClearAllFilters}>
-                Clear all filters
-              </Button>
-            }
-          />
-        )}
-      </Stack>
-    </Container>
+                  {/* Product Info */}
+                  <Stack space={1}>
+                    <Text weight="medium">{product.name}</Text>
+                    <Text fontSize="sm" variant="muted">
+                      {product.description}
+                    </Text>
+                  </Stack>
+
+                  {/* Price */}
+                  <Text weight="medium" fontSize="lg">
+                    ${product.price.toFixed(2)}
+                  </Text>
+
+                  {/* Add to Cart Button */}
+                  <Button
+                    variant={product.inStock ? 'primary' : 'secondary'}
+                    disabled={!product.inStock}
+                    fullWidth
+                  >
+                    {product.inStock ? 'Add to Cart' : 'Sold Out'}
+                  </Button>
+                </Stack>
+              </Card>
+            ))}
+          </Tiles>
+
+          {/* Pagination */}
+          <Inline alignX="center" space={4}>
+            <Text fontSize="sm">
+              Page {currentPage} of {Math.max(1, totalPages)}
+            </Text>
+            <Pagination
+              totalItems={filteredAndSorted.length}
+              pageSize={itemsPerPage}
+              page={currentPage}
+              onChange={setCurrentPage}
+            />
+          </Inline>
+        </Stack>
+      )}
+    </Stack>
+  );
+
+  return (
+    <AppLayout>
+      <AppLayout.Main>
+        <Container>{pageContent}</Container>
+      </AppLayout.Main>
+    </AppLayout>
   );
 };
 

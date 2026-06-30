@@ -1,41 +1,43 @@
+'use client';
+
 import { useState } from 'react';
 import {
   AppLayout,
   Badge,
+  Breadcrumbs,
   Button,
   Card,
   Columns,
   Dialog,
   Headline,
-  Inline,
   Inset,
+  Inline,
   Menu,
   NumberField,
   SearchField,
+  Select,
   SectionMessage,
   Sidebar,
   Stack,
   Table,
   Tabs,
   Text,
-  TextArea,
   TextField,
+  TextArea,
   TopNavigation,
   Tooltip,
-  Select,
-  Switch,
-  Accordion,
 } from '@marigold/components';
+
+type Page = 'dashboard' | 'events' | 'attendees' | 'reports' | 'settings';
 
 interface Event {
   id: string;
   name: string;
   date: string;
-  location?: string;
-  venue?: string;
-  capacity?: number;
+  location: string;
+  ticketsSold: number;
   status: 'On Sale' | 'Draft' | 'Sold Out';
-  ticketsSold?: number;
+  venue: string;
 }
 
 interface Attendee {
@@ -44,873 +46,874 @@ interface Attendee {
   email: string;
   eventsAttended: number;
   lastActive: string;
-  status: 'Active' | 'Inactive';
 }
 
 const EventHub = () => {
-  const [currentPage, setCurrentPage] = useState('dashboard');
-  const [eventSearchQuery, setEventSearchQuery] = useState('');
-  const [attendeeSearchQuery, setAttendeeSearchQuery] = useState('');
-  const [isSignOutOpen, setIsSignOutOpen] = useState(false);
-  const [generalSettings, setGeneralSettings] = useState({
-    orgName: 'My Organization',
-    contactEmail: 'contact@example.com',
-    defaultCurrency: 'usd',
-    defaultTimezone: 'utc',
-  });
-  const [notificationSettings, setNotificationSettings] = useState({
-    emailNotifications: true,
-    smsNotifications: false,
-    weeklyDigest: true,
-    marketingEmails: false,
-  });
-  const [settingsSaved, setSettingsSaved] = useState(false);
+  const [currentPage, setCurrentPage] = useState<Page>('dashboard');
+  const [signOutOpen, setSignOutOpen] = useState(false);
 
-  const upcomingEvents: Event[] = [
+  // Dashboard state
+  const [dashboardEvents] = useState<Event[]>([
     {
       id: '1',
-      name: 'Tech Conference 2025',
-      date: '2025-07-15',
-      venue: 'Convention Center A',
+      name: 'Summer Concert Series',
+      date: '2024-07-15',
+      location: 'Central Park',
       ticketsSold: 450,
       status: 'On Sale',
+      venue: 'Central Park',
     },
     {
       id: '2',
-      name: 'Music Festival',
-      date: '2025-08-20',
-      venue: 'Central Park',
+      name: 'Tech Conference 2024',
+      date: '2024-08-01',
+      location: 'Convention Center',
+      ticketsSold: 892,
+      status: 'On Sale',
+      venue: 'Convention Center',
+    },
+    {
+      id: '3',
+      name: 'Jazz Night',
+      date: '2024-07-20',
+      location: 'Blue Note',
+      ticketsSold: 250,
+      status: 'Sold Out',
+      venue: 'Blue Note',
+    },
+    {
+      id: '4',
+      name: 'Art Exhibition Opening',
+      date: '2024-09-10',
+      location: 'Modern Art Museum',
+      ticketsSold: 0,
+      status: 'Draft',
+      venue: 'Modern Art Museum',
+    },
+    {
+      id: '5',
+      name: 'Food Festival',
+      date: '2024-08-05',
+      location: 'Riverside Park',
       ticketsSold: 1200,
       status: 'On Sale',
-    },
-    {
-      id: '3',
-      name: 'Business Meetup',
-      date: '2025-07-10',
-      venue: 'Downtown Hotel',
-      ticketsSold: 85,
-      status: 'On Sale',
-    },
-    {
-      id: '4',
-      name: 'Art Expo',
-      date: '2025-09-05',
-      venue: 'Gallery District',
-      ticketsSold: 320,
-      status: 'Sold Out',
-    },
-    {
-      id: '5',
-      name: 'Developer Workshop',
-      date: '2025-08-01',
-      venue: 'Tech Hub',
-      ticketsSold: 120,
-      status: 'Draft',
+      venue: 'Riverside Park',
     },
     {
       id: '6',
-      name: 'Charity Gala',
-      date: '2025-10-12',
-      venue: 'Grand Ballroom',
-      ticketsSold: 280,
+      name: 'Broadway Show',
+      date: '2024-07-25',
+      location: 'Theater District',
+      ticketsSold: 567,
       status: 'On Sale',
+      venue: 'Theater District',
     },
-  ];
+  ]);
 
-  const allEvents: Event[] = [
+  // Events page state
+  const [events, setEvents] = useState<Event[]>([
     {
       id: '1',
-      name: 'Tech Conference 2025',
-      date: '2025-07-15',
-      location: 'Convention Center A',
-      capacity: 500,
+      name: 'Summer Concert Series',
+      date: '2024-07-15',
+      location: 'Central Park',
+      ticketsSold: 450,
       status: 'On Sale',
+      venue: 'Central Park',
     },
     {
       id: '2',
-      name: 'Music Festival',
-      date: '2025-08-20',
-      location: 'Central Park',
-      capacity: 2000,
+      name: 'Tech Conference 2024',
+      date: '2024-08-01',
+      location: 'Convention Center',
+      ticketsSold: 892,
       status: 'On Sale',
+      venue: 'Convention Center',
     },
     {
       id: '3',
-      name: 'Business Meetup',
-      date: '2025-07-10',
-      location: 'Downtown Hotel',
-      capacity: 100,
-      status: 'On Sale',
+      name: 'Jazz Night',
+      date: '2024-07-20',
+      location: 'Blue Note',
+      ticketsSold: 250,
+      status: 'Sold Out',
+      venue: 'Blue Note',
     },
     {
       id: '4',
-      name: 'Art Expo',
-      date: '2025-09-05',
-      location: 'Gallery District',
-      capacity: 800,
-      status: 'Sold Out',
+      name: 'Art Exhibition Opening',
+      date: '2024-09-10',
+      location: 'Modern Art Museum',
+      ticketsSold: 0,
+      status: 'Draft',
+      venue: 'Modern Art Museum',
     },
     {
       id: '5',
-      name: 'Developer Workshop',
-      date: '2025-08-01',
-      location: 'Tech Hub',
-      capacity: 150,
-      status: 'Draft',
+      name: 'Food Festival',
+      date: '2024-08-05',
+      location: 'Riverside Park',
+      ticketsSold: 1200,
+      status: 'On Sale',
+      venue: 'Riverside Park',
     },
     {
       id: '6',
-      name: 'Charity Gala',
-      date: '2025-10-12',
-      location: 'Grand Ballroom',
-      capacity: 300,
+      name: 'Broadway Show',
+      date: '2024-07-25',
+      location: 'Theater District',
+      ticketsSold: 567,
       status: 'On Sale',
+      venue: 'Theater District',
     },
-  ];
+  ]);
+  const [eventSearch, setEventSearch] = useState('');
+  const [newEvent, setNewEvent] = useState({
+    name: '',
+    date: '',
+    location: '',
+    capacity: '',
+    description: '',
+  });
 
-  const attendees: Attendee[] = [
+  // Attendees page state
+  const [attendees] = useState<Attendee[]>([
     {
       id: '1',
       name: 'Alice Johnson',
       email: 'alice@example.com',
       eventsAttended: 5,
-      lastActive: '2025-06-20',
-      status: 'Active',
+      lastActive: '2024-06-25',
     },
     {
       id: '2',
       name: 'Bob Smith',
       email: 'bob@example.com',
-      eventsAttended: 2,
-      lastActive: '2025-05-15',
-      status: 'Inactive',
+      eventsAttended: 3,
+      lastActive: '2024-06-20',
     },
     {
       id: '3',
       name: 'Carol Davis',
       email: 'carol@example.com',
       eventsAttended: 8,
-      lastActive: '2025-06-22',
-      status: 'Active',
+      lastActive: '2024-06-28',
     },
     {
       id: '4',
       name: 'David Wilson',
       email: 'david@example.com',
-      eventsAttended: 1,
-      lastActive: '2025-04-10',
-      status: 'Inactive',
+      eventsAttended: 2,
+      lastActive: '2024-05-15',
     },
     {
       id: '5',
       name: 'Emma Brown',
       email: 'emma@example.com',
       eventsAttended: 6,
-      lastActive: '2025-06-19',
-      status: 'Active',
+      lastActive: '2024-06-26',
     },
     {
       id: '6',
       name: 'Frank Miller',
       email: 'frank@example.com',
-      eventsAttended: 3,
-      lastActive: '2025-06-18',
-      status: 'Active',
+      eventsAttended: 1,
+      lastActive: '2024-06-18',
     },
-  ];
+  ]);
+  const [attendeeSearch, setAttendeeSearch] = useState('');
 
-  const getStatusVariant = (
-    status: 'On Sale' | 'Draft' | 'Sold Out' | 'Active' | 'Inactive'
-  ) => {
-    if (status === 'On Sale') return 'info';
-    if (status === 'Draft') return 'warning';
-    if (status === 'Sold Out') return 'error';
-    if (status === 'Active') return 'success';
-    if (status === 'Inactive') return 'warning';
-    return 'default';
-  };
+  // Settings state
+  const [settingsSaved, setSettingsSaved] = useState(false);
+  const [settingsNotifications, setSettingsNotifications] = useState(false);
+  const [orgSettings, setOrgSettings] = useState({
+    organizationName: 'EventHub Inc',
+    contactEmail: 'contact@eventhub.com',
+    defaultCurrency: 'USD',
+    defaultTimezone: 'UTC',
+  });
 
-  const filteredEvents = allEvents.filter(
-    event =>
-      event.name.toLowerCase().includes(eventSearchQuery.toLowerCase()) ||
-      (event.location &&
-        event.location.toLowerCase().includes(eventSearchQuery.toLowerCase()))
+  const filteredEvents = events.filter(
+    e =>
+      e.name.toLowerCase().includes(eventSearch.toLowerCase()) ||
+      e.location.toLowerCase().includes(eventSearch.toLowerCase())
   );
 
   const filteredAttendees = attendees.filter(
-    attendee =>
-      attendee.name.toLowerCase().includes(attendeeSearchQuery.toLowerCase()) ||
-      attendee.email.toLowerCase().includes(attendeeSearchQuery.toLowerCase())
+    a =>
+      a.name.toLowerCase().includes(attendeeSearch.toLowerCase()) ||
+      a.email.toLowerCase().includes(attendeeSearch.toLowerCase())
   );
 
-  const handleSignOut = () => {
-    setIsSignOutOpen(false);
-    setCurrentPage('dashboard');
-    alert('You have been signed out.');
+  const isActive = (lastActiveDateStr: string) => {
+    const lastActive = new Date(lastActiveDateStr);
+    const thirtyDaysAgo = new Date('2024-05-28');
+    return lastActive >= thirtyDaysAgo;
   };
 
-  const handleSaveGeneralSettings = () => {
+  const handleCreateEvent = () => {
+    if (newEvent.name && newEvent.date) {
+      const event: Event = {
+        id: String(events.length + 1),
+        name: newEvent.name,
+        date: newEvent.date,
+        location: newEvent.location,
+        ticketsSold: 0,
+        status: 'Draft',
+        venue: newEvent.location,
+      };
+      setEvents([...events, event]);
+      setNewEvent({ name: '', date: '', location: '', capacity: '', description: '' });
+    }
+  };
+
+  const handleSaveSettings = () => {
     setSettingsSaved(true);
     setTimeout(() => setSettingsSaved(false), 3000);
   };
 
-  const handleSaveNotificationSettings = () => {
-    setSettingsSaved(true);
-    setTimeout(() => setSettingsSaved(false), 3000);
+  const getBreadcrumbs = () => {
+    const titles: Record<Page, string> = {
+      dashboard: 'Dashboard',
+      events: 'Events',
+      attendees: 'Attendees',
+      reports: 'Reports',
+      settings: 'Settings',
+    };
+    return titles[currentPage];
   };
 
-  const renderDashboard = () => (
-    <Stack space={6}>
-      <Headline level={2}>Dashboard Overview</Headline>
-
-      <SectionMessage variant="info">
-        <SectionMessage.Title>Welcome back!</SectionMessage.Title>
-        <SectionMessage.Content>
-          You have 3 events starting this week.
-        </SectionMessage.Content>
-      </SectionMessage>
-
-      <Columns columns={[1, 1, 1, 1]} space={4} collapseAt="60em">
-        <Card>
-          <Inset space="square-regular">
-            <Stack space={2}>
-              <Text size="sm" variant="muted">
-                Total Events
-              </Text>
-              <Text size="xl" weight="bold">
-                24
-              </Text>
-            </Stack>
-          </Inset>
-        </Card>
-        <Card>
-          <Inset space="square-regular">
-            <Stack space={2}>
-              <Text size="sm" variant="muted">
-                Tickets Sold
-              </Text>
-              <Text size="xl" weight="bold">
-                1,849
-              </Text>
-            </Stack>
-          </Inset>
-        </Card>
-        <Card>
-          <Inset space="square-regular">
-            <Stack space={2}>
-              <Text size="sm" variant="muted">
-                Revenue
-              </Text>
-              <Inline alignY="center" space={2}>
-                <Text size="xl" weight="bold">
-                  $45,230
-                </Text>
-                <Tooltip.Trigger>
-                  <span>ℹ️</span>
-                  <Tooltip>Net revenue after fees and refunds</Tooltip>
-                </Tooltip.Trigger>
-              </Inline>
-            </Stack>
-          </Inset>
-        </Card>
-        <Card>
-          <Inset space="square-regular">
-            <Stack space={2}>
-              <Text size="sm" variant="muted">
-                Upcoming
-              </Text>
-              <Text size="xl" weight="bold">
-                8
-              </Text>
-            </Stack>
-          </Inset>
-        </Card>
-      </Columns>
-
-      <Stack space={3}>
-        <Headline level={3}>Upcoming Events</Headline>
-        <Table aria-label="Upcoming Events">
-          <Table.Header>
-            <Table.Column>Event</Table.Column>
-            <Table.Column>Date</Table.Column>
-            <Table.Column>Venue</Table.Column>
-            <Table.Column>Tickets Sold</Table.Column>
-            <Table.Column>Status</Table.Column>
-          </Table.Header>
-          <Table.Body>
-            {upcomingEvents.map(event => (
-              <Table.Row key={event.id}>
-                <Table.Cell>{event.name}</Table.Cell>
-                <Table.Cell>{event.date}</Table.Cell>
-                <Table.Cell>{event.venue}</Table.Cell>
-                <Table.Cell>{event.ticketsSold}</Table.Cell>
-                <Table.Cell>
-                  <Badge variant={getStatusVariant(event.status)}>
-                    {event.status}
-                  </Badge>
-                </Table.Cell>
-              </Table.Row>
-            ))}
-          </Table.Body>
-        </Table>
-      </Stack>
-    </Stack>
-  );
-
-  const renderEvents = () => (
-    <Stack space={6}>
-      <Headline level={2}>Events</Headline>
-
-      <Inline space={4} alignY="input">
-        <SearchField
-          label="Search"
-          placeholder="Search by name or location"
-          value={eventSearchQuery}
-          onChange={setEventSearchQuery}
-        />
-        <Dialog.Trigger>
-          <Button variant="primary">Create Event</Button>
-          <Dialog size="small">
-            <Dialog.Title>Create Event</Dialog.Title>
-            <Dialog.Content>
-              <Stack space={4}>
-                <TextField label="Event Name" required />
-                <TextField label="Date" type="date" />
-                <TextField label="Location" />
-                <NumberField label="Capacity" />
-                <TextArea label="Description" rows={3} />
-              </Stack>
-            </Dialog.Content>
-            <Dialog.Actions>
-              <Button variant="secondary" slot="close">
-                Cancel
-              </Button>
-              <Button variant="primary" slot="close">
-                Create
-              </Button>
-            </Dialog.Actions>
-          </Dialog>
-        </Dialog.Trigger>
-      </Inline>
-
-      <Table aria-label="Events">
-        <Table.Header>
-          <Table.Column>Name</Table.Column>
-          <Table.Column>Date</Table.Column>
-          <Table.Column>Location</Table.Column>
-          <Table.Column>Capacity</Table.Column>
-          <Table.Column>Status</Table.Column>
-        </Table.Header>
-        <Table.Body>
-          {filteredEvents.map(event => (
-            <Table.Row key={event.id}>
-              <Table.Cell>{event.name}</Table.Cell>
-              <Table.Cell>{event.date}</Table.Cell>
-              <Table.Cell>{event.location || '-'}</Table.Cell>
-              <Table.Cell>{event.capacity || '-'}</Table.Cell>
-              <Table.Cell>
-                <Badge variant={getStatusVariant(event.status)}>
-                  {event.status}
-                </Badge>
-              </Table.Cell>
-            </Table.Row>
-          ))}
-        </Table.Body>
-      </Table>
-    </Stack>
-  );
-
-  const renderAttendees = () => (
-    <Stack space={6}>
-      <Inline space={4} alignY="center">
-        <Headline level={2}>Attendees</Headline>
-        <Text size="sm" variant="muted">
-          {filteredAttendees.length} attendees
-        </Text>
-      </Inline>
-
-      <SearchField
-        label="Search"
-        placeholder="Search by name or email"
-        value={attendeeSearchQuery}
-        onChange={setAttendeeSearchQuery}
-      />
-
-      <Table aria-label="Attendees">
-        <Table.Header>
-          <Table.Column>Name</Table.Column>
-          <Table.Column>Email</Table.Column>
-          <Table.Column>Events Attended</Table.Column>
-          <Table.Column>Last Active</Table.Column>
-          <Table.Column>Status</Table.Column>
-        </Table.Header>
-        <Table.Body>
-          {filteredAttendees.map(attendee => (
-            <Table.Row key={attendee.id}>
-              <Table.Cell>{attendee.name}</Table.Cell>
-              <Table.Cell>{attendee.email}</Table.Cell>
-              <Table.Cell>{attendee.eventsAttended}</Table.Cell>
-              <Table.Cell>{attendee.lastActive}</Table.Cell>
-              <Table.Cell>
-                <Badge variant={getStatusVariant(attendee.status)}>
-                  {attendee.status}
-                </Badge>
-              </Table.Cell>
-            </Table.Row>
-          ))}
-        </Table.Body>
-      </Table>
-    </Stack>
-  );
-
-  const renderReports = () => (
-    <Stack space={6}>
-      <Headline level={2}>Reports</Headline>
-
-      <Tabs aria-label="Reports">
-        <Tabs.List aria-label="Report tabs">
-          <Tabs.Item id="revenue">Revenue</Tabs.Item>
-          <Tabs.Item id="attendance">Attendance</Tabs.Item>
-          <Tabs.Item id="overview">Overview</Tabs.Item>
-        </Tabs.List>
-
-        <Tabs.TabPanel id="revenue">
-          <Stack space={4}>
-            <Columns columns={[1, 1, 1, 1]} space={4} collapseAt="60em">
-              <Card>
-                <Inset space="square-regular">
-                  <Stack space={2}>
-                    <Text size="sm" variant="muted">
-                      Total Revenue
-                    </Text>
-                    <Text size="xl" weight="bold">
-                      $45,230
-                    </Text>
-                  </Stack>
-                </Inset>
-              </Card>
-              <Card>
-                <Inset space="square-regular">
-                  <Stack space={2}>
-                    <Text size="sm" variant="muted">
-                      This Month
-                    </Text>
-                    <Text size="xl" weight="bold">
-                      $8,420
-                    </Text>
-                  </Stack>
-                </Inset>
-              </Card>
-              <Card>
-                <Inset space="square-regular">
-                  <Stack space={2}>
-                    <Text size="sm" variant="muted">
-                      Average per Event
-                    </Text>
-                    <Text size="xl" weight="bold">
-                      $1,885
-                    </Text>
-                  </Stack>
-                </Inset>
-              </Card>
-              <Card>
-                <Inset space="square-regular">
-                  <Stack space={2}>
-                    <Text size="sm" variant="muted">
-                      Refunds
-                    </Text>
-                    <Text size="xl" weight="bold">
-                      $1,230
-                    </Text>
-                  </Stack>
-                </Inset>
-              </Card>
-            </Columns>
-
-            <SectionMessage variant="success">
-              <SectionMessage.Title>Revenue is up 12%</SectionMessage.Title>
-              <SectionMessage.Content>
-                compared to last month.
-              </SectionMessage.Content>
+  const renderPage = () => {
+    switch (currentPage) {
+      case 'dashboard':
+        return (
+          <Stack space="section">
+            <Headline level="2">Dashboard Overview</Headline>
+            <SectionMessage variant="info">
+              Welcome back! You have 3 events starting this week.
             </SectionMessage>
-          </Stack>
-        </Tabs.TabPanel>
 
-        <Tabs.TabPanel id="attendance">
-          <Stack space={4}>
-            <Columns columns={[1, 1, 1, 1]} space={4} collapseAt="60em">
-              <Card>
-                <Inset space="square-regular">
-                  <Stack space={2}>
-                    <Text size="sm" variant="muted">
-                      Total Attendees
-                    </Text>
-                    <Text size="xl" weight="bold">
-                      3,200
-                    </Text>
-                  </Stack>
-                </Inset>
+            <Columns columns={[1, 1, 1, 1]} space="related">
+              <Card p={4}>
+                <Stack space="tight">
+                  <Text fontSize="xs" color="muted">
+                    Total Events
+                  </Text>
+                  <Text fontSize="2xl" weight="bold">
+                    24
+                  </Text>
+                </Stack>
               </Card>
-              <Card>
-                <Inset space="square-regular">
-                  <Stack space={2}>
-                    <Text size="sm" variant="muted">
-                      Repeat Visitors
-                    </Text>
-                    <Text size="xl" weight="bold">
-                      890
-                    </Text>
-                  </Stack>
-                </Inset>
+              <Card p={4}>
+                <Stack space="tight">
+                  <Text fontSize="xs" color="muted">
+                    Tickets Sold
+                  </Text>
+                  <Text fontSize="2xl" weight="bold">
+                    1,849
+                  </Text>
+                </Stack>
               </Card>
-              <Card>
-                <Inset space="square-regular">
-                  <Stack space={2}>
-                    <Text size="sm" variant="muted">
-                      Average per Event
+              <Card p={4}>
+                <Stack space="tight">
+                  <Tooltip.Trigger>
+                    <Text fontSize="xs" color="muted">
+                      Revenue
                     </Text>
-                    <Text size="xl" weight="bold">
-                      178
-                    </Text>
-                  </Stack>
-                </Inset>
+                    <Tooltip>Net revenue after fees and refunds</Tooltip>
+                  </Tooltip.Trigger>
+                  <Text fontSize="2xl" weight="bold">
+                    $45,230
+                  </Text>
+                </Stack>
               </Card>
-              <Card>
-                <Inset space="square-regular">
-                  <Stack space={2}>
-                    <Text size="sm" variant="muted">
-                      No-shows
-                    </Text>
-                    <Text size="xl" weight="bold">
-                      145
-                    </Text>
-                  </Stack>
-                </Inset>
+              <Card p={4}>
+                <Stack space="tight">
+                  <Text fontSize="xs" color="muted">
+                    Upcoming
+                  </Text>
+                  <Text fontSize="2xl" weight="bold">
+                    8
+                  </Text>
+                </Stack>
               </Card>
             </Columns>
 
-            <Stack space={3}>
-              <Headline level={3}>Top Events by Attendance</Headline>
-              <Table aria-label="Top Events by Attendance">
+            <Stack space="tight">
+              <Headline level="3">Upcoming Events</Headline>
+              <Table aria-label="Upcoming Events">
                 <Table.Header>
-                  <Table.Column>Event</Table.Column>
+                  <Table.Column rowHeader>Event</Table.Column>
                   <Table.Column>Date</Table.Column>
-                  <Table.Column>Attendees</Table.Column>
-                  <Table.Column>Capacity</Table.Column>
-                  <Table.Column>Fill Rate</Table.Column>
+                  <Table.Column>Venue</Table.Column>
+                  <Table.Column>Tickets Sold</Table.Column>
+                  <Table.Column>Status</Table.Column>
                 </Table.Header>
                 <Table.Body>
-                  <Table.Row>
-                    <Table.Cell>Music Festival</Table.Cell>
-                    <Table.Cell>2025-08-20</Table.Cell>
-                    <Table.Cell>1850</Table.Cell>
-                    <Table.Cell>2000</Table.Cell>
-                    <Table.Cell>92.5%</Table.Cell>
-                  </Table.Row>
-                  <Table.Row>
-                    <Table.Cell>Tech Conference</Table.Cell>
-                    <Table.Cell>2025-07-15</Table.Cell>
-                    <Table.Cell>480</Table.Cell>
-                    <Table.Cell>500</Table.Cell>
-                    <Table.Cell>96%</Table.Cell>
-                  </Table.Row>
-                  <Table.Row>
-                    <Table.Cell>Charity Gala</Table.Cell>
-                    <Table.Cell>2025-10-12</Table.Cell>
-                    <Table.Cell>285</Table.Cell>
-                    <Table.Cell>300</Table.Cell>
-                    <Table.Cell>95%</Table.Cell>
-                  </Table.Row>
-                  <Table.Row>
-                    <Table.Cell>Art Expo</Table.Cell>
-                    <Table.Cell>2025-09-05</Table.Cell>
-                    <Table.Cell>750</Table.Cell>
-                    <Table.Cell>800</Table.Cell>
-                    <Table.Cell>93.75%</Table.Cell>
-                  </Table.Row>
+                  {dashboardEvents.map(event => (
+                    <Table.Row key={event.id}>
+                      <Table.Cell>
+                        <Text weight="medium">{event.name}</Text>
+                      </Table.Cell>
+                      <Table.Cell>{event.date}</Table.Cell>
+                      <Table.Cell>{event.venue}</Table.Cell>
+                      <Table.Cell>{event.ticketsSold}</Table.Cell>
+                      <Table.Cell>
+                        <Badge
+                          variant={
+                            event.status === 'On Sale'
+                              ? 'success'
+                              : event.status === 'Draft'
+                                ? 'warning'
+                                : 'error'
+                          }
+                        >
+                          {event.status}
+                        </Badge>
+                      </Table.Cell>
+                    </Table.Row>
+                  ))}
                 </Table.Body>
               </Table>
             </Stack>
           </Stack>
-        </Tabs.TabPanel>
+        );
 
-        <Tabs.TabPanel id="overview">
-          <Stack space={4}>
-            <Text>
-              This quarter has been exceptional for EventHub. We've hosted 24
-              events with strong attendance and revenue growth across all
-              categories.
+      case 'events':
+        return (
+          <Stack space="section">
+            <Inline space="section" alignY="center">
+              <Headline level="2">Events</Headline>
+              <Dialog.Trigger>
+                <Button variant="primary">Create Event</Button>
+                <Dialog size="small" closeButton>
+                  {({ close }) => (
+                    <Stack space="section">
+                      <Dialog.Title>Create Event</Dialog.Title>
+                      <Dialog.Content>
+                        <Stack space="section">
+                          <TextField
+                            label="Event Name"
+                            required
+                            value={newEvent.name}
+                            onChange={value =>
+                              setNewEvent({ ...newEvent, name: value })
+                            }
+                          />
+                          <TextField
+                            label="Date"
+                            type="date"
+                            value={newEvent.date}
+                            onChange={value =>
+                              setNewEvent({ ...newEvent, date: value })
+                            }
+                          />
+                          <TextField
+                            label="Location"
+                            value={newEvent.location}
+                            onChange={value =>
+                              setNewEvent({ ...newEvent, location: value })
+                            }
+                          />
+                          <NumberField
+                            label="Capacity"
+                            value={newEvent.capacity ? Number(newEvent.capacity) : undefined}
+                            onChange={value =>
+                              setNewEvent({
+                                ...newEvent,
+                                capacity: value !== null && value !== undefined ? String(value) : '',
+                              })
+                            }
+                          />
+                          <TextArea
+                            label="Description"
+                            value={newEvent.description}
+                            onChange={value =>
+                              setNewEvent({ ...newEvent, description: value })
+                            }
+                          />
+                        </Stack>
+                      </Dialog.Content>
+                      <Dialog.Actions>
+                        <Button variant="secondary" slot="close">
+                          Cancel
+                        </Button>
+                        <Button
+                          variant="primary"
+                          onPress={() => {
+                            handleCreateEvent();
+                            close?.();
+                          }}
+                        >
+                          Create
+                        </Button>
+                      </Dialog.Actions>
+                    </Stack>
+                  )}
+                </Dialog>
+              </Dialog.Trigger>
+            </Inline>
+
+            <SearchField
+              label="Search events"
+              value={eventSearch}
+              onChange={setEventSearch}
+            />
+
+            <Table aria-label="Events list">
+              <Table.Header>
+                <Table.Column rowHeader>Name</Table.Column>
+                <Table.Column>Date</Table.Column>
+                <Table.Column>Location</Table.Column>
+                <Table.Column>Capacity</Table.Column>
+                <Table.Column>Status</Table.Column>
+              </Table.Header>
+              <Table.Body>
+                {filteredEvents.map(event => (
+                  <Table.Row key={event.id}>
+                    <Table.Cell>
+                      <Text weight="medium">{event.name}</Text>
+                    </Table.Cell>
+                    <Table.Cell>{event.date}</Table.Cell>
+                    <Table.Cell>{event.location}</Table.Cell>
+                    <Table.Cell>-</Table.Cell>
+                    <Table.Cell>
+                      <Badge
+                        variant={
+                          event.status === 'On Sale'
+                            ? 'success'
+                            : event.status === 'Draft'
+                              ? 'warning'
+                              : 'error'
+                        }
+                      >
+                        {event.status}
+                      </Badge>
+                    </Table.Cell>
+                  </Table.Row>
+                ))}
+              </Table.Body>
+            </Table>
+          </Stack>
+        );
+
+      case 'attendees':
+        return (
+          <Stack space="section">
+            <Headline level="2">Attendees</Headline>
+
+            <SearchField
+              label="Search by name or email"
+              value={attendeeSearch}
+              onChange={setAttendeeSearch}
+            />
+
+            <Text fontSize="sm">
+              <Text weight="bold" slot="inline">{filteredAttendees.length}</Text> attendees
             </Text>
 
-            <Accordion>
-              <Accordion.Item>
-                <Accordion.Header>Q1 Summary</Accordion.Header>
-                <Accordion.Content>
-                  <Text>
-                    Q1 focused on establishing foundational events in the local
-                    community. We successfully launched 8 events with a combined
-                    attendance of 1,200 participants. Average revenue per event
-                    was $1,650.
-                  </Text>
-                </Accordion.Content>
-              </Accordion.Item>
-              <Accordion.Item>
-                <Accordion.Header>Q2 Summary</Accordion.Header>
-                <Accordion.Content>
-                  <Text>
-                    Q2 saw expansion into regional markets. We organized 9 events
-                    with 1,800 attendees and achieved an average revenue of $1,950
-                    per event. This was our strongest quarter to date.
-                  </Text>
-                </Accordion.Content>
-              </Accordion.Item>
-              <Accordion.Item>
-                <Accordion.Header>Q3 Summary</Accordion.Header>
-                <Accordion.Content>
-                  <Text>
-                    Q3 is ramping up with 7 scheduled events already booked. Early
-                    indicators suggest we'll exceed Q2 performance with projected
-                    attendance of 2,100 and average revenue of $2,150 per event.
-                  </Text>
-                </Accordion.Content>
-              </Accordion.Item>
-            </Accordion>
+            <Table aria-label="Attendees list">
+              <Table.Header>
+                <Table.Column rowHeader>Name</Table.Column>
+                <Table.Column>Email</Table.Column>
+                <Table.Column>Events Attended</Table.Column>
+                <Table.Column>Last Active</Table.Column>
+                <Table.Column>Status</Table.Column>
+              </Table.Header>
+              <Table.Body>
+                {filteredAttendees.map(attendee => (
+                  <Table.Row key={attendee.id}>
+                    <Table.Cell>
+                      <Text weight="medium">{attendee.name}</Text>
+                    </Table.Cell>
+                    <Table.Cell>{attendee.email}</Table.Cell>
+                    <Table.Cell>{attendee.eventsAttended}</Table.Cell>
+                    <Table.Cell>{attendee.lastActive}</Table.Cell>
+                    <Table.Cell>
+                      <Badge
+                        variant={
+                          isActive(attendee.lastActive) ? 'success' : 'warning'
+                        }
+                      >
+                        {isActive(attendee.lastActive) ? 'Active' : 'Inactive'}
+                      </Badge>
+                    </Table.Cell>
+                  </Table.Row>
+                ))}
+              </Table.Body>
+            </Table>
           </Stack>
-        </Tabs.TabPanel>
-      </Tabs>
-    </Stack>
-  );
+        );
 
-  const renderSettings = () => (
-    <Stack space={6}>
-      <Headline level={2}>Settings</Headline>
-
-      <Tabs aria-label="Settings">
-        <Tabs.List aria-label="Settings tabs">
-          <Tabs.Item id="general">General</Tabs.Item>
-          <Tabs.Item id="notifications">Notifications</Tabs.Item>
-        </Tabs.List>
-
-        <Tabs.TabPanel id="general">
-          <Stack space={4}>
-            <Stack space={3}>
-              <TextField
-                label="Organization Name"
-                value={generalSettings.orgName}
-                onChange={e =>
-                  setGeneralSettings({
-                    ...generalSettings,
-                    orgName: e as unknown as string,
-                  })
-                }
-              />
-              <TextField
-                label="Contact Email"
-                type="email"
-                value={generalSettings.contactEmail}
-                onChange={e =>
-                  setGeneralSettings({
-                    ...generalSettings,
-                    contactEmail: e as unknown as string,
-                  })
-                }
-              />
-              <Select
-                label="Default Currency"
-                selectedKey={generalSettings.defaultCurrency}
-                onSelectionChange={key =>
-                  setGeneralSettings({
-                    ...generalSettings,
-                    defaultCurrency: key as string,
-                  })
-                }
-              >
-                <Select.Option id="usd">USD ($)</Select.Option>
-                <Select.Option id="eur">EUR (€)</Select.Option>
-                <Select.Option id="gbp">GBP (£)</Select.Option>
-              </Select>
-              <Select
-                label="Default Timezone"
-                selectedKey={generalSettings.defaultTimezone}
-                onSelectionChange={key =>
-                  setGeneralSettings({
-                    ...generalSettings,
-                    defaultTimezone: key as string,
-                  })
-                }
-              >
-                <Select.Option id="utc">UTC</Select.Option>
-                <Select.Option id="cet">CET</Select.Option>
-                <Select.Option id="est">EST</Select.Option>
-                <Select.Option id="pst">PST</Select.Option>
-              </Select>
-            </Stack>
-
-            <Button variant="primary" onPress={handleSaveGeneralSettings}>
-              Save Changes
-            </Button>
-
-            {settingsSaved && (
-              <SectionMessage variant="success">
-                <SectionMessage.Title>Settings saved successfully</SectionMessage.Title>
-              </SectionMessage>
-            )}
-          </Stack>
-        </Tabs.TabPanel>
-
-        <Tabs.TabPanel id="notifications">
-          <Stack space={4}>
-            <Stack space={3}>
-              <Stack space={1}>
-                <Switch
-                  label="Email Notifications"
-                  selected={notificationSettings.emailNotifications}
-                  onChange={() =>
-                    setNotificationSettings({
-                      ...notificationSettings,
-                      emailNotifications:
-                        !notificationSettings.emailNotifications,
-                    })
-                  }
-                />
-                <Text size="sm" variant="muted">
-                  Receive email updates about your events
-                </Text>
-              </Stack>
-
-              <Stack space={1}>
-                <Switch
-                  label="SMS Notifications"
-                  selected={notificationSettings.smsNotifications}
-                  onChange={() =>
-                    setNotificationSettings({
-                      ...notificationSettings,
-                      smsNotifications: !notificationSettings.smsNotifications,
-                    })
-                  }
-                />
-                <Text size="sm" variant="muted">
-                  Receive SMS alerts for critical updates
-                </Text>
-              </Stack>
-
-              <Stack space={1}>
-                <Switch
-                  label="Weekly Digest"
-                  selected={notificationSettings.weeklyDigest}
-                  onChange={() =>
-                    setNotificationSettings({
-                      ...notificationSettings,
-                      weeklyDigest: !notificationSettings.weeklyDigest,
-                    })
-                  }
-                />
-                <Text size="sm" variant="muted">
-                  Get a weekly summary of your event analytics
-                </Text>
-              </Stack>
-
-              <Stack space={1}>
-                <Switch
-                  label="Marketing Emails"
-                  selected={notificationSettings.marketingEmails}
-                  onChange={() =>
-                    setNotificationSettings({
-                      ...notificationSettings,
-                      marketingEmails: !notificationSettings.marketingEmails,
-                    })
-                  }
-                />
-                <Text size="sm" variant="muted">
-                  Receive promotional offers and feature announcements
-                </Text>
-              </Stack>
-            </Stack>
-
-            <Button
-              variant="primary"
-              onPress={handleSaveNotificationSettings}
-            >
-              Save Preferences
-            </Button>
-
-            {settingsSaved && (
-              <SectionMessage variant="success">
-                <SectionMessage.Title>Settings saved successfully</SectionMessage.Title>
-              </SectionMessage>
-            )}
-          </Stack>
-        </Tabs.TabPanel>
-      </Tabs>
-    </Stack>
-  );
-
-  const getBreadcrumb = () => {
-    switch (currentPage) {
-      case 'events':
-        return 'Events';
-      case 'attendees':
-        return 'Attendees';
       case 'reports':
-        return 'Reports';
+        return (
+          <Stack space="section">
+            <Headline level="2">Reports</Headline>
+            <Tabs aria-label="Reports tabs">
+              <Tabs.List aria-label="Report sections">
+                <Tabs.Item id="revenue">Revenue</Tabs.Item>
+                <Tabs.Item id="attendance">Attendance</Tabs.Item>
+                <Tabs.Item id="overview">Overview</Tabs.Item>
+              </Tabs.List>
+
+              <Tabs.TabPanel id="revenue">
+                <Stack space="section">
+                  <Columns columns={[1, 1, 1, 1]} space="related">
+                    <Card p={4}>
+                      <Stack space="tight">
+                        <Text fontSize="xs" color="muted">
+                          Total Revenue
+                        </Text>
+                        <Text fontSize="2xl" weight="bold">
+                          $45,230
+                        </Text>
+                      </Stack>
+                    </Card>
+                    <Card p={4}>
+                      <Stack space="tight">
+                        <Text fontSize="xs" color="muted">
+                          This Month
+                        </Text>
+                        <Text fontSize="2xl" weight="bold">
+                          $8,420
+                        </Text>
+                      </Stack>
+                    </Card>
+                    <Card p={4}>
+                      <Stack space="tight">
+                        <Text fontSize="xs" color="muted">
+                          Average per Event
+                        </Text>
+                        <Text fontSize="2xl" weight="bold">
+                          $1,885
+                        </Text>
+                      </Stack>
+                    </Card>
+                    <Card p={4}>
+                      <Stack space="tight">
+                        <Text fontSize="xs" color="muted">
+                          Refunds
+                        </Text>
+                        <Text fontSize="2xl" weight="bold">
+                          $1,230
+                        </Text>
+                      </Stack>
+                    </Card>
+                  </Columns>
+                  <SectionMessage variant="success">
+                    Revenue is up 12% compared to last month.
+                  </SectionMessage>
+                </Stack>
+              </Tabs.TabPanel>
+
+              <Tabs.TabPanel id="attendance">
+                <Stack space="section">
+                  <Columns columns={[1, 1, 1, 1]} space="related">
+                    <Card p={4}>
+                      <Stack space="tight">
+                        <Text fontSize="xs" color="muted">
+                          Total Attendees
+                        </Text>
+                        <Text fontSize="2xl" weight="bold">
+                          3,200
+                        </Text>
+                      </Stack>
+                    </Card>
+                    <Card p={4}>
+                      <Stack space="tight">
+                        <Text fontSize="xs" color="muted">
+                          Repeat Visitors
+                        </Text>
+                        <Text fontSize="2xl" weight="bold">
+                          890
+                        </Text>
+                      </Stack>
+                    </Card>
+                    <Card p={4}>
+                      <Stack space="tight">
+                        <Text fontSize="xs" color="muted">
+                          Average per Event
+                        </Text>
+                        <Text fontSize="2xl" weight="bold">
+                          178
+                        </Text>
+                      </Stack>
+                    </Card>
+                    <Card p={4}>
+                      <Stack space="tight">
+                        <Text fontSize="xs" color="muted">
+                          No-shows
+                        </Text>
+                        <Text fontSize="2xl" weight="bold">
+                          145
+                        </Text>
+                      </Stack>
+                    </Card>
+                  </Columns>
+
+                  <Table aria-label="Top Events by Attendance">
+                    <Table.Header>
+                      <Table.Column rowHeader>Event</Table.Column>
+                      <Table.Column>Date</Table.Column>
+                      <Table.Column>Attendees</Table.Column>
+                      <Table.Column>Capacity</Table.Column>
+                      <Table.Column>Fill Rate</Table.Column>
+                    </Table.Header>
+                    <Table.Body>
+                      <Table.Row>
+                        <Table.Cell>
+                          <Text weight="medium">Tech Conference 2024</Text>
+                        </Table.Cell>
+                        <Table.Cell>2024-08-01</Table.Cell>
+                        <Table.Cell>892</Table.Cell>
+                        <Table.Cell>1000</Table.Cell>
+                        <Table.Cell>89.2%</Table.Cell>
+                      </Table.Row>
+                      <Table.Row>
+                        <Table.Cell>
+                          <Text weight="medium">Food Festival</Text>
+                        </Table.Cell>
+                        <Table.Cell>2024-08-05</Table.Cell>
+                        <Table.Cell>1200</Table.Cell>
+                        <Table.Cell>1500</Table.Cell>
+                        <Table.Cell>80.0%</Table.Cell>
+                      </Table.Row>
+                      <Table.Row>
+                        <Table.Cell>
+                          <Text weight="medium">Summer Concert Series</Text>
+                        </Table.Cell>
+                        <Table.Cell>2024-07-15</Table.Cell>
+                        <Table.Cell>450</Table.Cell>
+                        <Table.Cell>500</Table.Cell>
+                        <Table.Cell>90.0%</Table.Cell>
+                      </Table.Row>
+                      <Table.Row>
+                        <Table.Cell>
+                          <Text weight="medium">Broadway Show</Text>
+                        </Table.Cell>
+                        <Table.Cell>2024-07-25</Table.Cell>
+                        <Table.Cell>567</Table.Cell>
+                        <Table.Cell>600</Table.Cell>
+                        <Table.Cell>94.5%</Table.Cell>
+                      </Table.Row>
+                    </Table.Body>
+                  </Table>
+                </Stack>
+              </Tabs.TabPanel>
+
+              <Tabs.TabPanel id="overview">
+                <Stack space="section">
+                  <Text>
+                    This quarter has been highly successful with record attendance
+                    and revenue across most events. We have seen a strong uptake in
+                    tech and entertainment events, while food festivals continue to
+                    drive significant engagement.
+                  </Text>
+
+                  <Tabs aria-label="Quarter summaries">
+                    <Tabs.List aria-label="Quarters">
+                      <Tabs.Item id="q1">Q1 Summary</Tabs.Item>
+                      <Tabs.Item id="q2">Q2 Summary</Tabs.Item>
+                      <Tabs.Item id="q3">Q3 Summary</Tabs.Item>
+                    </Tabs.List>
+
+                    <Tabs.TabPanel id="q1">
+                      <Inset space="square-regular">
+                        <Text>
+                          Q1 saw moderate growth with 12 events and an average
+                          attendance of 150 people per event. Revenue was steady at
+                          $18,500 for the quarter.
+                        </Text>
+                      </Inset>
+                    </Tabs.TabPanel>
+
+                    <Tabs.TabPanel id="q2">
+                      <Inset space="square-regular">
+                        <Text>
+                          Q2 marked a turning point with 18 events and significantly
+                          increased attendance. Revenue jumped to $28,420 with strong
+                          ticket sales for tech and entertainment categories.
+                        </Text>
+                      </Inset>
+                    </Tabs.TabPanel>
+
+                    <Tabs.TabPanel id="q3">
+                      <Inset space="square-regular">
+                        <Text>
+                          Q3 is on track to be our best quarter yet with 24 events
+                          already scheduled and trending towards $45,000+ in revenue
+                          based on current booking rates.
+                        </Text>
+                      </Inset>
+                    </Tabs.TabPanel>
+                  </Tabs>
+                </Stack>
+              </Tabs.TabPanel>
+            </Tabs>
+          </Stack>
+        );
+
       case 'settings':
-        return 'Settings';
+        return (
+          <Stack space="section">
+            <Headline level="2">Settings</Headline>
+            <Tabs aria-label="Settings tabs">
+              <Tabs.List aria-label="Settings sections">
+                <Tabs.Item id="general">General</Tabs.Item>
+                <Tabs.Item id="notifications">Notifications</Tabs.Item>
+              </Tabs.List>
+
+              <Tabs.TabPanel id="general">
+                <Stack space="section">
+                  {settingsSaved && (
+                    <SectionMessage variant="success">
+                      Settings saved successfully.
+                    </SectionMessage>
+                  )}
+                  <Stack space="regular">
+                    <TextField
+                      label="Organization Name"
+                      value={orgSettings.organizationName}
+                      onChange={value =>
+                        setOrgSettings({
+                          ...orgSettings,
+                          organizationName: value,
+                        })
+                      }
+                    />
+                    <TextField
+                      label="Contact Email"
+                      type="email"
+                      value={orgSettings.contactEmail}
+                      onChange={value =>
+                        setOrgSettings({
+                          ...orgSettings,
+                          contactEmail: value,
+                        })
+                      }
+                    />
+                    <Select
+                      label="Default Currency"
+                      selectedKey={orgSettings.defaultCurrency}
+                      onSelectionChange={key =>
+                        setOrgSettings({
+                          ...orgSettings,
+                          defaultCurrency: String(key),
+                        })
+                      }
+                    >
+                      <Select.Option id="USD">USD</Select.Option>
+                      <Select.Option id="EUR">EUR</Select.Option>
+                      <Select.Option id="GBP">GBP</Select.Option>
+                    </Select>
+                    <Select
+                      label="Default Timezone"
+                      selectedKey={orgSettings.defaultTimezone}
+                      onSelectionChange={key =>
+                        setOrgSettings({
+                          ...orgSettings,
+                          defaultTimezone: String(key),
+                        })
+                      }
+                    >
+                      <Select.Option id="UTC">UTC</Select.Option>
+                      <Select.Option id="CET">CET</Select.Option>
+                      <Select.Option id="EST">EST</Select.Option>
+                      <Select.Option id="PST">PST</Select.Option>
+                    </Select>
+                  </Stack>
+                  <Button variant="primary" onPress={handleSaveSettings}>
+                    Save Changes
+                  </Button>
+                </Stack>
+              </Tabs.TabPanel>
+
+              <Tabs.TabPanel id="notifications">
+                <Stack space="section">
+                  {settingsNotifications && (
+                    <SectionMessage variant="success">
+                      Preferences saved successfully.
+                    </SectionMessage>
+                  )}
+                  <Stack space="regular">
+                    <Stack space="tight">
+                      <Text weight="medium">Email Notifications</Text>
+                      <Text fontSize="sm" color="muted">
+                        Receive email updates about your events
+                      </Text>
+                    </Stack>
+                    <Stack space="tight">
+                      <Text weight="medium">SMS Notifications</Text>
+                      <Text fontSize="sm" color="muted">
+                        Get text message alerts for important updates
+                      </Text>
+                    </Stack>
+                    <Stack space="tight">
+                      <Text weight="medium">Weekly Digest</Text>
+                      <Text fontSize="sm" color="muted">
+                        Receive a summary of all events once per week
+                      </Text>
+                    </Stack>
+                    <Stack space="tight">
+                      <Text weight="medium">Marketing Emails</Text>
+                      <Text fontSize="sm" color="muted">
+                        Get promotional offers and product updates
+                      </Text>
+                    </Stack>
+                  </Stack>
+                  <Button
+                    variant="primary"
+                    onPress={() => setSettingsNotifications(true)}
+                  >
+                    Save Preferences
+                  </Button>
+                </Stack>
+              </Tabs.TabPanel>
+            </Tabs>
+          </Stack>
+        );
+
       default:
-        return 'Dashboard';
+        return null;
     }
   };
+
+  const navItems: { id: Page; label: string }[] = [
+    { id: 'dashboard', label: 'Dashboard' },
+    { id: 'events', label: 'Events' },
+    { id: 'attendees', label: 'Attendees' },
+    { id: 'reports', label: 'Reports' },
+    { id: 'settings', label: 'Settings' },
+  ];
 
   return (
     <Sidebar.Provider defaultOpen>
       <AppLayout>
         <AppLayout.Sidebar>
           <Sidebar.Header>
-            <Text weight="bold" size="lg">
+            <Text weight="bold" fontSize="lg">
               EventHub
             </Text>
           </Sidebar.Header>
           <Sidebar.Nav>
-            <Sidebar.Item
-              href="#dashboard"
-              onPress={() => setCurrentPage('dashboard')}
-              active={currentPage === 'dashboard'}
-            >
-              Dashboard
-            </Sidebar.Item>
-            <Sidebar.Item
-              href="#events"
-              onPress={() => setCurrentPage('events')}
-              active={currentPage === 'events'}
-            >
-              Events
-            </Sidebar.Item>
-            <Sidebar.Item
-              href="#attendees"
-              onPress={() => setCurrentPage('attendees')}
-              active={currentPage === 'attendees'}
-            >
-              Attendees
-            </Sidebar.Item>
-            <Sidebar.Item
-              href="#reports"
-              onPress={() => setCurrentPage('reports')}
-              active={currentPage === 'reports'}
-            >
-              Reports
-            </Sidebar.Item>
-
-            <Sidebar.Separator />
-
-            <Sidebar.Item
-              href="#settings"
-              onPress={() => setCurrentPage('settings')}
-              active={currentPage === 'settings'}
-            >
-              Settings
-            </Sidebar.Item>
+            <Stack space="tight">
+              {navItems.map(item => (
+                <Button
+                  key={item.id}
+                  variant={currentPage === item.id ? 'primary' : 'ghost'}
+                  fullWidth
+                  onPress={() => setCurrentPage(item.id)}
+                >
+                  {item.label}
+                </Button>
+              ))}
+            </Stack>
           </Sidebar.Nav>
+          <Sidebar.Separator />
           <Sidebar.Footer>
-            <Sidebar.Item href="#">Help & Support</Sidebar.Item>
+            <Button variant="ghost" fullWidth>
+              Help & Support
+            </Button>
           </Sidebar.Footer>
         </AppLayout.Sidebar>
 
@@ -918,21 +921,16 @@ const EventHub = () => {
           <TopNavigation.Start>
             <Sidebar.Toggle />
           </TopNavigation.Start>
-
           <TopNavigation.Middle>
-            <Inline space={1} alignY="center">
-              <Text size="sm">EventHub</Text>
-              <Text size="sm" variant="muted">
-                &gt;
-              </Text>
-              <Text size="sm">{getBreadcrumb()}</Text>
-            </Inline>
+            <Breadcrumbs size="small">
+              <Breadcrumbs.Item href="#">EventHub</Breadcrumbs.Item>
+              <Breadcrumbs.Item href="#">{getBreadcrumbs()}</Breadcrumbs.Item>
+            </Breadcrumbs>
           </TopNavigation.Middle>
-
           <TopNavigation.End>
             <Menu label="Account" onAction={action => {
               if (action === 'signout') {
-                setIsSignOutOpen(true);
+                setSignOutOpen(true);
               }
             }}>
               <Menu.Item id="profile">Profile</Menu.Item>
@@ -943,30 +941,35 @@ const EventHub = () => {
 
         <AppLayout.Main>
           <Inset space="square-regular">
-            {currentPage === 'dashboard' && renderDashboard()}
-            {currentPage === 'events' && renderEvents()}
-            {currentPage === 'attendees' && renderAttendees()}
-            {currentPage === 'reports' && renderReports()}
-            {currentPage === 'settings' && renderSettings()}
+            {renderPage()}
           </Inset>
         </AppLayout.Main>
       </AppLayout>
 
-      <Dialog
-        open={isSignOutOpen}
-        onOpenChange={setIsSignOutOpen}
-        role="alertdialog"
+      <Dialog.Trigger
+        open={signOutOpen}
+        onOpenChange={setSignOutOpen}
+        dismissable={false}
       >
-        <Dialog.Title>Are you sure you want to sign out?</Dialog.Title>
-        <Dialog.Actions>
-          <Button variant="secondary" slot="close">
-            Cancel
-          </Button>
-          <Button variant="destructive" onPress={handleSignOut}>
-            Sign out
-          </Button>
-        </Dialog.Actions>
-      </Dialog>
+        <Dialog role="alertdialog" closeButton>
+          {({ close }) => (
+            <Stack space="section">
+              <Dialog.Title>Confirm Sign Out</Dialog.Title>
+              <Dialog.Content>
+                Are you sure you want to sign out?
+              </Dialog.Content>
+              <Dialog.Actions>
+                <Button variant="secondary" slot="close">
+                  Cancel
+                </Button>
+                <Button variant="primary" onPress={close ? () => close() : undefined}>
+                  Sign out
+                </Button>
+              </Dialog.Actions>
+            </Stack>
+          )}
+        </Dialog>
+      </Dialog.Trigger>
     </Sidebar.Provider>
   );
 };

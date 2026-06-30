@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import {
+  AppLayout,
   Badge,
   Button,
   Card,
@@ -7,54 +8,45 @@ import {
   Divider,
   Headline,
   Inline,
-  Inset,
   Stack,
   Text,
 } from '@marigold/components';
 
-const details = [
-  { label: 'Role', value: 'Senior Developer' },
-  { label: 'Department', value: 'Engineering' },
-  { label: 'Email', value: 'jane.doe@example.com' },
-  { label: 'Location', value: 'Freiburg, Germany' },
-];
-
-const TestApp = () => {
+export default function TestApp() {
   const [status, setStatus] = useState<'Active' | 'Away'>('Active');
-  const [message, setMessage] = useState('');
-
-  const handleSendMessage = () => {
-    setMessage('Message sent to Jane Doe!');
-    setTimeout(() => setMessage(''), 3000);
-  };
-
-  const handleEditProfile = () => {
-    setStatus(s => (s === 'Active' ? 'Away' : 'Active'));
-  };
+  const [feedback, setFeedback] = useState('');
 
   return (
-    <Center>
-      <Stack space={4}>
-        <Card>
-          <Inset space={6}>
+    <AppLayout>
+      <AppLayout.Main>
+        <Center maxWidth="medium" space={4}>
+          <Card>
             <Stack space={4}>
               {/* Avatar + Name + Status */}
               <Inline space={4} alignY="center">
                 <img
-                  src="https://i.pravatar.cc/150?img=5"
+                  src="https://i.pravatar.cc/150?img=47"
                   alt="Jane Doe"
-                  style={{
-                    width: 80,
-                    height: 80,
-                    borderRadius: '50%',
-                    objectFit: 'cover',
-                  }}
+                  width={80}
+                  height={80}
+                  style={{ borderRadius: '50%', objectFit: 'cover' }}
                 />
                 <Stack space={2}>
-                  <Headline level="2">Jane Doe</Headline>
-                  <Badge variant={status === 'Active' ? 'success' : 'warning'}>
-                    {status}
-                  </Badge>
+                  <Headline level="1">Jane Doe</Headline>
+                  <Inline space={2} alignY="center">
+                    <Badge variant={status === 'Active' ? 'success' : 'warning'}>
+                      {status}
+                    </Badge>
+                    <Button
+                      variant="ghost"
+                      size="small"
+                      onPress={() =>
+                        setStatus(s => (s === 'Active' ? 'Away' : 'Active'))
+                      }
+                    >
+                      Toggle
+                    </Button>
+                  </Inline>
                 </Stack>
               </Inline>
 
@@ -62,22 +54,32 @@ const TestApp = () => {
 
               {/* Details */}
               <Stack space={2}>
-                {details.map(({ label, value }) => (
-                  <Inline key={label} space={2}>
-                    <Text variant="muted">{label}:</Text>
-                    <Text weight="medium">{value}</Text>
-                  </Inline>
-                ))}
+                <Inline space={2}>
+                  <Text weight="bold">Role:</Text>
+                  <Text variant="muted">Senior Developer</Text>
+                </Inline>
+                <Inline space={2}>
+                  <Text weight="bold">Department:</Text>
+                  <Text variant="muted">Engineering</Text>
+                </Inline>
+                <Inline space={2}>
+                  <Text weight="bold">Email:</Text>
+                  <Text variant="muted">jane.doe@example.com</Text>
+                </Inline>
+                <Inline space={2}>
+                  <Text weight="bold">Location:</Text>
+                  <Text variant="muted">Freiburg, Germany</Text>
+                </Inline>
               </Stack>
 
               <Divider />
 
               {/* Bio */}
               <Text>
-                Jane is a passionate engineer who loves building elegant
-                solutions to complex problems. With over eight years of
-                experience in full-stack development, she brings both technical
-                depth and creative thinking to every project she takes on.
+                Jane is a passionate senior developer with over 8 years of experience
+                building scalable web applications. She champions clean code practices and
+                mentors junior developers on the team. Outside of work, she enjoys hiking
+                in the Black Forest and contributing to open-source projects.
               </Text>
 
               <Divider />
@@ -85,21 +87,25 @@ const TestApp = () => {
               {/* Actions */}
               <Stack space={2}>
                 <Inline space={3}>
-                  <Button variant="primary" onPress={handleSendMessage}>
+                  <Button
+                    variant="primary"
+                    onPress={() => setFeedback('Message sent to Jane!')}
+                  >
                     Send Message
                   </Button>
-                  <Button variant="ghost" onPress={handleEditProfile}>
+                  <Button
+                    variant="secondary"
+                    onPress={() => setFeedback('Opening profile editor...')}
+                  >
                     Edit Profile
                   </Button>
                 </Inline>
-                {message && <Text variant="muted">{message}</Text>}
+                {feedback && <Text variant="muted">{feedback}</Text>}
               </Stack>
             </Stack>
-          </Inset>
-        </Card>
-      </Stack>
-    </Center>
+          </Card>
+        </Center>
+      </AppLayout.Main>
+    </AppLayout>
   );
-};
-
-export default TestApp;
+}

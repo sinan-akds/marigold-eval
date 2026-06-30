@@ -3,142 +3,162 @@ import {
   Button,
   Form,
   Inset,
-  Select,
   Stack,
   TextField,
   TextArea,
+  Select,
   SectionMessage,
+  AppLayout,
+  Headline,
+  Text,
 } from '@marigold/components';
 
 const TestApp = () => {
-  const [formData, setFormData] = useState({
+  const [formState, setFormState] = useState<{
+    name: string;
+    email: string;
+    subject: string;
+    message: string;
+  }>({
     name: '',
     email: '',
-    subject: 'general',
+    subject: '',
     message: '',
   });
 
+  const [errors, setErrors] = useState<{
+    name?: string;
+    email?: string;
+  }>({});
+
   const [submitted, setSubmitted] = useState(false);
-  const [errors, setErrors] = useState<Record<string, string>>({});
 
   const validateEmail = (email: string): boolean => {
-    return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return emailRegex.test(email);
   };
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    const newErrors: Record<string, string> = {};
+    const newErrors: typeof errors = {};
 
-    if (!formData.name.trim()) {
-      newErrors.name = 'Name is required.';
+    if (!formState.name.trim()) {
+      newErrors.name = 'Name is required';
     }
 
-    if (!formData.email.trim()) {
-      newErrors.email = 'Email is required.';
-    } else if (!validateEmail(formData.email)) {
-      newErrors.email = 'Please enter a valid email address.';
-    }
-
-    if (!formData.subject) {
-      newErrors.subject = 'Please select a subject.';
+    if (!formState.email.trim()) {
+      newErrors.email = 'Email is required';
+    } else if (!validateEmail(formState.email)) {
+      newErrors.email = 'Please enter a valid email address';
     }
 
     setErrors(newErrors);
 
     if (Object.keys(newErrors).length === 0) {
       setSubmitted(true);
-      setFormData({ name: '', email: '', subject: 'general', message: '' });
-      setTimeout(() => setSubmitted(false), 5000);
-    }
-  };
-
-  const handleChange = (field: string, value: string) => {
-    setFormData(prev => ({ ...prev, [field]: value }));
-    if (errors[field]) {
-      setErrors(prev => {
-        const updated = { ...prev };
-        delete updated[field];
-        return updated;
+      setFormState({
+        name: '',
+        email: '',
+        subject: '',
+        message: '',
       });
+      setTimeout(() => {
+        setSubmitted(false);
+      }, 5000);
     }
   };
 
   return (
-    <Inset space={8}>
-      <Stack space={6}>
-        {submitted && (
-          <SectionMessage variant="success">
-            <SectionMessage.Title>Success!</SectionMessage.Title>
-            <SectionMessage.Content>
-              Your message has been sent successfully. We'll get back to you soon.
-            </SectionMessage.Content>
-          </SectionMessage>
-        )}
-
-        <Form onSubmit={handleSubmit}>
-          <Stack space={4}>
-            <TextField
-              label="Name"
-              name="name"
-              value={formData.name}
-              onChange={e => handleChange('name', e)}
-              required
-              error={!!errors.name}
-              errorMessage={errors.name}
-              description="Enter your full name."
-            />
-
-            <TextField
-              label="Email"
-              name="email"
-              type="email"
-              value={formData.email}
-              onChange={e => handleChange('email', e)}
-              required
-              error={!!errors.email}
-              errorMessage={errors.email}
-              description="Enter a valid email address."
-            />
-
-            <Select
-              label="Subject"
-              name="subject"
-              selectedKey={formData.subject}
-              onSelectionChange={value => handleChange('subject', value as string)}
-              required
-              error={!!errors.subject}
-              errorMessage={errors.subject}
-              description="Choose the reason for your message."
-            >
-              <Select.Option id="general" key="general">
-                General
-              </Select.Option>
-              <Select.Option id="support" key="support">
-                Support
-              </Select.Option>
-              <Select.Option id="feedback" key="feedback">
-                Feedback
-              </Select.Option>
-            </Select>
-
-            <TextArea
-              label="Message"
-              name="message"
-              value={formData.message}
-              onChange={e => handleChange('message', e)}
-              rows={5}
-              description="Tell us more about your inquiry."
-            />
-
-            <Stack alignX="right">
-              <Button variant="primary" type="submit">
-                Submit
-              </Button>
+    <AppLayout>
+      <AppLayout.Main>
+        <Inset space={8}>
+          <Stack space={6} alignX="left">
+            <Stack space={2} alignX="left">
+              <Headline level="1">Contact Us</Headline>
+              <Text>
+                We'd love to hear from you. Please fill out the form below.
+              </Text>
             </Stack>
+
+            {submitted && (
+              <SectionMessage variant="success">
+                <SectionMessage.Title>Thank You!</SectionMessage.Title>
+                <SectionMessage.Content>
+                  Your message has been sent successfully. We'll get back to you
+                  as soon as possible.
+                </SectionMessage.Content>
+              </SectionMessage>
+            )}
+
+            <Form onSubmit={handleSubmit}>
+              <Stack space={2} alignX="left">
+                <TextField
+                  label="Name"
+                  name="name"
+                  value={formState.name}
+                  onChange={value => {
+                    setFormState(prev => ({ ...prev, name: value }));
+                    if (errors.name) {
+                      setErrors(prev => ({ ...prev, name: undefined }));
+                    }
+                  }}
+                  required
+                  error={!!errors.name}
+                  errorMessage={errors.name}
+                  width="full"
+                />
+
+                <TextField
+                  label="Email"
+                  name="email"
+                  type="email"
+                  value={formState.email}
+                  onChange={value => {
+                    setFormState(prev => ({ ...prev, email: value }));
+                    if (errors.email) {
+                      setErrors(prev => ({ ...prev, email: undefined }));
+                    }
+                  }}
+                  required
+                  error={!!errors.email}
+                  errorMessage={errors.email}
+                  width="full"
+                />
+
+                <Select
+                  label="Subject"
+                  name="subject"
+                  selectedKey={formState.subject || null}
+                  onSelectionChange={key => {
+                    setFormState(prev => ({ ...prev, subject: key as string }));
+                  }}
+                  width="full"
+                >
+                  <Select.Option id="general">General</Select.Option>
+                  <Select.Option id="support">Support</Select.Option>
+                  <Select.Option id="feedback">Feedback</Select.Option>
+                </Select>
+
+                <TextArea
+                  label="Message"
+                  name="message"
+                  value={formState.message}
+                  onChange={value => {
+                    setFormState(prev => ({ ...prev, message: value }));
+                  }}
+                  rows={6}
+                  width="full"
+                />
+
+                <Button variant="primary" type="submit">
+                  Send Message
+                </Button>
+              </Stack>
+            </Form>
           </Stack>
-        </Form>
-      </Stack>
-    </Inset>
+        </Inset>
+      </AppLayout.Main>
+    </AppLayout>
   );
 };
 

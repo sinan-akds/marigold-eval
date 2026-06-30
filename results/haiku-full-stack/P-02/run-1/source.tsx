@@ -1,108 +1,87 @@
 import { useState } from 'react';
-import {
-  Card,
-  Stack,
-  Inline,
-  Badge,
-  Button,
-  Headline,
-  Text,
-  AppLayout,
-  Aspect,
-  Inset,
-} from '@marigold/components';
+import { Card, Badge, Button, Stack, Inline, Headline, Text, Center, Aspect, AppLayout } from '@marigold/components';
 
 const TestApp = () => {
-  const [messageAlert, setMessageAlert] = useState('');
-  const [editAlert, setEditAlert] = useState('');
+  const [status, setStatus] = useState<'Active' | 'Away'>('Active');
 
   const handleSendMessage = () => {
-    setMessageAlert('Message sent to jane.doe@example.com');
-    setTimeout(() => setMessageAlert(''), 3000);
+    alert('Message sent to Jane Doe');
   };
 
   const handleEditProfile = () => {
-    setEditAlert('Edit profile initiated');
-    setTimeout(() => setEditAlert(''), 3000);
+    alert('Edit profile clicked');
+  };
+
+  const toggleStatus = () => {
+    setStatus(status === 'Active' ? 'Away' : 'Active');
   };
 
   return (
     <AppLayout>
       <AppLayout.Main>
-        <Stack space={16}>
+        <Center maxWidth="xlarge">
           <Card>
-            <Inset spaceX="padding-regular" spaceY="padding-regular">
-              <Stack space={12}>
-                {/* Header with avatar and name */}
-                <Inline space={12} alignY="center">
+            <Stack space={6}>
+              {/* Header with Avatar and Name */}
+              <Inline space={4} alignY="center">
                 <Aspect ratio="square" maxWidth="80px">
                   <img
-                    src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=128&h=128&fit=crop"
+                    src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=400&h=400&fit=crop"
                     alt="Jane Doe"
-                    className="object-cover"
+                    className="object-cover rounded-xs"
                   />
                 </Aspect>
-                <Stack space={4}>
-                  <Headline size="level-3">Jane Doe</Headline>
-                  <Badge variant="success">Active</Badge>
-                </Stack>
-                </Inline>
+            <Stack space={2}>
+              <Headline size="level-3">Jane Doe</Headline>
+              <Badge variant={status === 'Active' ? 'success' : 'warning'}>
+                {status}
+              </Badge>
+            </Stack>
+          </Inline>
 
-                {/* Details section */}
-                <Stack space={8}>
-                  <Inline space={12} alignY="top">
-                    <Text weight="medium">Role:</Text>
-                    <Text>Senior Developer</Text>
-                  </Inline>
-                  <Inline space={12} alignY="top">
-                    <Text weight="medium">Department:</Text>
-                    <Text>Engineering</Text>
-                  </Inline>
-                  <Inline space={12} alignY="top">
-                    <Text weight="medium">Email:</Text>
-                    <Text>jane.doe@example.com</Text>
-                  </Inline>
-                  <Inline space={12} alignY="top">
-                    <Text weight="medium">Location:</Text>
-                    <Text>Freiburg, Germany</Text>
-                  </Inline>
-                </Stack>
+          {/* Details Section */}
+          <Stack space={2}>
+            <Inline space={2} alignY="center">
+              <Text weight="bold" size="sm">Role:</Text>
+              <Text size="sm">Senior Developer</Text>
+            </Inline>
+            <Inline space={2} alignY="center">
+              <Text weight="bold" size="sm">Department:</Text>
+              <Text size="sm">Engineering</Text>
+            </Inline>
+            <Inline space={2} alignY="center">
+              <Text weight="bold" size="sm">Email:</Text>
+              <Text size="sm">jane.doe@example.com</Text>
+            </Inline>
+            <Inline space={2} alignY="center">
+              <Text weight="bold" size="sm">Location:</Text>
+              <Text size="sm">Freiburg, Germany</Text>
+            </Inline>
+          </Stack>
 
-                {/* Bio section */}
-                <Stack space={4}>
-                  <Text>
-                    Jane is a passionate senior developer with 8 years of experience
-                    in full-stack web development. She specializes in React and Node.js,
-                    and leads the frontend infrastructure team. When not coding, she
-                    enjoys mentoring junior developers and contributing to open source.
-                  </Text>
-                </Stack>
+          {/* Bio Section */}
+          <Text variant="muted">
+            Jane is a talented senior developer with 8+ years of experience building scalable web applications.
+            She specializes in React and TypeScript, and enjoys mentoring junior developers on the team.
+          </Text>
 
-                {/* Actions */}
-                <Stack space={8}>
-                  <Button variant="primary" onPress={handleSendMessage} fullWidth>
-                    Send Message
-                  </Button>
-                  <Button variant="secondary" onPress={handleEditProfile} fullWidth>
-                    Edit Profile
-                  </Button>
-                </Stack>
+          {/* Actions Section */}
+          <Inline space={2} alignX="between">
+            <Button variant="primary" onPress={handleSendMessage}>
+              Send Message
+            </Button>
+            <Button variant="secondary" onPress={handleEditProfile}>
+              Edit Profile
+            </Button>
+          </Inline>
 
-                {/* Alert messages */}
-                {messageAlert && (
-                  <Text color="success">
-                    {messageAlert}
-                  </Text>
-                )}
-                {editAlert && (
-                  <Text color="success">
-                    {editAlert}
-                  </Text>
-                )}
-              </Stack>
-            </Inset>
+          {/* Status Toggle for Demo */}
+          <Button variant="ghost" onPress={toggleStatus} size="small">
+            Toggle Status ({status})
+          </Button>
+            </Stack>
           </Card>
-        </Stack>
+        </Center>
       </AppLayout.Main>
     </AppLayout>
   );
