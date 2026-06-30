@@ -36,8 +36,8 @@ SRC_LABELS = {
     "composition-validator": "Composition", "design-system-usage": "DS Usage",
     "theme-variant-validator": "Theme/Variant", "accessible-name": "Acc. Name",
     "token-compliance": "Tokens", "responsive-checker": "Responsive",
-    "runtime": "Runtime", "aom-extractor": "A11y (AOM)", "overlap-detector": "Overlap",
-    "keyboard-a11y": "Keyboard", "overflow-detector": "Overflow",
+    "runtime": "Runtime", "aom-extractor": "AOM", "overlap-detector": "Overlap",
+    "keyboard-a11y": "Tastatur", "overflow-detector": "Overflow",
     "layout-usage": "Layout", "table-usage": "Table", "collection-id": "Collection-ID",
     "component-conventions": "Konventionen", "other": "Sonstige",
 }
@@ -86,6 +86,8 @@ PRESENT = [m for m in MODELS if any(DATA[m][t] for t in TIERS)]
 
 def save(fig, name):
     fig.savefig(os.path.join(OUT, name), bbox_inches="tight", pad_inches=0.18)
+    pdf = os.path.splitext(name)[0] + ".pdf"
+    fig.savefig(os.path.join(OUT, pdf), bbox_inches="tight", pad_inches=0.18)
     plt.close(fig)
     print("  ->", name)
 
@@ -229,7 +231,7 @@ def plot_errors_per_prompt():
         ax.set_ylabel("Ø Fehler pro Lauf (symlog)")
         ax.set_yscale("symlog", linthresh=1)
         ax.set_ylim(bottom=0)
-        ax.set_yticks([0, 1, 3, 10, 30, 100, 300])
+        ax.set_yticks([0, 1, 10, 100, 300])
         ax.get_yaxis().set_major_formatter(mticker.ScalarFormatter())
         ax.set_title(f"Fehler je Prompt — {MODEL_LABELS[m]}")
         legend_below(ax, *tier_handles(), ncol=3)
@@ -242,7 +244,8 @@ def plot_convergence():
     if it is None:
         return
     rng = np.random.default_rng(42)
-    MIN_RUNS = 5  # Trend nur zeigen, solange so viele Läufe den Aufruf erreichen
+    MIN_RUNS = 1   # Trend bis zum letzten erreichten Aufruf zeigen
+    XMAX_CAP = 9   # aber den langen Einzellauf-Tail abschneiden
     fig, ax = plt.subplots(figsize=(7.4, 4.8))
     handles, labels = [], []
     xmax = 1
@@ -262,6 +265,7 @@ def plot_convergence():
         maxlen = max(len(s) for s in series)
         reach = [sum(1 for s in series if len(s) > i) for i in range(maxlen)]
         cutoff = max((i + 1 for i in range(maxlen) if reach[i] >= MIN_RUNS), default=1)
+        cutoff = min(cutoff, XMAX_CAP)
         xmax = max(xmax, cutoff)
         # Streuung nur bis zum Cutoff (danach nur noch Einzelläufe).
         px, py = [], []
@@ -281,15 +285,14 @@ def plot_convergence():
         plt.close(fig)
         return
     ax.set_xlim(0.5, xmax + 0.5)
-    ax.set_xlabel("validate-Aufruf im Loop (Scope „all“)")
-    ax.set_ylabel("Fehler im Aufruf")
+    ax.set_xlabel("validate-Aufruf im Loop")
+    ax.set_ylabel("Fehler im Aufruf (symlog)")
     ax.set_yscale("symlog", linthresh=1)
     ax.set_yticks([0, 1, 10, 100])
     ax.set_yticklabels(["0", "1", "10", "100"])
     ax.set_ylim(0, 300)
     ax.set_title("Konvergenz der Fehler im Loop")
-    ax.annotate("Punkte = einzelne Läufe; Skala symlog (0, 1, 10, 100); "
-                "Trend bis mind. fünf Läufe den Aufruf erreichen",
+    ax.annotate("Punkte = einzelne Läufe",
                 xy=(0.5, 0.98), xycoords="axes fraction", ha="center", va="top",
                 fontsize=7.5, color="gray")
     legend_below(ax, handles, labels, ncol=len(handles))
